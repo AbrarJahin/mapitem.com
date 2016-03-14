@@ -1,0 +1,3 @@
+Coinbases API
+=============
+http://www.sitepoint.com/bitcoin-php-coinbases-api-basic-usage/
