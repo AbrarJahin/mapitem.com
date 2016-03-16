@@ -12,12 +12,12 @@ class GoogleLogin extends Model
 	* @var array
 	*/
 
-	protected $table 		= 'google_lgin';
-	public $timestamps = [ "created_at" ]; // enable only to created_at
+	protected $table 		=	'google_lgin';			//Table Name
+	public $timestamps		=	["created_at"]; 		// enable only to created_at
 
-	protected $fillable =	[
-								'user_id'
-							];
+	protected $fillable		=	[
+									'user_id'
+								];
 
 	/**
 	* The attributes excluded from the model's JSON form.

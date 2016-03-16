@@ -17,7 +17,7 @@ class CreateFbLoginTable extends Migration
 			$table->integer('user_id')		->unsigned()		->index();
 			//Other Info for FB Auth
 
-			$table->timestamps('created_at');
+			$table->timestamp('created_at');
 
 			//Foreign Keys
 			$table->foreign('user_id')		->references('id')	->on('users');
