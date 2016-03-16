@@ -1,31 +1,53 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+//Testing
+	Route::get('/', function ()
+	{
+		return view('welcome');
+	});
 
-Route::get('/', function () {
-    return view('welcome');
-});
+	Route::get('listing', function ()
+	{
+		return view('welcome');
+	});
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
+	Route::get('listing_out', function ()
+	{
+		return view('welcome');
+	});
+//Testing End
 
-Route::group(['middleware' => ['web']], function () {
-    //
+
+// Auth Routes
+Route::group(['prefix' => '/','middleware' => ['web'],'as' => 'auth'], function()
+{
+	//Login Routes
+	Route::get('/', [
+		'uses'			=> 'LoginController@userLoginView',
+		'middleware'	=> 'before_loggedin',
+		'as'			=> '.home'
+		]);
+	Route::get('login', [
+		'uses' 			=> 'LoginController@userLoginView',
+		'middleware'	=> 'before_loggedin',
+		'as' 			=> 'login.view'
+		]);
+	Route::post('login', [
+			'uses' => 'LoginController@userLoginProcess',
+			'as' => 'login.process'
+		]);
+	//Register Routes
+	Route::get('register', [
+			'uses' => 'LoginController@UserRegisterView',
+			//'middleware' => 'admin',
+			'as' => 'register.view'
+		]);
+	Route::post('register', [
+			'uses' => 'LoginController@userRegisterProcess',
+			'as' => 'register.process'
+		]);
+	Route::get('logout', [
+			'uses' => 'LoginController@userLogout',
+			'as' => 'logout'
+		]);
 });
