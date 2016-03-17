@@ -120,16 +120,29 @@
 
 
         /*Show Add Detail */
-        $('.loginbtn').click(function(){
+        /*$('.loginbtn').click(function(){
             $('.ad-detail').slideDown("slow");
             $('.filter').hide("slow");
             $('.results').hide("slow");
 
             
-        });
+        });*/
 
         /*Hide Add Detail*/
 
+        $('.fp').click(function(){
+            $('.for-pass').slideDown("slow");
+
+            
+        });
+        $('.closefp').click(function(){
+            $('.for-pass').slideUp("slow");
+        });
+
+        $(document).ready(function() {
+            $('#rootwizard').bootstrapWizard();
+            window.prettyPrint && prettyPrint()
+        });
 
 
         $('.close-detail').click(function(){

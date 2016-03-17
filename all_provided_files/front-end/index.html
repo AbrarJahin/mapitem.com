@@ -104,7 +104,7 @@
                     </li> -->
 
                     <!-- Logged In View -->
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"><i class="glyphicon glyphicon-user round2"></i> Max Ezoory  <b class="glyphicon glyphicon-menu-down c-adj2"></b></a>
                         <ul class="dropdown-menu dashboard">
                             <li class="">
@@ -121,10 +121,10 @@
                             </li>
                             
                         </ul>
-                    </li>
+                    </li> -->
 
                     <!-- Logg Off View -->
-                    <!-- <li class="dropdown">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown">Sign Up</a>
                         <ul class="dropdown-menu no-padding shadow loginpopup">
                             <li>
@@ -147,7 +147,7 @@
                                     </div>
 
                                     <div class="pos-adj4">
-                                        By signing up you accept Block Hunt's <a href="#" class="">Policy</a> and <a href="#" class="">Term of use</a>
+                                        By signing up you accept Mapitem's <a href="#" class="">Policy</a> and <a href="#" class="">Term of use</a>
 
                                         
                                     </div>
@@ -163,7 +163,7 @@
                             </li>
                             
                         </ul>
-                    </li> -->
+                    </li>
                     
                     <li class="dropdown">
                         <a href="#" class="" data-toggle="modal" data-target="#pfa">Post free ad </a>
@@ -187,129 +187,76 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Post Free Ad</h4>
           </div>
-          <div class="modal-body" >
-            <ul class="nav nav-tabs nav-tabs-top pf-modal" role="tablist">
-                <li class="ta active"><a href="#title" class="bs-overwrite" aria-controls="home" role="tab" data-toggle="tab">1. Title - Description</a></li>
-                <li class="ta"><a href="#image" class="bs-overwrite" aria-controls="profile" role="tab" data-toggle="tab">2. Upload Images</a></li>
-                <li class="ta"><a class="bs-overwrite" href="#location" aria-controls="profile" role="tab" data-toggle="tab">3. Location</a></li>
-            </ul>
-            <form class="tab-content adj1">
-                 <div id="title" class="tab-pane form-group title active ">
-                  
-                      <select class="form-control medium-select" id="sel1">
-                        <option id="selected">Select Category</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
+          <div class="modal-body">
 
-                      <select class="form-control medium-select" id="sel1">
-                        <option id="selected">Select Sub Category</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
+            <div id="rootwizard">
 
+                <ul class="nav nav-tabs nav-tabs-top pf-modal" role="tablist">
+                    <li class="ta"><a href="#tab1" data-toggle="tab">1. Title - Description</a></li>
+                    <li class="ta"><a href="#tab2" data-toggle="tab">2. Upload Images</a></li>
+                    <li class="ta"><a href="#tab3" data-toggle="tab">3. Location</a></li>
+                </ul>
+
+                <form class="tab-content adj1">
                     
-                        
-
+                    <div id="tab1" class="tab-pane">
+                        <select class="form-control medium-select" id="sel1">
+                            <option id="selected">Coumminty</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                        <select class="form-control medium-select" id="sel1">
+                        <option id="selected">Events</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        </select>
                         <div class="row">
-                          
-                        
-                        <div class="col-lg-8">
+                            <div class="col-lg-8">
                             <input type="text" class="form-control normal-input margin-adj" id="adtitle" placeholder="Ad Title">
-                        </div>
-                        
-                        <div class="col-lg-4">
-
+                            </div>
+                            <div class="col-lg-4">
                             <input type="text" class="form-control normal-input margin-adj" id="price" placeholder="Price">  
+                            </div>
                         </div>
-                        </div>
-
                         <textarea class="form-control medium-textarea" rows="4" placeholder="Ad Description"></textarea>
-
-                </div>
-
-                <div id="image" class="image tab-pane ">
-                        <div class="col-xs-2 adj007 pos-rel">
-                            <img height="200" src="images/thumbnail1.jpg" class="img-responsive">
-                            <h6>Seatle</h6>
-                            <a href="#" class="thumb-close"><i class="fa fa-close"></i></a>
-                        </div>
-                        <div class="col-xs-2 adj007 pos-rel">
-                            <img src="images/thumbnail2.jpg" class="img-responsive">
-                            <h6>Seatle</h6>
-                            <a href="#" class="thumb-close"><i class="fa fa-close"></i></a>
-                        </div>
-                        <div class="col-xs-2 adj007 pos-rel">
-                            <img src="images/thumbnail1.jpg" class="img-responsive">
-                            <h6>Seatle</h6>
-                            <a href="#" class="thumb-close"><i class="fa fa-close"></i></a>
-                        </div>
-                        <div class="col-xs-2 adj007 pos-rel">
-                            <img src="images/thumbnail1.jpg" class="img-responsive">
-                            <h6>Seatle</h6>
-                            <a href="#" class="thumb-close"><i class="fa fa-close"></i></a>
-                        </div>
-                        <div class="col-xs-2 adj007 pos-rel">
-                            <img src="images/thumbnail1.jpg" class="img-responsive">
-                            <h6>Seatle</h6>
-                            <a href="#" class="thumb-close"><i class="fa fa-close"></i></a>
-                        </div>
-                        <div class="col-xs-2 adj007 pos-rel">
-                            <img src="images/thumbnail1.jpg" class="img-responsive">
-                            <h6>Seatle</h6>
-                            <a href="#" class="thumb-close"><i class="fa fa-close"></i></a>
-                        </div>
-                        <div class="clearfix margin-bottom-twenty"></div>
-                        <button type="button" class="btn btn-default upload-btn">Upload Ad Images</button>
-                </div>
-
-                <div id="location" class="formbox location tab-pane ">
-
-                    <input type="text" class="form-control normal-input margin-adj" id="adaddress" placeholder="Ad Address">
-                    <div class="map-address"></div>
-
-                    <!-- <label class="margin-adj"><input id="infocheckbox" type="checkbox" value=""> <span class="li">Use other Location</span></label>
-                    <div class="loc-info">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="80 D" disabled>
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="Lahore" disabled>
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="Punjab" disabled>
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="54000" disabled>
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="Pakistan" disabled>
                     </div>
-                    <div class="loc-info-edit">
-                      
+
+                    <div id="tab2" class="tab-pane">
+                        <div class="image_upload_div">                      
+                            <div id="dropzoneimage" class="dropzone dz-clickable"><div class="dz-default dz-message"><span>Drop files here to upload</span></div></div>                 
+                        </div>
+                    </div>
+
+                    <div id="tab3" class="tab-pane">
+
                         <input type="text" class="form-control normal-input margin-adj" id="adaddress" placeholder="Ad Address">
+                        <div class="map-address">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13598.001561973482!2d74.31768755!3d31.565323199999998!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1458218451359" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <a href="#" class="green-small2 no-textdecor" >Post Free Add</a>
 
-                        <input type="text" class="form-control normal-input margin-adj" id="adcity" placeholder="Ad City">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="adstate" placeholder="Ad State">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="adzipcode" placeholder="Ad Zipcode">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="adcountry" placeholder="Ad Country">
                     </div>
-                    <div class="clearfix"></div> -->
-                    <a href="#" class="grey-small pull-left no-textdecor" >Previous</a>
-                    <a href="#" class="green-small pull-left no-textdecor" >Post Free Add</a>
 
-                </div>
+                    <ul class="pager wizard">
+                                <li class="previous first" style="display:none;"><a href="#">First</a></li>
+                                <li class="previous"><a href="#">Previous</a></li>
+                                <li class="next last" style="display:none;"><a href="#">Last</a></li>
+                                <li class="next"><a href="#">Next</a></li>
+                            </ul>
 
-            </form>
+                </form>
+            </div>
+
           </div>
           <div class="clearfix margin-twenty"></div>
           <div class="modal-footer">
-            <ul class="nav nav-tabs nav-tabs-bottom pf-modal" role="tablist">
+            <!-- <ul class="nav nav-tabs nav-tabs-bottom pf-modal" role="tablist">
                 <li class="ta active"><a href="#title" class="bs-overwrite" aria-controls="home" role="tab" data-toggle="tab">Step 1</a></li>
                 <li class="ta"><a href="#image" class="bs-overwrite" aria-controls="profile" role="tab" data-toggle="tab">Step 2</a></li>
                 <li class="ta"><a class="bs-overwrite" href="#location" aria-controls="profile" role="tab" data-toggle="tab">Step 3</a></li>
-            </ul>
+            </ul> -->
 
             <!-- <a href="#" class="grey-small pull-left no-textdecor" >Previous</a>
             <a href="#" class="green-small pull-left no-textdecor">Next</a>
@@ -933,7 +880,7 @@
 
         <div class="third-strip">
             <div class="container">
-                © Copyright BlockHunt 2015
+                © Copyright Mapitems 2015
             </div>
         </div> 
     
@@ -966,8 +913,10 @@
     <!-- Custom JS -->
     <script src="js/custom.js"></script>
 
-    <script type="text/javascript">
-            
+    <script src="js/jquery.bootstrap.wizard.js"></script>
+    
+    <script>
+    
     </script>
 
     <script type="text/javascript">

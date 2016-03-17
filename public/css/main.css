@@ -178,8 +178,9 @@ aside {
 nav .dropdown-menu {
     background-color: #e8e8e8;
     border-top: 3px solid #23a500;
-    min-width: 250px;
+    min-width: 270px;
     padding: 10px;
+    line-height: 22px
 }
 .form-group {
     margin-bottom: 7px;
@@ -199,6 +200,7 @@ nav .dropdown-menu {
     font-size: 13px;
     margin: 10px 0 10px 4px;
 }
+
 .green-small {
     background-color: #23a500;
     border: medium none;
@@ -212,6 +214,53 @@ nav .dropdown-menu {
     text-decoration: none;
     color: #84de6b;
     background-color: #3c8b26;
+}
+.green-small2 {
+    background-color: #23a500;
+    border: medium none;
+    border-radius: 3px;
+    color: white;
+    font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
+    font-size: 13px;
+    padding:8px 33px;
+    margin-right: 39%;
+    float: right;
+}
+.green-small2:hover {
+    text-decoration: none;
+    color: #84de6b;
+    background-color: #3c8b26;
+}
+.pager li > a, .pager li > span{
+    background-color: #23a500;
+    border: medium none;
+    border-radius: 3px;
+    color: white;
+    font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
+    font-size: 13px;
+    padding:8px 33px;
+}
+.dropzone .dz-message {
+    margin: 2em 0;
+    text-align: center;
+}
+.dropzone {
+    background: white none repeat scroll 0 0;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    min-height: 150px;
+    padding: 20px;
+}
+.pager li > a, .pager li > span:hover {
+    text-decoration: none;
+    color: white;
+    background-color: rgba(35,165,0,1);
+}
+.wizard .disabled a { display: none;}
+.pager li > a:hover{
+    background-color: rgba(35,165,0,.5);   
+}
+.pager li > a:focus{
+    background-color: rgba(35,165,0,1);   
 }
 .green-large {
     background-color: #23a500;
@@ -335,18 +384,20 @@ nav .dropdown-menu {
     border-radius: 0;
     color: white !important;
     text-decoration: none;
-    padding: 8px 10px;
+}
+#rootwizard .nav-tabs > li {
+    float: left;
+    margin-bottom: -2px;
 }
 .pf-modal {
     border-bottom: 1px solid #979797 !important;
     border-radius: 0;
     color: black !important;
     text-decoration: none;
-    padding: 8px 0 6px 0px;
+    padding: 0px 0 0px 0px;
 }
-.pf-modal li{
-    margin-bottom: -6px;
-    padding: 8px 10px;
+#rootwizard .nav > li > a{
+    padding: 7px 15px
 }
 .modal-dialog {
     margin: 10px auto 30px;
@@ -1206,6 +1257,9 @@ header.carousel .fill {
 .margin-top-twenty{
     margin-top: 20px
 }
+.margin-top-ten{
+    margin-top: 10px
+}
 .pos-adj5 {
     background-color: rgba(255,255,255,.2);
     position: absolute;
@@ -1354,9 +1408,16 @@ header.carousel .fill {
 }
 .ip-nav li a{
     color: black!important;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     width: 100%
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: #fff;
+    padding: 0;
+    text-decoration: none;
 }
 .filter form.fl select {
     background-color: white;
@@ -1364,6 +1425,10 @@ header.carousel .fill {
     border-radius: 0;
     box-shadow: none;
     height: 42px;
+}
+.navbar-right .dropdown-menu {
+    left: 0;
+    right: auto;
 }
 .margin-ten{
     margin: 10px 0;
@@ -1410,6 +1475,17 @@ header.carousel .fill {
 }
 .pos-rel{
     position: relative;
+}
+.small-text{
+    font-size: 12px
+}
+.for-pass {
+    background-color: white;
+    height: 234px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 /*Range Slider*/
 .theme-green .back-bar .pointer {
@@ -1700,6 +1776,21 @@ header.pdetail{
 }
 .sb-bottom {
     margin-top: 25px;
+}
+.wizard .next{
+    float: left;
+}
+.wizard .previous a {
+    background-color: #616161;
+    border: medium none;
+    border-radius: 3px;
+    color: white;
+    font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
+    font-size: 13px;
+    margin-right: 10px;
+    padding: 8px 33px;
+    float: left;
+    margin-right: 10px
 }
 .width-adj {
     font-size: 13px;
@@ -2408,9 +2499,14 @@ body {
 
 @media(max-width:767px){
 
+    .green-small2 {
+        margin-right: 0;
+        padding: 8px 28px;
+    }
+
     .navbar{
         background-color: #4d4545!important;
-        box-shadow: 1px 5px 11px rgba(0, 0, 0, 0.4)!important;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4)!important;
     }
       .width-adj3 {
             width: 85%!important;
@@ -2463,7 +2559,7 @@ body {
     }
 
     .navbar{
-        background-color: #4d4545!important
+        background-color: #dbdbdb!important
     }
     .topcat button{
         width: 100%
@@ -2669,6 +2765,10 @@ body {
         float: none;
         margin-bottom: 10px
     }
+    .green-small2 {
+        margin-right: 0;
+        padding: 8px 28px;
+    }
     
     
     
@@ -2715,6 +2815,7 @@ body {
         color: black !important;
         font-size: 8px !important;
     }
+
      
     
 
@@ -2744,7 +2845,7 @@ body {
 @media(max-width:1200px){
 
     .ip-nav{
-        margin-right: 0   
+        
     }
     .ip-nav li a{
         padding-left: 2px;
@@ -2755,6 +2856,10 @@ body {
     }
     .contact {
     left: -0%;
+    }
+    .navbar-right .dropdown-menu {
+    left: auto;
+    right: 0;
     }
   
     

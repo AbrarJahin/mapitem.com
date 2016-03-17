@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
 			$table->date('date_of_birth');
 			$table->string('social_security_number', 15)->unique();
 			$table->string('address', 100);
-			$table->float('location_latitude');
-			$table->float('location_longitude');
+			$table->float('location_latitude',10,7);
+			$table->float('location_longitude',10,7);
 			$table->string('password', 120);
 			//FB Login Info - 'fb_login' table
 			//Google Login Info - 'gooogle_login' table

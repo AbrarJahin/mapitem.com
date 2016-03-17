@@ -132,10 +132,13 @@
 
                 <ul class="nav navbar-nav navbar-right ip-nav">
                     
-                    <!-- <li class="dropdown">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"> Login</a>
+
+
                         <ul class="dropdown-menu no-padding shadow loginpopup">
                             <li>
+
                                 <form action="#" class="login">
                                     
                                     <div class="form-group">
@@ -147,21 +150,52 @@
                                     </div>
 
                                     <div class="pos-adj1">
-                                        <a href="#" class="fp">Forgot Password ?</a>
+                                        <a class="fp" href="#" data-toggle="modal" data-target="#forgot-password" data-dismiss="modal" style="color: #23a500 !important;
+    float: left;
+    font-size: 9pt !important;
+    padding: 0 !important;
+    width: 50%;">Forgot Password ?</a>
 
-                                        <div class="checkbox pull-right no-margin">
+                                        <div class="checkbox no-margin pull-right">
                                             <label class="pos-adj2">
                                               <input type="checkbox"> Remember Me
                                             </label>
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-default green-small">Login</button>
-
+                                    <button type="submit" class="btn btn-default green-small margin-top-twenty">Login</button>
                                     <div class="pos-adj3">
-                                        <span>Don't have an account ?</span> <a href="#">Sing up</a>
+                                        <span>Don't have an account ?</span> <a href="#" style="color: #23a500 !important;
+    font-size: 10pt !important;
+    padding: 0 !important;
+">Sign up</a>
                                     </div>
 
+                                    <div class="clearfix"></div>
+
+                                    
+
+                                    <div class="for-pass" style="display:none">
+                                        <div class="modal-header">
+                                            <button data-dismiss="modal" class="close closefp" type="button">×</button>
+                                            <h4 class="modal-title">Reset Password</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="#" class="login no-border">
+                                              <div class="form-group">
+                                              <input type="email" class="form-control normal-input" id="InputEmail1" placeholder="Email Address">
+                                              </div>
+
+                                              <button type="submit" class="btn btn-default green-small">Reset Password</button>
+                                              <p class="small-text margin-top-ten">We will send password to your email address shortly</p>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="pos-adj3">
+                                        <span>Don't have an account ?</span> <a href="#">Sign up</a>
+                                    </div>
+ -->
                                 </form>
 
                                 <a href="#" class="facebook">Login with Facebook</a>
@@ -194,15 +228,24 @@
                                     </div>
 
                                     <div class="pos-adj4">
-                                        By signing up you accept Block Hunt's <a href="#" class="">Policy</a> and <a href="#" class="">Term of use</a>
+                                        By signing up you accept Mapitem's <a href="#" style="color: #23a500 !important;
+    font-size: 10pt !important;
+    padding: 0 !important;
+">Policy</a> and <a href="#" style="color: #23a500 !important;
+    font-size: 10pt !important;
+    padding: 0 !important;
+">Term of use</a>
 
                                         
                                     </div>
 
-                                    <button type="submit" class="btn btn-default green-small">Sing up</button>
+                                    <button type="submit" class="btn btn-default green-small">Sign up</button>
 
                                     <div class="pos-adj3">
-                                        <span>Already a member ? </span> <a href="#">Sign in</a>
+                                        <span>Already a member ? </span> <a href="#" style="color: #23a500 !important;
+    font-size: 10pt !important;
+    padding: 0 !important;
+">Sign in</a>
                                     </div>
 
                                 </form>
@@ -210,8 +253,8 @@
                             </li>
                             
                         </ul>
-                    </li> -->
-                    <li class="dropdown">
+                    </li>
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"><i class="glyphicon glyphicon-user round2"></i> Max Ezoory  <b class="glyphicon glyphicon-menu-down c-adj2"></b></a>
                         <ul class="dropdown-menu dashboard">
                             <li class="">
@@ -228,7 +271,7 @@
                             </li>
                             
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="dropdown">
                         <a href="#" class="" data-toggle="modal" data-target="#pfa">Post free ad </a>
                         
@@ -362,6 +405,8 @@
       </div>
     </div>
 
+    
+
     <!-- Inner Body -->
     <div id="" class="container header-minus wraper no-padding">
 
@@ -482,7 +527,7 @@
 
                 <!-- Ad Slider-->
                 
-                <header class="carousel pdetail slide" id="dp-slider">
+                <header class="carousel pdetail slide" id="myCarousel">
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
@@ -497,6 +542,15 @@
                             </div>
 
                             <!-- second slide -->
+                            <div class="item">
+                                <div class="img-box-list higt-ctr">
+                                    <img src="images/detail-pic.jpg" alt="post-image">
+                                    
+                                </div>
+                                <div class="carousel-caption">
+                                    <h1></h1>
+                                </div>
+                            </div>
                            
                             <!-- third slide -->
                            
@@ -1213,7 +1267,7 @@
 
             <div class="clearfix "></div>
 
-            <footer style="position:relative; top:-48px">
+            <footer>
 
                 <div class="first-strip">
 
@@ -1264,7 +1318,7 @@
 
                 <div class="third-strip">
                     <div class="container-fluid">
-                        © Copyright BlockHunt 2015
+                        © Copyright Mapitem 2015
                     </div>
                 </div> 
             
