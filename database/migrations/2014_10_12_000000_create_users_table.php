@@ -22,14 +22,17 @@ class CreateUsersTable extends Migration
 			$table->date('date_of_birth');
 			$table->string('social_security_number', 15)->unique();
 			$table->string('address', 100);
-			$table->float('location_latitude',10,7);
-			$table->float('location_longitude',10,7);
+			//$table->float('location_latitude',10,7);
+			//$table->float('location_longitude',10,7);
 			$table->string('password', 120);
-			//FB Login Info - 'fb_login' table
-			//Google Login Info - 'gooogle_login' table
+			$table->enum('user_type', ['admin', 'normal_user'])->default('normal_user');
+			$table->enum('is_enabled', ['enabled', 'disabled'])->default('enabled');
+			//FB Login Info		- 'fb_login'		table
+			//Google Login Info	- 'gooogle_login'	table
 			$table->rememberToken();
 			$table->timestamps();
         });
+        DB::statement('ALTER TABLE users ADD user_location POINT AFTER address' );
     }
 
 	/**
