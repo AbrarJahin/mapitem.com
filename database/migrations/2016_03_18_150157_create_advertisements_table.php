@@ -15,7 +15,8 @@ class CreateAdvertisementsTable extends Migration
 		Schema::create('advertisements', function (Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')		->unsigned()		->index();
+			$table->integer('user_id')			->unsigned()		->index();
+			$table->integer('category_id')		->unsigned()		->index();
 			$table->string('title', 150);
 			$table->string('description', 150);
 
@@ -24,7 +25,8 @@ class CreateAdvertisementsTable extends Migration
 			$table->integer('view_count')->unsigned();
 
 			//Foreign Keys
-			$table->foreign('user_id')		->references('id')	->on('users');
+			$table->foreign('user_id')			->references('id')	->on('users');
+			$table->foreign('category_id')		->references('id')	->on('categories');
 			$table->timestamps();
 		});
 	}
