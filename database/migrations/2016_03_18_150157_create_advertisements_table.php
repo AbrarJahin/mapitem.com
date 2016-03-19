@@ -20,7 +20,7 @@ class CreateAdvertisementsTable extends Migration
 			$table->string('title', 150);
 			$table->string('description', 150);
 
-			//$table->enum('is_active', ['active', 'inactive']);
+			$table->enum('is_active', ['active', 'inactive'])->default('active');
 			$table->softDeletes();
 			$table->integer('view_count')->unsigned();
 
