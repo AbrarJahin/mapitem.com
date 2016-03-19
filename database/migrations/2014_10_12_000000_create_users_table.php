@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
 			$table->string('website', 70);
 			$table->date('date_of_birth');
 			$table->string('social_security_number', 15)->unique();
-			$table->string('address', 100);
+			$table->string('address', 255);
 			//$table->float('location_latitude',10,7);
 			//$table->float('location_longitude',10,7);
 			$table->string('password', 120);
@@ -45,3 +45,25 @@ class CreateUsersTable extends Migration
         Schema::drop('users');
     }
 }
+
+/*
+	SELECT
+	  id,
+	  full_name,
+	  website,
+	  X(user_location) AS "latitude",
+	  Y(user_location) AS "longitude",
+	  (
+	    GLength(
+	      LineStringFromWKB(
+	        LineString(
+	          user_location, 
+	          GeomFromText('POINT(51.5177 -0.0968)')
+	        )
+	      )
+	    )
+	  )
+	  AS distance
+	FROM users
+	  ORDER BY distance ASC;
+ */

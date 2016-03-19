@@ -3,7 +3,7 @@
 //Testing
 	Route::get('/', function ()
 	{
-		return view('welcome');
+		return "OK";
 	});
 
 	Route::get('listing', function ()
@@ -22,31 +22,17 @@
 Route::group(['prefix' => '/','middleware' => ['web'],'as' => 'auth'], function()
 {
 	//Login Routes
-	Route::get('/', [
-		'uses'			=> 'LoginController@userLoginView',
-		'middleware'	=> 'before_loggedin',
-		'as'			=> '.home'
-		]);
-	Route::get('login', [
-		'uses' 			=> 'LoginController@userLoginView',
-		'middleware'	=> 'before_loggedin',
-		'as' 			=> 'login.view'
-		]);
 	Route::post('login', [
 			'uses' => 'LoginController@userLoginProcess',
 			'as' => 'login.process'
 		]);
 	//Register Routes
-	Route::get('register', [
-			'uses' => 'LoginController@UserRegisterView',
-			//'middleware' => 'admin',
-			'as' => 'register.view'
-		]);
 	Route::post('register', [
 			'uses' => 'LoginController@userRegisterProcess',
 			'as' => 'register.process'
 		]);
-	Route::get('logout', [
+	//Logout an user
+	Route::any('logout', [
 			'uses' => 'LoginController@userLogout',
 			'as' => 'logout'
 		]);

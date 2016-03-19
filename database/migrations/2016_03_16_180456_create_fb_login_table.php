@@ -24,11 +24,11 @@ class CreateFbLoginTable extends Migration
 		});
 	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+	/**
+	* Reverse the migrations.
+	*
+	* @return void
+	*/
 	public function down()
 	{
 		Schema::drop('fb_lgin');

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class OnlyUserMiddleware
 {
@@ -16,11 +17,11 @@ class OnlyUserMiddleware
     public function handle($request, Closure $next)
     {
 		//Checking if he is normal user
-		if ( !Auth::check() )                                             //Not Logged In
+		if ( !Auth::check() )											//Not Logged In
 		{
 			return redirect('/');
 		}
-		else if( strcmp("normal_user",Auth::user()->user_type)!=0 )        //Not normal_user, then redirect to default page
+		else if( strcmp("normal_user",Auth::user()->user_type)!=0 )		//Not normal_user, then redirect to default page
 		{
 			return redirect('/');
 		}
