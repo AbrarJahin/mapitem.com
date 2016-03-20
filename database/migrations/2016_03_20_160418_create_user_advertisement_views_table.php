@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserViewsTable extends Migration
+class CreateUserAdvertisementViewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateUserViewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_views', function (Blueprint $table) {
+        Schema::create('user_advertisement_views', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ class CreateUserViewsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user_views');
+        Schema::drop('user_advertisement_views');
     }
 }
