@@ -19,13 +19,8 @@ class GoogleLogin extends Model
 									'user_id'
 								];
 
-	/**
-	* The attributes excluded from the model's JSON form.
-	*
-	* @var array
-	*/
-	protected $hidden = [
-							'password',
-							'remember_token',
-						];
+	public function user()
+	{
+		return $this->hasOne('App\User','user_id');
+	}
 }

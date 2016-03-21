@@ -13,4 +13,14 @@ class UserReview extends Model
 									'advertisement_id',
 									'review'
 								];
+
+	public function user()
+	{
+		return $this->hasOne('App\User','user_id');
+	}
+
+	public function advertisement()
+	{
+		return $this->hasOne('App\advertisement','advertisement_id');
+	}
 }

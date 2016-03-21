@@ -16,6 +16,7 @@ class CreateUserLikesTable extends Migration
 		{
 			$table->integer('user_id')				->unsigned()		->index();
 			$table->integer('advertisement_id')		->unsigned()		->index();
+			$table->enum('choice', ['dislike', 'like'])					->default('like');
 			$table->timestamp('created_at');
 
 			//Foreign Keys

@@ -6,15 +6,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+	/**
+	* The attributes that are mass assignable.
+	*
+	* @var array
+	*/
 
-    protected $table 		= 'users';
+	protected $table 		= 'users';
 
-    protected $fillable =	[
+	protected $fillable =	[
 								'full_name',
 								'cell_no',
 								'email',
@@ -27,12 +27,23 @@ class User extends Authenticatable
 								'password'
 							];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+	protected $hidden = [
+							'password',
+							'remember_token'
+						];
+
+	public function fb_login()
+	{
+		return $this->hasOne('App\FbLogin', 'user_id');
+	}
+
+	public function google_login()
+	{
+		return $this->hasOne('App\GoogleLogin', 'user_id');
+	}
+
+	public function advertisement()
+	{
+		return $this->hasMany('App\Advertisement', 'user_id');
+	}
 }

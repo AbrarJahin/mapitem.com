@@ -6,15 +6,36 @@
 		return "OK";
 	});
 
-	Route::get('listing', function ()
+	Route::get('dashboard', function ()
 	{
-		return view('welcome');
+		return "OK";
 	});
 
-	Route::get('listing_out', function ()
+	Route::get('my_adds', function ()
 	{
-		return view('welcome');
+		return "OK";
 	});
+
+	Route::get('offers', function ()
+	{
+		return "OK";
+	});
+
+	Route::get('inbox', function ()
+	{
+		return "OK";
+	});
+
+	Route::get('my_profile', function ()
+	{
+		return "OK";
+	});
+
+	Route::get('account', function ()
+	{
+		return "OK";
+	});
+
 //Testing End
 
 

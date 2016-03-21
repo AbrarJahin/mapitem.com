@@ -13,7 +13,7 @@ class Advertisement extends Model
 	*
 	* @var array
 	*/
-	protected $dates = ['deleted_at'];
+	protected $dates		=	['deleted_at'];
 
 	protected $table		=	'advertisements';			//Table Name
 
@@ -23,4 +23,14 @@ class Advertisement extends Model
 									'title',
 									'description'
 								];
+
+	public function user()
+	{
+		return $this->belongsTo('App\User','user_id');
+	}
+
+	public function category()
+	{
+		return $this->belongsTo('App\Category','category_id');
+	}
 }

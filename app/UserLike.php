@@ -12,4 +12,14 @@ class UserLike extends Model
 									'user_id',
 									'advertisement_id'
 								];
+
+	public function user()
+	{
+		return $this->hasOne('App\User','user_id');
+	}
+
+	public function advertisement()
+	{
+		return $this->hasOne('App\advertisement','advertisement_id');
+	}
 }
