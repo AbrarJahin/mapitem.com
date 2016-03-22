@@ -40,7 +40,7 @@ class UserController extends Controller
 	*/
 	public function myAddsView()
 	{
-		return view('admin.dashboard.main', [ 'current_page'	=> 'user.my_adds' ]);
+		return view('admin.my_adds.main', [ 'current_page'	=> 'user.my_adds' ]);
 	}
 
 	/*
@@ -53,7 +53,7 @@ class UserController extends Controller
 	*/
 	public function offerView()
 	{
-		return view('admin.dashboard.main', [ 'current_page'	=> 'user.offers' ]);
+		return view('admin.offers.main', [ 'current_page'	=> 'user.offers' ]);
 	}
 
 	/*
@@ -66,7 +66,7 @@ class UserController extends Controller
 	*/
 	public function inboxView()
 	{
-		return view('admin.dashboard.main', [ 'current_page'	=> 'user.inbox' ]);
+		return view('admin.inbox.main', [ 'current_page'	=> 'user.inbox' ]);
 	}
 
 	/*
@@ -79,7 +79,7 @@ class UserController extends Controller
 	*/
 	public function myProfileView()
 	{
-		return view('admin.dashboard.main', [ 'current_page'	=> 'user.profile' ]);
+		return view('admin.profile.main', [ 'current_page'	=> 'user.profile' ]);
 	}
 
 	/*
@@ -92,6 +92,6 @@ class UserController extends Controller
 	*/
 	public function accountView()
 	{
-		return view('admin.dashboard.main', [ 'current_page'	=> 'user.account' ]);
+		return view('admin.account.main', [ 'current_page'	=> 'user.account' ]);
 	}
 }
