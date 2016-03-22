@@ -1,59 +1,41 @@
 <?php
 
-//Testing
-	/*Route::get('/', function ()
-	{
-		return "OK";
-	});*/
-
-	Route::get('dashboard', function ()
-	{
-		return view('admin.dashboard.main');
-	});
-
-	Route::get('my_adds', function ()
-	{
-		return "OK";
-	});
-
-	Route::get('offers', function ()
-	{
-		return "OK";
-	});
-
-	Route::get('inbox', function ()
-	{
-		return "OK";
-	});
-
-	Route::get('my_profile', function ()
-	{
-		return "OK";
-	});
-
-	Route::get('account', function ()
-	{
-		return "OK";
-	});
-
-//Testing End
-
-// Auth Routes
-Route::group(['prefix' => '/','middleware' => ['web'],'as' => 'auth'], function()
+// User Routes
+Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web'],'as' => 'user'], function()
 {
-	//Login Routes
-	Route::post('login', [
-			'uses' => 'LoginController@userLoginProcess',
-			'as' => 'login.process'
+	//Dashboard Routes
+	Route::get('dashboard', [
+			'uses' => 'UserController@dashboardView',
+			'as' => '.dashboard'
 		]);
-	//Register Routes
-	Route::post('register', [
-			'uses' => 'LoginController@userRegisterProcess',
-			'as' => 'register.process'
+
+	//My Adds Routes
+	Route::get('my_adds', [
+			'uses' => 'UserController@myAddsView',
+			'as' => '.my_adds'
 		]);
-	//Logout an user
-	Route::any('logout', [
-			'uses' => 'LoginController@userLogout',
-			'as' => 'logout'
+
+	//Offers Routes
+	Route::get('offers', [
+			'uses' => 'UserController@offerView',
+			'as' => '.offers'
+		]);
+
+	//Inbox Routes
+	Route::get('inbox', [
+			'uses' => 'UserController@inboxView',
+			'as' => '.inbox'
+		]);
+
+	//My Profile Routes
+	Route::get('profile', [
+			'uses' => 'UserController@myProfileView',
+			'as' => '.profile'
+		]);
+
+	//Account Routes
+	Route::get('account', [
+			'uses' => 'UserController@accountView',
+			'as' => '.account'
 		]);
 });
