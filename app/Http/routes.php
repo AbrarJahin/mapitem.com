@@ -1,14 +1,14 @@
 <?php
 
 //Testing
-	Route::get('/', function ()
+	/*Route::get('/', function ()
 	{
 		return "OK";
-	});
+	});*/
 
 	Route::get('dashboard', function ()
 	{
-		return "OK";
+		return view('admin.dashboard.main');
 	});
 
 	Route::get('my_adds', function ()
@@ -37,7 +37,6 @@
 	});
 
 //Testing End
-
 
 // Auth Routes
 Route::group(['prefix' => '/','middleware' => ['web'],'as' => 'auth'], function()
