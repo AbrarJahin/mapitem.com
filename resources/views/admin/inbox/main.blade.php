@@ -3,13 +3,20 @@
 @section('page_title', 'Inbox')
 @section('meta_page_description', 'Content on this page are inbox content')
 
+@section('footer_scripts')
+	@parent
+	<script src="{{ URL::asset('js/custom.js') }}"></script>
+@endsection
+
 @section('content')
 
 	<div class="db-body">
-		@include('admin.dashboard.complete_profile')
-		@include('admin.dashboard.verify_identity')
-		@include('admin.dashboard.connect_fb')
-		@include('admin.dashboard.help')
+		<div class="inbox">
+			<h6>You have <span>(1)</span> New Email</h6>
+			@for ($i = 0; $i < 5; $i++)
+				@include('admin.inbox.message')
+			@endfor
+		</div>
 	</div>
 
 @endsection
