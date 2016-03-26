@@ -10,12 +10,11 @@
 
 @section('content')
 
-@for ($i = 0; $i < 10; $i++)
+	@for ($i = 0; $i < 5; $i++)
 
-    @include('admin.my_adds.active_add')
+		@include('admin.my_adds.active_add')
+		@include('admin.my_adds.inactive_add')
 
-    @include('admin.my_adds.inactive_add')
-
-@endfor
+	@endfor
 
 @endsection
