@@ -1,7 +1,7 @@
 @extends('admin.master')
 
-@section('page_title', 'Dashboard')
-@section('meta_page_description', 'Content on this page are dashboard content')
+@section('page_title', 'Profile')
+@section('meta_page_description', 'Content on this page are profile content')
 
 @section('content')
 
