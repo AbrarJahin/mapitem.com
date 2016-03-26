@@ -10,10 +10,10 @@
 				<a href="{{ URL::route('user.my_adds') }}" @if($current_page=="user.my_adds") class="selected" @endif > My Ads <span class="notification">3</span></a>
 			</li>
 			<li>
-				<a href="{{ URL::route('user.offers') }}" @if($current_page=="user.offers") class="selected" @endif > Offers  <span class="notification">3</span></a>
+				<a href="{{ URL::route('user.offers') }}" @if($current_page=="user.offers") class="selected" @endif > Offers  <span class="notification">1</span></a>
 			</li>
 			<li class="">
-				<a href="{{ URL::route('user.inbox') }}" @if($current_page=="user.inbox") class="selected" @endif > Inbox  <span class="notification">3</span></a>
+				<a href="{{ URL::route('user.inbox') }}" @if($current_page=="user.inbox") class="selected" @endif > Inbox  <span class="notification">5</span></a>
 			</li>
 			<li class="">
 				<a href="{{ URL::route('user.profile') }}" @if($current_page=="user.profile") class="selected" @endif > My Profile  </a>
