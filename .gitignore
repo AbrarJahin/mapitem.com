@@ -5,6 +5,8 @@ Homestead.yaml
 Homestead.json
 .env
 
+*Thumbs.db
+
 # Created by https://www.gitignore.io
 
 ### Laravel ###
