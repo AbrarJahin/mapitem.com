@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Bilal Munawar">
 
-    <title>Block Hunt</title>
+    <title>Map Item</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -28,6 +28,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css" type="text/css">
+
+    <!-- Dropzone-css -->
+    <link rel="stylesheet" href="css/basic.css" type="text/css">
+    <link rel="stylesheet" href="css/dropzone.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,7 +62,7 @@
                 <ul class="nav navbar-nav navbar-right ip-nav">
                     
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"><i class="glyphicon glyphicon-user round2"></i> Max Ezoory  <b class="glyphicon glyphicon-menu-down c-adj2"></b></a>
+                        <a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"><img src="images/pp-4.jpg" atl="max" class="round2"> Max Ezoory  <b class="glyphicon glyphicon-menu-down c-adj2"></b></a>
                         <ul class="dropdown-menu dashboard">
                             <li class="">
                                 <a href="#">Dashboard</a>
@@ -75,7 +79,7 @@
                             
                         </ul>
                     </li>
-                    
+
                     <li class="">
                         <a href="#" class="" data-toggle="modal" data-target="#pfa">Post free ad </a>
                         
@@ -90,6 +94,7 @@
 
 
     <!-- Modal -->
+    <!-- Modal -->
     <div id="pfa" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
@@ -99,100 +104,76 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Post Free Ad</h4>
           </div>
-          <div class="modal-body" >
-            <ul class="nav nav-tabs nav-tabs-top pf-modal" role="tablist">
-                <li class="ta active"><a href="#title" class="bs-overwrite" aria-controls="home" role="tab" data-toggle="tab">1. Title - Description</a></li>
-                <li class="ta"><a href="#image" class="bs-overwrite" aria-controls="profile" role="tab" data-toggle="tab">2. Upload Images</a></li>
-                <li class="ta"><a class="bs-overwrite" href="#location" aria-controls="profile" role="tab" data-toggle="tab">3. Location</a></li>
-            </ul>
-            <form class="tab-content adj1">
-                <div id="title" class="tab-pane form-group title active ">
-                  
-                  <select class="form-control medium-select" id="sel1">
-                    <option id="selected">Select Category</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                  </select>
+          <div class="modal-body">
 
-                  <select class="form-control medium-select" id="sel1">
-                    <option id="selected">Select Sub Category</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                  </select>
+            <div id="rootwizard">
 
-                    <div class="row">
-                      
+                <ul class="nav nav-tabs nav-tabs-top pf-modal" role="tablist">
+                    <li class="ta"><a href="#tab1" data-toggle="tab">1. Title - Description</a></li>
+                    <li class="ta"><a href="#tab2" data-toggle="tab">2. Upload Images</a></li>
+                    <li class="ta"><a href="#tab3" data-toggle="tab">3. Location</a></li>
+                </ul>
+
+                <form class="tab-content adj1">
                     
-                        <div class="col-lg-8">
+                    <div id="tab1" class="tab-pane">
+                        <select class="form-control medium-select" id="sel1">
+                            <option id="selected">Coumminty</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                        <select class="form-control medium-select" id="sel1">
+                        <option id="selected">Events</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        </select>
+                        <div class="row">
+                            <div class="col-lg-8">
                             <input type="text" class="form-control normal-input margin-adj" id="adtitle" placeholder="Ad Title">
-                        </div>
-                    
-                        <div class="col-lg-4">
-
+                            </div>
+                            <div class="col-lg-4">
                             <input type="text" class="form-control normal-input margin-adj" id="price" placeholder="Price">  
+                            </div>
+                        </div>
+                        <textarea class="form-control medium-textarea" rows="4" placeholder="Ad Description"></textarea>
+                    </div>
+
+                    <div id="tab2" class="tab-pane">
+                        <div class="image_upload_div">                      
+                            <div id="dropzoneimage" class="dropzone dz-clickable"><div class="dz-default dz-message"><span>Drop files here to upload</span></div></div>                 
                         </div>
                     </div>
 
-                    <textarea class="form-control medium-textarea" rows="4" placeholder="Ad Description"></textarea>
+                    <div id="tab3" class="tab-pane">
 
-                </div>
-
-                <div id="image" class="image tab-pane ">
-                        <button type="button" class="btn btn-default upload-btn">Upload Ad Images</button>
-                </div>
-
-                <div id="location" class="formbox location tab-pane ">
-
-                    <label class="margin-adj"><input id="infocheckbox" type="checkbox" value=""> <span class="li">Use other Location</span></label>
-
-                    <div class="loc-info">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="80 D" disabled>
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="Lahore" disabled>
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="Punjab" disabled>
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="54000" disabled>
-
-                        <input type="text" class="form-control normal-input margin-adj" id="disabledInput" placeholder="Pakistan" disabled>
-
-                        
-
-                    </div>
-
-                    <div class="loc-info-edit">
-                      
                         <input type="text" class="form-control normal-input margin-adj" id="adaddress" placeholder="Ad Address">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="adcity" placeholder="Ad City">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="adstate" placeholder="Ad State">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="adzipcode" placeholder="Ad Zipcode">
-
-                        <input type="text" class="form-control normal-input margin-adj" id="adcountry" placeholder="Ad Country">
+                        <div class="map-address">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13598.001561973482!2d74.31768755!3d31.565323199999998!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1458218451359" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <a href="#" class="green-small2 no-textdecor" >Post Free Add</a>
 
                     </div>
 
+                    <ul class="pager wizard">
+                                <li class="previous first" style="display:none;"><a href="#">First</a></li>
+                                <li class="previous"><a href="#">Previous</a></li>
+                                <li class="next last" style="display:none;"><a href="#">Last</a></li>
+                                <li class="next"><a href="#">Next</a></li>
+                            </ul>
 
-                    <div class="clearfix"></div>
+                </form>
+            </div>
 
-                    <a href="#" class="grey-small pull-left no-textdecor" >Finish</a>
-
-                </div>
-
-            </form>
           </div>
           <div class="clearfix margin-twenty"></div>
           <div class="modal-footer">
-            <ul class="nav nav-tabs nav-tabs-bottom pf-modal" role="tablist">
+            <!-- <ul class="nav nav-tabs nav-tabs-bottom pf-modal" role="tablist">
                 <li class="ta active"><a href="#title" class="bs-overwrite" aria-controls="home" role="tab" data-toggle="tab">Step 1</a></li>
                 <li class="ta"><a href="#image" class="bs-overwrite" aria-controls="profile" role="tab" data-toggle="tab">Step 2</a></li>
                 <li class="ta"><a class="bs-overwrite" href="#location" aria-controls="profile" role="tab" data-toggle="tab">Step 3</a></li>
-            </ul>
+            </ul> -->
 
             <!-- <a href="#" class="grey-small pull-left no-textdecor" >Previous</a>
             <a href="#" class="green-small pull-left no-textdecor">Next</a>
@@ -284,7 +265,7 @@
 
             <section class="p-head col-lg-12">
 
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding">
+                <div class="width-adj11">
                     <div class="dropdown pull-left">
                       <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" id="dropdownMenu1" type="button" class="dropdown-toggle sbtn">
                         <i class="fa fa-pencil "></i>Settings
@@ -298,15 +279,13 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 no-padding"><i class="fa fa-bookmark"></i><span>Added to wishlist by :</span><b>5 Users</b></div>
+                <div class="width-adj12"><i class="fa fa-heart-o"></i><span>Added to wishlist by :</span><b>5 Users</b></div>
 
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-comment-o"></i><span>Reviews :</span><b>8</b></div>
+                <div class="width-adj13"><i class="fa fa-comment-o"></i><span>Reviews :</span><b>8</b></div>
 
-                <div class="clearfix visible-sm"></div>
+                <div class="width-adj14"><i class="fa fa-eye"></i><span>Viewed by :</span><b>150</b></div>
 
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-eye"></i><span>Viewed by :</span><b>150</b></div>
-
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-heart-o"></i><span>  Liked by :</span><b>150</b></div>
+                <div class="width-adj15"><i class="fa fa-thumbs-up"></i><span>  Liked by :</span><b>150</b></div>
 
             </section>
 
@@ -327,10 +306,10 @@
 
                     <ul>
                         <li>
-                            <span><img src="images/u-logo.jpg"></span>
-                            Paradise Travelling Company
+                            <span class="fa fa-location-arrow icon-adj"> &nbsp;</span>
+                              Santa Cruz 1156 High Street Santa Cruz, CA 95064. College Mailing Addresses as of July 1, 2014
                         </li>
-                        <li>
+                       <!--  <li>
                             <span class="fa fa-fw icon-adj"> </span>
                             123-456-789
                         </li>
@@ -341,7 +320,7 @@
                         <li>
                             <span class="fa fa-fw icon-adj"> </span>
                             <a target="_top" href="mailto:someone@example.com?Subject=Hello%20again">info@pardistravel.com</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
@@ -353,44 +332,65 @@
 
             <section class="p-head col-lg-12">
 
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding edit-selected"><a href="" class="edit1 ed"><i class="fa fa-pencil"></i><b>Edit</b></a></div>
+                <div class="width-adj11"><a href="" class="edit1 ed"><i class="fa fa-pencil"></i><b>Edit</b></a></div>
                 
 
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 no-padding"><i class="fa fa-bookmark"></i><span>Added to wishlist by :</span><b>5 Users</b></div>
+                <div class="width-adj12"><i class="fa fa-heart-o"></i><span>Added to wishlist by :</span><b>5 Users</b></div>
 
 
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-comment-o"></i><span>Reviews :</span><b>8</b></div>
+                <div class="width-adj13"><i class="fa fa-comment-o"></i><span>Reviews :</span><b>8</b></div>
 
-                <div class="clearfix visible-sm"></div>
 
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-eye"></i><span>Viewed by :</span><b>150</b></div>
+                <div class="width-adj14"><i class="fa fa-eye"></i><span>Viewed by :</span><b>150</b></div>
 
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-heart-o"></i><span>  Liked by :</span><b>150</b></div>
+                <div class="width-adj15"><i class="fa fa-thumbs-up"></i><span>  Liked by :</span><b>150</b></div>
 
             </section>
 
             <div class="db-adc">
 
                 <div class="col-lg-3 col-md-3 col-sm-5 no-padding">
-                    <a href="#"><img src="images/upload-pic.jpg" class="img-responsive"></a>
+                    <img src="images/db-img1.jpg" class="pic-adj img-responsive"><br>
+                    <button type="button" class="btn btn-default green-small3" data-toggle="modal" data-target="#newpicture">Edit images</button>
+                     <!-- Modal -->
+                      <div class="modal fade" id="newpicture" role="dialog">
+                        <div class="modal-dialog">
+                        
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Edit images</h4>
+                            </div>
+                            <div class="modal-body">
+                              <form action="/upload-target" class="dropzone"></form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
                 </div>
+                
 
                 <div class="col-lg-9 col-md-9 col-sm-7 dleft">
                    
                     <h3>
                         <div class="form-group">
-                        <input type="email" placeholder="Ad Title" id="InputEmail1" class="form-control normal-input">
+                        <input type="email" placeholder="Hill Vacations" id="InputEmail1" class="form-control normal-input small-input">
                         </div>
                     </h3>
                     <div class="pull-right">
                         <span class="lh-adj">Price : </span>
-                        <b><div class="">
-                        <input type="email" placeholder="Price" id="InputEmail1" class="form-control normal-input">
-                        </div></b>  
+                        <span class="p-edit"><div class="">
+                        <input type="email" placeholder="$500" id="InputEmail1" class="form-control normal-input smaller-input">
+                        </div></span>  
                     </div>
                     <div class="clearfix"></div>
-                    <p> <textarea class="form-control" rows="5" id="comment" placeholder="Description"></textarea></p>
-
+                    <p> <textarea class="form-control" rows="5" id="comment" placeholder="Enjoy Trip to Kashmir Valley, Kashmir Valley is the one Natural Place where Torreist comes across the world. View More"></textarea></p>
+                    <input type="text" placeholder=" Paradise Travelling Company " id="InputEmail1" class="form-control normal-input small-input margin-adj3">
                     <a class="green-small pull-right save no-textdecor" href="#">Save</a>
 
                 </div>
@@ -406,7 +406,7 @@
 
                 <section class="p-head col-lg-12 demo">
 
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding">
+                    <div class="width-adj11">
                        <div class="dropdown pull-left">
                          <button class="dropdown-toggle sbtn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <i class="fa fa-pencil "></i>Settings
@@ -420,15 +420,14 @@
                        </div>
                     </div>
 
-                   <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 no-padding"><i class="fa fa-bookmark"></i><span>Added to wishlist by :</span><b>5 Users</b></div>
+                   <div class="width-adj12"><i class="fa fa-heart-o"></i><span>Added to wishlist by :</span><b>5 Users</b></div>
 
-                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-comment-o"></i><span>Reviews :</span><b>8</b></div>
+                   <div class="width-adj13"><i class="fa fa-comment-o"></i><span>Reviews :</span><b>8</b></div>
 
-                   <div class="clearfix visible-sm"></div>
 
-                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-eye"></i><span>Viewed by :</span><b>150</b></div>
+                   <div class="width-adj14"><i class="fa fa-eye"></i><span>Viewed by :</span><b>150</b></div>
 
-                   <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 no-padding"><i class="fa fa-heart-o"></i><span>  Liked by :</span><b>150</b></div>
+                   <div class="width-adj15"><i class="fa fa-thumbs-up"></i><span>  Liked by :</span><b>150</b></div>
 
                 </section>
 
@@ -507,6 +506,7 @@
 
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
 
+
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
                     <button type="submit" class="btn adj  green-large adj12">Post Free Ad</button>
@@ -529,7 +529,7 @@
 
         <div class="third-strip">
             <div class="container">
-                © Copyright BlockHunt 2015
+                © Copyright MapItem 2016
             </div>
         </div> 
     
@@ -544,6 +544,12 @@
 
     <!-- Custom JS -->
     <script src="js/custom.js"></script>
+
+    <!-- Dropzone JS -->
+    <script src="js/dropzone.js"></script>
+
+    <!-- post free add wizard JS -->
+    <script src="js/jquery.bootstrap.wizard.js"></script>
 
     
 </body>
