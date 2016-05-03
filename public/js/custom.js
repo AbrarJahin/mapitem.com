@@ -44,9 +44,48 @@
 
         $(document).ready(function(){
 
-        $('.carousel').carousel({
-        interval: 5000 //changes the speed
-        })
+            $('.carousel').carousel({
+            interval: 5000 //changes the speed
+            })
+
+            $(".sup").click(function(){
+                $("#dt").toggleClass('open');
+                $("#su").toggleClass('open');
+            });
+
+            $(".si").click(function(){
+                $("#su").toggleClass('open');
+                $("#dt").toggleClass('open');
+            });
+
+            $(".offer-si").click(function(){
+                $("#dt").addClass('open');
+                $("#su").removeClass('open', 'collapsed');
+
+            });
+            $(".offer-su").click(function(){
+                $("#su").addClass('open');
+                $("#dt").removeClass('open');
+            });
+
+            //to use modal in a dropdown
+            $('.dropdown-menu').click(function(e) {
+                e.stopPropagation();
+                if ($(e.target).is('[data-toggle=modal]')) {
+                    $($(e.target).data('target')).modal()
+                }
+            });
+
+            //to close modal on btn click
+            $('.si').click(function() {
+                $('#sgn-pup').modal('hide');
+            });
+
+            //to close modal on btn click
+            $('.sup').click(function() {
+                $('#lgn-pup').modal('hide');
+            });
+
 
 
         /*inbox page*/ 
@@ -75,6 +114,8 @@
         $('.relist').on('click', function() {
             $('.inative-list').fadeOut("slow");
         });
+
+        
 
 
         /*Profile page*/
@@ -115,10 +156,6 @@
             
         });
 
-
-        
-
-
         /*Show Add Detail */
         /*$('.loginbtn').click(function(){
             $('.ad-detail').slideDown("slow");
@@ -139,19 +176,24 @@
             $('.for-pass').slideUp("slow");
         });
 
-        $(document).ready(function() {
+        $(document).ready(function(){
             $('#rootwizard').bootstrapWizard();
-            window.prettyPrint && prettyPrint()
-        });
+            window.prettyPrint && prettyPrint();
+            });
 
+        $("a.close-detail").click(function(event){
+            event.preventDefault();
+        });
 
         $('.close-detail').click(function(){
-            $('.ad-detail').slideUp("slow");
-            $('.filter').show("slow");
-            $('.results').show("slow");
+            $('.ad-detail').hide("slow");
+            $('.close-detail').toggleClass("show");
+            $('.ad-listing').show("slow");
 
-            
+            alert("I am an alert box!");
         });
+
+        
 
         $('.p-min').click(function(){
             $(this).parent().next('.p-bottom').slideToggle();
@@ -194,10 +236,10 @@
         });
 
         $('.showonmap9').click(function(){
-            $('.ad-detail').slideDown("slow");
-            $('.filter').hide("slow");
-            $('.results').hide("slow");
+            $('.ad-detail').show("slow");
+            $('.ad-listing').hide("slow");
             $('.close-detail').toggleClass("show");
+            alert("I am an alert box!");
         });
 
 
@@ -207,10 +249,10 @@
         });
 
         $('.showonmap10').click(function(){
-            $('.ad-detail').slideDown("slow");
-            $('.filter').hide("slow");
-            $('.results').hide("slow");
+            $('.ad-detail').show("slow");
+            $('.ad-listing').hide("slow");
             $('.close-detail').toggleClass("show");
+
         });
 
         $('.showonmap11').hover(function(){
@@ -219,10 +261,10 @@
         });
 
         $('.showonmap11').click(function(){
-            $('.ad-detail').slideDown("slow");
-            $('.filter').hide("slow");
-            $('.results').hide("slow");
+            $('.ad-detail').show("slow");
+            $('.ad-listing').hide("slow");
             $('.close-detail').toggleClass("show");
+    
         });
 
         $('.showonmap12').hover(function(){
@@ -232,11 +274,13 @@
         });
 
         $('.showonmap12').click(function(){
-            $('.ad-detail').slideDown("slow");
-            $('.filter').hide("slow");
-            $('.results').hide("slow");
+            $('.ad-detail').show("slow");
+            $('.ad-listing').hide("slow");
             $('.close-detail').toggleClass("show");
+
         });
+
+        
 
 
         $('.showonmap13').hover(function(){
@@ -245,10 +289,10 @@
         });
 
         $('.showonmap13').click(function(){
-            $('.ad-detail').slideDown("slow");
-            $('.filter').hide("slow");
-            $('.results').hide("slow");
+            $('.ad-detail').show("slow");
+            $('.ad-listing').hide("slow");
             $('.close-detail').toggleClass("show");
+
         });
 
         $('.showonmap14').hover(function(){
@@ -257,23 +301,14 @@
         });
 
         $('.showonmap14').click(function(){
-            $('.ad-detail').slideDown("slow");
-            $('.filter').hide("slow");
-            $('.results').hide("slow");
+            $('.ad-detail').show("slow");
+            $('.ad-listing').hide("slow");
             $('.close-detail').toggleClass("show");
+          
+
         });
 
-        /*Range Slider*/
-        $('.range-slider').jRange({
-        from: 0,
-        to: 1000,
-        step: 1,
-        scale: [0,100,200,300,400,500,600,700,800,900,"1000+"],
-        format: '%s',
-        width: 100,
-        showLabels: false,
-        isRange : true
-        });
+        
 
         /*List View and Box View toggle*/
         $('.changeview').click(function(){
@@ -326,7 +361,7 @@
         $('.nav-tabs-top a[href="'+$(this).attr('href')+'"]').parent().addClass('active');
         })
 
-
+  
 
 
 
