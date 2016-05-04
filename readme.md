@@ -60,3 +60,39 @@ So, no readme file can be provided still now.
 
  22. Settings
 
+
+###Installation
+
+Install composer, take composer update, git clone go to the directory.
+
+Then run
+
+```bash
+
+composer install
+
+```
+
+and if composer packages already installed and if you add any new package you need to do composer update
+
+then after -> set up .env file from .env.eexample and change he .env file to configurations, run these below commands
+
+```bash
+
+composer dump-autoload
+
+php artisan key:generate
+
+php artisan migrate:reset
+
+php artisan migrate --seed
+
+```
+
+or for every time use-
+
+```bash
+
+php artisan migrate:refresh --seed
+
+```
