@@ -19,6 +19,6 @@ class PublicController extends Controller
     */
     public function index()
     {
-    	return view('public.index.main');
+    	return view('public.index.main',[ 'current_page'   => 'user.dashboard' ]);
     }
 }
