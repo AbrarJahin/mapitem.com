@@ -18,6 +18,19 @@ use App\User;
 class UserController extends Controller
 {
 	/*
+		URL				-> get: /account
+		Functionality	-> Show Dashboard Page
+		Access			-> Anyone who is logged in user
+		Created At		-> 22/03/2016
+		Updated At		-> 22/03/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function accountView()
+	{
+		return view('user.account.main', [ 'current_page'	=> 'user.account' ]);
+	}
+
+	/*
 		URL				-> get: /dashboard
 		Functionality	-> Show Dashboard Page
 		Access			-> Anyone who is logged in user
@@ -80,18 +93,5 @@ class UserController extends Controller
 	public function myProfileView()
 	{
 		return view('admin.profile.main', [ 'current_page'	=> 'user.profile' ]);
-	}
-
-	/*
-		URL				-> get: /account
-		Functionality	-> Show Dashboard Page
-		Access			-> Anyone who is logged in user
-		Created At		-> 22/03/2016
-		Updated At		-> 22/03/2016
-		Created by		-> S. M. Abrar Jahin
-	*/
-	public function accountView()
-	{
-		return view('admin.account.main', [ 'current_page'	=> 'user.account' ]);
 	}
 }
