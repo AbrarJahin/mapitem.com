@@ -66,7 +66,7 @@ class UserController extends Controller
 	*/
 	public function myAddsView()
 	{
-		return view('admin.my_adds.main', [ 'current_page'	=> 'user.my_adds' ]);
+		return view('user.my_adds.main', [ 'current_page'	=> 'user.my_adds' ]);
 	}
 
 	/*
