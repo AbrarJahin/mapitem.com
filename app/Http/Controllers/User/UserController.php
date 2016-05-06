@@ -40,7 +40,20 @@ class UserController extends Controller
 	*/
 	public function dashboardView()
 	{
-		return view('admin.dashboard.main', [ 'current_page'	=> 'user.dashboard' ]);
+		return view('user.dashboard.main', [ 'current_page'	=> 'user.dashboard' ]);
+	}
+
+	/*
+		URL				-> get: /inbox
+		Functionality	-> Show Dashboard Page
+		Access			-> Anyone who is logged in user
+		Created At		-> 22/03/2016
+		Updated At		-> 22/03/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function inboxView()
+	{
+		return view('user.inbox.main', [ 'current_page'	=> 'user.inbox' ]);
 	}
 
 	/*
@@ -67,19 +80,6 @@ class UserController extends Controller
 	public function offerView()
 	{
 		return view('admin.offers.main', [ 'current_page'	=> 'user.offers' ]);
-	}
-
-	/*
-		URL				-> get: /inbox
-		Functionality	-> Show Dashboard Page
-		Access			-> Anyone who is logged in user
-		Created At		-> 22/03/2016
-		Updated At		-> 22/03/2016
-		Created by		-> S. M. Abrar Jahin
-	*/
-	public function inboxView()
-	{
-		return view('admin.inbox.main', [ 'current_page'	=> 'user.inbox' ]);
 	}
 
 	/*

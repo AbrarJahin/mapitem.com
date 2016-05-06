@@ -21,7 +21,7 @@
 	        <div class="container">
 	            <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
 	            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-	                <button type="submit" class="btn adj  green-large adj12">Post Free Ad</button>
+	                <button class="btn adj  green-large adj12" data-toggle="modal" data-target="#pfa">Post Free Ad</button>
 	            </div>
 
 	            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

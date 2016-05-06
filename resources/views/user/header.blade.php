@@ -18,8 +18,6 @@
 		<link rel="stylesheet" href="css/animate.css" type="text/css">
 		--}}
 		<link rel="stylesheet" href="http://daneden.github.io/animate.css/animate.min.css" type="text/css">
-		{{-- Notification on and off --}}
-		<link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 		{{-- Custom Fonts --}}
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
