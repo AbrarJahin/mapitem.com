@@ -44,10 +44,15 @@
 		<script src="js/jquery.js"></script>
 		--}}
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
-		{{-- Bootstrap Core JavaScript --}}
+		{{-- Bootstrap Core JavaScript
+		<script src="js/bootstrap.min.js"></script>
+		--}}
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<script src="{{ URL::asset('js/custom.js') }}"></script>
+		{{--
+		<script src="js/jquery.bootstrap.wizard.js"></script>
+		--}}
 		<script src="{{ URL::asset('js/jquery.bootstrap.wizard.js') }}"></script>
+		<script src="{{ URL::asset('js/custom.js') }}"></script>
 	@show
 
     </body>

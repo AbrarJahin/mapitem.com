@@ -79,7 +79,7 @@ class UserController extends Controller
 	*/
 	public function offerView()
 	{
-		return view('admin.offers.main', [ 'current_page'	=> 'user.offers' ]);
+		return view('user.offers.main', [ 'current_page'	=> 'user.offers' ]);
 	}
 
 	/*
@@ -92,6 +92,6 @@ class UserController extends Controller
 	*/
 	public function myProfileView()
 	{
-		return view('admin.profile.main', [ 'current_page'	=> 'user.profile' ]);
+		return view('user.profile.main', [ 'current_page'	=> 'user.profile' ]);
 	}
 }

@@ -99,7 +99,7 @@
         /*Avoide scroll up on clicking*/
         $('a.mhd, a.relist, a.edit1').click(function(e)
         {
-        e.preventDefault();
+            e.preventDefault();
         });
 
         /*My Ads page*/
@@ -111,8 +111,10 @@
             $(".db-body").toggleClass('edit-on')
         });
 
-        $('.relist').on('click', function() {
-            $('.inative-list').fadeOut("slow");
+        $('.relist').on('click', function()
+        {
+            //$('.inative-list').fadeOut("slow");
+            $(this).closest(".inative-list").fadeOut("slow");
         });
 
         
@@ -360,9 +362,3 @@
         $('.nav-tabs-top li.active').removeClass('active')
         $('.nav-tabs-top a[href="'+$(this).attr('href')+'"]').parent().addClass('active');
         })
-
-  
-
-
-
-
