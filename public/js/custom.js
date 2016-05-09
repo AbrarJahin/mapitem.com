@@ -12,14 +12,14 @@ $(document).ready(function()
 
 	/*button animation*/
 
-    $('.green-small').on('click',function()
+    $('.accept-offer').on('click',function()
     {
         $('.location').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
             function()
             {
                 $(this).removeClass('animated fadeIn');
             });
-        $(this).closest('.green-small').toggleClass('hide');
+        $(this).closest('.accept-offer').toggleClass('hide');
     });
 
 	/*button animation*/
@@ -204,7 +204,6 @@ $('.close-detail').click(function()
     $('.ad-detail').hide("slow");
     $('.close-detail').toggleClass("show");
     $('.ad-listing').show("slow");
-    alert("I am an alert box!");
 });
 
 

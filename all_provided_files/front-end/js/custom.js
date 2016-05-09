@@ -189,8 +189,6 @@
             $('.ad-detail').hide("slow");
             $('.close-detail').toggleClass("show");
             $('.ad-listing').show("slow");
-
-            alert("I am an alert box!");
         });
 
         

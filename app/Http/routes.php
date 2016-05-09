@@ -44,4 +44,10 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web'],'as'
 			'uses' => 'UserController@accountView',
 			'as' => '.account'
 		]);
+
+	//listing Page
+	Route::get('listing', [
+			'uses' => 'UserController@listingView',
+			'as' => '.account'
+		]);
 });
