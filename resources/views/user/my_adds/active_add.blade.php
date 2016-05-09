@@ -25,7 +25,7 @@
             <h3>Hill Vacations</h3>
             <div class="pull-right">
                 <span>Price : </span>
-                <b>$500</b>  
+                <b>$500</b>
             </div>
             <div class="clearfix"></div>
             <p>Enjoy Trip to Kashmir Valley, Kashmir Valley is the one Natural Place where Torreist comes across the world. <a href="#">View More</a></p>

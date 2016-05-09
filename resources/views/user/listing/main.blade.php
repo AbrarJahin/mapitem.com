@@ -2,8 +2,9 @@
 
 @include('user.listing.header')
 
+{{-- Modal Close Button --}}
 <a href="#" class="close-detail hide"><i class="fa fa-close"></i></a>
-<!-- Navigation -->
+{{-- Navigation --}}
 <nav class="navbar navbar-inverse navbar-fixed-top ip-adj2" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -218,6 +219,7 @@
     </div>
     <!-- /.container -->
 </nav>
+
 <!-- Modal -->
 <div id="pfa" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -521,6 +523,7 @@
             </div>
         </div>
     </div>
+
     <!-- Listing View -->
     <div class="listing-right">
         <!-- Ad Listing -->
@@ -1277,6 +1280,7 @@
             </div> 
         </footer>
     </div>
+
 </div>
 
 @include('user.listing.footer_scripts')
