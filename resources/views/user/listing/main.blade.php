@@ -10,12 +10,11 @@
 {{-- Modal --}}
 @include('user.advertisement_add_modal')
 
-{{-- Don't know yet why it is needed --}}
-{{--send offer login Modal --}}
-@include('user.listing.send_offer_login_modal')
-
-{{-- Send offer sign up Modal --}}
-@include('user.listing.send_offer_signup_modal')
+{{-- If user is not logged in, then needed --}}
+	{{--send offer login Modal --}}
+	@include('user.listing.send_offer_login_modal')
+	{{-- Send offer sign up Modal --}}
+	@include('user.listing.send_offer_signup_modal')
 
 {{-- Inner Body --}}
 <div id="" class="container header-minus wraper no-padding">
@@ -24,133 +23,12 @@
 
     {{-- Listing View --}}
     <div class="listing-right">
-        <!-- Ad Listing -->
+        {{-- Ad Listing --}}
         <div class="ad-listing">
-            <!-- Filter -->
-            <div class="filter padding-adj1">
-              
-                <h4>Filter your search results</h4>
-                <a href="#" class="glyphicon glyphicon-minus minimize">&nbsp;</a>
+            {{-- Filter --}}
+            @include('user.listing.filter')
 
-                <form action="#" class="fl">
-
-                    <div class="row margin-ten">
-                      
-                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 no-padding">
-                          <label>Sort :</label>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-8 ">
-                          <select class="form-control">
-                            <option>Distance - Closest</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-
-                        <div class="clearfix visible-xs visible-sm"></div>
-
-                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 no-padding">
-                          <label>Within :</label>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-8">
-                          <select class="form-control">
-                            <option>Any Distance</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                    
-
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <div class="row margin-ten">
-                      
-                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 no-padding">
-                          <label>Categories :</label>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-8">
-
-                            
-
-
-                          <button aria-expanded="false" aria-haspopup="false" data-toggle="dropdown" class="btn l-cat-btn dropdown-toggle" type="button">Category Filter<i class="glyphicon glyphicon-menu-down arrow-adj"></i>
-                          </button>
-
-                           
-                          
-                            <ul class="dropdown-menu h-ctr h-ctr2 col-md-12 col-sm-12">
-                                <li class="no-border">
-                                    <label class="pull-left"><input type="checkbox" value=""><strong> Community (21)</strong></label>
-                                    <ul>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Events (7) </label></li>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Yards (14) </label></li>
-                                    
-                                    </ul>
-                                </li>
-
-                                <li class="no-border">
-                                    <label class="pull-left"><input type="checkbox" value=""><strong> Community (10) </strong></label>
-                                    <ul>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Events (10) </label></li>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Yards (10)</label></li>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Events (10)</label></li>
-                                    </ul>
-                                </li>
-
-                                <li class="no-border">
-                                    <label class="pull-left"><input type="checkbox" value=""><strong> Community (40)</strong></label>
-                                    <ul>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Events (5)</label></li>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Yards(10) </label></li>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Events (10)</label></li>
-                                    </ul>
-                                </li>
-
-                                <li class="no-border">
-                                    <label class="pull-left"><input type="checkbox" value=""><strong> Community (1)</strong></label>
-                                    <ul>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Events (10)</label></li>
-                                    <li><label class="pull-left"><input type="checkbox" unchecked value="1"> Yards (10)</label></li>
-                                    
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-
-                        
-
-                    </div>
-
-                    <div class="row margin-ten">
-
-                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 no-padding">
-                            <label>Price Range :</label>
-                        </div>
-
-                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8 height-adj">
-
-                            <input type="hidden" class="slider-input range-slider" value="1000" />
-
-                        </div>
-
-                    </div>
-
-                    
-
-                </form>
-
-            </div>
-
-            <!-- Results -->
+            {{-- Results --}}
             <div class="results">
 
                 <div class="r-hdr col-lg-12">
@@ -172,7 +50,7 @@
 
                 <div id="box" class="box-posting">
 
-                    <!-- community posting start -->
+                    {{-- community posting start --}}
                     <div class="col-lg-4 col-sm-6">
 
                         <div class="pos-rel">
@@ -480,13 +358,13 @@
             </div>
         </div>
         <div class="clearfix "></div>
-        <!-- Ad detail -->
+        {{-- Ad detail --}}
         <div class="ad-detail">
 
-            <!-- Ad Slider-->
+            {{-- Ad Slider--}}
             
-            <!-- Result detail -->
-            <!-- Ad Listing -->
+            {{-- Result detail --}}
+            {{-- Ad Listing --}}
             <div class="variable-width">
               <div><img src="http://c3.staticflickr.com/8/7252/6883150650_b4e7c18007.jpg"></div>
               <div><img src="http://c8.staticflickr.com/1/80/255871583_d4df0e741f_n.jpg"></div>
@@ -535,42 +413,44 @@
                         <div class="dropdown">
                             <a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="#"><i class="fa fa-gavel"></i>Send Offer
                             </a>
-                            <!-- If user is logged in  -->
-                            <!-- <ul class="dropdown-menu no-padding loginpopup col-lg-4">
-                                <li>
-                                    <form class="offer" action="#">
-                                        
-                                        <div class="form-group">
-                                            <span class="text-adj1">Name : Jonathan Kaneer </span>
-                                        </div>
+                            {{-- 
+	                            <!-- If user is logged in  -->
+	                            <!-- <ul class="dropdown-menu no-padding loginpopup col-lg-4">
+	                                <li>
+	                                    <form class="offer" action="#">
+	                                        
+	                                        <div class="form-group">
+	                                            <span class="text-adj1">Name : Jonathan Kaneer </span>
+	                                        </div>
 
-                                        <div class="form-group">
-                                        <span class="text-adj1">Email : jk@yahoo.com </span>
-                                        </div>
+	                                        <div class="form-group">
+	                                        <span class="text-adj1">Email : jk@yahoo.com </span>
+	                                        </div>
 
-                                        <div class="form-group">
-                                        <span class="text-adj1">Cell : 123-456-789 </span>
+	                                        <div class="form-group">
+	                                        <span class="text-adj1">Cell : 123-456-789 </span>
 
-                                        </div>
+	                                        </div>
 
-                                        <div class="form-group">
-                                            <input type="text" onkeypress="return numbersonly(this, event)" placeholder="Your Offer in $" id="InputPasswords" class="form-control normal-input">
-                                        </div>
+	                                        <div class="form-group">
+	                                            <input type="text" onkeypress="return numbersonly(this, event)" placeholder="Your Offer in $" id="InputPasswords" class="form-control normal-input">
+	                                        </div>
 
-                                        <div class="form-group">
-                                            <textarea class="form-control medium-textarea no-margin" rows="3" placeholder="Message"></textarea>
-                                        </div>
-
-
-                                        <button class="btn btn-default green-small" type="submit">Place Offer</button>
+	                                        <div class="form-group">
+	                                            <textarea class="form-control medium-textarea no-margin" rows="3" placeholder="Message"></textarea>
+	                                        </div>
 
 
-                                    </form>
+	                                        <button class="btn btn-default green-small" type="submit">Place Offer</button>
 
-                                </li>
-                                
-                            </ul> -->
-                            <!-- If user is not logged in  -->
+
+	                                    </form>
+
+	                                </li>
+	                                
+	                            </ul> -->
+	                            <!-- If user is not logged in  -->
+                            --}}
                             <ul class="dropdown-menu">
                                 <li>
                                     <div class="pos-adj03">
