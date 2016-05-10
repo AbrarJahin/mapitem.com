@@ -86,6 +86,14 @@
                 $('#lgn-pup').modal('hide');
             });
 
+            $("input.ct").focus(function(){
+                $("div.ct-list").fadeIn("");
+            });
+
+            $("input.ct").focusout(function(){
+                $("div.ct-list").fadeOut("");
+            });
+
 
 
         /*inbox page*/ 
@@ -189,6 +197,8 @@
             $('.ad-detail').hide("slow");
             $('.close-detail').toggleClass("show");
             $('.ad-listing').show("slow");
+
+            alert("I am an alert box!");
         });
 
         

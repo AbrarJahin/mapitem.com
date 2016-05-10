@@ -12,10 +12,10 @@
 
 {{-- Don't know yet why it is needed --}}
 {{--send offer login Modal --}}
-{{-- @include('user.listing.send_offer_login_modal') --}}
+@include('user.listing.send_offer_login_modal')
 
 {{-- Send offer sign up Modal --}}
-{{-- @include('user.listing.send_offer_signup_modal') --}}
+@include('user.listing.send_offer_signup_modal')
 
 {{-- Inner Body --}}
 <div id="" class="container header-minus wraper no-padding">

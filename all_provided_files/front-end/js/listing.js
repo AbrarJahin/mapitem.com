@@ -127,13 +127,7 @@
     }(jQuery));
     })
 
-    $("input.ct").focus(function(){
-        $("div.ct-list").fadeIn("");
-    });
-
-    $("input.ct").focusout(function(){
-        $("div.ct-list").fadeOut("");
-    });
+    
 
     /*truncate*/
     $(document).ready(function() {
