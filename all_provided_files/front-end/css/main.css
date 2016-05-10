@@ -237,7 +237,7 @@ nav .dropdown-menu {
     font-size: 13px;
     padding:8px 33px;
 }
-.green-small3:hover {
+.green-small3:hover, .green-small3:focus {
     text-decoration: none;
     color: #84de6b;
     background-color: #3c8b26;
@@ -1852,6 +1852,7 @@ header.pdetail{
     text-decoration: none;
     width: 100% !important;
 }
+.dleft span{ float: left; margin-right: 10px}
 .text-adj1{
     font-size: 12px;
     color: #767676
@@ -2599,6 +2600,7 @@ body {
     float: left!important;
     width: 100%!important;
 }
+
 .width-adj13 {
     float: left!important;
     width: 100%!important;
@@ -2684,10 +2686,17 @@ body {
         background-color: #dbdbdb!important
     }
     .topcat button{
-        width: 100%
+        width: 100%!important
+    }
+    .top-search {
+    margin-left: 0%!important;
+    }
+    .ct-list2{
+        top: 80px;
+        left: 0%
     }
     .topcat input{
-        width: 100%
+        width: 100%!important
     }
     .topsearch input{
         width: 100%;
@@ -2944,8 +2953,10 @@ body {
     .ip-nav li a{
         font-size: 9.5pt
     }
-    .ip-nav .round2{
-        margin: 0
+    .ip-nav .round2 {
+        width: 18px;
+        height: 18px;
+
     }
     .sb li {
         display: block;
@@ -2964,6 +2975,10 @@ body {
 
 }
 @media(max-width:990px){
+    .ip-nav .round2{
+        margin: 0;
+        
+    }
      .topcat button{
         width: 38%
     }
@@ -3037,9 +3052,7 @@ body {
         
 }
 @media(min-width:992px){
-    .ip-nav .round2{
-        margin: 0
-    }
+    
     .slider-container .scale ins {
         color: black !important;
         font-size: 12px !important;
