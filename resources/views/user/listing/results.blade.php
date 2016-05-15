@@ -1,29 +1,21 @@
 <div class="results">
 
-    <div class="r-hdr col-lg-12">
-      
-      <h6 class="pull-left">Found (6) Records</h6>
+	<div class="r-hdr col-lg-12">
+		<h6 class="pull-left">Found (6) Records</h6>
+		<div class="pull-right">
+			<a href="#" title="box" class="blocks fa fa-fw pos-adj6 grid selected-view">&#xf00a;</a>
+			<a href="#" title="list" class="list fa fa-fw pos-adj7">&#xf0ca;</a>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div id="box" class="box-posting">
+		{{-- community posting start --}}
+		@for ($i = 0; $i < 6; $i++)
+		 	@include('user.listing.single_item')
+		@endfor
+	</div>
 
-      <div class="pull-right">
-
-        <a href="#" title="box" class="blocks fa fa-fw pos-adj6 grid selected-view">&#xf00a;</a>
-        <a href="#" title="list" class="list fa fa-fw pos-adj7">&#xf0ca;</a>
-
-      </div>
-
-    </div>
-
-    <div class="clearfix">
-      
-    </div>
-
-    <div id="box" class="box-posting">
-        {{-- community posting start --}}
-        @for ($i = 0; $i < 6; $i++)
-            @include('user.listing.single_item')
-        @endfor
-    </div>
-
+    {{--
     <div id="list" class="list-posting" style="display:none">
         
         <img src="images/p-favicon-3.jpg" class="s-img loaded-image">
@@ -57,5 +49,6 @@
         </div>
         <div class="clearfix margin-twenty"></div>
     </div>
-  
+    --}}
+
 </div>
