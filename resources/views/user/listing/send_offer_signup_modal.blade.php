@@ -12,19 +12,19 @@
         <form class="" action="#">
             
             <div class="form-group">
-            <input type="text" required="" placeholder="First Name" id="InputEmail1" class="form-control normal-input">
+            <input type="text" required placeholder="First Name" id="InputEmail1" class="form-control normal-input">
             </div>
 
             <div class="form-group">
-            <input type="text" required="" placeholder="Last Name" id="InputEmail1" class="form-control normal-input">
+            <input type="text" required placeholder="Last Name" id="InputEmail1" class="form-control normal-input">
             </div>
 
             <div class="form-group">
-            <input type="email" required="" placeholder="Email" id="InputEmail1" class="form-control normal-input">
+            <input type="email" required placeholder="Email" id="InputEmail1" class="form-control normal-input">
             </div>
 
             <div class="form-group">
-            <input type="password" required="" placeholder="Password" id="InputPasswords" class="form-control normal-input">
+            <input type="password" required placeholder="Password" id="InputPasswords" class="form-control normal-input">
             </div>
 
             <div class="pos-adj4">

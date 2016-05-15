@@ -319,18 +319,12 @@
         
 
         /*List View and Box View toggle*/
-        $('.list').click(function(){
-			$(this).addClass("disabled selected-view");
-			$(this).prev().removeClass("disabled selected-view");
-			$('.box-posting').children().removeClass("col-lg-4 col-sm-6");
-        	$('.box-posting').addClass('list-view');
-        });
-		
-		$('.grid').click(function(){
-			$(this).addClass("disabled selected-view");
-			$(this).next().removeClass("disabled selected-view");
-			$('.box-posting').children().addClass("col-lg-4 col-sm-6");
-        	$('.box-posting').removeClass('list-view');
+        $('.changeview').click(function(){
+        var ix = $(this).index();
+
+        $('#box').toggle( ix === 0 );
+        $('#list').toggle( ix === 1 );
+        $('.changeview').toggleClass('selected-view');
         });
 
         

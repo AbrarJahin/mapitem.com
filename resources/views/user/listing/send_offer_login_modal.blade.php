@@ -11,10 +11,10 @@
 
         <form class="" id="login-f" role="form">
             <div class="form-group">
-                <input type="email" required="" placeholder="Email" id="inputEmail" class="form-control normal-input">
+                <input type="email" required placeholder="Email" id="inputEmail" class="form-control normal-input">
             </div>
             <div class="form-group">
-                <input type="password" required="" placeholder="Password" class="form-control normal-input" name="login-password" id="login-password">
+                <input type="password" required placeholder="Password" class="form-control normal-input" name="login-password" id="login-password">
             </div>
             <div class="pos-adj1">
                 <a style="color: #23a500 !important; float: left; font-size: 9pt!important; padding: 0 !important; width: 50%;" data-dismiss="modal" data-target="#forgot-password" data-toggle="modal" href="#" class="fp">Forgot Password ?</a>

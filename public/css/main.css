@@ -1593,7 +1593,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#707070', end
     width: 80px!important;
     background-color: #6c6c6c!important;
     color: white!important;
-
+    opacity: 1!important;
 }
 .pos-adj7 {
     background-color: #e4e2e2;
@@ -2576,7 +2576,7 @@ body {
     height: 17px;
 }
 .wsh-path-fill:hover{
-    fill: rgba(256,256,256,.8);
+    fill: rgba(236, 240, 241, 0.8);
  }
 .wsh-path-outline:hover{
     stroke: rgba(35, 165, 0,.2);
@@ -2585,6 +2585,66 @@ body {
     height: 300px;
     background-color: #f0f0f0;
     margin-bottom: 20px
+}
+
+.list-view .img-box-list {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    width: 10%;
+}
+.list-view{
+    padding:0 10px}
+.list-view .box-content h5{
+    width:auto;
+    max-width:200px;
+    color: #81bb71;
+    font-size: 21px;
+    height: auto;
+    text-decoration: none;
+    margin-top:0
+    }
+.list-view .box-content h6 {
+    background-color: white;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+    color: black;
+    float: left;
+    font-size: 16px;
+    margin-top: 3px;
+    padding: 0 7px;
+    position: relative;
+    top: 0;
+}
+.box-content h6 span{
+    display:none
+    }
+.list-view .box-content h6 span{
+    display:block;
+    float:left
+    }   
+.list-view .wsh-lst{
+    top:0}  
+.list-view .box-content{
+    background-color:white;
+    box-shadow:0 0px 0px 0 rgba(0, 0, 0, 0.15);
+    height:auto;
+    padding:0
+    }   
+.list-view .box-content .clearfix{
+    display:none
+    }
+.list-view .box-content .width-adj2{
+    display:none
+        }
+.list-view .box-content .width-adj3{
+    width:55%;
+}   
+.list-view .box-content p {
+    color: #535353;
+    font-size: 12px;
+    height: auto;
+    line-height: 19px;
+    margin: 0;
 }
 
 @media(max-width:767px){

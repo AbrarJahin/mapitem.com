@@ -6,8 +6,8 @@
 
       <div class="pull-right">
 
-        <a href="#" title="box" class="blocks fa fa-fw pos-adj6 changeview selected-view">&#xf00a;</a>
-        <a href="#" title="list" class="list fa fa-fw pos-adj7 changeview">&#xf0ca;</a>
+        <a href="#" title="box" class="blocks fa fa-fw pos-adj6 grid selected-view">&#xf00a;</a>
+        <a href="#" title="list" class="list fa fa-fw pos-adj7">&#xf0ca;</a>
 
       </div>
 

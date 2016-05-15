@@ -323,11 +323,20 @@ $('.showonmap14').click(function()
 });
 
 /*List View and Box View toggle*/
-$('.changeview').click(function()
+$('.list').click(function()
 {
-	$('#box').toggle( $(this).index() === 0 );
-	$('#list').toggle( $(this).index() === 1 );
-	$('.changeview').toggleClass('selected-view');
+	$(this).addClass("disabled selected-view");
+	$(this).prev().removeClass("disabled selected-view");
+	$('.box-posting').children().removeClass("col-lg-4 col-sm-6");
+	$('.box-posting').addClass('list-view');
+});
+
+$('.grid').click(function()
+{
+	$(this).addClass("disabled selected-view");
+	$(this).next().removeClass("disabled selected-view");
+	$('.box-posting').children().addClass("col-lg-4 col-sm-6");
+	$('.box-posting').removeClass('list-view');
 });
 
 $('.nav-tabs-top a[data-toggle="tab"]').on('click', function()
