@@ -1,13 +1,34 @@
 <?php
 
-//Index Page
-Route::get('/', [
-		'uses' => 'PublicController@index',
-		'as' => 'index'
-	]);
+Route::group(['prefix' => '/','middleware' => ['web']], function()
+{
+	//Auth - registration
+	Route::post('register', [
+			'uses' => 'AuthController@userRegisterProcess',
+			'as' => 'register_user'
+		]);
+
+	//Auth - login
+	Route::post('login', [
+			'uses' => 'AuthController@userLoginProcess',
+			'as' => 'login'
+		]);
+
+	//Auth - logout
+	Route::get('userLogout', [
+			'uses' => 'AuthController@userLogout',
+			'as' => 'logout'
+		]);
+
+	//Index Page
+	Route::get('/', [
+			'uses' => 'PublicController@index',
+			'as' => 'index'
+		]);
+});
 
 // User Routes
-Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web'],'as' => 'user'], function()
+Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','normal_user'],'as' => 'user'], function()
 {
 	//Dashboard Page
 	Route::get('dashboard', [
