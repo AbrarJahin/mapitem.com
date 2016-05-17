@@ -69,23 +69,21 @@ Then run
 
 ```bash
 
+git clone https://abrarjahin@bitbucket.org/abrarjahin/blockhunt.com.git
+
+cd blockhunt.com
+
 composer install
 
-```
+cp  .env.example .env
 
-and if composer packages already installed and if you add any new package you need to do composer update
-
-then after -> set up .env file from .env.eexample and change he .env file to configurations, run these below commands
-
-```bash
+# Now change the .env file to set configurations and then run the bellow codes
 
 composer dump-autoload
 
 php artisan key:generate
 
-php artisan migrate:reset
-
-php artisan migrate --seed
+php artisan migrate:refresh --seed
 
 ```
 
