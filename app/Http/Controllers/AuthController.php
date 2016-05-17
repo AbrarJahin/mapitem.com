@@ -25,7 +25,7 @@ class AuthController extends Controller
 	*/
 	public function userLoginProcess()
 	{
-		$requestData = Request::all();
+		return $requestData = Request::all();
 
 		$validator = Validator::make($requestData,
 												[
@@ -55,7 +55,11 @@ class AuthController extends Controller
 		}
 		else//Login Failed
 		{
-			return Redirect::back()
+			return	[
+						'status'	=> 0,
+						'message'	=> 'Wrong Email or Password',
+					];
+			/*return Redirect::back()
 				->withInput(
 								Request::except('password')
 							)
@@ -63,7 +67,7 @@ class AuthController extends Controller
 								[
 									'Username, Password not match or user not active yet !'
 								]
-							);
+							);*/
 		}
 	}
 
@@ -75,67 +79,74 @@ class AuthController extends Controller
 		Updated At      -> 05/02/2016
 		Created by      -> S. M. Abrar Jahin
 	*/
-    public function userRegisterProcess()
-    {
-        $requestData = Request::all();
+	public function userRegisterProcess()
+	{
+		$requestData = Request::all();
 
-        $validator = Validator::make(
-                                        $requestData,
-                                        [
-                                            'first_name' => 'required',
-                                            'last_name' => 'required|unique:users',
-                                            'email'     => 'required|email|unique:users',
-                                            'password' => 'required|confirmed|min:3',
-                                            'password_confirmation' => 'required|min:3'
-                                        ],
-                                        [
-                                            'first_name.required'	=>'Please give your first name',
-                                            'last_name.required'	=>'Please give your first name',
-                                            'email.unique'			=>'Email already used, please try a different email'
-                                        ]
-                                    );
-        //Validator Failed
-        if ($validator->fails())
-        {
-            return Redirect::back()->withErrors($validator)
-                            ->withInput(
-                                            Request::except('password')
-                                        );
-        }
+		$validator = Validator::make(
+										$requestData,
+										[
+											'first_name'	=> 'required',
+											'last_name'		=> 'required',
+											'email'			=> 'required|email|unique:users',
+											'password'		=> 'required|confirmed|min:3'
+										],
+										[
+											'first_name.required'	=>'Please give your first name',
+											'last_name.required'	=>'Please give your first name',
+											'email.unique'			=>'Email already used, please try a different email'
+										]
+									);
+		//Validator Failed
+		if ($validator->fails())
+		{
+			return	[
+						'status' => 0,
+						Request::except('password')
+					];
+			/*return Redirect::back()->withErrors($validator)
+					->withInput(
+									Request::except('password')
+								);*/
+		}
 
-        //Add the user - Start
-        $user = new User;
-        $user->first_name	= $requestData['first_name'];
-        $user->last_name	= $requestData['last_name'];
-        $user->email		= $requestData['email'];
-        $user->is_enabled	= 'enabled';
-        $user->user_type	= 'normal_user';
-        $user->password		= bcrypt( $requestData['password'] );
-        $user->save();
-        //Add the user - End
+		//Add the user - Start
+		$user = new User;
+		$user->first_name	= $requestData['first_name'];
+		$user->last_name	= $requestData['last_name'];
+		$user->email		= $requestData['email'];
+		$user->is_enabled	= 'enabled';
+		$user->user_type	= 'normal_user';
+		$user->password		= bcrypt( $requestData['password'] );
+		$user->save();
+		//Add the user - End
 
-        return Redirect::back()
-                    ->withInput(
-                                    Request::except(['password','password_confirmation'])
-                                )
-                    ->withErrors(
-                                    [
-                                        'User - '.$requestData['email'].' Successfully added'
-                                    ]
-                                );
-    }
+		return	[
+					'status'	=> 1,
+					'message'	=> 'Successfully registered',
+				];
+		/*return Redirect::back()
+			->withInput(
+							Request::except(['password','password_confirmation'])
+						)
+			->withErrors(
+							[
+								'User - '.$requestData['email'].' Successfully added'
+							]
+						);*/
+	}
 
-    /*
-        URL             -> get: /logout
-        Functionality   -> Log Out any user
-        Access          -> Anyone who is logged in
-        Created At      -> 05/02/2016
-        Updated At      -> 05/02/2016
-        Created by      -> S. M. Abrar Jahin
-    */
-    public function userLogout()
-    {
-    	Auth::logout();
-        return redirect('/');
-    }
+	/*
+		URL             -> get: /logout
+		Functionality   -> Log Out any user
+		Access          -> Anyone who is logged in
+		Created At      -> 05/02/2016
+		Updated At      -> 05/02/2016
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function userLogout()
+	{
+		Auth::logout();
+		return redirect('/');
+	}
 }

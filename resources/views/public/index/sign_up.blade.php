@@ -19,10 +19,6 @@
 			<input type="password" class="form-control normal-input" name="password" placeholder="Password" required>
 		</div>
 
-		<div class="form-group">
-			<input type="password" class="form-control normal-input" name="password_confirmation" placeholder="Confirm Password" required>
-		</div>
-
 		<div class="pos-adj4">
 			By signing up you accept Mapitem's <a href="#" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;">Policy</a> and <a href="#" style="color:#23a500 !important; font-size: 10pt !important; padding: 0 !important;">Term of use</a>
 		</div>

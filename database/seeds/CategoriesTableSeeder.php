@@ -17,7 +17,7 @@ class CategoriesTableSeeder extends Seeder
 		{
 			DB::table('categories')->insert(
 											[
-												'name'					=> $faker->unique()->word
+												'name'	=> $faker->unique()->word
 											]);
 		}
     }

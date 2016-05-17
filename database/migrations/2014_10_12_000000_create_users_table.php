@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
 			$table->rememberToken();
 			$table->timestamps();
         });
-        DB::statement('ALTER TABLE users ADD user_location POINT AFTER address' );
+        //DB::statement('ALTER TABLE users ADD user_location POINT AFTER address' );
     }
 
 	/**
