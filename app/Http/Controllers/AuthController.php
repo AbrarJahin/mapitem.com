@@ -122,10 +122,15 @@ class AuthController extends Controller
 		$user->save();
 		//Add the user - End
 
-		return	[
-					'status'	=> 1,
-					'message'	=> 'Successfully registered',
-				];
+		//Log In User - Start
+		Auth::attempt(
+					[
+						'email'			=> $requestData['email'],
+						'password'		=> $requestData['password']
+					]);
+		//Log In User - End
+
+		return Redirect::route('user.dashboard');
 		/*return Redirect::back()
 			->withInput(
 							Request::except(['password','password_confirmation'])

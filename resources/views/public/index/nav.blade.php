@@ -21,11 +21,11 @@
 					</li>
 				@else
 					<li id="dt" class="dropdown">
-						@include('public.index.log_in')
+						@include('public.log_in')
 					</li>
 
 					<li id="su" class="dropdown">
-						@include('public.index.sign_up')
+						@include('public.sign_up')
 					</li>
 				@endif
 
