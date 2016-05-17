@@ -17,7 +17,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				@if (Auth::check())
 					<li class="dropdown">
-						@include('public.index.logged_in_menu')
+						@include('profile_menu')
 					</li>
 				@else
 					<li id="dt" class="dropdown">

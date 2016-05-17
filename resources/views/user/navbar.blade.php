@@ -73,21 +73,7 @@
 
             <ul class="nav navbar-nav navbar-right ip-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"><img src="images/pp-4.jpg" atl="max" class="round2"> Max Ezoory  <b class="glyphicon glyphicon-menu-down c-adj2"></b></a>
-                    <ul class="dropdown-menu dashboard">
-                        <li class="">
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li class="">
-                            <a href="#">Profile</a>
-                        </li>
-                        <li class="">
-                            <a href="#">Wishlist</a>
-                        </li>
-                        <li class="">
-                            <a href="#">Sign out</a>
-                        </li>
-                    </ul>
+                    @include('profile_menu')
                 </li>
                 <li class="">
                     <a href="#" class="def" data-toggle="modal" data-target="#pfa">Post free ad </a>

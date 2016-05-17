@@ -17,7 +17,7 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 	//Auth - logout
 	Route::get('logout', [
 			'uses' => 'AuthController@userLogout',
-			'as' => 'userLogout'
+			'as' => 'logout'
 		]);
 
 	//Index Page

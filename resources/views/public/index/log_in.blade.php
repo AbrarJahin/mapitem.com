@@ -22,7 +22,7 @@
 				</div>
 			</div>
 
-			<button type="submit" id="login_submit" class="btn btn-default green-small3 margin-top-twenty">Login</button>
+			<button type="submit" data-loading-text="Logging in.." id="login_submit" class="btn btn-default green-small3 margin-top-twenty">Login</button>
 			<div class="pos-adj3">
 				<span>Don't have an account ?</span>
 				<a href="#" class="sup" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;">Sign up</a>
