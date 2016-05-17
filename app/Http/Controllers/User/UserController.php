@@ -94,17 +94,4 @@ class UserController extends Controller
 	{
 		return view('user.profile.main', [ 'current_page'	=> 'user.profile' ]);
 	}
-
-	/*
-		URL				-> get: /listing
-		Functionality	-> Show Listing Page
-		Access			-> Anyone who is logged in user
-		Created At		-> 22/03/2016
-		Updated At		-> 22/03/2016
-		Created by		-> S. M. Abrar Jahin
-	*/
-	public function listingView()
-	{
-		return view('user.listing.main', [ 'current_page'	=> 'user.profile' ]);
-	}
 }

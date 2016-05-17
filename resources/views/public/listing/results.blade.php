@@ -11,7 +11,7 @@
 	<div id="box" class="box-posting">
 		{{-- community posting start --}}
 		@for ($i = 0; $i < 6; $i++)
-		 	@include('user.listing.single_item')
+		 	@include('public.listing.single_item')
 		@endfor
 	</div>
 

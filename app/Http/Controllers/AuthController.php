@@ -25,7 +25,7 @@ class AuthController extends Controller
 	*/
 	public function userLoginProcess()
 	{
-		return $requestData = Request::all();
+		$requestData = Request::all();
 
 		$validator = Validator::make($requestData,
 												[
@@ -51,7 +51,7 @@ class AuthController extends Controller
 			)
 		//Login Successful - Currently Testing Redirect
 		{
-			return Redirect::to('dashboard');
+			return Redirect::route('user.dashboard');
 		}
 		else//Login Failed
 		{
@@ -89,7 +89,7 @@ class AuthController extends Controller
 											'first_name'	=> 'required',
 											'last_name'		=> 'required',
 											'email'			=> 'required|email|unique:users',
-											'password'		=> 'required|confirmed|min:3'
+											'password'		=> 'required|min:3'
 										],
 										[
 											'first_name.required'	=>'Please give your first name',
@@ -101,8 +101,9 @@ class AuthController extends Controller
 		if ($validator->fails())
 		{
 			return	[
-						'status' => 0,
-						Request::except('password')
+						'status'	=> 0,
+						'messages'	=> $validator->messages(),
+						'prev_data'	=> Request::except(['password','_token'])
 					];
 			/*return Redirect::back()->withErrors($validator)
 					->withInput(
@@ -147,6 +148,6 @@ class AuthController extends Controller
 	public function userLogout()
 	{
 		Auth::logout();
-		return redirect('/');
+		return Redirect::route('index');
 	}
 }

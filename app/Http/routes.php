@@ -15,15 +15,21 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 		]);
 
 	//Auth - logout
-	Route::get('userLogout', [
+	Route::get('logout', [
 			'uses' => 'AuthController@userLogout',
-			'as' => 'logout'
+			'as' => 'userLogout'
 		]);
 
 	//Index Page
 	Route::get('/', [
 			'uses' => 'PublicController@index',
 			'as' => 'index'
+		]);
+
+	//listing Page
+	Route::get('listing', [
+			'uses' => 'PublicController@listingView',
+			'as' => 'listing'
 		]);
 });
 
@@ -63,12 +69,6 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 	//Account Page
 	Route::get('account', [
 			'uses' => 'UserController@accountView',
-			'as' => '.account'
-		]);
-
-	//listing Page
-	Route::get('listing', [
-			'uses' => 'UserController@listingView',
 			'as' => '.account'
 		]);
 });
