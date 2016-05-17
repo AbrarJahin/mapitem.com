@@ -1,14 +1,31 @@
 SSH-
 ====
 Login-
-SSH access - ssh blockhunt@107.180.1.4
+------
+ssh blockhunt@107.180.1.4
+
+Create project-
+---------------
 cd public_html
 git clone https://abrarjahin@bitbucket.org/abrarjahin/blockhunt.com.git abrar
-
-php /home/blockhunt/drush/composer.phar -v
-
 cd abrar
-git pull
+php /home/blockhunt/drush/composer.phar install
+#cp  .env.example .env
+php /home/blockhunt/drush/composer.phar dump-autoload
+php artisan key:generate
+php artisan migrate:refresh --seed
+
+Update Project (if no major change)-
+------------------------------------
+cd public_html/abrar && git pull && exit
+
+
+
+
+__________________________________________________________________________________________________________________________________
+
+
+
 
 ============================
 Installed composer in shared hosting using drush - https://www.godaddy.com/help/how-to-install-drush-on-cpanel-shared-hosting-12396
