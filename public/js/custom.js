@@ -29,7 +29,10 @@ $(document).ready(function()
 					console.log("Not Signed In");
 				}
 				else
+				{
 					console.log("Signed In Successfully");
+					location.reload();
+				}
 			}
 			if(key.localeCompare('message')==0)
 			{
