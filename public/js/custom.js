@@ -12,7 +12,7 @@ $(document).ready(function()
 	{
 		var isValidated = true;
 		$("#login_submit").button('loading');		//Change button state to loggin in
-		//Checking input for validation			// has-error
+		//Checking input for validation
 
 		//email field
 		if( !validateEmail( $('#login-email').val() ) )
@@ -33,7 +33,6 @@ $(document).ready(function()
 		}
 		else
 		{
-			console.log( $('#login-password').val().length );
 			$('#login-password-div').removeClass('has-error');
 		}
 
@@ -75,6 +74,100 @@ $(document).ready(function()
 			});
 		}
 		$("#login_submit").button('reset');		//Reset button state
+		return false;	//Form not submitted
+	});
+
+	/* Submit button pressed - Sign-up */
+	$("#sign-up-f").submit(function()
+	{
+		var isValidated = true;
+		$("#sign_up_submit").button('loading');		//Change button state to Signing Up
+		//Checking input for validation
+
+		//First Name
+		if( $('#signup-first_name').val().length < 2 )
+		{
+			isValidated = false;
+			$('#signup-first_name-div').addClass('has-error');
+		}
+		else
+		{
+			$('#signup-first_name-div').removeClass('has-error');
+		}
+
+		//Last Name
+		if( $('#signup-last_name').val().length < 2 )
+		{
+			isValidated = false;
+			$('#signup-last_name-div').addClass('has-error');
+		}
+		else
+		{
+			$('#signup-last_name-div').removeClass('has-error');
+		}
+
+		//email field
+		if( !validateEmail( $('#signup-email').val() ) )
+		{
+			isValidated = false;
+			$('#signup-email-div').addClass('has-error');
+		}
+		else
+		{
+			$('#signup-email-div').removeClass('has-error');
+		}
+
+		//Password Field
+		if( $('#signup-password').val().length == 0 )
+		{
+			isValidated = false;
+			$('#signup-password-div').addClass('has-error');
+		}
+		else
+		{
+			$('#signup-password-div').removeClass('has-error');
+		}
+
+		//Making AJAX check
+		if(isValidated)
+		{
+			var responce = $.ajax(
+									{
+										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+										method: "POST",
+										url: $(this).attr('action'),
+										dataType: "json",
+										async: false,
+										data: $("#sign-up-f").serialize(),
+										/*{
+											uuid	:	$('meta[name=_token]').attr("content"),
+											user_id	:	3
+										},*/
+									}).responseText;
+
+			$.each($.parseJSON(responce),function(key,value)
+			{
+				if(key.localeCompare('status')==0)
+				{
+					if(value=='0')
+					{
+						console.log("Sign Up Failed");
+					}
+					else
+					{
+						console.log("Signed Up Successfully");
+						location.reload();
+					}
+				}
+
+				if(key.localeCompare('messages')==0)
+				{
+					$("#sign_up_error_message").html("Given e-mail already in use !");
+					console.log(value);
+				}
+			});
+		}
+		$("#sign_up_submit").button('reset');		//Reset button state
 		return false;	//Form not submitted
 	});
 

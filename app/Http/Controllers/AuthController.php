@@ -107,8 +107,8 @@ class AuthController extends Controller
 		{
 			return	[
 						'status'	=> 0,
-						'messages'	=> $validator->messages(),
-						'prev_data'	=> Request::except(['password','_token'])
+						'messages'	=> $validator->messages()
+						//'prev_data'	=> Request::except(['password','_token'])
 					];
 			/*return Redirect::back()->withErrors($validator)
 					->withInput(
@@ -135,7 +135,10 @@ class AuthController extends Controller
 					]);
 		//Log In User - End
 
-		return Redirect::route('user.dashboard');
+		return	[
+					'status'	=> 1,
+					'message'	=> 'Successfully Signed Up',
+				];
 		/*return Redirect::back()
 			->withInput(
 							Request::except(['password','password_confirmation'])
