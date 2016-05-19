@@ -66,6 +66,12 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 			'as' => '.profile'
 		]);
 
+	//My Profile Page
+	Route::get('wishlist', [
+			'uses' => 'UserController@myWishList',
+			'as' => '.wishlist'
+		]);
+
 	//Account Page
 	Route::get('account', [
 			'uses' => 'UserController@accountView',
