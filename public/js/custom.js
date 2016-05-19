@@ -1,44 +1,79 @@
-/*button animation*/
+//Email Validate
+function validateEmail(email)
+{
+	var re = /\S+@\S+\.\S+/;
+	return re.test(email);
+}
 
 $(document).ready(function()
 {
 	/* Submit button pressed - Login */
 	$("#login-f").submit(function()
 	{
+		var isValidated = true;
 		$("#login_submit").button('loading');		//Change button state to loggin in
-		var responce = $.ajax(
-								{
-									headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-									method: "POST",
-									url: $(this).attr('action'),
-									dataType: "json",
-									async: false,
-									data: $("#login-f").serialize(),
-									/*{
-										uuid	:	$('meta[name=_token]').attr("content"),
-										user_id	:	3
-									},*/
-								}).responseText;
+		//Checking input for validation			// has-error
 
-		$.each($.parseJSON(responce),function(key,value)
+		//email field
+		if( !validateEmail( $('#login-email').val() ) )
 		{
-			if(key.localeCompare('status')==0)
+			isValidated = false;
+			$('#login-email-div').addClass('has-error');
+		}
+		else
+		{
+			$('#login-email-div').removeClass('has-error');
+		}
+
+		//Password Field
+		if( $('#login-password').val().length == 0 )
+		{
+			isValidated = false;
+			$('#login-password-div').addClass('has-error');
+		}
+		else
+		{
+			console.log( $('#login-password').val().length );
+			$('#login-password-div').removeClass('has-error');
+		}
+
+		//Making AJAX check
+		if(isValidated)
+		{
+			var responce = $.ajax(
+									{
+										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+										method: "POST",
+										url: $(this).attr('action'),
+										dataType: "json",
+										async: false,
+										data: $("#login-f").serialize(),
+										/*{
+											uuid	:	$('meta[name=_token]').attr("content"),
+											user_id	:	3
+										},*/
+									}).responseText;
+
+			$.each($.parseJSON(responce),function(key,value)
 			{
-				if(value=='0')
+				if(key.localeCompare('status')==0)
 				{
-					console.log("Not Signed In");
+					if(value=='0')
+					{
+						console.log("Not Signed In");
+					}
+					else
+					{
+						console.log("Signed In Successfully");
+						location.reload();
+					}
 				}
-				else
+				if(key.localeCompare('message')==0)
 				{
-					console.log("Signed In Successfully");
-					location.reload();
+					$("#login_error_message").html(value);
 				}
-			}
-			if(key.localeCompare('message')==0)
-			{
-				$("#login_error_message").html(value);
-			}
-		});
+			});
+		}
 		$("#login_submit").button('reset');		//Reset button state
 		return false;	//Form not submitted
 	});
@@ -65,7 +100,7 @@ $(document).ready(function()
 	});
 
 	/*button animation*/
-    $('.accept-offer').on('click',function()
+	$('.accept-offer').on('click',function()
 	{
 		$('.location').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
 														function()
@@ -271,7 +306,6 @@ $('.p-min').click(function()
 	$(".zindex").removeClass("zindex");
 	$(this).parent().parent().parent().toggleClass('zindex');
 });
-    
 
 $('.p-close').click(function()
 {

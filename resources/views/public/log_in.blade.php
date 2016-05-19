@@ -3,11 +3,11 @@
 	<li>
 		<form role="form" id="login-f" class="login" method="post" action="{{ URL::route('login') }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<div class="form-group">
-				<input type="email" class="form-control normal-input" name="email" placeholder="Email" required>
+			<div class="form-group" id="login-email-div">
+				<input type="email" id="login-email" class="form-control normal-input" name="email" placeholder="Email">
 			</div>
-			<div class="form-group">
-				<input type="password" id="login-password" name="password" class="form-control normal-input" placeholder="Password" required>
+			<div class="form-group" id="login-password-div">
+				<input type="password" id="login-password" name="password" class="form-control normal-input" placeholder="Password">
 			</div>
 			<div class="pos-adj1">
 				<a class="fp" href="#" data-toggle="modal" data-target="#forgot-password" data-dismiss="modal" style="color: #23a500 !important; float: left; font-size: 9pt!important; padding: 0 !important; width: 50%;">Forgot Password ?</a>
