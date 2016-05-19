@@ -17,24 +17,14 @@
 					</label>
 				</div>
 			</div>
+			<div class="form-group text-danger" id="login_error_message"></div>
 			<button type="submit" data-loading-text="Logging in.." id="login_submit" class="btn btn-default green-small3 margin-top-twenty">Login</button>
 			<div class="pos-adj3">
 				<span>Don't have an account ?</span>
 				<a href="#" class="sup" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;">Sign up</a>
 			</div>
 		</form>
-{{--
-		<script>
-			$(document).ready(function()
-			{
-				$("#login_submit").click(function(e)
-				{
-					e.preventDefault();
-					alert("Submitted");
-				});
-			});
-		</script>
---}}
+
 		<div class="clearfix"></div>
 
 		<div class="for-pass" style="display:none">

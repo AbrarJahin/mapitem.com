@@ -2,6 +2,44 @@
 
 $(document).ready(function()
 {
+	/* Submit button pressed - Login */
+	$("#login-f").submit(function()
+	{
+		$("#login_submit").button('loading');		//Change button state to loggin in
+		var responce = $.ajax(
+								{
+									headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+									method: "POST",
+									url: $(this).attr('action'),
+									dataType: "json",
+									async: false,
+									data: $("#login-f").serialize(),
+									/*{
+										uuid	:	$('meta[name=_token]').attr("content"),
+										user_id	:	3
+									},*/
+								}).responseText;
+
+		$.each($.parseJSON(responce),function(key,value)
+		{
+			if(key.localeCompare('status')==0)
+			{
+				if(value=='0')
+				{
+					console.log("Not Signed In");
+				}
+				else
+					console.log("Signed In Successfully");
+			}
+			if(key.localeCompare('message')==0)
+			{
+				$("#login_error_message").html(value);
+			}
+		});
+		$("#login_submit").button('reset');		//Reset button state
+		return false;	//Form not submitted
+	});
+
 	/*review box open*/
 	$('.review').on('click',function()
 	{

@@ -25,4 +25,5 @@
 <meta name="msapplication-square150x150logo" content="{{ URL::asset('favicon.ico') }}" />
 <meta name="msapplication-wide310x150logo" content="{{ URL::asset('favicon.ico') }}" />
 <meta name="msapplication-square310x310logo" content="{{ URL::asset('favicon.ico') }}" />
+<meta name="_token" content="{{ csrf_token() }}" />
 {{-- Fabicon - End --}}

@@ -1,5 +1,5 @@
-SSH-
-====
+Server Easy deploy-
+===================
 Login-
 ------
 ssh blockhunt@107.180.1.4

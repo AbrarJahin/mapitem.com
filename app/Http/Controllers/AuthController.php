@@ -26,6 +26,7 @@ class AuthController extends Controller
 	public function userLoginProcess()
 	{
 		$requestData = Request::all();
+		$remember = (Request::has('remember_me')) ? true : false;
 
 		$validator = Validator::make($requestData,
 												[
@@ -47,11 +48,15 @@ class AuthController extends Controller
 						'email'			=> $requestData['email'],
 						'password'		=> $requestData['password'],
 						'is_enabled'	=> 'enabled'
-					])
+					],$remember)
 			)
 		//Login Successful - Currently Testing Redirect
 		{
-			return Redirect::route('user.dashboard');
+			//return Redirect::route('user.dashboard');
+			return	[
+						'status'	=> 1,
+						'message'	=> 'Successfully Logged In',
+					];
 		}
 		else//Login Failed
 		{
