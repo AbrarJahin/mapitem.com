@@ -59,9 +59,11 @@ atlassian-ide-plugin.xml
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 
-#uploaded file config
-
+# Uploaded file config
 .ftpquota
 cgi-bin/
 cgi-bin/*
 index.php
+
+# Uploaded files
+public/uploads/*

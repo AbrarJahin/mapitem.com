@@ -1,3 +1,4 @@
+
 {{-- Navigation --}}
 <nav class="navbar navbar-inverse no-margin" role="navigation">
     <div class="container-fluid">
@@ -9,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ URL::route('index') }}"><img src="images/blockhunt-logo.png" width="175"></a>
+            <a class="navbar-brand" href="{{ URL::route('index') }}"><img src="{{ URL::asset('images/blockhunt-logo-normal.png') }}"></a>
         </div>
         {{-- Collect the nav links, forms, and other content for toggling --}}
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -19,10 +20,20 @@
             <div class="clearfix visible-xs-block"></div>
 
             <ul class="nav navbar-nav navbar-right ip-nav">
+                @if (Auth::check())
+                	<li class="dropdown">
+                		@include('profile_menu')
+                	</li>
+                @else
+                	<li id="dt" class="dropdown">
+                		@include('public.log_in')
+                	</li>
+
+                	<li id="su" class="dropdown">
+                		@include('public.sign_up')
+                	</li>
+                @endif
                 <li class="dropdown">
-                    @include('profile_menu')
-                </li>
-                <li class="">
                     <a href="#" class="def" data-toggle="modal" data-target="#pfa">Post free ad </a>
                 </li>
             </ul>

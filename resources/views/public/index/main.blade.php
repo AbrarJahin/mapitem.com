@@ -12,6 +12,10 @@
 		<div class="loader"></div>
 		{{-- Navigation --}}
 		@include('public.index.nav')
+		{{--
+		@include('nav')
+		@section('nav_classes', 'navbar-fixed-top')
+		--}}
 		{{-- Modal --}}
 		@include('post_free_add_modal')
 		<div class="container-fluid no-padding height-adj1">
