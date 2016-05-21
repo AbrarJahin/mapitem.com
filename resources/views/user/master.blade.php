@@ -20,7 +20,8 @@
 --}}
 
 @section('advertisement_add_modal')
-	@include('user.advertisement_add_modal')
+	{{-- @include('user.advertisement_add_modal') --}}
+	@include('post_free_add_modal')
 @show
 
 @section('topbar')

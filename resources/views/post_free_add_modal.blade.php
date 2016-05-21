@@ -1,4 +1,4 @@
-<div id="pfa" class="modal fade" role="dialog">
+<div id="pfa" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
 	<div class="modal-dialog">
 		{{-- Modal content--}}
 		<div class="modal-content">
@@ -14,7 +14,7 @@
 						<li class="ta"><a href="#tab3" data-toggle="tab">3. Location</a></li>
 					</ul>
 
-					<form class="tab-content adj1">
+					<form role="form" class="tab-content adj1" method="post" action="{{ URL::route('login') }}">
 						<div id="tab1" class="tab-pane">
 							<select class="form-control medium-select" id="sel1">
 								<option id="selected">Coumminty</option>
@@ -53,18 +53,20 @@
 							</div>
 							<a href="#" class="green-small2 no-textdecor" >Post Free Add</a>
 						</div>
-						<ul class="pager wizard">
-							<li class="previous first" style="display:none;"><a href="#">First</a></li>
-							<li class="previous"><a href="#">Previous</a></li>
-							<li class="next last" style="display:none;"><a href="#">Last</a></li>
-							<li class="next"><a href="#">Next</a></li>
-						</ul>
 					</form>
+
+					<ul class="pager wizard">
+						<li class="previous first" style="display:none;"><a href="#">First</a></li>
+						<li class="previous"><a href="#">Previous</a></li>
+						<li class="next last" style="display:none;"><a href="#">Last</a></li>
+						<li class="next"><a href="#">Next</a></li>
+					</ul>
+
 				</div>
 			</div>
+			{{--
 			<div class="clearfix margin-twenty"></div>
 			<div class="modal-footer">
-				{{--
 				<!--
 				<ul class="nav nav-tabs nav-tabs-bottom pf-modal" role="tablist"XXXX>
 					<li class="ta active"><a href="#title" class="bs-overwrite" aria-controls="home" role="tab" data-toggle="tab">Step 1</a></li>
@@ -77,8 +79,9 @@
 				<a href="#" class="done-small green-small hide pull-left no-textdecor">Done</a> -->
 
 				<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-				--}}
+				
 			</div>
+			--}}
 		</div>
 	</div>
 </div>
