@@ -52,7 +52,8 @@
 
 						<div id="tab3" class="tab-pane">
 							<input autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad Address">
-							<input type="hidden" id="product_geo_location" name="product_geo_location">
+							<input type="hidden" id="product_location_lat" name="product_geo_location">
+							<input type="hidden" id="product_location_lon" name="product_geo_location">
 							<div class="map-address"></div>
 							<button type="submit" class="green-small2 no-textdecor">Post Free Add</button>
 						</div>

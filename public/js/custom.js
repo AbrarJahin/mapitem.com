@@ -25,7 +25,7 @@ $(document).ready(function()
         $('.modal:visible').each(centerModal);
     });
 
-	//Auto complete map in Add Posting
+	//Auto complete map-location in Add Posting
 	$("#find_product_location").geocomplete(
 	{
 		map			: ".map-address",
@@ -40,6 +40,14 @@ $(document).ready(function()
 		{
 			draggable: true
 		},
+	});
+
+	//Drag Event in Map-location in Add Posting
+	$("#find_product_location").bind("geocode:dragged", function(event, latLng)
+	{
+		$('#find_product_location').val( latLng.lat()+ ' , ' +latLng.lng() );
+		$('#product_location_lat').val( latLng.lat() );
+		$('#product_location_lon').val( latLng.lng() );
 	});
 
 	//Reload Map after it is shown
