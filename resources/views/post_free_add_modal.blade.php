@@ -3,7 +3,7 @@
 		{{-- Modal content--}}
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button onclick="alert('I am an alert box!');" type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Post Free Ad</h4>
 			</div>
 			<div class="modal-body">

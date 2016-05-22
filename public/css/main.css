@@ -2603,6 +2603,12 @@ body {
 	float: left;
 }
 
+.pac-container:after
+{  /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+	background-image: none !important;
+	height: 0px;
+}
+
 .modal
 {
 	z-index: 20;
@@ -2611,14 +2617,14 @@ body {
 .modal-backdrop
 {
 	z-index: 10;
-}​
+}
 
 .list-view .img-box-list
 {
-    float: left;
-    height: 40px;
-    line-height: 40px;
-    width: 10%;
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	width: 10%;
 }
 .list-view{
     padding:0 10px}
