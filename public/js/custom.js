@@ -78,7 +78,6 @@ $(document).ready(function()
 								);
 		if(++is_tab_opened_before<3)		//No 1 load for page loading and no2 is for first time appear
 		{
-			alert('OK');
 			$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
 		}
 	});
