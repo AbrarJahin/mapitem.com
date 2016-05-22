@@ -1,4 +1,4 @@
-<div id="pfa" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+<div id="pfa" class="modal fade" role="dialog">	{{-- data-backdrop="static" data-keyboard="false" --}} {{-- Can't use this because of using autocomplete of location --}}
 	<div class="modal-dialog">
 		{{-- Modal content--}}
 		<div class="modal-content">
@@ -52,6 +52,7 @@
 
 						<div id="tab3" class="tab-pane">
 							<input autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad Address">
+							<input type="hidden" id="product_geo_location" name="product_geo_location">
 							<div class="map-address"></div>
 							<button type="submit" class="green-small2 no-textdecor">Post Free Add</button>
 						</div>

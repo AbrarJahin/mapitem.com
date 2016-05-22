@@ -2575,36 +2575,46 @@ body {
     width: 14px;
     height: 17px;
 }
-.wsh-path-fill:hover{
-    fill: rgba(236, 240, 241, 0.8);
- }
-.wsh-path-outline:hover{
-    stroke: rgba(35, 165, 0,.2);
+
+.wsh-path-fill:hover
+{
+	fill: rgba(236, 240, 241, 0.8);
+}
+
+.wsh-path-outline:hover
+{
+	stroke: rgba(35, 165, 0,.2);
  }
 
 .map-address
 {
-    height: 300px;
-    width: 100%;
-    background-color: #f0f0f0;
-    margin-bottom: 20px
+	height: 300px;
+	width: 100%;
+	background-color: #f0f0f0;
+	margin-bottom: 20px
 }
 
-.pac-container {
-    background-color: #FFF;
-    z-index: 20;
-    position: fixed;
-    display: inline-block;
-    float: left;
+.pac-container
+{
+	background-color: #FFF;
+	z-index: 20;
+	position: fixed;
+	display: inline-block;
+	float: left;
 }
-.modal{
-    z-index: 20;   
+
+.modal
+{
+	z-index: 20;
 }
-.modal-backdrop{
-    z-index: 10;        
+
+.modal-backdrop
+{
+	z-index: 10;
 }​
 
-.list-view .img-box-list {
+.list-view .img-box-list
+{
     float: left;
     height: 40px;
     line-height: 40px;
