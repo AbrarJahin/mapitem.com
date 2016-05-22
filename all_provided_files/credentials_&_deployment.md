@@ -17,7 +17,10 @@ php artisan migrate:refresh --seed
 
 Update Project (if no major change)-
 ------------------------------------
-cd public_html/abrar && git pull && exit
+ssh blockhunt@107.180.1.4
+cd public_html/abrar && git pull
+
+exit
 
 
 

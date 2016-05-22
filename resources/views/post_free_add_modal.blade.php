@@ -1,9 +1,9 @@
-<div id="pfa" class="modal fade" role="dialog">	{{-- data-backdrop="static" data-keyboard="false" --}} {{-- Can't use this because of using autocomplete of location --}}
+<div id="pfa" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
 	<div class="modal-dialog">
 		{{-- Modal content--}}
 		<div class="modal-content">
 			<div class="modal-header">
-				<button onclick="alert('I am an alert box!');" type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Post Free Ad</h4>
 			</div>
 			<div class="modal-body">
