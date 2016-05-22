@@ -1,3 +1,6 @@
+//Global variables
+var latitude=0, longitude=0;
+var is_tab_opened_before =0;
 //Email Validate
 function validateEmail(email)
 {
@@ -17,7 +20,6 @@ function centerModal()
 	$dialog.css("margin-top", offset);
 }
 
-var latitude=0, longitude=0;
 function getLocation()
 {
 	if(latitude===0 && longitude===0)		//not called before in the page
@@ -26,7 +28,6 @@ function getLocation()
 		{
 			var temp		= response.loc;
 			temp			= temp.split(",");
-			console.log(temp);
 			latitude		= parseFloat(temp[0]);
 			longitude		= parseFloat(temp[1]);
 		}, "jsonp");
@@ -75,7 +76,11 @@ $(document).ready(function()
 									$("#find_product_location").geocomplete("map"),
 									'resize'
 								);
-		$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
+		if(++is_tab_opened_before<3)		//No 1 load for page loading and no2 is for first time appear
+		{
+			alert('OK');
+			$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
+		}
 	});
 
 	/* Submit button pressed - Login */
