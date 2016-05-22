@@ -21,9 +21,7 @@ $(document).ready(function()
 {
 	//Making Bootstrap Modal centerize
 	$(document).on('show.bs.modal', '.modal', centerModal);
-    $(window).on("resize", function () {
-        $('.modal:visible').each(centerModal);
-    });
+	$(window).on("resize", function (){ $('.modal:visible').each(centerModal); });
 
 	//Auto complete map-location in Add Posting
 	$("#find_product_location").geocomplete(
@@ -40,15 +38,18 @@ $(document).ready(function()
 		{
 			draggable: true
 		},
-	});
-
-	//Drag Event in Map-location in Add Posting
-	$("#find_product_location").bind("geocode:dragged", function(event, latLng)
-	{
-		$('#find_product_location').val( latLng.lat()+ ' , ' +latLng.lng() );
-		$('#product_location_lat').val( latLng.lat() );
-		$('#product_location_lon').val( latLng.lng() );
-	});
+	})
+	.bind("geocode:result", function(event, result)
+		{	//Type Helper
+			$('#product_location_lat').val( result.geometry.location.lat() );
+			$('#product_location_lon').val( result.geometry.location.lng() );
+		})
+	.bind("geocode:dragged", function(event, latLng)
+		{	//Dragging
+			$('#find_product_location').val( $("#find_product_location").geocomplete( "find", latLng.lat() + "," + latLng.lng() ) );
+			$('#product_location_lat').val( latLng.lat() );
+			$('#product_location_lon').val( latLng.lng() );
+		});
 
 	//Reload Map after it is shown
 	$('#pfa').on('shown.bs.tab', 'a[data-toggle="tab"]', function (e)
