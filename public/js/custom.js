@@ -17,6 +17,22 @@ function centerModal()
 	$dialog.css("margin-top", offset);
 }
 
+var latitude=0, longitude=0;
+function getLocation()
+{
+	if(latitude===0 && longitude===0)		//not called before in the page
+	{
+		$.get("http://ipinfo.io", function (response)
+		{
+			var temp		= response.loc;
+			temp			= temp.split(",");
+			console.log(temp);
+			latitude		= parseFloat(temp[0]);
+			longitude		= parseFloat(temp[1]);
+		}, "jsonp");
+	}
+}
+
 $(document).ready(function()
 {
 	//Making Bootstrap Modal centerize
@@ -24,6 +40,7 @@ $(document).ready(function()
 	$(window).on("resize", function (){ $('.modal:visible').each(centerModal); });
 
 	//Auto complete map-location in Add Posting
+	getLocation();
 	$("#find_product_location").geocomplete(
 	{
 		map			: ".map-address",
@@ -31,8 +48,8 @@ $(document).ready(function()
 		{
 			mapTypeId	: 'roadmap',		//roadmap, satellite,hybrid, terrain,
 			scrollwheel	: true,
-			zoom		: 10,
-			center		: new google.maps.LatLng(37.42152681633113, -119.27327880000001),
+			zoom		: 8,
+			//center		: new google.maps.LatLng( latitude, longitude ),
 		},
 		markerOptions:
 		{
@@ -58,6 +75,7 @@ $(document).ready(function()
 									$("#find_product_location").geocomplete("map"),
 									'resize'
 								);
+		$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
 	});
 
 	/* Submit button pressed - Login */
