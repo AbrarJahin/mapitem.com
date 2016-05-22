@@ -2581,11 +2581,28 @@ body {
 .wsh-path-outline:hover{
     stroke: rgba(35, 165, 0,.2);
  }
-.map-address {
+
+.map-address
+{
     height: 300px;
+    width: 100%;
     background-color: #f0f0f0;
     margin-bottom: 20px
 }
+
+.pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+.modal{
+    z-index: 20;   
+}
+.modal-backdrop{
+    z-index: 10;        
+}​
 
 .list-view .img-box-list {
     float: left;

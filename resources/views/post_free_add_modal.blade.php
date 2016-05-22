@@ -15,6 +15,9 @@
 					</ul>
 
 					<form role="form" class="tab-content adj1" method="post" action="{{ URL::route('login') }}">
+						{{--
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						--}}
 						<div id="tab1" class="tab-pane">
 							<select class="form-control medium-select" id="sel1">
 								<option id="selected">Coumminty</option>
@@ -46,13 +49,13 @@
 								</div>
 							</div>
 						</div>
+
 						<div id="tab3" class="tab-pane">
-							<input type="text" class="form-control normal-input margin-adj" id="adaddress" placeholder="Ad Address">
-							<div class="map-address">
-								<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13598.001561973482!2d74.31768755!3d31.565323199999998!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1458218451359" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-							</div>
-							<a href="#" class="green-small2 no-textdecor" >Post Free Add</a>
+							<input autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad Address">
+							<div class="map-address"></div>
+							<button type="submit" class="green-small2 no-textdecor">Post Free Add</button>
 						</div>
+
 					</form>
 
 					<ul class="pager wizard">

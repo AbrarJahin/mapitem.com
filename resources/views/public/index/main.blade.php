@@ -40,13 +40,15 @@
 		{{-- Truncate paragraph --}}
 		<script src="{{ URL::asset('js/jquery.dotdotdot.js') }}"></script>
 		{{-- Scroll Speed --}}
-		<script src="{{ URL::asset('js/jQuery.scrollSpeed.js') }}"></script>
-		{{-- Custom JS --}}
-		<script src="{{ URL::asset('js/custom.js') }}"></script>
-		{{-- Post Free ad JS --}}
+		<script src="{{ URL::asset('js/jQuery.scrollSpeed.js') }}"></script>		{{-- Post Free ad JS --}}
 		<script src="{{ URL::asset('js/jquery.bootstrap.wizard.js') }}"></script>
 		{{-- Pages JS --}}
 		<script src="{{ URL::asset('js/page.js') }}"></script>
+		{{-- Map Place API --}}
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js"></script>
+		{{-- Custom JS --}}
+		<script src="{{ URL::asset('js/custom.js') }}"></script>
 	{{-- Footer Scripts - End --}}
 	</body>
 </html>
