@@ -78,7 +78,10 @@ $(document).ready(function()
 								);
 		if(++is_tab_opened_before<3)		//No 1 load for page loading and no2 is for first time appear
 		{
-			$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
+			//$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
+
+			var map = $("#find_product_location").geocomplete("map");
+			map.setCenter( new google.maps.LatLng( latitude, longitude ) );
 		}
 	});
 
