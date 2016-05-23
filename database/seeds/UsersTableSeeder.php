@@ -20,6 +20,10 @@ class UsersTableSeeder extends Seeder
 					[
 						'email'		=> 'abrarjahin@gmail.com',
 						'user_type'	=> 'admin',
+					],
+					[
+						'email'		=> 'abrarjahin@live.com',
+						'user_type'	=> 'normal_user',
 					]
 				];
 		//Insert the admins

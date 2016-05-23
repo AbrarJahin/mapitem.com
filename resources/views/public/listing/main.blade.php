@@ -13,7 +13,7 @@
 --}}
 
 {{-- Modal --}}
-@include('user.advertisement_add_modal')
+@include('post_free_add_modal')
 
 {{-- If user is not logged in, then needed --}}
 	{{--send offer login Modal --}}

@@ -83,6 +83,8 @@ composer dump-autoload
 
 php artisan key:generate
 
+# Now set up a DB according to .env file (for here 'blockhunt')
+
 php artisan migrate:refresh --seed
 
 ```
