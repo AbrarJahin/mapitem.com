@@ -8,6 +8,7 @@ class Category extends Model
 {
 	protected $table		=	'categories';			//Table Name
 	public $timestamps		=	false;
+	public $incrementing	=	false;					//For Non integer Primary key
 	protected $primaryKey	=	'name';
 
 	protected $fillable		=	[

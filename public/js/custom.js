@@ -125,10 +125,6 @@ $(document).ready(function()
 										dataType: "json",
 										async: false,
 										data: $("#login-f").serialize(),
-										/*{
-											uuid	:	$('meta[name=_token]').attr("content"),
-											user_id	:	3
-										},*/
 									}).responseText;
 
 			$.each($.parseJSON(responce),function(key,value)
@@ -247,6 +243,45 @@ $(document).ready(function()
 		}
 		$("#sign_up_submit").button('reset');		//Reset button state
 		return false;	//Form not submitted
+	});
+
+	$("#category_select").change(function()
+	{
+		$("#category_select		option[value='0']").remove();	//Removing the dummy elements
+		$('#sub_category_select').empty();						//Cleaning terget select
+
+		var responce = $.ajax(
+								{
+									headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+									method: "POST",
+									url: $('meta[name=sub_category_ajax_url]').attr("content"),
+									dataType: "json",
+									async: false,
+									data:
+									{
+										category_id	:	$( "#category_select" ).val()
+									},
+								}).responseText;
+
+		$.each($.parseJSON(responce),function(key,data)
+		{
+			var last_id;
+			$.each(data,function(id,value)
+			{
+				if(id.localeCompare('id')==0)
+				{
+					last_id=value;
+				}
+				else
+				{
+					$('#sub_category_select').append($('<option>',
+					{
+						value	: last_id,
+						text	: value
+					}));
+				}
+			});
+		});
 	});
 
 	/*review box open*/

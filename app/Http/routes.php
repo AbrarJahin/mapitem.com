@@ -31,6 +31,13 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 			'uses' => 'PublicController@listingView',
 			'as' => 'listing'
 		]);
+
+	//Sub-category Showing AJAX
+	Route::post('find_subcategory', [
+			'uses' => 'PublicController@findSubcategory',
+			'as' => 'find_subcategory'
+		]);
+
 });
 
 // User Routes

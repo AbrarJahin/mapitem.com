@@ -11,13 +11,13 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-		$faker = Faker\Factory::create();//word 
+		$faker = Faker\Factory::create();
 
 		for ($x = 0; $x < 10; $x++)
 		{
 			DB::table('categories')->insert(
 											[
-												'name'	=> $faker->unique()->word
+												'name'	=> $faker->unique()->company
 											]);
 		}
     }

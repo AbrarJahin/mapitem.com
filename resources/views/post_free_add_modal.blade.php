@@ -19,27 +19,25 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						--}}
 						<div id="tab1" class="tab-pane">
-							<select class="form-control medium-select" id="sel1">
-								<option id="selected">Coumminty</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+							<select name="category_id" class="form-control medium-select" id="category_select">
+								<option value='0'>Please Select a Category</option>
+								@foreach ($category as $data)
+									<option value="{{ $data->id }}">{{ $data->name }}</option>
+								@endforeach
 							</select>
-							<select class="form-control medium-select" id="sel1">
-								<option id="selected">Events</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+							<meta name="sub_category_ajax_url" content="{{ URL::route('find_subcategory') }}" />
+							<select name="sub_category_id" class="form-control medium-select" id="sub_category_select">
+								<option value='0'>Please Select Category First</option>
 							</select>
 							<div class="row">
 								<div class="col-lg-8">
-									<input type="text" class="form-control normal-input margin-adj" id="adtitle" placeholder="Ad Title">
+									<input name="title" type="text" class="form-control normal-input margin-adj" id="adtitle" placeholder="Ad Title">
 								</div>
 								<div class="col-lg-4">
-									<input type="text" class="form-control normal-input margin-adj" id="price" placeholder="Price">  
+									<input name="price" type="text" class="form-control normal-input margin-adj" id="price" placeholder="Price">  
 								</div>
 							</div>
-							<textarea class="form-control medium-textarea" rows="4" placeholder="Ad Description"></textarea>
+							<textarea name="description" class="form-control medium-textarea" rows="4" placeholder="Ad Description"></textarea>
 						</div>
 
 						<div id="tab2" class="tab-pane">

@@ -18,7 +18,7 @@ class SubCategoryTableSeeder extends Seeder
 			DB::table('sub_categories')->insert(
 											[
 												'category_id'	=> $faker->randomElement(App\Category::lists('id')->toArray()),
-												'name'			=> $faker->unique()->word,
+												'name'			=> $faker->unique()->streetName
 											]);
 		}
     }
