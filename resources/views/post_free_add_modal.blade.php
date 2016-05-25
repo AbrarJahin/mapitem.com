@@ -45,7 +45,7 @@
 						</div>
 
 						<div id="tab3" class="tab-pane">
-							Zoom in and drag and drop pointer on map for getting more accurate location
+							{{-- Zoom in and drag and drop pointer on map for getting more accurate location --}}
 							<input autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad Address">
 							<input type="hidden" id="product_location_lat" name="product_geo_location">
 							<input type="hidden" id="product_location_lon" name="product_geo_location">
