@@ -8,6 +8,7 @@ function validateEmail(email)
 	return re.test(email);
 }
 
+//Taking bootstrap modal to the center of the page
 function centerModal()
 {
 	$(this).css('display', 'block');
@@ -20,6 +21,7 @@ function centerModal()
 	$dialog.css("margin-top", offset);
 }
 
+//Get user's geo location
 function getLocation()
 {
 	if(latitude===0 && longitude===0)		//not called before in the page
@@ -245,6 +247,7 @@ $(document).ready(function()
 		return false;	//Form not submitted
 	});
 
+	//Add free post - category select AJAX call on sub-category
 	$("#category_select").change(function()
 	{
 		$("#category_select		option[value='0']").remove();	//Removing the dummy elements
@@ -283,6 +286,8 @@ $(document).ready(function()
 			});
 		});
 	});
+
+	
 
 	/*review box open*/
 	$('.review').on('click',function()
