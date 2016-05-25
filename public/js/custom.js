@@ -1,6 +1,10 @@
 //Global variables
 var latitude=0, longitude=0;
 var is_tab_opened_before =0;
+
+//Global Congig
+Dropzone.autoDiscover = false;		//Make dropzone accessable with forms elements for all dropzone
+
 //Email Validate
 function validateEmail(email)
 {
@@ -38,54 +42,56 @@ function getLocation()
 
 $(document).ready(function()
 {
-	//Making Bootstrap Modal centerize
-	$(document).on('show.bs.modal', '.modal', centerModal);
-	$(window).on("resize", function (){ $('.modal:visible').each(centerModal); });
+	//Making Bootstrap Modal centerize - Start
+		$(document).on('show.bs.modal', '.modal', centerModal);
+		$(window).on("resize", function (){ $('.modal:visible').each(centerModal); });
+	//Making Bootstrap Modal centerize - End
 
-	//Auto complete map-location in Add Posting
-	getLocation();
-	$("#find_product_location").geocomplete(
-	{
-		map			: ".map-address",
-		mapOptions	:
+	//Free add posting - tab 3 - Map - Start
+		getLocation();
+		$("#find_product_location").geocomplete(
 		{
-			mapTypeId	: 'roadmap',		//roadmap, satellite,hybrid, terrain,
-			scrollwheel	: true,
-			zoom		: 8,
-			//center		: new google.maps.LatLng( latitude, longitude ),
-		},
-		markerOptions:
-		{
-			draggable: true
-		},
-	})
-	.bind("geocode:result", function(event, result)
-		{	//Type Helper
-			$('#product_location_lat').val( result.geometry.location.lat() );
-			$('#product_location_lon').val( result.geometry.location.lng() );
+			map			: ".map-address",
+			mapOptions	:
+			{
+				mapTypeId	: 'roadmap',		//roadmap, satellite,hybrid, terrain,
+				scrollwheel	: true,
+				zoom		: 8,
+				//center		: new google.maps.LatLng( latitude, longitude ),
+			},
+			markerOptions:
+			{
+				draggable: true
+			},
 		})
-	.bind("geocode:dragged", function(event, latLng)
-		{	//Dragging
-			$('#find_product_location').val( $("#find_product_location").geocomplete( "find", latLng.lat() + "," + latLng.lng() ) );
-			$('#product_location_lat').val( latLng.lat() );
-			$('#product_location_lon').val( latLng.lng() );
-		});
+		.bind("geocode:result", function(event, result)
+			{	//Type Helper
+				$('#product_location_lat').val( result.geometry.location.lat() );
+				$('#product_location_lon').val( result.geometry.location.lng() );
+			})
+		.bind("geocode:dragged", function(event, latLng)
+			{	//Dragging
+				$('#find_product_location').val( $("#find_product_location").geocomplete( "find", latLng.lat() + "," + latLng.lng() ) );
+				$('#product_location_lat').val( latLng.lat() );
+				$('#product_location_lon').val( latLng.lng() );
+			});
 
-	//Reload Map after it is shown
-	$('#pfa').on('shown.bs.tab', 'a[data-toggle="tab"]', function (e)
-	{
-		google.maps.event.trigger(
-									$("#find_product_location").geocomplete("map"),
-									'resize'
-								);
-		if(++is_tab_opened_before<3)		//No 1 load for page loading and no2 is for first time appear
+		//Reload Map after it is shown
+		$('#pfa').on('shown.bs.tab', 'a[data-toggle="tab"]', function (e)
 		{
-			//$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
+			google.maps.event.trigger(
+										$("#find_product_location").geocomplete("map"),
+										'resize'
+									);
+			if(++is_tab_opened_before<3)		//No 1 load for page loading and no2 is for first time appear
+			{
+				//$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
 
-			var map = $("#find_product_location").geocomplete("map");
-			map.setCenter( new google.maps.LatLng( latitude, longitude ) );
-		}
-	});
+				var map = $("#find_product_location").geocomplete("map");
+				map.setCenter( new google.maps.LatLng( latitude, longitude ) );
+			}
+		});
+	//Free add posting - tab 3 - Map - End
 
 	/* Submit button pressed - Login */
 	$("#login-f").submit(function()
@@ -287,7 +293,81 @@ $(document).ready(function()
 		});
 	});
 
-	
+	//Dropzone File Upload in post free add modal - Start
+		var $myDropZone	=	$("div#drag_drop_image_upload_div").dropzone(
+							{
+								url					: "file-upload.php",
+								method				: 'POST',
+								acceptedFiles		: 'image/*',
+								dictDefaultMessage	: 'Drop images or click here to upload image',	//Default message shown in the drop div
+								//uploadMultiple		: true,
+								//parallelUploads		: 3,									//No of perallel file upload
+								paramName			: 'file_param_received_in_server',			//Parameter will be received in Server Side
+								headers				: {											//Pass extra variables on the time of processing
+															"param1": "header value",
+															"param2": "header value 2"
+														},
+								autoProcessQueue	: false, 								//Will process manually after all done
+								maxFiles			: 10,									//Max no of files to be uploaded
+								maxFilesize			: 1, 									// In MB
+								dictFileTooBig		: 'Bigger than 1 MB image is not allowed',
+								//dictMaxFilesExceeded: 'File size should be less than 1 MB',
+								addRemoveLinks		: true,									//Enabling remove Link
+								dictRemoveFile		: 'Remove This Image',
+								dictCancelUpload	: 'Cancel Upload this Image',
+								//dictCancelUploadConfirmation : true,						//Cancel upload confirmation
+								dictInvalidFileType	: 'Only image uploading allowed',
+								dictResponseError	: 'Server Error',
+								dictFallbackMessage	: 'Your Browser is Not Supported, Please Update Your Browser',
+								/*init:function()
+								{
+									this.on("removedfile", function(file)	//Delete Function Implementation if needed
+									{
+										alert('Removing '+ file.name);
+										$.ajax(
+										{
+											type: 'POST',
+											url: 'upload/delete',
+											data: {id: file.name},
+											dataType: 'html',
+											success: function(data)
+											{
+												var rep = JSON.parse(data);
+												if(rep.code == 200)
+												{
+													photo_counter--;
+													$("#photoCounter").text( "(" + photo_counter + ")");
+												}
+
+											}
+										});
+									});
+								},
+								accept: function(file, done)
+								{
+									$(".dz-progress").remove();
+								},*/
+								success: function (file, response)
+								{
+									var imgName = response;
+									file.previewElement.classList.add("dz-success");
+									console.log("Successfully uploaded :" + imgName);
+									$(".dz-progress").hide();
+								}/*,
+								error: function (file, response)
+								{
+									file.previewElement.classList.add("dz-error");
+								}*/
+							});
+
+		$("#post_free_add_form").submit(function(e)
+		{
+			e.preventDefault(e);
+			$myDropZone[0].dropzone.processQueue();
+			var files = $('#drag_drop_image_upload_div').get(0).dropzone.getAcceptedFiles();
+			console.log(files);
+		});
+	//Dropzone File Upload in post free add modal - End
 
 	/*review box open*/
 	$('.review').on('click',function()

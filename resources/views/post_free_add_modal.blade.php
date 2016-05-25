@@ -14,7 +14,7 @@
 						<li class="ta"><a href="#tab3" data-toggle="tab">3. Location</a></li>
 					</ul>
 
-					<form role="form" class="tab-content adj1" method="post" action="{{ URL::route('login') }}">
+					<form id="post_free_add_form" role="form" class="tab-content adj1" method="post" action="{{ URL::route('login') }}">
 						{{--
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						--}}
@@ -41,14 +41,11 @@
 						</div>
 
 						<div id="tab2" class="tab-pane">
-							<div class="image_upload_div">
-								<div id="dropzoneimage" class="dropzone dz-clickable">
-									<div class="dz-default dz-message"><span>Drop files here to upload</span></div>
-								</div>
-							</div>
+							<div class="dropzone dropzone-previews" id="drag_drop_image_upload_div"></div>
 						</div>
 
 						<div id="tab3" class="tab-pane">
+							Zoom in and drag and drop pointer on map for getting more accurate location
 							<input autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad Address">
 							<input type="hidden" id="product_location_lat" name="product_geo_location">
 							<input type="hidden" id="product_location_lon" name="product_geo_location">

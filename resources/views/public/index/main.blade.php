@@ -6,6 +6,8 @@
 
 		<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="{{ URL::asset('css/jquery.maximage.css') }}" type="text/css" media="screen" title="CSS" charset="utf-8" />
+		{{-- Dropzone - CSS --}}
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.css" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -32,6 +34,8 @@
 	{{-- Footer Scripts - Start --}}
 		{{-- jQuery --}}
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		{{-- Dropzone - JS --}}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.js"></script>
 		{{-- Bootstrap Core JavaScript --}}
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script src="{{ URL::asset('js/jquery.cycle.all.js') }}" type="text/javascript"></script>
