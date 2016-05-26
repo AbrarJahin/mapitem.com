@@ -41,6 +41,8 @@
 						</div>
 
 						<div id="tab2" class="tab-pane">
+							<meta name="dropped_image_ajax_url" content="{{ URL::route('add_images') }}">
+							<meta name="uploaded_add_id">
 							<div class="dropzone dropzone-previews" id="drag_drop_image_upload_div"></div>
 						</div>
 

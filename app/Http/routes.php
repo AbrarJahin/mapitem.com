@@ -38,6 +38,11 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 			'as' => 'find_subcategory'
 		]);
 
+	//Addvertisement add Image Upload AJAX
+	Route::post('add_images', [
+			'uses'	=> 'User\AddController@addImageUpload',
+			'as'	=> 'add_images'
+		]);
 });
 
 // User Routes

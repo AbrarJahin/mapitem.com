@@ -296,19 +296,18 @@ $(document).ready(function()
 	//Dropzone File Upload in post free add modal - Start
 		var $myDropZone	=	$("div#drag_drop_image_upload_div").dropzone(
 							{
-								url					: "file-upload.php",
+								url					: $('meta[name=dropped_image_ajax_url]').attr("content"),
 								method				: 'POST',
 								acceptedFiles		: 'image/*',
 								dictDefaultMessage	: 'Drop images or click here to upload image',	//Default message shown in the drop div
-								//uploadMultiple		: true,
-								//parallelUploads		: 3,									//No of perallel file upload
-								paramName			: 'file_param_received_in_server',			//Parameter will be received in Server Side
+								uploadMultiple		: false,
+								//parallelUploads		: 10,									//No of perallel file upload - if uploadMultiple		: true
+								paramName			: 'uploaded_image',							//Parameter will be received in Server Side
 								headers				: {											//Pass extra variables on the time of processing
-															"param1": "header value",
-															"param2": "header value 2"
+															'X-CSRF-TOKEN': $('meta[name=_token]').attr("content")
 														},
 								autoProcessQueue	: false, 								//Will process manually after all done
-								maxFiles			: 10,									//Max no of files to be uploaded
+								//maxFiles			: 10,									//Max no of files to be uploaded
 								maxFilesize			: 1, 									// In MB
 								dictFileTooBig		: 'Bigger than 1 MB image is not allowed',
 								//dictMaxFilesExceeded: 'File size should be less than 1 MB',
@@ -352,7 +351,7 @@ $(document).ready(function()
 									var imgName = response;
 									file.previewElement.classList.add("dz-success");
 									console.log("Successfully uploaded :" + imgName);
-									$(".dz-progress").hide();
+									//$(".dz-progress").hide();
 								}/*,
 								error: function (file, response)
 								{
@@ -363,9 +362,17 @@ $(document).ready(function()
 		$("#post_free_add_form").submit(function(e)
 		{
 			e.preventDefault(e);
+
+			$('meta[name=uploaded_add_id]').attr('content', 'new_id');
 			$myDropZone[0].dropzone.processQueue();
+
 			var files = $('#drag_drop_image_upload_div').get(0).dropzone.getAcceptedFiles();
 			console.log(files);
+		});
+
+		$myDropZone[0].dropzone.on('sending', function(file, xhr, formData)		//Sending Extra Parameters
+		{
+			formData.append('add_id', $('meta[name=uploaded_add_id]').attr("content"));
 		});
 	//Dropzone File Upload in post free add modal - End
 
