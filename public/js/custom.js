@@ -299,78 +299,53 @@ $(document).ready(function()
 								url					: $('meta[name=dropped_image_ajax_url]').attr("content"),
 								method				: 'POST',
 								acceptedFiles		: 'image/*',
-								dictDefaultMessage	: 'Drop images or click here to upload image',	//Default message shown in the drop div
+								dictDefaultMessage	: 'Drop images here or click here to upload image',	//Default message shown in the drop div
 								uploadMultiple		: false,
 								//parallelUploads		: 10,									//No of perallel file upload - if uploadMultiple		: true
 								paramName			: 'uploaded_image',							//Parameter will be received in Server Side
 								headers				: {											//Pass extra variables on the time of processing
 															'X-CSRF-TOKEN': $('meta[name=_token]').attr("content")
 														},
+								enqueueForUpload	: true,
 								autoProcessQueue	: false, 								//Will process manually after all done
-								//maxFiles			: 10,									//Max no of files to be uploaded
 								maxFilesize			: 1, 									// In MB
 								dictFileTooBig		: 'Bigger than 1 MB image is not allowed',
-								//dictMaxFilesExceeded: 'File size should be less than 1 MB',
 								addRemoveLinks		: true,									//Enabling remove Link
 								dictRemoveFile		: 'Remove This Image',
 								dictCancelUpload	: 'Cancel Upload this Image',
-								//dictCancelUploadConfirmation : true,						//Cancel upload confirmation
 								dictInvalidFileType	: 'Only image uploading allowed',
 								dictResponseError	: 'Server Error',
 								dictFallbackMessage	: 'Your Browser is Not Supported, Please Update Your Browser',
-								/*init:function()
-								{
-									this.on("removedfile", function(file)	//Delete Function Implementation if needed
-									{
-										alert('Removing '+ file.name);
-										$.ajax(
-										{
-											type: 'POST',
-											url: 'upload/delete',
-											data: {id: file.name},
-											dataType: 'html',
-											success: function(data)
-											{
-												var rep = JSON.parse(data);
-												if(rep.code == 200)
-												{
-													photo_counter--;
-													$("#photoCounter").text( "(" + photo_counter + ")");
-												}
-
-											}
-										});
-									});
-								},
-								accept: function(file, done)
-								{
-									$(".dz-progress").remove();
-								},*/
 								success: function (file, response)
 								{
 									var imgName = response;
 									file.previewElement.classList.add("dz-success");
 									console.log("Successfully uploaded :" + imgName);
-									//$(".dz-progress").hide();
-								}/*,
-								error: function (file, response)
-								{
-									file.previewElement.classList.add("dz-error");
-								}*/
+								}
 							});
 
 		$("#post_free_add_form").submit(function(e)
 		{
 			e.preventDefault(e);
 
-			$('meta[name=uploaded_add_id]').attr('content', 'new_id');
+			$('meta[name=uploaded_add_id]').attr('content', 'new_id');		//Setting from AJAX responce
 			$myDropZone[0].dropzone.processQueue();
 
 			var files = $('#drag_drop_image_upload_div').get(0).dropzone.getAcceptedFiles();
 			console.log(files);
 		});
 
-		$myDropZone[0].dropzone.on('sending', function(file, xhr, formData)		//Sending Extra Parameters
+		$myDropZone[0].dropzone.on('processing', function()					//Process all data after click one
+		{
+			this.options.autoProcessQueue = true;
+		});
+
+		$myDropZone[0].dropzone.on('queuecomplete', function()				//Reset the status
+		{
+			this.options.autoProcessQueue = false;
+		});
+
+		$myDropZone[0].dropzone.on('sending', function(file, xhr, formData)	//Sending Extra Parameters
 		{
 			formData.append('add_id', $('meta[name=uploaded_add_id]').attr("content"));
 		});

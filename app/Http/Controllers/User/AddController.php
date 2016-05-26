@@ -32,7 +32,7 @@ class AddController extends Controller
 										[
 											'add_id'				=> 'required',
 											'design_estimated_cost'	=> 'image|max:1000'
-										]                                        
+										]
 									);
 		//Validator Failed
 		if ($validator->fails())
@@ -40,16 +40,12 @@ class AddController extends Controller
 			return $validator->errors()->all();
 		}
 
-		/*return [
-					'id'	=> $requestData['add_id'],
-					//'image'	=> $requestData['uploaded_image']
-					'image'	=> $requestData['uploaded_image']
-				];*/
-
 		$destinationPath = 'uploads'; // upload path
-		$extension = $requestData['uploaded_image']->getClientOriginalExtension(); // getting file extension
 
+		//Renaming the file
+		$extension = $requestData['uploaded_image']->getClientOriginalExtension(); // getting file extension
 		$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+
 		$upload_success = $requestData['uploaded_image']->move($destinationPath, $fileName); // uploading file to given path
 
 		if ($upload_success)
