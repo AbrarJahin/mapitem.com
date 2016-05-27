@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Advertisement extends Model
 {
-	use SoftDeletes;
+	//use SoftDeletingTrait;
 
 	/**
 	* The attributes that should be mutated to dates.
@@ -20,8 +20,13 @@ class Advertisement extends Model
 	protected $fillable		=	[
 									'user_id',
 									'category_id',
+									'sub_category_id',
 									'title',
-									'description'
+									'price',
+									'description',
+									'address',
+									'location_lat',
+									'location_lon'
 								];
 
 	public function user()

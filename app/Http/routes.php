@@ -37,12 +37,6 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 			'uses' => 'PublicController@findSubcategory',
 			'as' => 'find_subcategory'
 		]);
-
-	//Addvertisement add Image Upload AJAX
-	Route::post('add_images', [
-			'uses'	=> 'User\AddController@addImageUpload',
-			'as'	=> 'add_images'
-		]);
 });
 
 // User Routes
@@ -89,4 +83,16 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 			'uses' => 'UserController@accountView',
 			'as' => '.account'
 		]);
+	//Addvertisement - Start
+		//Add Image Upload AJAX
+		Route::post('post_add', [
+				'uses'	=> 'AddController@addPost',
+				'as'	=> '.post_add'
+			]);
+		//Add Image Upload AJAX
+		Route::post('add_images', [
+				'uses'	=> 'AddController@addImageUpload',
+				'as'	=> '.advertisement_images'
+			]);
+	//Addvertisement - End
 });

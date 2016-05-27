@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 use Request;
 use Response;
 use Validator;
+use App\Advertisement;
+use App\AdvertisementImage;
+use Auth;
 
 /*
 	Functionality	-> Handel All Auth Works
@@ -16,11 +19,53 @@ use Validator;
 class AddController extends Controller
 {
 	/*
-		URL				-> get: /account
-		Functionality	-> Show Dashboard Page
+		URL				-> POST: /post_add
+		Functionality	-> Ad. add post
 		Access			-> Anyone who is logged in user
-		Created At		-> 22/03/2016
-		Updated At		-> 22/03/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function addPost()
+	{
+		$requestData = Request::all();
+
+		$validator = Validator::make(
+										$requestData,						//Validator need to be updated
+										[
+											'category_id'				=> 'required',
+											'sub_category_id'			=> 'required',
+											'title'						=> 'required',
+											'price'						=> 'required',
+											'description'				=> 'required',
+											'address'					=> 'required',
+											'product_geo_location_lat'				=> 'required',
+											'product_geo_location_lon'				=> 'required'
+										]
+									);
+		//Validator Failed
+		if ($validator->fails())
+		{
+			return $validator->errors()->all();
+		}
+
+		$advertisement = Advertisement::firstOrCreate(
+													[
+														'user_id'			=> Auth::user()->id,
+														'category_id'		=> $requestData['category_id'],
+														'sub_category_id'	=> $requestData['sub_category_id'],
+														'title'				=> $requestData['title'],
+														'description'		=> $requestData['description'],
+														'price'		=> $requestData['description'],
+														'address'			=> $requestData['address'],
+														'location_lat'		=> $requestData['product_geo_location_lat'],
+														'location_lon'		=> $requestData['product_geo_location_lon']
+													]);
+		return $advertisement->id;
+	}
+
+	/*
+		URL				-> POST: /add_images
+		Functionality	-> Upoad ad. images
+		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
 	public function addImageUpload()
@@ -30,8 +75,8 @@ class AddController extends Controller
 		$validator = Validator::make(
 										$requestData,
 										[
-											'add_id'				=> 'required',
-											'design_estimated_cost'	=> 'image|max:1000'
+											'add_id'			=> 'required',
+											'uploaded_image'	=> 'image|max:1000'
 										]
 									);
 		//Validator Failed
@@ -44,13 +89,18 @@ class AddController extends Controller
 
 		//Renaming the file
 		$extension = $requestData['uploaded_image']->getClientOriginalExtension(); // getting file extension
-		$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+		$fileName = Auth::user()->id."-".rand(11111, 99999) . '.' . $extension; // renameing image
 
 		$upload_success = $requestData['uploaded_image']->move($destinationPath, $fileName); // uploading file to given path
 
 		if ($upload_success)
 		{
-			return Response::json('success', 200);
+			$advertisement = AdvertisementImage::firstOrCreate(
+														[
+															'advertisement_id'	=> $requestData['add_id'],
+															'image_name'		=> $fileName
+														]);
+			return Response::json($advertisement, 200);
 		}
 		else
 		{

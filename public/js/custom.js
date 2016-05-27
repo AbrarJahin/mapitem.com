@@ -293,7 +293,8 @@ $(document).ready(function()
 		});
 	});
 
-	//Dropzone File Upload in post free add modal - Start
+	//Free Add Posting - Start
+		//Dropzone File Upload in post free add modal
 		var $myDropZone	=	$("div#drag_drop_image_upload_div").dropzone(
 							{
 								url					: $('meta[name=dropped_image_ajax_url]').attr("content"),
@@ -324,15 +325,9 @@ $(document).ready(function()
 								}
 							});
 
-		$("#post_free_add_form").submit(function(e)
+		$myDropZone[0].dropzone.on('sending', function(file, xhr, formData)	//Sending Extra Parameters
 		{
-			e.preventDefault(e);
-
-			$('meta[name=uploaded_add_id]').attr('content', 'new_id');		//Setting from AJAX responce
-			$myDropZone[0].dropzone.processQueue();
-
-			var files = $('#drag_drop_image_upload_div').get(0).dropzone.getAcceptedFiles();
-			console.log(files);
+			formData.append('add_id', $('meta[name=uploaded_add_id]').attr("content"));
 		});
 
 		$myDropZone[0].dropzone.on('processing', function()					//Process all data after click one
@@ -345,11 +340,38 @@ $(document).ready(function()
 			this.options.autoProcessQueue = false;
 		});
 
-		$myDropZone[0].dropzone.on('sending', function(file, xhr, formData)	//Sending Extra Parameters
+		//Submitting the free add posting form with AJAX
+		$("#post_free_add_form").submit(function(e)
 		{
-			formData.append('add_id', $('meta[name=uploaded_add_id]').attr("content"));
+			e.preventDefault(e);
+
+			var responce = $.ajax(
+									{
+										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+										method: "POST",
+										url: $(this).attr('action'),
+										dataType: "json",
+										async: false,
+										data: $("#post_free_add_form").serialize(),
+										/*{
+											uuid	:	$('meta[name=_token]').attr("content"),
+											user_id	:	3
+										},*/
+									}).responseText;
+
+			console.log(responce);
+
+			$('meta[name=uploaded_add_id]').attr('content', responce);		//Setting from AJAX responce
+
+			    //Process of upload should start after successfull advertisement upload - Will do later
+
+			$myDropZone[0].dropzone.processQueue();								//Uploading files
+			
+			
+			/*var files = $('#drag_drop_image_upload_div').get(0).dropzone.getAcceptedFiles();
+			console.log(files);*/
 		});
-	//Dropzone File Upload in post free add modal - End
+	//Free Add Posting  - End
 
 	/*review box open*/
 	$('.review').on('click',function()

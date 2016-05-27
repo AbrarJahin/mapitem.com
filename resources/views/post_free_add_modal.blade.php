@@ -14,7 +14,7 @@
 						<li class="ta"><a href="#tab3" data-toggle="tab">3. Location</a></li>
 					</ul>
 
-					<form id="post_free_add_form" role="form" class="tab-content adj1" method="post" action="{{ URL::route('login') }}">
+					<form id="post_free_add_form" role="form" class="tab-content adj1" method="post" action="{{ URL::route('user.post_add') }}">
 						{{--
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						--}}
@@ -41,16 +41,16 @@
 						</div>
 
 						<div id="tab2" class="tab-pane">
-							<meta name="dropped_image_ajax_url" content="{{ URL::route('add_images') }}">
+							<meta name="dropped_image_ajax_url" content="{{ URL::route('user.advertisement_images') }}">
 							<meta name="uploaded_add_id">
 							<div class="dropzone dropzone-previews" id="drag_drop_image_upload_div"></div>
 						</div>
 
 						<div id="tab3" class="tab-pane">
 							{{-- Zoom in and drag and drop pointer on map for getting more accurate location --}}
-							<input autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad Address">
-							<input type="hidden" id="product_location_lat" name="product_geo_location">
-							<input type="hidden" id="product_location_lon" name="product_geo_location">
+							<input name="address" autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad Address">
+							<input type="hidden" id="product_location_lat" name="product_geo_location_lat">
+							<input type="hidden" id="product_location_lon" name="product_geo_location_lon">
 							<div class="map-address"></div>
 							<button type="submit" class="green-small2 no-textdecor">Post Free Add</button>
 						</div>
