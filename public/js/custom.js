@@ -309,8 +309,8 @@ $(document).ready(function()
 														},
 								enqueueForUpload	: true,
 								autoProcessQueue	: false, 								//Will process manually after all done
-								maxFilesize			: 1, 									// In MB
-								dictFileTooBig		: 'Bigger than 1 MB image is not allowed',
+								maxFilesize			: 5, 									// In MB
+								dictFileTooBig		: 'Bigger than 5 MB image is not allowed',
 								addRemoveLinks		: true,									//Enabling remove Link
 								dictRemoveFile		: 'Remove This Image',
 								dictCancelUpload	: 'Cancel Upload this Image',

@@ -76,7 +76,7 @@ class AddController extends Controller
 										$requestData,
 										[
 											'add_id'			=> 'required',
-											'uploaded_image'	=> 'image|max:1000'
+											'uploaded_image'	=> 'image|max:5120'
 										]
 									);
 		//Validator Failed
