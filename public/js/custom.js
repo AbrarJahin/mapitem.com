@@ -366,10 +366,6 @@ $(document).ready(function()
 			    //Process of upload should start after successfull advertisement upload - Will do later
 
 			$myDropZone[0].dropzone.processQueue();								//Uploading files
-			
-			
-			/*var files = $('#drag_drop_image_upload_div').get(0).dropzone.getAcceptedFiles();
-			console.log(files);*/
 		});
 	//Free Add Posting  - End
 

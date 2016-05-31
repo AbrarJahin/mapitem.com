@@ -88,6 +88,11 @@ body.modal-open
     position: fixed;
 }
 
+.dz-progress
+{
+    display: none;
+}
+
 .navbar
 {
     z-index: 10;
