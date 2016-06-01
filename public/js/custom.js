@@ -369,6 +369,26 @@ $(document).ready(function()
 		});
 	//Free Add Posting  - End
 
+	//Listing Page - Start
+		//Open add
+		$('.showonmap9').click(function()
+		{
+			$('.ad-detail').show("slow");
+			$('.ad-listing').hide("slow");
+			$('.close-detail').toggleClass("show");
+			//alert("I am an alert box!");
+		});
+
+		//Close add
+		$('.close-detail').click(function()
+		{
+			$('.ad-detail').hide("slow");
+			$('.close-detail').toggleClass("show");
+			$('.ad-listing').show("slow");
+			//alert("I am an alert box!");
+		});
+	//Listing Page - End
+
 	/*review box open*/
 	$('.review').on('click',function()
 	{
@@ -577,14 +597,6 @@ $("a.close-detail").click(function(event)
 	event.preventDefault();
 });
 
-$('.close-detail').click(function()
-{
-	$('.ad-detail').hide("slow");
-	$('.close-detail').toggleClass("show");
-	$('.ad-listing').show("slow");
-	//alert("I am an alert box!");
-});
-
 $('.p-min').click(function()
 {
 	$(this).parent().next('.p-bottom').slideToggle();
@@ -603,14 +615,6 @@ $('.showonmap9').hover(function()
 {
 	$( ".listing-left" ).find(".show9").slideToggle();
 	$( ".listing-left" ).find(".pos-adj9").toggleClass('zup');
-});
-
-$('.showonmap9').click(function()
-{
-	$('.ad-detail').show("slow");
-	$('.ad-listing').hide("slow");
-	$('.close-detail').toggleClass("show");
-	alert("I am an alert box!");
 });
 
 $('.showonmap10').hover(function()

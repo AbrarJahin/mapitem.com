@@ -1,23 +1,16 @@
 <div id="map" class="listing-left pos-rel hidden-xs">
 
-	<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d217732.494320258!2d74.00072720149036!3d31.494753535792263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x3919077738bb031b%3A0xf55d6272254ae7d1!2zR3JlZW4gQ2FwIEhvdXNpbmcgU2NoZW1lLCBMYWhvcmUsINm-2Kfaqdiz2KrYp9mG!3m2!1d31.3992914!2d74.3536154!4m5!1s0x3918ec2a11450f7f%3A0x7fab00f2c8606140!2sSheikhupura+-+Mangtanwala+Rd%2C+Pakistan!3m2!1d31.5603248!2d73.935102!5e0!3m2!1sen!2s!4v1437566522046" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-	<div class="pos-adj9">
-		<div class="triangle-isosceles">
-			<div class="p-top">
-				<img class="pull-left" src="images/p-favicon.jpg">
-				<h4 class="pull-left">Ipone</h4>
-				<a href="#" class="pull-right fa fa-close p-close"></a>
-				<a href="#" class="pull-right fa fa-minus p-min "></a>
-			</div>
-			<div class="p-bottom show9">
-				<div>
-					Iphone 4s with complete accesseries for sale ...
-				</div>
-				<a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="#">Details</a>
-			</div>
+<div id="main">
+			<input type="checkbox" name="onOff" id="onOff" checked>
+			<label for="onOff">Clustering</label>
 		</div>
-	</div>
+		<div id="colors"></div>
+		<br/>
+		<div id="test1" class="gmap3"></div>
+
+
+</div>
+
 {{--
     <div class="pos-adj10">
         <div class="triangle-isosceles">
@@ -100,4 +93,20 @@
         </div>
     </div>
 --}}
+
+<div class="pos-adj9">
+	<div class="triangle-isosceles">
+		<div class="p-top">
+		    <img class="pull-left" src="images/p-favicon.jpg">
+		    <h4 class="pull-left">Ipone</h4>
+		    <a href="#" class="pull-right fa fa-close p-close"></a>
+		    <a href="#" class="pull-right fa fa-minus p-min "></a>
+		</div>
+		<div class="p-bottom show9">
+			<div>
+				Iphone 4s with complete accesseries for sale ...
+			</div>
+			<a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="#">Details</a>
+		</div>
+	</div>
 </div>
