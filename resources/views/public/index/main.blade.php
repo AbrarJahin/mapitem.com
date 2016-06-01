@@ -30,7 +30,18 @@
 			@include('footer_html')
 		</div>
 	{{-- Footer Scripts - Start --}}
-		@include('js')
+		@include('public.js')
+
+		<script src="{{ URL::asset('js/jquery.cycle.all.js') }}" type="text/javascript"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" type="text/javascript"></script>
+		<script src="{{ URL::asset('js/jquery.maximage.js') }}" type="text/javascript"></script>
+		{{-- Truncate paragraph --}}
+		<script src="{{ URL::asset('js/jquery.dotdotdot.js') }}"></script>
+		{{-- Scroll Speed --}}
+		<script src="{{ URL::asset('js/jQuery.scrollSpeed.js') }}"></script>
+
+		{{-- Pages JS --}}
+		<script src="{{ URL::asset('js/page.js') }}"></script>
 	{{-- Footer Scripts - End --}}
 	</body>
 </html>

@@ -53,7 +53,21 @@
 
 </div>
 
-@include('public.listing.footer_scripts')
+{{-- Footer Scripts - Start --}}
+	@include('public.js')
+
+	<script src="{{ URL::asset('js/jquery.loadie.js') }}"></script>
+	<!-- range js -->
+	<script src="{{ URL::asset('js/jquery.range.js') }}"></script>
+	<!-- Truncate paragraph -->
+	<script src="{{ URL::asset('js/jquery.dotdotdot.js') }}"></script>
+	<script src="{{ URL::asset('js/jQuery.scrollSpeed.js') }}"></script>
+	<script type='text/javascript' src="{{ URL::asset('js/jquery.mousewheel.js') }}"></script>
+	<script src="{{ URL::asset('js/jquery.touchSwipe.js') }}"></script>
+	<script src="{{ URL::asset('js/listing.js') }}"></script>
+	<!-- Slick Js -->
+	<script type="text/javascript" src="{{ URL::asset('slick/slick/slick.min.js') }}"></script>
+{{-- Footer Scripts - End --}}
 
 </body>
 </html>
