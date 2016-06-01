@@ -48,9 +48,12 @@
 		</div>
 		<div class="clearfix "></div>
 
-		@include('public.listing.footer')
+		@include('footer_html')
 	</div>
 
 </div>
 
 @include('public.listing.footer_scripts')
+
+</body>
+</html>

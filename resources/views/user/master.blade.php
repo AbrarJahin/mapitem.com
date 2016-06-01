@@ -36,4 +36,8 @@
 		@yield('content')
 	</div>
 
-@include('user.footer')
+@include('footer_html')
+@include('user.js')
+
+</body>
+</html>
