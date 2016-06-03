@@ -1,13 +1,9 @@
 <div id="map" class="listing-left pos-rel hidden-xs">
 
-<div id="main">
-			<input type="checkbox" name="onOff" id="onOff" checked>
-			<label for="onOff">Clustering</label>
-		</div>
-		<div id="colors"></div>
-		<br/>
-		<div id="test1" class="gmap3"></div>
+	<div id="colors"></div>
 
+	<br/>
+	<div id="test1" class="gmap3"></div>
 
 </div>
 

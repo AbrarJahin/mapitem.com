@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>Block Hunt - {{ $current_page }}</title>
 		@include('meta_data')
 		@include('css')
 

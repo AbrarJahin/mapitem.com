@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\SubCategory;
 use Request;
 
@@ -18,7 +19,7 @@ class PublicController extends Controller
 	*/
 	public function index()
 	{
-		return view('public.index.main',[ 'current_page'   => 'user.dashboard' ]);
+		return view('public.index.main',[ 'current_page'   => 'Home' ]);
 	}
 
 	/*
@@ -31,7 +32,29 @@ class PublicController extends Controller
 	*/
 	public function listingView()
 	{
-		return view('public.listing.main', [ 'current_page'   => 'user.profile' ]);
+		//return Category::with('SubCategory')->get();
+		return view('public.listing.main', [
+												'current_page'			=>	'Add Listing',
+												'sort_distance_options'	=>	[
+																				'Distance - Closest',
+																				'2',
+																				'3',
+																				'4',
+																				'5',
+																				'6',
+																				'7',
+																			],
+												'distance_range_options'=>	[
+																				'Any Distance',
+																				'2',
+																				'3',
+																				'4',
+																				'5',
+																				'6',
+																				'7',
+																			],
+												'categories'			=>	Category::with('SubCategory')->get()
+											]);
 	}
 
 	/*

@@ -15,8 +15,8 @@ class Category extends Model
 									'name'
 								];
 
-	public function advertisement()
+	public function SubCategory()
 	{
-		return $this->hasMany('App\Advertisement', 'category_id');
+		return $this->hasMany('App\SubCategory', 'category_id', 'id');
 	}
 }
