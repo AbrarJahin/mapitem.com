@@ -35,12 +35,12 @@
 			<div class="col-lg-4 col-md-4 col-sm-9 col-xs-8">
 				<button aria-expanded="false" aria-haspopup="false" data-toggle="dropdown" class="btn l-cat-btn dropdown-toggle" type="button">Category Filter<i class="glyphicon glyphicon-menu-down arrow-adj"></i></button>
 
-				<ul class="dropdown-menu h-ctr h-ctr2 col-md-12 col-sm-12">
+				<ul class="dropdown-menu h-ctr h-ctr2 col-md-12 col-sm-12" id="category_filter">
 					@foreach ($categories as $category)
 						<li class="no-border">
 							<label class="pull-left">
-								<input type="checkbox" value="cat_{{ $category->id }}" checked>
-								<strong> {{ $category->name }} (21)</strong>
+								<input type="checkbox" name="cat_{{ $category->id }}" checked>
+								<strong> {{ $category->name }} (21)</strong>{{ $category->sub_category }}
 							</label>
 							<ul>
 								{{--
@@ -55,6 +55,12 @@
 							</ul>
 							
 						</li>
+						{{-- <li class="no-border">
+							<label class="pull-left">
+								<input type="checkbox" name="sub_cat_3" checked>
+								<strong> All (21)</strong>Hide All
+							</label>
+						</li> --}}
 					@endforeach
 				</ul>
 			</div>

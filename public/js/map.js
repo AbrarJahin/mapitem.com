@@ -1,5 +1,5 @@
 //General Config
-var map_div = $('#test1');
+var map_div = $('#map');
 
 // generate an array of colors
 var colors = "black brown green purple yellow grey orange white".split(" ");
@@ -7,13 +7,21 @@ var colors = "black brown green purple yellow grey orange white".split(" ");
 // on document ready function
 $(function()
 {
-	// create colors checkbox and associate onChange function 
-	$.each(colors, function(i, color)
+	$("#category_filter input[type=checkbox]").change(function()
 	{
-		$("#colors").append("<input type='checkbox' name='"+color+"' checked><label for='"+color+"'>"+color+"</label>");
-	});
+		// first : create an object where keys are colors and values is true (only for checked objects)
+		var checkedData = {};
+		$("#category_filter input[type=checkbox]:checked").each(function(i, chk)
+		{
+			checkedData[$(chk).attr("name")] = true;
+		});
 
-	$("#colors input[type=checkbox]").change(onChangeChk);
+		// set a filter function using the closure data "checkedData"
+		map_div.gmap3({get:"clusterer"}).filter(function(data)
+		{
+			return data.category in checkedData;
+		});
+	});
 
 	// create gmap3 and call the marker generation function  
 	map_div.gmap3({
@@ -45,7 +53,7 @@ setInterval(function()
 	randomMarkers(map_div.gmap3("get").getBounds());
 }, 30000);
 
-// generate a list of 100 random marker and call gmap3 clustering function
+// Generate a list of Marker and call gmap3 clustering function From AJAX
 function randomMarkers(bounds)
 {
 	// generate random list of Markers - Should come from AJAX - Start
@@ -59,16 +67,17 @@ function randomMarkers(bounds)
 		{
 			color = colors[Math.floor(Math.random()*colors.length)];
 			list.push({
-						latLng:[
-									southWest.lat() + latSpan * Math.random(),
-									southWest.lng() + lngSpan * Math.random()
-								],
-						class: "markers",
-						options:
-							{
-								icon: "http://maps.google.com/mapfiles/marker_"+color+".png"
-							},
-						tag:color
+						latLng			:	[
+												southWest.lat() + latSpan * Math.random(),
+												southWest.lng() + lngSpan * Math.random()
+											],
+						class			:	"markers",
+						options			:
+											{
+												icon: "http://maps.google.com/mapfiles/marker_"+color+".png"
+											},
+						category		:	'cat_' + Math.abs(i%10+1).toString(),
+						sub_category	:	'cat_' + Math.abs(i%10+1).toString()
 					});
 		}
 	// generate random list of Markers - Should come from AJAX - END
@@ -101,42 +110,6 @@ function randomMarkers(bounds)
 							}
 					}
 			}
-	});
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function onChangeChk()
-{
-	// first : create an object where keys are colors and values is true (only for checked objects)
-	var checkedColors = {};
-	$("#colors input[type=checkbox]:checked").each(function(i, chk)
-	{
-		checkedColors[$(chk).attr("name")] = true;
-	});
-
-	// set a filter function using the closure data "checkedColors"
-	map_div.gmap3({get:"clusterer"}).filter(function(data)
-	{
-		return data.tag in checkedColors;
 	});
 }
 
