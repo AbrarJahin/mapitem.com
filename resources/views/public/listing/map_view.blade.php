@@ -86,10 +86,10 @@
 <div class="pos-adj9">
 	<div class="triangle-isosceles">
 		<div class="p-top">
-		    <img class="pull-left" src="images/p-favicon.jpg">
-		    <h4 class="pull-left">Ipone</h4>
-		    <a href="#" class="pull-right fa fa-close p-close"></a>
-		    <a href="#" class="pull-right fa fa-minus p-min "></a>
+			<img class="pull-left" src="images/p-favicon.jpg">
+			<h4 class="pull-left">Ipone</h4>
+			<a href="#" class="pull-right fa fa-close p-close"></a>
+			<a href="#" class="pull-right fa fa-minus p-min "></a>
 		</div>
 		<div class="p-bottom show9">
 			<div>

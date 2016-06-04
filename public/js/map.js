@@ -38,7 +38,6 @@ $(function()
 			}
 		}
 	});
-  
 });
 
 setInterval(function()
@@ -74,10 +73,84 @@ function randomMarkers(bounds)
 						class			:	"markers",
 						options			:
 											{
-												icon: "http://maps.google.com/mapfiles/marker_"+color+".png"
+												icon: "http://maps.google.com/mapfiles/marker_"+color+".png",
+												//animation: google.maps.Animation.BOUNCE
 											},
 						category		:	'cat_' + Math.abs(i%10+1).toString(),
-						sub_category	:	'cat_' + Math.abs(i%10+1).toString()
+						sub_category	:	'sub_cat_' + Math.abs(i%10+1).toString(),
+						id				: 	i,
+						data			: 	{
+												title			:	'title',
+												title_image_url	:	'images/p-favicon.jpg',
+												description		:	'description',
+												view_detail_url	:	'#asd'
+											},
+						tag				: 	'tag_' + Math.abs(i%10+1).toString(),
+						events			:	{
+												mouseover: function(marker, event, context)
+												{
+													//###############	Animate Pointer
+													//marker.setAnimation(null);
+													marker.setAnimation(google.maps.Animation.BOUNCE);
+
+													//###############	Now showing the infoWindow
+													//console.log(context);
+													//console.log(marker);
+													//console.log(event);
+													var infoWindowContent = context.data.description;	//Will be generated from AJAX call
+													infoWindowContent =	'<div id="iw-container">' +
+																			'<div class="iw-title">Porcelain Factory of Vista Alegre</div>' +
+																				'<div class="iw-content">' +
+																					'<div class="iw-subTitle">History</div>' +
+																					'<img src="http://localhost/blockhunt.com/public/images/bank-transfer-icon.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
+																					'<p>Founded in 1824, the Porcelain Factory of Vista Alegre was the first industrial unit dedicated to porcelain production in Portugal. For the foundation and success of this risky industrial development was crucial the spirit of persistence of its founder, José Ferreira Pinto Basto. Leading figure in Portuguese society of the nineteenth century farm owner, daring dealer, wisely incorporated the liberal ideas of the century, having become "the first example of free enterprise" in Portugal.</p>' +
+																					'<div class="iw-subTitle">Contacts</div>' +
+																					'<p>VISTA ALEGRE ATLANTIS, SA<br>3830-292 Ílhavo - Portugal<br>'+
+																					'<br>Phone. +351 234 320 600<br>e-mail: geral@vaa.pt<br>www: www.myvistaalegre.com</p>'+
+																				'</div>' +
+																			'<div class="iw-bottom-gradient"></div>' +
+																		'</div>';
+													/*infoWindowContent = '<div class="p-top">'
+																		+	'<img class="pull-left" src="'+context.data.title_image_url+'">'
+																		+	'<h4 class="pull-left">'+context.data.title+'</h4>'
+																		+	'<a href="#" class="pull-right fa fa-close p-close"></a>'
+																		+	'<a href="#" class="pull-right fa fa-minus p-min "></a>'
+																		+'</div>'
+																		+'<div class="p-bottom show9">'
+																		+	'<div>'
+																		+		context.data.description
+																		+	'</div>'
+																		+	'<a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="'+context.data.view_detail_url+'">Details</a>'
+																		+'</div>';*/
+
+													var	map = $(this).gmap3("get"),
+														infowindow = $(this).gmap3({get:{name:"infowindow"}});
+
+													if(infowindow)	//if infoWindow Exists - then show
+													{
+														infowindow.open(map, marker);
+														infowindow.setContent(infoWindowContent);
+													}
+													else			//if infoWindow not Exists - then crete and show
+													{
+														$(this).gmap3({
+																infowindow:
+																	{
+																		anchor:marker, 
+																		options	:
+																				{
+																					content		: infoWindowContent,
+																					maxWidth	: 350
+																				}
+																	}
+															});
+													}
+												},
+												mouseout: function()
+												{
+													//$(this).gmap3({get:{name:"infowindow"}}).close();
+												}
+						    				}
 					});
 		}
 	// generate random list of Markers - Should come from AJAX - END
