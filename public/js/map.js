@@ -26,16 +26,20 @@ $(function()
 	// create gmap3 and call the marker generation function  
 	map_div.gmap3({
 		map:{
-			options:{
-				zoom: 5,
-				mapTypeId: google.maps.MapTypeId.TERRAIN	//ROADMAP , SATELLITE , HYBRID , TERRAIN
-			},
-			onces: {
-				bounds_changed: function()
-				{
-					randomMarkers(map_div.gmap3("get").getBounds());
-				}
-			}
+			options	:	{
+							navigationControl: false,
+							scrollwheel: true,
+							streetViewControl: false,
+							mapTypeControl: false,
+							zoom: 5,
+							mapTypeId: google.maps.MapTypeId.TERRAIN	//ROADMAP , SATELLITE , HYBRID , TERRAIN
+						},
+			onces	:	{
+							bounds_changed: function()
+							{
+								randomMarkers(map_div.gmap3("get").getBounds());
+							}
+						}
 		}
 	});
 });
@@ -136,12 +140,13 @@ function randomMarkers(bounds)
 														$(this).gmap3({
 																infowindow:
 																	{
-																		anchor:marker, 
-																		options	:
-																				{
-																					content		: infoWindowContent,
-																					maxWidth	: 350
-																				}
+																		anchor	:	marker, 
+																		options	:	{
+																						content		: infoWindowContent,
+																						maxWidth	: 350,
+																						/*width		: 53,
+																						height		: 52*/
+																					}
 																	}
 															});
 													}
@@ -180,6 +185,18 @@ function randomMarkers(bounds)
 								content: '<div class="cluster cluster-3">CLUSTER_COUNT</div>',
 								width: 66,
 								height: 65
+							},
+							events:
+							{
+								click	:	function(overlay, event, context)
+											{
+												var curent_map = $(this).gmap3('get');
+												curent_map.setCenter(	new google.maps.LatLng(
+																									context.data.latLng.lat(),
+																									context.data.latLng.lng()
+																								));		//changing center of the map
+												curent_map.setZoom( curent_map.getZoom(1)+1 ); 									//Increasing zoom -> Zoom In
+											}
 							}
 					}
 			}
