@@ -98,9 +98,6 @@ function randomMarkers(bounds)
 													marker.setAnimation(google.maps.Animation.BOUNCE);
 
 													//###############	Now showing the infoWindow
-													//console.log(context);
-													//console.log(marker);
-													//console.log(event);
 													var infoWindowContent = context.data.description;	//Will be generated from AJAX call
 													infoWindowContent =	'<div id="iw-container">' +
 																			'<div class="iw-title">Porcelain Factory of Vista Alegre</div>' +
