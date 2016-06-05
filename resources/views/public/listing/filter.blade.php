@@ -2,7 +2,7 @@
 	<h4>Filter Your Search Results</h4>
 	<a href="#" class="glyphicon glyphicon-minus minimize">&nbsp;</a>
 	<form action="#" class="fl">
-		{{--
+
 		<div class="row margin-ten">
 			<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 no-padding">
 				<label>Sort :</label>
@@ -14,7 +14,9 @@
 					@endforeach
 				</select>
 			</div>
+
 			<div class="clearfix visible-xs visible-sm"></div>
+
 			<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 no-padding">
 				<label>Within :</label>
 			</div>
@@ -26,7 +28,7 @@
 				</select>
 			</div>
 		</div>
-		--}}
+
 
 		<div class="clearfix"></div>
 		<div class="row margin-ten">

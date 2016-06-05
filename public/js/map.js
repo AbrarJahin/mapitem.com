@@ -92,11 +92,11 @@ function randomMarkers(bounds)
 											},
 						tag				: 	'tag_' + Math.abs(i%10+1).toString(),
 						events			:	{
-												mouseover: function(marker, event, context)
+												click: function(marker, event, context)
 												{
 													//###############	Animate Pointer
 													//marker.setAnimation(null);
-													marker.setAnimation(google.maps.Animation.BOUNCE);
+													//marker.setAnimation(google.maps.Animation.BOUNCE);
 
 													//###############	Now showing the infoWindow
 													var infoWindowContent = context.data.description;	//Will be generated from AJAX call
