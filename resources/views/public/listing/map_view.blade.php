@@ -83,6 +83,7 @@
     </div>
 --}}
 
+{{--
 <div class="pos-adj9">
 	<div class="triangle-isosceles">
 		<div class="p-top">
@@ -99,3 +100,4 @@
 		</div>
 	</div>
 </div>
+--}}

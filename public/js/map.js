@@ -147,6 +147,7 @@ function randomMarkers(bounds)
 																	}
 															});
 													}
+
 													//Managing InfoWindow Contents - Fixing Contents
 													setTimeout(function()
 													{
