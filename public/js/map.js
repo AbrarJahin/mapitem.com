@@ -192,7 +192,7 @@ function randomMarkers(bounds)
 																									context.data.latLng.lat(),
 																									context.data.latLng.lng()
 																								));		//changing center of the map
-												curent_map.setZoom( curent_map.getZoom(1)+1 ); 									//Increasing zoom -> Zoom In
+												curent_map.setZoom( curent_map.getZoom()+1 ); 									//Increasing zoom -> Zoom In
 											}
 							}
 					}

@@ -1,24 +1,19 @@
 /*!
  * Author : S. M. Abrar Jahin & Bilal Munawar;
  */
-
-
 html,
 body {
     width: 100%;
     height: 100%;
 }
-
 body {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
-
 hr {
     max-width: 50px;
     border-color: #f05f40;
     border-width: 3px;
 }
-
 hr.light {
     border-color: #fff;
 }
@@ -57,25 +52,20 @@ hr.light {
 }
 
 /* Clusterred Map - End */
-
 a {
     color: #23a500;
     text-decoration: underline;
-   
 }
-
 a:hover,
 a:focus {
     color: #23a400 ;
 }
-
 h1,
 h2,
 h3,
 h4{
     font-family: 'Raleway', sans-serif;
 }
-
 h5,
 h6 {
      font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
@@ -102,7 +92,6 @@ h2 {
     text-align: center;
     width: 100%;
 }
-
 p {
     margin-bottom: 20px;
     font-size: 16px;
@@ -112,27 +101,22 @@ p {
 form, input, select{
     font-family: 'Varela Round', sans-serif;
 }
-
 ul{
     list-style-type: none;
 }
-
 body.modal-open
 {
     overflow: hidden;
     position: fixed;
 }
-
 .dz-progress
 {
     display: none;
 }
-
 .navbar
 {
     z-index: 10;
 }
-
 .bg-primary {
     background-color: #f05f40;
 }
@@ -141,7 +125,6 @@ body.modal-open
     color: #fff;
     background-color: #222;
 }
-
 .text-faded {
     color: rgba(255,255,255,.7);
 }
@@ -149,15 +132,12 @@ body.modal-open
 section {
     padding: 100px 0;
 }
-
 aside {
     padding: 50px 0;
 }
-
 .no-padding {
     padding: 0;
 }
-
 .navbar-default {
     border-color: rgba(34,34,34,.05);
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
@@ -166,20 +146,16 @@ aside {
     -moz-transition: all .35s;
     transition: all .35s;
 }
-
 .navbar-default .navbar-header .navbar-brand {
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
     color: #f05f40;
 }
-
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
     color: #eb3812;
 }
-
-
 .navbar-nav > li > a {
     padding-bottom: 17px;
     padding-top: 25px;
@@ -392,8 +368,6 @@ nav .dropdown-menu {
     margin-right: 10px;
 
 }
-
-
 .grey-small:hover, .grey-small:focus{
     text-decoration: none;
     color: #a2a2a2;
@@ -431,7 +405,6 @@ nav .dropdown-menu {
     text-decoration: none;
     font-size: 13px
 }
-
 #maximage{
     height: inherit!important;
     width: 100%!important
@@ -563,10 +536,6 @@ nav .dropdown-menu {
     margin-bottom: 28px;
     position: relative;
 }
-.pic-adj{
-   
-
-}
 .img-box{
     text-align: center;
     background-color: #e7e7e7;
@@ -594,7 +563,6 @@ nav .dropdown-menu {
     height: 100%!important;
     margin: 0 auto!important;
 }
-
 .helper {
     display: inline-block;
     height: 100%;
@@ -681,7 +649,6 @@ nav .dropdown-menu {
 .hiwd{
     margin: 0px 0
 }
-
 .hiwd ul {
     clear: both;
     margin: 20px 0;
@@ -797,7 +764,6 @@ footer{
     border-top: 0 none !important;
     min-width: 170px !important;
 }
-
 .dashboard li {
     border-bottom: 1px solid #e5e5e5;
 }
@@ -842,7 +808,6 @@ footer{
     width: 210%
   
 }
-
 .h-ctr2 {
     top: 0px!important;
     position: relative!important;
@@ -865,6 +830,7 @@ footer{
     vertical-align: top;
     word-break: break-all;
 }
+
 
 .h-ctr li ul{
     padding: 0
@@ -900,15 +866,12 @@ footer{
     top: 16px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
-
     .dn {
         height: 51px;
     }
     .dn .navbar-left li a{
         height: 51px!important
     }
-
-
 }
 .dn .navbar-left li{
 
@@ -1058,8 +1021,6 @@ footer{
 .dleft b, .p-edit {
     color: #23a400;
     float: left;
-    
-
 }
 .dleft ul {
     font-size: 13px;
@@ -1400,13 +1361,11 @@ header.carousel .fill {
     margin: 10px 0 10px 0px;
     width: 100%;
 }
-
 /*Listing page*/
 
 .list-p{
 
 }
-
 .topcat button {
     background-color: #f7f7f7;
     border: 1px solid #d0d0d0;
@@ -2131,10 +2090,6 @@ header.pdetail{
   66.666% { opacity: 1}
   100% { opacity: 0}
 }
-
-
-
-
 .carousel-fade .carousel-inner .item {
   opacity: 0!important;
   -webkit-transition-property: opacity!important;
@@ -2158,13 +2113,6 @@ header.pdetail{
 .carousel-fade .carousel-control {
   z-index: 2!important;
 }
-
-
-
-
-
-
-
 .carousel-control {
     background-image: none !important; /* remove background gradients on controls */
 }
@@ -2191,7 +2139,6 @@ header.pdetail{
 .zup{
     z-index: 100
 }
-
 .trans{
     background-color: rgba(256,256,256,0)!important;
     webkit-transition: background-color 1000ms linear;
@@ -2201,68 +2148,56 @@ header.pdetail{
     transition: background-color 1000ms linear;
 }
 /* custom inclusion of right, left and below tabs */
-
 .tabs-below > .nav-tabs,
 .tabs-right > .nav-tabs,
 .tabs-left > .nav-tabs {
   border-bottom: 0;
 }
-
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
   display: none;
 }
-
 .tab-content > .active,
 .pill-content > .active {
   display: block;
 }
-
 .tabs-below > .nav-tabs {
   border-top: 1px solid #ddd;
 }
-
 .tabs-below > .nav-tabs > li {
   margin-top: -1px;
   margin-bottom: 0;
 }
-
 .tabs-below > .nav-tabs > li > a {
   -webkit-border-radius: 0 0 4px 4px;
      -moz-border-radius: 0 0 4px 4px;
           border-radius: 0 0 4px 4px;
 }
-
 .tabs-below > .nav-tabs > li > a:hover,
 .tabs-below > .nav-tabs > li > a:focus {
   border-top-color: #ddd;
   border-bottom-color: transparent;
 }
-
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover,
 .tabs-below > .nav-tabs > .active > a:focus {
   border-color: transparent #ddd #ddd #ddd;
 }
-
 .tabs-left > .nav-tabs > li,
 .tabs-right > .nav-tabs > li {
   float: none;
 }
-
 .tabs-left > .nav-tabs > li > a,
 .tabs-right > .nav-tabs > li > a {
   min-width: 74px;
   margin-right: 0;
   margin-bottom: 3px;
 }
-
 .tabs-left > .nav-tabs {
   float: left;
   margin-right: 19px;
   border-right: 1px solid #ddd;
 }
-
 .tabs-left > .nav-tabs > li > a {
   margin-right: -1px;
   text-decoration: none;
@@ -2271,12 +2206,10 @@ header.pdetail{
      -moz-border-radius: 4px 4px 4px 4px;
           border-radius: 4px 4px 4px 4px;
 }
-
 .tabs-left > .nav-tabs > li > a:hover,
 .tabs-left > .nav-tabs > li > a:focus {
   border-color: #eeeeee #dddddd #eeeeee #eeeeee;
 }
-
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover,
 .tabs-left > .nav-tabs .active > a:focus {
@@ -2285,20 +2218,17 @@ header.pdetail{
   color: #23a500;
   *border-right-color: #ffffff;
 }
-
 .tabs-right > .nav-tabs {
   float: right;
   margin-left: 19px;
   border-left: 1px solid #ddd;
 }
-
 .tabs-right > .nav-tabs > li > a {
   margin-left: -1px;
   -webkit-border-radius: 0 4px 4px 0;
      -moz-border-radius: 0 4px 4px 0;
           border-radius: 0 4px 4px 0;
 }
-
 .tabs-right > .nav-tabs > li > a:hover,
 .tabs-right > .nav-tabs > li > a:focus {
   border-color: #eeeeee #eeeeee #eeeeee #dddddd;
@@ -2358,8 +2288,6 @@ header.pdetail{
 .no-border{
     border: none!important;
 }
-
-
 .section-heading {
     margin-top: 0;
 }
@@ -2448,18 +2376,15 @@ header.pdetail{
 .active-list{
 
 }
-
 .service-box p {
     margin-bottom: 0;
 }
-
 .portfolio-box {
     display: block;
     position: relative;
     margin: 0 auto;
     max-width: 650px;
 }
-
 .portfolio-box .portfolio-box-caption {
     display: block;
     position: absolute;
@@ -2474,7 +2399,6 @@ header.pdetail{
     -moz-transition: all .35s;
     transition: all .35s;
 }
-
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
     position: absolute;
     top: 50%;
@@ -2482,82 +2406,61 @@ header.pdetail{
     text-align: center;
     transform: translateY(-50%);
 }
-
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
     padding: 0 15px;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
-
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
 }
-
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
     font-size: 18px;
 }
-
 .portfolio-box:hover .portfolio-box-caption {
     opacity: 1;
 }
-
-
-
 .call-to-action h2 {
     margin: 0 auto 20px;
 }
-
 .text-primary {
     color: #f05f40;
 }
-
 .no-gutter > [class*=col-] {
     padding-right: 0;
     padding-left: 0;
 }
-
-
-
 .btn-default .badge {
     color: #fff;
     background-color: #222;
 }
-
-
 .btn-primary .badge {
     color: #f05f40;
     background-color: #fff;
 }
-
-
 .btn-xl {
     padding: 15px 30px;
 }
-
 ::-moz-selection {
     text-shadow: none;
     color: #fff;
     background: #222;
 }
-
 ::selection {
     text-shadow: none;
     color: #fff;
     background: #222;
 }
-
 img::selection {
     color: #fff;
     background: 0 0;
 }
-
 img::-moz-selection {
     color: #fff;
     background: 0 0;
 }
-
 body {
     webkit-tap-highlight-color: #222;
 }
@@ -2584,7 +2487,6 @@ body {
     top: 0;
     width: 32px;
 }
-
  .wsh-path-fill{
      fill: rgba(256,256,256,.3);
  }
@@ -2628,17 +2530,14 @@ body {
     width: 14px;
     height: 17px;
 }
-
 .wsh-path-fill:hover
 {
 	fill: rgba(236, 240, 241, 0.8);
 }
-
 .wsh-path-outline:hover
 {
 	stroke: rgba(35, 165, 0,.2);
  }
-
 .map-address
 {
 	height: 300px;
@@ -2646,7 +2545,6 @@ body {
 	background-color: #f0f0f0;
 	margin-bottom: 20px
 }
-
 .pac-container
 {
 	background-color: #FFF;
@@ -2655,23 +2553,19 @@ body {
 	display: inline-block;
 	float: left;
 }
-
 .pac-container:after
 {  /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
 	background-image: none !important;
 	height: 0px;
 }
-
 .modal
 {
 	z-index: 20;
 }
-
 .modal-backdrop
 {
 	z-index: 10;
 }
-
 .list-view .img-box-list
 {
 	float: left;
@@ -2734,9 +2628,6 @@ body {
 }
 
 @media(max-width:767px){
-
-    
-
     .width-adj11 {
     float: left!important;
     width: 100%!important;
@@ -2881,8 +2772,6 @@ body {
     .scale span:first-child{
         display: block;
     }
-
-
     .dn {
         
         height: auto;
@@ -2967,9 +2856,7 @@ body {
     }
     .h-ctr {
         width: 100%!important
-  
     }
-
 }
 @media(max-width:480px){
     .hdd-right{
@@ -3090,10 +2977,6 @@ body {
         margin-right: 0;
         padding: 8px 28px;
     }
-    
-    
-    
-
 }
 @media(max-width:880px){
     .ip-nav li a{
@@ -3113,12 +2996,6 @@ body {
     .ipl img{
         width: 170px
     }
-
-
-
-
-
-
 }
 @media(max-width:990px){
     .ip-nav .round2{
@@ -3165,8 +3042,6 @@ body {
     float: left;
     width: 19%;
 }
-
-
 }
 @media(min-width:768px){
    
@@ -3187,15 +3062,6 @@ body {
     margin-left: 5px;
     margin-right: 5px;
 }
-
-
-     
-    
-
-    
-    
-    
-        
 }
 @media(min-width:992px){
     
@@ -3203,16 +3069,6 @@ body {
         color: black !important;
         font-size: 12px !important;
     }
-
-
-    
-    
-    
-    
-    
-    
-
-
 }
 @media(max-width:1200px){
 
