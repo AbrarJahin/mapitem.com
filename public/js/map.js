@@ -2,7 +2,7 @@
 var map_div = $('#map');
 
 // generate an array of colors
-var colors = "black brown green purple yellow grey orange white".split(" ");
+//var colors = "black brown green purple yellow grey orange white".split(" ");
 
 // on document ready function
 $(function()
@@ -68,7 +68,7 @@ function randomMarkers(bounds)
 
 		for (i = 0; i < 100; i++)
 		{
-			color = colors[Math.floor(Math.random()*colors.length)];
+			//color = colors[Math.floor(Math.random()*colors.length)];
 			list.push({
 						latLng			:	[
 												southWest.lat() + latSpan * Math.random(),
@@ -77,7 +77,8 @@ function randomMarkers(bounds)
 						class			:	"markers",
 						options			:
 											{
-												icon: "http://maps.google.com/mapfiles/marker_"+color+".png",
+												icon: "http://maps.google.com/mapfiles/marker_green.png",
+												//icon: "http://maps.google.com/mapfiles/marker_"+color+".png",
 												//animation: google.maps.Animation.BOUNCE
 											},
 						category		:	'cat_' + Math.abs(i%10+1).toString(),
@@ -204,12 +205,12 @@ function randomMarkers(bounds)
 		}
 	// generate random list of Markers - Should come from AJAX - END
 
-	// call the clustering function
+	//Show Markers on Map
 	map_div.gmap3({
 		marker:
 			{
 				values: list,
-				cluster: 				//Cluster styling and config
+				/*cluster: 				//Cluster styling and config
 					{
 						radius: 100, 
 							// This style will be used for clusters with more than 0 markers
@@ -242,7 +243,7 @@ function randomMarkers(bounds)
 												curent_map.setZoom( curent_map.getZoom()+1 ); 									//Increasing zoom -> Zoom In
 											}
 							}
-					}
+					}*/
 			}
 	});
 }
