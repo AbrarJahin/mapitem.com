@@ -571,7 +571,7 @@ nav .dropdown-menu {
 .box-content {
     background-color: #f7f7f7;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.15);
-    height: 120px;
+    height: 40px;
     overflow: hidden;
     padding: 10px;
 }
