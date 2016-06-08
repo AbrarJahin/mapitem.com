@@ -1,6 +1,9 @@
 <div class="col-lg-4 col-sm-6">
 	<div class="pos-rel">
-		<a href="#" class="wsh-lst">@include('hearts-svg')</a>
+		<a href="#" class="wsh-lst">
+			@include('hearts-svg')
+			{{-- <object type="image/svg+xml" data="svg/normal.svg" class="weather_icon red_color_svg circle"></object> --}}
+		</a>
 		<div class="box showonmap9">
 			<div class="img-box-list">
 				<img src="images/a-pic3.jpg">
@@ -18,5 +21,5 @@
 				</div>
 			</div>
 		</div>
-	</div>    
+	</div>
 </div>

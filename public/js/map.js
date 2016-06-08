@@ -54,7 +54,7 @@ setInterval(function()
 		});
 
 	randomMarkers(map_div.gmap3("get").getBounds());
-}, 30000);
+}, 3000000);
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX
 function randomMarkers(bounds)
@@ -88,7 +88,8 @@ function randomMarkers(bounds)
 												title			:	'title',
 												title_image_url	:	'images/p-favicon.jpg',
 												description		:	'description',
-												view_detail_url	:	'#asd'
+												view_detail_url	:	'#asd',
+												id				:	i
 											},
 						tag				: 	'tag_' + Math.abs(i%10+1).toString(),
 						events			:	{
@@ -100,30 +101,19 @@ function randomMarkers(bounds)
 
 													//###############	Now showing the infoWindow
 													var infoWindowContent = context.data.description;	//Will be generated from AJAX call
-													infoWindowContent =	'<div id="iw-container">' +
-																			'<div class="iw-title">Porcelain Factory of Vista Alegre</div>' +
-																				'<div class="iw-content">' +
-																					'<div class="iw-subTitle">History</div>' +
-																					'<img src="http://localhost/blockhunt.com/public/images/bank-transfer-icon.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
-																					'<p>Founded in 1824, the Porcelain Factory of Vista Alegre was the first industrial unit dedicated to porcelain production in Portugal. For the foundation and success of this risky industrial development was crucial the spirit of persistence of its founder, José Ferreira Pinto Basto. Leading figure in Portuguese society of the nineteenth century farm owner, daring dealer, wisely incorporated the liberal ideas of the century, having become "the first example of free enterprise" in Portugal.</p>' +
-																					'<div class="iw-subTitle">Contacts</div>' +
-																					'<p>VISTA ALEGRE ATLANTIS, SA<br>3830-292 Ílhavo - Portugal<br>'+
-																					'<br>Phone. +351 234 320 600<br>e-mail: geral@vaa.pt<br>www: www.myvistaalegre.com</p>'+
-																				'</div>' +
-																			'<div class="iw-bottom-gradient"></div>' +
-																		'</div>';
-													/*infoWindowContent = '<div class="p-top">'
-																		+	'<img class="pull-left" src="'+context.data.title_image_url+'">'
-																		+	'<h4 class="pull-left">'+context.data.title+'</h4>'
-																		+	'<a href="#" class="pull-right fa fa-close p-close"></a>'
-																		+	'<a href="#" class="pull-right fa fa-minus p-min "></a>'
-																		+'</div>'
-																		+'<div class="p-bottom show9">'
-																		+	'<div>'
-																		+		context.data.description
+													infoWindowContent =	'<div class="col-lg-4 col-sm-6 map-master-div">'
+																		+	'<div class="pos-rel">'
+																		+				'<div class="box">'
+																		+			'<div class="img-box-list">'
+																		+				'<img src="images/a-pic3.jpg">'
+																		+			'</div>'
+																		+			'<div class="box-content box-content-map">'
+																		+				'<h5>Iphone <button onclick="showDetail('+context.data.id+')" type="button" class="btn btn-info pull-right map-infowindow-detail">Detail</button></h5>'
+																		+				'<h6> $500</h6>'
+																		+			'</div>'
+																		+		'</div>'
 																		+	'</div>'
-																		+	'<a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="'+context.data.view_detail_url+'">Details</a>'
-																		+'</div>';*/
+																		+'</div>';
 
 													var	map = $(this).gmap3("get"),
 														infowindow = $(this).gmap3({get:{name:"infowindow"}});
@@ -150,15 +140,14 @@ function randomMarkers(bounds)
 													}
 
 													//Managing InfoWindow Contents - Fixing Contents
-													setTimeout(function()
+													/*setTimeout(function()
 													{
 														// Reference to the DIV that wraps the bottom of infowindow
 														var iwOuter = $('.gm-style-iw');
 
-														/* Since this div is in a position prior to .gm-div style-iw.
-														* We use jQuery and create a iwBackground variable,
-														* and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
-														*/
+														// Since this div is in a position prior to .gm-div style-iw.
+														// We use jQuery and create a iwBackground variable,
+														// and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
 														var iwBackground = iwOuter.prev();
 
 														// Removes background shadow DIV
@@ -194,7 +183,7 @@ function randomMarkers(bounds)
 														iwCloseBtn.mouseout(function(){
 														$(this).css({opacity: '1'});
 														});
-													}, 30);
+													}, 30);*/
 												},
 												mouseout: function()
 												{
@@ -258,4 +247,12 @@ function onChangeOnOff()		//Turning on or off clustering
 	{
 		map_div.gmap3({get:"clusterer"}).disable();
 	}
+}
+
+function showDetail(id)		//Turning on or off clustering
+{
+	//alert(id);
+	$('.ad-detail').show("slow");
+	$('.ad-listing').hide("slow");
+	$('.close-detail').toggleClass("show");
 }
