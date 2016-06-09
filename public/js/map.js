@@ -49,11 +49,11 @@ $(function()
 						}
 		}
 	});
-	/*//Close All Infowindow by clicking inside map
-	google.maps.event.addListener(map, "click", function(event)
+	//Close All Infowindow by clicking inside map
+	google.maps.event.addListener(map_div.gmap3("get"), "click", function(event)
 	{
 		map_div.gmap3({get:{name:"infowindow"}}).close();
-	});*/
+	});
 });
 
 setInterval(function()
@@ -143,9 +143,7 @@ function randomMarkers(bounds)
 																		anchor	:	marker, 
 																		options	:	{
 																						content		: infoWindowContent,
-																						maxWidth	: 350,
-																						/*width		: 53,
-																						height		: 52*/
+																						maxWidth	: 350
 																					}
 																	}
 															});
@@ -265,7 +263,7 @@ function openInfoWindowByID(clicked_id)
 								map_div.gmap3({
 									get:
 										{
-										id: clicked_id
+											id: clicked_id
 										}
 									})
 								, 'click'
