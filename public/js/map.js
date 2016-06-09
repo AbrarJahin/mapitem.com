@@ -7,6 +7,13 @@ var map_div = $('#map');
 // on document ready function
 $(function()
 {
+	//On Mouseover Map InfoWindow Pop Up
+	$(".showonmap9").mouseover(function(event)
+    {
+    	//Will be done by ID
+    	openInfoWindowByID( $(this).attr('marker_id') );
+    });
+
 	$("#category_filter input[type=checkbox]").change(function()
 	{
 		// first : create an object where keys are colors and values is true (only for checked objects)
@@ -42,6 +49,11 @@ $(function()
 						}
 		}
 	});
+	/*//Close All Infowindow by clicking inside map
+	google.maps.event.addListener(map, "click", function(event)
+	{
+		map_div.gmap3({get:{name:"infowindow"}}).close();
+	});*/
 });
 
 setInterval(function()
@@ -171,7 +183,8 @@ function randomMarkers(bounds)
 
 														// Changes the desired tail shadow color.
 														iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
-														
+
+
 													}, 30);
 												},
 												mouseout: function()
@@ -244,4 +257,17 @@ function showDetail(id)		//Turning on or off clustering
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').toggleClass("show");
+}
+
+function openInfoWindowByID(clicked_id)
+{
+	google.maps.event.trigger(
+								map_div.gmap3({
+									get:
+										{
+										id: clicked_id
+										}
+									})
+								, 'click'
+							);
 }

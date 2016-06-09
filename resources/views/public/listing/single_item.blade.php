@@ -4,7 +4,7 @@
 			@include('hearts-svg')
 			{{-- <object type="image/svg+xml" data="svg/normal.svg" class="weather_icon red_color_svg circle"></object> --}}
 		</a>
-		<div class="box showonmap9">
+		<div class="box showonmap9" marker_id={{ $i }}>
 			<div class="img-box-list">
 				<img src="images/a-pic3.jpg">
 			</div>
