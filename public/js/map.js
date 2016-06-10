@@ -56,6 +56,7 @@ $(function()
 	});
 });
 
+//Refreshing the map if any new item available
 setInterval(function()
 {
 	map_div.gmap3({
