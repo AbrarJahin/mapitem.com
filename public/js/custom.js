@@ -32,10 +32,17 @@ function getLocation()
 	{
 		$.get("http://ipinfo.io", function (response)
 		{
-			var temp		= response.loc;
-			temp			= temp.split(",");
+			var temp		= response.loc.split(",");
 			latitude		= parseFloat(temp[0]);
 			longitude		= parseFloat(temp[1]);
+			//Input User Location in input
+			$('#user_location').val(latitude+' , '+longitude);
+			//Set Map Center to Current User Location
+			var $mapDiv = $('#map');
+			if ( $mapDiv.length)
+			{
+				$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));
+			}
 		}, "jsonp");
 	}
 }

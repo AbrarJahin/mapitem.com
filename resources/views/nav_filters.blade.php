@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-padding topsearch">
-		<input type="email" placeholder="Location" id="InputEmail1" class="form-control normal-input">
+		<input type="text" placeholder="Location" id="user_location" class="form-control normal-input">
 		<button class="btn dropdown-toggle" type="button"><span class="fa fa-fw">&#xf002;</span></button>
 	</div>
 </form>
