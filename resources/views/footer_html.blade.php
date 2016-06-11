@@ -66,7 +66,7 @@
                 @else
                 container
                 @endif">
-            © Copyright Mapitems 2016
+            © Copyright Mapitems {{ date("Y") }}
         </div>
     </div> 
 </footer>

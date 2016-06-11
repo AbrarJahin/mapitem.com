@@ -1,7 +1,7 @@
 {{-- Search bar --}}
 <div class="pos-adj5">
     <div class="container">
-        <form id="post_free_add_form" role="form" class="tab-content adj1" method="get" action="{{ URL::route('listing') }}">
+        <form id="search_add_from" role="form" class="tab-content adj1" method="get" action="{{ URL::route('listing') }}" onsubmit="return false;">
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 no-padding cat">
                 <button type="button" class="btn cat-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Category
@@ -22,9 +22,9 @@
                     @endforeach
                 </ul>
             </div>
-
+            <input value="123" type="hidden" id="input_nav_subcategory" name="input_nav_subcategory">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-padding pos-rel">
-                <input type="text" class="ct form-control large-input col-lg-4 input-title" id="input_nav_search" placeholder="Search">
+                <input type="text" class="ct form-control large-input col-lg-4 input-title" id="input_nav_search" name="input_nav_search" placeholder="Search">
                 <div class="ct-list">
                    <ul>
                         <li><a href="#">This is one</a></li>
@@ -34,11 +34,15 @@
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-padding">
-                <input type="text" class="form-control large-input col-lg-4 input-title" id="user_location" placeholder="Location">
+                <input type="text" class="form-control large-input col-lg-4 input-title" id="user_location" name="user_location" placeholder="Location">
             </div>
 
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 no-padding cat">
-                <button type="submit" class="btn srch-btn dropdown-toggle">
+                <button onclick="window.location.href=this.form.action +'/'+
+								this.form.input_nav_subcategory.value +'/'+
+								this.form.user_location.value+'/'+
+								this.form.input_nav_search.value;"
+						type="submit" class="btn srch-btn dropdown-toggle">
                 Search
                 </button>
             </div>
