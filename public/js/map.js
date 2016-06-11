@@ -52,7 +52,15 @@ $(function()
 	//Close All Infowindow by clicking inside map
 	google.maps.event.addListener(map_div.gmap3("get"), "click", function(event)
 	{
-		map_div.gmap3({get:{name:"infowindow"}}).close();
+		try
+		{
+			map_div.gmap3({get:{name:"infowindow"}}).close();
+		}
+		catch(error)
+		{
+		    console.log(error);
+		    console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
+		}
 	});
 
 	//Pagination
