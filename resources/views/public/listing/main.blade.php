@@ -72,6 +72,8 @@
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script> 
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gmap3/6.1.0/gmap3.min.js"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/map.js') }}"></script>
+	{{-- Pagination --}}
+	<script type="text/javascript" src="http://botmonster.com/jquery-bootpag/jquery.bootpag.js"></script>
 
 {{-- Footer Scripts - End --}}
 

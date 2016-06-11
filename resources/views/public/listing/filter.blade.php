@@ -44,7 +44,7 @@
 						<li class="no-border">
 							<label class="pull-left">
 								<input type="checkbox" name="cat_{{ $category->id }}" checked>
-								<strong> {{ $category->name }} (21)</strong>{{ $category->sub_category }}
+								<strong> {{ $category->name }} (21)</strong>
 							</label>
 							<ul>
 								{{--
@@ -57,14 +57,7 @@
 								@endforeach
 								--}}
 							</ul>
-							
 						</li>
-						{{-- <li class="no-border">
-							<label class="pull-left">
-								<input type="checkbox" name="sub_cat_3" checked>
-								<strong> All (21)</strong>Hide All
-							</label>
-						</li> --}}
 					@endforeach
 				</ul>
 			</div>

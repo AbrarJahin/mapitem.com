@@ -14,3 +14,6 @@
 		@endfor
 	</div>
 </div>
+
+<div id="dynamic_content">Pagination goes here</div>
+<div id="show_paginator"></div>

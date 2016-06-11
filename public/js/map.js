@@ -23,11 +23,11 @@ $(function()
 			checkedData[$(chk).attr("name")] = true;
 		});
 
-		// set a filter function using the closure data "checkedData"
+		/*// set a filter function using the closure data "checkedData"
 		map_div.gmap3({get:"clusterer"}).filter(function(data)
 		{
 			return data.category in checkedData;
-		});
+		});*/
 	});
 
 	// create gmap3 and call the marker generation function  
@@ -53,6 +53,28 @@ $(function()
 	google.maps.event.addListener(map_div.gmap3("get"), "click", function(event)
 	{
 		map_div.gmap3({get:{name:"infowindow"}}).close();
+	});
+
+	//Pagination
+	$('#show_paginator').bootpag({
+	       total: 53,
+	       page: 2,
+	       maxVisible: 10,
+	       leaps: true,
+	       firstLastUse: true,
+	       first: '←',
+	       last: '→',
+	       wrapClass: 'pagination',
+	       activeClass: 'active',
+	       disabledClass: 'disabled',
+	       nextClass: 'next',
+	       prevClass: 'prev',
+	       lastClass: 'last',
+	       firstClass: 'first'
+	}).on('page', function(event, num)
+	{
+		console.log(event);
+	     $("#dynamic_content").html("Page " + num); // or some ajax content loading...
 	});
 });
 

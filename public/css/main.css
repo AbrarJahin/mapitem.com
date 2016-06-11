@@ -3115,6 +3115,12 @@ body {
 	width: fit-content; 
 }
 
+#show_paginator
+{
+	margin: auto;
+	width: fit-content;
+}
+
 .map-master-div
 {
 	width: 215px !important;
