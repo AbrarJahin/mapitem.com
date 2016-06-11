@@ -8,13 +8,13 @@
                 <a href="{{ URL::route('user.dashboard') }}" @if($current_page=="user.dashboard") class="selected" @endif > Dashboard  </a>
             </li>
             <li>
-                <a href="{{ URL::route('user.my_adds') }}" @if($current_page=="user.my_adds") class="selected" @endif > My Ads <span class="notification">3</span></a>
+                <a href="{{ URL::route('user.my_adds') }}" @if($current_page=="user.my_adds") class="selected" @endif > My Ads <span class="notification">{{ $total_no_of_adds }}</span></a>
             </li>
             <li>
-                <a href="{{ URL::route('user.offers') }}" @if($current_page=="user.offers") class="selected" @endif > Offers  <span class="notification">1</span></a>
+                <a href="{{ URL::route('user.offers') }}" @if($current_page=="user.offers") class="selected" @endif > Offers  <span class="notification">{{ $no_of_new_offer }}</span></a>
             </li>
             <li class="">
-                <a href="{{ URL::route('user.inbox') }}" @if($current_page=="user.inbox") class="selected" @endif > Inbox  <span class="notification">5</span></a>
+                <a href="{{ URL::route('user.inbox') }}" @if($current_page=="user.inbox") class="selected" @endif > Inbox  <span class="notification">{{ $no_of_new_message }}</span></a>
             </li>
             <li class="">
                 <a href="{{ URL::route('user.profile') }}" @if($current_page=="user.profile") class="selected" @endif > My Profile  </a>

@@ -1,7 +1,7 @@
 @extends('user.master')
 
-@section('page_title', 'Inbox')
-@section('meta_page_description', 'Mapitem Inbox')
+@section('page_title', 'My Adds')
+@section('meta_page_description', 'Mapitem - All My Adds')
 @section('meta_author', 'S. M. Abrar Jahin')
 
 @section('content')
