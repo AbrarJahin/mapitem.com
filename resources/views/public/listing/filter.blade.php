@@ -47,15 +47,13 @@
 								<strong> {{ $category->name }} (21)</strong>
 							</label>
 							<ul>
-								{{--
-								@foreach($category->sub_category as $sub_cat)
+								@foreach($category->subCategory as $sub_cat)
 									<li>
 										<label class="pull-left">
 											<input type="checkbox" checked value="{{ $sub_cat->id }}"> {{ $sub_cat->name }} (7)
 										</label>
 									</li>
 								@endforeach
-								--}}
 							</ul>
 						</li>
 					@endforeach

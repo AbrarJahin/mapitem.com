@@ -71,10 +71,10 @@ $(function()
 	       prevClass: 'prev',
 	       lastClass: 'last',
 	       firstClass: 'first'
-	}).on('page', function(event, num)
+	}).on('page', function(event, page_num)
 	{
 		console.log(event);
-	     $("#dynamic_content").html("Page " + num); // or some ajax content loading...
+		console.log(page_num);
 	});
 });
 

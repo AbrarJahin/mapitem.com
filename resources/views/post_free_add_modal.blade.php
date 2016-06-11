@@ -22,7 +22,7 @@
 						<div id="tab1" class="tab-pane">
 							<select name="category_id" class="form-control medium-select" id="category_select">
 								<option value='0'>Please Select a Category</option>
-								@foreach ($category as $data)
+								@foreach ($categories as $data)
 									<option value="{{ $data->id }}">{{ $data->name }}</option>
 								@endforeach
 							</select>

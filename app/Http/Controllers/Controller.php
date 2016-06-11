@@ -16,7 +16,10 @@ class Controller extends BaseController
 	public function __construct()
 	{
 		// Sharing data to all the views
-		$category = Category::orderBy('name', 'asc')->get();
-		View::share('category', $category);
+		$category = Category::with('SubCategory')->get();
+		View::share('categories', $category);
+		View::share('total_no_of_adds', 5);
+		View::share('no_of_new_offer', 6);
+		View::share('no_of_new_message', 4);
 	}
 }
