@@ -29,7 +29,9 @@
 <div class="clearfix"></div>
 
 <div class="col-lg-12">
-	<button type="submit" class="btn green-medium pull-right">View More</button>
+	<a href="{{ URL::route('listing') }}">
+		<button class="btn green-medium pull-right">View More</button>
+	</a>
 </div>
 
 <div class="clearfix"></div>
