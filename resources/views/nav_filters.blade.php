@@ -11,15 +11,11 @@
 					<li class="no-border">
 						<h4 class="no-margin">{{ $category->name }}</h4>
 						<ul>
-							{{--
-								@foreach($category->subCategory as $sub_cat)
-									<li><a href="#">{{ $sub_cat->name }}</a></li>
-								@endforeach
-							--}}
-							<li><a href="#">{{ $category->name }}</a></li>
-							<li><a href="#">This is second</a></li>
-							<li><a href="#">This is third</a></li>
-
+							@foreach($category->subCategory as $sub_cat)
+								<li>
+									<a href="#{{ $sub_cat->id }}">{{ $sub_cat->name }}</a>
+								</li>
+							@endforeach
 						</ul>
 					</li>
 				@endforeach
