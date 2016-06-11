@@ -1,3 +1,4 @@
+<meta name="ridirect_url_after_successful_post" content="{{ URL::route('user.my_adds') }}">
 <div id="pfa" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
 	<div class="modal-dialog">
 		{{-- Modal content--}}
@@ -66,24 +67,6 @@
 
 				</div>
 			</div>
-			{{--
-			<div class="clearfix margin-twenty"></div>
-			<div class="modal-footer">
-				<!--
-				<ul class="nav nav-tabs nav-tabs-bottom pf-modal" role="tablist"XXXX>
-					<li class="ta active"><a href="#title" class="bs-overwrite" aria-controls="home" role="tab" data-toggle="tab">Step 1</a></li>
-					<li class="ta"><a href="#image" class="bs-overwrite" aria-controls="profile" role="tab" data-toggle="tab">Step 2</a></li>
-					<li class="ta"><a class="bs-overwrite" href="#location" aria-controls="profile" role="tab" data-toggle="tab">Step 3</a></li>
-				</ul> -->
-
-				<!-- <a href="#" class="grey-small pull-left no-textdecor" >Previous</a>
-				<a href="#" class="green-small pull-left no-textdecor">Next</a>
-				<a href="#" class="done-small green-small hide pull-left no-textdecor">Done</a> -->
-
-				<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-				
-			</div>
-			--}}
 		</div>
 	</div>
 </div>

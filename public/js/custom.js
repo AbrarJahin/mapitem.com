@@ -317,6 +317,7 @@ $(document).ready(function()
 								enqueueForUpload	: true,
 								autoProcessQueue	: false, 								//Will process manually after all done
 								maxFilesize			: 5, 									// In MB
+								maxFiles			: 10,									//Max upload 10 files
 								dictFileTooBig		: 'Bigger than 5 MB image is not allowed',
 								addRemoveLinks		: true,									//Enabling remove Link
 								dictRemoveFile		: 'Remove This Image',
@@ -345,6 +346,16 @@ $(document).ready(function()
 		$myDropZone[0].dropzone.on('queuecomplete', function()				//Reset the status
 		{
 			this.options.autoProcessQueue = false;
+		});
+
+		$myDropZone[0].dropzone.on("complete", function (file)
+		{
+			if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0)	//All Upload Done
+			{
+				//alert('Your action, Refresh your page here. ');
+				//location.reload();
+				window.location.replace($("meta[name='ridirect_url_after_successful_post']").attr("content"));
+			}
 		});
 
 		//Submitting the free add posting form with AJAX
