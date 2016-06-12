@@ -9,7 +9,7 @@
             <h5 class="pull-left">Price: <span>$1000</span></h5>
             <div class="pull-right popups">
                 <a data-original-title="Add to Wishlist" href="#" class="wsh-lst-adpage grey-tooltip" data-toggle="tooltip" data-placement="top" title="">
-                @include('hearts-svg')
+                    <object type="image/svg+xml" data="{{ URL::asset('svg/normal.svg') }}"></object>
                 </a>
                 <a title="" data-placement="top" data-toggle="tooltip" class="fa fa-comment-o grey-tooltip" href="#" data-original-title="Reviews"></a>
 

@@ -4,7 +4,10 @@
 <div class="row">
 	@for ($i = 0; $i < 8; $i++)
 		<div class="col-lg-3 col-md-3 col-sm-6">
-			<a href="#" class="wsh-lst2"> @include('hearts-svg') </a>  
+			<a href="#" class="wsh-lst2">
+				{{-- If any problem in showing SVG in deployment - fix the CSS inside svg element --}}
+				<object type="image/svg+xml" data="{{ URL::asset('svg/normal.svg') }}"></object>
+			</a>  
 			<div class="box">
 				<div class="img-box">
 					<img src="images/sb-i.jpg" class="">

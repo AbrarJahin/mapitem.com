@@ -1,8 +1,8 @@
 <div class="col-lg-4 col-sm-6">
 	<div class="pos-rel">
 		<a href="#" class="wsh-lst">
-			@include('hearts-svg')
-			{{-- <object type="image/svg+xml" data="svg/normal.svg" class="weather_icon red_color_svg circle"></object> --}}
+			{{-- If any problem in showing SVG in deployment - fix the CSS inside svg element --}}
+			<object type="image/svg+xml" data="{{ URL::asset('svg/normal.svg') }}"></object>
 		</a>
 		<div class="box showonmap9" marker_id={{ $i }}>
 			<div class="img-box-list">

@@ -2491,6 +2491,8 @@ body {
 	height: 32px;
 	top: 0;
 	width: 32px;
+	position: absolute;
+	z-index: -1;
 }
  .wsh-path-fill{
 	 fill: rgba(256,256,256,.3);
