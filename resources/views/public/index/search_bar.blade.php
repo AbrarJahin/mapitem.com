@@ -1,7 +1,7 @@
 {{-- Search bar --}}
 <div class="pos-adj5">
     <div class="container">
-        <form id="search_add_from" role="form" class="tab-content adj1" method="get" action="{{ URL::route('listing') }}" onsubmit="return false;">
+        <form id="search_add_from" role="form" class="tab-content adj1" method="get" action="{{ URL::route('listing') }}">
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 no-padding cat">
                 <button type="button" class="btn cat-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Category
@@ -38,11 +38,7 @@
             </div>
 
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 no-padding cat">
-                <button onclick="window.location.href=this.form.action +'/'+
-								this.form.input_nav_subcategory.value +'/'+
-								this.form.user_location.value+'/'+
-								this.form.input_nav_search.value;"
-						type="submit" class="btn srch-btn dropdown-toggle">
+                <button type="submit" class="btn srch-btn dropdown-toggle">
                 Search
                 </button>
             </div>

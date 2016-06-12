@@ -1,4 +1,4 @@
-<form id="search_add_from" action="{{ URL::route('listing') }}" class="top-search col-lg-offset-1 col-md-offset-1 col-lg-5 col-md-5 col-sm-5 col-xs-12 no-padding" onsubmit="return false;">
+<form id="search_add_from" action="{{ URL::route('listing') }}" class="top-search col-lg-offset-1 col-md-offset-1 col-lg-5 col-md-5 col-sm-5 col-xs-12 no-padding">
 
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-padding topcat">
 		<div class="dropdown no-padding ">
@@ -33,11 +33,9 @@
 
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-padding topsearch">
 		<input type="text" placeholder="Location" id="user_location" class="form-control normal-input">
-		<button onclick="window.location.href=this.form.action +'/'+
-								this.form.input_nav_subcategory.value +'/'+
-								this.form.user_location.value+'/'+
-								this.form.input_nav_search.value;"
-				class="btn dropdown-toggle" type="submit"><span class="fa fa-fw">&#xf002;</span></button>
+		<button class="btn dropdown-toggle" type="submit">
+			<span class="fa fa-fw">&#xf002;</span>
+		</button>
 	</div>
 
 </form>

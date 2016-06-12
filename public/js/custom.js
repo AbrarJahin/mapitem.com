@@ -36,7 +36,7 @@ function getLocation()
 			latitude		= parseFloat(temp[0]);
 			longitude		= parseFloat(temp[1]);
 			//Input User Location in input
-			$('#user_location').val(latitude+' , '+longitude);
+			$('#user_location').val(latitude+','+longitude);
 			//Set Map Center to Current User Location
 			var $mapDiv = $('#map');
 			if ( $mapDiv.length)
@@ -49,6 +49,53 @@ function getLocation()
 
 $(document).ready(function()
 {
+	//Create Custom Search Form submit to show pretty URL
+	$("#search_add_from").submit(function(e)
+	{
+		e.preventDefault();
+		if( $('#input_nav_search').val().trim().length<1 )
+		{
+			$('#input_nav_search').parent().addClass("has-error");
+			return 0;
+		}
+		else
+		{
+			$('#input_nav_search').parent().removeClass("has-error");
+		}
+		var lat_input,lon_input;
+		try
+		{
+			var lat_lon_parsed_data = $('#user_location').val().split(',');
+			lat_input = parseFloat( lat_lon_parsed_data[0] );
+			lon_input = parseFloat( lat_lon_parsed_data[1] );
+			if(	isNaN(lat_input)	||	isNaN(lon_input)	)
+			{
+				$('#user_location').parent().addClass("has-error");
+				return 0;
+			}
+			else			//Everything OK
+			{
+				var redirect_url	=	$('meta[name=base_url]').attr("content")
+										+	'/listing/'
+										+	$('#input_nav_subcategory').val()
+										+	'/'
+										+	lat_input
+										+	'/'
+										+	lon_input
+										+	'/'
+										+	$('#input_nav_search').val().trim();
+				//window.location.replace(redirect_url);		//Remove History
+				window.location.href	=	redirect_url;		//Keep history
+			}
+		}
+		catch(err)
+		{
+			console.log('could not perse invalid data');
+			$('#user_location').parent().addClass("has-error");
+				return 0;
+		}
+	});
+
 	//Making Bootstrap Modal centerize - Start
 		$(document).on('show.bs.modal', '.modal', centerModal);
 		$(window).on("resize", function (){ $('.modal:visible').each(centerModal); });
