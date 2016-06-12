@@ -6,13 +6,13 @@
 		</a>
 		<div class="box showonmap9" marker_id={{ $i }}>
 			<div class="img-box-list">
-				<img src="images/a-pic3.jpg">
+				<img src="{{ URL::asset('uploads') }}/a-pic3.jpg">
 			</div>
 			<div class="box-content">
 				<h5>Iphone</h5>
 				<h6> $500</h6>
 				<div class="clearfix margin-bottom-ten"></div>
-				<img class="pull-left width-adj2" src="images/pp-5.jpg">
+				<img class="pull-left width-adj2" src="{{ URL::asset('uploads') }}/pp-5.jpg">
 				<div class="pull-left margin-left-ten width-adj3">
 					<p class="pull-left dot1">
 					Iphone 4s with complete accesseries for sale.

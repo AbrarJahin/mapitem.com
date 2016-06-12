@@ -65,20 +65,20 @@ $(function()
 
 	//Pagination
 	$('#show_paginator').bootpag({
-	       total: 53,
-	       page: 2,
-	       maxVisible: 10,
-	       leaps: true,
-	       firstLastUse: true,
-	       first: '←',
-	       last: '→',
-	       wrapClass: 'pagination',
-	       activeClass: 'active',
-	       disabledClass: 'disabled',
-	       nextClass: 'next',
-	       prevClass: 'prev',
-	       lastClass: 'last',
-	       firstClass: 'first'
+	       total			:	$('meta[name=total_no_of_pages]').attr("content"),
+	       page				:	$('meta[name=current_page_no]').attr("content"),
+	       maxVisible		:	$('meta[name=max_visible]').attr("content"),
+	       leaps			:	true,
+	       firstLastUse		:	true,
+	       first			:	'←',
+	       last				:	'→',
+	       wrapClass		:	'pagination',
+	       activeClass		:	'active',
+	       disabledClass	:	'disabled',
+	       nextClass		:	'next',
+	       prevClass		:	'prev',
+	       lastClass		:	'last',
+	       firstClass		:	'first'
 	}).on('page', function(event, page_num)
 	{
 		console.log(event);

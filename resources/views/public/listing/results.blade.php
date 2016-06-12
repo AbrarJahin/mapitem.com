@@ -15,4 +15,9 @@
 	</div>
 </div>
 
+{{-- Paginator Settings --}}
+<meta name="total_no_of_pages"	content="153">
+<meta name="current_page_no"	content="2">
+<meta name="max_visible"		content="10">
+
 <div id="show_paginator"></div>

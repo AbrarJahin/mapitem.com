@@ -4,6 +4,7 @@
 <meta name="description" content="@yield('page_content')">
 <meta name="author" content="Abrar jahin">
 <meta name="base_url" content="{{ URL::to('/') }}">
+<meta name="upload_folder_url" content="{{ URL::asset('uploads') }}/">
 <title>Block Hunt - @yield('page_title')</title>
 {{-- Fabicon - Start --}}
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ URL::asset('favicon.ico') }}" />
