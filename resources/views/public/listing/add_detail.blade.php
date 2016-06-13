@@ -150,7 +150,7 @@
         <div class="contact-bar">
           
             <div class="sb-top">
-                <img class="pround" alt="Jesica" src="images/pp-1.jpg">
+                <img class="pround" alt="Jesica" src="{{ URL::asset('images/pp-1.jpg') }}">
                 <h6>Jesica Alben</h6>
                 <div class="star">
                     <i class="fa fa-star green-text"></i>

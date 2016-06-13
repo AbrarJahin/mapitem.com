@@ -97,7 +97,7 @@ setInterval(function()
 		});
 
 	randomMarkers(map_div.gmap3("get").getBounds());
-}, 3000000);
+}, 30000);
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX
 function randomMarkers(bounds)
@@ -217,7 +217,7 @@ function randomMarkers(bounds)
 														iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
 
 
-													}, 30);
+													}, 10);
 												},
 												mouseout: function()
 												{
