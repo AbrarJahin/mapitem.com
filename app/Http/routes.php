@@ -1,5 +1,6 @@
 <?php
 
+//Public Routes
 Route::group(['prefix' => '/','middleware' => ['web']], function()
 {
 	//Auth - registration
@@ -37,10 +38,16 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 			'as' => 'listing-search'
 		]);
 
-	//Sub-category Showing AJAX
+	//Sub-category Showing - AJAX
 	Route::post('find_subcategory', [
 			'uses' => 'PublicController@findSubcategory',
 			'as' => 'find_subcategory'
+		]);
+
+	//Map Item Showing - AJAX
+	Route::post('find_map_items', [
+			'uses' => 'PublicController@findMapItems',
+			'as' => 'find_map_items'
 		]);
 });
 

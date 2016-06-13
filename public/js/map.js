@@ -1,5 +1,6 @@
 //General Config
 var map_div = $('#map');
+//var last_opened_infowindow;
 
 // generate an array of colors
 //var colors = "black brown green purple yellow grey orange white".split(" ");
@@ -34,21 +35,23 @@ $(function()
 	map_div.gmap3({
 		map:{
 			options	:	{
-							navigationControl: false,
-							scrollwheel: true,
-							streetViewControl: false,
-							mapTypeControl: false,
-							zoom: 5,
-							mapTypeId: google.maps.MapTypeId.TERRAIN	//ROADMAP , SATELLITE , HYBRID , TERRAIN
-						},
+							navigationControl	: false,
+							scrollwheel			: true,
+							streetViewControl	: false,
+							mapTypeControl		: false,
+							zoom				: 5,
+							center				: new google.maps.LatLng(latitude,longitude),
+							mapTypeId			: google.maps.MapTypeId.TERRAIN	//ROADMAP , SATELLITE , HYBRID , TERRAIN
+						}/*,
 			onces	:	{
 							bounds_changed: function()
 							{
-								randomMarkers(map_div.gmap3("get").getBounds());
+								generateMarkers(map_div.gmap3("get").getBounds());
 							}
-						}
+						}*/
 		}
 	});
+
 	//Close All Infowindow by clicking inside map
 	google.maps.event.addListener(map_div.gmap3("get"), "click", function(event)
 	{
@@ -61,6 +64,12 @@ $(function()
 		    console.log(error);
 		    console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
 		}
+	});
+
+	//Call AJAX Call from Here
+	google.maps.event.addListener(map_div.gmap3("get"), "idle", function(event)
+	{
+		generateMarkers(map_div.gmap3("get").getBounds());
 	});
 
 	//Pagination
@@ -86,7 +95,7 @@ $(function()
 	});
 });
 
-//Refreshing the map if any new item available
+/*//Refreshing the map if any new item available
 setInterval(function()
 {
 	map_div.gmap3({
@@ -96,11 +105,11 @@ setInterval(function()
 				}
 		});
 
-	randomMarkers(map_div.gmap3("get").getBounds());
-}, 30000);
+	generateMarkers(map_div.gmap3("get").getBounds());
+}, 30000);*/
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX
-function randomMarkers(bounds)
+function generateMarkers(bounds)
 {
 	// generate random list of Markers - Should come from AJAX - Start
 		var southWest = bounds.getSouthWest(),
@@ -108,6 +117,51 @@ function randomMarkers(bounds)
 			lngSpan = northEast.lng() - southWest.lng(),
 			latSpan = northEast.lat() - southWest.lat(),
 			i, color, list = [];
+
+		//find all selected categories
+		var categories = [];
+		$("input[name='category[]']:checked").each(function()
+		{
+			categories.push($(this).val());
+		});
+
+		//find all selected sub-categories
+		var sub_categories = [];
+		$("input[name='sub_category[]']:checked").each(function()
+		{
+			sub_categories.push($(this).val());
+		});
+
+		//AJAX Call to get points from server - Start
+		$.ajax(
+					{
+						headers		:	{	'X-CSRF-TOKEN': $("meta[name=_token]").attr('content')	},
+						url			:	$("meta[name=listing_map_ajax_url]").attr('content'),
+						method		:	"POST",
+						data	:
+						{
+							//Find Map Bounds
+							southWest_lat	:	southWest.lat(),
+							southWest_lon	:	southWest.lng(),
+							northEast_lat	:	northEast.lat(),
+							northEast_lon	:	northEast.lng(),
+							//Find Filter Data
+							sort_distance	:	$('#sort_disance').val(),
+							price_range_min	:	$('#price_range').val().split(",")[0],
+							price_range_max	:	$('#price_range').val().split(",")[1],
+							categories		:	categories,
+							sub_categories	:	sub_categories
+						},
+						success: function(result)
+						{
+							console.log(result);
+						},
+						error: function(jqXHR, textStatus, errorThrown)
+						{
+							console.log('AJAX Not Done Successfully');
+						}
+					});
+		//AJAX Call to get points from server - END
 
 		for (i = 0; i < 100; i++)
 		{

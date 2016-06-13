@@ -35,14 +35,14 @@ class PublicController extends Controller
 		return view('public.listing.main', [
 												'current_page'			=>	'Add Listing',
 												'sort_distance_options'	=>	[
-																				'Distance - Closest',
-																				'2',
-																				'3',
-																				'4',
-																				'5',
-																				'6',
-																				'7',
-																			],
+																				'price_asc'		=>	'Price - Lowest',
+																				'price_desc'	=>	'Price - Highest',
+																				'rating_desc'	=>	'Rating - Highest',
+																				'ending_desc'	=>	'Ending - Soonest',
+																				'upload_desc'	=>	'Newest - Listed'
+																			]
+												/*
+												,
 												'distance_range_options'=>	[
 																				'Any Distance',
 																				'2',
@@ -52,6 +52,7 @@ class PublicController extends Controller
 																				'6',
 																				'7',
 																			]
+												*/
 											]);
 	}
 
@@ -96,8 +97,8 @@ class PublicController extends Controller
 
 	/*
 		URL             -> get: /listing
-		Functionality   -> Show Listing Page
-		Access          -> Anyone who is logged in user
+		Functionality   -> Show SubCategory Page
+		Access          -> All
 		Created At      -> 22/03/2016
 		Updated At      -> 22/03/2016
 		Created by      -> S. M. Abrar Jahin
@@ -105,6 +106,23 @@ class PublicController extends Controller
 	public function findSubcategory()
 	{
 		$requestData = Request::all();
+		return SubCategory::select('id', 'name')
+						->where('category_id', $requestData['category_id'])
+						->orderBy('name', 'asc')
+						->get();
+	}
+
+	/*
+		URL             -> get: /listing
+		Functionality   -> Show Listing Page
+		Access          -> All
+		Created At      -> 14/06/2016
+		Updated At      -> 14/06/2016
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function findMapItems()
+	{
+		return $requestData = Request::all();
 		return SubCategory::select('id', 'name')
 						->where('category_id', $requestData['category_id'])
 						->orderBy('name', 'asc')
