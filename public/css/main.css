@@ -2507,6 +2507,16 @@ body {
 	right: 7px;
 	top: 40%;
 	width: 32px;
+	z-index: 50;
+}
+.wsh-lst-infowindow
+{
+	display: block;
+	height: 32px;
+	position: absolute;
+	right: 7px;
+	top: 60%;
+	width: 32px;
 	z-index: 100;
 }
 .wsh-lst2 {
@@ -2516,7 +2526,11 @@ body {
 	right: 24px;
 	top: 49%;
 	width: 32px;
-	z-index: 100;
+	z-index: 7;
+}
+.navbar-inverse
+{
+	z-index: 8;
 }
 .wsh-lst-adpage {
 	float: left;

@@ -19,5 +19,7 @@
 <meta name="total_no_of_pages"	content="153">
 <meta name="current_page_no"	content="2">
 <meta name="max_visible"		content="10">
+<meta name="svg_hearts"			content="{{ URL::asset('svg/normal.svg') }}">
+<meta name="info_window_img"	content="{{ URL::asset('images/sb-i.jpg') }}">
 
 <div id="show_paginator"></div>
