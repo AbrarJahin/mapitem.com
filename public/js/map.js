@@ -99,21 +99,21 @@ $(function()
 	$(':checkbox').change(function()
 	{
 		if( $(this).attr('sub_category_id') === "not_adailable")
-		{
+		{	//If clicked on category
 			$("input:checkbox[category_id='" + $(this).attr('category_id') + "']").prop('checked', $(this).prop("checked"));
 		}
 		else
-		{
+		{	//If Clicked On sub-category
 			if ( $("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id!='not_adailable']:checked").length == $("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id!='not_adailable']").length )
-			{
+			{	//If all sub category are checked, then turn category checked
 				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_adailable']").prop('checked', true);
 			}
 			else
-			{
+			{	//If all sub category are not checked, then turn category un-checked
 				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_adailable']").prop('checked', false);
 			}
 		}
-
+		//AJAX call will go here
 	});
 });
 
@@ -142,12 +142,14 @@ function generateMarkers(bounds)
 			latSpan = northEast.lat() - southWest.lat(),
 			i, color, list = [];
 
-		//find all selected categories
-		var categories = [];
-		$("input[name='category[]']:checked").each(function()
-		{
-			categories.push($(this).val());
-		});
+		/*
+			//find all selected categories
+			var categories = [];
+			$("input[name='category[]']:checked").each(function()
+			{
+				categories.push($(this).val());
+			});
+		*/
 
 		//find all selected sub-categories
 		var sub_categories = [];
@@ -173,7 +175,7 @@ function generateMarkers(bounds)
 							sort_distance	:	$('#sort_disance').val(),
 							price_range_min	:	$('#price_range').val().split(",")[0],
 							price_range_max	:	$('#price_range').val().split(",")[1],
-							categories		:	categories,
+							//categories		:	categories,
 							sub_categories	:	sub_categories
 						},
 						success: function(result)
