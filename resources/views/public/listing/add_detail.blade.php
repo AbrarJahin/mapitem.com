@@ -8,15 +8,14 @@
         <div class="col-lg-12 no-padding rd-top-row2">
             <h5 class="pull-left">Price: <span>$1000</span></h5>
             <div class="pull-right popups">
-                <a data-original-title="Add to Wishlist" href="#" class="wsh-lst-adpage grey-tooltip" data-toggle="tooltip" data-placement="top" title="">
-                    <object type="image/svg+xml" data="{{ URL::asset('svg/normal.svg') }}"></object>
+                <a data-original-title="Add to Wishlist" href="#" class="wsh-lst-adpage grey-tooltip" data-toggle="tooltip" data-placement="top">
+                    <object type="image/svg+xml" width="14px" data="{{ URL::asset('svg/normal.svg') }}"></object>
                 </a>
-                <a title="" data-placement="top" data-toggle="tooltip" class="fa fa-comment-o grey-tooltip" href="#" data-original-title="Reviews"></a>
+                <a data-placement="top" data-toggle="tooltip" class="fa fa-comment-o grey-tooltip" href="#" data-original-title="Reviews"></a>
 
-                <a title="" data-placement="top" data-toggle="tooltip" class="fa fa-eye grey-tooltip" href="#" data-original-title="157"></a>
+                <a data-placement="top" data-toggle="tooltip" class="fa fa-eye grey-tooltip" href="#" data-original-title="157"></a>
 
-              
-                <a title="" data-placement="top" data-toggle="tooltip" class="fa fa-thumbs-o-up grey-tooltip" href="#" data-original-title="Like"></a>
+                <a data-placement="top" data-toggle="tooltip" class="fa fa-thumbs-o-up grey-tooltip" href="#" data-original-title="Like"></a>
             </div>
         </div>
         <div class="clearfix"></div>
