@@ -1,5 +1,6 @@
 //General Config
 var map_div = $('#map');
+var last_opened_info_window_id = -1;				//For solving infowindow lost issue after AJAX call done
 //var last_opened_infowindow;
 
 // generate an array of colors
@@ -39,7 +40,7 @@ $(function()
 							scrollwheel			: true,
 							streetViewControl	: false,
 							mapTypeControl		: false,
-							zoom				: 5,
+							zoom				: 12,
 							center				: new google.maps.LatLng(latitude,longitude),
 							mapTypeId			: google.maps.MapTypeId.TERRAIN	//ROADMAP , SATELLITE , HYBRID , TERRAIN
 						}/*,
@@ -323,8 +324,9 @@ function generateMarkers(bounds)
 					}*/
 			}
 	});
+	openLastInfoWindow();
 }
-
+/*
 function onChangeOnOff()		//Turning on or off clustering
 {
 	if ($(this).is(":checked"))
@@ -336,6 +338,7 @@ function onChangeOnOff()		//Turning on or off clustering
 		map_div.gmap3({get:"clusterer"}).disable();
 	}
 }
+*/
 
 function showDetail(id)		//Turning on or off clustering
 {
@@ -347,13 +350,30 @@ function showDetail(id)		//Turning on or off clustering
 
 function openInfoWindowByID(clicked_id)
 {
+	last_opened_info_window_id = clicked_id;
 	google.maps.event.trigger(
 								map_div.gmap3({
 									get:
 										{
-											id: clicked_id
+											id: last_opened_info_window_id
 										}
 									})
 								, 'click'
 							);
+}
+
+function openLastInfoWindow()
+{
+	if(last_opened_info_window_id !== -1)
+	{
+		google.maps.event.trigger(
+									map_div.gmap3({
+										get:
+											{
+												id: last_opened_info_window_id
+											}
+										})
+									, 'click'
+								);
+	}
 }
