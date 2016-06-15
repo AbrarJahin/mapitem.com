@@ -44,7 +44,7 @@
 					@foreach ($categories as $category)
 						<li class="no-border">
 							<label class="pull-left">
-								<input type="checkbox" name="category[]" category_id={{ $category->id }} checked value="{{ $category->id }}">
+								<input type="checkbox" name="category[]" category_id={{ $category->id }} sub_category_id="not_adailable" checked value="{{ $category->id }}">
 								<strong> {{ $category->name }} (21)</strong>
 							</label>
 							<ul>

@@ -94,20 +94,43 @@ $(function()
 		console.log(event);
 		console.log(page_num);
 	});
+
+	//Checkbox Checked Item Change Event
+	$(':checkbox').change(function()
+	{
+		if( $(this).attr('sub_category_id') === "not_adailable")
+		{
+			$("input:checkbox[category_id='" + $(this).attr('category_id') + "']").prop('checked', $(this).prop("checked"));
+		}
+		else
+		{
+			if ( $("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id!='not_adailable']:checked").length == $("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id!='not_adailable']").length )
+			{
+				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_adailable']").prop('checked', true);
+			}
+			else
+			{
+				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_adailable']").prop('checked', false);
+			}
+		}
+
+	});
 });
 
-/*//Refreshing the map if any new item available
-setInterval(function()
-{
-	map_div.gmap3({
-			clear:
-				{
-					class: "markers"
-				}
-		});
+/*
+	//Refreshing the map if any new item available
+	setInterval(function()
+	{
+		map_div.gmap3({
+				clear:
+					{
+						class: "markers"
+					}
+			});
 
-	generateMarkers(map_div.gmap3("get").getBounds());
-}, 30000);*/
+		generateMarkers(map_div.gmap3("get").getBounds());
+	}, 30000);
+*/
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX
 function generateMarkers(bounds)
