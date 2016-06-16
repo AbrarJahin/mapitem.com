@@ -25,7 +25,12 @@ class User extends Authenticatable
 
 	protected $hidden = [
 							'password',
-							'remember_token'
+							'remember_token',
+							'id',
+							'user_type',
+							'is_enabled',
+							'created_at',
+							'updated_at'
 						];
 
 	public function fb_login()

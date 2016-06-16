@@ -140,16 +140,13 @@ function generateMarkers(bounds)
 			northEast = bounds.getNorthEast(),
 			lngSpan = northEast.lng() - southWest.lng(),
 			latSpan = northEast.lat() - southWest.lat(),
-			i, color, list = [];
-
-		/*
-			//find all selected categories
-			var categories = [];
-			$("input[name='category[]']:checked").each(function()
-			{
-				categories.push($(this).val());
-			});
-		*/
+			i, color;
+		var list = [];
+		var location={};
+		location.lat_min = bounds.getSouthWest().lat();
+		location.lat_max = bounds.getNorthEast().lat();
+		location.lon_min = bounds.getSouthWest().lng();
+		location.lon_max = bounds.getNorthEast().lng();
 
 		//find all selected sub-categories
 		var sub_categories = [];
@@ -167,10 +164,10 @@ function generateMarkers(bounds)
 						data	:
 						{
 							//Find Map Bounds
-							southWest_lat	:	southWest.lat(),
-							southWest_lon	:	southWest.lng(),
-							northEast_lat	:	northEast.lat(),
-							northEast_lon	:	northEast.lng(),
+							lat_min			:	location.lat_min,
+							lat_max			:	location.lat_max,
+							lon_min			:	location.lon_min,
+							lon_max			:	location.lon_max,
 							//Find Filter Data
 							sort_distance	:	$('#sort_disance').val(),
 							price_range_min	:	$('#price_range').val().split(",")[0],
@@ -178,9 +175,20 @@ function generateMarkers(bounds)
 							//categories		:	categories,
 							sub_categories	:	sub_categories
 						},
-						success: function(result)
+						success: function(data)
 						{
-							console.log(result);
+							//console.log(data);
+							$.each(data, function(index, element)
+							{
+								console.log(index);
+								console.log('----------------');
+								console.log('id = '+ element.id);
+								console.log('price = '+ element.price);
+								console.log('title = '+ element.title);
+								console.log('description = '+ element.description);
+								console.log('user_image = '+ element.user_image);
+								console.log('advertisement_image = '+ element.advertisement_image);
+							});
 						},
 						error: function(jqXHR, textStatus, errorThrown)
 						{
@@ -188,6 +196,7 @@ function generateMarkers(bounds)
 						}
 					});
 		//AJAX Call to get points from server - END
+		return;
 
 		for (i = 0; i < 100; i++)
 		{

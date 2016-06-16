@@ -29,13 +29,29 @@ class Advertisement extends Model
 									'location_lon'
 								];
 
-	public function user()
+	protected $hidden = [
+							'user_id',
+							'category_id',
+							'sub_category_id'
+						];
+
+	public function User()
 	{
-		return $this->belongsTo('App\User','user_id');
+		return $this->belongsTo('App\User','user_id', 'id');
 	}
 
-	public function category()
+	public function Category()
 	{
-		return $this->belongsTo('App\Category','category_id');
+		return $this->belongsTo('App\Category','category_id', 'id');
+	}
+
+	public function SubCategory()
+	{
+		return $this->belongsTo('App\SubCategory', 'sub_category_id', 'id');
+	}
+
+	public function AdvertisementImages()
+	{
+		return $this->hasMany('App\AdvertisementImage', 'advertisement_id', 'id');
 	}
 }

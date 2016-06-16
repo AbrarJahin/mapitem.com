@@ -13,4 +13,8 @@ class SubCategory extends Model
 									'category_id',
 									'name'
 								];
+
+	protected $hidden = [
+							'category_id'
+						];
 }
