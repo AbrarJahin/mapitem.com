@@ -117,21 +117,6 @@ $(function()
 	});
 });
 
-/*
-	//Refreshing the map if any new item available
-	setInterval(function()
-	{
-		map_div.gmap3({
-				clear:
-					{
-						class: "markers"
-					}
-			});
-
-		generateMarkers(map_div.gmap3("get").getBounds());
-	}, 30000);
-*/
-
 // Generate a list of Marker and call gmap3 clustering function From AJAX
 function generateMarkers(bounds)
 {
@@ -177,18 +162,141 @@ function generateMarkers(bounds)
 						},
 						success: function(data)
 						{
+							var list = [];
 							//console.log(data);
 							$.each(data, function(index, element)
 							{
 								console.log(index);
 								console.log('----------------');
-								console.log('id = '+ element.id);
-								console.log('price = '+ element.price);
 								console.log('title = '+ element.title);
-								console.log('description = '+ element.description);
-								console.log('user_image = '+ element.user_image);
-								console.log('advertisement_image = '+ element.advertisement_image);
+
+								//Clear the map markers
+								map_div.gmap3({
+								    clear:
+								    	{
+											class: "markers"
+								    	}
+								  });
+
+								/*=================================================*/
+								list.push({
+											latLng			:	[	element.lat,element.lon	],
+											class			:	"markers",
+											options			:
+																{
+																	icon: "http://maps.google.com/mapfiles/marker_green.png",
+																	//icon: "http://maps.google.com/mapfiles/marker_"+color+".png",
+																	//animation: google.maps.Animation.BOUNCE
+																},
+											id				: 	element.id,
+											data			: 	{
+																	title			:	element.title,
+																	price			:	element.price,
+																	title_image_url	:	$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image,
+																	description		:	element.description,
+																	view_detail_url	:	'#'+element.id,
+																	id				:	element.id
+																},
+											events			:	{
+																	click: function(marker, event, context)
+																	{
+																		//###############	Animate Pointer
+																		//marker.setAnimation(null);
+																		//marker.setAnimation(google.maps.Animation.BOUNCE);
+
+																		//###############	Now showing the infoWindow
+																		var infoWindowContent = context.data.description;	//Will be generated from AJAX call
+																		infoWindowContent =	'<div class="col-lg-4 col-sm-6 map-master-div">'
+																							+	'<div class="pos-rel">'
+																							+	'<a href="#" class="wsh-lst-infowindow">'
+																							+		'<object type="image/svg+xml" data="'+$('meta[name=svg_hearts]').attr("content")+'"></object>'
+																							+	'</a>'
+																							+		'<div class="box">'
+																							+			'<div class="img-box-list">'
+																							+				'<img src="'+$('meta[name=info_window_img]').attr("content")+'">'
+																							+			'</div>'
+																							+			'<div class="box-content box-content-map">'
+																							+				'<h5><div class="pull-center">'+context.data.title+'</div></h5>'
+																							+				'<h6> $'+context.data.price+'</h6>'
+																							+			'</div>'
+																							+		'</div>'
+																							+	'</div>'
+																							+'</div>';
+
+																		var	map = $(this).gmap3("get"),
+																			infowindow = $(this).gmap3({get:{name:"infowindow"}});
+
+																		if(infowindow)	//if infoWindow Exists - then show
+																		{
+																			infowindow.open(map, marker);
+																			infowindow.setContent(infoWindowContent);
+																		}
+																		else			//if infoWindow not Exists - then crete and show
+																		{
+																			$(this).gmap3({
+																					infowindow:
+																						{
+																							anchor	:	marker, 
+																							options	:	{
+																											content		: infoWindowContent,
+																											maxWidth	: 350
+																										}
+																						}
+																				});
+																		}
+
+																		//Managing InfoWindow Contents - Fixing Contents
+																		setTimeout(function()
+																		{
+																			// Reference to the DIV which receives the contents of the infowindow using jQuery
+																			var iwOuter = $('.gm-style-iw');
+
+																			//Remove extra space behind infowindow
+																			iwOuter.parent().width('20px');
+
+																			/* The DIV we want to change is above the .gm-style-iw DIV.
+																			* So, we use jQuery and create a iwBackground variable,
+																			* and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+																			*/
+																			var iwBackground = iwOuter.prev();
+
+																			// Remove the background shadow DIV
+																			iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+																			// Remove the white background DIV
+																			iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+																			//Moving the map conotent - 115 px right
+																			iwOuter.parent().parent().css({left: '30px'});
+
+																			// Moves the shadow of the arrow 76px to the left margin 
+																			iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 94px !important;'});
+
+																			// Moves the arrow 76px to the left margin 
+																			iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 94px !important;'});
+
+																			// Changes the desired tail shadow color.
+																			iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+
+
+																		}, 10);
+																	},
+																	mouseout: function()
+																	{
+																		//$(this).gmap3({get:{name:"infowindow"}}).close();
+																	}
+																}
+										});
+								/*=================================================*/
 							});
+							console.log(list);
+							map_div.gmap3({
+								marker:
+									{
+										values: list
+									}
+							});
+							openLastInfoWindow();
 						},
 						error: function(jqXHR, textStatus, errorThrown)
 						{
@@ -196,171 +304,9 @@ function generateMarkers(bounds)
 						}
 					});
 		//AJAX Call to get points from server - END
-		return;
-
-		for (i = 0; i < 100; i++)
-		{
-			//color = colors[Math.floor(Math.random()*colors.length)];
-			list.push({
-						latLng			:	[
-												southWest.lat() + latSpan * Math.random(),
-												southWest.lng() + lngSpan * Math.random()
-											],
-						class			:	"markers",
-						options			:
-											{
-												icon: "http://maps.google.com/mapfiles/marker_green.png",
-												//icon: "http://maps.google.com/mapfiles/marker_"+color+".png",
-												//animation: google.maps.Animation.BOUNCE
-											},
-						category		:	'cat_' + Math.abs(i%10+1).toString(),
-						sub_category	:	'sub_cat_' + Math.abs(i%10+1).toString(),
-						id				: 	i,
-						data			: 	{
-												title			:	'title',
-												title_image_url	:	'images/p-favicon.jpg',
-												description		:	'description',
-												view_detail_url	:	'#asd',
-												id				:	i
-											},
-						tag				: 	'tag_' + Math.abs(i%10+1).toString(),
-						events			:	{
-												click: function(marker, event, context)
-												{
-													//###############	Animate Pointer
-													//marker.setAnimation(null);
-													//marker.setAnimation(google.maps.Animation.BOUNCE);
-
-													//###############	Now showing the infoWindow
-													var infoWindowContent = context.data.description;	//Will be generated from AJAX call
-													infoWindowContent =	'<div class="col-lg-4 col-sm-6 map-master-div">'
-																		+	'<div class="pos-rel">'
-																		+	'<a href="#" class="wsh-lst-infowindow">'
-																		+		'<object type="image/svg+xml" data="'+$('meta[name=svg_hearts]').attr("content")+'"></object>'
-																		+	'</a>'
-																		+		'<div class="box">'
-																		+			'<div class="img-box-list">'
-																		+				'<img src="'+$('meta[name=info_window_img]').attr("content")+'">'
-																		+			'</div>'
-																		+			'<div class="box-content box-content-map">'
-																		+				'<h5><div class="pull-center">Iphone</div></h5>'
-																		+				'<h6> $500</h6>'
-																		+			'</div>'
-																		+		'</div>'
-																		+	'</div>'
-																		+'</div>';
-
-													var	map = $(this).gmap3("get"),
-														infowindow = $(this).gmap3({get:{name:"infowindow"}});
-
-													if(infowindow)	//if infoWindow Exists - then show
-													{
-														infowindow.open(map, marker);
-														infowindow.setContent(infoWindowContent);
-													}
-													else			//if infoWindow not Exists - then crete and show
-													{
-														$(this).gmap3({
-																infowindow:
-																	{
-																		anchor	:	marker, 
-																		options	:	{
-																						content		: infoWindowContent,
-																						maxWidth	: 350
-																					}
-																	}
-															});
-													}
-
-													//Managing InfoWindow Contents - Fixing Contents
-													setTimeout(function()
-													{
-														// Reference to the DIV which receives the contents of the infowindow using jQuery
-														var iwOuter = $('.gm-style-iw');
-
-														//Remove extra space behind infowindow
-														iwOuter.parent().width('20px');
-
-														/* The DIV we want to change is above the .gm-style-iw DIV.
-														* So, we use jQuery and create a iwBackground variable,
-														* and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
-														*/
-														var iwBackground = iwOuter.prev();
-
-														// Remove the background shadow DIV
-														iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-
-														// Remove the white background DIV
-														iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-
-														//Moving the map conotent - 115 px right
-														iwOuter.parent().parent().css({left: '30px'});
-
-														// Moves the shadow of the arrow 76px to the left margin 
-														iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 94px !important;'});
-
-														// Moves the arrow 76px to the left margin 
-														iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 94px !important;'});
-
-														// Changes the desired tail shadow color.
-														iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
-
-
-													}, 10);
-												},
-												mouseout: function()
-												{
-													//$(this).gmap3({get:{name:"infowindow"}}).close();
-												}
-						    				}
-					});
-		}
-	// generate random list of Markers - Should come from AJAX - END
-
-	//Show Markers on Map
-	map_div.gmap3({
-		marker:
-			{
-				values: list,
-				/*cluster: 				//Cluster styling and config
-					{
-						radius: 100, 
-							// This style will be used for clusters with more than 0 markers
-							0: {
-							  content: '<div class="cluster cluster-1">CLUSTER_COUNT</div>',
-								width: 53,
-								height: 52
-							},
-							// This style will be used for clusters with more than 20 markers
-							20: {
-								content: '<div class="cluster cluster-2">CLUSTER_COUNT</div>',
-								width: 56,
-								height: 55
-							},
-							// This style will be used for clusters with more than 50 markers
-							50: {
-								content: '<div class="cluster cluster-3">CLUSTER_COUNT</div>',
-								width: 66,
-								height: 65
-							},
-							events:
-							{
-								click	:	function(overlay, event, context)
-											{
-												var curent_map = $(this).gmap3('get');
-												curent_map.setCenter(	new google.maps.LatLng(
-																									context.data.latLng.lat(),
-																									context.data.latLng.lng()
-																								));		//changing center of the map
-												curent_map.setZoom( curent_map.getZoom()+1 ); 									//Increasing zoom -> Zoom In
-											}
-							}
-					}*/
-			}
-	});
-	openLastInfoWindow();
+		openLastInfoWindow();
 }
-/*
+
 function onChangeOnOff()		//Turning on or off clustering
 {
 	if ($(this).is(":checked"))
@@ -372,7 +318,6 @@ function onChangeOnOff()		//Turning on or off clustering
 		map_div.gmap3({get:"clusterer"}).disable();
 	}
 }
-*/
 
 function showDetail(id)		//Turning on or off clustering
 {

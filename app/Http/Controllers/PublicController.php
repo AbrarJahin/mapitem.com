@@ -139,6 +139,8 @@ class PublicController extends Controller
 				->join('users', 'advertisements.user_id', '=', 'users.id')
 				->select(
 							'advertisements.id as id',
+							'advertisements.location_lat as lat',
+							'advertisements.location_lon as lon',
 							'advertisements.price as price',
 							'advertisements.title as title',
 							'advertisements.description as description',
