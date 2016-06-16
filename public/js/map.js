@@ -113,7 +113,8 @@ $(function()
 				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_adailable']").prop('checked', false);
 			}
 		}
-		//AJAX call will go here
+		//AJAX call goes here
+		generateMarkers(map_div.gmap3("get").getBounds());
 	});
 });
 
@@ -162,22 +163,17 @@ function generateMarkers(bounds)
 						},
 						success: function(data)
 						{
+							//Clear the map markers
+							map_div.gmap3({
+								clear:
+									{
+										class: "markers"
+									}
+								});
 							var list = [];
 							//console.log(data);
 							$.each(data, function(index, element)
 							{
-								console.log(index);
-								console.log('----------------');
-								console.log('title = '+ element.title);
-
-								//Clear the map markers
-								map_div.gmap3({
-								    clear:
-								    	{
-											class: "markers"
-								    	}
-								  });
-
 								/*=================================================*/
 								list.push({
 											latLng			:	[	element.lat,element.lon	],

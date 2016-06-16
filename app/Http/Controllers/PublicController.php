@@ -125,7 +125,6 @@ class PublicController extends Controller
 	public function findMapItems()
 	{
 		$requestData = Request::all();
-		//return $requestData['northEast_lat'];
 		//Eloquent Query is not applicable here because of bad performance
 		/*
 		return $advertisements = Advertisement::with('User')
@@ -149,6 +148,7 @@ class PublicController extends Controller
 						)
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
+				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
 				->groupBy('advertisement_images.advertisement_id')
 				->get();
 	}
