@@ -10,11 +10,24 @@ var last_opened_info_window_id = -1;				//For solving infowindow lost issue afte
 $(function()
 {
 	//On Mouseover Map InfoWindow Pop Up
-	$(".showonmap9").mouseover(function(event)
-    {
-    	//Will be done by ID
-    	openInfoWindowByID( $(this).attr('marker_id') );
-    });
+	$(".showonmap9").on("mouseover", function()
+	{
+		openInfoWindowByID( $(this).attr('marker_id') );
+	});
+
+	//Open add
+	$('.showonmap9').on("click", function()
+	{
+		var product_id = $(this).attr('marker_id');
+		openInfoWindowByID( product_id );
+		showAddDetail( product_id );
+	});
+
+	//Close add
+	$('.close-detail').click(function()
+	{
+		closeAddDetail();
+	});
 
 	$("#category_filter input[type=checkbox]").change(function()
 	{
@@ -59,10 +72,10 @@ $(function()
 		try
 		{
 			map_div.gmap3({get:{name:"infowindow"}}).close();
+			closeAddDetail();
 		}
 		catch(error)
 		{
-		    console.log(error);
 		    console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
 		}
 	});
@@ -90,10 +103,9 @@ $(function()
 	       lastClass		:	'last',
 	       firstClass		:	'first'
 	}).on('page', function(event, page_num)
-	{
-		console.log(event);
-		console.log(page_num);
-	});
+		{
+			//console.log(page_num);
+		});
 
 	//Checkbox Checked Item Change Event
 	$(':checkbox').change(function()
@@ -121,12 +133,7 @@ $(function()
 // Generate a list of Marker and call gmap3 clustering function From AJAX
 function generateMarkers(bounds)
 {
-	// generate random list of Markers - Should come from AJAX - Start
-		var southWest = bounds.getSouthWest(),
-			northEast = bounds.getNorthEast(),
-			lngSpan = northEast.lng() - southWest.lng(),
-			latSpan = northEast.lat() - southWest.lat(),
-			i, color;
+	// generate AJAX - Start
 		var list = [];
 		var location={};
 		location.lat_min = bounds.getSouthWest().lat();
@@ -170,10 +177,28 @@ function generateMarkers(bounds)
 										class: "markers"
 									}
 								});
+							//Clear the listing elements
+							$("#box").empty();
+							//Generate List to insert data in map
 							var list = [];
-							//console.log(data);
 							$.each(data, function(index, element)
 							{
+								//Insert into Box Elements
+								var listing_element;
+								listing_element	=	'<div class="col-lg-4 col-sm-6"><div class="pos-rel"><a href="#" class="wsh-lst"><object type="image/svg+xml" data="'
+													+ $('meta[name=svg_hearts]').attr("content")
+													+ '"></object></a><div class="box showonmap9" marker_id='
+													+	element.id
+													+ '><div class="img-box-list"><img src="'
+													+	$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image
+													+ '"></div><div class="box-content"><h5>'
+													+	element.title
+													+ '</h5><h6> $'+element.price+'</h6><div class="clearfix margin-bottom-ten"></div><img class="pull-left width-adj2" src="'
+													+	$('meta[name=upload_folder_url]').attr("content")+element.user_image
+													+ '"><div class="pull-left margin-left-ten width-adj3"><p class="pull-left dot1">'
+													+	element.description
+													+'<br></p></div></div></div></div></div>';
+								$("#box").append(listing_element);
 								/*=================================================*/
 								list.push({
 											latLng			:	[	element.lat,element.lon	],
@@ -196,6 +221,7 @@ function generateMarkers(bounds)
 											events			:	{
 																	click: function(marker, event, context)
 																	{
+																		showAddDetail( context.id );		//Show ditail of listing
 																		//###############	Animate Pointer
 																		//marker.setAnimation(null);
 																		//marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -285,7 +311,6 @@ function generateMarkers(bounds)
 										});
 								/*=================================================*/
 							});
-							console.log(list);
 							map_div.gmap3({
 								marker:
 									{
@@ -302,7 +327,7 @@ function generateMarkers(bounds)
 		//AJAX Call to get points from server - END
 		openLastInfoWindow();
 }
-
+/*
 function onChangeOnOff()		//Turning on or off clustering
 {
 	if ($(this).is(":checked"))
@@ -314,13 +339,20 @@ function onChangeOnOff()		//Turning on or off clustering
 		map_div.gmap3({get:"clusterer"}).disable();
 	}
 }
+*/
 
-function showDetail(id)		//Turning on or off clustering
+function showAddDetail(id)		//Show Add Detail
 {
-	//alert(id);
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').toggleClass("show");
+}
+
+function closeAddDetail()		//Show Add Detail
+{
+	$('.ad-detail').hide("slow");
+	$('.close-detail').toggleClass("show");
+	$('.ad-listing').show("slow");
 }
 
 function openInfoWindowByID(clicked_id)

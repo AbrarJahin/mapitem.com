@@ -7,11 +7,13 @@
 		</div>
 	</div>
 	<div class="clearfix"></div>
+	{{-- community posting start --}}
 	<div id="box" class="box-posting">
-		{{-- community posting start --}}
+{{--
 		@for ($i = 0; $i < 12; $i++)
 		 	@include('public.listing.single_item')
 		@endfor
+--}}
 	</div>
 </div>
 

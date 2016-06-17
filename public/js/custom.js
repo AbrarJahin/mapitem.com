@@ -39,7 +39,7 @@ function getLocation()
 			$('#user_location').val(latitude+','+longitude);
 			//Set Map Center to Current User Location
 			var $mapDiv = $('#map');
-			if ( $mapDiv.length)
+			if ($mapDiv.length)
 			{
 				$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));
 			}
@@ -433,26 +433,6 @@ $(document).ready(function()
 			$myDropZone[0].dropzone.processQueue();								//Uploading files
 		});
 	//Free Add Posting  - End
-
-	//Listing Page - Start
-		//Open add
-		$('.showonmap9').click(function()
-		{
-			$('.ad-detail').show("slow");
-			$('.ad-listing').hide("slow");
-			$('.close-detail').toggleClass("show");
-			//alert("I am an alert box!");
-		});
-
-		//Close add
-		$('.close-detail').click(function()
-		{
-			$('.ad-detail').hide("slow");
-			$('.close-detail').toggleClass("show");
-			$('.ad-listing').show("slow");
-			//alert("I am an alert box!");
-		});
-	//Listing Page - End
 
 	/*review box open*/
 	$('.review').on('click',function()

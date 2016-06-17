@@ -14,7 +14,7 @@
 					@endforeach
 				</select>
 			</div>
-{{-- 
+{{--
 			<div class="clearfix visible-xs visible-sm"></div>
 
 			<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 no-padding">
