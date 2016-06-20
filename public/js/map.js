@@ -10,13 +10,13 @@ var last_opened_info_window_id = -1;				//For solving infowindow lost issue afte
 $(function()
 {
 	//On Mouseover Map InfoWindow Pop Up
-	$(".showonmap9").on("mouseover", function()
+	$(document).on("mouseenter", ".showonmap9", function(e)
 	{
 		openInfoWindowByID( $(this).attr('marker_id') );
 	});
 
 	//Open add
-	$('.showonmap9').on("click", function()
+	$(document).on("click", ".showonmap9", function(e)
 	{
 		var product_id = $(this).attr('marker_id');
 		openInfoWindowByID( product_id );
@@ -221,7 +221,7 @@ function generateMarkers(bounds)
 											events			:	{
 																	click: function(marker, event, context)
 																	{
-																		showAddDetail( context.id );		//Show ditail of listing
+																		//showAddDetail( context.id );		//Show ditail of listing
 																		//###############	Animate Pointer
 																		//marker.setAnimation(null);
 																		//marker.setAnimation(google.maps.Animation.BOUNCE);
