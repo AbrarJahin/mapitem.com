@@ -345,14 +345,14 @@ function showAddDetail(id)		//Show Add Detail
 {
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
-	$('.close-detail').toggleClass("show");
+	$('.close-detail').addClass("show");
 }
 
 function closeAddDetail()		//Show Add Detail
 {
 	$('.ad-detail').hide("slow");
-	$('.close-detail').toggleClass("show");
 	$('.ad-listing').show("slow");
+	$('.close-detail').removeClass("show");
 }
 
 function openInfoWindowByID(clicked_id)
