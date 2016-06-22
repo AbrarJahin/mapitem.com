@@ -10,10 +10,24 @@ var last_opened_info_window_id = -1;				//For solving infowindow lost issue afte
 $(function()
 {
 	//Link GeoComplete to Map
-	$("#user_location").geocomplete().bind("geocode:result", function(event, result)
+	$("#user_location").geocomplete(
 	{
-		map_div.gmap3('get').setCenter(result.geometry.location);
-		map_div.gmap3('get').setZoom(5);
+		map			: ".map-hidden",
+		mapOptions	:
+		{
+			mapTypeId	: 'roadmap',		//roadmap, satellite,hybrid, terrain,
+			scrollwheel	: true,
+			zoom		: 8,
+			//center		: new google.maps.LatLng( latitude, longitude ),
+		},
+		markerOptions:
+		{
+			draggable: true
+		},
+	}).bind("geocode:result", function(event, result)
+	{
+		map_div.gmap3('get').setCenter(result.geometry.location);		//Set Center
+		map_div.gmap3('get').fitBounds(result.geometry.viewport);		//Set Autometic Zoom
 	});
 
 	//On Mouseover Map InfoWindow Pop Up
