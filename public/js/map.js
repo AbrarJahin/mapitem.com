@@ -1,6 +1,7 @@
 //General Config
 var map_div = $('#map');
 var last_opened_info_window_id = -1;				//For solving infowindow lost issue after AJAX call done
+var viewPortForMobile;
 //var last_opened_infowindow;
 
 // generate an array of colors
@@ -26,6 +27,11 @@ $(function()
 		},
 	}).bind("geocode:result", function(event, result)
 	{
+		if( ifDeviceIsMobile() )
+		{
+			viewPortForMobile=result.geometry.viewport;
+			generateMarkers( viewPortForMobile );
+		}
 		map_div.gmap3('get').setCenter(result.geometry.location);		//Set Center
 		map_div.gmap3('get').fitBounds(result.geometry.viewport);		//Set Autometic Zoom
 	});
@@ -102,10 +108,24 @@ $(function()
 		}
 	});
 
-	//Call AJAX Call from Here
+	//Call AJAX Call from Here - When Map comes to a stable position of when map first time loads
 	google.maps.event.addListener(map_div.gmap3("get"), "idle", function(event)
 	{
-		generateMarkers(map_div.gmap3("get").getBounds());
+		if( ifDeviceIsMobile() )
+		{
+			if(viewPortForMobile == undefined)		//It will be just called 1 time when map loads
+			{
+				viewPortForMobile = new google.maps.LatLngBounds(
+																	new google.maps.LatLng(latitude-3.0, longitude-5),
+																	new google.maps.LatLng(latitude+3.0, longitude+5)
+																);
+				generateMarkers(viewPortForMobile);
+			}
+		}
+		else
+		{
+			generateMarkers(map_div.gmap3("get").getBounds());
+		}
 	});
 
 	//Pagination
@@ -147,14 +167,22 @@ $(function()
 				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_adailable']").prop('checked', false);
 			}
 		}
-		//AJAX call goes here
-		generateMarkers(map_div.gmap3("get").getBounds());
+		//AJAX call goes here - When a filter is changed
+		if( ifDeviceIsMobile() )
+		{
+			generateMarkers( viewPortForMobile );
+		}
+		else
+		{
+			generateMarkers(map_div.gmap3("get").getBounds());
+		}
 	});
 });
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX
 function generateMarkers(bounds)
 {
+	console.log(bounds);
 	// generate AJAX - Start
 		var list = [];
 		var location={};
@@ -368,6 +396,11 @@ function showAddDetail(id)		//Show Add Detail
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");
+}
+
+function ifDeviceIsMobile()		//Check The Device Type
+{
+	return !($('#map').is(":visible"));
 }
 
 function closeAddDetail()		//Show Add Detail
