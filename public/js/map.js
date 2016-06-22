@@ -9,6 +9,13 @@ var last_opened_info_window_id = -1;				//For solving infowindow lost issue afte
 // on document ready function
 $(function()
 {
+	//Link GeoComplete to Map
+	$("#user_location").geocomplete().bind("geocode:result", function(event, result)
+	{
+		map_div.gmap3('get').setCenter(result.geometry.location);
+		map_div.gmap3('get').setZoom(5);
+	});
+
 	//On Mouseover Map InfoWindow Pop Up
 	$(document).on("mouseenter", ".showonmap9", function(e)
 	{
@@ -72,6 +79,7 @@ $(function()
 		try
 		{
 			map_div.gmap3({get:{name:"infowindow"}}).close();
+			last_opened_info_window_id=-1;
 			closeAddDetail();
 		}
 		catch(error)

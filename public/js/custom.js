@@ -37,6 +37,8 @@ function getLocation()
 			longitude		= parseFloat(temp[1]);
 			//Input User Location in input
 			$('#user_location').val(latitude+','+longitude);
+			$('#user_location_lat').val(latitude);
+			$('#user_location_lon').val(longitude);
 			//Set Map Center to Current User Location
 			var $mapDiv = $('#map');
 			if ($mapDiv.length)
@@ -49,6 +51,13 @@ function getLocation()
 
 $(document).ready(function()
 {
+	//Update hidden input field data ASAP
+	$("#user_location").geocomplete().bind("geocode:result", function(event, result)
+	{
+		$('#user_location_lat').val( result.geometry.location.lat() );
+		$('#user_location_lon').val( result.geometry.location.lng() );
+	});
+
 	//Create Custom Search Form submit to show pretty URL
 	$("#search_add_from").submit(function(e)
 	{
@@ -65,9 +74,9 @@ $(document).ready(function()
 		var lat_input,lon_input;
 		try
 		{
-			var lat_lon_parsed_data = $('#user_location').val().split(',');
-			lat_input = parseFloat( lat_lon_parsed_data[0] );
-			lon_input = parseFloat( lat_lon_parsed_data[1] );
+			//var lat_lon_parsed_data = $('#user_location').val().split(',');
+			lat_input = parseFloat( $('#user_location_lat').val() );
+			lon_input = parseFloat( $('#user_location_lon').val() );
 			if(	isNaN(lat_input)	||	isNaN(lon_input)	)
 			{
 				$('#user_location').parent().addClass("has-error");
