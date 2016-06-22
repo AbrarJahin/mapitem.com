@@ -11,21 +11,7 @@ var viewPortForMobile;
 $(function()
 {
 	//Link GeoComplete to Map
-	$("#user_location").geocomplete(
-	{
-		map			: ".map-hidden",
-		mapOptions	:
-		{
-			mapTypeId	: 'roadmap',		//roadmap, satellite,hybrid, terrain,
-			scrollwheel	: true,
-			zoom		: 8,
-			//center		: new google.maps.LatLng( latitude, longitude ),
-		},
-		markerOptions:
-		{
-			draggable: true
-		},
-	}).bind("geocode:result", function(event, result)
+	$("#user_location").geocomplete().bind("geocode:result", function(event, result)
 	{
 		if( ifDeviceIsMobile() )
 		{
