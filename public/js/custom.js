@@ -32,11 +32,11 @@ function getLocation()
 	{
 		$.get("http://ipinfo.io", function (response)
 		{
+			//Input User Location in input
+			$('#user_location').val( response.city /*+', '+response.country*/ );
 			var temp		= response.loc.split(",");
 			latitude		= parseFloat(temp[0]);
 			longitude		= parseFloat(temp[1]);
-			//Input User Location in input
-			$('#user_location').val(latitude+','+longitude);
 			$('#user_location_lat').val(latitude);
 			$('#user_location_lon').val(longitude);
 			//Set Map Center to Current User Location
