@@ -101,11 +101,25 @@ $(function()
 		{
 			if(viewPortForMobile == undefined)		//It will be just called 1 time when map loads
 			{
+				/*
+				 *	From http://www.movable-type.co.uk/scripts/latlong.html
+				 *	and http://andrew.hedges.name/experiments/haversine/
+				 *	we get -
+				 *			lat distance 1 = 69.132 miles
+				 *			lon distance 1 = 52.958 miles
+				 */
+				var lat_tuned_map_area = 10/69.132;
+				var lon_tuned_map_area = 10/52.958;
+				//console.log(lat_tuned_map_area + ' ' + lon_tuned_map_area);
 				viewPortForMobile = new google.maps.LatLngBounds(
-																	new google.maps.LatLng(latitude-3.0, longitude-5),
-																	new google.maps.LatLng(latitude+3.0, longitude+5)
+																	new google.maps.LatLng(latitude-lat_tuned_map_area, longitude-lon_tuned_map_area),
+																	new google.maps.LatLng(latitude+lat_tuned_map_area, longitude+lon_tuned_map_area)
 																);
 				generateMarkers(viewPortForMobile);
+			}
+			else
+			{
+				console.log('Mobile fake Map already initialized');
 			}
 		}
 		else
@@ -168,7 +182,7 @@ $(function()
 // Generate a list of Marker and call gmap3 clustering function From AJAX
 function generateMarkers(bounds)
 {
-	console.log(bounds);
+	//console.log(bounds);
 	// generate AJAX - Start
 		var list = [];
 		var location={};
