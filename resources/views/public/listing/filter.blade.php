@@ -8,7 +8,7 @@
 				<label>Sort :</label>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-9 col-xs-8 ">
-				<select class="form-control" name="sort_disance" id="sort_disance">
+				<select class="form-control" name="sort_ordering" id="sort_ordering">
 					@foreach ($sort_distance_options as $key => $sort)
 						<option  value="{{ $key }}">{{ $sort }}</option>
 					@endforeach

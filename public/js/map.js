@@ -69,13 +69,7 @@ $(function()
 							zoom				: 12,
 							center				: new google.maps.LatLng(latitude,longitude),
 							mapTypeId			: google.maps.MapTypeId.TERRAIN	//ROADMAP , SATELLITE , HYBRID , TERRAIN
-						}/*,
-			onces	:	{
-							bounds_changed: function()
-							{
-								generateMarkers(map_div.gmap3("get").getBounds());
-							}
-						}*/
+						}
 		}
 	});
 
@@ -211,11 +205,13 @@ function generateMarkers(bounds)
 							lat_max			:	location.lat_max,
 							lon_min			:	location.lon_min,
 							lon_max			:	location.lon_max,
+							//Find Paginator data
+							current_page_no	:	$('meta[name=current_page_no]').attr("content"),
+							content_per_page:	$('meta[name=current_page_no]').attr("content"),
 							//Find Filter Data
-							sort_distance	:	$('#sort_disance').val(),
+							sort_ordering	:	$('#sort_ordering').val(),
 							price_range_min	:	$('#price_range').val().split(",")[0],
 							price_range_max	:	$('#price_range').val().split(",")[1],
-							//categories		:	categories,
 							sub_categories	:	sub_categories
 						},
 						success: function(data)

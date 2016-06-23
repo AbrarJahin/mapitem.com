@@ -148,8 +148,12 @@ class PublicController extends Controller
 						)
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
+				->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
 				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
 				->groupBy('advertisement_images.advertisement_id')
 				->get();
+				//$requestData['sort_ordering']
+				//$requestData['current_page_no']
+				//$requestData['content_per_page']
 	}
 }
