@@ -140,7 +140,16 @@ $(function()
 	       firstClass		:	'first'
 	}).on('page', function(event, page_num)
 		{
-			//console.log(page_num);
+			$("meta[name=current_page_no]").attr('content',page_num);
+			//Call AJAX for updating content
+			if( ifDeviceIsMobile() )
+			{
+				generateMarkers( viewPortForMobile );
+			}
+			else
+			{
+				generateMarkers(map_div.gmap3("get").getBounds());
+			}
 		});
 
 	//Checkbox Checked Item Change Event

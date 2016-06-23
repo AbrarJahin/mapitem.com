@@ -20,7 +20,7 @@
 {{-- Paginator Settings --}}
 {{-- Paginator Settings --}}
 <meta name="total_no_of_pages"	content="13">	{{-- Total no of pages in paginator --}}
-<meta name="current_page_no"	content="2">	{{-- Current active page --}}
+<meta name="current_page_no"	content="2">	{{-- Current active page - default value = 1 --}}
 <meta name="content_per_page"	content="3">	{{-- No of elements per paginated page --}}
 <meta name="max_visible"		content="10">	{{-- Max no of paginator elements per page --}}
 

@@ -133,7 +133,7 @@ class PublicController extends Controller
 												->with('AdvertisementImages')
 											->get();
 		*/
-		return DB::table('advertisements')
+		$tempData = DB::table('advertisements')
 				->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
 				->join('users', 'advertisements.user_id', '=', 'users.id')
 				->select(
@@ -150,10 +150,26 @@ class PublicController extends Controller
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
 				->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
 				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
-				->groupBy('advertisement_images.advertisement_id')
-				->get();
-				//$requestData['sort_ordering']
+				->groupBy('advertisement_images.advertisement_id');
 				//$requestData['current_page_no']
 				//$requestData['content_per_page']
+
+		//Ordering
+		if( $requestData['sort_ordering'] == 'price_asc' )
+			$tempData = $tempData->orderBy('price', 'asc');
+		else if( $requestData['sort_ordering'] == 'price_desc' )
+			$tempData = $tempData->orderBy('price', 'desc');
+		/*else if( $requestData['sort_ordering'] == 'rating_desc' )
+			$tempData = $tempData->orderBy('name', 'desc');
+		else if( $requestData['sort_ordering'] == 'ending_desc' )
+			$tempData = $tempData->orderBy('name', 'desc');*/
+		else if( $requestData['sort_ordering'] == 'upload_desc' )
+			$tempData = $tempData->orderBy('created_at', 'desc');
+
+		//Paginator
+		$tempData = $tempData->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
+							->take($requestData['content_per_page']);
+
+		return $tempData->get();
 	}
 }
