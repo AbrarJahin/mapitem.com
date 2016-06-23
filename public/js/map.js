@@ -181,7 +181,7 @@ $(function()
 		}
 	});
 
-	/*Range Slider*/
+	//Range Slider
 	$('.range-slider').jRange({
 		from: 0,
 		to: 1000,
@@ -205,7 +205,18 @@ $(function()
 		}
 	});
 
-	
+	//Sort Ordering Change AJAX
+	$("#sort_ordering").change(function()
+	{
+		if( ifDeviceIsMobile() )
+		{
+			generateMarkers( viewPortForMobile );
+		}
+		else
+		{
+			generateMarkers(map_div.gmap3("get").getBounds());
+		}
+	});
 });
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX

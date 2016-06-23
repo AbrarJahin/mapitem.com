@@ -156,15 +156,15 @@ class PublicController extends Controller
 
 		//Ordering
 		if( $requestData['sort_ordering'] == 'price_asc' )
-			$tempData = $tempData->orderBy('price', 'asc');
+			$tempData = $tempData->orderBy('advertisements.price', 'asc');
 		else if( $requestData['sort_ordering'] == 'price_desc' )
-			$tempData = $tempData->orderBy('price', 'desc');
+			$tempData = $tempData->orderBy('advertisements.price', 'desc');
 		/*else if( $requestData['sort_ordering'] == 'rating_desc' )
 			$tempData = $tempData->orderBy('name', 'desc');
 		else if( $requestData['sort_ordering'] == 'ending_desc' )
 			$tempData = $tempData->orderBy('name', 'desc');*/
 		else if( $requestData['sort_ordering'] == 'upload_desc' )
-			$tempData = $tempData->orderBy('created_at', 'desc');
+			$tempData = $tempData->orderBy('advertisements.created_at', 'desc');
 
 		//Paginator
 		$tempData = $tempData->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
