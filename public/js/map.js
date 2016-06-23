@@ -253,7 +253,7 @@ function generateMarkers(bounds)
 							lon_max			:	location.lon_max,
 							//Find Paginator data
 							current_page_no	:	$('meta[name=current_page_no]').attr("content"),
-							content_per_page:	$('meta[name=current_page_no]').attr("content"),
+							content_per_page:	$('meta[name=content_per_page]').attr("content"),
 							//Find Filter Data
 							sort_ordering	:	$('#sort_ordering').val(),
 							price_range_min	:	$('#price_range').val().split(",")[0],
