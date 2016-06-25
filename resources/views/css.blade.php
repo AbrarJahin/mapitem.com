@@ -15,7 +15,7 @@
 {{-- <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"> --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" type="text/css">
 {{-- Dropzone - CSS --}}
-<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet" />
 {{-- Custom CSS --}}
 <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}" type="text/css">
 {{--
