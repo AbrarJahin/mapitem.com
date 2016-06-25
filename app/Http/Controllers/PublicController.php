@@ -151,8 +151,8 @@ class PublicController extends Controller
 				->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
 				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
 				->groupBy('advertisement_images.advertisement_id');
-				//$requestData['current_page_no']
-				//$requestData['content_per_page']
+
+		$totalElementFound = $tempData->count();
 
 		//Ordering
 		if( $requestData['sort_ordering'] == 'price_asc' )
@@ -167,9 +167,19 @@ class PublicController extends Controller
 			$tempData = $tempData->orderBy('advertisements.created_at', 'desc');
 
 		//Paginator
-		$tempData = $tempData->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
-							->take($requestData['content_per_page']);
+		$data = $tempData->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
+							->take($requestData['content_per_page'])
+							->get();
 
-		return $tempData->get();
+		//return $data;
+
+		//Formetting data for sending
+		$json_data	=	array(
+						"total_element"	=>	$totalElementFound,												// total number of records
+						"total_page"	=>	ceil( $totalElementFound / $requestData['content_per_page'] ),	// total number of pages
+						"current_page"	=>	$requestData['current_page_no']/1,								// current page number
+						"data"			=>	$data															// total data array
+					);
+		return $json_data;
 	}
 }
