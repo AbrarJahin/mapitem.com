@@ -36,14 +36,8 @@
 
 		{{-- Truncate paragraph --}}
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
-
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" type="text/javascript"></script>
-		{{-- MaxImage CDN Not Found in the latest vertion which is used --}}
-		<script src="{{ URL::asset('js/jquery.cycle.all.js') }}" type="text/javascript"></script>
-		<script src="{{ URL::asset('js/jquery.maximage.js') }}" type="text/javascript"></script>
 		{{-- Pages JS --}}
 		<script src="{{ URL::asset('js/page.js') }}"></script>
-
 	{{-- Footer Scripts - End --}}
 	</body>
 </html>
