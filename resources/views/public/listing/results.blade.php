@@ -1,6 +1,6 @@
 <div class="results">
 	<div class="r-hdr col-lg-12">
-		<h6 class="pull-left">Found (<span id='total_match_found'>12</span>) Records</h6>
+		<h6 class="pull-left">Found (<span id='total_match_found'>0</span>) Records</h6>
 		<div class="pull-right">
 			<a href="#" title="box" class="blocks fa fa-fw pos-adj6 grid selected-view">&#xf00a;</a>
 			<a href="#" title="list" class="list fa fa-fw pos-adj7">&#xf0ca;</a>

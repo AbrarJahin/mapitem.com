@@ -166,12 +166,12 @@ class PublicController extends Controller
 		else if( $requestData['sort_ordering'] == 'upload_desc' )
 			$tempData = $tempData->orderBy('advertisements.created_at', 'desc');
 
+		//return $tempData->get();
+
 		//Paginator
 		$data = $tempData->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
 							->take($requestData['content_per_page'])
 							->get();
-
-		//return $data;
 
 		//Formetting data for sending
 		$json_data	=	array(
