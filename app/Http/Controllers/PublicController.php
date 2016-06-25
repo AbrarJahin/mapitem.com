@@ -152,7 +152,10 @@ class PublicController extends Controller
 				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
 				->groupBy('advertisement_images.advertisement_id');
 
-		$totalElementFound = $tempData->count();
+		//Should check if there is a better way than using collection in this case
+		$totalElementFound = collect(
+										$tempData->pluck('advertisements.id')
+									)->count();
 
 		//Ordering
 		if( $requestData['sort_ordering'] == 'price_asc' )
