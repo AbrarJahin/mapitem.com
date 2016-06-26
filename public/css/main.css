@@ -3174,6 +3174,11 @@ img[src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"]
 {
 	display: none;
 }
+/* Hide Google Map Zoom Button */
+img[src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"]
+{
+	display: none;
+}
 
 /* Google map Bottom Default options removing */
 
