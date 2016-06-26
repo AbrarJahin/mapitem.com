@@ -4,12 +4,13 @@
 @section('meta_page_description', 'Content on this page are account content')
 @section('meta_author', 'S. M. Abrar Jahin')
 
+{{--
 @section('header_styles')
     @parent
-    {{-- Notification on and off --}}
+    <!-- Notification on and off -->
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 @endsection
-
+--}}
 @section('content')
     <div class="db-body">
             <!-- tabs left -->

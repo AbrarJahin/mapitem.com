@@ -60,10 +60,10 @@
 	<!-- range js -->
 	<script src="{{ URL::asset('js/jquery.range.js') }}"></script>
 	<!-- Truncate paragraph -->
-	<script src="{{ URL::asset('js/jquery.dotdotdot.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
 	<script src="{{ URL::asset('js/jQuery.scrollSpeed.js') }}"></script>
 	<script type='text/javascript' src="{{ URL::asset('js/jquery.mousewheel.js') }}"></script>
-	<script src="{{ URL::asset('js/jquery.touchSwipe.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.touchswipe/1.6.15/jquery.touchSwipe.js"></script>
 	<script src="{{ URL::asset('js/listing.js') }}"></script>
 	<!-- Slick Js -->
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
