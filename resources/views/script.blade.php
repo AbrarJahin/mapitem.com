@@ -1,2 +1,0 @@
-<script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js"></script>

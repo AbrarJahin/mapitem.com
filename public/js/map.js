@@ -283,7 +283,15 @@ function generateMarkers(bounds)
 						//Finding the results and put them in map
 						$.each(all_data, function(key, data)
 						{
-							if(key === 'total_element')
+							if(key === 'showing_start')
+							{
+								$('#record_showing_start').html(data);
+							}
+							else if(key === 'showing_end')
+							{
+								$('#record_showing_end').html(data);
+							}
+							else if(key === 'total_element')
 							{
 								$('#total_match_found').html(data);
 							}

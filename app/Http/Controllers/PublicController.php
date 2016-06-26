@@ -178,7 +178,9 @@ class PublicController extends Controller
 
 		//Formetting data for sending
 		$json_data	=	array(
-						"total_element"	=>	$totalElementFound,												// total number of records
+						"showing_start"	=>	($requestData['current_page_no']-1)*$requestData['content_per_page']+1,												// Records Show Start
+						"showing_end"	=>	($totalElementFound < $requestData['current_page_no']*$requestData['content_per_page'] ? $totalElementFound : $requestData['current_page_no']*$requestData['content_per_page']),												// Records Show End
+						"total_element"	=>	$totalElementFound,												// Total number of records
 						"total_page"	=>	ceil( $totalElementFound / $requestData['content_per_page'] ),	// total number of pages
 						"current_page"	=>	$requestData['current_page_no']/1,								// current page number
 						"data"			=>	$data															// total data array
