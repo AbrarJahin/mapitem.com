@@ -25,38 +25,41 @@
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Date of Birth</div>
 	<div class="p-right">
-		<select class="form-control width-adj004 normal-input pull-left" id="year-slc">
-			<option id="selected">Month</option>
-			<option>Jan</option>
-			<option>Feb</option>
-			<option>Mar</option>
-			<option>Apr</option>
-			<option>May</option>
-			<option>Jun</option>
-			<option>July</option>
-		</select>
-		<span class="separater">/</span>
-		<select class="form-control width-adj004 normal-input pull-left" id="year-slc">
-			<option id="selected">Day</option>
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			<option>5</option>
-			<option>6</option>
-			<option>7</option>
-		</select>
-		<span class="separater">/</span>
-		<select class="form-control width-adj05 normal-input pull-left" id="year-slc">
-			<option id="selected">Year</option>
-			<option>2016</option>
-			<option>2014</option>
-			<option>2013</option>
-			<option>2012</option>
-			<option>2011</option>
-			<option>2010</option>
-			<option>2009</option>
-		</select>
+		<input class="form-control width-adj8 normal-input pull-left" type="text" placeholder="dd/mm/yyyy"  id="date_of_birth">
+		{{--
+			<select class="form-control width-adj004 normal-input pull-left" id="year-slc">
+				<option id="selected">Month</option>
+				<option>Jan</option>
+				<option>Feb</option>
+				<option>Mar</option>
+				<option>Apr</option>
+				<option>May</option>
+				<option>Jun</option>
+				<option>July</option>
+			</select>
+			<span class="separater">/</span>
+			<select class="form-control width-adj004 normal-input pull-left" id="year-slc">
+				<option id="selected">Day</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+			</select>
+			<span class="separater">/</span>
+			<select class="form-control width-adj05 normal-input pull-left" id="year-slc">
+				<option id="selected">Year</option>
+				<option>2016</option>
+				<option>2014</option>
+				<option>2013</option>
+				<option>2012</option>
+				<option>2011</option>
+				<option>2010</option>
+				<option>2009</option>
+			</select>
+		--}}
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Social Security</div>

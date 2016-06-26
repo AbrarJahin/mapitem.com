@@ -51,6 +51,13 @@ function getLocation()
 
 $(document).ready(function()
 {
+	if($("#date_of_birth").length != 0)	//If datepicker exists
+	{
+		$('#date_of_birth').datepicker({
+			format: "dd/mm/yyyy"
+		});
+	}
+
 	//Update hidden input field data ASAP
 	$("#user_location").geocomplete().bind("geocode:result", function(event, result)
 	{
@@ -764,3 +771,4 @@ $('.nav-tabs-bottom a[data-toggle="tab"]').on('click', function()
 	$('.nav-tabs-top li.active').removeClass('active')
 	$('.nav-tabs-top a[href="'+$(this).attr('href')+'"]').parent().addClass('active');
 });
+
