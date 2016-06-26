@@ -119,8 +119,8 @@ body.modal-open
 }
 nav.navbar.dn
 {
-    z-index: 1;
-    position: relative;
+	z-index: 1;
+	position: relative;
 }
 .bg-primary {
 	background-color: #f05f40;
@@ -3199,4 +3199,14 @@ img[src="http://maps.gstatic.com/mapfiles/api-3/images/google4.png"]
 	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
 	border: 1px solid rgba(72, 181, 233, 0.6);
 	border-radius: 2px 2px 10px 10px; // apply 10px to the bottom corners of the infowindow
+}
+
+/* Paginator First and last Button hide when disabled */
+li.prev.disabled
+{
+	display: none;
+}
+li.next.disabled
+{
+	display: none;
 }
