@@ -13,6 +13,10 @@ php /home/blockhunt/drush/composer.phar install
 #cp  .env.example .env
 php /home/blockhunt/drush/composer.phar dump-autoload
 php artisan key:generate
+php artisan clear-compiled 
+php artisan dump-autoload
+php artisan optimize
+
 php artisan migrate:refresh --seed
 
 Update Project (if no major change)-

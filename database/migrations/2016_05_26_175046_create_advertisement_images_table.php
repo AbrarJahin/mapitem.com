@@ -29,5 +29,9 @@ class CreateAdvertisementImagesTable extends Migration
 	public function down()
 	{
 		Schema::drop('advertisement_images');
+		//Delete add images in upload folder => Including User Profile Image
+		File::cleanDirectory(	public_path(	'uploads'	)	);
+		//Create gitkeep file for not removing git maintainablity
+		File::put(	public_path(	'uploads/.gitkeep'	),'');
 	}
 }

@@ -18,7 +18,7 @@
     </div>
     <div class="clearfix margin-twenty"></div>
     <div class="p-left">Email</div>
-    <div class="p-right"><input type="text" placeholder="Email" id="adtitle" class="form-control width-adj8 normal-input"></div>
+    <div class="p-right"><input type="email" placeholder="Email" id="adtitle" class="form-control width-adj8 normal-input"></div>
     <div class="clearfix margin-twenty"></div>
     <div class="p-left">Website</div>
     <div class="p-right"><input type="text" placeholder="Website" id="adtitle" class="width-adj8 form-control normal-input"></div>
