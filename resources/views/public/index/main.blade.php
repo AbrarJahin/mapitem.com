@@ -4,8 +4,6 @@
 		<title>Block Hunt - {{ $current_page }}</title>
 		@include('meta_data')
 		@include('css')
-
-		<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
 		{{-- MaxImage CDN Not Found in the latest vertion which is used --}}
 		<link rel="stylesheet" href="{{ URL::asset('css/jquery.maximage.css') }}" type="text/css" media="screen" title="CSS" charset="utf-8" />
 	</head>
