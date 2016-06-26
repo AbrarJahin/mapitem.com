@@ -49,12 +49,34 @@ function getLocation()
 	}
 }
 
+function getCurrentDate()
+{
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	if(dd<10)
+	{
+		dd='0'+dd
+	}
+	if(mm<10)
+	{
+		mm='0'+mm
+	}
+	today = dd+'/'+mm+'/'+yyyy;
+	return today;
+}
+
 $(document).ready(function()
 {
 	if($("#date_of_birth").length != 0)	//If datepicker exists
 	{
 		$('#date_of_birth').datepicker({
-			format: "dd/mm/yyyy"
+			format: "dd/mm/yyyy",
+			startDate: "01/01/1921",
+			endDate: getCurrentDate(),
+			weekStart:0,
+			autoclose:true
 		});
 	}
 
@@ -444,7 +466,7 @@ $(document).ready(function()
 
 			$('meta[name=uploaded_add_id]').attr('content', responce);		//Setting from AJAX responce
 
-			    //Process of upload should start after successfull advertisement upload - Will do later
+				//Process of upload should start after successfull advertisement upload - Will do later
 
 			$myDropZone[0].dropzone.processQueue();								//Uploading files
 		});
