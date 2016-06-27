@@ -85,6 +85,12 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 		]);
 
 	//My Profile Page
+	Route::post('profile_update', [
+			'uses' => 'UserController@profileUpdate',
+			'as' => '.profile_update'
+		]);
+
+	//WishList Page
 	Route::get('wishlist', [
 			'uses' => 'UserController@myWishList',
 			'as' => '.wishlist'

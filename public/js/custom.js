@@ -790,5 +790,78 @@ $(document).ready(function()
 	$('#rootwizard').bootstrapWizard();
 
 	window.prettyPrint && prettyPrint();
-	//
+
+	//Profile Map - Need to be updated
+	$("#user_address").geocomplete(
+	{
+		map			: "#user_address_map",
+		mapOptions	:
+		{
+			mapTypeId : 'roadmap',		//roadmap, satellite,hybrid, terrain,
+			scrollwheel	: true,
+			zoom: 8,
+			center : new google.maps.LatLng(37.42152681633113, -119.27327880000001),
+		},
+		markerOptions:
+		{
+			draggable: true
+		},
+	}).bind("geocode:result", function(event, result)
+	{
+		console.log('Success');
+		console.log(result.formatted_address);
+		console.log( result.geometry.location.lat() );
+		console.log( result.geometry.location.lng() );
+		console.log(result);
+		
+		$('#product_location_lat_profile').val( result.geometry.location.lat() );
+		$('#product_location_lon_profile').val( result.geometry.location.lng() );
+	}).bind("geocode:dragged", function(event, latLng)
+	{	//Dragging
+	 	console.log( $("#user_address").geocomplete( "find", latLng.lat() + "," + latLng.lng()) );
+		$('#user_address').val( $("#user_address").geocomplete( "find", latLng.lat() + "," + latLng.lng() ) );
+		$('#product_location_lat_profile').val( latLng.lat() );
+		$('#product_location_lon_profile').val( latLng.lng() );
+	});
+
+	//Profile Page Update Button Clicked
+	$("#edit_profile").submit(function(e)
+	{
+		var isValidated = true;	//After Validation Run
+		if(isValidated)
+		{
+			alert('OK');
+			var responce = $.ajax(
+									{
+										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+										method: "POST",
+										url: $(this).attr('action'),
+										dataType: "json",
+										async: false,
+										data: $("#edit_profile").serialize(),
+									}).responseText;
+
+			/*$.each($.parseJSON(responce),function(key,value)
+			{
+				if(key.localeCompare('status')==0)
+				{
+					if(value=='0')
+					{
+						console.log("Not Signed In");
+					}
+					else
+					{
+						console.log("Signed In Successfully");
+						location.reload();
+					}
+				}
+				if(key.localeCompare('message')==0)
+				{
+					$("#login_error_message").html(value);
+				}
+			});*/
+		}
+		e.preventDefault();
+		return 0;
+	});
 });

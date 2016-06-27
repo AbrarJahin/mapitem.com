@@ -1,8 +1,8 @@
-<form action="edit_submit" method="get" id="edit_profile" class="p-edit edit-on">
-	<button class="pull-left no-textdecor pedit done" type="submit" form="edit_profile" value="Submit">Done</button>
+<form action="{{ URL::route('user.profile_update') }}" method="post" id="edit_profile" class="p-edit edit-on">
+	<button class="pull-left no-textdecor pedit done" type="submit" form="edit_profile" id="profile_update" value="Submit">Done</button>
 	<div class="clearfix margin-twenty"></div>
 	<div class="">
-		<img src="images/upload-pic.jpg" width="144" height="144">
+		<img src="{{ url('images/empty-profile.jpg') }}" width="144" height="144">
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left l-adj">Name</div>
@@ -49,6 +49,10 @@
 	<div class="p-left">Address</div>
 	<div class="p-right">
 		<input type="text" placeholder="Address" name="address" id="user_address" class="width-adj9 form-control normal-input">
+		<input type="hidden" name="product_location_lat" id="product_location_lat_profile">
+		<input type="hidden" name="product_location_lon" id="product_location_lon_profile">
+		<br/>
+		<div id="user_address_map" class="p-right"></div>
 	</div>
 	<div class="clearfix margin-twenty"></div>
 </form>

@@ -107,4 +107,18 @@ class UserController extends Controller
 	{
 		return view('user.wishlist.main', [ 'current_page'	=> 'user.wishlist' ]);
 	}
+
+	/*
+		URL				-> post: /profile_update
+		Functionality	-> Show Dashboard Page
+		Access			-> Anyone who is logged in user
+		Created At		-> 27/06/2016
+		Updated At		-> 27/06/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function profileUpdate()
+	{
+		return $requestData = Request::all();
+		
+	}
 }
