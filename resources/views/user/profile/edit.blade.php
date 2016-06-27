@@ -33,7 +33,7 @@
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Date of Birth</div>
 	<div class="p-right">
-		<input class="form-control width-adj8 normal-input pull-left" type="text" placeholder="dd/mm/yyyy" name="date_of_birth" id="date_of_birth">
+		<input class="form-control width-adj8 normal-input pull-left" type="text" placeholder="mm/dd/yyyy" name="date_of_birth" id="date_of_birth">
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Social Security</div>
