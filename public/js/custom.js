@@ -815,14 +815,14 @@ $(document).ready(function()
 		console.log( result.geometry.location.lng() );
 		console.log(result);
 		
-		$('#product_location_lat_profile').val( result.geometry.location.lat() );
-		$('#product_location_lon_profile').val( result.geometry.location.lng() );
+		$('#location_lat_profile').val( result.geometry.location.lat() );
+		$('#location_lon_profile').val( result.geometry.location.lng() );
 	}).bind("geocode:dragged", function(event, latLng)
 	{	//Dragging
 	 	console.log( $("#user_address").geocomplete( "find", latLng.lat() + "," + latLng.lng()) );
 		$('#user_address').val( $("#user_address").geocomplete( "find", latLng.lat() + "," + latLng.lng() ) );
-		$('#product_location_lat_profile').val( latLng.lat() );
-		$('#product_location_lon_profile').val( latLng.lng() );
+		$('#location_lat_profile').val( latLng.lat() );
+		$('#location_lon_profile').val( latLng.lng() );
 	});
 
 	//Profile Page Update Button Clicked
@@ -832,38 +832,23 @@ $(document).ready(function()
 		var isValidated = true;	//After Validation Run
 		if(isValidated)
 		{
-			$.ajax(
+			var response = $.ajax(
+							{
+								headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+								method: "POST",
+								url: $(this).attr('action'),
+								dataType: "json",
+								async: false,
+								data: $("#edit_profile").serialize()
+							}).responseText;
+			if(response === 'Updated')
 			{
-				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-				method: "POST",
-				url: $(this).attr('action'),
-				dataType: "json",
-				async: false,
-				data: $("#edit_profile").serialize(),
-				success:function(responce)
-				{
-					$.each($.parseJSON(responce),function(key,value)
-					{
-						if(key.localeCompare('status')==0)
-						{
-							if(value=='0')
-							{
-								console.log("Not Signed In");
-							}
-							else
-							{
-								console.log("Signed In Successfully");
-								location.reload();
-							}
-						}
-						if(key.localeCompare('message')==0)
-						{
-							$("#login_error_message").html(value);
-						}
-					});
-					location.reload();
-				}
-			});
+				location.reload();
+			}
+			else
+			{
+				alert(response);
+			}
 		}
 		return 0;
 	});

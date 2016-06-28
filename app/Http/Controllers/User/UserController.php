@@ -113,8 +113,26 @@ class UserController extends Controller
 	*/
 	public function profileUpdate()
 	{
-		return $requestData = Request::all();
-		
+		$requestData = Request::all();
+		$user = User::find(Auth::user()->id);
+
+		$user->address						= $requestData['address'];
+		$user->cell_no						= $requestData['cell_no'];
+		$user->date_of_birth				= $requestData['date_of_birth'];
+		$user->email						= $requestData['email'];
+		$user->first_name					= $requestData['first_name'];
+		$user->last_name					= $requestData['last_name'];
+		$user->location_longitude			= $requestData['location_longitude'];
+		$user->location_latitude			= $requestData['location_latitude'];
+		$user->social_security_number_p1	= $requestData['social_security_1'];
+		$user->social_security_number_p2	= $requestData['social_security_2'];
+		$user->social_security_number_p3	= $requestData['social_security_3'];
+		$user->website						= $requestData['website'];
+
+		if($user->save())
+			return 'Updated';
+		else
+			return 'Profile Update Failed';
 	}
 
 	/*

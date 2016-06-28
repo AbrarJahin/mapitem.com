@@ -14,7 +14,7 @@
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Cell number</div>
 	<div class="p-right">
-		<input type="text" value="{{ $current_user->cell_no }}" placeholder="123" name="cell_no" class="width-adj9 normal-input pull-left"/>
+		<input type="text" value="{{ $current_user->cell_no }}" placeholder="123" name="cell_no" class="width-adj9 form-control normal-input"/>
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Email</div>
@@ -45,8 +45,8 @@
 	<div class="p-left">Address</div>
 	<div class="p-right">
 		<input type="text" value="{{ $current_user->address }}" placeholder="Address" name="address" id="user_address" class="width-adj9 form-control normal-input">
-		<input type="hidden" value="{{ $current_user->location_latitude }}" name="product_location_lat" id="product_location_lat_profile">
-		<input type="hidden" value="{{ $current_user->location_longitude }}" name="product_location_lon" id="product_location_lon_profile">
+		<input type="hidden" value="{{ $current_user->location_latitude }}" name="location_latitude" id="location_lat_profile">
+		<input type="hidden" value="{{ $current_user->location_longitude }}" name="location_longitude" id="location_lon_profile">
 		<br/>
 		<div id="user_address_map" class="p-right"></div>
 	</div>
