@@ -92,7 +92,6 @@ class UserController extends Controller
 	*/
 	public function myProfileView()
 	{
-		return User::where( 'id', Auth::user()->id )->first();
 		return view('user.profile.main', [
 											'current_page'	=> 'user.profile',
 											'current_user'	=> User::where( 'id', Auth::user()->id )

@@ -31,14 +31,11 @@
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Social Security</div>
 	<div class="p-right">
-		{{ $current_user->social_security_number }}
-		{{--
-		<div class="pull-left width-adj04">000</div>
+		<div class="pull-left width-adj04">{{ $current_user->social_security_number_p1 }}</div>
 		<span class="pull-left">-</span>
-		<div class="pull-left width-adj04">00</div>
+		<div class="pull-left width-adj04">{{ $current_user->social_security_number_p2 }}</div>
 		<span class="pull-left">-</span>
-		<div class="pull-left width-adj04">0000</div>
-		--}}
+		<div class="pull-left width-adj04">{{ $current_user->social_security_number_p3 }}</div>
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Address</div>
