@@ -21,7 +21,9 @@ class CreateUsersTable extends Migration
 			$table->string('email', 60)->unique();
 			$table->string('website', 70);
 			$table->date('date_of_birth');
-			$table->string('social_security_number', 15)->unique();
+			$table->string('social_security_number_p1', 3);
+			$table->string('social_security_number_p2', 4);
+			$table->string('social_security_number_p3', 2);
 			$table->string('address', 255);
 			$table->float('location_latitude',10,7);
 			$table->float('location_longitude',10,7);
