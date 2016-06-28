@@ -7,6 +7,7 @@ use Request;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
+use Carbon\Carbon;
 
 /*
 	Functionality	-> Handel All Auth Works
@@ -118,7 +119,7 @@ class UserController extends Controller
 
 		$user->address						= $requestData['address'];
 		$user->cell_no						= $requestData['cell_no'];
-		$user->date_of_birth				= $requestData['date_of_birth'];
+		$user->date_of_birth				= Carbon::createFromFormat('m/d/Y', $requestData['date_of_birth']);
 		$user->email						= $requestData['email'];
 		$user->first_name					= $requestData['first_name'];
 		$user->last_name					= $requestData['last_name'];
