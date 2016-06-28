@@ -18,6 +18,13 @@ class User extends Authenticatable
 								'first_name',
 								'last_name',
 								'email',
+								'cell_no',
+								'website',
+								'date_of_birth',
+								'social_security_number',
+								'address',
+								'location_latitude',
+								'location_longitude',
 								'password',
 								'user_type',
 								'is_enabled'

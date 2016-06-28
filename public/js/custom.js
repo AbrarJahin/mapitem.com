@@ -88,7 +88,7 @@ $(document).ready(function()
 	});
 
 	//Create Custom Search Form submit to show pretty URL
-	$("#search_add_from").submit(function(e)
+	$("form#search_add_from").submit(function(e)
 	{
 		e.preventDefault();
 		if( $('#input_nav_search').val().trim().length<1 )
@@ -252,8 +252,9 @@ $(document).ready(function()
 	});
 
 	/* Submit button pressed - Sign-up */
-	$("#sign-up-f").submit(function()
+	$("form#sign-up-f").submit(function(e)
 	{
+		e.preventDefault();
 		var isValidated = true;
 		$("#sign_up_submit").button('loading');		//Change button state to Signing Up
 		//Checking input for validation
@@ -437,7 +438,7 @@ $(document).ready(function()
 		{
 			if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0)	//All Upload Done
 			{
-				//alert('Your action, Refresh your page here. ');
+				//console.log('Your action, Refresh your page here. ');
 				//location.reload();
 				window.location.replace($("meta[name='ridirect_url_after_successful_post']").attr("content"));
 			}
@@ -825,43 +826,45 @@ $(document).ready(function()
 	});
 
 	//Profile Page Update Button Clicked
-	$("#edit_profile").submit(function(e)
+	$("form#edit_profile").submit(function(e)
 	{
+		e.preventDefault();
 		var isValidated = true;	//After Validation Run
 		if(isValidated)
 		{
-			alert('OK');
-			var responce = $.ajax(
-									{
-										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-										method: "POST",
-										url: $(this).attr('action'),
-										dataType: "json",
-										async: false,
-										data: $("#edit_profile").serialize(),
-									}).responseText;
-
-			/*$.each($.parseJSON(responce),function(key,value)
+			$.ajax(
 			{
-				if(key.localeCompare('status')==0)
+				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				method: "POST",
+				url: $(this).attr('action'),
+				dataType: "json",
+				async: false,
+				data: $("#edit_profile").serialize(),
+				success:function(responce)
 				{
-					if(value=='0')
+					$.each($.parseJSON(responce),function(key,value)
 					{
-						console.log("Not Signed In");
-					}
-					else
-					{
-						console.log("Signed In Successfully");
-						location.reload();
-					}
+						if(key.localeCompare('status')==0)
+						{
+							if(value=='0')
+							{
+								console.log("Not Signed In");
+							}
+							else
+							{
+								console.log("Signed In Successfully");
+								location.reload();
+							}
+						}
+						if(key.localeCompare('message')==0)
+						{
+							$("#login_error_message").html(value);
+						}
+					});
+					location.reload();
 				}
-				if(key.localeCompare('message')==0)
-				{
-					$("#login_error_message").html(value);
-				}
-			});*/
+			});
 		}
-		e.preventDefault();
 		return 0;
 	});
 });
