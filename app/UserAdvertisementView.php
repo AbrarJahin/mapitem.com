@@ -6,13 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAdvertisementView extends Model
 {
-	protected $table 		=	'user_advertisement_views';			//Table Name
+	protected $primaryKey	=	null;
+	public $incrementing	=	false;
+	public $timestamps		=	false;
+
+	protected $table 		=	'user_add_views';			//Table Name
 
 	protected $fillable		=	[
 									'user_id',
-									'advertisement_id',
+									'add_id',
 									'total_view'
 								];
+
+	protected $hidden = [
+							'user_id',
+							'add_id'
+						];
 
 	public function user()
 	{
@@ -21,7 +30,7 @@ class UserAdvertisementView extends Model
 
 	public function advertisement()
 	{
-		return $this->hasOne('App\advertisement','advertisement_id');
+		return $this->hasOne('App\advertisement','add_id');
 	}
 
 	//Scope Query for view count

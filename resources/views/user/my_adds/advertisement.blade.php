@@ -36,7 +36,10 @@
 								<b>${{ $my_add->price }}</b>
 						</div>
 						<div class="clearfix"></div>
-						<p>{{ $my_add->description }}<a href="#/">View More</a></p>
+						<p>
+							{{ $my_add->description }}
+							<br/><a href="#/">View More</a>
+						</p>
 						{{-- Advertisement Giver Description - Start --}}
 						<ul>
 							<li>

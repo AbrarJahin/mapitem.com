@@ -50,9 +50,7 @@
 								</div>
 								<button class="btn btn-default green-small" type="submit">Place Offer</button>
 							</form>
-
 						</li>
-						
 					</ul>
 				@else	{{-- If user is not logged in --}}
 					<ul class="dropdown-menu">

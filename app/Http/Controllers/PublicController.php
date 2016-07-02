@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\SubCategory;
 use App\Advertisement;
+use App\UserAdvertisementView;
 use Request;
+use Auth;
 use DB;
 
 class PublicController extends Controller
@@ -186,5 +188,49 @@ class PublicController extends Controller
 						"data"			=>	$data															// total data array
 					);
 		return $json_data;
+	}
+
+	/*
+		URL             -> get: /listing
+		Functionality   -> Show SubCategory Page
+		Access          -> All
+		Created At      -> 22/03/2016
+		Updated At      -> 22/03/2016
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function detailedMapItem()
+	{
+		$requestData = Request::all();
+		//Update View Count - Not Working
+		/*UserAdvertisementView::firstOrCreate([
+										'user_id'	=>	Auth::user()->id,
+										'add_id'	=>	$requestData['product_id']
+									])->increment('total_view');*/
+		//So do it with Query Bilder
+		$prev_element = DB::table('user_add_views')
+					->where('user_id', Auth::user()->id)
+					->where('add_id', $requestData['product_id']);
+		if($prev_element->count()>0)
+		{
+			$prev_element=$prev_element->pluck('total_view');
+			DB::table('user_add_views')
+					->where('user_id', Auth::user()->id)
+					->where('add_id', $requestData['product_id'])
+					->update([
+								'total_view' => $prev_element[0]+1
+							]);
+		}
+		else
+		{
+			DB::table('user_add_views')->insert([
+											'user_id'	=>	Auth::user()->id,
+											'add_id'	=>	$requestData['product_id']
+										]);
+		}
+		//Return the Product detail
+		return Advertisement::with('User')
+					->with('AdvertisementImages')
+					->with('UserAdvertisementView')
+					->find($requestData['product_id']);
 	}
 }

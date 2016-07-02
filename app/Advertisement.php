@@ -59,4 +59,9 @@ class Advertisement extends Model
 	{
 		return $this->hasMany('App\AdvertisementImage', 'advertisement_id', 'id');
 	}
+
+	public function UserAdvertisementView()
+	{
+		return $this->hasOne('App\UserAdvertisementView', 'add_id', 'id');
+	}
 }

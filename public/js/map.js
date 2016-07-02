@@ -26,6 +26,7 @@ $(function()
 	$(document).on("mouseenter", ".showonmap9", function(e)
 	{
 		openInfoWindowByID( $(this).attr('marker_id') );
+
 	});
 
 	//Open add
@@ -84,7 +85,7 @@ $(function()
 		}
 		catch(error)
 		{
-		    console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
+			console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
 		}
 	});
 
@@ -478,6 +479,26 @@ function onChangeOnOff()		//Turning on or off clustering
 
 function showAddDetail(id)		//Show Add Detail
 {
+	$.ajax(
+	{
+		headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+		method: "POST",
+		url: $('meta[name=product_detail_ajax_url]').attr("content"),
+		dataType: "json",
+		data:
+		{
+			product_id	:	id
+		},
+		success:function(responce_data)
+		{
+			//$.parseJSON(responce_data)
+			$.each(responce_data,function(key,value)
+			{
+				console.log(key+' - '+value);
+			});
+		}
+	});
+
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");

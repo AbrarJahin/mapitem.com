@@ -49,6 +49,12 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 			'uses' => 'PublicController@findMapItems',
 			'as' => 'find_map_items'
 		]);
+
+	//Map Item Showing - AJAX
+	Route::post('selected_item_detail', [
+			'uses' => 'PublicController@detailedMapItem',
+			'as' => 'selected_item_detail'
+		]);
 });
 
 // User Routes

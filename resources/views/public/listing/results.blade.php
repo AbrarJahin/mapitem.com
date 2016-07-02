@@ -28,4 +28,6 @@
 <meta name="svg_hearts"			content="{{ URL::asset('svg/normal.svg') }}">
 <meta name="info_window_img"	content="{{ URL::asset('images/sb-i.jpg') }}">
 
+<meta name="product_detail_ajax_url"	content="{{ URL::route('selected_item_detail') }}">
+
 <div id="show_paginator"></div>
