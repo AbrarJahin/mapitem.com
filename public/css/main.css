@@ -3221,3 +3221,8 @@ li.next.disabled
 	width: 400px;
 	height: 250px;
 }
+
+.variable-width img
+{
+	height: 250px;
+}
