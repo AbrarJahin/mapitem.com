@@ -28,8 +28,7 @@ class Advertisement extends Model
 									'location_lat',
 									'location_lon',
 									'is_active',
-									'deleted_at',
-									'view_count'
+									'deleted_at'
 								];
 
 	protected $hidden = [

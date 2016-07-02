@@ -28,7 +28,6 @@ class CreateAdvertisementsTable extends Migration
 
 			$table->enum('is_active', ['active', 'inactive'])->default('active');
 			$table->softDeletes();
-			$table->integer('view_count')->unsigned()->default(0);
 
 			//Foreign Keys
 			$table->foreign('user_id')			->references('id')	->on('users');
