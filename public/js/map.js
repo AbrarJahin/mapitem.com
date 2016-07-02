@@ -312,6 +312,11 @@ function generateMarkers(bounds)
 								{
 									//Insert into Box Elements
 									var listing_element;
+									if(element.user_image.length<4)
+									{
+										//alert(element.user_image);
+										element.user_image='../images/empty-profile.jpg';
+									}
 									listing_element	=	'<div class="col-lg-4 col-sm-6"><div class="pos-rel"><a href="#" class="wsh-lst"><object type="image/svg+xml" data="'
 														+ $('meta[name=svg_hearts]').attr("content")
 														+ '"></object></a><div class="box showonmap9" marker_id='

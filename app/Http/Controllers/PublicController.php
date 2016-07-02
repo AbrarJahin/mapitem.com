@@ -143,7 +143,7 @@ class PublicController extends Controller
 							'advertisements.price as price',
 							'advertisements.title as title',
 							'advertisements.description as description',
-							'users.user_type as user_image',				//Should be updated later
+							'users.profile_picture as user_image',				//Should be updated later
 							'advertisement_images.image_name as advertisement_image'
 						)
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])

@@ -46,15 +46,25 @@
 							</li>
 							<li>
 								<span class="fa fa-location-arrow icon-adj"> &nbsp;</span>
-								{{ $my_add->user->address }}
+								{{ $my_add->address }}
 							</li>
 							<li>
 								<span class="fa fa-fw icon-adj"> </span>
-								{{ $my_add->user->cell_no }}
+								@if(strlen($my_add->user->cell_no)>0)
+									<a href="tel:{{ $my_add->user->cell_no }}">
+										{{ $my_add->user->cell_no }}
+									</a>
+								@else
+									Please <a href="{{ URL::route('user.profile') }}" target="_blank">Update Your Profile</a> to add a Phone
+								@endif
 							</li>
 							<li>
 								<span class="fa fa-fw icon-adj"> </span>
-								<a href="{{ $my_add->user->website }}" target="_blank">{{ $my_add->user->website }}</a>
+								@if(strlen($my_add->user->website)>0)
+									<a href="{{ $my_add->user->website }}" target="_blank">{{ $my_add->user->website }}</a>
+								@else
+									Please <a href="{{ URL::route('user.profile') }}" target="_blank">Update Your Profile</a> to add a Website
+								@endif
 							</li>
 							<li>
 								<span class="fa fa-fw icon-adj"> </span>
