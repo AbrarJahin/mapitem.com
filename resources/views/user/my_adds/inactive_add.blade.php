@@ -34,22 +34,26 @@
 						<p>Enjoy Trip to Kashmir Valley, Kashmir Valley is the one Natural Place where Torreist comes across the world. <a href="#">View More</a></p>
 
 						<ul>
-								<li>
-										<span><img src="images/u-logo.jpg"></span>
-										Paradise Travelling Company
-								</li>
-								<li>
-										<span class="fa fa-fw icon-adj"> </span>
-										123-456-789
-								</li>
-								<li>
-										<span class="fa fa-fw icon-adj"> </span>
-										<a href="">www.paradisetravel.com</a>
-								</li>
-								<li>
-										<span class="fa fa-fw icon-adj"> </span>
-										<a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">info@pardistravel.com</a>
-								</li>
+							<li>
+								<span><img src="images/u-logo.jpg"></span>
+								Paradise Travelling Company
+							</li>
+							<li>
+								<span class="fa fa-location-arrow icon-adj"> &nbsp;</span>
+								Santa Cruz 1156 High Street Santa Cruz, CA 95064. College Mailing Addresses as of July 1, 2014
+							</li>
+							<li>
+								<span class="fa fa-fw icon-adj"> </span>
+								123-456-789
+							</li>
+							<li>
+								<span class="fa fa-fw icon-adj"> </span>
+								<a href="">www.paradisetravel.com</a>
+							</li>
+							<li>
+								<span class="fa fa-fw icon-adj"> </span>
+								<a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">info@pardistravel.com</a>
+							</li>
 						</ul>
 					</div>
 			</div>

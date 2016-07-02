@@ -7,6 +7,7 @@ use Request;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
+use App\Advertisement;
 use Carbon\Carbon;
 use DB;
 
@@ -68,7 +69,11 @@ class UserController extends Controller
 	*/
 	public function myAddsView()
 	{
-		return view('user.my_adds.main', [ 'current_page'	=> 'user.my_adds' ]);
+		$my_adds = Advertisement::where('user_id',Auth::user()->id)->paginate(5);
+		return view('user.my_adds.main', [
+											'current_page'	=> 'user.my_adds',
+											'my_adds' => $my_adds
+										]);
 	}
 
 	/*

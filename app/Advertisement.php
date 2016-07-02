@@ -26,13 +26,19 @@ class Advertisement extends Model
 									'description',
 									'address',
 									'location_lat',
-									'location_lon'
+									'location_lon',
+									'is_active',
+									'deleted_at',
+									'view_count'
 								];
 
 	protected $hidden = [
 							'user_id',
 							'category_id',
-							'sub_category_id'
+							'sub_category_id',
+							'deleted_at',
+							'created_at',
+							'updated_at',
 						];
 
 	public function User()

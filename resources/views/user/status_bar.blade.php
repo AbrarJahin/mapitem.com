@@ -2,7 +2,7 @@
 <div class="sb">
 	<div class="container">
 		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-			<h1>Welcome Max!</h1>
+			<h1>Welcome {{ Auth::user()->first_name }}!</h1>
 		</div>
 		<div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
 			<ul>
