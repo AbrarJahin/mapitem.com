@@ -492,9 +492,57 @@ function showAddDetail(id)		//Show Add Detail
 		success:function(responce_data)
 		{
 			//$.parseJSON(responce_data)
+			//console.log(responce_data);
 			$.each(responce_data,function(key,value)
 			{
-				console.log(key+' - '+value);
+				if(key.localeCompare('title')==0)
+				{
+					console.log('Title - '+value);
+				}
+				else if(key.localeCompare('price')==0)
+				{
+					console.log('Price - '+value);
+				}
+				else if(key.localeCompare('description')==0)
+				{
+					console.log('description - '+value);
+				}
+				else if(key.localeCompare('address')==0)
+				{
+					console.log('address - '+value);
+				}
+				else if(key.localeCompare('location_lat')==0)
+				{
+					console.log('location_lat - '+value);
+				}
+				else if(key.localeCompare('location_lon')==0)
+				{
+					console.log('location_lon - '+value);
+				}
+				else if(key.localeCompare('user')==0)
+				{
+					console.log('User Data Start');
+					$.each(value,function(id,user_data)
+					{
+						console.log(user_data);
+					});
+				}
+				else if(key.localeCompare('advertisement_images')==0)
+				{
+					console.log('Adverisement Image Data Start');
+					$.each(value,function(id,image)
+					{
+						console.log(image);
+					});
+				}
+				else if(key.localeCompare('user_advertisement_view')==0)
+				{
+					console.log('Adverisement View Count Start');
+					$.each(value,function(id,view_count)
+					{
+						console.log(view_count);
+					});
+				}
 			});
 		}
 	});

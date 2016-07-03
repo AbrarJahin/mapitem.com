@@ -207,14 +207,17 @@ class PublicController extends Controller
 										'add_id'	=>	$requestData['product_id']
 									])->increment('total_view');*/
 		//So do it with Query Bilder
+		$user_id = 0;	//Default User ID for non logged in users
+		if(Auth::check())
+			$user_id = Auth::user()->id;
 		$prev_element = DB::table('user_add_views')
-					->where('user_id', Auth::user()->id)
+					->where('user_id', $user_id)
 					->where('add_id', $requestData['product_id']);
 		if($prev_element->count()>0)
 		{
 			$prev_element=$prev_element->pluck('total_view');
 			DB::table('user_add_views')
-					->where('user_id', Auth::user()->id)
+					->where('user_id', $user_id)
 					->where('add_id', $requestData['product_id'])
 					->update([
 								'total_view' => $prev_element[0]+1
@@ -223,7 +226,7 @@ class PublicController extends Controller
 		else
 		{
 			DB::table('user_add_views')->insert([
-											'user_id'	=>	Auth::user()->id,
+											'user_id'	=>	$user_id,
 											'add_id'	=>	$requestData['product_id']
 										]);
 		}

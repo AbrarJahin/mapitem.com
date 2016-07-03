@@ -38,6 +38,7 @@ class Advertisement extends Model
 							'deleted_at',
 							'created_at',
 							'updated_at',
+							'is_active',
 						];
 
 	public function User()
@@ -62,6 +63,6 @@ class Advertisement extends Model
 
 	public function UserAdvertisementView()
 	{
-		return $this->hasOne('App\UserAdvertisementView', 'add_id', 'id');
+		return $this->hasMany('App\UserAdvertisementView', 'add_id', 'id');
 	}
 }

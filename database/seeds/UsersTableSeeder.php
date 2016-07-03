@@ -12,6 +12,27 @@ class UsersTableSeeder extends Seeder
 	public function run()
 	{
 		$faker = Faker\Factory::create();
+
+		//Not Logged In User Creation For View Count
+		DB::table('users')->insert(
+									[
+										'id'						=>	0,
+										'first_name'				=> 'Non Logged In',
+										'last_name'					=> 'User',
+										'email'						=> 'not@logged.in',
+										'cell_no'					=> '000000',
+										'website'					=> 'not.logged/in',
+										'date_of_birth'				=> $faker->date($format = 'Y-m-d', $max = 'now'),
+										'social_security_number_p1'	=> $faker->unique()->uuid,
+										'social_security_number_p2'	=> $faker->unique()->uuid,
+										'social_security_number_p3'	=> $faker->unique()->uuid,
+										'address'					=> $faker->address,
+										'location_latitude'			=> $faker->latitude($min = -90, $max = 90),
+										'location_longitude'		=> $faker->longitude($min = -180, $max = 180),
+										'password'					=> bcrypt('1234'),
+										'user_type'					=> 'normal_user'
+									]);
+
 		$users = [
 					[
 						'email'		=> 'max@gmail.com',
