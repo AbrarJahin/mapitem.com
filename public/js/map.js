@@ -529,10 +529,14 @@ function showAddDetail(id)		//Show Add Detail
 				}
 				else if(key.localeCompare('advertisement_images')==0)
 				{
-					console.log('Adverisement Image Data Start');
+					//console.log('Adverisement Image Data Start');
+					$('.variable-width').empty('');
 					$.each(value,function(id,image)
 					{
-						console.log(image);
+						//$('.variable-width').prepend($('<div> new div </div>'));
+						$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
+						
+						console.log(image.image_name);
 					});
 				}
 				else if(key.localeCompare('user_advertisement_view')==0)
