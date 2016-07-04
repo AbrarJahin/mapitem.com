@@ -6,6 +6,9 @@
 
 @section('content')
 
+	<meta name="add_status_update_ajax_url" content="{{ URL::route('user.update_add_status') }}">
+
+
 	@foreach ($my_adds as $my_add)
 		@include('user.my_adds.advertisement')
 	@endforeach

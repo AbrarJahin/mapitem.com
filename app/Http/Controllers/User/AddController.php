@@ -107,4 +107,23 @@ class AddController extends Controller
 			return Response::json('error', 400);
 		}
 	}
+
+	/*
+		URL				-> POST: /update_advertisement_status
+		Functionality	-> Update ad. status
+		Access			-> Anyone who is logged in user
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function addUpdateStatus()
+	{
+		$requestData = Request::all();
+
+		$advertisement				=	Advertisement::where('id',$requestData['advertisement_id'])
+													->where('user_id',Auth::user()->id)
+													->first();
+		$advertisement->is_active	=	$requestData['status'];
+		$advertisement->save();
+
+		return $advertisement;
+	}
 }

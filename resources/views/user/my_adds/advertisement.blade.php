@@ -12,7 +12,7 @@
 								</button>
 								<ul class="dropdown-menu no-underline">
 									 <li><a href="#/" class="edit1">Edit</a></li>
-									 <li><a href="#/">End Listing</a></li>
+									 <li class="end_listing_button"><a href="#/">End Listing</a></li>
 								</ul>
 							</div>
 						</div>

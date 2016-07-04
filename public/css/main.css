@@ -3226,3 +3226,8 @@ li.next.disabled
 {
 	height: 250px;
 }
+
+.hidden
+{
+	visibility: hidden;
+}

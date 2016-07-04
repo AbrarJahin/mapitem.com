@@ -604,7 +604,51 @@ $(document).ready(function()
 
 	$('.relist').on('click', function()
 	{
+		var advertisement_id = $(this).closest('div.db-body').attr('advertisement_id');
+
+		//Make AJAX request to update status
+		$.ajax(
+		{
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $('meta[name=add_status_update_ajax_url]').attr("content"),
+			dataType: "json",
+			data:
+			{
+				advertisement_id	:	advertisement_id,
+				status				:	'active'	//1 for making it active and 0 for making it inactive
+			},
+			success:function(responce_data)
+			{
+				console.log(responce_data);
+			}
+		});
 		$(this).closest('.inative-list').fadeOut("slow");
+	});
+
+	$('li.end_listing_button').on('click', function()
+	{
+		var advertisement_id = $(this).closest('div.db-body').attr('advertisement_id');
+
+		//Make AJAX request to update status
+		$.ajax(
+		{
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $('meta[name=add_status_update_ajax_url]').attr("content"),
+			dataType: "json",
+			data:
+			{
+				advertisement_id	:	advertisement_id,
+				status				:	'inactive'	//1 for making it active and 0 for making it inactive
+			},
+			success:function(responce_data)
+			{
+				//$(this).closest('.inative-list').fadeIn("slow");
+				console.log(responce_data);
+				window.location.reload();
+			}
+		});
 	});
 
 	/*Profile page*/
