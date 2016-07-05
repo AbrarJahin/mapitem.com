@@ -37,6 +37,6 @@ class CreateUserAdvertisementViewsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('user_advertisement_views');
+		Schema::drop('user_add_views');
 	}
 }
