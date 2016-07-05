@@ -23,6 +23,7 @@ class PublicController extends Controller
 	*/
 	public function index()
 	{
+		//return Advertisement::with('UserAdvertisementView')->get();
 		return view('public.index.main',[ 'current_page'   => 'Home' ]);
 	}
 
@@ -207,7 +208,7 @@ class PublicController extends Controller
 										'add_id'	=>	$requestData['product_id']
 									])->increment('total_view');*/
 		//So do it with Query Bilder
-		$user_id = 0;	//Default User ID for non logged in users
+		$user_id = 1;	//Default User ID for non logged in users
 		if(Auth::check())
 			$user_id = Auth::user()->id;
 		$prev_element = DB::table('user_add_views')

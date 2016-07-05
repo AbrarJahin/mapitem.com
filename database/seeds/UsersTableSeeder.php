@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
 		//Not Logged In User Creation For View Count
 		DB::table('users')->insert(
 									[
-										'id'						=>	0,
+										'id'						=>	1,
 										'first_name'				=> 'Non Logged In',
 										'last_name'					=> 'User',
 										'email'						=> 'not@logged.in',
