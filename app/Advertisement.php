@@ -65,4 +65,14 @@ class Advertisement extends Model
 	{
 		return $this->hasMany('App\UserAdvertisementView', 'add_id', 'id');
 	}
+
+	//Added For calculating Total - Start
+		public $appends = ['total_views'];
+
+		public function getTotalViewsAttribute()
+		{
+			//return $this->UserAdvertisementView->sum('total_view');	//Attribute Collection
+			return $this->UserAdvertisementView()->sum('total_view');	//Method - Returns only value - What I need here
+		}
+	//Added For calculating Total - END
 }
