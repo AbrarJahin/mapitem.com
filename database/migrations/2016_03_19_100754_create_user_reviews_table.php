@@ -20,8 +20,8 @@ class CreateUserReviewsTable extends Migration
 			$table->timestamps();
 
 			//Foreign Keys
-			$table->foreign('user_id')				->references('id')	->on('users')			->onDelete('cascade');
-			$table->foreign('advertisement_id')		->references('id')	->on('advertisements')	->onDelete('cascade');
+			$table->foreign('user_id')				->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');;
+			$table->foreign('advertisement_id')		->references('id')	->on('advertisements')	->onDelete('cascade')	->onUpdate('cascade');;
 
 			//Composite Primary Key
 			$table->unique([

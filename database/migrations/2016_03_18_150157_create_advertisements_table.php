@@ -30,9 +30,9 @@ class CreateAdvertisementsTable extends Migration
 			$table->softDeletes();
 
 			//Foreign Keys
-			$table->foreign('user_id')			->references('id')	->on('users')			->onDelete('cascade');
-			$table->foreign('category_id')		->references('id')	->on('categories')		->onDelete('cascade');
-			$table->foreign('sub_category_id')	->references('id')	->on('sub_categories')	->onDelete('cascade');
+			$table->foreign('user_id')			->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');;
+			$table->foreign('category_id')		->references('id')	->on('categories')		->onDelete('cascade')	->onUpdate('cascade');;
+			$table->foreign('sub_category_id')	->references('id')	->on('sub_categories')	->onDelete('cascade')	->onUpdate('cascade');;
 			$table->timestamps();
 		});
 	}

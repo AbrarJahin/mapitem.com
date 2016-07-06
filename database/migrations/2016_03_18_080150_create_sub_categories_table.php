@@ -19,7 +19,7 @@ class CreateSubCategoriesTable extends Migration
 			$table->string('name', 25)->unique();
 
 			//Foreign Keys
-			$table->foreign('category_id')	->references('id')	->on('categories')	->onDelete('cascade');
+			$table->foreign('category_id')	->references('id')	->on('categories')	->onDelete('cascade')	->onUpdate('cascade');
 
 			//Composite Primary Key
 			$table->unique([

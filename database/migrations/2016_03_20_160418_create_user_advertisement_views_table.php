@@ -19,8 +19,8 @@ class CreateUserAdvertisementViewsTable extends Migration
 			$table->integer('total_view')			->integer()		->default(1);
 			//Removed all keys for making things faster
 			//Foreign Keys
-			$table->foreign('user_id')	->references('id')	->on('users')			->onDelete('cascade');
-			$table->foreign('add_id')	->references('id')	->on('advertisements')	->onDelete('cascade');
+			$table->foreign('user_id')	->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');;
+			$table->foreign('add_id')	->references('id')	->on('advertisements')	->onDelete('cascade')	->onUpdate('cascade');;
 
 			//Composite Primary Key
 			$table->unique([

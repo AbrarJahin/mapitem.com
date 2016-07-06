@@ -20,9 +20,9 @@ class CreateAdvertisementMessageThreadesTable extends Migration
 			$table->integer('advertisement_id')	->unsigned()	->index();
 
 			//Foreign Keys
-			$table->foreign('sender_id')		->references('id')	->on('users')			->onDelete('cascade');
-			$table->foreign('receiver_id')		->references('id')	->on('users')			->onDelete('cascade');
-			$table->foreign('advertisement_id')	->references('id')	->on('advertisements')	->onDelete('cascade');
+			$table->foreign('sender_id')		->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
+			$table->foreign('receiver_id')		->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
+			$table->foreign('advertisement_id')	->references('id')	->on('advertisements')	->onDelete('cascade')	->onUpdate('cascade');
 
 			$table->timestamps();
 		});
