@@ -26,7 +26,6 @@ $(function()
 	$(document).on("mouseenter", ".showonmap9", function(e)
 	{
 		openInfoWindowByID( $(this).attr('marker_id') );
-
 	});
 
 	//Open add
@@ -497,37 +496,43 @@ function showAddDetail(id)		//Show Add Detail
 			{
 				if(key.localeCompare('title')==0)
 				{
-					console.log('Title - '+value);
+					$("#selected_add_title").html(value);
+					//console.log('Title - '+value);
 				}
 				else if(key.localeCompare('price')==0)
 				{
-					console.log('Price - '+value);
+					$("#selected_add_price").html(value);
+					//console.log('Price - '+value);
 				}
 				else if(key.localeCompare('description')==0)
 				{
-					console.log('description - '+value);
+					//console.log('description - '+value);
+					$("#selected_add_description").html(value);
 				}
-				else if(key.localeCompare('address')==0)
+				/*else if(key.localeCompare('address')==0)
 				{
 					console.log('address - '+value);
-				}
+				}*/
 				else if(key.localeCompare('location_lat')==0)
 				{
-					console.log('location_lat - '+value);
+					//console.log('location_lat - '+value);
+					//$('a[location_lat]').
+					$('#selected_add_direction').attr("location_lat",value);
 				}
 				else if(key.localeCompare('location_lon')==0)
 				{
-					console.log('location_lon - '+value);
+					//console.log('location_lon - '+value);
+					$('#selected_add_direction').attr("location_lon",value);
 				}
 				else if(key.localeCompare('user')==0)
 				{
 					console.log('User Data Start');
-					$.each(value,function(id,user_data)
+					$.each(value,function(tag,user_data)
 					{
 						console.log(user_data);
 					});
 				}
-				else if(key.localeCompare('advertisement_images')==0)
+				/*else if(key.localeCompare('advertisement_images')==0)
 				{
 					//console.log('Adverisement Image Data Start');
 					$('.variable-width').empty('');
@@ -538,14 +543,10 @@ function showAddDetail(id)		//Show Add Detail
 						
 						console.log(image.image_name);
 					});
-				}
-				else if(key.localeCompare('user_advertisement_view')==0)
+				}*/
+				else if(key.localeCompare('total_views')==0)
 				{
-					console.log('Adverisement View Count Start');
-					$.each(value,function(id,view_count)
-					{
-						console.log(view_count);
-					});
+					$('#selected_add_view_count').attr("data-original-title",value);
 				}
 			});
 		}

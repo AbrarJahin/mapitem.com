@@ -234,7 +234,6 @@ class PublicController extends Controller
 		//Return the Product detail
 		return Advertisement::with('User')
 					->with('AdvertisementImages')
-					->with('UserAdvertisementView')
 					->find($requestData['product_id']);
 	}
 }
