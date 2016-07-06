@@ -125,5 +125,11 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'uses'	=> 'AddController@addUpdateStatus',
 				'as'	=> '.update_add_status'
 			]);
+
+		//Add Advertisement Review
+		Route::post('write_review', [
+				'uses'	=> 'AddController@writeReview',
+				'as'	=> '.write_review'
+			]);
 	//Addvertisement - End
 });

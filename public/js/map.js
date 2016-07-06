@@ -222,6 +222,33 @@ $(function()
 			generateMarkers(map_div.gmap3("get").getBounds());
 		}
 	});
+
+	$("form#write_review").submit(function(e)
+	{
+		e.preventDefault();
+		//Standerd AJAX call goes here
+		$.ajax({
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			type: "POST",
+			url: $(this).attr('action'),
+			data: $("#write_review").serialize(),
+			contentType: "application/x-www-form-urlencoded",
+			dataType: "html",
+			success: function (data)
+			{
+				alert(data);
+			},
+			error: function (e)
+			{
+				console.log(e);
+			},
+			complete: function ()
+			{
+				// Handle the complete event
+				alert("ajax completed ");
+			}
+		});  // end Ajax
+	});
 });
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX
@@ -494,19 +521,20 @@ function showAddDetail(id)		//Show Add Detail
 			//console.log(responce_data);
 			$.each(responce_data,function(key,value)
 			{
-				if(key.localeCompare('title')==0)
+				if(key.localeCompare('id')==0)
+				{
+					$('#write_review input[name="add_id"]').val(value);
+				}
+				else if(key.localeCompare('title')==0)
 				{
 					$("#selected_add_title").html(value);
-					//console.log('Title - '+value);
 				}
 				else if(key.localeCompare('price')==0)
 				{
 					$("#selected_add_price").html(value);
-					//console.log('Price - '+value);
 				}
 				else if(key.localeCompare('description')==0)
 				{
-					//console.log('description - '+value);
 					$("#selected_add_description").html(value);
 				}
 				/*else if(key.localeCompare('address')==0)
@@ -515,13 +543,10 @@ function showAddDetail(id)		//Show Add Detail
 				}*/
 				else if(key.localeCompare('location_lat')==0)
 				{
-					//console.log('location_lat - '+value);
-					//$('a[location_lat]').
 					$('#selected_add_direction').attr("location_lat",value);
 				}
 				else if(key.localeCompare('location_lon')==0)
 				{
-					//console.log('location_lon - '+value);
 					$('#selected_add_direction').attr("location_lon",value);
 				}
 				else if(key.localeCompare('user')==0)

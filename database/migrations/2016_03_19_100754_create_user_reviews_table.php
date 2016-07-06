@@ -17,6 +17,7 @@ class CreateUserReviewsTable extends Migration
 			$table->integer('user_id')				->unsigned()		->index();
 			$table->integer('advertisement_id')		->unsigned()		->index();
 			$table->text('review');
+			$table->integer('rating');
 			$table->timestamps();
 
 			//Foreign Keys
