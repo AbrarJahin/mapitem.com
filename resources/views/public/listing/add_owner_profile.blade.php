@@ -30,16 +30,7 @@
 		</div>
 		<div class="sb-bottom dropdown">
 			<a data-toggle="dropdown" type="submit" class="btn loginbtn green-large width-adj dropdown-toggl" href="#">Contact</a>
-			<ul class="dropdown-menu no-padding loginpopup col-lg-4 contact">
-				<li>
-					<form class="offer" action="#">
-						<div class="form-group">
-						<textarea rows="3" placeholder="Any Question" class="form-control tarea"></textarea>
-						</div>
-						<button class="btn btn-default green-small width-adj" type="submit">Send Message</button>
-					</form>
-				</li>
-			</ul>
+			@include('public.listing.send_message')
 		</div>
 	</div>
 </div>
