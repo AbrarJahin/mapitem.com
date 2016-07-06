@@ -5,11 +5,11 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateFbLoginTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
 	public function up()
 	{
 		Schema::create('fb_lgin', function (Blueprint $table)

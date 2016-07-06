@@ -17,7 +17,7 @@ class CreateAdvertisementImagesTable extends Migration
 			$table->integer('advertisement_id')	->unsigned()		->index();
 			$table->string('image_name', 255);
 			//Foreign Keys
-			$table->foreign('advertisement_id')	->references('id')	->on('advertisements');
+			$table->foreign('advertisement_id')	->references('id')	->on('advertisements')	->onDelete('cascade');;
 		});
 	}
 

@@ -35,19 +35,19 @@ class CreateUsersTable extends Migration
 			//Google Login Info	- 'gooogle_login'	table
 			$table->rememberToken();
 			$table->timestamps();
-        });
-        //DB::statement('ALTER TABLE users ADD user_location POINT AFTER address' );
-    }
+		});
+		//DB::statement('ALTER TABLE users ADD user_location POINT AFTER address' );
+	}
 
 	/**
 	* Reverse the migrations.
 	*
 	* @return void
 	*/
-    public function down()
-    {
-        Schema::drop('users');
-    }
+	public function down()
+	{
+		Schema::drop('users');
+	}
 }
 
 /*
@@ -59,14 +59,14 @@ class CreateUsersTable extends Migration
 	  X(user_location) AS "latitude",
 	  Y(user_location) AS "longitude",
 	  (
-	    GLength(
-	      LineStringFromWKB(
-	        LineString(
-	          user_location, 
-	          GeomFromText('POINT(51.5177 -0.0968)')
-	        )
-	      )
-	    )
+		GLength(
+		  LineStringFromWKB(
+			LineString(
+			  user_location, 
+			  GeomFromText('POINT(51.5177 -0.0968)')
+			)
+		  )
+		)
 	  )
 	  AS distance
 	FROM users

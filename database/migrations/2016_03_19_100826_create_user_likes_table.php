@@ -20,8 +20,8 @@ class CreateUserLikesTable extends Migration
 			$table->timestamp('created_at');
 
 			//Foreign Keys
-			$table->foreign('user_id')				->references('id')	->on('users');
-			$table->foreign('advertisement_id')		->references('id')	->on('advertisements');
+			$table->foreign('user_id')				->references('id')	->on('users')			->onDelete('cascade');
+			$table->foreign('advertisement_id')		->references('id')	->on('advertisements')	->onDelete('cascade');
 
 			//Composite Primary Key
 			$table->unique([

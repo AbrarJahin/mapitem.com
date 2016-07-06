@@ -5,11 +5,11 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUserWishlistsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
 	public function up()
 	{
 		Schema::create('user_wishlists', function (Blueprint $table)
@@ -19,8 +19,8 @@ class CreateUserWishlistsTable extends Migration
 			$table->timestamp('created_at');
 
 			//Foreign Keys
-			$table->foreign('user_id')				->references('id')	->on('users');
-			$table->foreign('advertisement_id')		->references('id')	->on('advertisements');
+			$table->foreign('user_id')				->references('id')	->on('users')			->onDelete('cascade');
+			$table->foreign('advertisement_id')		->references('id')	->on('advertisements')	->onDelete('cascade');
 
 			//Composite Primary Key
 			$table->unique([
@@ -30,13 +30,13 @@ class CreateUserWishlistsTable extends Migration
 		});
 	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::drop('user_wishlists');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('user_wishlists');
+	}
 }

@@ -14,13 +14,13 @@ class CreateGoogleLoginTable extends Migration
 	{
 		Schema::create('google_login', function (Blueprint $table)
 		{
-			$table->integer('user_id')      ->unsigned()        ->index();
+			$table->integer('user_id')		->unsigned()		->index();
 			//Other Info for google Auth
 
 			$table->timestamp('created_at');
 
 			//Foreign Keys
-			$table->foreign('user_id')      ->references('id')  ->on('users');
+			$table->foreign('user_id')		->references('id')	->on('users');
 		});
 	}
 

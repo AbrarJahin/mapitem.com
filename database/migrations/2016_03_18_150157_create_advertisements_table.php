@@ -17,7 +17,7 @@ class CreateAdvertisementsTable extends Migration
 			$table->increments('id');
 			$table->integer('user_id')			->unsigned()		->index();
 			$table->integer('category_id')		->unsigned()		->index();
-			$table->integer('sub_category_id')		->unsigned()		->index();
+			$table->integer('sub_category_id')	->unsigned()		->index();
 			$table->string('title', 150);
 			$table->integer('price');
 			$table->string('description', 150);
@@ -30,9 +30,9 @@ class CreateAdvertisementsTable extends Migration
 			$table->softDeletes();
 
 			//Foreign Keys
-			$table->foreign('user_id')			->references('id')	->on('users');
-			$table->foreign('category_id')		->references('id')	->on('categories');
-			$table->foreign('sub_category_id')	->references('id')	->on('sub_categories');
+			$table->foreign('user_id')			->references('id')	->on('users')			->onDelete('cascade');
+			$table->foreign('category_id')		->references('id')	->on('categories')		->onDelete('cascade');
+			$table->foreign('sub_category_id')	->references('id')	->on('sub_categories')	->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
