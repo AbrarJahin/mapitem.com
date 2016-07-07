@@ -7,7 +7,9 @@ use Response;
 use Validator;
 use App\Advertisement;
 use App\AdvertisementImage;
+use App\UserReview;
 use Auth;
+use DB;
 
 /*
 	Functionality	-> Handel All Auth Works
@@ -135,14 +137,17 @@ class AddController extends Controller
 	*/
 	public function writeReview()
 	{
-		return $requestData = Request::all();
-
-		$advertisement				=	Advertisement::where('id',$requestData['advertisement_id'])
-													->where('user_id',Auth::user()->id)
-													->first();
-		$advertisement->is_active	=	$requestData['status'];
-		$advertisement->save();
-
-		return $advertisement;
+		$requestData = Request::all();
+		UserReview::updateOrCreate(
+								[
+									'add_id'	=>	$requestData['add_id'],
+									'user_id'	=>	Auth::user()->id
+								],
+								[
+									'rating'	=>	$requestData['rating'],
+									'review'	=>	$requestData['review']
+								]
+							);
+		return 'Review Added';
 	}
 }

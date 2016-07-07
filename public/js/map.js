@@ -233,7 +233,7 @@ $(function()
 			url: $(this).attr('action'),
 			data: $("#write_review").serialize(),
 			contentType: "application/x-www-form-urlencoded",
-			dataType: "html",
+			dataType: "json",
 			success: function (data)
 			{
 				alert(data);
@@ -243,9 +243,8 @@ $(function()
 				console.log(e);
 			},
 			complete: function ()
-			{
-				// Handle the complete event
-				alert("ajax completed ");
+			{// Handle the complete event
+				//alert("ajax completed");
 			}
 		});  // end Ajax
 	});

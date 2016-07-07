@@ -15,9 +15,9 @@ class CreateUserReviewsTable extends Migration
 		Schema::create('user_reviews', function (Blueprint $table)
 		{
 			$table->integer('user_id')				->unsigned()		->index();
-			$table->integer('advertisement_id')		->unsigned()		->index();
+			$table->integer('add_id')		->unsigned()		->index();
 			$table->text('review');
-			$table->integer('rating');
+			$table->integer('rating',1);
 			$table->timestamps();
 
 			//Foreign Keys

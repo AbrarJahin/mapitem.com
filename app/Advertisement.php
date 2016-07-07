@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Advertisement extends Model
 {
@@ -66,13 +67,32 @@ class Advertisement extends Model
 		return $this->hasMany('App\UserAdvertisementView', 'add_id', 'id');
 	}
 
-	//Added For calculating Total - Start
-		public $appends = ['total_views'];
+	public function UserReview()
+	{
+		return $this->hasMany('App\UserReview', 'add_id', 'id');
+	}
+
+	//Adding Custom Fields with custom Query - Start
+	public $appends =	[
+							'total_views',
+							'avg_rating',
+							'is_reviewed'
+						];
 
 		public function getTotalViewsAttribute()
-		{
+		{	//Defination of -> 'total_views'
 			//return $this->UserAdvertisementView->sum('total_view');	//Attribute Collection
 			return $this->UserAdvertisementView()->sum('total_view');	//Method - Returns only value - What I need here
 		}
-	//Added For calculating Total - END
+
+		public function getAvgRatingAttribute()
+		{	//Defination of -> 'avg_rating'
+			return $this->UserReview()->avg('rating');	//Method - Returns only value - What I need here
+		}
+
+		public function getIsReviewedAttribute()
+		{	//Defination of -> 'is_reviewed'
+			return $this->UserReview()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
+		}
+	//Adding Custom Fields with custom Query - END
 }
