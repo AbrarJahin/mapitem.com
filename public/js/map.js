@@ -250,13 +250,13 @@ $(function()
 				var html_element	=	'<div class="col-lg-4 rone">'
 										+	data.user_name+'<br>'
 										+		rating_html
-										+	'<span>'+data.time+'</span>'
+										+	'<br/><span>'+data.time+'</span>'
 										+'</div>'
 										+'<div class="col-lg-8 rtwo">'
 										+	'<span>'+data.review+'</span>'
 										+'</div>'
 										+'<div class="clearfix margin-twenty"></div>';
-				$('.reviews').append(html_element);
+				$('.reviews').prepend(html_element);
 				$('.review').fadeOut();
 			},
 			error: function (e)
