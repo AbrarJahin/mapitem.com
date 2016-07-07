@@ -236,12 +236,33 @@ $(function()
 			dataType: "json",
 			success: function (data)
 			{
-				/*alert(data);*/
-				console.log(data);
+				var rating_html = '';
+
+				for (var i = 0; i < data.rating; i++)	//Green
+				{
+					rating_html = rating_html+'<i class="fa fa-star fa-xs green-text"></i>';
+				}
+				for (var i = data.rating; i < 5; i++)	//Blank
+				{
+					rating_html = rating_html+'<i class="fa fa-star-o fa-xs"></i>';
+				}
+
+				var html_element	=	'<div class="col-lg-4 rone">'
+										+	data.user_name+'<br>'
+										+		rating_html
+										+	'<span>'+data.time+'</span>'
+										+'</div>'
+										+'<div class="col-lg-8 rtwo">'
+										+	'<span>'+data.review+'</span>'
+										+'</div>'
+										+'<div class="clearfix margin-twenty"></div>';
+				$('.reviews').append(html_element);
+				$('.review').fadeOut();
 			},
 			error: function (e)
 			{
 				console.log(e);
+				alert('You are not eligable to give this review');
 			},
 			complete: function ()
 			{// Handle the complete event
