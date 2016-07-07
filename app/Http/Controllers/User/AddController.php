@@ -148,6 +148,11 @@ class AddController extends Controller
 									'review'	=>	$requestData['review']
 								]
 							);
-		return 'Review Added';
+		return [
+					'rating'	=>	$requestData['rating'],
+					'review'	=>	$requestData['review'],
+					'user_name'	=>	Auth::user()->first_name.' '.Auth::user()->last_name,
+					'time'		=>	'Just Now'
+				];
 	}
 }

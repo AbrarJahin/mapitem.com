@@ -445,7 +445,7 @@ $(document).ready(function()
 		});
 
 		//Submitting the free add posting form with AJAX
-		$("#post_free_add_form").submit(function(e)
+		$("#post_free_add_form").off('submit').on('submit', function(e)
 		{
 			e.preventDefault(e);
 

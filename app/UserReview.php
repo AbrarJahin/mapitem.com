@@ -18,6 +18,12 @@ class UserReview extends Model
 									'rating'
 								];
 
+	protected $hidden = [
+							'user_id',
+							'add_id',
+							'created_at'
+						];
+
 	public function user()
 	{
 		return $this->hasOne('App\User','user_id');
@@ -27,6 +33,17 @@ class UserReview extends Model
 	{
 		return $this->hasOne('App\advertisement','add_id');
 	}
+
+	//Adding Custom Fields with custom Query - Start
+		/*public $appends =	[
+								'user'
+							];
+
+		public function getUserAttribute()
+		{	//Defination of -> 'user_name'
+			return $this->User();
+		}*/
+	//Adding Custom Fields with custom Query - END
 
 	//Adding Check Constraints - In a diffferent way what Laravel Supports - Because Migration has no support for this
 	public function setRatingAttribute($value)
