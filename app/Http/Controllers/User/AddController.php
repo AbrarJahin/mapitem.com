@@ -138,6 +138,14 @@ class AddController extends Controller
 	public function writeReview()
 	{
 		$requestData = Request::all();
+		//Check if the current user added the add or not - if not, then he is eligible to add advertisement
+		$advertisement = Advertisement::where('user_id', '=', Auth::user()->id)
+										->where('id', '=', $requestData['add_id'])
+										->get();
+		if ($advertisement->count())
+		{
+			return Response::json('You are Not Elligiblle to review your own product', 405);
+		}
 		UserReview::updateOrCreate(
 								[
 									'add_id'	=>	$requestData['add_id'],

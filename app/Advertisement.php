@@ -92,7 +92,10 @@ class Advertisement extends Model
 
 		public function getIsReviewedAttribute()
 		{	//Defination of -> 'is_reviewed'
-			return $this->UserReview()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
+			if (Auth::check())
+				return $this->UserReview()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
+			else
+				return 1;
 		}
 	//Adding Custom Fields with custom Query - END
 }

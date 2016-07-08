@@ -316,6 +316,7 @@ function generateMarkers(bounds)
 					},
 					success: function(all_data)
 					{
+						console.log(all_data);
 						//Clear the map markers
 						map_div.gmap3({
 							clear:
@@ -539,60 +540,116 @@ function showAddDetail(id)		//Show Add Detail
 		success:function(responce_data)
 		{
 			//$.parseJSON(responce_data)
-			//console.log(responce_data);
-			$.each(responce_data,function(key,value)
+			$.each(responce_data,function(index_key,value_all_json)
 			{
-				if(key.localeCompare('id')==0)
+				/*console.log(key);
+				console.log(value);
+*/				if(index_key.localeCompare('advertisement')==0)
 				{
-					$('#write_review input[name="add_id"]').val(value);
-				}
-				else if(key.localeCompare('title')==0)
-				{
-					$("#selected_add_title").html(value);
-				}
-				else if(key.localeCompare('price')==0)
-				{
-					$("#selected_add_price").html(value);
-				}
-				else if(key.localeCompare('description')==0)
-				{
-					$("#selected_add_description").html(value);
-				}
-				/*else if(key.localeCompare('address')==0)
-				{
-					console.log('address - '+value);
-				}*/
-				else if(key.localeCompare('location_lat')==0)
-				{
-					$('#selected_add_direction').attr("location_lat",value);
-				}
-				else if(key.localeCompare('location_lon')==0)
-				{
-					$('#selected_add_direction').attr("location_lon",value);
-				}
-				else if(key.localeCompare('user')==0)
-				{
-					console.log('User Data Start');
-					$.each(value,function(tag,user_data)
+					$.each(value_all_json,function(key,value)
 					{
-						console.log(user_data);
+						if(key.localeCompare('id')==0)
+						{
+							$('#write_review input[name="add_id"]').val(value);
+						}
+						else if(key.localeCompare('is_reviewed')==0)
+						{
+							if(value==1)
+								$('.review').hide();
+							else
+								$('.review').show();
+							//$('#write_review input[name="add_id"]').val(value);
+							//$('.review').hide();
+						}
+						else if(key.localeCompare('title')==0)
+						{
+							$("#selected_add_title").html(value);
+						}
+						else if(key.localeCompare('price')==0)
+						{
+							$("#selected_add_price").html(value);
+						}
+						else if(key.localeCompare('description')==0)
+						{
+							$("#selected_add_description").html(value);
+						}
+						/*else if(key.localeCompare('address')==0)
+						{
+							console.log('address - '+value);
+						}*/
+						else if(key.localeCompare('location_lat')==0)
+						{
+							$('#selected_add_direction').attr("location_lat",value);
+						}
+						else if(key.localeCompare('location_lon')==0)
+						{
+							$('#selected_add_direction').attr("location_lon",value);
+						}
+						else if(key.localeCompare('user')==0)
+						{
+							console.log('User Data Start');
+							$.each(value,function(tag,user_data)
+							{
+								console.log(user_data);
+							});
+						}
+						/*else if(key.localeCompare('advertisement_images')==0)
+						{
+							//console.log('Adverisement Image Data Start');
+							$('.variable-width').empty('');
+							$.each(value,function(id,image)
+							{
+								//$('.variable-width').prepend($('<div> new div </div>'));
+								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
+								
+								console.log(image.image_name);
+							});
+						}*/
+						else if(key.localeCompare('total_views')==0)
+						{
+							$('#selected_add_view_count').attr("data-original-title",value);
+						}
 					});
 				}
-				/*else if(key.localeCompare('advertisement_images')==0)
+				else if(index_key.localeCompare('reviews')==0)
 				{
-					//console.log('Adverisement Image Data Start');
-					$('.variable-width').empty('');
-					$.each(value,function(id,image)
+					$('.reviews').empty();
+					$.each(value_all_json,function(index,review)
 					{
-						//$('.variable-width').prepend($('<div> new div </div>'));
-						$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
-						
-						console.log(image.image_name);
+						var review_data	=	new Object();
+						$.each(review,function(key,value)
+						{
+							if(key.localeCompare('added_on')==0)
+								review_data.added_on = value;
+							else if(key.localeCompare('rating')==0)
+								review_data.rating = value;
+							else if(key.localeCompare('review')==0)
+								review_data.review = value;
+							else if(key.localeCompare('user_name')==0)
+								review_data.user_name = value;
+						});
+						/////////////////////////
+						var rating_html = '';
+						for (var i = 0; i < review_data.rating; i++)	//Green
+						{
+							rating_html = rating_html+'<i class="fa fa-star fa-xs green-text"></i>';
+						}
+						for (var i = review_data.rating; i < 5; i++)	//Blank
+						{
+							rating_html = rating_html+'<i class="fa fa-star-o fa-xs"></i>';
+						}
+
+						var html_element	=	'<div class="col-lg-4 rone">'
+												+	review_data.user_name+'<br>'
+												+		rating_html
+												+	'<br/><span>'+review_data.added_on+'</span>'
+												+'</div>'
+												+'<div class="col-lg-8 rtwo">'
+												+	'<span>'+review_data.review+'</span>'
+												+'</div>'
+												+'<div class="clearfix margin-twenty"></div>';
+						$('.reviews').append(html_element);
 					});
-				}*/
-				else if(key.localeCompare('total_views')==0)
-				{
-					$('#selected_add_view_count').attr("data-original-title",value);
 				}
 			});
 		}

@@ -23,7 +23,7 @@ class PublicController extends Controller
 	*/
 	public function index()
 	{
-		return Advertisement::with('UserReview')->get();
+		//return Advertisement::with('UserReview')->get();
 		return view('public.index.main',[ 'current_page'   => 'Home' ]);
 	}
 
@@ -232,8 +232,24 @@ class PublicController extends Controller
 										]);
 		}
 		//Return the Product detail
-		return Advertisement::with('User')
-					->with('AdvertisementImages')
-					->find($requestData['product_id']);
+		$advertisement = Advertisement::with('User')
+							->with('AdvertisementImages')
+							->find($requestData['product_id']);
+		//name, review, , rating
+		$reviews = DB::table('user_reviews')
+						->join('users', 'users.id', '=', 'user_reviews.user_id')
+						->select(
+									DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS user_name"),
+									'user_reviews.review as review',
+									'user_reviews.rating as rating',
+									DB::raw("DATE_FORMAT(user_reviews.updated_at,'%D %b %Y, %r') AS added_on")
+								)
+						->where('add_id', $requestData['product_id'])
+						->orderBy('user_reviews.updated_at', 'desc')
+						->get();
+		return [
+					'advertisement'	=>	$advertisement,
+					'reviews'		=>	$reviews
+				];
 	}
 }
