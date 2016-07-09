@@ -591,10 +591,12 @@ function showAddDetail(id)		//Show Add Detail
 								console.log(user_data);
 							});
 						}
-						/*else if(key.localeCompare('advertisement_images')==0)
+						else if(key.localeCompare('advertisement_images')==0)
 						{
-							//console.log('Adverisement Image Data Start');
-							$('.variable-width').empty('');
+							//Remove Previous Slider
+							$('.variable-width').slick('unslick');
+							$('.variable-width').empty();
+
 							$.each(value,function(id,image)
 							{
 								//$('.variable-width').prepend($('<div> new div </div>'));
@@ -602,7 +604,9 @@ function showAddDetail(id)		//Show Add Detail
 								
 								console.log(image.image_name);
 							});
-						}*/
+							//Re Initialize Slick Slider so that images can be OK
+							$('.variable-width').slick( getSliderSettings() );
+						}
 						else if(key.localeCompare('total_views')==0)
 						{
 							$('#selected_add_view_count').attr("data-original-title",value);
@@ -656,6 +660,7 @@ function showAddDetail(id)		//Show Add Detail
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");
+	$('.variable-width').slick( getSliderSettings() );
 }
 
 function ifDeviceIsMobile()		//Check The Device Type
@@ -712,4 +717,20 @@ function pullPaginatorElementToFirstElement()
 	{
 		console.log('Paginator Clicked');
 	}
+}
+
+function getSliderSettings()
+{
+  return {
+			dots: true,
+			infinite: true,
+			speed: 500,
+			slidesToShow: 1,
+			centerMode: true,
+			variableWidth: true,
+			autoplay: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: true
+		}
 }
