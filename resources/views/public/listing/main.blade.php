@@ -65,8 +65,8 @@
 	<script type='text/javascript' src="{{ URL::asset('js/jquery.mousewheel.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.touchswipe/1.6.15/jquery.touchSwipe.js"></script>
 	<script src="{{ URL::asset('js/listing.js') }}"></script>
-	<!-- Slick Js -->
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+	{{-- Slick Js --}}
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
 
 	{{-- Clustered Map - Google map v3.20 --}}
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gmap3/6.1.0/gmap3.min.js"></script>

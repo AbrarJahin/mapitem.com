@@ -3227,6 +3227,12 @@ li.next.disabled
 	height: 250px;
 }
 
+.variable-width
+{
+	width: 90%;
+	margin: auto;
+}
+
 .hidden
 {
 	visibility: hidden;
@@ -3251,4 +3257,9 @@ li.next.disabled
 	height:60px;
 	top:calc(50% - 30px);
 	left:calc(50% - 30px);
+}
+
+.slick-prev:before, .slick-next:before
+{
+	background-color: green;
 }
