@@ -64,7 +64,6 @@
 	<script src="{{ URL::asset('js/jQuery.scrollSpeed.js') }}"></script>
 	<script type='text/javascript' src="{{ URL::asset('js/jquery.mousewheel.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.touchswipe/1.6.15/jquery.touchSwipe.js"></script>
-	<script src="{{ URL::asset('js/listing.js') }}"></script>
 	{{-- Slick Js --}}
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
 
