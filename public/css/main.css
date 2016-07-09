@@ -3231,3 +3231,24 @@ li.next.disabled
 {
 	visibility: hidden;
 }
+
+#wait
+{
+	display:none;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:100;
+	background: rgba(128, 255, 128, .5);
+}
+
+#wait_image
+{
+	position:absolute;
+	width:60px;
+	height:60px;
+	top:calc(50% - 30px);
+	left:calc(50% - 30px);
+}

@@ -28,6 +28,7 @@ function centerModal()
 //Get user's geo location
 function getLocation()
 {
+	var location = {};
 	if(latitude===0 && longitude===0)		//not called before in the page
 	{
 		$.get("http://ipinfo.io", function (response)
@@ -47,6 +48,9 @@ function getLocation()
 			}
 		}, "jsonp");
 	}
+	location.latitude	=	latitude;
+	location.longitude	=	longitude;
+	return location;
 }
 
 function getCurrentDate()
@@ -422,6 +426,7 @@ $(document).ready(function()
 		$myDropZone[0].dropzone.on('sending', function(file, xhr, formData)	//Sending Extra Parameters
 		{
 			formData.append('add_id', $('meta[name=uploaded_add_id]').attr("content"));
+			$("#wait").css("display", "block");
 		});
 
 		$myDropZone[0].dropzone.on('processing', function()					//Process all data after click one
@@ -438,6 +443,7 @@ $(document).ready(function()
 		{
 			if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0)	//All Upload Done
 			{
+				$("#wait").css("display", "none");
 				//console.log('Your action, Refresh your page here. ');
 				//location.reload();
 				window.location.replace($("meta[name='ridirect_url_after_successful_post']").attr("content"));
@@ -445,7 +451,7 @@ $(document).ready(function()
 		});
 
 		//Submitting the free add posting form with AJAX
-		$("#post_free_add_form").off('submit').on('submit', function(e)
+		$("#post_free_add_form").on('submit', function(e)
 		{
 			e.preventDefault(e);
 
@@ -896,4 +902,14 @@ $(document).ready(function()
 		}
 		return 0;
 	});
+
+	//Global AJAX Config - Start
+	$(document).ajaxStart(function(){
+		$("#wait").css("display", "block");
+	});
+
+	$(document).ajaxComplete(function(){
+		$("#wait").css("display", "none");
+	});
+	//Global AJAX Config - END
 });

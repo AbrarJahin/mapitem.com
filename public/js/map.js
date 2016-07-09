@@ -558,8 +558,6 @@ function showAddDetail(id)		//Show Add Detail
 								$('.review').hide();
 							else
 								$('.review').show();
-							//$('#write_review input[name="add_id"]').val(value);
-							//$('.review').hide();
 						}
 						else if(key.localeCompare('title')==0)
 						{

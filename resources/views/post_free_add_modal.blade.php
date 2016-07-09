@@ -70,3 +70,7 @@
 		</div>
 	</div>
 </div>
+
+<div id="wait">
+	<img id="wait_image" src="{{ URL::asset('images/content_loader.gif') }}"/>
+</div>
