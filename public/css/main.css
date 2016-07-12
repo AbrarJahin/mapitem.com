@@ -3263,3 +3263,10 @@ li.next.disabled
 {
 	background-color: green;
 }
+
+#selected_add_description
+{
+	white-space: pre ;
+	display: block;
+	unicode-bidi: embed;
+}

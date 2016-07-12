@@ -132,4 +132,12 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'as'	=> '.write_review'
 			]);
 	//Addvertisement - End
+	
+	//Inbox Messaging - Start
+		//Add Image Upload AJAX
+		Route::post('create_message_thread', [
+				'uses'	=> 'MessageController@createThread',
+				'as'	=> '.create_message_thread'
+			]);
+	//Inbox Messaging - End
 });

@@ -270,6 +270,32 @@ $(function()
 			}
 		});  // end Ajax
 	});
+
+	$("form#send_message_to_owner").submit(function(e)
+	{
+		e.preventDefault();
+		//Standerd AJAX call goes here
+		$.ajax({
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			type: "POST",
+			url: $(this).attr('action'),
+			data: $("#send_message_to_owner").serialize(),
+			contentType: "application/x-www-form-urlencoded",
+			dataType: "json",
+			success: function (data)
+			{
+				alert('Your message is sent');
+			},
+			error: function (e)
+			{
+				console.log(e);
+			},
+			complete: function ()
+			{// Handle the complete event
+				//alert("ajax completed");
+			}
+		});  // end Ajax
+	});
 });
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX
@@ -374,7 +400,7 @@ function generateMarkers(bounds)
 														+	$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image
 														+ '"></div><div class="box-content"><h5>'
 														+	element.title
-														+ '</h5><h6> $'+element.price+'</h6><div class="clearfix margin-bottom-ten"></div><img class="pull-left width-adj2" src="'
+														+ '</h5><h6> $'+element.price+'</h6><div class="clearfix margin-bottom-ten"></div><img height="46" width="46" class="pull-left width-adj2" src="'
 														+	$('meta[name=upload_folder_url]').attr("content")+element.user_image
 														+ '"><div class="pull-left margin-left-ten width-adj3"><p class="pull-left dot1">'
 														+	element.description
