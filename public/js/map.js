@@ -658,9 +658,11 @@ function showAddDetail(id)		//Show Add Detail
 				{
 					$("#add_owner_image").attr("src",value_all_json.profile_picture);
 					$("#add_owner_name").html(value_all_json.user_name);
-					$("#add_owner_phone").html("<a href='tel:"+value_all_json.cell_no+"''>"+value_all_json.cell_no+"</a>");
-					$("#add_owner_website").html("<a href='"+value_all_json.website+"''>"+value_all_json.website+"</a>");
-					$("#add_owner_email").html("<a href='mailto:"+value_all_json.email+"''>"+value_all_json.email+"</a>");
+
+					$("#add_owner_phone").html("<i class='fa fa-phone'></i> <a href='tel:"+value_all_json.cell_no+"''>"+value_all_json.cell_no+"</a>");
+					$("#add_owner_website").html("<i class='fa fa-globe'></i> <a href='"+value_all_json.website+"''>"+value_all_json.website+"</a>");
+					$("#add_owner_email").html("<i class='fa fa-envelope'></i> <a href='mailto:"+value_all_json.email+"''>"+value_all_json.email+"</a>");
+
 					$("#add_owner_id").val(value_all_json.user_id);
 				}
 			});

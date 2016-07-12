@@ -12,37 +12,25 @@
 			</div>
 		</div>
 		<div class="sb-middle">
-			<span>
+			<span id="add_owner_phone">
 				<i class="fa fa-phone"></i>
-				<span id="add_owner_phone">
 					123-456-789
-				</span>
 			</span>
-			<span>
+			<span id="add_owner_website">
 				<i class="fa fa-globe"></i>
-				<span id="add_owner_website">
 					<a #="" href="">www.jalben.com</a>
-				</span>
 			</span>
-			<span>
+			<span id="add_owner_email">
 				<i class="fa fa-envelope"></i>
-				<span id="add_owner_email">
 					<a #="" href="">example.mail.com</a>
-				</span>
 			</span>
-			<span>
+			<span id="add_owner_fb_id">
 				<i class="fa fa-facebook"></i><i class="fa fa-check-circle p-adj"></i>
-				<span id="add_owner_fb_id">
 					<a #="" href="">Facebook Verified</a>
-				</span>
-				Facebook Verified
 			</span>
-			<span>
+			<span id="add_owner_credit_card_verification_status">
 				<i class="fa fa-credit-card"></i>
-				<span id="add_owner_credit_card_verification_status">
 					Accepts Credit Card
-				</span>
-				Accepts Credit Card
 			</span>
 		</div>
 		<div class="sb-bottom dropdown">
