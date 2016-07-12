@@ -33,7 +33,6 @@ class Advertisement extends Model
 								];
 
 	protected $hidden = [
-							'user_id',
 							'category_id',
 							'sub_category_id',
 							'deleted_at',

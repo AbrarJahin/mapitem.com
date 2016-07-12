@@ -2,7 +2,9 @@
 	<li>
 		<form class="offer" action="#">
 			<div class="form-group">
-			<textarea rows="3" placeholder="Any Question" class="form-control tarea"></textarea>
+				<input type="hidden" name="add_owner_id" id="add_owner_id">
+				<input type="hidden" name="add_id" id="selected_add_id">
+				<textarea name="message" rows="3" placeholder="Any Question" class="form-control tarea"></textarea>
 			</div>
 			<button class="btn btn-default green-small width-adj" type="submit">
 				Send Message

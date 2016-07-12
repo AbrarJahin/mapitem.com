@@ -232,8 +232,7 @@ class PublicController extends Controller
 										]);
 		}
 		//Return the Product detail
-		$advertisement = Advertisement::with('User')
-							->with('AdvertisementImages')
+		$advertisement = Advertisement::with('AdvertisementImages')
 							->find($requestData['product_id']);
 		//name, review, , rating
 		$reviews = DB::table('user_reviews')
@@ -247,9 +246,29 @@ class PublicController extends Controller
 						->where('add_id', $requestData['product_id'])
 						->orderBy('user_reviews.updated_at', 'desc')
 						->get();
+		$add_owner	=	DB::table('users')
+							->select(
+									'users.id as user_id',
+									DB::raw("
+												CASE WHEN users.profile_picture IS NULL or users.profile_picture = ''
+													THEN
+														'".url('images/empty-profile.jpg')."'
+													ELSE
+														CONCAT('".url('uploads')."','/', users.profile_picture)
+													END
+												as profile_picture"
+											),
+									DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS user_name"),
+									'users.cell_no as cell_no',
+									'users.website as website',
+									'users.email as email'
+								)
+							->where('id', $advertisement->user_id)
+							->first();
 		return [
 					'advertisement'	=>	$advertisement,
-					'reviews'		=>	$reviews
+					'reviews'		=>	$reviews,
+					'add_owner'		=>	$add_owner
 				];
 	}
 }

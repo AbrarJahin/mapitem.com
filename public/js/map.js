@@ -551,6 +551,7 @@ function showAddDetail(id)		//Show Add Detail
 						if(key.localeCompare('id')==0)
 						{
 							$('#write_review input[name="add_id"]').val(value);
+							$('#selected_add_id').val(value);
 						}
 						else if(key.localeCompare('is_reviewed')==0)
 						{
@@ -652,6 +653,15 @@ function showAddDetail(id)		//Show Add Detail
 												+'<div class="clearfix margin-twenty"></div>';
 						$('.reviews').append(html_element);
 					});
+				}
+				else if(index_key.localeCompare('add_owner')==0)
+				{
+					$("#add_owner_image").attr("src",value_all_json.profile_picture);
+					$("#add_owner_name").html(value_all_json.user_name);
+					$("#add_owner_phone").html("<a href='tel:"+value_all_json.cell_no+"''>"+value_all_json.cell_no+"</a>");
+					$("#add_owner_website").html("<a href='"+value_all_json.website+"''>"+value_all_json.website+"</a>");
+					$("#add_owner_email").html("<a href='mailto:"+value_all_json.email+"''>"+value_all_json.email+"</a>");
+					$("#add_owner_id").val(value_all_json.user_id);
 				}
 			});
 		}
