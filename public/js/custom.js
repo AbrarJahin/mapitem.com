@@ -882,6 +882,8 @@ $(document).ready(function()
 		var isValidated = true;	//After Validation Run
 		if(isValidated)
 		{
+			//var formData = new FormData(document.getElementById("fileinfo"));
+			//formData.append("label", "WEBUPLOAD");
 			var response = $.ajax(
 							{
 								headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -889,7 +891,9 @@ $(document).ready(function()
 								url: $(this).attr('action'),
 								dataType: "json",
 								async: false,
-								data: $("#edit_profile").serialize()
+								data: new FormData( this ),
+								processData: false,
+      							contentType: false
 							}).responseText;
 			if(response === 'Updated')
 			{

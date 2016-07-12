@@ -1,8 +1,9 @@
-<form action="{{ URL::route('user.profile_update') }}" method="post" id="edit_profile" class="p-edit edit-on">
+<form action="{{ URL::route('user.profile_update') }}" method="post" id="edit_profile" enctype="multipart/form-data" class="p-edit edit-on">
 	<button class="pull-left no-textdecor pedit done" type="submit" form="edit_profile" id="profile_update" value="Submit">Done</button>
 	<div class="clearfix margin-twenty"></div>
 	<div class="">
-		<img src="{{ url('images/empty-profile.jpg') }}" width="144" height="144">
+		<img id="profile_img_preview" src="{{ url('images/empty-profile.jpg') }}" width="144" height="144">
+		<input type="file" name="profile_image" onchange="document.getElementById('profile_img_preview').src = window.URL.createObjectURL(this.files[0])">
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left l-adj">Name</div>

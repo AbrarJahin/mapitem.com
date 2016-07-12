@@ -113,7 +113,8 @@ class UserController extends Controller
 																				'social_security_number_p1',
 																				'social_security_number_p2',
 																				'social_security_number_p3',
-																				'website'
+																				'website',
+																				'profile_picture'
 																			)
 																	->first()
 										]);
@@ -130,6 +131,7 @@ class UserController extends Controller
 	public function profileUpdate()
 	{
 		$requestData = Request::all();
+		//return $requestData['profile_image'];
 		$user = User::find(Auth::user()->id);
 
 		$user->address						= $requestData['address'];
@@ -144,6 +146,29 @@ class UserController extends Controller
 		$user->social_security_number_p2	= $requestData['social_security_2'];
 		$user->social_security_number_p3	= $requestData['social_security_3'];
 		$user->website						= $requestData['website'];
+
+		if(	isset(	$requestData['profile_image']	)	)	//If file was uploaded
+		{
+			if( strlen($user->profile_picture)>4 )
+			{
+				$fileName = $user->profile_picture;
+			}
+			else
+			{
+				//Renaming the file
+				$extension = $requestData['profile_image']->getClientOriginalExtension(); // getting file extension
+				$fileName = Auth::user()->id."pp".rand(111111, 999999) . '.' . $extension; // renameing image
+			}
+
+			$destinationPath = 'uploads'; // upload path
+
+			$upload_success = $requestData['profile_image']->move($destinationPath, $fileName); // uploading file to given path
+
+			if ($upload_success)
+			{
+				$user->profile_picture	=	$fileName;
+			}
+		}
 
 		if($user->save())
 			return 'Updated';
