@@ -3175,10 +3175,10 @@ img[src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"]
 	display: none;
 }
 /* Hide Google Map Zoom Button */
-img[src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"]
+/* img[src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"]
 {
 	display: none;
-}
+} */
 
 /* Google map Bottom Default options removing */
 
@@ -3224,7 +3224,7 @@ li.next.disabled
 
 .variable-width img
 {
-	height: 250px;
+	height: 333px;
 }
 
 .variable-width
