@@ -4,11 +4,13 @@
 			<img id="add_owner_image" height="86" width="86" class="pround" alt="Jesica" src="{{ URL::asset('images/empty-profile.jpg') }}">
 			<h6 id="add_owner_name">Jesica Alben</h6>
 			<div class="star">
+				{{--
 				<i class="fa fa-star green-text"></i>
 				<i class="fa fa-star green-text"></i>
 				<i class="fa fa-star green-text"></i>
 				<i class="fa fa-star-o"></i>
 				<i class="fa fa-star-o"></i>
+				--}}
 			</div>
 		</div>
 		<div class="sb-middle">

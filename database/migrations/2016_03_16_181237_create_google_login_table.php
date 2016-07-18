@@ -17,7 +17,7 @@ class CreateGoogleLoginTable extends Migration
 			$table->integer('user_id')		->unsigned()		->index();
 			//Other Info for google Auth
 
-			$table->timestamp('created_at');
+			$table->timestamp('created_at')->useCurrent();
 
 			//Foreign Keys
 			$table->foreign('user_id')		->references('id')	->on('users')	->onDelete('cascade')	->onUpdate('cascade');

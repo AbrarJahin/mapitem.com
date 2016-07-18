@@ -18,9 +18,9 @@ class CreateAdvertisementsTable extends Migration
 			$table->integer('user_id')			->unsigned()		->index();
 			$table->integer('category_id')		->unsigned()		->index();
 			$table->integer('sub_category_id')	->unsigned()		->index();
-			$table->string('title', 150);
+			$table->string('title', 255);
 			$table->integer('price');
-			$table->string('description', 150);
+			$table->text('description');
 
 			$table->string('address', 255);
 			$table->float('location_lat');

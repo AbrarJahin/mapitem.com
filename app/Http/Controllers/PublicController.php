@@ -247,8 +247,7 @@ class PublicController extends Controller
 						->orderBy('user_reviews.updated_at', 'desc')
 						->get();
 		$add_owner	=	DB::table('users')
-							//->join('advertisements', 'users.id', '=', 'advertisements.user_id')
-							//->join('user_reviews', 'advertisements.user_id', '=', 'user_reviews.user_id')
+							->join('user_reviews', 'users.id', '=', 'user_reviews.add_owner_id')
 							->select(
 									'users.id as user_id',
 									DB::raw("
@@ -263,8 +262,8 @@ class PublicController extends Controller
 									DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS user_name"),
 									'users.cell_no as cell_no',
 									'users.website as website',
-									'users.email as email'
-									//DB::raw("AVG(user_reviews.rating) AS user_rating")
+									'users.email as email',
+									DB::raw("FLOOR( AVG(user_reviews.rating) ) AS user_rating")
 								)
 							->where('id', $advertisement->user_id)
 							->first();

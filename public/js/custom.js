@@ -907,6 +907,92 @@ $(document).ready(function()
 		return 0;
 	});
 
+	$('.info-btn').on('click', function ()
+	{
+		//$("#extra_info").fadeToggle(1000);
+		//$("#messages").toggleClass('col-sm-12 col-sm-9');
+
+		if( $("#messages").hasClass("col-sm-12") )	//Extra Contents hidden
+		{
+			$("#messages").toggleClass('col-sm-12 col-sm-9',1000).promise().done(function()
+			{
+				$("#extra_info").fadeToggle(1000);
+			});
+		}
+		else
+		{
+			$("#extra_info").fadeToggle(1000).promise().done(function()
+			{
+				$("#messages").toggleClass('col-sm-12 col-sm-9',1000);
+			});
+		}
+	});
+
+	$('.conversation').on('click', function ()
+	{
+		$("#send_message_form input[name=thread_id]").val( $(this).attr("thread_id") );
+
+		$.ajax({
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $('meta[name=thread_detail_ajax_url]').attr("content"),
+			data:	{
+						thread_id: $(this).attr("thread_id")
+					}
+			}).success(function( data )
+			{
+				$('.messages').empty();
+				$.each(data,function(key_index,single_data)
+				{
+					$('.messages')
+						.append('<div class="msg">'
+									+'<div class="media-body">'
+										+'<small class="pull-right time">'
+											+'<i class="fa fa-clock-o"></i>'
+											+single_data.sent_time
+										+'</small>'
+
+										+'<h5 class="media-heading">'
+											+single_data.sender_name
+										+'</h5>'
+										+'<small class="col-sm-11">'
+											+single_data.message
+										+'</small>'
+									+'</div>'
+								+'</div>');
+				});
+			});
+	});
+
+	$('.send-button').on('click', function ()
+	{
+		$.ajax({
+			headers:	{ 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method:	"POST",
+			url:	$("#send_message_form").attr('action'),
+			data:	$("#send_message_form").serialize(),
+			}).success(function( single_data )
+			{
+				$('.messages')
+					.append('<div class="msg">'
+								+'<div class="media-body">'
+									+'<small class="pull-right time">'
+										+'<i class="fa fa-clock-o"></i>'
+										+single_data.sent_time
+									+'</small>'
+
+									+'<h5 class="media-heading">'
+										+single_data.sender_name
+									+'</h5>'
+									+'<small class="col-sm-11">'
+										+single_data.message
+									+'</small>'
+								+'</div>'
+							+'</div>');
+				$("#send_message_text").val('');
+			});
+	});
+
 	//Global AJAX Config - Start
 	$(document).ajaxStart(function(){
 		$("#wait").css("display", "block");

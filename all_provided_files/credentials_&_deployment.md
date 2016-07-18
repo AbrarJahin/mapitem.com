@@ -14,6 +14,7 @@ php /home/blockhunt/drush/composer.phar dump-autoload
 php artisan key:generate
 php artisan clear-compiled 
 php artisan dump-autoload
+composer dump-autoload
 php artisan optimize
 
 #cp  .env.example .env

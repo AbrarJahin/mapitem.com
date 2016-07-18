@@ -148,8 +148,9 @@ class AddController extends Controller
 		}
 		UserReview::updateOrCreate(
 								[
-									'add_id'	=>	$requestData['add_id'],
-									'user_id'	=>	Auth::user()->id
+									'add_owner_id'	=>	$requestData['add_owner_id'],
+									'add_id'		=>	$requestData['add_id'],
+									'user_id'		=>	Auth::user()->id
 								],
 								[
 									'rating'	=>	$requestData['rating'],

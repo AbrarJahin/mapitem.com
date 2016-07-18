@@ -15,14 +15,16 @@ class CreateUserReviewsTable extends Migration
 		Schema::create('user_reviews', function (Blueprint $table)
 		{
 			$table->integer('user_id')		->unsigned()		->index();
+			$table->integer('add_owner_id')	->unsigned()		->index();
 			$table->integer('add_id')		->unsigned()		->index();
 			$table->text('review')			->nullable(false);
 			$table->tinyInteger('rating')	->default(1);
 			$table->timestamps();
 
 			//Foreign Keys
-			$table->foreign('user_id')		->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');;
-			$table->foreign('add_id')		->references('id')	->on('advertisements')	->onDelete('cascade')	->onUpdate('cascade');;
+			$table->foreign('user_id')		->references('id')		->on('users')			->onDelete('cascade')	->onUpdate('cascade');
+			$table->foreign('add_owner_id')	->references('user_id')	->on('advertisements')	->onDelete('cascade')	->onUpdate('cascade');
+			$table->foreign('add_id')		->references('id')		->on('advertisements')	->onDelete('cascade')	->onUpdate('cascade');
 
 			//Composite Primary Key
 			$table->unique([
