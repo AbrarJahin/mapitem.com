@@ -234,18 +234,7 @@ class PublicController extends Controller
 		//Return the Product detail
 		$advertisement = Advertisement::with('AdvertisementImages')
 							->find($requestData['product_id']);
-		//name, review, , rating
-		$reviews = DB::table('user_reviews')
-						->join('users', 'users.id', '=', 'user_reviews.user_id')
-						->select(
-									DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS user_name"),
-									'user_reviews.review as review',
-									'user_reviews.rating as rating',
-									DB::raw("DATE_FORMAT(user_reviews.updated_at,'%D %b %Y, %r') AS added_on")
-								)
-						->where('add_id', $requestData['product_id'])
-						->orderBy('user_reviews.updated_at', 'desc')
-						->get();
+
 		$add_owner	=	DB::table('users')
 							->join('user_reviews', 'users.id', '=', 'user_reviews.add_owner_id')
 							->select(
@@ -267,6 +256,19 @@ class PublicController extends Controller
 								)
 							->where('id', $advertisement->user_id)
 							->first();
+
+		$reviews = DB::table('user_reviews')
+						->join('users', 'users.id', '=', 'user_reviews.user_id')
+						->select(
+									DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS user_name"),
+									'user_reviews.review as review',
+									'user_reviews.rating as rating',
+									DB::raw("DATE_FORMAT(user_reviews.updated_at,'%D %b %Y, %r') AS added_on")
+								)
+						->where('add_id', $requestData['product_id'])
+						->orderBy('user_reviews.updated_at', 'desc')
+						->get();
+
 		return [
 					'advertisement'	=>	$advertisement,
 					'reviews'		=>	$reviews,

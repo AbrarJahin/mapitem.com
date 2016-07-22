@@ -3264,9 +3264,16 @@ li.next.disabled
 	background-color: green;
 }
 
-#selected_add_description
+.message
 {
 	white-space: pre ;
 	display: block;
 	unicode-bidi: embed;
+
+	width: 100%;
+	white-space: pre-wrap;      /* CSS3 */   
+	white-space: -moz-pre-wrap; /* Firefox */    
+	white-space: -pre-wrap;     /* Opera <7 */   
+	white-space: -o-pre-wrap;   /* Opera 7 */    
+	word-wrap: break-word;      /* IE */
 }

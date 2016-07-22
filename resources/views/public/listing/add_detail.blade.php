@@ -29,7 +29,7 @@
 
 		<div class="clearfix"></div>
 		<div class="col-lg-12 no-padding description rd-top-row">
-			<div id="selected_add_description">
+			<div class="message" id="selected_add_description">
 				{{--  - Complet accesseries are available<br>
 				 - Out Standing Condition.<br>
 				 - 2 months warenty remaining <br><br>

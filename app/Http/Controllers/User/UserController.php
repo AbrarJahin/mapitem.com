@@ -7,6 +7,7 @@ use Request;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
+use App\MessageThread;
 use App\Advertisement;
 use Carbon\Carbon;
 use DB;
@@ -56,7 +57,16 @@ class UserController extends Controller
 	*/
 	public function inboxView()
 	{
-		return view('user.inbox.main', [ 'current_page'	=> 'user.inbox' ]);
+		$user_message_threades = MessageThread::select('id','title','created_at')
+											->where('sender_id',		Auth::user()->id)
+											->orWhere('receiver_id',	Auth::user()->id)
+											->get();
+		return view('user.inbox.main',
+						[
+							'current_page'		=>	'user.inbox',
+							'message_threads'	=>	$user_message_threades
+						]
+					);
 	}
 
 	/*

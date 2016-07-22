@@ -139,5 +139,15 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'uses'	=> 'MessageController@createThread',
 				'as'	=> '.create_message_thread'
 			]);
+		//get All Message List
+		Route::post('message_thread_detail', [
+				'uses'	=> 'MessageController@threadDetail',
+				'as'	=> '.message_thread_detail'
+			]);
+		//Send New Message From Inbox
+		Route::post('inbox_message_send', [
+				'uses'	=> 'MessageController@inboxMessageSend',
+				'as'	=> '.inbox_message_send'
+			]);
 	//Inbox Messaging - End
 });

@@ -4,17 +4,16 @@
 @section('meta_page_description', 'Mapitem Inbox')
 @section('meta_author', 'S. M. Abrar Jahin')
 
+@section('header_styles')
+	<link rel="stylesheet" href="{{ URL::asset('css/inbox.css') }}" type="text/css">
+@endsection
+
 @section('content')
-    <div class="db-body">
+	<div class="fill">
+		<div class="row chat-wrap">
 
-        <div class="inbox">
-            <h6>You have <span>(1)</span> New Email</h6>
+			@include('user.inbox.message_threads')
+			@include('user.inbox.message_thread_details')
 
-			@for ($i = 0; $i < 10; $i++)
-			    @include('user.inbox.message_single')
-			@endfor
-
-        </div>
-
-    </div>
+		</div>
 @endsection
