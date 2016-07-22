@@ -14,6 +14,7 @@ class CreateUserReviewsTable extends Migration
 	{
 		Schema::create('user_reviews', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->integer('user_id')		->unsigned()		->index();
 			$table->integer('add_owner_id')	->unsigned()		->index();
 			$table->integer('add_id')		->unsigned()		->index();

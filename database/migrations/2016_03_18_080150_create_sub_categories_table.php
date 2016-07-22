@@ -14,6 +14,7 @@ class CreateSubCategoriesTable extends Migration
 	{
 		Schema::create('sub_categories', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->integer('category_id')  ->unsigned()		->index();
 			$table->string('name', 25)->unique();

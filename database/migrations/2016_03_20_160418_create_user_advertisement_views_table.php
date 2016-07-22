@@ -14,6 +14,7 @@ class CreateUserAdvertisementViewsTable extends Migration
 	{
 		Schema::create('user_add_views', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->integer('user_id')				->unsigned()		->index();
 			$table->integer('add_id')		->unsigned()		->index();
 			$table->integer('total_view')			->integer()		->default(1);

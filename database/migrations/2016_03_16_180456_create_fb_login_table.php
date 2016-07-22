@@ -14,6 +14,7 @@ class CreateFbLoginTable extends Migration
 	{
 		Schema::create('fb_lgin', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->integer('user_id')		->unsigned()		->index();
 			//Other Info for FB Auth
 

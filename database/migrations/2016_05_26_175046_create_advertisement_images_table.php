@@ -14,6 +14,7 @@ class CreateAdvertisementImagesTable extends Migration
 	{
 		Schema::create('advertisement_images', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->integer('advertisement_id')	->unsigned()		->index();
 			$table->string('image_name', 255);
 			//Foreign Keys

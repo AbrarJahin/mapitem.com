@@ -14,6 +14,7 @@ class CreateMessageThreadesTable extends Migration
 	{
 		Schema::create('message_threads', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->integer('sender_id')		->unsigned()	->index();
 			$table->integer('receiver_id')		->unsigned()	->index();

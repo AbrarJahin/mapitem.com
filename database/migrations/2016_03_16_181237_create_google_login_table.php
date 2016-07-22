@@ -14,6 +14,7 @@ class CreateGoogleLoginTable extends Migration
 	{
 		Schema::create('google_login', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->integer('user_id')		->unsigned()		->index();
 			//Other Info for google Auth
 

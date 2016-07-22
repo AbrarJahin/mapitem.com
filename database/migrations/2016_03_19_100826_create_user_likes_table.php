@@ -14,6 +14,7 @@ class CreateUserLikesTable extends Migration
 	{
 		Schema::create('user_likes', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->integer('user_id')				->unsigned()		->index();
 			$table->integer('advertisement_id')		->unsigned()		->index();
 			$table->enum('choice', ['dislike', 'like'])					->default('like');
