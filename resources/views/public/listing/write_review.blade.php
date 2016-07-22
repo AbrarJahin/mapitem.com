@@ -7,7 +7,8 @@
 			<div class="col-lg-12 margin-top-twenty margin-bottom-twenty">
 				<span class="pull-left margin-right-twenty">Please rate your experience</span>
 				<input type="number" class="rating" name="rating" data-min="1" data-max="5" value="0">
-				<input type="hidden" name="add_id" value="0">
+				<input type="hidden" name="add_id">
+				<input type="hidden" name="add_owner_id">
 			</div>
 		</div>
 		<button type="submit" class="btn btn-default green-small review-submit show">Post Your Review</button>

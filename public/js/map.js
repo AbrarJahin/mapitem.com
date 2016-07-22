@@ -284,7 +284,7 @@ $(function()
 			dataType: "json",
 			success: function (data)
 			{
-				alert('Your message is sent');
+				//alert(data);
 			},
 			error: function (e)
 			{
@@ -295,6 +295,7 @@ $(function()
 				//alert("ajax completed");
 			}
 		});  // end Ajax
+		alert('Your Message has Been Sent');
 	});
 });
 
@@ -689,7 +690,23 @@ function showAddDetail(id)		//Show Add Detail
 					$("#add_owner_website").html("<i class='fa fa-globe'></i> <a href='"+value_all_json.website+"''>"+value_all_json.website+"</a>");
 					$("#add_owner_email").html("<i class='fa fa-envelope'></i> <a href='mailto:"+value_all_json.email+"''>"+value_all_json.email+"</a>");
 
-					$("#add_owner_id").val(value_all_json.user_id);
+					$("#add_owner_id").val(value_all_json.user_id);								//For Sending Message
+
+					$('#write_review input[name="add_owner_id"]').val(value_all_json.user_id);	//For Review Writing
+
+					//Showing The Dynamic user Rating
+					//value_all_json.user_rating
+					$('.star').empty();
+					//Green Star
+					for (i = 0; i < value_all_json.user_rating; i++)
+					{
+						$('.star').append('<i class="fa fa-star green-text"></i>');
+					}
+					//White Star
+					for (i = value_all_json.user_rating; i < 5; i++)
+					{
+						$('.star').append('<i class="fa fa-star-o"></i>');
+					}
 				}
 			});
 		}
