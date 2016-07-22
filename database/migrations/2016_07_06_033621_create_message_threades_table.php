@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdvertisementMessageThreadesTable extends Migration
+class CreateMessageThreadesTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -12,19 +12,27 @@ class CreateAdvertisementMessageThreadesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('advertisement_messages_thread', function (Blueprint $table)
+		Schema::create('message_threads', function (Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('sender_id')		->unsigned()	->index();
 			$table->integer('receiver_id')		->unsigned()	->index();
 			$table->integer('advertisement_id')	->unsigned()	->index();
+			$table->string('title',100);
 
 			//Foreign Keys
 			$table->foreign('sender_id')		->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
 			$table->foreign('receiver_id')		->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
 			$table->foreign('advertisement_id')	->references('id')	->on('advertisements')	->onDelete('cascade')	->onUpdate('cascade');
 
-			$table->timestamps();
+			//Composite Primary Key
+			$table->unique([
+								'sender_id',
+								'receiver_id',
+								'advertisement_id'
+							],'thread_constraint');
+
+			$table->timestamp('created_at')->useCurrent();
 		});
 	}
 
@@ -35,6 +43,6 @@ class CreateAdvertisementMessageThreadesTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('advertisement_messages_thread');
+		Schema::drop('message_threads');
 	}
 }
