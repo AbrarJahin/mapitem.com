@@ -444,8 +444,6 @@ $(document).ready(function()
 			if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0)	//All Upload Done
 			{
 				$("#wait").css("display", "none");
-				//console.log('Your action, Refresh your page here. ');
-				//location.reload();
 				window.location.replace($("meta[name='ridirect_url_after_successful_post']").attr("content"));
 			}
 		});

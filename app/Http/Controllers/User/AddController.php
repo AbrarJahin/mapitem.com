@@ -56,7 +56,7 @@ class AddController extends Controller
 														'sub_category_id'	=> $requestData['sub_category_id'],
 														'title'				=> $requestData['title'],
 														'description'		=> $requestData['description'],
-														'price'		=> $requestData['description'],
+														'price'				=> $requestData['price'],
 														'address'			=> $requestData['address'],
 														'location_lat'		=> $requestData['product_geo_location_lat'],
 														'location_lon'		=> $requestData['product_geo_location_lon']
