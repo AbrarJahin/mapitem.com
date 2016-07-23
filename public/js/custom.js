@@ -175,17 +175,17 @@ $(document).ready(function()
 		//Reload Map after it is shown
 		$('#pfa').on('shown.bs.tab', 'a[data-toggle="tab"]', function (e)
 		{
-			google.maps.event.trigger(
-										$("#find_product_location").geocomplete("map"),
-										'resize'
-									);
 			if(++is_tab_opened_before<3)		//No 1 load for page loading and no2 is for first time appear
 			{
 				//$("#find_product_location").geocomplete("find", $("#find_product_location").geocomplete( "find", latitude + "," + longitude ));
 
 				var map = $("#find_product_location").geocomplete("map");
-				map.setCenter( new google.maps.LatLng( latitude, longitude ) );
+				map.setCenter( new google.maps.LatLng( latitude+1, longitude-1 ) );
 			}
+			google.maps.event.trigger(
+										$("#find_product_location").geocomplete("map"),
+										'resize'
+									);
 		});
 	//Free add posting - tab 3 - Map - End
 

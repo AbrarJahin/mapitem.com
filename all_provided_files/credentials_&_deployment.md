@@ -71,3 +71,11 @@ DB   - abrar
 user - abrar
 pass - abrar
 host - localhost
+
+
+Git Merge -
+===========
+git checkout master
+git pull origin master
+git merge test
+git push origin master
