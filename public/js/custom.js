@@ -490,6 +490,7 @@ $(document).ready(function()
 															});
 	});
 
+	//Login Popup Showing
 	$('.loginbtn').on('click',function()
 	{
 		$('.loginpopup').addClass('animated pulse').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
