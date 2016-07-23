@@ -3170,10 +3170,10 @@ body {
 }
 
 /* Hide Google Map Info Close Button */
-img[src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"]
+/* img[src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"]
 {
 	display: none;
-}
+} */
 /* Hide Google Map Zoom Button */
 /* img[src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"]
 {
@@ -3183,10 +3183,10 @@ img[src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"]
 /* Google map Bottom Default options removing */
 
 /* Remove Google Icon */
-img[src="http://maps.gstatic.com/mapfiles/api-3/images/google4.png"]
+/* img[src="http://maps.gstatic.com/mapfiles/api-3/images/google4.png"]
 {
 	display: none;
-}
+} */
 .gmnoprint a, .gmnoprint span
 {
 	display:none;
