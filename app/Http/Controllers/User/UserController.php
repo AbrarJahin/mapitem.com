@@ -79,7 +79,10 @@ class UserController extends Controller
 	*/
 	public function myAddsView()
 	{
-		$my_adds = Advertisement::with('User')->where('user_id',Auth::user()->id)->paginate(5);
+		$my_adds = Advertisement::with('User')
+					->with('AdvertisementImages')
+					->where('user_id',Auth::user()->id)
+					->paginate(5);
 		return view('user.my_adds.main', [
 											'current_page'	=> 'user.my_adds',
 											'my_adds' => $my_adds
