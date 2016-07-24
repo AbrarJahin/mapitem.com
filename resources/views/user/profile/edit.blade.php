@@ -53,7 +53,7 @@
 		<input type="hidden" value="{{ $current_user->location_latitude }}" name="location_latitude" id="location_lat_profile">
 		<input type="hidden" value="{{ $current_user->location_longitude }}" name="location_longitude" id="location_lon_profile">
 		<br/>
-		<div id="user_address_map" class="p-right"></div>
+		<div id="user_address_map"></div>
 	</div>
 	<div class="clearfix margin-twenty"></div>
 </form>

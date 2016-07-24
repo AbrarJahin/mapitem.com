@@ -3278,7 +3278,7 @@ li.next.disabled
 	word-wrap: break-word;      /* IE */
 }
 
-#profile_location
+#profile_location, #user_address_map
 {
 	width: 100%;
 	height:400px;

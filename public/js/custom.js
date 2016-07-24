@@ -656,19 +656,6 @@ $(document).ready(function()
 		});
 	});
 
-	/*Profile page*/
-	$(".pdisplay").click(function()
-	{
-		$(this).parent().next().removeClass("edit-on");
-		$(this).parent().addClass("edit-on");
-	});
-
-	$(".pedit").click(function()
-	{
-		$(this).parent().prev().removeClass("edit-on");
-		$(this).parent().addClass("edit-on");
-	});
-
 	$('[data-toggle="tooltip"]').tooltip(); 
 
 	$(".ad-detail").hide();    

@@ -86,4 +86,28 @@ $(document).ready(function()
 		}
 	});
 
+	/*Profile page*/
+	$(".pdisplay").click(function()
+	{
+		$(this).parent().next().removeClass("edit-on");
+		$(this).parent().addClass("edit-on");
+
+		var user_location_edit_map = $("#user_address").geocomplete("map");
+		//Resizing Map on Shown - So that map content can be shown
+		google.maps.event.trigger(
+									user_location_edit_map,
+									'resize'
+								);
+		//Setting Map Center
+		user_location_edit_map.setCenter( new google.maps.LatLng( latitude+1, longitude-1 ) );
+	});
+
+	//About this function- I am not sure if it belongs in this page or another page
+	//If other page shows error, then it should be placed in custom.js
+	$(".pedit").click(function()
+	{
+		$(this).parent().prev().removeClass("edit-on");
+		$(this).parent().addClass("edit-on");
+	});
+
 });
