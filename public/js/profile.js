@@ -17,17 +17,18 @@ $(document).ready(function()
 		},
 	}).bind("geocode:result", function(event, result)
 	{
+		/*
 		console.log('Success');
 		console.log(result.formatted_address);
 		console.log( result.geometry.location.lat() );
 		console.log( result.geometry.location.lng() );
 		console.log(result);
-		
+		*/
 		$('#location_lat_profile').val( result.geometry.location.lat() );
 		$('#location_lon_profile').val( result.geometry.location.lng() );
 	}).bind("geocode:dragged", function(event, latLng)
 	{	//Dragging
-		console.log( $("#user_address").geocomplete( "find", latLng.lat() + "," + latLng.lng()) );
+		//console.log( $("#user_address").geocomplete( "find", latLng.lat() + "," + latLng.lng()) );
 		$('#user_address').val( $("#user_address").geocomplete( "find", latLng.lat() + "," + latLng.lng() ) );
 		$('#location_lat_profile').val( latLng.lat() );
 		$('#location_lon_profile').val( latLng.lng() );

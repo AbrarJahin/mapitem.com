@@ -2,7 +2,11 @@
 	<button class="pull-left no-textdecor pedit done" type="submit" form="edit_profile" id="profile_update" value="Submit">Done</button>
 	<div class="clearfix margin-twenty"></div>
 	<div class="">
-		<img id="profile_img_preview" src="{{ url('images/empty-profile.jpg') }}" width="144" height="144">
+		<img id="profile_img_preview" src="	@if( strlen($current_user->profile_picture)>4 )
+						{{ url('uploads').'/'.$current_user->profile_picture }}
+					@else
+						{{ url('images/empty-profile.jpg') }}
+					@endif" width="144" height="144">
 		<input type="file" name="profile_image" onchange="document.getElementById('profile_img_preview').src = window.URL.createObjectURL(this.files[0])">
 	</div>
 	<div class="clearfix margin-twenty"></div>

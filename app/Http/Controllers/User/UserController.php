@@ -129,6 +129,7 @@ class UserController extends Controller
 								'location_longitude'
 							)
 					->first();
+
 		return view('user.profile.main', [
 											'current_page'	=> 'user.profile',
 											'current_user'	=> $user
@@ -146,7 +147,7 @@ class UserController extends Controller
 	public function profileUpdate()
 	{
 		$requestData = Request::all();
-		//return $requestData['profile_image'];
+
 		$user = User::find(Auth::user()->id);
 
 		$user->address						= $requestData['address'];
