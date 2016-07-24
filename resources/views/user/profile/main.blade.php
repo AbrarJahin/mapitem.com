@@ -12,6 +12,8 @@
 @section('footer_scripts')
 	@parent
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gmap3/6.1.0/gmap3.min.js"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/profile.js') }}"></script>
 @endsection
 
 @section('content')

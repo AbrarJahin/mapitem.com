@@ -80,3 +80,16 @@ git checkout master
 git pull origin master
 git merge test
 git push origin master
+
+Git Delete Branch-
+------------------
+git push origin -d <branchName>
+
+Git Create Branch-
+------------------
+git checkout -b <branchName>
+
+Git Switch to a branch Branch-
+------------------------------
+git checkout <branchName>
+

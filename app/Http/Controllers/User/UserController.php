@@ -112,24 +112,26 @@ class UserController extends Controller
 	*/
 	public function myProfileView()
 	{
-		//$user = User::find(Auth::user()->id);
+		$user = User::where( 'id', Auth::user()->id )
+					->select(
+								'address',
+								'cell_no',
+								DB::raw('DATE_FORMAT(date_of_birth, "%m/%d/%Y") as date_of_birth'),
+								'email',
+								'first_name',
+								'last_name',
+								'social_security_number_p1',
+								'social_security_number_p2',
+								'social_security_number_p3',
+								'website',
+								'profile_picture',
+								'location_latitude',
+								'location_longitude'
+							)
+					->first();
 		return view('user.profile.main', [
 											'current_page'	=> 'user.profile',
-											'current_user'	=> User::where( 'id', Auth::user()->id )
-																	->select(
-																				'address',
-																				'cell_no',
-																				DB::raw('DATE_FORMAT(date_of_birth, "%m/%d/%Y") as date_of_birth'),
-																				'email',
-																				'first_name',
-																				'last_name',
-																				'social_security_number_p1',
-																				'social_security_number_p2',
-																				'social_security_number_p3',
-																				'website',
-																				'profile_picture'
-																			)
-																	->first()
+											'current_user'	=> $user
 										]);
 	}
 
