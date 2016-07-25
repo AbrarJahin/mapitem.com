@@ -99,7 +99,8 @@ $(document).ready(function()
 									'resize'
 								);
 		//Setting Map Center
-		user_location_edit_map.setCenter( new google.maps.LatLng( latitude+1, longitude-1 ) );
+		//user_location_edit_map.setCenter( new google.maps.LatLng( latitude+1, longitude-1 ) );	//Setting Edit Map Center to current Location
+		user_location_edit_map.setCenter( new google.maps.LatLng( $('#location_lat_profile').val()+1, $('#location_lon_profile').val()-1 ) );	//Setting Edit Map Center to previous Location
 	});
 
 	//About this function- I am not sure if it belongs in this page or another page
