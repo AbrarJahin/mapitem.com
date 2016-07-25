@@ -115,7 +115,8 @@ class UserController extends Controller
 		$user = User::where( 'id', Auth::user()->id )
 					->select(
 								'address',
-								'cell_no',
+								DB::raw('COALESCE(cell_no,"") as cell_no'),
+								//'cell_no',
 								DB::raw('DATE_FORMAT(date_of_birth, "%m/%d/%Y") as date_of_birth'),
 								'email',
 								'first_name',

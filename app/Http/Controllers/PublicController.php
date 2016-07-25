@@ -249,7 +249,8 @@ class PublicController extends Controller
 												as profile_picture"
 											),
 									DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS user_name"),
-									'users.cell_no as cell_no',
+									//'users.cell_no as cell_no',
+									DB::raw('COALESCE(users.cell_no,"") as cell_no'),
 									'users.website as website',
 									'users.email as email',
 									DB::raw("FLOOR( AVG(user_reviews.rating) ) AS user_rating")
