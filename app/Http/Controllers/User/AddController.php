@@ -151,28 +151,20 @@ class AddController extends Controller
 	*/
 	public function addUpdate()
 	{
-		return $requestData			= Request::all();
+		$requestData			= Request::all();
 
-		$advertisement				=	Advertisement::where('id',$requestData['advertisement_id'])
-													->where('user_id',Auth::user()->id)
-													->first();
-		$advertisement->is_active	=	$requestData['status'];
+		$advertisement			=	Advertisement::find($requestData['id']);
+
+		$advertisement->address			=	$requestData['address'];
+		$advertisement->description		=	$requestData['description'];
+		$advertisement->location_lat	=	$requestData['location_lat'];
+		$advertisement->location_lon	=	$requestData['location_lon'];
+		$advertisement->price			=	$requestData['price'];
+		$advertisement->title			=	$requestData['title'];
+
 		$advertisement->save();
 
 		return $advertisement;
-		/*
-		UserReview::updateOrCreate(
-								[
-									'add_owner_id'	=>	$requestData['add_owner_id'],
-									'add_id'		=>	$requestData['add_id'],
-									'user_id'		=>	Auth::user()->id
-								],
-								[
-									'rating'	=>	$requestData['rating'],
-									'review'	=>	$requestData['review']
-								]
-							);
-		 */
 	}
 
 	/*

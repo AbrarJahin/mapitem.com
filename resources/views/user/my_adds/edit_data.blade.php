@@ -21,6 +21,8 @@
 
 	<input name="address" id="edit_add_address" type="text" placeholder="Please enter your address here" class="form-control normal-input small-input margin-adj3">
 
+	<input type="hidden" id="edit_add_id" name="id">
+
 	<input type="hidden" id="edit_add_location_lat" name="location_lat">
 
 	<input type="hidden" id="edit_add_location_lon" name="location_lon">

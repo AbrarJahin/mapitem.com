@@ -936,6 +936,7 @@ $(document).ready(function()
 			{
 				$.each(responce_data,function(key_index,single_data)
 				{
+					$('#edit_add_id').val(single_data.id);
 					$('#edit_add_title').val(single_data.title);
 					$('#edit_add_price').val(single_data.price);
 					$('#edit_add_description').val(single_data.description);
@@ -960,5 +961,24 @@ $(document).ready(function()
 			$('#edit_add_location_lat').val( result.geometry.location.lat() );
 			$('#edit_add_location_lon').val( result.geometry.location.lng() );
 		});
+
+	$("#edit_add_submit").on('click', function(event)
+	{
+		event.preventDefault();
+		/* Act on the event */
+		$.ajax(
+		{
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $('meta[name=add_update_ajax_url]').attr("content"),
+			dataType: "json",
+			data: $("#edit_add_detail").serialize(),
+			success:function(responce_data)
+			{
+				alert('Updated Succesfully');
+				location.reload();
+			}
+		});
+	});
 
 });
