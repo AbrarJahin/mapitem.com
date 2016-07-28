@@ -39,11 +39,11 @@
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Social Security</div>
 	<div class="p-right">
-		<input type="text" value="{{ $current_user->social_security_number_p1 }}" placeholder="" name="social_security_1" class="width-adj7 normal-input pull-left">
+		<input type="text" value="{{ $current_user->social_security_number_p1 }}" placeholder="" name="social_security_1" maxlength="3" class="width-adj7 normal-input pull-left">
 		<span class="separater">-</span>
-		<input type="text" value="{{ $current_user->social_security_number_p2 }}" placeholder="" name="social_security_2" class="width-adj7 normal-input pull-left">
+		<input type="text" value="{{ $current_user->social_security_number_p2 }}" placeholder="" name="social_security_2" maxlength="2" class="width-adj7 normal-input pull-left">
 		<span class="separater">-</span>
-		<input type="text" value="{{ $current_user->social_security_number_p3 }}" placeholder="" name="social_security_3" class="width-adj7 normal-input pull-left">
+		<input type="text" value="{{ $current_user->social_security_number_p3 }}" placeholder="" name="social_security_3" maxlength="4" class="width-adj7 normal-input pull-left">
 		<span class="separater1">Last four digits or whole SSN</span>
 	</div>
 	<div class="clearfix margin-twenty"></div>
