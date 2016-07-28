@@ -120,10 +120,22 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'as'	=> '.advertisement_images'
 			]);
 
-		//Add Image Upload AJAX
+		//Add Update Status - AJAX
 		Route::post('update_add_status', [
 				'uses'	=> 'AddController@addUpdateStatus',
 				'as'	=> '.update_add_status'
+			]);
+
+		//Add Detail - AJAX
+		Route::post('detail_add', [
+				'uses'	=> 'AddController@addDetail',
+				'as'	=> '.add_detail'
+			]);
+
+		//Add Update - AJAX
+		Route::post('update_add', [
+				'uses'	=> 'AddController@addUpdate',
+				'as'	=> '.update_add'
 			]);
 
 		//Add Advertisement Review

@@ -19,7 +19,7 @@
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Cell number</div>
 	<div class="p-right">
-		<input type="text" value="{{ $current_user->cell_no }}" placeholder="123" name="cell_no" class="width-adj9 form-control normal-input"/>
+		<input type="text" value="{{ $current_user->cell_no }}" placeholder="Enter cell number" name="cell_no" class="width-adj9 form-control normal-input"/>
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Email</div>

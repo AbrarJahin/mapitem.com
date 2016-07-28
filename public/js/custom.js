@@ -596,12 +596,6 @@ $(document).ready(function()
 		e.preventDefault();
 	});
 
-	/*My Ads page*/
-	$('.edit1').on('click',function()
-	{
-		$(".db-body").toggleClass('edit-on')
-	});
-
 	$('.save').on('click',function()
 	{
 		$(".db-body").toggleClass('edit-on')
@@ -923,4 +917,40 @@ $(document).ready(function()
 		$("#wait").css("display", "none");
 	});
 	//Global AJAX Config - END
+	
+	/*My Ads page - Edit Add*/
+	$('.edit1').on('click',function()
+	{
+		//Loading the contents with AJAX
+		$.ajax(
+		{
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $('meta[name=add_view_ajax_url]').attr("content"),
+			dataType: "json",
+			data:
+			{
+				advertisement_id	:	this.id
+			},
+			success:function(responce_data)
+			{
+				$.each(responce_data,function(key_index,single_data)
+				{
+					$('#edit_add_title').val(single_data.title);
+					$('#edit_add_price').val(single_data.price);
+					$('#edit_add_description').val(single_data.description);
+					$('#edit_add_address').val(single_data.address);
+					$('#edit_add_location_lat').val(single_data.location_lat);
+					$('#edit_add_location_lon').val(single_data.location_lon);
+					$('#add_title_image').attr(	"src",
+												$('meta[name=upload_folder_url]').attr("content")
+												+
+												single_data.advertisement_images[0].image_name
+												);
+				});
+			}
+		});
+		//Showing the contents
+		$(".db-body").toggleClass('edit-on');
+	});
 });

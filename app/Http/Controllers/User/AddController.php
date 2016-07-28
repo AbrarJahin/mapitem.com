@@ -130,6 +130,52 @@ class AddController extends Controller
 	}
 
 	/*
+		URL				-> POST: /detail_add
+		Functionality	-> Show ad. Detail
+		Access			-> Anyone who is logged in user
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function addDetail()
+	{
+		return	Advertisement::with('AdvertisementImages')
+								->find(
+										Request::only(['advertisement_id'])
+									);
+	}
+
+	/*
+		URL				-> POST: /update_add
+		Functionality	-> Update ad. detil
+		Access			-> Anyone who is logged in user
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function addUpdate()
+	{
+		return $requestData			= Request::all();
+
+		$advertisement				=	Advertisement::where('id',$requestData['advertisement_id'])
+													->where('user_id',Auth::user()->id)
+													->first();
+		$advertisement->is_active	=	$requestData['status'];
+		$advertisement->save();
+
+		return $advertisement;
+		/*
+		UserReview::updateOrCreate(
+								[
+									'add_owner_id'	=>	$requestData['add_owner_id'],
+									'add_id'		=>	$requestData['add_id'],
+									'user_id'		=>	Auth::user()->id
+								],
+								[
+									'rating'	=>	$requestData['rating'],
+									'review'	=>	$requestData['review']
+								]
+							);
+		 */
+	}
+
+	/*
 		URL				-> POST: /update_advertisement_status
 		Functionality	-> Update ad. status
 		Access			-> Anyone who is logged in user
