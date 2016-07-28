@@ -953,4 +953,12 @@ $(document).ready(function()
 		//Showing the contents
 		$(".db-body").toggleClass('edit-on');
 	});
+
+	$("#edit_add_address").geocomplete({})
+	.bind("geocode:result", function(event, result)
+		{	//Type Helper
+			$('#edit_add_location_lat').val( result.geometry.location.lat() );
+			$('#edit_add_location_lon').val( result.geometry.location.lng() );
+		});
+
 });
