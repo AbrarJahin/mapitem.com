@@ -17,16 +17,26 @@ class Controller extends BaseController
 
 	public function __construct()
 	{
-		// Sharing data to all the views
-		$category = Category::with('SubCategory')->get();
-		View::share('categories', $category);
-
-		if(Auth::check())	//If user is logged in - then share this data
+		if(Auth::check())	//If user is logged in normal user - then share this data
 		{
-			$total_no_of_adds = Advertisement::where('user_id', Auth::id())->count();
-			View::share('total_no_of_adds', $total_no_of_adds);
-			View::share('no_of_new_offer', 6);
-			View::share('no_of_new_message', 4);
+			if (Auth::user()->user_type == "normal_user")
+			{
+				$total_no_of_adds = Advertisement::where('user_id', Auth::id())->count();
+				View::share('total_no_of_adds', $total_no_of_adds);
+				View::share('no_of_new_offer', 6);
+				View::share('no_of_new_message', 4);
+				/*// Sharing data to all the views
+				$category = Category::with('SubCategory')->get();
+				View::share('categories', $category);*/
+			}
+		}
+
+		//Need to be confirm
+		//if(!Auth::check() || Auth::user()->user_type == "normal_user")
+		{
+			// Sharing data to all category the views
+			$category = Category::with('SubCategory')->get();
+			View::share('categories', $category);
 		}
 	}
 }

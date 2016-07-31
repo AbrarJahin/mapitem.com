@@ -13,8 +13,8 @@ use Carbon\Carbon;
 use DB;
 
 /*
-	Functionality	-> Handel All Auth Works
-	Access			-> No restriction applied in the class, applied from route if needed
+	Functionality	-> Handel All User Works
+	Access			-> Only Users
 	Created At		-> 05/02/2016
 	Created by		-> S. M. Abrar Jahin
 */

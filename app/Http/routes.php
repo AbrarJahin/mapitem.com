@@ -163,3 +163,13 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 			]);
 	//Inbox Messaging - End
 });
+
+//Admin Routes
+Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','admin'],'as' => 'admin'], function()
+{
+	//Dashboard Page
+	Route::get('users', [
+			'uses' => 'AdminController@showAllUsersView',
+			'as' => '.show_users'
+		]);
+});

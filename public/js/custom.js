@@ -2,9 +2,6 @@
 var latitude=0, longitude=0;
 var is_tab_opened_before =0;
 
-//Global Congig
-Dropzone.autoDiscover = false;		//Make dropzone accessable with forms elements for all dropzone
-
 //Email Validate
 function validateEmail(email)
 {
@@ -391,6 +388,10 @@ $(document).ready(function()
 	});
 
 	//Free Add Posting - Start
+	if ( $('div#drag_drop_image_upload_div').length)
+	{
+		//Global Congig
+		Dropzone.autoDiscover = false;		//Make dropzone accessable with forms elements for all dropzone
 		//Dropzone File Upload in post free add modal
 		var $myDropZone	=	$("div#drag_drop_image_upload_div").dropzone(
 							{
@@ -475,6 +476,7 @@ $(document).ready(function()
 
 			$myDropZone[0].dropzone.processQueue();								//Uploading files
 		});
+	}
 	//Free Add Posting  - End
 
 	/*review box open*/

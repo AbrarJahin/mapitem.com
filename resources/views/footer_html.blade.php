@@ -37,7 +37,11 @@
                         @endif
                         col-xs-12">
 
+            @if (!Auth::check())
                 <button data-target="#pfa" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
+            @elseif (Auth::user()->user_type == "normal_user")
+                <button data-target="#pfa" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
+            @endif
 
             </div>
 
