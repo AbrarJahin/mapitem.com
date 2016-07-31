@@ -26,7 +26,7 @@ class AdminController extends Controller
 	*/
 	public function showCategoryView()
 	{
-		return view('admin.users.main', [ 'current_page'	=> 'admin.category' ]);
+		return view('admin.category.main', [ 'current_page'	=> 'admin.category' ]);
 	}
 
 	/*

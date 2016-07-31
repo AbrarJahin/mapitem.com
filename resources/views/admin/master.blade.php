@@ -11,6 +11,7 @@
 @show
 
 	<div class="container">
+		<br/><br/>
 		@yield('content')
 	</div>
 

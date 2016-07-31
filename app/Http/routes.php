@@ -208,4 +208,13 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 			'uses' => 'AdminController@showTransactionView',
 			'as' => '.transactions'
 		]);
+
+	//Datatables AJAX - Start
+		Route::post('category_datable', [
+				'uses' => 'DataTablesAjaxController@categoryDatableAjax',
+				'as' => '.category_datable'
+			]);
+
+	//Datatables AJAX - End
+	
 });

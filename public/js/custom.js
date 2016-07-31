@@ -68,6 +68,11 @@ function getCurrentDate()
 	return today;
 }
 
+function AddNewData()
+{
+	alert('OK');
+}
+
 $(document).ready(function()
 {
 	if($("#date_of_birth").length != 0)	//If datepicker exists
@@ -982,5 +987,64 @@ $(document).ready(function()
 			}
 		});
 	});
+
+	//Admin - Datatable Start
+		if ($('#category-datatable').length)
+		{
+			var categoryDataTable = $('#category-datatable').DataTable(
+			{
+				"processing": true,
+				"serverSide": true,
+				"ajax":
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					url : $('meta[name=datatable_ajax_url]').attr("content"), // json AJAX URL - datasource
+					type: "post",  // method  , by default get
+					error: function()
+					{  // error handling
+						$(".category-datatable-error").html("");
+						$("#category-datatable").append('<tbody class="category-datatable-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+						$("#category-datatable_processing").css("display","none");
+					}
+				},
+				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
+								{	"data": "email"			},
+								{	"data": "first_name"	},
+								{	"data": "status"		},
+								{	"data": null			}
+							],
+				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
+				stateSave: true,
+				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
+									{
+										"orderable": false,		//Turn off ordering
+										"searchable": false,	//Turn off searching
+										"targets": [3],			//Going to last column - 3 is the last column index because o is starting index
+										"data": null,			//Not receiving any data
+										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
+									}
+								],
+				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
+				initComplete:	function()	//Adding Custom button in Tools
+								{
+									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
+								}
+			});
+
+			$('#category-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
+			{
+				var data = categoryDataTable.row( $(this).parents('tr') ).data();
+				alert('Edit - '+data['id']);	//id = index of ID sent from server
+			});
+
+			$('#category-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
+			{
+				var data = categoryDataTable.row( $(this).parents('tr') ).data();
+				alert('Delete - '+data['id']);	//id = index of ID sent from server
+			});
+		}
+		else if ($('#sub-category-datatable').length)
+		{}
+	//Admin - Datatable End
 
 });
