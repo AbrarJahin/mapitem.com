@@ -17,15 +17,93 @@ use Illuminate\Support\Facades\Redirect;
 class AdminController extends Controller
 {
 	/*
-		URL				-> get: /account
-		Functionality	-> Show Dashboard Page
-		Access			-> Anyone who is logged in user
-		Created At		-> 22/03/2016
-		Updated At		-> 22/03/2016
+		URL				-> get: /category
+		Functionality	-> Show Users Page
+		Access			-> Admin
+		Created At		-> 30/07/2016
+		Updated At		-> 30/07/2016
 		Created by		-> S. M. Abrar Jahin
 	*/
-	public function showAllUsersView()
+	public function showCategoryView()
 	{
-		return view('admin.users.main', [ 'current_page'	=> 'user.account' ]);
+		return view('admin.users.main', [ 'current_page'	=> 'admin.category' ]);
+	}
+
+	/*
+		URL				-> get: /sub-category
+		Functionality	-> Show sub-category Page
+		Access			-> Admin
+		Created At		-> 31/07/2016
+		Updated At		-> 31/07/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showSubCategoryView()
+	{
+		return view('admin.users.main', [ 'current_page'	=> 'admin.sub_category' ]);
+	}
+
+	/*
+		URL				-> get: /users
+		Functionality	-> Show Users Page
+		Access			-> Admin
+		Created At		-> 30/07/2016
+		Updated At		-> 30/07/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showUserView()
+	{
+		return view('admin.users.main', [ 'current_page'	=> 'admin.show_users' ]);
+	}
+
+	/*
+		URL				-> get: /adds
+		Functionality	-> Show adds Page
+		Access			-> Admin
+		Created At		-> 31/07/2016
+		Updated At		-> 31/07/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showAddView()
+	{
+		return view('admin.users.main', [ 'current_page'	=> 'admin.adds' ]);
+	}
+
+	/*
+		URL				-> get: /messages
+		Functionality	-> Show Messages Page
+		Access			-> Admin
+		Created At		-> 31/07/2016
+		Updated At		-> 31/07/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showMessageView()
+	{
+		return view('admin.users.main', [ 'current_page'	=> 'admin.messages' ]);
+	}
+
+	/*
+		URL				-> get: /user_offers
+		Functionality	-> Show offers Page
+		Access			-> Admin
+		Created At		-> 31/07/2016
+		Updated At		-> 31/07/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showOfferView()
+	{
+		return view('admin.users.main', [ 'current_page'	=> 'admin.offers' ]);
+	}
+
+	/*
+		URL				-> get: /transactions
+		Functionality	-> Show transactions Page
+		Access			-> Admin
+		Created At		-> 31/07/2016
+		Updated At		-> 31/07/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showTransactionView()
+	{
+		return view('admin.users.main', [ 'current_page'	=> 'admin.transactions' ]);
 	}
 }

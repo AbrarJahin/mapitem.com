@@ -167,9 +167,45 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 //Admin Routes
 Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','admin'],'as' => 'admin'], function()
 {
-	//Dashboard Page
+	//Users Page
 	Route::get('users', [
-			'uses' => 'AdminController@showAllUsersView',
+			'uses' => 'AdminController@showUserView',
 			'as' => '.show_users'
+		]);
+
+	//Category Page
+	Route::get('category', [
+			'uses' => 'AdminController@showCategoryView',
+			'as' => '.category'
+		]);
+
+	//Sub-category Page
+	Route::get('sub-category', [
+			'uses' => 'AdminController@showSubCategoryView',
+			'as' => '.sub_category'
+		]);
+
+	//Adds Page
+	Route::get('adds', [
+			'uses' => 'AdminController@showAddView',
+			'as' => '.adds'
+		]);
+
+	//Messages Page
+	Route::get('messages', [
+			'uses' => 'AdminController@showMessageView',
+			'as' => '.messages'
+		]);
+
+	//Offers Page
+	Route::get('user_offers', [
+			'uses' => 'AdminController@showOfferView',
+			'as' => '.offers'
+		]);
+
+	//Transactions Page
+	Route::get('transactions', [
+			'uses' => 'AdminController@showTransactionView',
+			'as' => '.transactions'
 		]);
 });

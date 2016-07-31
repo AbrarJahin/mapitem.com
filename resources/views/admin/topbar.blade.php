@@ -1,31 +1,56 @@
 {{-- Topbar Nav --}}
 <nav class="navbar dn" role="navigation">
-    <div class="container">
-    {{-- Collect the nav links, forms, and other content for toggling --}}
-    <div class="" id="bs-example-navbar-collapse-2">
-        <ul class="nav navbar-nav navbar-left">
-            <li class="">
-                <a href="{{ URL::route('user.dashboard') }}" @if($current_page=="user.dashboard") class="selected" @endif > Dashboard  </a>
-            </li>
-            <li>
-                <a href="{{ URL::route('user.my_adds') }}" @if($current_page=="user.my_adds") class="selected" @endif > My Ads</a>
-            </li>
-            <li>
-                <a href="{{ URL::route('user.offers') }}" @if($current_page=="user.offers") class="selected" @endif >Offers</a>
-            </li>
-            <li class="">
-                <a href="{{ URL::route('user.inbox') }}" @if($current_page=="user.inbox") class="selected" @endif > inbox </span></a>
-            </li>
-            <li class="">
-                <a href="{{ URL::route('user.profile') }}" @if($current_page=="user.profile") class="selected" @endif > My Profile  </a>
-            </li>
-            <li class="">
-                <a href="{{ URL::route('user.account') }}" @if($current_page=="user.account") class="selected" @endif > Account </a>
-            </li>
-        </ul>
-    </div>
-    {{-- /.navbar-collapse --}}
-    </div>
+	<div class="container">
+	{{-- Collect the nav links, forms, and other content for toggling --}}
+	<div class="" id="bs-example-navbar-collapse-2">
+		<ul class="nav navbar-nav navbar-left">
+
+			<li>
+				<a href="{{ URL::route('admin.category') }}" @if($current_page=="admin.category") class="selected" @endif >
+					Category
+				</a>
+			</li>
+
+			<li>
+				<a href="{{ URL::route('admin.sub_category') }}" @if($current_page=="admin.sub_category") class="selected" @endif >
+					Sub-Category
+				</a>
+			</li>
+
+			<li>
+				<a href="{{ URL::route('admin.show_users') }}" @if($current_page=="admin.show_users") class="selected" @endif >
+					Users
+				</a>
+			</li>
+
+			<li>
+				<a href="{{ URL::route('admin.adds') }}" @if($current_page=="admin.adds") class="selected" @endif >
+					Adds
+				</a>
+			</li>
+
+			<li>
+				<a href="{{ URL::route('admin.messages') }}" @if($current_page=="admin.messages") class="selected" @endif >
+					Messages
+				</a>
+			</li>
+
+			<li>
+				<a href="{{ URL::route('admin.offers') }}" @if($current_page=="admin.offers") class="selected" @endif >
+					Offers
+				</a>
+			</li>
+
+			<li>
+				<a href="{{ URL::route('admin.transactions') }}" @if($current_page=="admin.transactions") class="selected" @endif >
+					Transactions
+				</a>
+			</li>
+
+		</ul>
+	</div>
+	{{-- /.navbar-collapse --}}
+	</div>
 {{-- /.container --}}
 </nav>
 <div class="clearfix"></div>
