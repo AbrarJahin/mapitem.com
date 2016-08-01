@@ -39,7 +39,7 @@ class AdminController extends Controller
 	*/
 	public function showSubCategoryView()
 	{
-		return view('admin.users.main', [ 'current_page'	=> 'admin.sub_category' ]);
+		return view('admin.sub_category.main', [ 'current_page'	=> 'admin.sub_category' ]);
 	}
 
 	/*

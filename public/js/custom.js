@@ -70,7 +70,7 @@ function getCurrentDate()
 
 function AddNewData()
 {
-	alert('OK');
+	$('#add_data_modal').modal('show');
 }
 
 $(document).ready(function()
@@ -1008,9 +1008,7 @@ $(document).ready(function()
 					}
 				},
 				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
-								{	"data": "email"			},
-								{	"data": "first_name"	},
-								{	"data": "status"		},
+								{	"data": "category_name"			},
 								{	"data": null			}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
@@ -1019,7 +1017,7 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [3],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [1],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
 									}
@@ -1034,7 +1032,8 @@ $(document).ready(function()
 			$('#category-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = categoryDataTable.row( $(this).parents('tr') ).data();
-				alert('Edit - '+data['id']);	//id = index of ID sent from server
+				//alert('Edit - '+data['id']);	//id = index of ID sent from server
+				$('#edit_data_modal').modal('show');
 			});
 
 			$('#category-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
