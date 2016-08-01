@@ -989,7 +989,7 @@ $(document).ready(function()
 	});
 
 	//Admin - Datatable Start
-		if ($('#category-datatable').length)
+		if ($('#category-datatable').length)	//Category Datatable
 		{
 			var categoryDataTable = $('#category-datatable').DataTable(
 			{
