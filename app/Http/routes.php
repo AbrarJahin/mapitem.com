@@ -215,6 +215,24 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'as' => '.category_datable'
 			]);
 
+		Route::post('sub_category_datable', [
+				'uses' => 'DataTablesAjaxController@subCategoryDatableAjax',
+				'as' => '.sub_category_datable'
+			]);
+
 	//Datatables AJAX - End
-	
+
+	//Add Data AJAX - Start
+		Route::post('category_add', [
+				'uses' => 'AddAjaxController@categoryAddAjax',
+				'as' => '.category_add'
+			]);
+	//Add Data AJAX - END
+
+	//Edit Data AJAX - Start
+		Route::post('category_update', [
+				'uses' => 'EditAjaxController@categoryUpdateAjax',
+				'as' => '.category_update'
+			]);
+	//Edit Data AJAX - END
 });

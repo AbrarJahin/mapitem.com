@@ -80,9 +80,7 @@ class DataTablesAjaxController extends Controller
         $columns = array(
             // datatable column index  => database column name
             0 => 'categories.name',
-            1 => 'users.first_name',
-            2 => 'users.enabled',
-            3 => 'users.email'
+            1 => 'sub_categories.name'
         );
         $draw_request_code = $requestData['draw'];
         $searchParameter = $requestData['search']['value'];
@@ -91,13 +89,13 @@ class DataTablesAjaxController extends Controller
         $limit_start = $requestData['start'];
         $limit_interval = $requestData['length'];
         // Base Quary
-        $baseQuery = DB::table('users')
-            ->select(
-                'users.id',
-                'users.first_name',
-                'users.email',
-                DB::raw('IF(is_enabled="enabled","Active","Inactive")AS status')
-            );
+        $baseQuery = DB::table('sub_categories')
+                        ->join('categories', 'categories.id', '=', 'sub_categories.category_id')
+                        ->select(
+                            'sub_categories.id as id',
+                            'categories.name as category_name',
+                            'sub_categories.name as sub_category_name'
+                        );
         $totalData = $baseQuery->count();
         //Applying Filters
         ////Search Filtering
@@ -108,8 +106,8 @@ class DataTablesAjaxController extends Controller
                                     ->where(function($query) use ($searchParameter)
                                     {
                                         $query
-                                            ->where('users.name', 'like', '%'.$searchParameter.'%')
-                                            ->orWhere('users.email', 'like', '%' . $searchParameter . '%');
+                                            ->where('categories.name', 'like', '%'.$searchParameter.'%')
+                                            ->orWhere('sub_categories.name', 'like', '%' . $searchParameter . '%');
                                     });
         }
         $totalFiltered = $filtered_query->count();
