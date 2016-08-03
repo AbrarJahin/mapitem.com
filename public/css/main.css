@@ -3283,3 +3283,17 @@ li.next.disabled
 	width: 100%;
 	height:400px;
 }
+
+/* Making user Daatable Scrollable - Start */
+	#user-datatable_wrapper
+	{
+		width: 100%;
+		overflow-y: hidden;
+		overflow-x: scroll;
+	}
+
+	#user-datatable
+	{
+		min-width: 2000px;
+	}
+/* Making user Daatable Scrollable - End */
