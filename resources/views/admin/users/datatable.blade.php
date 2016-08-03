@@ -1,7 +1,7 @@
 <meta name="datatable_ajax_url" content="{{ URL::route('admin.users_datable') }}">
 
 {{-- Category Datatable --}}
-<table id="user-datatable" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
+<table id="user-datatable" class="table table-hover" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
 		<thead>
 			<tr>
 				<th>Full Name</th>
