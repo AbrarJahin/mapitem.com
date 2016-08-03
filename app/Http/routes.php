@@ -225,6 +225,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'as' => '.users_datable'
 			]);
 
+		Route::post('adds_datable', [
+				'uses' => 'DataTablesAjaxController@addsDatableAjax',
+				'as' => '.adds_datable'
+			]);
+
 	//Datatables AJAX - End
 
 	//Add Data AJAX - Start

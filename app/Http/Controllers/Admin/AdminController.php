@@ -65,7 +65,7 @@ class AdminController extends Controller
 	*/
 	public function showAddView()
 	{
-		return view('admin.users.main', [ 'current_page'	=> 'admin.adds' ]);
+		return view('admin.adds.main', [ 'current_page'	=> 'admin.adds' ]);
 	}
 
 	/*
