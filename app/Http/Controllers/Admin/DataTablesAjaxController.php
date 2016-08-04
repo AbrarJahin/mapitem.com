@@ -201,13 +201,89 @@ class DataTablesAjaxController extends Controller
 
     /*
         URL             -> post: /adds_datable
-        Functionality   -> Users Datable AJAX
+        Functionality   -> Adds Datable AJAX
         Access          -> Admin
         Created At      -> 03/07/2016
         Updated At      -> 03/08/2016
         Created by      -> S. M. Abrar Jahin
     */
     public function addsDatableAjax()
+    {
+        $requestData = Request::all();
+        $columns = array(
+            // datatable column index  => database column name
+            0 => 'categories.name',
+            1 => 'sub_categories.name',
+            2 => 'users.first_name',
+            3 => 'advertisements.title',
+            4 => 'advertisements.price',
+            5 => 'advertisements.description',
+            6 => 'advertisements.address'
+        );
+        $draw_request_code = $requestData['draw'];
+        $searchParameter = $requestData['search']['value'];
+        $order_by_value = $columns[$requestData['order'][0]['column']];
+        $orderingDirection = $requestData['order'][0]['dir'];
+        $limit_start = $requestData['start'];
+        $limit_interval = $requestData['length'];
+        // Base Quary
+        $baseQuery = DB::table('advertisements')
+                        ->join('users', 'users.id', '=', 'advertisements.user_id')
+                        ->join('categories', 'categories.id', '=', 'advertisements.category_id')
+                        ->join('sub_categories', 'sub_categories.id', '=', 'advertisements.sub_category_id')
+                        ->select(
+                            'advertisements.id as id',
+                            'categories.name as category',
+                            'sub_categories.name as sub_category',
+                            DB::raw('CONCAT(users.first_name," ",users.last_name) as owner'),
+                            'advertisements.title as title',
+                            'advertisements.price as price',
+                            DB::raw('CONCAT( LEFT(advertisements.description , 30) ," ..") as description'),
+                            DB::raw('CONCAT( LEFT(advertisements.address , 30) ," ..") as address')
+                        );
+        $totalData = $baseQuery->count();
+        //Applying Filters
+        ////Search Filtering
+        $filtered_query = $baseQuery;
+        if (!empty($searchParameter))
+        {
+            $filtered_query = $filtered_query
+                                    ->where(function($query) use ($searchParameter)
+                                    {
+                                        $query
+                                            ->where('users.first_name', 'like', '%'.$searchParameter.'%')
+                                            ->orWhere('users.last_name', 'like', '%' . $searchParameter . '%')
+                                            ->orWhere('categories.name', 'like', '%' . $searchParameter . '%')
+                                            ->orWhere('sub_categories.name', 'like', '%' . $searchParameter . '%')
+                                            ->orWhere('advertisements.title', 'like', '%' . $searchParameter . '%')
+                                            ->orWhere('advertisements.price', 'like', '%' . $searchParameter . '%')
+                                            ->orWhere('advertisements.description', 'like', '%' . $searchParameter . '%')
+                                            ->orWhere('advertisements.address', 'like', '%' . $searchParameter . '%');
+                                    });
+        }
+        $totalFiltered = $filtered_query->count();
+        //Ordering
+        $filtered_query = $filtered_query->orderBy($order_by_value, $orderingDirection);
+        //Limiting for Pagination
+        $data = $filtered_query->skip($limit_start)->take($limit_interval)->get();
+        $json_data = array(
+            "draw" => intval($draw_request_code),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw.
+            "recordsTotal" => intval($totalData),  // total number of records
+            "recordsFiltered" => intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
+            "data" => $data   // total data array
+        );
+        return $json_data;
+    }
+
+    /*
+        URL             -> post: /messages_datable
+        Functionality   -> Messages Datable AJAX
+        Access          -> Admin
+        Created At      -> 03/07/2016
+        Updated At      -> 03/08/2016
+        Created by      -> S. M. Abrar Jahin
+    */
+    public function messagesDatableAjax()
     {
         $requestData = Request::all();
         $columns = array(

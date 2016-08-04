@@ -230,6 +230,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'as' => '.adds_datable'
 			]);
 
+		Route::post('messages_datable', [
+				'uses' => 'DataTablesAjaxController@messagesDatableAjax',
+				'as' => '.messages_datable'
+			]);
+
 	//Datatables AJAX - End
 
 	//Add Data AJAX - Start
@@ -238,6 +243,13 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'as' => '.category_add'
 			]);
 	//Add Data AJAX - END
+
+	//View Data AJAX - Start
+		Route::post('category_view', [
+				'uses' => 'ViewAjaxController@categoryViewAjax',
+				'as' => '.category_view'
+			]);
+	//View Data AJAX - END
 
 	//Edit Data AJAX - Start
 		Route::post('category_update', [

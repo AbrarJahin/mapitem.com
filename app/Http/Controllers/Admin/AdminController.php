@@ -78,7 +78,7 @@ class AdminController extends Controller
 	*/
 	public function showMessageView()
 	{
-		return view('admin.users.main', [ 'current_page'	=> 'admin.messages' ]);
+		return view('admin.messages.main', [ 'current_page'	=> 'admin.messages' ]);
 	}
 
 	/*

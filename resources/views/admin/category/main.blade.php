@@ -8,6 +8,7 @@
 
 	@include('admin.category.datatable')
 	@include('admin.category.add')
+	@include('admin.category.view')
 	@include('admin.category.edit')
 
 @endsection

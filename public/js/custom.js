@@ -1019,7 +1019,7 @@ $(document).ready(function()
 										"searchable": false,	//Turn off searching
 										"targets": [1],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
-										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
+										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="show btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>'
 									}
 								],
 				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
@@ -1028,18 +1028,80 @@ $(document).ready(function()
 									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
 								}
 			});
-
+			//Add Category
+			$('#add_category_button').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#add_data").attr('action'),
+					dataType: "json",
+					data: $("#add_data").serialize(),
+					success:function(responce_data)
+					{
+						alert('Added Succesfully');
+						location.reload();
+					}
+				});
+				$('#add_data_modal').modal('hide');
+			});
+			//View Category
+			$('#category-datatable tbody').on( 'click', 'button.show', function ()	//Handeling Delete Button Click
+			{
+				var data = categoryDataTable.row( $(this).parents('tr') ).data();
+				//alert('Delete - '+data['id']);	//id = index of ID sent from server
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_detail]').attr("content"),
+					dataType: "json",
+					data: 	{	'category_id'	:	data['id']	},
+					success:function(responce_data)
+					{
+						$('#category_name').html(responce_data.name);
+						$('#view_data_modal').modal('show');
+					}
+				});
+			});
+			//Edit Category
 			$('#category-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = categoryDataTable.row( $(this).parents('tr') ).data();
 				//alert('Edit - '+data['id']);	//id = index of ID sent from server
-				$('#edit_data_modal').modal('show');
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_detail]').attr("content"),
+					dataType: "json",
+					data: 	{	'category_id'	:	data['id']	},
+					success:function(responce_data)
+					{
+						$('#selected_category_id').val(data['id']);
+						$('#selected_category_name').val(responce_data.name);
+						$('#edit_data_modal').modal('show');
+					}
+				});
 			});
-
-			$('#category-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
+			//Update Category
+			$('#update_category_button').on('click', function(event)
 			{
-				var data = categoryDataTable.row( $(this).parents('tr') ).data();
-				alert('Delete - '+data['id']);	//id = index of ID sent from server
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#update_data").attr('action'),
+					dataType: "json",
+					data: $("#update_data").serialize(),
+					success:function(responce_data)
+					{
+						alert('Updated Succesfully');
+						location.reload();
+					}
+				});
+				$('#edit_data_modal').modal('hide');
 			});
 		}
 		else if ($('#sub-category-datatable').length)	//Sub-Category Datatable
@@ -1209,6 +1271,65 @@ $(document).ready(function()
 			});
 
 			$('#adds-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
+			{
+				var data = userDataTable.row( $(this).parents('tr') ).data();
+				alert('Delete - '+data['id']);	//id = index of ID sent from server
+			});
+		}
+		else if ($('#messages-datatable').length)	//Messages Datatable
+		{
+			var userDataTable = $('#messages-datatable').DataTable(
+			{
+				"processing": true,
+				"serverSide": true,
+				"ajax":
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					url : $('meta[name=datatable_ajax_url]').attr("content"), // json AJAX URL - datasource
+					type: "post",  // method  , by default get
+					error: function()
+					{  // error handling
+						$(".messages-datatable-error").html("");
+						$("#messages-datatable").append('<tbody class="messages-datatable-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+						$("#messages-datatable_processing").css("display","none");
+					}
+				},
+				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
+								{	"data": "category"		},
+								{	"data": "sub_category"	},
+								{	"data": "owner"			},
+								{	"data": "title"			},
+								{	"data": "price"			},
+								{	"data": "description"	},
+								{	"data": "address"		},
+								{	"data": null			}
+							],
+				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
+				stateSave: true,
+				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
+									{
+										"orderable": false,		//Turn off ordering
+										"searchable": false,	//Turn off searching
+										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
+										"data": null,			//Not receiving any data
+										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
+									}
+								],
+				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
+				initComplete:	function()	//Adding Custom button in Tools
+								{
+									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
+								}
+			});
+
+			$('#messages-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
+			{
+				var data = userDataTable.row( $(this).parents('tr') ).data();
+				//alert('Edit - '+data['id']);	//id = index of ID sent from server
+				$('#edit_data_modal').modal('show');
+			});
+
+			$('#messages-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
 			{
 				var data = userDataTable.row( $(this).parents('tr') ).data();
 				alert('Delete - '+data['id']);	//id = index of ID sent from server

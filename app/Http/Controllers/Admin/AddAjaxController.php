@@ -2,11 +2,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Auth;
 use Request;
-use Validator;
-use Illuminate\Support\Facades\Redirect;
-use DB;
+use App\Category;
 
 /*
 	Functionality	-> Handel All Admin Works
@@ -27,6 +24,12 @@ class AddAjaxController extends Controller
 	*/
 	public function categoryAddAjax()
 	{
-		return $requestData = Request::all();
+		$requestData = Request::all();
+		//return $requestData['category_name'];
+		return Category::firstOrCreate(
+										[
+											'name' => $requestData['category_name']
+										]
+									);
 	}
 }

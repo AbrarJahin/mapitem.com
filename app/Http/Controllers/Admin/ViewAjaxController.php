@@ -3,16 +3,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Request;
-use DB;
+use APP\Category;
 
 /*
-	Functionality	-> Handel All Admin Works
+	Functionality	-> Handel All Admin View AJAX Data
 	Access			-> Only Admin
-	Created At		-> 05/02/2016
+	Created At		-> 04/08/2016
 	Created by		-> S. M. Abrar Jahin
 */
 
-class EditAjaxController extends Controller
+class ViewAjaxController extends Controller
 {
 	/*
 		URL				-> post: /category_datable
@@ -22,15 +22,12 @@ class EditAjaxController extends Controller
 		Updated At		-> 01/08/2016
 		Created by		-> S. M. Abrar Jahin
 	*/
-	public function categoryUpdateAjax()
+	public function categoryViewAjax()
 	{
 		$requestData = Request::all();
-		return DB::table('categories')
-				->where('id', $requestData['category_id'])
-				->update(
-							[
-								'name' => $requestData['category_name']
-							]
-						);
+        //return Category::find( $requestData['category_id'] );
+        return Category::where('id', $requestData['category_id'])
+                    ->select('name')
+                    ->first();
 	}
 }
