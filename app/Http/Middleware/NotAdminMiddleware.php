@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class OnlyUserMiddleware
+class NotAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,16 +16,16 @@ class OnlyUserMiddleware
      */
     public function handle($request, Closure $next)
     {
-		//Checking if he is normal user
+		//Checking if he is admin
 		if ( !Auth::check() )											//Not Logged In
 		{
-			redirect()->route('index');
+			return $next($request);
 		}
-		else if( strcmp("normal_user",Auth::user()->user_type)!=0 )		//Not normal_user, then redirect to default page
+		else if( strcmp("admin",Auth::user()->user_type)!=0 )			//Not admin, then redirect to default page
 		{
-			redirect()->route('index');
+			return $next($request);
 		}
 		//End checking
-		return $next($request);
+		return redirect()->route('admin.category');
     }
 }

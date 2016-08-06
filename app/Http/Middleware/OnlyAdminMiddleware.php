@@ -19,11 +19,11 @@ class OnlyAdminMiddleware
 		//Checking if he is admin
 		if ( !Auth::check() )											//Not Logged In
 		{
-			return redirect('/');
+			return redirect()->route('index');
 		}
 		else if( strcmp("admin",Auth::user()->user_type)!=0 )			//Not admin, then redirect to default page
 		{
-			return redirect('/');
+			return redirect()->route('index');
 		}
 		//End checking
 		return $next($request);

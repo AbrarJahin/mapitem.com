@@ -1,7 +1,7 @@
 <?php
 
-//Public Routes
-Route::group(['prefix' => '/','middleware' => ['web']], function()
+//Public Routes - Can't be accessed by Admin
+Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 {
 	//Auth - registration
 	Route::post('register', [
