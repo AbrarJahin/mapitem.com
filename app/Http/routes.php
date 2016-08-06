@@ -257,4 +257,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'as' => '.category_update'
 			]);
 	//Edit Data AJAX - END
+
+	//Edit Data AJAX - Start
+		Route::post('category_delete', [
+				'uses' => 'DeleteAjaxController@categoryDeleteAjax',
+				'as' => '.category_delete'
+			]);
+	//Edit Data AJAX - END
 });

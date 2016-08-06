@@ -1019,7 +1019,7 @@ $(document).ready(function()
 										"searchable": false,	//Turn off searching
 										"targets": [1],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
-										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="show btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>'
+										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
 									}
 								],
 				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
@@ -1046,25 +1046,6 @@ $(document).ready(function()
 				});
 				$('#add_data_modal').modal('hide');
 			});
-			//View Category
-			$('#category-datatable tbody').on( 'click', 'button.show', function ()	//Handeling Delete Button Click
-			{
-				var data = categoryDataTable.row( $(this).parents('tr') ).data();
-				//alert('Delete - '+data['id']);	//id = index of ID sent from server
-				$.ajax(
-				{
-					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-					method: "POST",
-					url: $('meta[name=view_detail]').attr("content"),
-					dataType: "json",
-					data: 	{	'category_id'	:	data['id']	},
-					success:function(responce_data)
-					{
-						$('#category_name').html(responce_data.name);
-						$('#view_data_modal').modal('show');
-					}
-				});
-			});
 			//Edit Category
 			$('#category-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
@@ -1085,6 +1066,13 @@ $(document).ready(function()
 					}
 				});
 			});
+			//Delete Category
+			$('#category-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
+			{
+				var data = categoryDataTable.row( $(this).parents('tr') ).data();
+				$("#delete_item_id").val(data['id']);
+				$('#delete_confirmation_modal').modal('show');
+			});
 			//Update Category
 			$('#update_category_button').on('click', function(event)
 			{
@@ -1098,6 +1086,24 @@ $(document).ready(function()
 					success:function(responce_data)
 					{
 						alert('Updated Succesfully');
+						location.reload();
+					}
+				});
+				$('#edit_data_modal').modal('hide');
+			});
+			//Delete Category
+			$('#confirm_delete').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#delete_data").attr('action'),
+					dataType: "json",
+					data: $("#delete_data").serialize(),
+					success:function(responce_data)
+					{
+						alert('Succesfully Deleted Category');
 						location.reload();
 					}
 				});
@@ -1195,6 +1201,7 @@ $(document).ready(function()
 										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
+										//"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="show btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>'
 									}
 								],
 				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible

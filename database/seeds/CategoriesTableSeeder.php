@@ -13,7 +13,7 @@ class CategoriesTableSeeder extends Seeder
     {
 		$faker = Faker\Factory::create();
 
-		for ($x = 0; $x < 10; $x++)
+		for ($x = 0; $x < 4; $x++)
 		{
 			DB::table('categories')->insert(
 											[

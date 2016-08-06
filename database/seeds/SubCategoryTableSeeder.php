@@ -13,7 +13,7 @@ class SubCategoryTableSeeder extends Seeder
     {
         $faker		= Faker\Factory::create();
 
-		for ($x = 0; $x < 40; $x++)
+		for ($x = 0; $x < 20; $x++)
 		{
 			DB::table('sub_categories')->insert(
 											[

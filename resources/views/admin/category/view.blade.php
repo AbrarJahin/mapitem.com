@@ -10,15 +10,10 @@
 				<h4 class="modal-title">Category Detail</h4>
 			</div>
 			<div class="modal-body">
-				<form role="form" method="post" action="{{ URL::route('admin.category_add') }}">
-					<div class="form-group">
-						<label for="category">Category Name : </label>
-						<span id="category_name">Category</span>
-					</div>
-			</div>
-			<div class="modal-footer">
-					<button type="button" id="add_category_button" class="btn btn-info"{{-- data-dismiss="modal" --}}>Add Category</button>
-				</form>
+				<div class="form-group">
+					<label for="category">Category Name : </label>
+					<span id="category_name">Category</span>
+				</div>
 			</div>
 		</div>
 		
