@@ -3297,3 +3297,9 @@ li.next.disabled
 		min-width: 2000px;
 	}
 /* Making user Daatable Scrollable - End */
+
+/* Making Table Hover Background Color to out theme matching */
+.table-hover tbody tr:hover td
+{
+    background: #e6ffee;
+}

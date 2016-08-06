@@ -249,6 +249,10 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'ViewAjaxController@categoryViewAjax',
 				'as' => '.category_view'
 			]);
+		Route::post('sub_category_view', [
+				'uses' => 'ViewAjaxController@subCategoryViewAjax',
+				'as' => '.sub_category_view'
+			]);
 	//View Data AJAX - END
 
 	//Edit Data AJAX - Start

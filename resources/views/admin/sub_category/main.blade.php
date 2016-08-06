@@ -5,9 +5,11 @@
 @section('meta_author', 'S. M. Abrar Jahin')
 
 @section('content')
+	<meta name="view_detail" content="{{ URL::route('admin.sub_category_view') }}">
 
 	@include('admin.sub_category.datatable')
 	@include('admin.sub_category.add')
 	@include('admin.sub_category.edit')
+	@include('admin.sub_category.delete')
 
 @endsection

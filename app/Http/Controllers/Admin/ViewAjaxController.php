@@ -15,7 +15,7 @@ use APP\Category;
 class ViewAjaxController extends Controller
 {
 	/*
-		URL				-> post: /category_datable
+		URL				-> post: /category_view
 		Functionality	-> Category Datable AJAX
 		Access			-> Admin
 		Created At		-> 31/07/2016
@@ -26,6 +26,23 @@ class ViewAjaxController extends Controller
 	{
 		$requestData = Request::all();
         //return Category::find( $requestData['category_id'] );
+        return Category::where('id', $requestData['category_id'])
+                    ->select('name')
+                    ->first();
+	}
+
+	/*
+		URL				-> post: /sub_category_view
+		Functionality	-> Category Datable AJAX
+		Access			-> Admin
+		Created At		-> 06/08/2016
+		Updated At		-> 06/08/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function subCategoryViewAjax()
+	{
+		return $requestData = Request::all();
+        return Category::find( $requestData['category_id'] );
         return Category::where('id', $requestData['category_id'])
                     ->select('name')
                     ->first();

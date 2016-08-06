@@ -6,6 +6,7 @@
 
 @section('content')
 	<meta name="view_detail" content="{{ URL::route('admin.category_view') }}">
+
 	@include('admin.category.datatable')
 	@include('admin.category.add')
 {{-- 	@include('admin.category.view') --}}
