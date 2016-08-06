@@ -1040,11 +1040,11 @@ $(document).ready(function()
 					data: $("#add_data").serialize(),
 					success:function(responce_data)
 					{
+						$('#add_data_modal').modal('hide');
+						categoryDataTable.ajax.reload( null, false );
 						alert('Added Succesfully');
-						location.reload();
 					}
 				});
-				$('#add_data_modal').modal('hide');
 			});
 			//Edit Category
 			$('#category-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
@@ -1073,7 +1073,7 @@ $(document).ready(function()
 				$("#delete_item_id").val(data['id']);
 				$('#delete_confirmation_modal').modal('show');
 			});
-			//Update Category
+			//Update/Edit Category
 			$('#update_category_button').on('click', function(event)
 			{
 				$.ajax(
@@ -1086,7 +1086,7 @@ $(document).ready(function()
 					success:function(responce_data)
 					{
 						alert('Updated Succesfully');
-						location.reload();
+						categoryDataTable.ajax.reload( null, false );
 					}
 				});
 				$('#edit_data_modal').modal('hide');
@@ -1103,11 +1103,11 @@ $(document).ready(function()
 					data: $("#delete_data").serialize(),
 					success:function(responce_data)
 					{
+						$('#delete_confirmation_modal').modal('hide');
+						categoryDataTable.ajax.reload( null, false );
 						alert('Succesfully Deleted Category');
-						location.reload();
 					}
 				});
-				$('#edit_data_modal').modal('hide');
 			});
 		}
 		else if ($('#sub-category-datatable').length)	//Sub-Category Datatable
@@ -1150,18 +1150,37 @@ $(document).ready(function()
 									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
 								}
 			});
-
+			//Sub-Category Edit
 			$('#sub-category-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = subCategoryDataTable.row( $(this).parents('tr') ).data();
 				//alert('Edit - '+data['id']);	//id = index of ID sent from server
 				$('#edit_data_modal').modal('show');
 			});
-
+			//Sub-ategory delete
 			$('#sub-category-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
 			{
 				var data = subCategoryDataTable.row( $(this).parents('tr') ).data();
-				alert('Delete - '+data['id']);	//id = index of ID sent from server
+				$("#delete_item_id").val(data['id']);
+				$('#delete_confirmation_modal').modal('show');
+			});
+			//Delete Category - Confirmation
+			$('#confirm_delete').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#delete_data").attr('action'),
+					dataType: "json",
+					data: $("#delete_data").serialize(),
+					success:function(responce_data)
+					{
+						$('#delete_confirmation_modal').modal('hide');
+						subCategoryDataTable.ajax.reload( null, false );
+						alert('Succesfully Deleted Sub-Category');
+					}
+				});
 			});
 		}
 		else if ($('#user-datatable').length)	//User Datatable
