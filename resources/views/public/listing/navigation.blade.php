@@ -19,7 +19,7 @@
 			<ul class="nav navbar-nav navbar-right ip-nav">
 				@if (Auth::check())
 					<li class="dropdown">
-						@include('profile_menu')
+						@include('user_menu')
 					</li>
 				@else
 					<li id="dt" class="dropdown">

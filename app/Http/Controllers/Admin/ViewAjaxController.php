@@ -50,7 +50,7 @@ class ViewAjaxController extends Controller
 							'categories.id as category_id',
 							'sub_categories.name as name'
 						)
-				->where('sub_categories.id', '=', $requestData['sub_category_id']);
+				->where('sub_categories.id', '=', $requestData['sub_category_id'])
 				->get()
 				->first();
 	}
