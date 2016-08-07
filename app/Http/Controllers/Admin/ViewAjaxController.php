@@ -46,12 +46,10 @@ class ViewAjaxController extends Controller
 		return DB::table('sub_categories')
 				->join('categories', 'categories.id', '=', 'sub_categories.category_id')
 				->select(
-							'sub_categories.id as id',
 							'categories.id as category_id',
 							'sub_categories.name as name'
 						)
 				->where('sub_categories.id', '=', $requestData['sub_category_id'])
-				->get()
-				->first();
+				->get();
 	}
 }

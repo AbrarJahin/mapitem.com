@@ -10,6 +10,7 @@
 	@include('admin.sub_category.datatable')
 	@include('admin.sub_category.add')
 	@include('admin.sub_category.edit')
+	@include('admin.sub_category.edit_success')
 	@include('admin.sub_category.delete')
 
 @endsection

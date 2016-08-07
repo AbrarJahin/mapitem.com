@@ -1182,8 +1182,12 @@ $(document).ready(function()
 					data: 	{	'sub_category_id'	:	data['id']	},
 					success:function(responce_data)
 					{
-						$('#selected_category_id').val(data['id']);
-						$('#selected_category_name').val(responce_data.name);
+						console.log(responce_data[0].id);
+						$('#selected_sub-category_id').val(data['id']);
+
+						$('#selected_sub-category_name').val(responce_data[0].name);
+						$('#selected_category_id').val(responce_data[0].category_id);
+
 						$('#edit_data_modal').modal('show');
 					}
 				});
@@ -1195,7 +1199,25 @@ $(document).ready(function()
 				$("#delete_item_id").val(data['id']);
 				$('#delete_confirmation_modal').modal('show');
 			});
-			//Delete Category - Confirmation
+			//Update Sub-Category
+			$('#update_sub-category_button').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#update_sub-category").attr('action'),
+					dataType: "json",
+					data: $("#update_sub-category").serialize(),
+					success:function(responce_data)
+					{
+						$('#edit_data_modal').modal('hide');
+						subCategoryDataTable.ajax.reload( null, false );
+						$('#edit_success').modal('show');
+					}
+				});
+			});
+			//Delete SUb-Category - Confirmation
 			$('#confirm_delete').on('click', function(event)
 			{
 				$.ajax(

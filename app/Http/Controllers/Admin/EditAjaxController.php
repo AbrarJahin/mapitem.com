@@ -49,8 +49,8 @@ class EditAjaxController extends Controller
 				->where('id', $requestData['sub_category_id'])
 				->update(
 							[
-								'category_id'	=> $requestData['category_name'],
-								'name'			=> $requestData['category_name']
+								'category_id'	=> $requestData['category_id'],
+								'name'			=> $requestData['sub_category_name']
 							]
 						);
 	}
