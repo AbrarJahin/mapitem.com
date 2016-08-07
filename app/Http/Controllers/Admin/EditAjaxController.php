@@ -15,11 +15,11 @@ use DB;
 class EditAjaxController extends Controller
 {
 	/*
-		URL				-> post: /category_datable
-		Functionality	-> Category Datable AJAX
+		URL				-> post: /category_update
+		Functionality	-> Category Edit AJAX
 		Access			-> Admin
-		Created At		-> 31/07/2016
-		Updated At		-> 01/08/2016
+		Created At		-> 06/08/2016
+		Updated At		-> 07/08/2016
 		Created by		-> S. M. Abrar Jahin
 	*/
 	public function categoryUpdateAjax()
@@ -30,6 +30,27 @@ class EditAjaxController extends Controller
 				->update(
 							[
 								'name' => $requestData['category_name']
+							]
+						);
+	}
+
+	/*
+		URL				-> post: /sub_category_update
+		Functionality	-> Category Edit AJAX
+		Access			-> Admin
+		Created At		-> 06/08/2016
+		Updated At		-> 07/08/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function subCategoryUpdateAjax()
+	{
+		$requestData = Request::all();
+		return DB::table('sub_categories')
+				->where('id', $requestData['sub_category_id'])
+				->update(
+							[
+								'category_id'	=> $requestData['category_name'],
+								'name'			=> $requestData['category_name']
 							]
 						);
 	}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Request;
 use APP\Category;
+use DB;
 
 /*
 	Functionality	-> Handel All Admin View AJAX Data
@@ -41,10 +42,8 @@ class ViewAjaxController extends Controller
 	*/
 	public function subCategoryViewAjax()
 	{
-		return $requestData = Request::all();
-        return Category::find( $requestData['category_id'] );
-        return Category::where('id', $requestData['category_id'])
-                    ->select('name')
-                    ->first();
+		$requestData = Request::all();
+		return $requestData['sub_category_id'];
+		return DB::table('users')->get();
 	}
 }

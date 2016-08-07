@@ -242,6 +242,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'AddAjaxController@categoryAddAjax',
 				'as' => '.category_add'
 			]);
+
+		Route::post('sub_category_add', [
+				'uses' => 'AddAjaxController@subCategoryAddAjax',
+				'as' => '.sub_category_add'
+			]);
 	//Add Data AJAX - END
 
 	//View Data AJAX - Start
@@ -259,6 +264,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 		Route::post('category_update', [
 				'uses' => 'EditAjaxController@categoryUpdateAjax',
 				'as' => '.category_update'
+			]);
+
+		Route::post('sub_category_update', [
+				'uses' => 'EditAjaxController@subCategoryUpdateAjax',
+				'as' => '.sub_category_update'
 			]);
 	//Edit Data AJAX - END
 

@@ -1150,12 +1150,43 @@ $(document).ready(function()
 									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
 								}
 			});
-			//Sub-Category Edit
+			//Add sub-Category
+			$('#add_button').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#add_data").attr('action'),
+					dataType: "json",
+					data: $("#add_data").serialize(),
+					success:function(responce_data)
+					{
+						$('#add_data_modal').modal('hide');
+						subCategoryDataTable.ajax.reload( null, false );
+						alert('Added Succesfully');
+					}
+				});
+			});
+			//Edit SubCategory
 			$('#sub-category-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = subCategoryDataTable.row( $(this).parents('tr') ).data();
 				//alert('Edit - '+data['id']);	//id = index of ID sent from server
-				$('#edit_data_modal').modal('show');
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_detail]').attr("content"),
+					dataType: "json",
+					data: 	{	'sub_category_id'	:	data['id']	},
+					success:function(responce_data)
+					{
+						$('#selected_category_id').val(data['id']);
+						$('#selected_category_name').val(responce_data.name);
+						$('#edit_data_modal').modal('show');
+					}
+				});
 			});
 			//Sub-ategory delete
 			$('#sub-category-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click

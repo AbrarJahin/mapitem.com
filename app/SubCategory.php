@@ -17,4 +17,9 @@ class SubCategory extends Model
 	protected $hidden = [
 							'category_id'
 						];
+
+	public function Category()
+	{
+		return $this->hasOne('App\Category', 'id', 'category_id');
+	}
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Request;
 use Validator;
+use App\Category;
 use Illuminate\Support\Facades\Redirect;
 
 /*
@@ -34,12 +35,16 @@ class AdminController extends Controller
 		Functionality	-> Show sub-category Page
 		Access			-> Admin
 		Created At		-> 31/07/2016
-		Updated At		-> 31/07/2016
+		Updated At		-> 06/08/2016
 		Created by		-> S. M. Abrar Jahin
 	*/
 	public function showSubCategoryView()
 	{
-		return view('admin.sub_category.main', [ 'current_page'	=> 'admin.sub_category' ]);
+		return view('admin.sub_category.main',
+								[
+									'current_page'	=> 'admin.sub_category',
+									'categories'	=> Category::orderBy('name')->get()
+								]);
 	}
 
 	/*
