@@ -51,5 +51,6 @@ class Kernel extends HttpKernel
 									'normal_user'	=> \App\Http\Middleware\OnlyUserMiddleware::class,
 									'admin'         => \App\Http\Middleware\OnlyAdminMiddleware::class,
                                     'non_admin'     => \App\Http\Middleware\NotAdminMiddleware::class,
+                                    'not_loggedin'  => \App\Http\Middleware\NotLoggedInMiddleware::class,
 								];
 }

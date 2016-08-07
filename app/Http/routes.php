@@ -1,7 +1,7 @@
 <?php
 
-//Public Routes - Can't be accessed by Admin
-Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
+//Public Routes - Open for all
+Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function()
 {
 	//Auth - registration
 	Route::post('register', [
@@ -14,13 +14,21 @@ Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 			'uses' => 'AuthController@userLoginProcess',
 			'as' => 'login'
 		]);
+});
 
+//Public Routes - Open for all
+Route::group(['prefix' => '/','middleware' => ['web']], function()
+{
 	//Auth - logout
 	Route::get('logout', [
 			'uses' => 'AuthController@userLogout',
 			'as' => 'logout'
 		]);
+});
 
+//Public Routes - Can't be accessed by Admin
+Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
+{
 	//Index Page
 	Route::get('/', [
 			'uses' => 'PublicController@index',
