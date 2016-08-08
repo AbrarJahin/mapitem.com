@@ -54,4 +54,24 @@ class EditAjaxController extends Controller
 							]
 						);
 	}
+
+	/*
+		URL				-> post: /user_update
+		Functionality	-> Category Edit AJAX
+		Access			-> Admin
+		Created At		-> 08/08/2016
+		Updated At		-> 08/08/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function userUpdateAjax()
+	{
+		$requestData = Request::all();
+		return DB::table('users')
+				->where('id', $requestData['id'])
+				->update(
+							[
+								'is_enabled'	=> $requestData['is_enabled']
+							]
+						);
+	}
 }

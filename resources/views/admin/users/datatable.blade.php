@@ -7,10 +7,12 @@
 				<th>Full Name</th>
 				<th>Cell No.</th>
 				<th>Email</th>
+				{{--
 				<th>Website</th>
 				<th>Date of Birth</th>
 				<th>Social Security No.</th>
 				<th>Address</th>
+				--}}
 				<th style="width: 70px;">Action</th>
 			</tr>
 		</thead>

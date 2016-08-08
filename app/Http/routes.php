@@ -1,6 +1,6 @@
 <?php
 
-//Public Routes - Open for all
+//Public Routes - not logged in
 Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function()
 {
 	//Auth - registration
@@ -242,7 +242,6 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'DataTablesAjaxController@messagesDatableAjax',
 				'as' => '.messages_datable'
 			]);
-
 	//Datatables AJAX - End
 
 	//Add Data AJAX - Start
@@ -262,9 +261,15 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'ViewAjaxController@categoryViewAjax',
 				'as' => '.category_view'
 			]);
+
 		Route::post('sub_category_view', [
 				'uses' => 'ViewAjaxController@subCategoryViewAjax',
 				'as' => '.sub_category_view'
+			]);
+
+		Route::post('user_view', [
+				'uses' => 'ViewAjaxController@userViewAjax',
+				'as' => '.user_view'
 			]);
 	//View Data AJAX - END
 
@@ -278,9 +283,14 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'EditAjaxController@subCategoryUpdateAjax',
 				'as' => '.sub_category_update'
 			]);
+
+		Route::post('user_update', [
+				'uses' => 'EditAjaxController@userUpdateAjax',
+				'as' => '.user_update'
+			]);
 	//Edit Data AJAX - END
 
-	//Edit Data AJAX - Start
+	//Delete Data AJAX - Start
 		Route::post('category_delete', [
 				'uses' => 'DeleteAjaxController@categoryDeleteAjax',
 				'as' => '.category_delete'
@@ -290,5 +300,10 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'DeleteAjaxController@subCategoryDeleteAjax',
 				'as' => '.sub_category_delete'
 			]);
-	//Edit Data AJAX - END
+
+		Route::post('user_delete', [
+				'uses' => 'DeleteAjaxController@userDeleteAjax',
+				'as' => '.user_delete'
+			]);
+	//Delete Data AJAX - END
 });

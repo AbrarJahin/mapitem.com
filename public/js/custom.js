@@ -1192,13 +1192,6 @@ $(document).ready(function()
 					}
 				});
 			});
-			//Sub-ategory delete
-			$('#sub-category-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
-			{
-				var data = subCategoryDataTable.row( $(this).parents('tr') ).data();
-				$("#delete_item_id").val(data['id']);
-				$('#delete_confirmation_modal').modal('show');
-			});
 			//Update Sub-Category
 			$('#update_sub-category_button').on('click', function(event)
 			{
@@ -1216,6 +1209,13 @@ $(document).ready(function()
 						$('#edit_success').modal('show');
 					}
 				});
+			});
+			//Sub-ategory delete
+			$('#sub-category-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
+			{
+				var data = subCategoryDataTable.row( $(this).parents('tr') ).data();
+				$("#delete_item_id").val(data['id']);
+				$('#delete_confirmation_modal').modal('show');
 			});
 			//Delete SUb-Category - Confirmation
 			$('#confirm_delete').on('click', function(event)
@@ -1257,11 +1257,11 @@ $(document).ready(function()
 				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
 								{	"data": "full_name"					},
 								{	"data": "cell_no"					},
-								{	"data": "email"						},
+								{	"data": "email"						},/*
 								{	"data": "website"					},
 								{	"data": "date_of_birth"				},
 								{	"data": "social_security_number"	},
-								{	"data": "address"					},
+								{	"data": "address"					},*/
 								{	"data": null						}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
@@ -1270,30 +1270,87 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [3],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
 										//"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="show btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>'
 									}
-								],
-				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
-				initComplete:	function()	//Adding Custom button in Tools
-								{
-									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
-								}
+								]
 			});
-
+			//User Edit
 			$('#user-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = userDataTable.row( $(this).parents('tr') ).data();
-				//alert('Edit - '+data['id']);	//id = index of ID sent from server
-				$('#edit_data_modal').modal('show');
-			});
 
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_detail]').attr("content"),
+					dataType: "json",
+					data: 	{	'id'	:	data['id']	},
+					success:function(responce_data)
+					{
+						console.log(responce_data[0]);
+						$('#selected_id').val(data['id']);
+
+						$('#selected_user_name').val(responce_data[0].full_name);
+						$('#selected_email').val(responce_data[0].email);
+						$('#selected_cell_no').val(responce_data[0].cell_no);
+						$('#selected_ssn').val(responce_data[0].social_security_number);
+						$('#selected_address').val(responce_data[0].address);
+						$('#selected_gps').val(responce_data[0].user_location);
+						$('#selected_website').val(responce_data[0].website);
+						$('#date_of_birth').val(responce_data[0].date_of_birth);
+						$('#selected_is_enabled').val(responce_data[0].is_enabled);
+
+						$('#edit_data_modal').modal('show');
+					}
+				});
+			});
+			//Update Sub-Category
+			$('#update_button').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#update_user").attr('action'),
+					dataType: "json",
+					data: $("#update_user").serialize(),
+					success:function(responce_data)
+					{
+						$('#edit_data_modal').modal('hide');
+						userDataTable.ajax.reload( null, false );
+						$('#edit_success').modal('show');
+					}
+				});
+			});
+			//User Delete
 			$('#user-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
 			{
 				var data = userDataTable.row( $(this).parents('tr') ).data();
-				alert('Delete - '+data['id']);	//id = index of ID sent from server
+
+				$("#delete_item_id").val(data['id']);
+				$('#delete_confirmation_modal').modal('show');
+			});
+			//Delete User - Confirmation
+			$('#confirm_delete').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#delete_data").attr('action'),
+					dataType: "json",
+					data: $("#delete_data").serialize(),
+					success:function(responce_data)
+					{
+						$('#delete_confirmation_modal').modal('hide');
+						userDataTable.ajax.reload( null, false );
+						alert('Succesfully Deleted User');
+					}
+				});
 			});
 		}
 		else if ($('#adds-datatable').length)	//Adds Datatable

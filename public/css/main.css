@@ -3284,20 +3284,6 @@ li.next.disabled
 	height:400px;
 }
 
-/* Making user Daatable Scrollable - Start */
-	#user-datatable_wrapper
-	{
-		width: 100%;
-		overflow-y: hidden;
-		overflow-x: scroll;
-	}
-
-	#user-datatable
-	{
-		min-width: 2000px;
-	}
-/* Making user Daatable Scrollable - End */
-
 /* Making Table Hover Background Color to out theme matching */
 .table-hover tbody tr:hover td
 {

@@ -52,4 +52,31 @@ class ViewAjaxController extends Controller
 				->where('sub_categories.id', '=', $requestData['sub_category_id'])
 				->get();
 	}
+
+	/*
+		URL				-> post: /user_view
+		Functionality	-> Category Datable AJAX
+		Access			-> Admin
+		Created At		-> 08//08/2016
+		Updated At		-> 08/08/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function userViewAjax()
+	{
+		$requestData = Request::all();
+		return DB::table('users')
+				->select(
+					DB::raw('CONCAT(first_name," ",last_name) as full_name'),
+					'users.cell_no as cell_no',
+					'users.email as email',
+					'users.website as website',
+					DB::raw("DATE_FORMAT(users.date_of_birth,'%d %b, %Y') as date_of_birth"),
+					DB::raw('CONCAT(social_security_number_p1,"-",social_security_number_p2,"-",social_security_number_p3) as social_security_number'),
+					DB::raw('CONCAT("(",location_latitude,",",location_longitude,")") as user_location'),
+					'users.address as address',
+					'users.is_enabled as is_enabled'
+				)
+				->where('id', '=', $requestData['id'])
+				->get();
+	}
 }

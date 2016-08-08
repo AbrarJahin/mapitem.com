@@ -45,4 +45,20 @@ class DeleteAjaxController extends Controller
                     ->where('id', '=', $requestData['id'])
                     ->delete();
     }
+
+    /*
+        URL             -> post: /user_delete
+        Functionality   -> User Delete AJAX
+        Access          -> Admin
+        Created At      -> 08/08/2016
+        Updated At      -> 08/08/2016
+        Created by      -> S. M. Abrar Jahin
+    */
+    public function userDeleteAjax()
+    {
+        $requestData = Request::all();
+        return DB::table('users')
+                    ->where('id', '=', $requestData['id'])
+                    ->delete();
+    }
 }
