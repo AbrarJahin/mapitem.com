@@ -1355,7 +1355,7 @@ $(document).ready(function()
 		}
 		else if ($('#adds-datatable').length)	//Adds Datatable
 		{
-			var userDataTable = $('#adds-datatable').DataTable(
+			var addsDataTable = $('#adds-datatable').DataTable(
 			{
 				"processing": true,
 				"serverSide": true,
@@ -1376,9 +1376,9 @@ $(document).ready(function()
 								{	"data": "sub_category"	},
 								{	"data": "owner"			},
 								{	"data": "title"			},
-								{	"data": "price"			},
+								{	"data": "price"			},/*
 								{	"data": "description"	},
-								{	"data": "address"		},
+								{	"data": "address"		},*/
 								{	"data": null			}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
@@ -1387,7 +1387,7 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [5],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
 									}
@@ -1401,14 +1401,14 @@ $(document).ready(function()
 
 			$('#adds-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
-				var data = userDataTable.row( $(this).parents('tr') ).data();
+				var data = addsDataTable.row( $(this).parents('tr') ).data();
 				//alert('Edit - '+data['id']);	//id = index of ID sent from server
 				$('#edit_data_modal').modal('show');
 			});
 
 			$('#adds-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
 			{
-				var data = userDataTable.row( $(this).parents('tr') ).data();
+				var data = addsDataTable.row( $(this).parents('tr') ).data();
 				alert('Delete - '+data['id']);	//id = index of ID sent from server
 			});
 		}

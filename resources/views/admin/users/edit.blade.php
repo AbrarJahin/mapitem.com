@@ -26,8 +26,8 @@
 						<label for="address">Address:</label>
 						<input type="text" required class="form-control" placeholder="Address Not Entered" name="address" id="selected_address" disabled>
 
-						<label for="address">GPS:</label>
-						<input type="text" required class="form-control" placeholder="GPS Not Entered" name="gps" id="selected_gps" disabled>
+						{{-- <label for="address">GPS:</label>
+						<input type="text" required class="form-control" placeholder="GPS Not Entered" name="gps" id="selected_gps" disabled> --}}
 
 						<label for="website">Website:</label>
 						<input type="text" required class="form-control" placeholder="Website Not Entered" name="website" id="selected_website" disabled>
