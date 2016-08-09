@@ -1,4 +1,4 @@
-<div id="lgn-pup" class="modal fade" role="dialog">
+<div id="lgn-pup" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
 	<div class="modal-dialog width-adj10">
 		{{-- Modal content--}}
 		<div class="modal-content">
@@ -16,7 +16,7 @@
 						<input type="password" required placeholder="Password" class="form-control normal-input" name="login-password" id="login-password">
 					</div>
 					<div class="pos-adj1">
-						<a style="color: #23a500 !important; float: left; font-size: 9pt!important; padding: 0 !important; width: 50%;" data-dismiss="modal" data-target="#forgot-password" data-toggle="modal" href="#" class="fp">Forgot Password ?</a>
+						<a style="color: #23a500 !important; float: left; font-size: 9pt!important; padding: 0 !important; width: 50%;" data-target="#forgot-password" data-toggle="modal" href="#" class="fp">Forgot Password ?</a>
 						<div class="checkbox no-margin pull-right">
 							<label class="pos-adj2">
 								<input type="checkbox"> Remember Me

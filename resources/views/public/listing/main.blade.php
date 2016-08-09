@@ -22,7 +22,7 @@
 	@include('public.listing.send_offer_signup_modal')
 
 {{-- Inner Body --}}
-<div id="" class="container header-minus wraper no-padding">
+<div class="container header-minus wraper no-padding">
 	{{-- Map View --}}
 	@include('public.listing.map_view')
 

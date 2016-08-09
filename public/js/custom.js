@@ -925,7 +925,7 @@ $(document).ready(function()
 	});
 	//Global AJAX Config - END
 	
-	/*My Ads page - Edit Add*/
+	//My Ads page - Edit Add
 	$('.edit1').on('click',function()
 	{
 		//Loading the contents with AJAX
@@ -1414,7 +1414,7 @@ $(document).ready(function()
 		}
 		else if ($('#messages-datatable').length)	//Messages Datatable
 		{
-			var userDataTable = $('#messages-datatable').DataTable(
+			var messageDataTable = $('#messages-datatable').DataTable(
 			{
 				"processing": true,
 				"serverSide": true,
@@ -1460,24 +1460,16 @@ $(document).ready(function()
 
 			$('#messages-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
-				var data = userDataTable.row( $(this).parents('tr') ).data();
+				var data = messageDataTable.row( $(this).parents('tr') ).data();
 				//alert('Edit - '+data['id']);	//id = index of ID sent from server
 				$('#edit_data_modal').modal('show');
 			});
 
 			$('#messages-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
 			{
-				var data = userDataTable.row( $(this).parents('tr') ).data();
+				var data = messageDataTable.row( $(this).parents('tr') ).data();
 				alert('Delete - '+data['id']);	//id = index of ID sent from server
 			});
 		}
 	//Admin - Datatable End
-
-	//Admin Data Add - Start
-		//ad
-	//Admin Data Add - End
-	
-	//Admin Data Update - Start
-		//asdasd
-	//Admin Data Update - End
 });

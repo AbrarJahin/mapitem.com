@@ -7,23 +7,43 @@
 		@if (Auth::check())
 			<ul class="dropdown-menu no-padding loginpopup col-lg-4">
 				<li>
-					<form class="offer" action="#">
+					<form class="offer" action="{{ URL::route('admin.user_delete') }}">
 						<div class="form-group">
-							<span class="text-adj1">Name : Jonathan Kaneer </span>
+							<span class="text-adj1">
+								Name :
+								<span id="offer_add_owner_name">
+									Jonathan Kaneer
+								</span>
+							</span>
 						</div>
 						<div class="form-group">
-						<span class="text-adj1">Email : jk@yahoo.com </span>
+						<span class="text-adj1">
+							Email :
+							<span id="offer_add_owner_email">
+								jonathan@kaneer.com
+							</span>
+						</span>
 						</div>
 						<div class="form-group">
-						<span class="text-adj1">Cell : 123-456-789 </span>
+						<span class="text-adj1">
+							Cell :
+							<span id="offer_add_owner_cell">
+								123456
+							</span>
+						</span>
 						</div>
 						<div class="form-group">
-							<input type="text" onkeypress="return numbersonly(this, event)" placeholder="Your Offer in $" id="InputPasswords" class="form-control normal-input">
+							<input type="number" onkeypress="return numbersonly(this, event)" placeholder="Your Offer in $" class="form-control normal-input" name="price" min="0">
 						</div>
 						<div class="form-group">
-							<textarea class="form-control medium-textarea no-margin" rows="3" placeholder="Message"></textarea>
+							<textarea class="form-control medium-textarea no-margin" rows="3" placeholder="Message" name="message"></textarea>
 						</div>
-						<button class="btn btn-default green-small" type="submit">Place Offer</button>
+						<input type="hidden" name="add_id" id="offer_selected_add_id">
+						<div class="alert alert-danger" id="offer_send_warning">
+							<strong>Offer already sent !</strong>
+							if you send again, your previous offer will be replaced by this offer
+						</div>
+						<button class="btn btn-default green-small" type="button" id="offer_submit_button">Place Offer</button>
 					</form>
 				</li>
 			</ul>

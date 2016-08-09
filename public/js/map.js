@@ -262,7 +262,11 @@ $(function()
 			error: function (e)
 			{
 				console.log(e);
-				alert('You are not eligable to give this review');
+				if ($("#lgn-pup").length === 0)
+					alert('You are not eligable to give this review');
+				else
+					$('#lgn-pup').modal('show');
+					
 			},
 			complete: function ()
 			{// Handle the complete event

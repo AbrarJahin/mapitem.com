@@ -94,7 +94,7 @@ class Advertisement extends Model
 			if (Auth::check())
 				return $this->UserReview()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
 			else
-				return 1;
+				return 0;	//Default Value = Show Review Button
 		}
 	//Adding Custom Fields with custom Query - END
 }
