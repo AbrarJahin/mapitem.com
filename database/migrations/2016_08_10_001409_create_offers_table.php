@@ -20,6 +20,7 @@ class CreateOffersTable extends Migration
             $table->integer('add_id')   ->unsigned()        ->index();
             $table->integer('user_id')  ->unsigned()        ->index();
             $table->integer('price');
+            $table->text('message');
 
             //Foreign Keys
             $table->foreign('add_id')   ->references('id')  ->on('advertisements')  ->onDelete('cascade')   ->onUpdate('cascade');
