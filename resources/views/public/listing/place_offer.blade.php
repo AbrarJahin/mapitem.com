@@ -41,6 +41,7 @@
 							<textarea class="form-control medium-textarea no-margin" rows="3" placeholder="Message" name="message"></textarea>
 						</div>
 						<input type="hidden" name="add_id" id="offer_selected_add_id">
+						<input type="hidden" name="add_owner_id" id="offer_add_owner_id">
 						<div class="alert alert-danger" id="offer_send_warning">
 							<strong>Offer already sent !</strong>
 							if you send again, your previous offer will be replaced by this offer

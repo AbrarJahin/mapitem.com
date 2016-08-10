@@ -31,12 +31,16 @@ class MessageController extends Controller
 		$requestData = Request::all();
 		//add_id,add_owner_id,message
 
-		$messageThread = MessageThread::firstOrCreate([
-													'sender_id'			=>	Auth::user()->id,
-													'receiver_id'		=>	$requestData['add_owner_id'],
-													'advertisement_id'	=>	$requestData['add_id'],
-													'title'				=>	substr($requestData['message'], 0, 100)
-												]);
+		$messageThread = MessageThread::updateOrCreate(
+															[
+																'sender_id'			=>	Auth::user()->id,
+																'receiver_id'		=>	$requestData['add_owner_id'],
+																'advertisement_id'	=>	$requestData['add_id']
+															],
+															[
+																'title'				=>	substr($requestData['message'], 0, 100)
+															]
+														);
 		Message::create([
 							'sender_id'			=> Auth::user()->id,
 							'thread_id'	=> $messageThread->id,

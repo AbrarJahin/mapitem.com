@@ -727,6 +727,7 @@ function showAddDetail(id)		//Show Add Detail
 					$("#add_owner_email").html("<i class='fa fa-envelope'></i> <a href='mailto:"+value_all_json.email+"''>"+value_all_json.email+"</a>");
 
 					$("#add_owner_id").val(value_all_json.user_id);								//For Sending Message
+					$("#offer_add_owner_id").val(value_all_json.user_id);								//For Sending Message During Offer Send
 
 					$('#write_review input[name="add_owner_id"]').val(value_all_json.user_id);	//For Review Writing
 

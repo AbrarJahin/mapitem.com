@@ -9,6 +9,8 @@ use App\Advertisement;
 use App\AdvertisementImage;
 use App\UserReview;
 use App\Offer;
+use App\MessageThread;
+use App\Message;
 use Auth;
 use DB;
 
@@ -214,15 +216,7 @@ class AddController extends Controller
 	{
 		$requestData = Request::all();
 
-		// $offer = Offer::firstOrNew(
-		// 							[
-		// 								'add_id'	=> $requestData['add_id'],
-		// 								'user_id'	=> Auth::user()->id,
-		// 							]
-		// 						);
-		// $offer->price = $requestData['price'];
-		// $offer->save();
-		return Offer::updateOrCreate(
+		$offer = Offer::updateOrCreate(
 					[
 						'add_id'	=> $requestData['add_id'],
 						'user_id'	=> Auth::user()->id,
@@ -231,6 +225,26 @@ class AddController extends Controller
 						'price'		=> $requestData['price']
 					]
 				);
-		//$requestData['message']
+
+		if( strlen($requestData['message'])>1 )
+		{
+			// Add a new message for that
+			$messageThread = MessageThread::updateOrCreate(
+																[
+																	'sender_id'			=>	Auth::user()->id,
+																	'receiver_id'		=>	$requestData['add_owner_id'],
+																	'advertisement_id'	=>	$requestData['add_id']
+																],
+																[
+																	'title'				=>	"New Offer with Price - ".$requestData['price']
+																]
+															);
+			Message::create([
+								'sender_id'	=> Auth::user()->id,
+								'thread_id'	=> $messageThread->id,
+								'message'	=> $requestData['message']
+							]);
+		}
+		return $offer->id;
 	}
 }
