@@ -1,13 +1,15 @@
 <div class="col-lg-12 no-padding">
 	<div class="dropdown">
-		<a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="#"><i class="fa fa-gavel"></i>Send Offer
+		<a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="#">
+			<i class="fa fa-gavel"></i>
+			Send Offer
 		</a>
 
 		{{-- If user is logged in --}}
 		@if (Auth::check())
 			<ul class="dropdown-menu no-padding loginpopup col-lg-4">
 				<li>
-					<form class="offer" action="{{ URL::route('admin.user_delete') }}">
+					<form id="offer_send_form" class="offer" action="{{ URL::route('user.send_offer') }}">
 						<div class="form-group">
 							<span class="text-adj1">
 								Name :
@@ -17,23 +19,23 @@
 							</span>
 						</div>
 						<div class="form-group">
-						<span class="text-adj1">
-							Email :
-							<span id="offer_add_owner_email">
-								jonathan@kaneer.com
+							<span class="text-adj1">
+								Email :
+								<span id="offer_add_owner_email">
+									jonathan@kaneer.com
+								</span>
 							</span>
-						</span>
 						</div>
 						<div class="form-group">
-						<span class="text-adj1">
-							Cell :
-							<span id="offer_add_owner_cell">
-								123456
+							<span class="text-adj1">
+								Cell :
+								<span id="offer_add_owner_cell">
+									123456
+								</span>
 							</span>
-						</span>
 						</div>
 						<div class="form-group">
-							<input type="number" onkeypress="return numbersonly(this, event)" placeholder="Your Offer in $" class="form-control normal-input" name="price" min="0">
+							<input type="number" placeholder="Your Offer in $" class="form-control normal-input" name="price" min="0">
 						</div>
 						<div class="form-group">
 							<textarea class="form-control medium-textarea no-margin" rows="3" placeholder="Message" name="message"></textarea>

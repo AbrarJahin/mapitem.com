@@ -1,4 +1,4 @@
-<div id="sgn-pup" class="modal fade" role="dialog">
+<div id="sgn-pup" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
 	<div class="modal-dialog width-adj10">
 		{{-- Modal content--}}
 		<div class="modal-content">

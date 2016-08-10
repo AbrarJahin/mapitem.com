@@ -42,6 +42,24 @@ $(function()
 		closeAddDetail();
 	});
 
+	//Offer Submit Button Pressed
+	$("#offer_submit_button").click(function()
+	{
+		$.ajax(
+		{
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $("#offer_send_form").attr('action'),
+			dataType: "json",
+			data: $("#offer_send_form").serialize(),
+			success:function(responce_data)
+			{
+				console.log(responce_data);
+				alert('Offer Sent');
+			}
+		});
+	});
+
 	$("#category_filter input[type=checkbox]").change(function()
 	{
 		// first : create an object where keys are colors and values is true (only for checked objects)
@@ -583,6 +601,7 @@ function showAddDetail(id)		//Show Add Detail
 						{
 							$('#write_review input[name="add_id"]').val(value);
 							$('#selected_add_id').val(value);
+							$('#offer_selected_add_id').val(value);	//For Sending Offer
 						}
 						else if(key.localeCompare('is_reviewed')==0)
 						{
@@ -590,6 +609,13 @@ function showAddDetail(id)		//Show Add Detail
 								$('.review').hide();
 							else
 								$('.review').show();
+						}
+						else if(key.localeCompare('is_offer_sent')==0)
+						{
+							if(value==0)
+								$("#offer_send_warning").hide();
+							else
+								$("#offer_send_warning").show();
 						}
 						else if(key.localeCompare('title')==0)
 						{
@@ -687,6 +713,12 @@ function showAddDetail(id)		//Show Add Detail
 				}
 				else if(index_key.localeCompare('add_owner')==0)
 				{
+					//Offer Sending
+					$("#offer_add_owner_name").html(value_all_json.user_name);
+					$("#offer_add_owner_email").html(value_all_json.email);
+					$("#offer_add_owner_cell").html(value_all_json.cell_no);
+
+					//Add Detail
 					$("#add_owner_image").attr("src",value_all_json.profile_picture);
 					$("#add_owner_name").html(value_all_json.user_name);
 

@@ -71,11 +71,17 @@ class Advertisement extends Model
 		return $this->hasMany('App\UserReview', 'add_id', 'id');
 	}
 
+	public function Offer()
+	{
+		return $this->hasMany('App\Offer', 'add_id', 'id');
+	}
+
 	//Adding Custom Fields with custom Query - Start
 	public $appends =	[
 							'total_views',
 							'avg_rating',
-							'is_reviewed'
+							'is_reviewed',
+							'is_offer_sent'
 						];
 
 		public function getTotalViewsAttribute()
@@ -93,6 +99,14 @@ class Advertisement extends Model
 		{	//Defination of -> 'is_reviewed'
 			if (Auth::check())
 				return $this->UserReview()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
+			else
+				return 0;	//Default Value = Show Review Button
+		}
+
+		public function getIsOfferSentAttribute()
+		{	//Defination of -> 'is_offer_sent'
+			if (Auth::check())
+				return $this->Offer()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
 			else
 				return 0;	//Default Value = Show Review Button
 		}

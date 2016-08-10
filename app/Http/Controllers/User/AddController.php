@@ -8,6 +8,7 @@ use Validator;
 use App\Advertisement;
 use App\AdvertisementImage;
 use App\UserReview;
+use App\Offer;
 use Auth;
 use DB;
 
@@ -168,8 +169,8 @@ class AddController extends Controller
 	}
 
 	/*
-		URL				-> POST: /update_advertisement_status
-		Functionality	-> Update ad. status
+		URL				-> POST: /write_review
+		Functionality	-> Write User-add Review
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -201,5 +202,35 @@ class AddController extends Controller
 					'user_name'	=>	Auth::user()->first_name.' '.Auth::user()->last_name,
 					'time'		=>	'Just Now'
 				];
+	}
+
+	/*
+		URL				-> POST: /send_offer
+		Functionality	-> Send offer by user
+		Access			-> Anyone who is logged in user
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function sendOffer()
+	{
+		$requestData = Request::all();
+
+		// $offer = Offer::firstOrNew(
+		// 							[
+		// 								'add_id'	=> $requestData['add_id'],
+		// 								'user_id'	=> Auth::user()->id,
+		// 							]
+		// 						);
+		// $offer->price = $requestData['price'];
+		// $offer->save();
+		return Offer::updateOrCreate(
+					[
+						'add_id'	=> $requestData['add_id'],
+						'user_id'	=> Auth::user()->id,
+					],
+					[
+						'price'		=> $requestData['price']
+					]
+				);
+		//$requestData['message']
 	}
 }

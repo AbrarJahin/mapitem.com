@@ -151,6 +151,12 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'uses'	=> 'AddController@writeReview',
 				'as'	=> '.write_review'
 			]);
+
+		//Send Advertisement Offer
+		Route::post('send_offer', [
+				'uses'	=> 'AddController@sendOffer',
+				'as'	=> '.send_offer'
+			]);
 	//Addvertisement - End
 	
 	//Inbox Messaging - Start
