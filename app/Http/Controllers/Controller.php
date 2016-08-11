@@ -6,11 +6,11 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Category;
-use View;
-use DB;
 use Auth;
+use App\Category;
+use App\UserNotification;
 use App\Advertisement;
+use View;
 
 class Controller extends BaseController
 {
@@ -22,22 +22,11 @@ class Controller extends BaseController
 		{
 			if (Auth::user()->user_type == "normal_user")
 			{
-				$total_no_of_adds		=	Advertisement::where('user_id', Auth::id())->count();
-				$total_no_of_offers		=	DB::table('offers')
-												->join('advertisements', 'advertisements.id', '=', 'offers.add_id')
-												->where('advertisements.user_id', Auth::user()->id)
-												->count();
-				$total_no_of_messages	=	DB::table('message_threads')
-												->where('sender_id', Auth::user()->id)
-												->count()
-											+
-											DB::table('message_threads')
-												->where('receiver_id', Auth::user()->id)
-												->count();
+				$notifications			=	UserNotification::find( Auth::user()->id );
 
-				View::share('total_no_of_adds',		$total_no_of_adds);
-				View::share('no_of_new_offer',		$total_no_of_offers);
-				View::share('no_of_new_message',	$total_no_of_messages);
+				View::share('total_no_of_adds',		$notifications['my_adds']);
+				View::share('no_of_new_offer',		$notifications['offers']);
+				View::share('no_of_new_message',	$notifications['inbox']);
 			}
 		}
 

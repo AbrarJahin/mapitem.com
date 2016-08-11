@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\User;
 use App\MessageThread;
 use App\Advertisement;
+use App\UserNotification;
 use Carbon\Carbon;
 use DB;
 
@@ -57,6 +58,13 @@ class UserController extends Controller
 	*/
 	public function inboxView()
 	{
+		//Remove Notification for Offer
+		$userNotification = UserNotification::firstOrNew([
+															'user_id' => Auth::user()->id
+														]);
+		$userNotification->inbox = 0;
+		$userNotification->save();
+
 		$user_message_threades = MessageThread::select('id','title','created_at')
 											->where('sender_id',		Auth::user()->id)
 											->orWhere('receiver_id',	Auth::user()->id)
@@ -64,7 +72,8 @@ class UserController extends Controller
 		return view('user.inbox.main',
 						[
 							'current_page'		=>	'user.inbox',
-							'message_threads'	=>	$user_message_threades
+							'message_threads'	=>	$user_message_threades,
+							'no_of_new_message'	=>	0	//Added this to remove middleware lacking effect
 						]
 					);
 	}
@@ -79,13 +88,21 @@ class UserController extends Controller
 	*/
 	public function myAddsView()
 	{
+		//Remove Notification for Offer
+		$userNotification = UserNotification::firstOrNew([
+															'user_id' => Auth::user()->id
+														]);
+		$userNotification->my_adds = 0;
+		$userNotification->save();
+
 		$my_adds = Advertisement::with('User')
 					->with('AdvertisementImages')
 					->where('user_id',Auth::user()->id)
 					->paginate(5);
 		return view('user.my_adds.main', [
-											'current_page'	=> 'user.my_adds',
-											'my_adds' => $my_adds
+											'current_page'		=>	'user.my_adds',
+											'my_adds'			=>	$my_adds,
+											'total_no_of_adds'	=>	0	//Added this to remove middleware lacking effect
 										]);
 	}
 
@@ -99,7 +116,19 @@ class UserController extends Controller
 	*/
 	public function offerView()
 	{
-		return view('user.offers.main', [ 'current_page'	=> 'user.offers' ]);
+		//Remove Notification for Offer
+		$userNotification = UserNotification::firstOrNew([
+															'user_id' => Auth::user()->id
+														]);
+		$userNotification->offers = 0;
+		$userNotification->save();
+
+		return view('user.offers.main',
+						[
+							'current_page'		=>	'user.offers',
+							'no_of_new_offer'	=>	0,	//Added this to remove middleware lacking effect
+						]
+					);
 	}
 
 	/*

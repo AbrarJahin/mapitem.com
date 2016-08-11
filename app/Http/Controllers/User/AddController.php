@@ -11,6 +11,7 @@ use App\UserReview;
 use App\Offer;
 use App\MessageThread;
 use App\Message;
+use App\UserNotification;
 use Auth;
 use DB;
 
@@ -227,7 +228,7 @@ class AddController extends Controller
 					]
 				);
 
-		if( strlen($requestData['message'])>1 )
+		if( strlen($requestData['message'])>1 )		//Add Message
 		{
 			// Add a new message for that
 			$messageThread = MessageThread::updateOrCreate(
@@ -246,6 +247,14 @@ class AddController extends Controller
 								'message'	=> $requestData['message']
 							]);
 		}
+
+		//Add Notification for Offer
+		$userNotification = UserNotification::firstOrNew([
+															'user_id' => $requestData['add_owner_id']
+														]);
+		$userNotification->offers = $userNotification->offers+1;
+		$userNotification->save();
+
 		return $offer->id;
 	}
 }
