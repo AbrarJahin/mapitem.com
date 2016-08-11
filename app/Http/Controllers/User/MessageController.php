@@ -7,6 +7,7 @@ use Response;
 use Auth;
 use App\MessageThread;
 use App\Message;
+use App\UserNotification;
 use DB;
 
 /*
@@ -29,7 +30,13 @@ class MessageController extends Controller
 	public function createThread()
 	{
 		$requestData = Request::all();
-		//add_id,add_owner_id,message
+
+		//Add Notification for Message Sending
+		$userNotification = UserNotification::firstOrNew([
+															'user_id' => $requestData['add_owner_id']
+														]);
+		$userNotification->inbox = $userNotification->inbox+1;
+		$userNotification->save();
 
 		$messageThread = MessageThread::updateOrCreate(
 															[
@@ -72,6 +79,19 @@ class MessageController extends Controller
 							'thread_id'	=>	$requestData['thread_id'],
 							'message'	=>	$requestData['message']
 						]);
+		$messageThread = MessageThread::find( $requestData['thread_id'] );
+		$notification_owner_id = 0;
+		if($messageThread->sender_id == Auth::user()->id)
+			$notification_owner_id = $messageThread->receiver_id;
+		else
+			$notification_owner_id = $messageThread->sender_id;
+
+		//Add Notification for Message Sending
+		$userNotification = UserNotification::firstOrNew([
+															'user_id' => $notification_owner_id
+														]);
+		$userNotification->inbox = $userNotification->inbox+1;
+		$userNotification->save();
 
 		return [
 					'sent_time'		=> 'Now',

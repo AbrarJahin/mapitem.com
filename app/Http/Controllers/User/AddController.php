@@ -217,6 +217,11 @@ class AddController extends Controller
 	{
 		$requestData = Request::all();
 
+		//Add Notification for Offer
+		$userNotification = UserNotification::firstOrNew([
+															'user_id' => $requestData['add_owner_id']
+														]);
+
 		$offer = Offer::updateOrCreate(
 					[
 						'add_id'	=>	$requestData['add_id'],
@@ -246,12 +251,9 @@ class AddController extends Controller
 								'thread_id'	=> $messageThread->id,
 								'message'	=> $requestData['message']
 							]);
+			$userNotification->inbox = $userNotification->inbox+1;
 		}
 
-		//Add Notification for Offer
-		$userNotification = UserNotification::firstOrNew([
-															'user_id' => $requestData['add_owner_id']
-														]);
 		$userNotification->offers = $userNotification->offers+1;
 		$userNotification->save();
 
