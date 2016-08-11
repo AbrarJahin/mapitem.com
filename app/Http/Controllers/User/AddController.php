@@ -53,6 +53,13 @@ class AddController extends Controller
 			return $validator->errors()->all();
 		}
 
+		//Add Notification for Message Sending
+		$userNotification = UserNotification::firstOrNew([
+															'user_id' => Auth::user()->id
+														]);
+		$userNotification->my_adds = $userNotification->my_adds+1;
+		$userNotification->save();
+
 		$advertisement = Advertisement::firstOrCreate(
 													[
 														'user_id'			=> Auth::user()->id,
