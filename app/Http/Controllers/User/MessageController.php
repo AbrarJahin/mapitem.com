@@ -67,6 +67,7 @@ class MessageController extends Controller
 							'messages.message',
 							DB::raw("DATE_FORMAT(messages.created_at,'%D %b %Y, %r') AS sent_time")
 						)
+				->where('messages.thread_id', $requestData['thread_id'])
 				->get();
 	}
 
