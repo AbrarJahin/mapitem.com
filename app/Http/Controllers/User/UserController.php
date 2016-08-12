@@ -123,10 +123,20 @@ class UserController extends Controller
 		$userNotification->offers = 0;
 		$userNotification->save();
 
+		//Get Offer Data
+		$advertisements = Advertisement::with('AdvertisementImages')
+					->with('Offer','Offer.User')
+					->where('user_id', Auth::user()->id)
+					->has('Offer')
+					->get();
+
+		//return $advertisements;
+
 		return view('user.offers.main',
 						[
 							'current_page'		=>	'user.offers',
 							'no_of_new_offer'	=>	0,	//Added this to remove middleware lacking effect
+							'advertisements'	=>	$advertisements
 						]
 					);
 	}

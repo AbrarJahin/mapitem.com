@@ -1,31 +1,29 @@
 <section class="offerbox">
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
-		<img src="images/a-pic.jpg" class="img-responsive">
+		<img src="{{ URL::asset('uploads') }}/{{ $advertisement->AdvertisementImages[0]->image_name }}" class="img-responsive">
 	</div>
 
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-		<h3>Hill Vactions</h3>
+		<h3>{{ $advertisement->title }}</h3>
 	</div>
 
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
-		<h3>Price: 500</h3>
+		<h3>Price: {{ $advertisement->price }}</h3>
 	</div>
 
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-		<p>Enjoy Trip to Kashmir Valley, Kashmir Valley is the one
-		Natural Place where Torreist comes across</p>
+		<p>{{ $advertisement->description }}</p>
 	</div>
 </section>
 
 <div class="hd">
-	<a href="#" class="mhd ">Offers <span>{{ $i }} New</span><i class="pull-right glyphicon glyphicon-circle-arrow-down"></i><i class="pull-right glyphicon glyphicon-circle-arrow-up"></i></a>
+	<a href="#" class="mhd ">Offers <span>{{ count($advertisement->offer) }} New</span><i class="pull-right glyphicon glyphicon-circle-arrow-down"></i><i class="pull-right glyphicon glyphicon-circle-arrow-up"></i></a>
 </div>
 
 <div class="hd-detail">
-
-	@for ($j = 0; $j < $i; $j++)
+	@foreach ($advertisement->offer as $offer)
 		@include('user.offers.offer')
-	@endfor
+	@endforeach
 </div>
 
 <div class="clearfix margin-fifty"></div>

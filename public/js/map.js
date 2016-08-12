@@ -56,6 +56,7 @@ $(function()
 			{
 				console.log(responce_data);
 				alert('Offer Sent');
+				$('[data-toggle="dropdown"]').parent().removeClass('open');
 			}
 		});
 	});

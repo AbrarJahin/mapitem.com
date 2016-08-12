@@ -5,18 +5,18 @@
 		</div>
 		<div class="offer-content pull-left">
 			<div class="pull-left hdd-left">
-				<h6>Jonathan Kaneer</h6>
-				<span>Cell:</span>123-456-789 <br>
-				<span>Email:</span>jk@yahoo.com <br>
+				<h6>{{ $offer->User->first_name }} {{ $offer->User->last_name }}</h6>
+				<span>Cell:</span>{{ $offer->User->cell_no }}<br>
+				<span>Email:</span>{{ $offer->User->email }}<br>
 			</div>
 			<div class="hdd-right">
-				<h6>Offer: $400</h6>
+				<h6>Offer: ${{ $offer->price }}</h6>
 			</div>
 			<div class="clearfix"></div>
-			<p>Hi Bilal, Please checkout my offer and let me know if you are agreed !</p>
+			<p>{{ $offer->message }}</p>
 		</div>
 	</div>
-	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12" offer_id={{ $offer->id }}>
 		<a class="green-small no-textdecor btn-adj1 accept-offer" href="#/">Accept Offer</a>
 		<a class="grey-small no-textdecor btn-adj1" href="#/">Reject</a>
 	</div>

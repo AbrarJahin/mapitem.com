@@ -15,13 +15,13 @@ class Offer extends Model
 								'message'
 							];
 
-	public function user()
+	public function User()
 	{
-		return $this->hasOne('App\User','user_id','id');
+		return $this->hasOne('App\User','id','user_id');
 	}
 
-	public function advertisement()
+	public function Advertisement()
 	{
-		return $this->hasOne('App\advertisement','add_id','id');
+		return $this->hasOne('App\advertisement','id','add_id');
 	}
 }
