@@ -1,7 +1,7 @@
 <div class="hd-box">
 	<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
 		<div class="pull-left">
-			<img src="images/pp-2.jpg">
+			<img height="56" src="{{ URL::asset('uploads') }}/{{ strlen($offer->User->profile_picture)>0 ? $offer->User->profile_picture : '../images/empty-profile.jpg' }}">
 		</div>
 		<div class="offer-content pull-left">
 			<div class="pull-left hdd-left">
