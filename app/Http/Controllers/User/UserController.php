@@ -130,8 +130,6 @@ class UserController extends Controller
 					->has('Offer')
 					->get();
 
-		//return $advertisements;
-
 		return view('user.offers.main',
 						[
 							'current_page'		=>	'user.offers',

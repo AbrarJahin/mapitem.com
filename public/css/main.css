@@ -3289,3 +3289,8 @@ li.next.disabled
 {
     background: #e6ffee;
 }
+
+.home_page_description
+{
+	overflow:hidden;
+}

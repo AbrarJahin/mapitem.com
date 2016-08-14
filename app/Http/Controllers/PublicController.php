@@ -23,8 +23,17 @@ class PublicController extends Controller
 	*/
 	public function index()
 	{
-		//return Advertisement::with('UserReview')->get();
-		return view('public.index.main',[ 'current_page'   => 'Home' ]);
+		$advertisements	=	Advertisement::with('User')
+								->with('AdvertisementImages')
+								->orderBy('created_at', 'desc')
+								->paginate(8);
+
+		return view('public.index.main',
+						[
+							'current_page'		=>	'Home',
+							'advertisements'	=>	$advertisements
+						]
+					);
 	}
 
 	/*
