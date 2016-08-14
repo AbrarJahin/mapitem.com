@@ -1471,22 +1471,48 @@ $(document).ready(function()
 			});
 		}
 	//Admin - Datatable End
+
+	//Accept Offer
 	$(".accept-offer").on('click', function(event)
 	{
 		event.preventDefault();
-		/*$.ajax(
+		$.ajax(
 		{
 			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
 			method: "POST",
-			url: $('meta[name=add_update_ajax_url]').attr("content"),
+			url: $('meta[name=update_offer_status]').attr("content"),
 			dataType: "json",
-			data: $("#edit_add_detail").serialize(),
+			data:	{
+						'offer_id'	: $(this).closest('div').attr('offer_id'),
+						'status'	: 'accepted'
+					},
 			success:function(responce_data)
 			{
-				alert('Updated Succesfully');
+				alert('Offer Accepted');
 				location.reload();
 			}
-		});*/
-		$(this).closest('div').attr('offer_id')
+		});
+	});
+
+	//Reject Offer
+	$(".reject-offer").on('click', function(event)
+	{
+		event.preventDefault();
+		$.ajax(
+		{
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $('meta[name=update_offer_status]').attr("content"),
+			dataType: "json",
+			data:	{
+						'offer_id'	: $(this).closest('div').attr('offer_id'),
+						'status'	: 'rejected'
+					},
+			success:function(responce_data)
+			{
+				alert('Rejected Accepted');
+				location.reload();
+			}
+		});
 	});
 });

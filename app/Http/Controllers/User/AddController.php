@@ -232,7 +232,7 @@ class AddController extends Controller
 		$offer = Offer::updateOrCreate(
 					[
 						'add_id'	=>	$requestData['add_id'],
-						'user_id'	=>	Auth::user()->id,
+						'sender_id'	=>	Auth::user()->id,
 					],
 					[
 						'price'		=>	$requestData['price'],

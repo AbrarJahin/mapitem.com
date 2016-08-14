@@ -176,6 +176,14 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'as'	=> '.inbox_message_send'
 			]);
 	//Inbox Messaging - End
+	
+	//Offer Status - Start
+		//Add Image Upload AJAX
+		Route::post('update_offer_status', [
+				'uses'	=> 'UserController@updateOffer',
+				'as'	=> '.update_offer_status'
+			]);
+	//Offer Status - End
 });
 
 //Admin Routes

@@ -17,20 +17,20 @@ class CreateOffersTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->integer('add_id')   ->unsigned()        ->index();
-            $table->integer('user_id')  ->unsigned()        ->index();
+            $table->integer('add_id')       ->unsigned()        ->index();
+            $table->integer('sender_id')    ->unsigned()        ->index();
             $table->integer('price');
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->text('message');
 
             //Foreign Keys
-            $table->foreign('add_id')   ->references('id')  ->on('advertisements')  ->onDelete('cascade')   ->onUpdate('cascade');
-            $table->foreign('user_id')  ->references('id')  ->on('users')           ->onDelete('cascade')   ->onUpdate('cascade');
+            $table->foreign('add_id')       ->references('id')  ->on('advertisements')  ->onDelete('cascade')   ->onUpdate('cascade');
+            $table->foreign('sender_id')    ->references('id')  ->on('users')           ->onDelete('cascade')   ->onUpdate('cascade');
 
             //Composite Primary Key
             $table->unique([
                                 'add_id',
-                                'user_id'
+                                'sender_id'
                             ],'offer_composite_key');
 
             $table->timestamps();

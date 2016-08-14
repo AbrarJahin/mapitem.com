@@ -10,14 +10,15 @@ class Offer extends Model
 
     protected $fillable =	[
 								'add_id',
-								'user_id',
+								'sender_id',
 								'price',
-								'message'
+								'message',
+								'status'
 							];
 
 	public function User()
 	{
-		return $this->hasOne('App\User','id','user_id');
+		return $this->hasOne('App\User','id','sender_id');
 	}
 
 	public function Advertisement()

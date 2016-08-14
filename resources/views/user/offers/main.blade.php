@@ -10,10 +10,7 @@
 		@foreach ($advertisements as $advertisement)
 			@include('user.offers.item')
 		@endforeach
-		{{--
-		@for ($i = 1; $i < 6; $i++)
-			@include('user.offers.item')
-		@endfor
-		--}}
+
 	</div>
+	<meta name="update_offer_status" content="{{ URL::route('user.update_offer_status') }}">
 @endsection

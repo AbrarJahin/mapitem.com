@@ -10,6 +10,7 @@ use App\User;
 use App\MessageThread;
 use App\Advertisement;
 use App\UserNotification;
+use App\Offer;
 use Carbon\Carbon;
 use DB;
 
@@ -231,7 +232,30 @@ class UserController extends Controller
 	}
 
 	/*
-		URL				-> get: /profile
+		URL				-> get: /update_offer_status
+		Functionality	-> Update Offer
+		Access			-> Anyone who is logged in user
+		Created At		-> 14/08/2016
+		Updated At		-> 14/08/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function updateOffer()
+	{
+		$requestData	=	Request::all();	//offer_id, status
+		$offer	=	Offer::find($requestData['offer_id']);
+		$advertisement = Advertisement::find($offer->add_id);
+		if($advertisement->user_id===Auth::user()->id)
+		{
+			$offer->status=$requestData['status'];
+			$offer->save();
+			return $offer;
+		}
+		else
+			return response()->json(['error'=> ["Your are not owner of this add"] ], 403);
+	}
+
+	/*
+		URL				-> get: /wishlist
 		Functionality	-> Show Dashboard Page
 		Access			-> Anyone who is logged in user
 		Created At		-> 22/03/2016
