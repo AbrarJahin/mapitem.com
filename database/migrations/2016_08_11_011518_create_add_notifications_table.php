@@ -15,7 +15,7 @@ class CreateAddNotificationsTable extends Migration
 		Schema::create('add_notifications', function (Blueprint $table)
 		{
 			$table->engine = 'InnoDB';
-			$table->integer('advertisement_id')     ->unsigned()        ->unique();
+			$table->integer('advertisement_id')	->unsigned()	->unique();
 
 			$table->smallInteger('new_offers')	->unsigned()	->default(0);
 

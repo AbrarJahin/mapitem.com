@@ -972,7 +972,6 @@ $(document).ready(function()
 	$("#edit_add_submit").on('click', function(event)
 	{
 		event.preventDefault();
-		/* Act on the event */
 		$.ajax(
 		{
 			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -1472,4 +1471,22 @@ $(document).ready(function()
 			});
 		}
 	//Admin - Datatable End
+	$(".accept-offer").on('click', function(event)
+	{
+		event.preventDefault();
+		/*$.ajax(
+		{
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $('meta[name=add_update_ajax_url]').attr("content"),
+			dataType: "json",
+			data: $("#edit_add_detail").serialize(),
+			success:function(responce_data)
+			{
+				alert('Updated Succesfully');
+				location.reload();
+			}
+		});*/
+		$(this).closest('div').attr('offer_id')
+	});
 });

@@ -20,6 +20,7 @@ class CreateOffersTable extends Migration
             $table->integer('add_id')   ->unsigned()        ->index();
             $table->integer('user_id')  ->unsigned()        ->index();
             $table->integer('price');
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->text('message');
 
             //Foreign Keys
