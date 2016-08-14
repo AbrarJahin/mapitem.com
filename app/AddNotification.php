@@ -11,13 +11,11 @@ class AddNotification extends Model
 	public $incrementing	=	false;
 
 	protected $fillable		=	[
-									'user_id',
 									'advertisement_id',
-									'new_offer'
+									'new_offers'
 								];
 
 	protected $hidden =		[
-								'user_id',
 								'advertisement_id'
 							];
 }

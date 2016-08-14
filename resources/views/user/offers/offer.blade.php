@@ -18,6 +18,6 @@
 	</div>
 	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12" offer_id={{ $offer->id }}>
 		<a class="green-small no-textdecor btn-adj1 accept-offer" href="#/">Accept Offer</a>
-		<a class="grey-small no-textdecor btn-adj1" href="#/">Reject</a>
+		<a class="grey-small no-textdecor btn-adj1 reject-offer" href="#/">Reject</a>
 	</div>
 </div>
