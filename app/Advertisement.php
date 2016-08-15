@@ -106,7 +106,7 @@ class Advertisement extends Model
 		public function getIsOfferSentAttribute()
 		{	//Defination of -> 'is_offer_sent'
 			if (Auth::check())
-				return $this->Offer()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
+				return $this->Offer()->where('sender_id', Auth::user()->id)->count();	//Adding Custom Query
 			else
 				return 0;	//Default Value = Show Review Button
 		}
