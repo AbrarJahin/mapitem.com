@@ -67,8 +67,8 @@ class PublicController extends Controller
 											END as user_image"
 										)
 							)
-					// ->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
-					// ->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
+					->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
+					->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
 					->groupBy('advertisement_images.advertisement_id')
 					->orderBy('advertisements.created_at', 'desc')
 					->take(8)
