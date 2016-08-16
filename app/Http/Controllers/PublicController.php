@@ -11,12 +11,12 @@ use Auth;
 use DB;
 
 class PublicController extends Controller
-{
-	//A controller to show public pages
+{//A controller to show public pages
+
 	/*
-		URL				-> get: /dashboard
-		Functionality	-> Show Dashboard Page
-		Access			-> Anyone who is logged in user
+		URL				-> get: /
+		Functionality	-> Show Home Page
+		Access			-> Anyone who is Not Admin
 		Created At		-> 22/03/2016
 		Updated At		-> 22/03/2016
 		Created by		-> S. M. Abrar Jahin
@@ -26,7 +26,9 @@ class PublicController extends Controller
 		$advertisements	=	Advertisement::with('User')
 								->with('AdvertisementImages')
 								->orderBy('created_at', 'desc')
-								->paginate(8);
+								->take(8)
+								->get();
+								//->paginate(8);
 
 		return view('public.index.main',
 						[
@@ -34,6 +36,43 @@ class PublicController extends Controller
 							'advertisements'	=>	$advertisements
 						]
 					);
+	}
+
+	/*
+		URL				-> post: /index_items
+		Functionality	-> Show Index - Items
+		Access			-> Anyone who is not admin
+		Created At		-> 16/08/2016
+		Updated At		-> 16/08/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function indexItemsAjax()
+	{
+		$requestData = Request::all();
+
+		return	DB::table('advertisements')
+					->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
+					->join('users', 'advertisements.user_id', '=', 'users.id')
+					->select(
+								'advertisements.id as id',
+								'advertisements.price as price',
+								'advertisements.title as title',
+								'advertisements.description as description',
+								'users.profile_picture as user_image',
+								'advertisement_images.image_name as advertisement_image',
+								DB::raw(
+											"CASE  
+												WHEN LENGTH(users.profile_picture)>0 THEN users.profile_picture
+												ELSE '../images/empty-profile.jpg'
+											END as user_image"
+										)
+							)
+					// ->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
+					// ->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
+					->groupBy('advertisement_images.advertisement_id')
+					->orderBy('advertisements.created_at', 'desc')
+					->take(8)
+					->get();
 	}
 
 	/*

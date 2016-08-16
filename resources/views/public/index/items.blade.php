@@ -1,7 +1,13 @@
 <div class="clearfix"></div>
 <div class="hd2"><h2>Community Postings</h2></div>
 <!-- community posting start -->
-<div class="row">
+
+<meta name="get_homepage_data" content="{{ URL::route('index_items') }}">
+
+<meta name="hearts_svg" content="{{ URL::asset('svg/normal.svg') }}">
+
+<div class="row" id="home_page_element_container">
+	{{-- Fallback Data Loop --}}
 	@foreach ($advertisements as $advertisement)
 		@include('public.index.single_item')
 	@endforeach
@@ -10,9 +16,9 @@
 <div class="clearfix"></div>
 
 <div class="col-lg-12">
-	<div id="show_paginator">
+	{{-- <div id="show_paginator">
 		{{ $advertisements->links() }}
-	</div>
+	</div> --}}
 	<a href="{{ URL::route('listing') }}">
 		<button class="btn green-medium pull-right">
 			View More

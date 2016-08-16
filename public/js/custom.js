@@ -43,6 +43,58 @@ function getLocation()
 			{
 				$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));
 			}
+			//Home Page Element Loading according to current ocation
+			var element_container = $('#home_page_element_container');
+			if (element_container.length)
+			{
+				var half_redious = 50/2/111.23;
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=get_homepage_data]').attr("content"),
+					dataType: "json",
+					data:
+					{
+						lat_min	:	latitude-half_redious,
+						lat_max	:	latitude+half_redious,
+						lon_min	:	longitude-half_redious,
+						lon_max	:	longitude+half_redious
+					},
+					success:function(responce_data)
+					{
+						var hearts_svg		=	$('meta[name="hearts_svg"]').attr('content');
+						var upload_folder	=	$('meta[name="upload_folder_url"]').attr('content');
+						element_container.empty();
+						//console.log(responce_data);
+						$.each(responce_data,function(key_index,single_data)
+						{
+							var data_to_append	=	'<div class="col-lg-3 col-md-3 col-sm-6">'
+														+'<a href="#" class="wsh-lst2">'
+															+'<object type="image/svg+xml" data="'+hearts_svg+'"></object>'
+														+'</a>'
+														+'<div class="box">'
+															+'<div class="img-box">'
+																+'<img src="'+upload_folder+single_data.advertisement_image+'" height="226" width="314" alt="'+single_data.description+'">'
+															+'</div>'
+															+'<div class="box-content">'
+																+'<h5>'+single_data.title+'</h5>'
+																+'<h6>$'+single_data.price+'</h6>'
+																+'<div class="clearfix margin-bottom-ten"></div>'
+																+'<img src="'+upload_folder+single_data.user_image+'" class="pull-left width-adj2" height="46" width="46">'
+																+'<div class="pull-left margin-left-ten width-adj3">'
+																	+'<p class="pull-left dot1 home_page_description">'
+																		+single_data.description
+																	+'</p>'
+																+'</div>'
+															+'</div>'
+														+'</div>'
+													+'</div>';
+							element_container.append(data_to_append);
+						});
+					}
+				});
+			}
 		}, "jsonp");
 	}
 	location.latitude	=	latitude;

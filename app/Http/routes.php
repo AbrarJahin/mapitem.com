@@ -35,6 +35,12 @@ Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 			'as' => 'index'
 		]);
 
+	//Index Page
+	Route::post('index_items', [
+			'uses' => 'PublicController@indexItemsAjax',
+			'as' => 'index_items'
+		]);
+
 	//listing Page
 	Route::get('listing', [
 			'uses' => 'PublicController@listingView',
