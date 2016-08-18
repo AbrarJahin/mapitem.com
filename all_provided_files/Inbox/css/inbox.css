@@ -39,6 +39,7 @@
 	width: auto;
 	height: auto;
 	display: inline-block;
+	border-radius: 50%;
 }
 
 .message
