@@ -1,0 +1,66 @@
+.inbox_titles
+{
+	height: 540px;
+	overflow: auto;
+}
+
+.inbox_detail
+{
+	height: 400px;
+	overflow: auto;
+}
+
+.inbox_titles li
+{
+	cursor:pointer;
+	font-weight: bold;
+}
+
+.he_sends_me
+{
+	text-align: right;
+	background: #e6ffff;
+}
+
+.me_send_him
+{
+	background: #f7ffe6;
+}
+
+.inbox_detail .list-group-item
+{
+	border: none;
+}
+
+.inbox_detail img
+{
+	max-width: 50px;
+	max-height: 50px;
+	width: auto;
+	height: auto;
+	display: inline-block;
+}
+
+.message
+{
+	white-space: pre ;
+	display: block;
+	unicode-bidi: embed;
+
+	width: 100%;
+	white-space: pre-wrap;      /* CSS3 */   
+	white-space: -moz-pre-wrap; /* Firefox */    
+	white-space: -pre-wrap;     /* Opera <7 */   
+	white-space: -o-pre-wrap;   /* Opera 7 */    
+	word-wrap: break-word;      /* IE */
+}
+
+.me_send_him .pro_pic
+{
+	float: left;
+}
+
+.he_sends_me .pro_pic
+{
+	float: right;
+}
