@@ -19,12 +19,6 @@
 .he_sends_me
 {
 	text-align: right;
-	background: #e6ffff;
-}
-
-.me_send_him
-{
-	background: #f7ffe6;
 }
 
 .inbox_detail .list-group-item
@@ -47,7 +41,6 @@
 	white-space: pre ;
 	display: block;
 	unicode-bidi: embed;
-
 	width: 100%;
 	white-space: pre-wrap;      /* CSS3 */   
 	white-space: -moz-pre-wrap; /* Firefox */    
@@ -56,12 +49,34 @@
 	word-wrap: break-word;      /* IE */
 }
 
-.me_send_him .pro_pic
-{
-	float: left;
-}
-
 .he_sends_me .pro_pic
 {
+	text-align: left;
+}
+.me_send_him footer
+{
+		text-align: right;
+}
+
+.pro_pic
+{
+	padding: 5px;
+	width: 100%;
+}
+/* .center
+{
+	display: table;
+	margin: auto;
+} */
+.pull-right
+{
 	float: right;
+}
+#message_menu_close_button
+{
+	display: none;
+}
+#message_menu_close_button
+{
+	cursor:pointer;
 }
