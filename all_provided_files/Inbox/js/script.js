@@ -27,11 +27,18 @@ $(document).ready(function()
 		{
 			$('#message_menu_close_button').show();
 			$('#message_details').show();
-			
+			$('#message_threades').hide();
+
 		}
 	});
 	$('#message_menu_close_button').click(function(event)
 	{
-		alert('Clicked');
+		$('#message_menu_close_button').hide();
+		if(window.matchMedia( "(max-width: 768px)" ).matches)
+		{
+			$('#message_details').hide();
+			$('#message_threades').show();
+
+		}
 	});
 });
