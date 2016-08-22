@@ -58,7 +58,7 @@ class PublicController extends Controller
 								'advertisements.price as price',
 								'advertisements.title as title',
 								'advertisements.description as description',
-								'users.profile_picture as user_image',
+								//'users.profile_picture as user_image',
 								'advertisement_images.image_name as advertisement_image',
 								DB::raw(
 											"CASE  

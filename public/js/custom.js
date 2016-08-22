@@ -125,6 +125,26 @@ function AddNewData()
 	$('#add_data_modal').modal('show');
 }
 
+function showMessageDetail()
+{
+	if(window.matchMedia( "(max-width: 768px)" ).matches)
+	{
+		$('#message_details').hide();
+		//$('#message_menu_close_button').show();
+	}
+	else
+	{
+		$('#message_threades').show();
+		$('#message_details').show();
+		$('#message_menu_close_button').hide();
+	}
+}
+
+$(window).resize(function()
+{
+	showMessageDetail();
+});
+
 $(document).ready(function()
 {
 	if($("#date_of_birth").length != 0)	//If datepicker exists
@@ -881,92 +901,6 @@ $(document).ready(function()
 
 	window.prettyPrint && prettyPrint();
 
-	$('.info-btn').on('click', function ()
-	{
-		//$("#extra_info").fadeToggle(1000);
-		//$("#messages").toggleClass('col-sm-12 col-sm-9');
-
-		if( $("#messages").hasClass("col-sm-12") )	//Extra Contents hidden
-		{
-			$("#messages").toggleClass('col-sm-12 col-sm-9',1000).promise().done(function()
-			{
-				$("#extra_info").fadeToggle(1000);
-			});
-		}
-		else
-		{
-			$("#extra_info").fadeToggle(1000).promise().done(function()
-			{
-				$("#messages").toggleClass('col-sm-12 col-sm-9',1000);
-			});
-		}
-	});
-
-	$('.conversation').on('click', function ()
-	{
-		$("#send_message_form input[name=thread_id]").val( $(this).attr("thread_id") );
-
-		$.ajax({
-			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-			method: "POST",
-			url: $('meta[name=thread_detail_ajax_url]').attr("content"),
-			data:	{
-						thread_id: $(this).attr("thread_id")
-					}
-			}).success(function( data )
-			{
-				$('.messages').empty();
-				$.each(data,function(key_index,single_data)
-				{
-					$('.messages')
-						.append('<div class="msg">'
-									+'<div class="media-body">'
-										+'<small class="pull-right time">'
-											+'<i class="fa fa-clock-o"></i>'
-											+single_data.sent_time
-										+'</small>'
-
-										+'<h5 class="media-heading">'
-											+single_data.sender_name
-										+'</h5>'
-										+'<small class="col-sm-11">'
-											+single_data.message
-										+'</small>'
-									+'</div>'
-								+'</div>');
-				});
-			});
-	});
-
-	$('.send-button').on('click', function ()
-	{
-		$.ajax({
-			headers:	{ 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-			method:	"POST",
-			url:	$("#send_message_form").attr('action'),
-			data:	$("#send_message_form").serialize(),
-			}).success(function( single_data )
-			{
-				$('.messages')
-					.append('<div class="msg">'
-								+'<div class="media-body">'
-									+'<small class="pull-right time">'
-										+'<i class="fa fa-clock-o"></i>'
-										+single_data.sent_time
-									+'</small>'
-
-									+'<h5 class="media-heading">'
-										+single_data.sender_name
-									+'</h5>'
-									+'<small class="col-sm-11">'
-										+single_data.message
-									+'</small>'
-								+'</div>'
-							+'</div>');
-				$("#send_message_text").val('');
-			});
-	});
-
 	//Global AJAX Config - Start
 	$(document).ajaxStart(function(){
 		$("#wait").css("display", "block");
@@ -1567,4 +1501,132 @@ $(document).ready(function()
 			}
 		});
 	});
+
+	//Inbox Page- Start - Start
+		/*$('.info-btn').on('click', function ()
+		{
+			//$("#extra_info").fadeToggle(1000);
+			//$("#messages").toggleClass('col-sm-12 col-sm-9');
+
+			if( $("#messages").hasClass("col-sm-12") )	//Extra Contents hidden
+			{
+				$("#messages").toggleClass('col-sm-12 col-sm-9',1000).promise().done(function()
+				{
+					$("#extra_info").fadeToggle(1000);
+				});
+			}
+			else
+			{
+				$("#extra_info").fadeToggle(1000).promise().done(function()
+				{
+					$("#messages").toggleClass('col-sm-12 col-sm-9',1000);
+				});
+			}
+		});*/
+
+		showMessageDetail();
+
+		$('.inbox_titles li').click(function(event)
+		{
+			if(window.matchMedia( "(max-width: 768px)" ).matches)
+			{
+				$('#message_menu_close_button').show();
+				$('#message_details').show();
+				$('#message_threades').hide();
+
+			}
+		});
+
+		$('#message_menu_close_button').click(function(event)
+		{
+			$('#message_menu_close_button').hide();
+			if(window.matchMedia( "(max-width: 768px)" ).matches)
+			{
+				$('#message_details').hide();
+				$('#message_threades').show();
+			}
+		});
+
+		//Message Detail
+		$('.conversation').on('click', function ()
+		{
+			$("#send_message_form input[name=thread_id]").val( $(this).attr("thread_id") );
+
+			$.ajax({
+				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				method: "POST",
+				url: $('meta[name=thread_detail_ajax_url]').attr("content"),
+				data:	{
+							thread_id: $(this).attr("thread_id")
+						}
+				}).success(function( data )
+				{
+					$('#inbox_detail').empty();
+					$.each(data,function(key_index,single_data)
+					{
+						/*$('#inbox_detail')
+							.append('<div class="msg">'
+										+'<div class="media-body">'
+											+'<small class="pull-right time">'
+												+'<i class="fa fa-clock-o"></i>'
+												+single_data.sent_time
+											+'</small>'
+
+											+'<h5 class="media-heading">'
+												+single_data.sender_name
+											+'</h5>'
+											+'<small class="col-sm-11">'
+												+single_data.message
+											+'</small>'
+										+'</div>'
+									+'</div>');*/
+						$('#inbox_detail')
+							.append(
+										'<li class="list-group-item '
+										+single_data.sender_type
+										+'"><div><div class="pro_pic"><img src="'
+										+$('meta[name=upload_folder_url]').attr("content")
+										+single_data.user_image
+										+'"> <span class="lead text-success">'
+										+single_data.sender_name
+										+'</span></div><blockquote><div class="message">'
+										+single_data.message
+										+'</div><footer><time class="message_sent_time">'
+										+single_data.sent_time
+										+'</time></footer></blockquote></div></li>'
+									);
+					});
+				});
+		});
+
+		//Send Message
+		$('.send-button').on('click', function ()
+		{
+			$.ajax({
+				headers:	{ 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				method:	"POST",
+				url:	$("#send_message_form").attr('action'),
+				data:	$("#send_message_form").serialize(),
+				}).success(function( single_data )
+				{
+					$('.messages')
+						.append('<div class="msg">'
+									+'<div class="media-body">'
+										+'<small class="pull-right time">'
+											+'<i class="fa fa-clock-o"></i>'
+											+single_data.sent_time
+										+'</small>'
+
+										+'<h5 class="media-heading">'
+											+single_data.sender_name
+										+'</h5>'
+										+'<small class="col-sm-11">'
+											+single_data.message
+										+'</small>'
+									+'</div>'
+								+'</div>');
+					$("#send_message_text").val('');
+				});
+		});
+	//Inbox Page Design - Stop
 });

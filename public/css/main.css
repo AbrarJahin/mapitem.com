@@ -738,7 +738,7 @@ nav .dropdown-menu {
 	padding-right: 5px;
 }
 
-footer{
+footer#page_footer{
 	background-color: #2a2525;
 	margin-top: 60px
 }
@@ -3293,4 +3293,75 @@ li.next.disabled
 .home_page_description
 {
 	overflow:hidden;
+}
+
+/*	Inbox CSS*/
+.inbox_titles
+{
+	height: 540px;
+	overflow: auto;
+}
+.inbox_detail
+{
+	height: 400px;
+	overflow: auto;
+}
+.inbox_titles li
+{
+	cursor:pointer;
+	font-weight: bold;
+}
+.he_sends_me
+{
+	text-align: right;
+}
+.inbox_detail .list-group-item
+{
+	border: none;
+}
+.inbox_detail img
+{
+	max-width: 50px;
+	max-height: 50px;
+	width: auto;
+	height: auto;
+	display: inline-block;
+	border-radius: 50%;
+}
+.message
+{
+	white-space: pre ;
+	display: block;
+	unicode-bidi: embed;
+	width: 100%;
+	white-space: pre-wrap;      /* CSS3 */   
+	white-space: -moz-pre-wrap; /* Firefox */    
+	white-space: -pre-wrap;     /* Opera <7 */   
+	white-space: -o-pre-wrap;   /* Opera 7 */    
+	word-wrap: break-word;      /* IE */
+}
+.he_sends_me .pro_pic
+{
+	text-align: left;
+}
+.me_send_him footer
+{
+		text-align: right;
+}
+.pro_pic
+{
+	padding: 5px;
+	width: 100%;
+}
+.pull-right
+{
+	float: right;
+}
+#message_menu_close_button
+{
+	display: none;
+}
+#message_menu_close_button
+{
+	cursor:pointer;
 }

@@ -26,6 +26,7 @@ class NotAdminMiddleware
 			return $next($request);
 		}
 		//End checking
-		return redirect()->route('admin.category');
+		return redirect(route('admin.category'));
+		//return redirect()->route('admin.category');
     }
 }

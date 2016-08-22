@@ -1,4 +1,4 @@
-<footer>
+<footer id="page_footer">
     <div class="first-strip">
         <div class="@if ($current_page === 'Add Listing')
                 container-fluid
