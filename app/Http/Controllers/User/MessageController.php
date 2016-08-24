@@ -100,6 +100,10 @@ class MessageController extends Controller
 		else
 			$notification_owner_id = $messageThread->sender_id;
 
+		//Update Message Thread
+		$messageThread->title = substr($requestData['message'],0,18)." ..";
+		$messageThread->save();
+
 		//Add Notification for Message Sending
 		$userNotification = UserNotification::firstOrNew([
 															'user_id' => $notification_owner_id
@@ -108,9 +112,10 @@ class MessageController extends Controller
 		$userNotification->save();
 
 		return [
-					'sent_time'		=> 'Now',
-					'sender_name'	=> Auth::user()->first_name.' '.Auth::user()->last_name,
-					'message'		=> $requestData['message']
+					'sent_time'		=>	'Now',
+					'sender_image'	=>	(strlen(Auth::user()->profile_picture) > 3 ? Auth::user()->profile_picture : '../images/empty-profile.jpg'),
+					'sender_name'	=>	Auth::user()->first_name.' '.Auth::user()->last_name,
+					'message'		=>	$requestData['message']
 				];
 	}
 }

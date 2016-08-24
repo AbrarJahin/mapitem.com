@@ -1,7 +1,7 @@
 //Global variables
 var latitude=0, longitude=0;
 var is_tab_opened_before =0;
-
+var debug_variable;
 //Email Validate
 function validateEmail(email)
 {
@@ -1550,6 +1550,7 @@ $(document).ready(function()
 		//Message Detail
 		$('.conversation').on('click', function ()
 		{
+			$("#message_title").text($(this).children().children().first().text());
 			$("#send_message_form input[name=thread_id]").val( $(this).attr("thread_id") );
 
 			$.ajax({
@@ -1564,22 +1565,6 @@ $(document).ready(function()
 					$('#inbox_detail').empty();
 					$.each(data,function(key_index,single_data)
 					{
-						/*$('#inbox_detail')
-							.append('<div class="msg">'
-										+'<div class="media-body">'
-											+'<small class="pull-right time">'
-												+'<i class="fa fa-clock-o"></i>'
-												+single_data.sent_time
-											+'</small>'
-
-											+'<h5 class="media-heading">'
-												+single_data.sender_name
-											+'</h5>'
-											+'<small class="col-sm-11">'
-												+single_data.message
-											+'</small>'
-										+'</div>'
-									+'</div>');*/
 						$('#inbox_detail')
 							.append(
 										'<li class="list-group-item '
@@ -1609,23 +1594,24 @@ $(document).ready(function()
 				data:	$("#send_message_form").serialize(),
 				}).success(function( single_data )
 				{
-					$('.messages')
-						.append('<div class="msg">'
-									+'<div class="media-body">'
-										+'<small class="pull-right time">'
-											+'<i class="fa fa-clock-o"></i>'
-											+single_data.sent_time
-										+'</small>'
-
-										+'<h5 class="media-heading">'
-											+single_data.sender_name
-										+'</h5>'
-										+'<small class="col-sm-11">'
-											+single_data.message
-										+'</small>'
-									+'</div>'
-								+'</div>');
-					$("#send_message_text").val('');
+					//Appending the message
+					$('#inbox_detail')
+							.append(
+										'<li class="list-group-item me_send_him"><div><div class="pro_pic"><img src="'
+										+$('meta[name=upload_folder_url]').attr("content")
+										+single_data.sender_image
+										+'"> <span class="lead text-success">'
+										+single_data.sender_name
+										+'</span></div><blockquote><div class="message">'
+										+single_data.message
+										+'</div><footer><time class="message_sent_time">'
+										+single_data.sent_time
+										+'</time></footer></blockquote></div></li>'
+									);
+					//Clearing the sent item textarea
+					$("#send_message_form textarea[name=message]").val('');
+					//Scroll down the item
+					$('#inbox_detail').scrollTop($('#inbox_detail')[0].scrollHeight);
 				});
 		});
 	//Inbox Page Design - Stop

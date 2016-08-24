@@ -10,7 +10,7 @@
 
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<span class="center">Message Title</span>
+			<span class="center" id="message_title"></span>
 			<span id="message_menu_close_button" class="glyphicon glyphicon-remove pull-right"></span>
 		</div>
 		<div class="panel-body">

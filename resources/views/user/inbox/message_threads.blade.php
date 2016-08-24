@@ -4,7 +4,7 @@
 			<li class="list-group-item">
 				<div thread_id="{{ $message_thread->id }}" class="btn conversation">
 					<div class="media-body">
-						<h5 class="media-heading" id="contactName">{{ $message_thread->title }}</h5>
+						<h5 class="media-heading">{{ $message_thread->title }}</h5>
 						<strong class="time pull-left">{{ $message_thread->sender_name }}</strong>
 						<small class="pull-right time">
 							<span class="glyphicon glyphicon-time">
