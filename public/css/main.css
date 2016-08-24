@@ -3357,6 +3357,10 @@ li.next.disabled
 {
 	float: right;
 }
+.pull-left
+{
+	float: left;
+}
 #message_menu_close_button
 {
 	display: none;

@@ -1,5 +1,5 @@
 <!-- Messages & Info -->
-<div class="col-sm-9" id="message_details">
+<div class="col-sm-8" id="message_details">
 	<ul class="list-group inbox_detail" id="inbox_detail">
 		Please select any message thread to see detail
 		{{-- <li class="list-group-item me_send_him">

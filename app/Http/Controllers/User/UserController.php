@@ -66,7 +66,19 @@ class UserController extends Controller
 		$userNotification->inbox = 0;
 		$userNotification->save();
 
-		$user_message_threades = MessageThread::select('id','title','created_at')
+		$user_message_threades = MessageThread::join('users as sender', 'sender.id',	'=', 'message_threads.sender_id')
+											->join('users as receiver', 'receiver.id',	'=', 'message_threads.receiver_id')
+											->select(
+														DB::raw(
+															"CASE  
+																WHEN sender.id = ".Auth::user()->id." THEN CONCAT(receiver.first_name, ' ', receiver.last_name)
+																ELSE CONCAT(sender.first_name, ' ', sender.last_name)
+															END as sender_name"
+														),
+														'message_threads.id as id',
+														'message_threads.title as title',
+														'message_threads.created_at as created_at'
+													)
 											->where('sender_id',		Auth::user()->id)
 											->orWhere('receiver_id',	Auth::user()->id)
 											->get();
