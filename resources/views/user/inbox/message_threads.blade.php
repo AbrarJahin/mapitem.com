@@ -7,8 +7,8 @@
 						<h5 class="media-heading">{{ $message_thread->title }}</h5>
 						<strong class="time pull-left">{{ $message_thread->sender_name }}</strong>
 						<small class="pull-right time">
-							<span class="glyphicon glyphicon-time">
-							{{ $message_thread->created_at }}</small>
+							<span class="glyphicon glyphicon-time"></span>{{ $message_thread->created_at }}
+						</small>
 					</div>
 				</div>
 			</li>

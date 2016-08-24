@@ -77,8 +77,14 @@ class UserController extends Controller
 														),
 														'message_threads.id as id',
 														'message_threads.title as title',
-														'message_threads.created_at as created_at'
+														DB::raw(
+															"CASE
+																WHEN DATE(message_threads.created_at) = DATE(NOW()) THEN DATE_FORMAT(message_threads.created_at, '%r')
+																ELSE DATE_FORMAT(message_threads.created_at, '%b %D, %Y')
+															END as created_at"
+														)
 													)
+											//DATE_FORMAT(message_threads.created_at, '%D %Y, %r')
 											->where('sender_id',		Auth::user()->id)
 											->orWhere('receiver_id',	Auth::user()->id)
 											->get();

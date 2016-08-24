@@ -65,20 +65,26 @@ class MessageController extends Controller
 				->select(
 							//DB::raw("CONCAT('he_sends_me') AS sender_type"),	//he_sends_me / me_send_him
 							DB::raw(
-										"CASE  
+										"CASE
 											WHEN messages.sender_id = ".Auth::user()->id." THEN 'me_send_him'
 											ELSE 'he_sends_me'
 										END as sender_type"
 									),
 							DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS sender_name"),
 							DB::raw(
-											"CASE  
+											"CASE
 												WHEN LENGTH(users.profile_picture)>0 THEN users.profile_picture
 												ELSE '../images/empty-profile.jpg'
 											END as user_image"
 										),
 							'messages.message',
-							DB::raw("DATE_FORMAT(messages.created_at,'%D %b %Y, %r') AS sent_time")
+							DB::raw("DATE_FORMAT(messages.created_at,'%D %b %Y, %r') AS sent_time"),
+							DB::raw(
+										"CASE
+											WHEN DATE(messages.created_at) = DATE(NOW()) THEN DATE_FORMAT(messages.created_at, '%r')
+											ELSE DATE_FORMAT(messages.created_at, '%b %D, %Y - %r')
+										END as sent_time"
+									)
 						)
 				->where('messages.thread_id', $requestData['thread_id'])
 				->get();

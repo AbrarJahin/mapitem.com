@@ -1,7 +1,7 @@
 //Global variables
 var latitude=0, longitude=0;
 var is_tab_opened_before =0;
-var debug_variable;
+//var debug_variable;
 //Email Validate
 function validateEmail(email)
 {
@@ -1545,6 +1545,8 @@ $(document).ready(function()
 				$('#message_details').hide();
 				$('#message_threades').show();
 			}
+			//Hide Title Text - Message Thread Title
+			$('#message_title').text('');
 		});
 
 		//Message Detail
