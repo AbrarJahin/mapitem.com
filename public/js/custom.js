@@ -142,7 +142,11 @@ function showMessageDetail()
 
 $(window).resize(function()
 {
-	showMessageDetail();
+	if(!(window.matchMedia( "(max-width: 768px)" ).matches))
+	{
+		//alert("Show Message Detail called on resize");
+		showMessageDetail();
+	}
 });
 
 $(document).ready(function()
@@ -1533,7 +1537,6 @@ $(document).ready(function()
 				$('#message_menu_close_button').show();
 				$('#message_details').show();
 				$('#message_threades').hide();
-
 			}
 		});
 
@@ -1587,7 +1590,7 @@ $(document).ready(function()
 		});
 
 		//Send Message
-		$('.send-button').on('click', function ()
+		$('#inbox_send_button').on('click', function ()
 		{
 			$.ajax({
 				headers:	{ 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },

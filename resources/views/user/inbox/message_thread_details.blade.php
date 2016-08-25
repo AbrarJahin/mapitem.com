@@ -60,8 +60,8 @@
 			<form id="send_message_form" class="send-message" action="{{ URL::route('user.inbox_message_send') }}">
 				<input type="hidden" name="thread_id">
 				<div class="input-group">
-					<textarea class="form-control custom-control" rows="3" name="message" style="resize:none"></textarea>
-					<span class="input-group-addon btn btn-primary send-button">
+					<textarea class="form-control" rows="3" name="message"></textarea>
+					<span class="input-group-addon btn btn-primary" id="inbox_send_button">
 						Send
 						<i class="fa fa-send"></i>
 					</span>
