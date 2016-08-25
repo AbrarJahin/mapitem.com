@@ -1,7 +1,7 @@
 <div class="col-sm-4" id="message_threades">
 	<ul class="list-group inbox_titles">
 		@foreach ($message_threads as $message_thread)
-			<li class="list-group-item">
+			<li class="list-group-item no-padding">
 				<div thread_id="{{ $message_thread->id }}" class="btn conversation">
 					<div class="media-body">
 						<h5 class="media-heading">{{ $message_thread->title }}</h5>
