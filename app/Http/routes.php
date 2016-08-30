@@ -14,6 +14,16 @@ Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function(
 			'uses' => 'AuthController@userLoginProcess',
 			'as' => 'login'
 		]);
+
+	//Auth - FB login - URL
+	Route::get('auth/facebook', [
+			'uses' => 'FacebookController@redirectToProvider',
+			'as' => 'facebook.login'
+		]);
+	Route::get('auth/facebook/callback', [
+			'uses' => 'FacebookController@handleProviderCallback',
+			'as' => 'facebook.login_callback'
+		]);
 });
 
 //Public Routes - Open for all
