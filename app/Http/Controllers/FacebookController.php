@@ -46,5 +46,6 @@ class FacebookController extends Controller
         $user = Socialite::driver('facebook')->user();
 
         // $user->token;
+        return $user;
     }
 }
