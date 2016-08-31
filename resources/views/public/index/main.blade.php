@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Block Hunt - {{ $current_page }}</title>
+		<title>MapItem - {{ $current_page }}</title>
 		@include('meta_data')
 		@include('css')
 		{{-- MaxImage CDN Not Found in the latest vertion which is used --}}
