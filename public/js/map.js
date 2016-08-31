@@ -32,6 +32,8 @@ $(function()
 	$(document).on("click", ".showonmap9", function(e)
 	{
 		var product_id = $(this).attr('marker_id');
+		//$(window).attr('url').replace(document.location.hash,'#food');
+		window.location.hash = '#'+product_id;
 		openInfoWindowByID( product_id );
 		showAddDetail( product_id );
 	});
@@ -39,6 +41,7 @@ $(function()
 	//Close add
 	$('.close-detail').click(function()
 	{
+		window.location.hash = '';
 		closeAddDetail();
 	});
 
@@ -320,6 +323,14 @@ $(function()
 		});  // end Ajax
 		alert('Your Message has Been Sent');
 	});
+
+	//open page on page load for sharing data
+	var add_id = location.hash.substr(1);
+	if(add_id.length>0)
+	{
+		openInfoWindowByID( add_id );
+		showAddDetail( add_id );
+	}
 });
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX
@@ -592,9 +603,7 @@ function showAddDetail(id)		//Show Add Detail
 			//$.parseJSON(responce_data)
 			$.each(responce_data,function(index_key,value_all_json)
 			{
-				/*console.log(key);
-				console.log(value);
-*/				if(index_key.localeCompare('advertisement')==0)
+				if(index_key.localeCompare('advertisement')==0)
 				{
 					$.each(value_all_json,function(key,value)
 					{

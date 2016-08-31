@@ -96,3 +96,10 @@ or for every time use-
 php artisan migrate:refresh --seed
 
 ```
+
+
+
+--------------------------------
+
+Login Tool- https://github.com/laravel/socialite
+FB Login- https://www.youtube.com/watch?v=EYdeTbQyhL8

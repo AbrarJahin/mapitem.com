@@ -47,7 +47,7 @@ function getLocation()
 			var element_container = $('#home_page_element_container');
 			if (element_container.length)
 			{
-				var half_redious = 50/2/111.23;
+				var half_redious = 50/2/111.23;	//Comes from user requirement - 50 miles
 				$.ajax(
 				{
 					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -66,14 +66,14 @@ function getLocation()
 						var hearts_svg		=	$('meta[name="hearts_svg"]').attr('content');
 						var upload_folder	=	$('meta[name="upload_folder_url"]').attr('content');
 						element_container.empty();
-						//console.log(responce_data);
+
 						$.each(responce_data,function(key_index,single_data)
 						{
 							var data_to_append	=	'<div class="col-lg-3 col-md-3 col-sm-6">'
 														+'<a href="#" class="wsh-lst2">'
 															+'<object type="image/svg+xml" data="'+hearts_svg+'"></object>'
 														+'</a>'
-														+'<div class="box">'
+														+'<a href="'+$('#search_add_from').attr('action')+'#'+single_data.id+'"><div class="box">'
 															+'<div class="img-box">'
 																+'<img src="'+upload_folder+single_data.advertisement_image+'" height="226" width="314" alt="'+single_data.description+'">'
 															+'</div>'
@@ -88,7 +88,7 @@ function getLocation()
 																	+'</p>'
 																+'</div>'
 															+'</div>'
-														+'</div>'
+														+'</div></a>'
 													+'</div>';
 							element_container.append(data_to_append);
 						});
