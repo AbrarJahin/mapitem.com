@@ -15,6 +15,7 @@ $(function()
 	{
 		if( ifDeviceIsMobile() )
 		{
+			//If there is no map
 			viewPortForMobile=result.geometry.viewport;
 			generateMarkers( viewPortForMobile );
 		}

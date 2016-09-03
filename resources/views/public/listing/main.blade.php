@@ -69,6 +69,9 @@
 
 	{{-- Clustered Map - Google map v3.20 --}}
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gmap3/6.1.0/gmap3.min.js"></script>
+	{{-- Info Bubble for replacing infowindow --}}
+	<script src="https://googlemaps.github.io/js-store-locator/examples/infobubble-compiled.js"></script>
+	{{-- Listing page Map Functionalities --}}
 	<script type="text/javascript" src="{{ URL::asset('js/map.js') }}"></script>
 	{{-- Pagination --}}
 	<script type="text/javascript" src="http://botmonster.com/jquery-bootpag/jquery.bootpag.js"></script>
