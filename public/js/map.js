@@ -4,9 +4,6 @@ var last_opened_info_window_id = -1;				//For solving infowindow lost issue afte
 var viewPortForMobile;
 //var last_opened_infowindow;
 
-// generate an array of colors
-//var colors = "black brown green purple yellow grey orange white".split(" ");
-
 // on document ready function
 $(function()
 {
@@ -354,6 +351,16 @@ function generateMarkers(bounds)
 		sub_categories.push($(this).val());
 	});
 
+	/*=================================================*/
+	var infoBubble = new InfoBubble({
+							maxWidth: 300,
+							maxHeight:300,
+							disableAutoPan: true,
+						});
+	infoBubble.setContent("contentString");
+	//infoBubble.open(map_div.gmap3("get"), marker);
+	/*=================================================*/
+
 	//AJAX Call to get points from server - Start
 	$.ajax(
 				{
@@ -442,7 +449,7 @@ function generateMarkers(bounds)
 														+	element.description
 														+'<br></p></div></div></div></div></div>';
 									$("#box").append(listing_element);
-									/*=================================================*/
+
 									list.push({
 												latLng			:	[	element.lat,element.lon	],
 												class			:	"markers",
@@ -491,6 +498,8 @@ function generateMarkers(bounds)
 																			var	map = $(this).gmap3("get"),
 																				infowindow = $(this).gmap3({get:{name:"infowindow"}});
 
+																			infoBubble.open(map_div.gmap3("get"), marker);
+/*
 																			if(infowindow)	//if infoWindow Exists - then show
 																			{
 																				infowindow.open(map, marker);
@@ -509,7 +518,6 @@ function generateMarkers(bounds)
 																							}
 																					});
 																			}
-
 																			//Managing InfoWindow Contents - Fixing Contents
 																			setTimeout(function()
 																			{
@@ -519,10 +527,10 @@ function generateMarkers(bounds)
 																				//Remove extra space behind infowindow
 																				iwOuter.parent().width('20px');
 
-																				/* The DIV we want to change is above the .gm-style-iw DIV.
-																				* So, we use jQuery and create a iwBackground variable,
-																				* and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
-																				*/
+																				// The DIV we want to change is above the .gm-style-iw DIV.
+																				// So, we use jQuery and create a iwBackground variable,
+																				// and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+																				//
 																				var iwBackground = iwOuter.prev();
 
 																				// Remove the background shadow DIV
@@ -542,9 +550,8 @@ function generateMarkers(bounds)
 
 																				// Changes the desired tail shadow color.
 																				iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
-
-
 																			}, 10);
+*/
 																		},
 																		mouseout: function()
 																		{

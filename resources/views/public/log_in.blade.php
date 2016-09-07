@@ -47,7 +47,7 @@
 		</div>
 
 		<a href="{{ URL::route('facebook.login') }}" class="facebook">Login with Facebook</a>
-		<a href="#" class="googleplus">Login with Google Plus</a>
+		<a href="{{ URL::route('google.login') }}" class="googleplus">Login with Google Plus</a>
 
 	</li>
 

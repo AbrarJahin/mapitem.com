@@ -41,4 +41,10 @@ return [
         'redirect'      => env('FB_CALLBACK_URL'),
     ],
 
+    'google' => [
+        'client_id'     => env('GOOGLE_APP_ID'),
+        'client_secret' => env('GOOGLE_SECREAT'),
+        'redirect'      => env('GOOGLE_CALLBACK_URL'),
+    ],
+
 ];

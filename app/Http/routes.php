@@ -24,6 +24,16 @@ Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function(
 			'uses' => 'FacebookController@handleProviderCallback',
 			'as' => 'facebook.login_callback'
 		]);
+
+	//Auth - Google login - URL
+	Route::get('auth/google', [
+			'uses' => 'GoogleController@redirectToProvider',
+			'as' => 'google.login'
+		]);
+	Route::get('auth/google/callback', [
+			'uses' => 'GoogleController@handleProviderCallback',
+			'as' => 'google.login_callback'
+		]);
 });
 
 //Public Routes - Open for all
