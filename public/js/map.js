@@ -2,6 +2,8 @@
 var map_div = $('#map');
 var last_opened_info_window_id = -1;				//For solving infowindow lost issue after AJAX call done
 var viewPortForMobile;
+var InfoBubbleMaxWidth	=	300;
+var InfoBubbleMaxHeight	=	300;
 //var last_opened_infowindow;
 
 // on document ready function
@@ -98,7 +100,7 @@ $(function()
 	{
 		try
 		{
-			map_div.gmap3({get:{name:"infowindow"}}).close();
+			map_div.gmap3({get:{name:"InfoBubble"}}).close();
 			last_opened_info_window_id=-1;
 			closeAddDetail();
 		}
@@ -352,8 +354,8 @@ function generateMarkers(bounds)
 	});
 
 	var infoBubble = new InfoBubble({
-							maxWidth: 300,
-							maxHeight:300,
+							maxWidth: InfoBubbleMaxWidth,
+							maxHeight:InfoBubbleMaxWidth,
 							disableAutoPan: true,
 						});
 
@@ -477,17 +479,17 @@ function generateMarkers(bounds)
 
 																			//###############	Now showing the infoWindow
 																			var infoWindowContent = context.data.description;	//Will be generated from AJAX call
-																			infoWindowContent =	'<div>'
-																								+	'<div>'
-																								+	'<a href="#">'
+																			infoWindowContent =	'<div class="map-master-div">'
+																								+	'<div class="pos-rel">'
+																								+	'<a href="#" class="wsh-lst-infowindow">'
 																								+		'<object type="image/svg+xml" data="'+$('meta[name=svg_hearts]').attr("content")+'"></object>'
 																								+	'</a>'
-																								+		'<div>'
-																								+			'<div>'
+																								+		'<div class="box">'
+																								+			'<div class="img-box-list">'
 																								+				'<img src="'+$('meta[name=info_window_img]').attr("content")+'">'
 																								+			'</div>'
-																								+			'<div>'
-																								+				'<h5><div>'+context.data.title+'</div></h5>'
+																								+			'<div class="box-content box-content-map">'
+																								+				'<h5><div class="pull-center">'+context.data.title+'</div></h5>'
 																								+				'<h6> $'+context.data.price+'</h6>'
 																								+			'</div>'
 																								+		'</div>'
@@ -495,8 +497,6 @@ function generateMarkers(bounds)
 																								+'</div>';
 
 																			var	map = $(this).gmap3("get");
-
-																			infoBubble.open(map, marker);
 
 																			infoBubble.close();
 																			infoBubble.open(map, marker);
@@ -519,7 +519,7 @@ function generateMarkers(bounds)
 									values: list
 								}
 						});
-						openLastInfoWindow();
+						//openLastInfoWindow();
 					},
 					error: function(jqXHR, textStatus, errorThrown)
 					{
@@ -527,7 +527,7 @@ function generateMarkers(bounds)
 					}
 				});
 	//AJAX Call to get points from server - END
-	openLastInfoWindow();
+	//openLastInfoWindow();
 }
 /*
 function onChangeOnOff()		//Turning on or off clustering
@@ -748,7 +748,7 @@ function openInfoWindowByID(clicked_id)
 							);
 }
 
-function openLastInfoWindow()
+/*function openLastInfoWindow()
 {
 	if(last_opened_info_window_id !== -1)
 	{
@@ -762,7 +762,7 @@ function openLastInfoWindow()
 									, 'click'
 								);
 	}
-}
+}*/
 
 function pullPaginatorElementToFirstElement()
 {
