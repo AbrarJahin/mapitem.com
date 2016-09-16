@@ -534,6 +534,7 @@ $(document).ready(function()
 		$("#post_free_add_form").on('submit', function(e)
 		{
 			e.preventDefault(e);
+			$(this).find("button[type='submit']").prop('disabled',true);
 
 			var responce = $.ajax(
 									{

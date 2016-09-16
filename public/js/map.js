@@ -351,15 +351,11 @@ function generateMarkers(bounds)
 		sub_categories.push($(this).val());
 	});
 
-	/*=================================================*/
 	var infoBubble = new InfoBubble({
 							maxWidth: 300,
 							maxHeight:300,
 							disableAutoPan: true,
 						});
-	infoBubble.setContent("contentString");
-	//infoBubble.open(map_div.gmap3("get"), marker);
-	/*=================================================*/
 
 	//AJAX Call to get points from server - Start
 	$.ajax(
@@ -393,6 +389,9 @@ function generateMarkers(bounds)
 									class: "markers"
 								}
 							});
+						//Clear Info Bobble
+						infoBubble.close();
+
 						//Clear the listing elements
 						$("#box").empty();
 						//Generate List to insert data in map
@@ -478,80 +477,30 @@ function generateMarkers(bounds)
 
 																			//###############	Now showing the infoWindow
 																			var infoWindowContent = context.data.description;	//Will be generated from AJAX call
-																			infoWindowContent =	'<div class="col-lg-4 col-sm-6 map-master-div">'
-																								+	'<div class="pos-rel">'
-																								+	'<a href="#" class="wsh-lst-infowindow">'
+																			infoWindowContent =	'<div>'
+																								+	'<div>'
+																								+	'<a href="#">'
 																								+		'<object type="image/svg+xml" data="'+$('meta[name=svg_hearts]').attr("content")+'"></object>'
 																								+	'</a>'
-																								+		'<div class="box">'
-																								+			'<div class="img-box-list">'
+																								+		'<div>'
+																								+			'<div>'
 																								+				'<img src="'+$('meta[name=info_window_img]').attr("content")+'">'
 																								+			'</div>'
-																								+			'<div class="box-content box-content-map">'
-																								+				'<h5><div class="pull-center">'+context.data.title+'</div></h5>'
+																								+			'<div>'
+																								+				'<h5><div>'+context.data.title+'</div></h5>'
 																								+				'<h6> $'+context.data.price+'</h6>'
 																								+			'</div>'
 																								+		'</div>'
 																								+	'</div>'
 																								+'</div>';
 
-																			var	map = $(this).gmap3("get"),
-																				infowindow = $(this).gmap3({get:{name:"infowindow"}});
+																			var	map = $(this).gmap3("get");
 
-																			infoBubble.open(map_div.gmap3("get"), marker);
-/*
-																			if(infowindow)	//if infoWindow Exists - then show
-																			{
-																				infowindow.open(map, marker);
-																				infowindow.setContent(infoWindowContent);
-																			}
-																			else			//if infoWindow not Exists - then crete and show
-																			{
-																				$(this).gmap3({
-																						infowindow:
-																							{
-																								anchor	:	marker, 
-																								options	:	{
-																												content		: infoWindowContent,
-																												maxWidth	: 350
-																											}
-																							}
-																					});
-																			}
-																			//Managing InfoWindow Contents - Fixing Contents
-																			setTimeout(function()
-																			{
-																				// Reference to the DIV which receives the contents of the infowindow using jQuery
-																				var iwOuter = $('.gm-style-iw');
+																			infoBubble.open(map, marker);
 
-																				//Remove extra space behind infowindow
-																				iwOuter.parent().width('20px');
-
-																				// The DIV we want to change is above the .gm-style-iw DIV.
-																				// So, we use jQuery and create a iwBackground variable,
-																				// and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
-																				//
-																				var iwBackground = iwOuter.prev();
-
-																				// Remove the background shadow DIV
-																				iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-
-																				// Remove the white background DIV
-																				iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-
-																				//Moving the map conotent - 115 px right
-																				iwOuter.parent().parent().css({left: '30px'});
-
-																				// Moves the shadow of the arrow 76px to the left margin 
-																				iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 94px !important;'});
-
-																				// Moves the arrow 76px to the left margin 
-																				iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 94px !important;'});
-
-																				// Changes the desired tail shadow color.
-																				iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
-																			}, 10);
-*/
+																			infoBubble.close();
+																			infoBubble.open(map, marker);
+																			infoBubble.setContent(infoWindowContent);
 																		},
 																		mouseout: function()
 																		{

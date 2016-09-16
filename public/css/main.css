@@ -2506,6 +2506,7 @@ body {
 	width: 32px;
 	z-index: 50;
 }
+
 .wsh-lst-infowindow
 {
 	display: block;
@@ -3111,12 +3112,6 @@ body {
 	}
 }
 
-/* Google map InfoWindow Content Custom CSS */
-.box-content-map
-{
-	height: 50px !important;
-}
-
 .pull-right
 {
 	float: right;
@@ -3131,39 +3126,7 @@ body {
 #show_paginator
 {
 	margin: auto;
-	width: fit-content;
-}
-
-.map-master-div
-{
-	width: 215px !important;
-	height: 260px !important;
-	padding-right: 0px;
-	padding-left: 0px;
-}
-
-#iw-container  .iw-title
-{
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 22px;
-	font-weight: 400;
-	padding: 10px;
-	background-color: #48b5e9;
-	color: white;
-	margin: 1px;
-	border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
-}
-
-.gm-style-iw
-{
-	width: 215px !important;
-	height: 232px !important;
-	top: 0 !important;
-	left: 0 !important;
-	border-radius: 2px 2px 0 0;
-	background-color: #fff;
-	box-shadow: 10px 10px 6px rgba(178, 178, 178, 0.6);
-	border: 1px solid rgba(72, 181, 233, 0.6);
+	width: fit-content; 
 }
 
 /* Hide Google Map Info Close Button */
@@ -3184,6 +3147,7 @@ body {
 {
 	display: none;
 } */
+
 .gmnoprint a, .gmnoprint span
 {
 	display:none;
@@ -3193,21 +3157,12 @@ body {
 	background:none !important;
 }
 
-.gm-style-iw
-{
-	top: 15px !important; // move the infowindow 15px down
-	left: 0 !important;
-	background-color: #fff;
-	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-	border: 1px solid rgba(72, 181, 233, 0.6);
-	border-radius: 2px 2px 10px 10px; // apply 10px to the bottom corners of the infowindow
-}
-
 /* Paginator First and last Button hide when disabled */
 li.prev.disabled
 {
 	display: none;
 }
+
 li.next.disabled
 {
 	display: none;
