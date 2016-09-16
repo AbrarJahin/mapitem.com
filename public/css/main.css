@@ -3327,7 +3327,7 @@ li.next.disabled
 {
 	overflow-y: hidden; // hide vertical
 	overflow-x: hidden; // hide horizontal
-	height: 270px;
+	height: 300px;
 	margin: 0px;
 	border: 0px;
 	padding: 0px;
@@ -3337,5 +3337,9 @@ li.next.disabled
 	width: 100%;
 	height: auto;
 }
-
+/*Remove Close Button on InfoBubble*/
+img[src="https://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif"]
+{
+	display: none;
+}
 /* Info Bobble Custom CSS - End */

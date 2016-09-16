@@ -2,8 +2,14 @@
 var map_div = $('#map');
 var last_opened_info_window_id = -1;				//For solving infowindow lost issue after AJAX call done
 var viewPortForMobile;
-var InfoBubbleMaxWidth	=	300;
-var InfoBubbleMaxHeight	=	300;
+
+var infoBubble = new InfoBubble({
+							maxWidth: 300,
+							maxHeight:220,
+							padding:0,
+							disableAutoPan: true,
+						});
+
 //var last_opened_infowindow;
 
 // on document ready function
@@ -100,7 +106,8 @@ $(function()
 	{
 		try
 		{
-			map_div.gmap3({get:{name:"InfoBubble"}}).close();
+			//map_div.gmap3({get:{name:"InfoBubble"}}).close();
+			infoBubble.close();
 			last_opened_info_window_id=-1;
 			closeAddDetail();
 		}
@@ -353,12 +360,6 @@ function generateMarkers(bounds)
 		sub_categories.push($(this).val());
 	});
 
-	var infoBubble = new InfoBubble({
-							maxWidth: InfoBubbleMaxWidth,
-							maxHeight:InfoBubbleMaxWidth,
-							disableAutoPan: true,
-						});
-
 	//AJAX Call to get points from server - Start
 	$.ajax(
 				{
@@ -486,7 +487,9 @@ function generateMarkers(bounds)
 																								+	'</a>'
 																								+		'<div class="box">'
 																								+			'<div class="img-box-list">'
-																								+				'<img src="'+$('meta[name=info_window_img]').attr("content")+'">'
+																								+				'<img src="'
+																														+$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image
+																														+'">'
 																								+			'</div>'
 																								+			'<div class="box-content box-content-map">'
 																								+				'<h5><div class="pull-center">'+context.data.title+'</div></h5>'
@@ -499,8 +502,12 @@ function generateMarkers(bounds)
 																			var	map = $(this).gmap3("get");
 
 																			infoBubble.close();
-																			infoBubble.open(map, marker);
 																			infoBubble.setContent(infoWindowContent);
+
+																			$(".map-master-div").parent().parent().css("overflow", "hidden");
+
+																			infoBubble.open(map, marker);
+																			last_opened_info_window_id=context.data.id;
 																		},
 																		mouseout: function()
 																		{
@@ -519,7 +526,7 @@ function generateMarkers(bounds)
 									values: list
 								}
 						});
-						//openLastInfoWindow();
+						openLastInfoWindow();
 					},
 					error: function(jqXHR, textStatus, errorThrown)
 					{
@@ -527,7 +534,7 @@ function generateMarkers(bounds)
 					}
 				});
 	//AJAX Call to get points from server - END
-	//openLastInfoWindow();
+	openLastInfoWindow();
 }
 /*
 function onChangeOnOff()		//Turning on or off clustering
@@ -748,7 +755,7 @@ function openInfoWindowByID(clicked_id)
 							);
 }
 
-/*function openLastInfoWindow()
+function openLastInfoWindow()
 {
 	if(last_opened_info_window_id !== -1)
 	{
@@ -762,7 +769,7 @@ function openInfoWindowByID(clicked_id)
 									, 'click'
 								);
 	}
-}*/
+}
 
 function pullPaginatorElementToFirstElement()
 {
