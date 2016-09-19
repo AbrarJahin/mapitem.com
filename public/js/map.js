@@ -486,8 +486,8 @@ function generateMarkers(bounds)
 																								+		'<object type="image/svg+xml" data="'+$('meta[name=svg_hearts]').attr("content")+'"></object>'
 																								+	'</a>'
 																								+		'<div class="box">'
-																								+			'<div class="img-box-list">'
-																								+				'<img src="'
+																								+			'<div class="img-box-list info-image-box">'
+																								+				'<img class="infowindow-image" src="'
 																														+$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image
 																														+'">'
 																								+			'</div>'

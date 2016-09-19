@@ -3335,8 +3335,26 @@ li.next.disabled
 .box-content-map
 {
 	width: 100%;
+	max-width: 300px;
 	height: auto;
 }
+.box-content-map h5
+{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 300px;
+}
+img.infowindow-image
+{
+	max-width: 300px !important;	/*using Important is bad, but I had to do this for bilal's design*/
+}
+
+.info-image-box
+{
+	width: 300px !important;
+}
+
 /*Remove Close Button on InfoBubble*/
 img[src="https://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif"]
 {
