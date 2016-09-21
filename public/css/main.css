@@ -3337,6 +3337,7 @@ li.next.disabled
 	width: 100%;
 	max-width: 300px;
 	height: auto;
+	background-color: white;
 }
 .box-content-map h5
 {
@@ -3344,6 +3345,7 @@ li.next.disabled
 	overflow: hidden;
 	text-overflow: ellipsis;
 	max-width: 300px;
+	min-height: 20px;
 }
 img.infowindow-image
 {

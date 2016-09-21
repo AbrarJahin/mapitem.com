@@ -5,7 +5,7 @@ var viewPortForMobile;
 
 var infoBubble = new InfoBubble({
 							maxWidth: 300,
-							maxHeight:220,
+							maxHeight:227,
 							padding:0,
 							disableAutoPan: true,
 						});
@@ -443,7 +443,7 @@ function generateMarkers(bounds)
 														+	element.id
 														+ '><div class="img-box-list"><img src="'
 														+	$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image
-														+ '"></div><div class="box-content"><h5>'
+														+ '"></div><div class="box-content"><h5 class="text-center">'
 														+	element.title
 														+ '</h5><h6> $'+element.price+'</h6><div class="clearfix margin-bottom-ten"></div><img height="46" width="46" class="pull-left width-adj2" src="'
 														+	$('meta[name=upload_folder_url]').attr("content")+element.user_image
