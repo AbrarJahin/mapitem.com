@@ -22,7 +22,7 @@ class CreateMessagesTable extends Migration
 
 			//Foreign Keys
 			$table->foreign('thread_id')	->references('id')  ->on('message_threads')	->onDelete('cascade')	->onUpdate('cascade');
-			$table->foreign('sender_id')		->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
+			$table->foreign('sender_id')	->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
 
 			$table->timestamp('created_at')->useCurrent();
 		});

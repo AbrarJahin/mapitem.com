@@ -16,7 +16,13 @@ class FbLogin extends Model
 	public $timestamps		=	false;	//Enable only to created_at
 
 	protected $fillable		=	[
-									'user_id'
+									'user_id',
+									'token',
+									'id',
+									'name',
+									'email',
+									'avatar_url',
+									'avatar_original_url'
 								];
 
 	public function user()

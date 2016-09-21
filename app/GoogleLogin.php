@@ -16,7 +16,12 @@ class GoogleLogin extends Model
 	public $timestamps		=	false; 		// enable only to created_at
 
 	protected $fillable		=	[
-									'user_id'
+									'user_id',
+									'token',
+									'id',
+									'name',
+									'email',
+									'avatar_url'
 								];
 
 	public function user()
