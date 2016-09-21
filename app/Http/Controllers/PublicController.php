@@ -199,9 +199,13 @@ class PublicController extends Controller
 						)
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
-				->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
+				//->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
+				->where('advertisements.price', '>', $requestData['price_range_min'])
 				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
 				->groupBy('advertisement_images.advertisement_id');
+
+		if($requestData['price_range_max']!=1000)
+			$tempData = $tempData->where('advertisements.price', '<', $requestData['price_range_max']);
 
 		//Should check if there is a better way than using collection in this case
 		$totalElementFound = collect(
