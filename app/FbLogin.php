@@ -12,8 +12,7 @@ class FbLogin extends Model
 	* @var array
 	*/
 
-	protected $table		=	'fb_lgin';			//Table Name
-	public $timestamps		=	false;	//Enable only to created_at
+	protected $table		=	'fb_login';			//Table Name
 
 	protected $fillable		=	[
 									'user_id',

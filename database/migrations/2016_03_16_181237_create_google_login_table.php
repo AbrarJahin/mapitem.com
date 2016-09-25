@@ -15,15 +15,15 @@ class CreateGoogleLoginTable extends Migration
 		Schema::create('google_login', function (Blueprint $table)
 		{
 			$table->engine = 'InnoDB';
-			$table->integer('user_id')	->unsigned()	->index();
+			$table->integer('user_id')	->unsigned()	->unique();
 			//Other Info for google Auth
-			$table->string('token', 100)		->unique();
-			$table->string('id', 25)			->unique();
+			$table->string('token', 100);
+			$table->string('id', 25);
 			$table->string('name', 100);
-			$table->string('email', 60)			->unique();
-			$table->string('avatar_url', 200)	->unique();
+			$table->string('email', 60)	->unique();
+			$table->string('avatar_url', 200);
 
-			$table->timestamp('created_at')		->useCurrent();
+			$table->timestamps();
 
 			//Foreign Keys
 			$table->foreign('user_id')		->references('id')	->on('users')	->onDelete('cascade')	->onUpdate('cascade');

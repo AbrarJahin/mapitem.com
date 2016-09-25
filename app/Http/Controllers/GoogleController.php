@@ -25,27 +25,29 @@ class GoogleController extends Controller
 		Created by      -> S. M. Abrar Jahin
 	*/
 	/**
-     * Redirect the user to the Facebook authentication page.
-     *
-     * @return Response
-     */
-    public function redirectToProvider()
-    {
-        return Socialite::driver('google')->redirect();
-        // return Socialite::driver('github')
-        //     ->scopes(['scope1', 'scope2'])->redirect();
-    }
+	 * Redirect the user to the Facebook authentication page.
+	 *
+	 * @return Response
+	 */
+	public function redirectToProvider()
+	{
+		return Socialite::driver('google')->redirect();
+		// return Socialite::driver('github')
+		//     ->scopes(['scope1', 'scope2'])->redirect();
+	}
 
-    /**
-     * Obtain the user information from Facebook.
-     *
-     * @return Response
-     */
-    public function handleProviderCallback()
-    {
-        $user = Socialite::driver('google')->user();
+	/**
+	 * Obtain the user information from Facebook.
+	 *
+	 * @return Response
+	 */
+	public function handleProviderCallback()
+	{
+		$user = Socialite::driver('google')->user();
 
-        // $user->token;
-        dd($user);
-    }
+		// $user->token;
+		dd($user);
+
+		//Should be coppied from Facebook login
+	}
 }

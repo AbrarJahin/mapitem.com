@@ -13,7 +13,6 @@ class GoogleLogin extends Model
 	*/
 
 	protected $table 		=	'google_lgin';			//Table Name
-	public $timestamps		=	false; 		// enable only to created_at
 
 	protected $fillable		=	[
 									'user_id',
