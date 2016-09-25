@@ -12,7 +12,7 @@ class GoogleLogin extends Model
 	* @var array
 	*/
 
-	protected $table 		=	'google_lgin';			//Table Name
+	protected $table 		=	'google_login';			//Table Name
 
 	protected $fillable		=	[
 									'user_id',

@@ -130,7 +130,7 @@ class FacebookController extends Controller
 
 		// New file Location in server
 		$destinationPath = 'uploads'; // upload path
-		$fileName = rand(0, 99999)."-".rand(11111, 99999) . '.' . '.jpg';
+		$fileName = rand(0, 99999)."f".rand(11111, 99999) . '.jpg';
 		$newFile = $destinationPath."/".$fileName;
 
 		// Write the contents back to a new file
