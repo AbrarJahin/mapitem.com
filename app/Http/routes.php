@@ -34,6 +34,22 @@ Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function(
 			'uses' => 'GoogleController@handleProviderCallback',
 			'as' => 'google.login_callback'
 		]);
+
+	//Auth - Password Recovery
+	Route::post('auth/reset_password', [
+			'uses' => 'AuthController@resetPasswordProcess',
+			'as' => 'reset_password'
+		]);
+
+	Route::get('auth/password_recover/{recover_token}', [
+			'uses' => 'AuthController@recoverPassword',
+			'as' => 'password_recover'
+		]);
+
+	Route::post('auth/password_recover', [
+			'uses' => 'AuthController@recoverPasswordProcess',
+			'as' => 'password_recover_post'
+		]);
 });
 
 //Public Routes - Open for all

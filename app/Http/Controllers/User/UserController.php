@@ -114,7 +114,8 @@ class UserController extends Controller
 		$userNotification->my_adds = 0;
 		$userNotification->save();
 
-		$my_adds = Advertisement::with('User')
+		$my_adds = Advertisement::withTrashed()
+					->with('User')
 					->with('AdvertisementImages')
 					->where('user_id',Auth::user()->id)
 					->paginate(5);

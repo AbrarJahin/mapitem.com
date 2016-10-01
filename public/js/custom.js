@@ -1621,4 +1621,29 @@ $(document).ready(function()
 				});
 		});
 	//Inbox Page Design - Stop
+
+	//Recover Password AJAX - Start
+		$("form#reset_password").submit(function(e)
+		{
+			e.preventDefault();
+			if( $('#reset_email_input').val().trim().length<1 )
+			{
+				$('#reset_email_input').parent().addClass("has-error");
+				return 0;
+			}
+			
+			var responce = $.ajax(
+									{
+										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+										method: "POST",
+										url: $(this).attr('action'),
+										dataType: "json",
+										async: false,
+										data: $("#reset_password").serialize()
+									}).responseText;
+
+			$("#recovery_mail_sent_message").html(responce).css("color", "red");
+		});
+	//Recover Password AJAX - End
+
 });

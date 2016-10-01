@@ -1,4 +1,4 @@
-# blockhunt.com
+# mapitem.com
 
 Build On - Laravel PHP Framework (v5.2.15)
 
@@ -69,9 +69,9 @@ Then run
 
 ```bash
 
-git clone https://abrarjahin@bitbucket.org/abrarjahin/blockhunt.com.git
+git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git
 
-cd blockhunt.com
+cd mapitem.com
 
 composer install
 
@@ -83,7 +83,7 @@ composer dump-autoload
 
 php artisan key:generate
 
-# Now set up a DB according to .env file (for here 'blockhunt')
+# Now set up a DB according to .env file (for here 'mapitem')
 
 php artisan migrate:refresh --seed
 

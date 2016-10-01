@@ -11,7 +11,7 @@ Create project-
 
 	cd public_html
 	rm -rf abrar
-	git clone https://abrarjahin@bitbucket.org/abrarjahin/blockhunt.com.git abrar
+	git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git abrar
 	cd abrar
 	php /home/blockhunt/drush/composer.phar install
 	php /home/blockhunt/drush/composer.phar dump-autoload
@@ -29,7 +29,7 @@ Create project-
 
 In 2 line (After deleting the DB)-
 ----------------------------------
-	cd && cd public_html && rm -rf abrar && git clone https://abrarjahin@bitbucket.org/abrarjahin/blockhunt.com.git abrar && cd abrar && php /home/blockhunt/drush/composer.phar install && php /home/blockhunt/drush/composer.phar dump-autoload && php artisan key:generate && php artisan clear-compiled && php artisan dump-autoload && php artisan optimize
+	cd && cd public_html && rm -rf abrar && git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git abrar && cd abrar && php /home/blockhunt/drush/composer.phar install && php /home/blockhunt/drush/composer.phar dump-autoload && php artisan key:generate && php artisan clear-compiled && php artisan dump-autoload && php artisan optimize
 	cp ../.env .env && php artisan migrate:refresh --seed
 
 Update Project (if no major change)-

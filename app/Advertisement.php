@@ -3,18 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
 
 class Advertisement extends Model
 {
 	//use SoftDeletingTrait;
-
+	//protected $dates		=	['deleted_at'];
+	use SoftDeletes;
 	/**
 	* The attributes that should be mutated to dates.
 	*
 	* @var array
 	*/
-	protected $dates		=	['deleted_at'];
 
 	protected $table		=	'advertisements';			//Table Name
 
@@ -28,8 +29,7 @@ class Advertisement extends Model
 									'address',
 									'location_lat',
 									'location_lon',
-									'is_active',
-									'deleted_at'
+									'is_active'
 								];
 
 	protected $hidden = [

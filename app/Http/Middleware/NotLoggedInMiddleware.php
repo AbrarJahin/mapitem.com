@@ -19,7 +19,7 @@ class NotLoggedInMiddleware
 		//Checking if he is admin
 		if ( Auth::check() )	//Logged In
 		{
-			response('You are not allowed because you are already Logged In', 403);
+			return response('You are not allowed because you are already Logged In', 403);
 		}
 		else			//Not admin, then OK
 		{

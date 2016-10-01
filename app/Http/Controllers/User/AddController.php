@@ -131,12 +131,17 @@ class AddController extends Controller
 	{
 		$requestData = Request::all();
 
-		$advertisement				=	Advertisement::where('id',$requestData['advertisement_id'])
+		$advertisement				=	Advertisement::withTrashed()
+													->where('id',$requestData['advertisement_id'])
 													->where('user_id',Auth::user()->id)
 													->first();
 		$advertisement->is_active	=	$requestData['status'];
 		$advertisement->save();
 
+		if($requestData['status'] == "active")
+			$advertisement->restore();
+		else
+			$advertisement->delete();
 		return $advertisement;
 	}
 

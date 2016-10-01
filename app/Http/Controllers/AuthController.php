@@ -4,7 +4,10 @@ use Auth;
 use Request;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Mail;
 use App\User;
+use App\PasswordRecovery;
+use Carbon\Carbon;
 
 /*
 	Functionality   -> Handel All Auth Works
@@ -162,5 +165,132 @@ class AuthController extends Controller
 	{
 		Auth::logout();
 		return Redirect::route('index');
+	}
+
+	/*
+		URL             -> post: /reset_password
+		Functionality   -> Recover password view
+		Access          -> Anyone who is not logged in
+		Created At      -> 05/09/2016
+		Updated At      -> 05/09/2016
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function resetPasswordProcess()
+	{
+		$requestData = Request::all();
+		$user = User::where('email','=',$requestData['email'])->first();
+		if ( is_null($user) )
+		{
+			return "No user found with that email";
+		}
+
+		$token			=	str_random(50).$user->id.sha1( time() );
+		//More can be found for date-time-
+		//https://scotch.io/tutorials/easier-datetime-in-laravel-and-php-with-carbon
+		$currentTime	=	Carbon::now();
+
+		//Now create the recoovery option in DB
+		PasswordRecovery::Create([
+					'user_id'		=>	$user->id,
+					'token'			=>	$token,
+					'request_ip'	=>	Request::ip(),
+					'expire_time'	=>	$currentTime->addMinutes(30)
+				]);
+
+		Mail::send(
+					'email.password_recovery',
+					[	//Variables to access in email view
+						'userName'		=>	$user->first_name." ".$user->last_name,
+						'actionUrl'		=>	route('password_recover',$token)
+					],
+			function ($message) use ($user) //Variable to access in mail object
+			{
+				$message->to($user->email)
+						->subject('Password Recovery - MapItem');
+			});
+
+		return "Mail sent, please check your mail";
+	}
+
+	/*
+		URL             -> get: /password_recover/{token}
+		Functionality   -> Set new Password
+		Access          -> Anyone who is not logged in
+		Created At      -> 05/09/2016
+		Updated At      -> 05/09/2016
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function recoverPassword($token)
+	{
+		$recoveryData = PasswordRecovery::where('token','=',$token)->first();
+		//$data->delete();
+		if ( is_null($recoveryData) )
+		{
+			return "Invalid Token";
+		}
+
+		if( Carbon::parse($recoveryData->expire_time)<Carbon::now() )
+			return 'The token is Expired';
+
+		$user = User::find($recoveryData->user_id);
+
+		return view('public.recovery.reset_password',
+						[
+							'token'		=>	$token,
+							'name'		=>	$user->first_name." ".$user->last_name,
+							'image'		=>	$user->profile_picture
+						]
+					);
+	}
+
+	/*
+		URL             -> post: /password_recover
+		Functionality   -> Set new Password
+		Access          -> Anyone who is not logged in
+		Created At      -> 05/09/2016
+		Updated At      -> 05/09/2016
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function recoverPasswordProcess()
+	{
+		$requestData = Request::all();
+
+		$validator = Validator::make(
+                                        $requestData,
+                                        [
+                                            'password' => 'required|confirmed|min:3',
+                                            'password_confirmation' => 'required|min:3'
+                                        ]
+                                    );
+
+		$recoveryData = PasswordRecovery::where('token','=',$requestData['reset_token'])->first();
+		//$data->delete();
+		if ( is_null($recoveryData) )
+		{
+			return "Invalid Token";
+		}
+
+		if( Carbon::parse($recoveryData->expire_time)<Carbon::now() )
+			return 'The token is Expired';
+
+		//Validator Failed
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)
+                            ->withInput(
+                                            Request::except('password')
+                                        );
+        }
+
+		$user = User::find($recoveryData->user_id);
+		$user->password = bcrypt($requestData['password']);
+		$user->save();
+
+		Auth::loginUsingId($user->id);
+
+		//Remove the token
+		$recoveryData->delete();
+
+		return redirect()->route('index');
 	}
 }

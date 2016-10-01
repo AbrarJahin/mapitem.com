@@ -35,13 +35,16 @@
 				<h4 class="modal-title">Reset Password</h4>
 			</div>
 			<div class="modal-body">
-				<form action="#" class="login no-border">
+				<form id="reset_password" role="form" class="login no-border" method="post" action="{{ URL::route('reset_password') }}">
 					<div class="form-group">
-						<input type="email" class="form-control normal-input" name="email" placeholder="Email Address">
+						<input id="reset_email_input" type="email" class="form-control normal-input" name="email" placeholder="Email Address">
+						{!! csrf_field() !!}
 					</div>
 
 					<button type="submit" class="btn btn-default green-small">Reset Password</button>
-					<p class="small-text margin-top-ten">We will send password to your email address shortly</p>
+					<p id="recovery_mail_sent_message" class="small-text margin-top-ten">
+						We will send password to your email address shortly
+					</p>
 				</form>
 			</div>
 		</div>

@@ -54,7 +54,10 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => [
+                'address'   => env('MAIL_ADDRESS', 'noreply@mapitem.com'),
+                'name'      => env('MAIL_SENDER_NAME', 'Mapitem.com')
+            ],
 
     /*
     |--------------------------------------------------------------------------

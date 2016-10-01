@@ -8,7 +8,7 @@ class Offer extends Model
 {
     protected $table 		=	'offers';
 
-    protected $fillable =	[
+	protected $fillable =	[
 								'add_id',
 								'sender_id',
 								'price',
