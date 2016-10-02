@@ -213,14 +213,11 @@
 													</table>
 
 													<p>
-														If you did not request a password reset, please ignore this email or reply to let us know. This password reset is only valid for the next 30 minutes.
+														If you did not request a password reset, please ignore this email.
 													</p>
 													<p>
 														Thanks,<br/>
-														<b>Support Team</b> and the <b>MapItem Team</b>
-													</p>
-													<p>
-														<strong>P.S.</strong> We also love hearing from you and helping you with any issues you have. Please reply to this email if you want to ask a question or just say hi.
+														<b>MapItem Team</b>
 													</p>
 													<!-- Sub copy -->
 													<table class="body-sub">
@@ -248,7 +245,7 @@
 											<tbody>
 												<tr>
 													<td class="content-cell">
-														<p class="sub center">© 2016 MapItem. All rights reserved.</p>
+														<p class="sub center">© {{ date("Y") }} MapItem. All rights reserved.</p>
 														<p class="sub center">
 															<a href="{{ URL::route('index') }}">MapItem</a>
 														</p>
