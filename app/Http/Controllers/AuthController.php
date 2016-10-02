@@ -264,6 +264,7 @@ class AuthController extends Controller
                                     );
 
 		$recoveryData = PasswordRecovery::where('token','=',$requestData['reset_token'])->first();
+
 		//$data->delete();
 		if ( is_null($recoveryData) )
 		{
@@ -289,6 +290,8 @@ class AuthController extends Controller
 		Auth::loginUsingId($user->id);
 
 		//Remove the token
+		$recoveryData->apply_ip = Request::ip();
+		$recoveryData->save();
 		$recoveryData->delete();
 
 		return redirect()->route('index');
