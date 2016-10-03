@@ -226,6 +226,14 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'as'	=> '.update_offer_status'
 			]);
 	//Offer Status - End
+	
+	//Notification Settings - Start
+		//Notification Settings AJAX
+		Route::post('update_notification_settings', [
+				'uses'	=> 'UserController@updateNotificationSettings',
+				'as'	=> '.update_notification_settings'
+			]);
+	//Notification Settings - End
 });
 
 //Admin Routes

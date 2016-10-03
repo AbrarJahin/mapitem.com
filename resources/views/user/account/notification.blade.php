@@ -1,3 +1,5 @@
+<meta name="notification_settings_url" content="{{ URL::to('update_notification_settings') }}">
+
 <div class="tab-pane" id="d">
     <div class="col-lg-6 col-md-8 col-sm-9 col-xs-12">
       <div class="question">

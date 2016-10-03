@@ -285,4 +285,21 @@ class UserController extends Controller
 	{
 		return view('user.wishlist.main', [ 'current_page'	=> 'user.wishlist' ]);
 	}
+
+	/*
+		URL				-> get: /update_notification_settings
+		Functionality	-> Update Settings
+		Access			-> Anyone who is logged in user
+		Created At		-> 03/10/2016
+		Updated At		-> 03/10/2016
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function updateNotificationSettings()
+	{
+		$requestData	=	Request::all();
+		$user = User::find( Auth::user()->id );
+		$user->$requestData['settingsName'] = $requestData['status'];
+		$user->save();
+		return $user;
+	}
 }

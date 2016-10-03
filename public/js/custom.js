@@ -1650,14 +1650,34 @@ $(document).ready(function()
 	$(".notification_settings").change(function()
 	{
 		var settingsName = $(this).val();
+		var settingsStatus;
 		if( $(this).is(':checked') )
 		{
-			alert('checkd ' + settingsName );
+			settingsStatus = 'enabled';
 		}
 		else
 		{
-			alert('unchecked ' + settingsName );
+			settingsStatus = 'disabled';
 		}
+
+		//alert(settingsName + ' - ' + settingsStatus );
+
+		$.ajax({
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=notification_settings_url]').attr("content"),
+					dataType: "json",
+					data:
+					{
+						settingsName	:	settingsName,
+						status			:	settingsStatus
+					},
+					success:function(responce_data)
+					{
+						alert( 'Settings Updated' );
+					}
+				});
+
 	});
 	//Notification Settings - End
 });
