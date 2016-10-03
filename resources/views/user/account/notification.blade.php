@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="get_offer_notification" value="get_offer_notification">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="get_offer_notification" value="get_offer_notification" @if (Auth::user()->get_offer_notification == 'enabled') checked @endif>
         <label for="cmn-toggle-1"></label>
     </div>
 
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="receive_payment_notification" value="receive_payment_notification">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="receive_payment_notification" value="receive_payment_notification" @if (Auth::user()->receive_payment_notification == 'enabled') checked @endif>
         <label for="cmn-toggle-2"></label>
     </div>
 
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="receive_message_notification" value="receive_message_notification">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="receive_message_notification" value="receive_message_notification" @if (Auth::user()->receive_message_notification == 'enabled') checked @endif>
         <label for="cmn-toggle-3"></label>
     </div>
 
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="email_notification" value="email_notification">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="email_notification" value="email_notification" @if (Auth::user()->email_notification == 'enabled') checked @endif>
         <label for="cmn-toggle-4"></label>
     </div>
 
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="send_payment_notification" value="send_payment_notification">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="send_payment_notification" value="send_payment_notification" @if (Auth::user()->send_payment_notification == 'enabled') checked @endif>
         <label for="cmn-toggle-5"></label>
     </div>
 </div>
