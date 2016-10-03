@@ -1646,4 +1646,18 @@ $(document).ready(function()
 		});
 	//Recover Password AJAX - End
 
+	//Notification Settings - Start
+	$(".notification_settings").change(function()
+	{
+		var settingsName = $(this).val();
+		if( $(this).is(':checked') )
+		{
+			alert('checkd ' + settingsName );
+		}
+		else
+		{
+			alert('unchecked ' + settingsName );
+		}
+	});
+	//Notification Settings - End
 });

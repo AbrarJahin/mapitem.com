@@ -38,6 +38,6 @@ class CreateFbLoginTable extends Migration
 	*/
 	public function down()
 	{
-		Schema::drop('fb_lgin');
+		Schema::drop('fb_login');
 	}
 }

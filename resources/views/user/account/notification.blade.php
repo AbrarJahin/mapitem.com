@@ -5,7 +5,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round" id="cmn-toggle-1">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="get_offer_notification" value="get_offer_notification">
         <label for="cmn-toggle-1"></label>
     </div>
 
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round" id="cmn-toggle-2">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="receive_payment_notification" value="receive_payment_notification">
         <label for="cmn-toggle-2"></label>
     </div>
 
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round" id="cmn-toggle-3">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="receive_message_notification" value="receive_message_notification">
         <label for="cmn-toggle-3"></label>
     </div>
 
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round" id="cmn-toggle-4">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="email_notification" value="email_notification">
         <label for="cmn-toggle-4"></label>
     </div>
 
@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-4 col-sm-3 col-xs-12">
-        <input type="checkbox" class="cmn-toggle cmn-toggle-round" id="cmn-toggle-5">
+        <input type="checkbox" class="cmn-toggle cmn-toggle-round notification_settings" id="send_payment_notification" value="send_payment_notification">
         <label for="cmn-toggle-5"></label>
     </div>
 </div>
