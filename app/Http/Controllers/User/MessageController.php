@@ -12,7 +12,7 @@ use DB;
 
 /*
 	Functionality	-> Handel All Auth Works
-	Access			-> No restriction applied in the class, applied from route if needed
+	Access			-> Only user can access this class
 	Created At		-> 05/02/2016
 	Created by		-> S. M. Abrar Jahin
 */

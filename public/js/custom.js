@@ -70,7 +70,7 @@ function getLocation()
 						$.each(responce_data,function(key_index,single_data)
 						{
 							var data_to_append	=	'<div class="col-lg-3 col-md-3 col-sm-6">'
-														+'<a href="#" class="wsh-lst2">'
+														+'<a href="#" add_id="'+single_data.id+'" class="add_to_wishlist wsh-lst2">'
 															+'<object type="image/svg+xml" data="'+hearts_svg+'"></object>'
 														+'</a>'
 														+'<a href="'+$('#search_add_from').attr('action')+'#'+single_data.id+'"><div class="box">'
@@ -123,6 +123,24 @@ function getCurrentDate()
 function AddNewData()
 {
 	$('#add_data_modal').modal('show');
+}
+
+function addToWisList(id)
+{
+	$.ajax({
+				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				method: "POST",
+				url: $('meta[name=add_wishlist_url]').attr("content"),
+				dataType: "json",
+				data:
+				{
+					advertisement_id	:	id
+				},
+				success:function(responce_data)
+				{
+					alert( 'Product added to wishlist' );
+				}
+			});
 }
 
 function showMessageDetail()
@@ -1710,4 +1728,11 @@ $(document).ready(function()
 
 		});
 	//Update Password - End
+
+	$(document).on('click', '.add_to_wishlist', function (e)
+	{
+		e.preventDefault();
+		addToWisList( $(this).attr('add_id') );
+	});
+
 });

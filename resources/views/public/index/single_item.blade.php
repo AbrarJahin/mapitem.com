@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-3 col-sm-6">
-	<a href="#" class="wsh-lst2">
+	<a href="#" class="add_to_wishlist wsh-lst2">
 		{{-- If any problem in showing SVG in deployment - fix the CSS inside svg element --}}
 		<object type="image/svg+xml" data="{{ URL::asset('svg/normal.svg') }}"></object>
 	</a>

@@ -1,3 +1,4 @@
+<meta name="add_wishlist_url" content="{{ URL::route('user.add_wishlist') }}">
 <div class="results">
 	<div class="r-hdr col-lg-12">
 		<h6 class="pull-left">Showing <span id='record_showing_start'>0</span> - <span id='record_showing_end'>0</span> of <span id='total_match_found'>0</span> Records</h6>

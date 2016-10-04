@@ -2,6 +2,8 @@
 <div class="hd2"><h2>Community Postings</h2></div>
 <!-- community posting start -->
 
+<meta name="add_wishlist_url" content="{{ URL::route('user.add_wishlist') }}">
+
 <meta name="get_homepage_data" content="{{ URL::route('index_items') }}">
 
 <meta name="hearts_svg" content="{{ URL::asset('svg/normal.svg') }}">

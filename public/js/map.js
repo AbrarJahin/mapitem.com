@@ -437,7 +437,7 @@ function generateMarkers(bounds)
 										//alert(element.user_image);
 										element.user_image='../images/empty-profile.jpg';
 									}
-									listing_element	=	'<div class="col-lg-4 col-sm-6"><div class="pos-rel"><a href="#" class="wsh-lst"><object type="image/svg+xml" data="'
+									listing_element	=	'<div class="col-lg-4 col-sm-6"><div class="pos-rel"><a href="#" add_id="'+element.id+'" class="add_to_wishlist wsh-lst"><object type="image/svg+xml" data="'
 														+ $('meta[name=svg_hearts]').attr("content")
 														+ '"></object></a><div class="box showonmap9" marker_id='
 														+	element.id
@@ -482,7 +482,7 @@ function generateMarkers(bounds)
 																			var infoWindowContent = context.data.description;	//Will be generated from AJAX call
 																			infoWindowContent =	'<div class="map-master-div">'
 																								+	'<div class="pos-rel">'
-																								+	'<a href="#" class="wsh-lst-infowindow">'
+																								+	'<a href="#" onclick="addToWisList('+context.data.id+')" class="add_to_wishlist wsh-lst-infowindow">'
 																								+		'<object type="image/svg+xml" data="'+$('meta[name=svg_hearts]').attr("content")+'"></object>'
 																								+	'</a>'
 																								+		'<div class="box">'

@@ -3363,3 +3363,9 @@ img[src="https://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif"]
 	display: none;
 }
 /* Info Bobble Custom CSS - End */
+
+/*Enabling SVG click*/
+object
+{
+	pointer-events: none;
+}

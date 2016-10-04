@@ -235,13 +235,17 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 			]);
 	//Notification Settings - End
 
-	//Security Settings - Start
-		//Password Update AJAX
-		Route::post('auth/update_password', [
-				'uses'		=> 'UserController@updatePassword',
-				'as'		=> '.update_password'
-			]);
-	//Security Settings - End
+	//Password Update AJAX
+	Route::post('auth/update_password', [
+			'uses'		=> 'UserController@updatePassword',
+			'as'		=> '.update_password'
+		]);
+
+	//Add wishlist AJAX
+	Route::post('add_user_wishlist', [
+			'uses'		=> 'WishListController@addWishlist',
+			'as'		=> '.add_wishlist'
+		]);
 });
 
 //Admin Routes
