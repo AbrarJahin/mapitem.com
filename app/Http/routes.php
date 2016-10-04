@@ -226,7 +226,7 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'as'	=> '.update_offer_status'
 			]);
 	//Offer Status - End
-	
+
 	//Notification Settings - Start
 		//Notification Settings AJAX
 		Route::post('update_notification_settings', [
@@ -234,6 +234,14 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'as'	=> '.update_notification_settings'
 			]);
 	//Notification Settings - End
+
+	//Security Settings - Start
+		//Password Update AJAX
+		Route::post('auth/update_password', [
+				'uses'		=> 'UserController@updatePassword',
+				'as'		=> '.update_password'
+			]);
+	//Security Settings - End
 });
 
 //Admin Routes

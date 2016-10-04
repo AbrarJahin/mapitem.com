@@ -1647,37 +1647,67 @@ $(document).ready(function()
 	//Recover Password AJAX - End
 
 	//Notification Settings - Start
-	$(".notification_settings").change(function()
-	{
-		var settingsName = $(this).val();
-		var settingsStatus;
-		if( $(this).is(':checked') )
+		$(".notification_settings").change(function()
 		{
-			settingsStatus = 'enabled';
-		}
-		else
-		{
-			settingsStatus = 'disabled';
-		}
+			var settingsName = $(this).val();
+			var settingsStatus;
+			if( $(this).is(':checked') )
+			{
+				settingsStatus = 'enabled';
+			}
+			else
+			{
+				settingsStatus = 'disabled';
+			}
 
-		//alert(settingsName + ' - ' + settingsStatus );
+			//alert(settingsName + ' - ' + settingsStatus );
 
-		$.ajax({
-					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-					method: "POST",
-					url: $('meta[name=notification_settings_url]').attr("content"),
-					dataType: "json",
-					data:
-					{
-						settingsName	:	settingsName,
-						status			:	settingsStatus
-					},
-					success:function(responce_data)
-					{
-						alert( 'Settings Updated' );
-					}
-				});
+			$.ajax({
+						headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+						method: "POST",
+						url: $('meta[name=notification_settings_url]').attr("content"),
+						dataType: "json",
+						data:
+						{
+							settingsName	:	settingsName,
+							status			:	settingsStatus
+						},
+						success:function(responce_data)
+						{
+							alert( 'Settings Updated' );
+						}
+					});
 
-	});
+		});
 	//Notification Settings - End
+	
+	//Update Password - Start
+		$("form#change_password_form").submit(function(e)
+		{
+			e.preventDefault();
+			$.ajax({
+						headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+						method: "POST",
+						url: $(this).attr('action'),
+						dataType: "json",
+						data: $(this).serialize(),
+						success:function(responce_data)
+						{
+							//alert(responce_data.error);
+							if(!responce_data.error)
+							{
+								$("#validation_error").html(responce_data.detail).addClass("text-success").removeClass("text-danger");
+								$("form#change_password_form").trigger("reset");
+							}
+							else
+								$("#validation_error").html(responce_data.detail).removeClass("text-success").addClass("text-danger");
+						},
+						error: function(xhr, textStatus, errorThrown)
+						{
+							$("#validation_error").html(xhr).removeClass("text-success").addClass("text-danger");
+						}
+					});
+
+		});
+	//Update Password - End
 });

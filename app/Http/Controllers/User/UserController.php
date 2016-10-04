@@ -13,6 +13,7 @@ use App\UserNotification;
 use App\Offer;
 use Carbon\Carbon;
 use DB;
+use Hash;
 
 /*
 	Functionality	-> Handel All User Works
@@ -301,5 +302,49 @@ class UserController extends Controller
 		$user->$requestData['settingsName'] = $requestData['status'];
 		$user->save();
 		return $user;
+	}
+
+	/*
+		URL             -> post: /auth/update_password
+		Functionality   -> Change any user's password
+		Access          -> Anyone who is logged in
+		Created At      -> 04/10/2016
+		Updated At      -> 04/10/2016
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function updatePassword()
+	{
+		$requestData = Request::all();
+
+		$user = User::find(Auth::user()->id);
+
+		if( !Hash::check( $requestData['old_password'] , $user->password) )
+			return [
+					'error'		=> true,
+					'detail'	=> 'Old password is Incorrect'
+				];
+		else if( Hash::check( $requestData['password'] , $user->password) )
+			return [
+					'error'		=> true,
+					'detail'	=> "New password can't be same as Old Password"
+				];
+		else if(strlen($requestData['password'])<4)
+			return [
+					'error'		=> true,
+					'detail'	=> 'Password length too short'
+				];
+		else if( $requestData['password'] != $requestData['password_confirmation'] )
+			return [
+					'error'		=> true,
+					'detail'	=> 'Confirm Password did not match'
+				];
+
+		$user->password = bcrypt( $requestData['password'] );
+		$user->save();
+
+		return [
+				'error'		=> false,
+				'detail'	=> 'Password Updated'
+			];
 	}
 }

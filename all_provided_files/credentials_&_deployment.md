@@ -64,7 +64,7 @@ Previous-
 	ftp.blockhunt.com
 	User: blockhunt
 	Pass: Maplevel1
-	The links are all on www.blockhunt.com/frontend/
+	The links are all on www.mapitem.com/frontend/
 
 ======================================================
 c-panel detail
