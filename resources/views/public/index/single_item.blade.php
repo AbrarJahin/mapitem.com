@@ -6,7 +6,13 @@
 	<a href="{{ URL::route('listing')."#".$advertisement->id }}">
 		<div class="box">
 			<div class="img-box">
-				<img src="{{ URL::asset('uploads') }}/{{ $advertisement->AdvertisementImages[0]->image_name }}" height="226" width="314" alt="{{ $advertisement->title }}">{{-- Advertisement Image --}}
+				<img src="@if (count($advertisement->AdvertisementImages) > 0)
+							{{ URL::asset('uploads') }}/{{ $advertisement->AdvertisementImages[0]->image_name }}
+							@else
+								{{ URL::asset('images/not_available.jpg') }}
+						@endif" height="226" width="314" alt="{{ $advertisement->title }}">
+				{{-- <img src="{{ URL::asset('uploads') }}/{{ $advertisement->AdvertisementImages[0]->image_name }}" height="226" width="314" alt="{{ $advertisement->title }}"> --}}
+				{{-- Advertisement Image --}}
 			</div>
 			<div class="box-content">
 				<h5>{{ $advertisement->title }}</h5>

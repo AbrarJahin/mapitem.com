@@ -51,7 +51,14 @@
 			{{-- Advertisement Body - Start --}}
 				<div class="db-adc">
 					<div class="col-lg-3 col-md-3 col-sm-5 no-padding">
-							<img class="pic-adj img-responsive" src="{{ URL::asset('uploads') }}/{{ $my_add->AdvertisementImages[0]->image_name }}">
+							{{-- <img class="pic-adj img-responsive" src="{{ URL::asset('uploads') }}/{{ $my_add->AdvertisementImages[0]->image_name }}"> --}}
+
+							<img class="pic-adj img-responsive"
+								src="@if (count($my_add->AdvertisementImages) > 0)
+							{{ URL::asset('uploads') }}/{{ $my_add->AdvertisementImages[0]->image_name }}
+							@else
+								{{ URL::asset('images/not_available.jpg') }}
+						@endif">
 					</div>
 
 					<div class="col-lg-9 col-md-9 col-sm-7 dleft">
