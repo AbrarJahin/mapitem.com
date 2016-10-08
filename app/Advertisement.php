@@ -76,12 +76,18 @@ class Advertisement extends Model
 		return $this->hasMany('App\Offer', 'add_id', 'id');
 	}
 
+	public function UserWishlist()
+	{
+		return $this->hasMany('App\UserWishlist', 'advertisement_id', 'id');
+	}
+
 	//Adding Custom Fields with custom Query - Start
 	public $appends =	[
 							'total_views',
 							'avg_rating',
 							'is_reviewed',
-							'is_offer_sent'
+							'is_offer_sent',
+							'is_wishlisted'
 						];
 
 		public function getTotalViewsAttribute()
@@ -109,6 +115,14 @@ class Advertisement extends Model
 				return $this->Offer()->where('sender_id', Auth::user()->id)->count();	//Adding Custom Query
 			else
 				return 0;	//Default Value = Show Review Button
+		}
+
+		public function getIsWishlistedAttribute()
+		{	//Defination of -> 'is_wishlisted'
+			if (Auth::check())
+				return $this->UserWishlist()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
+			else
+				return 0;	//Default Value = Show Not Wishlisted
 		}
 	//Adding Custom Fields with custom Query - END
 }

@@ -1,7 +1,11 @@
 <div class="col-lg-3 col-md-3 col-sm-6">
 	<a href="#" class="add_to_wishlist wsh-lst2">
 		{{-- If any problem in showing SVG in deployment - fix the CSS inside svg element --}}
-		<object type="image/svg+xml" data="{{ URL::asset('svg/normal.svg') }}"></object>
+		<object type="image/svg+xml" data="@if ($advertisement->is_wishlisted > 0)
+							{{ URL::asset('svg/filled.svg') }}
+							@else
+								{{ URL::asset('svg/normal.svg') }}
+						@endif"></object>
 	</a>
 	<a href="{{ URL::route('listing')."#".$advertisement->id }}">
 		<div class="box">

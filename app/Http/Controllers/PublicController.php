@@ -9,6 +9,7 @@ use App\UserAdvertisementView;
 use Request;
 use Auth;
 use DB;
+use URL;
 
 class PublicController extends Controller
 {//A controller to show public pages
@@ -25,7 +26,18 @@ class PublicController extends Controller
 	{
 		$advertisements	=	Advertisement::with('User')
 								->with('AdvertisementImages')
-								->orderBy('created_at', 'desc')
+								->orderBy('advertisements.created_at', 'desc')
+								/*->leftJoin('user_wishlists', function ($join)
+								{
+									$user_id = 1;
+									if(Auth::check())
+									{
+										$user_id = Auth::user()->id;
+									}
+
+									$join->on('user_wishlists.advertisement_id', '=', 'advertisements.id')
+										->where('user_wishlists.user_id', '=', $user_id);
+								})*/
 								->take(8)
 								->get();
 								//->paginate(8);
@@ -53,6 +65,17 @@ class PublicController extends Controller
 		return	DB::table('advertisements')
 					->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
 					->join('users', 'advertisements.user_id', '=', 'users.id')
+					->leftJoin('user_wishlists', function ($join)
+								{
+									$user_id = 1;
+									if(Auth::check())
+									{
+										$user_id = Auth::user()->id;
+									}
+
+									$join->on('user_wishlists.advertisement_id', '=', 'advertisements.id')
+										->where('user_wishlists.user_id', '=', $user_id);
+								})
 					->select(
 								'advertisements.id as id',
 								'advertisements.price as price',
@@ -60,6 +83,12 @@ class PublicController extends Controller
 								'advertisements.description as description',
 								//'users.profile_picture as user_image',
 								'advertisement_images.image_name as advertisement_image',
+								DB::raw(
+											"CASE  
+												WHEN ISNULL(user_wishlists.advertisement_id) THEN '".URL::asset('svg/normal.svg')."'
+												ELSE '".URL::asset('svg/filled.svg')."'
+											END as hearts_image"
+										),
 								DB::raw(
 											"CASE  
 												WHEN LENGTH(users.profile_picture)>0 THEN users.profile_picture

@@ -63,7 +63,7 @@ function getLocation()
 					},
 					success:function(responce_data)
 					{
-						var hearts_svg		=	$('meta[name="hearts_svg"]').attr('content');
+						//var hearts_svg		=	$('meta[name="hearts_svg"]').attr('content');
 						var upload_folder	=	$('meta[name="upload_folder_url"]').attr('content');
 						element_container.empty();
 
@@ -71,7 +71,7 @@ function getLocation()
 						{
 							var data_to_append	=	'<div class="col-lg-3 col-md-3 col-sm-6">'
 														+'<a href="#" add_id="'+single_data.id+'" class="add_to_wishlist wsh-lst2">'
-															+'<object type="image/svg+xml" data="'+hearts_svg+'"></object>'
+															+'<object type="image/svg+xml" data="'+single_data.hearts_image+'"></object>'
 														+'</a>'
 														+'<a href="'+$('#search_add_from').attr('action')+'#'+single_data.id+'"><div class="box">'
 															+'<div class="img-box">'

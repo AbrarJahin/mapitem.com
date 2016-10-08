@@ -6,7 +6,7 @@
 
 <meta name="get_homepage_data" content="{{ URL::route('index_items') }}">
 
-<meta name="hearts_svg" content="{{ URL::asset('svg/normal.svg') }}">
+{{-- <meta name="hearts_svg" content="{{ URL::asset('svg/normal.svg') }}"> --}}
 
 <div class="row" id="home_page_element_container">
 	{{-- Fallback Data Loop --}}
