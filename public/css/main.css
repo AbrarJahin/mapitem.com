@@ -2491,11 +2491,19 @@ body {
 	position: absolute;
 	z-index: -1;
 }
- .wsh-path-fill{
-	 fill: rgba(256,256,256,.3);
- }
+.wsh-path-fill{
+	fill: rgba(256,256,256,.3);
+}
+.wsh-path-fill-filled
+{
+	fill: rgba(35, 165, 0, 0.6);
+}
  .wsh-path-outline{
   stroke: rgba(35, 165, 0, 1);
+ }
+ .wsh-path-outline-filled
+ {
+ 	fill: #23a500;
  }
 .wsh-lst {
 	display: block;
