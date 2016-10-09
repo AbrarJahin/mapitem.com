@@ -3376,4 +3376,6 @@ img[src="https://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif"]
 object
 {
 	pointer-events: none;
+	height: 32px;
+	width: 32px;
 }
