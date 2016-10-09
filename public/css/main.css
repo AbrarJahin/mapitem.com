@@ -3372,10 +3372,14 @@ img[src="https://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif"]
 }
 /* Info Bobble Custom CSS - End */
 
-/*Enabling SVG click*/
 object
 {
-	pointer-events: none;
-	height: 32px;
-	width: 32px;
+	pointer-events:	none;/*Enabling SVG click*/
+	height:			32px;
+	width:			32px;
+}
+object.add_detail
+{
+	height:			14px;
+	width:			14px;
 }

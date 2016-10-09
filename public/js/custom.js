@@ -139,7 +139,7 @@ function addToWisList(id, element)
 				},
 				success:function(responce_data)
 				{
-					alert( responce_data.message );
+					//alert( responce_data.message );
 					if (element)
 					{
 						element.attr('data',responce_data.hearts_image);
@@ -1737,7 +1737,5 @@ $(document).ready(function()
 	{
 		e.preventDefault();
 		addToWisList( $(this).attr('add_id'), $(this).children('object') );
-		//Change Heart Color
-		//$(this).children('object').attr('data',$('meta[name=filleds_heart_svg]').attr("content"));
 	});
 });
