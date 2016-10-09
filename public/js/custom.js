@@ -125,7 +125,7 @@ function AddNewData()
 	$('#add_data_modal').modal('show');
 }
 
-function addToWisList(id)
+function addToWisList(id, element)
 {
 	//console.log( $(this).children('object').attr('data') );
 	$.ajax({
@@ -139,7 +139,11 @@ function addToWisList(id)
 				},
 				success:function(responce_data)
 				{
-					alert( 'Product added to wishlist' );
+					alert( responce_data.message );
+					if (element)
+					{
+						element.attr('data',responce_data.hearts_image);
+					}
 				}
 			});
 }
@@ -1732,8 +1736,8 @@ $(document).ready(function()
 	$(document).on('click', '.add_to_wishlist', function (e)
 	{
 		e.preventDefault();
-		addToWisList( $(this).attr('add_id') );
+		addToWisList( $(this).attr('add_id'), $(this).children('object') );
 		//Change Heart Color
-		$(this).children('object').attr('data',$('meta[name=filleds_heart_svg]').attr("content"));
+		//$(this).children('object').attr('data',$('meta[name=filleds_heart_svg]').attr("content"));
 	});
 });

@@ -43,18 +43,23 @@ class User extends Authenticatable
 							'updated_at'
 						];
 
-	public function fb_login()
+	public function FbLogin()
 	{
 		return $this->hasOne('App\FbLogin', 'user_id');
 	}
 
-	public function google_login()
+	public function GoogleLogin()
 	{
 		return $this->hasOne('App\GoogleLogin', 'user_id');
 	}
 
-	public function advertisement()
+	public function Advertisement()
 	{
 		return $this->hasMany('App\Advertisement', 'user_id');
+	}
+
+	public function UserWishlist()
+	{
+		return $this->hasMany('App\UserWishlist', 'user_id');
 	}
 }

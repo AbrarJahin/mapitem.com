@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Request;
 use Auth;
 use App\UserWishlist;
+use URL;
 
 /*
 	Functionality	-> Handel All Auth Works
@@ -26,11 +27,43 @@ class WishListController extends Controller
 	public function addWishlist()
 	{
 		$requestData = Request::all();
+		$add_status	=	true;
+		$message	=	'';
+		$hearts_image	=	'';
 
-		$userWishlist = UserWishlist::firstOrCreate([
-								'user_id' 			=> Auth::user()->id,
-								'advertisement_id'	=>	$requestData['advertisement_id']
-							]);
-		return $userWishlist;
+		$userWishlistItem = UserWishlist::where('user_id',	Auth::user()->id)
+										->where('advertisement_id',	$requestData['advertisement_id'])
+										->first();
+
+		if (is_null($userWishlistItem))
+		{
+			// Not Wishlisted - add new
+			UserWishlist::Create([
+					'user_id' 			=>	Auth::user()->id,
+					'advertisement_id'	=>	$requestData['advertisement_id']
+				]);
+
+			$add_status		=	true;
+			$message		=	'Added to Wishlist';
+			$hearts_image	=	URL::asset('svg/filled.svg');
+		}
+		else
+		{
+			// Already Wishlisted - delete the existing
+			//$userWishlistItem->delete();
+			UserWishlist::where('user_id',	Auth::user()->id)
+										->where('advertisement_id',	$requestData['advertisement_id'])
+										->delete();
+
+			$add_status		=	false;
+			$message		=	'Wishlisted Item Removed';
+			$hearts_image	=	URL::asset('svg/normal.svg');
+		}
+
+		return [
+					'add_status'	=>	$add_status,
+					'message'		=>	$message,
+					'hearts_image'	=>	$hearts_image
+				];
 	}
 }

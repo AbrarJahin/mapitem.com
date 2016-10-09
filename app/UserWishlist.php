@@ -9,18 +9,21 @@ class UserWishlist extends Model
     protected $table 		=	'user_wishlists';			//Table Name
 	public $timestamps		=	false;
 
+	protected $primaryKey	=	null;
+	public $incrementing	=	false;
+
 	protected $fillable		=	[
 									'user_id',
 									'advertisement_id'
 								];
 
-	public function user()
+	public function User()
 	{
-		return $this->hasOne('App\User','user_id');
+		return $this->belongsTo('App\User','user_id');
 	}
 
-	public function advertisement()
+	public function Advertisement()
 	{
-		return $this->hasOne('App\advertisement','advertisement_id');
+		return $this->belongsTo('App\Advertisement','advertisement_id');
 	}
 }
