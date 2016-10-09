@@ -1,4 +1,9 @@
 <meta name="add_wishlist_url" content="{{ URL::route('user.add_wishlist') }}">
+
+<meta name="filleds_heart_svg" content="{{ URL::asset('svg/filled.svg') }}">
+
+<meta name="svg_hearts"			content="{{ URL::asset('svg/normal.svg') }}">
+
 <div class="results">
 	<div class="r-hdr col-lg-12">
 		<h6 class="pull-left">Showing <span id='record_showing_start'>0</span> - <span id='record_showing_end'>0</span> of <span id='total_match_found'>0</span> Records</h6>
@@ -26,7 +31,6 @@
 <meta name="content_per_page"	content="39">	{{-- No of elements per paginated page --}}
 <meta name="max_visible"		content="5">	{{-- Max no of paginator elements per page --}}
 
-<meta name="svg_hearts"			content="{{ URL::asset('svg/normal.svg') }}">
 <meta name="info_window_img"	content="{{ URL::asset('images/sb-i.jpg') }}">
 
 <meta name="product_detail_ajax_url"	content="{{ URL::route('selected_item_detail') }}">

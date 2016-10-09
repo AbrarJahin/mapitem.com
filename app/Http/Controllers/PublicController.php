@@ -216,6 +216,17 @@ class PublicController extends Controller
 		$tempData = DB::table('advertisements')
 				->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
 				->join('users', 'advertisements.user_id', '=', 'users.id')
+				->leftJoin('user_wishlists', function ($join)
+								{
+									$user_id = 1;
+									if(Auth::check())
+									{
+										$user_id = Auth::user()->id;
+									}
+
+									$join->on('user_wishlists.advertisement_id', '=', 'advertisements.id')
+										->where('user_wishlists.user_id', '=', $user_id);
+								})
 				->select(
 							'advertisements.id as id',
 							'advertisements.location_lat as lat',
@@ -224,7 +235,13 @@ class PublicController extends Controller
 							'advertisements.title as title',
 							'advertisements.description as description',
 							'users.profile_picture as user_image',				//Should be updated later
-							'advertisement_images.image_name as advertisement_image'
+							'advertisement_images.image_name as advertisement_image',
+							DB::raw(
+										"CASE  
+											WHEN ISNULL(user_wishlists.advertisement_id) THEN '".URL::asset('svg/normal.svg')."'
+											ELSE '".URL::asset('svg/filled.svg')."'
+										END as hearts_image"
+									)
 						)
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])

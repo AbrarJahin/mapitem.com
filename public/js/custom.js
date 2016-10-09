@@ -127,6 +127,7 @@ function AddNewData()
 
 function addToWisList(id)
 {
+	//console.log( $(this).children('object').attr('data') );
 	$.ajax({
 				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
 				method: "POST",
@@ -1725,7 +1726,6 @@ $(document).ready(function()
 							$("#validation_error").html(xhr).removeClass("text-success").addClass("text-danger");
 						}
 					});
-
 		});
 	//Update Password - End
 
@@ -1733,6 +1733,7 @@ $(document).ready(function()
 	{
 		e.preventDefault();
 		addToWisList( $(this).attr('add_id') );
+		//Change Heart Color
+		$(this).children('object').attr('data',$('meta[name=filleds_heart_svg]').attr("content"));
 	});
-
 });

@@ -438,7 +438,8 @@ function generateMarkers(bounds)
 										element.user_image='../images/empty-profile.jpg';
 									}
 									listing_element	=	'<div class="col-lg-4 col-sm-6"><div class="pos-rel"><a href="#" add_id="'+element.id+'" class="add_to_wishlist wsh-lst"><object type="image/svg+xml" data="'
-														+ $('meta[name=svg_hearts]').attr("content")
+														//+ $('meta[name=svg_hearts]').attr("content")
+														+ element.hearts_image
 														+ '"></object></a><div class="box showonmap9" marker_id='
 														+	element.id
 														+ '><div class="img-box-list"><img src="'
@@ -468,7 +469,8 @@ function generateMarkers(bounds)
 																		title_image_url	:	$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image,
 																		description		:	element.description,
 																		view_detail_url	:	'#'+element.id,
-																		id				:	element.id
+																		id				:	element.id,
+																		hearts_image	:	element.hearts_image
 																	},
 												events			:	{
 																		click: function(marker, event, context)
@@ -483,7 +485,10 @@ function generateMarkers(bounds)
 																			infoWindowContent =	'<div class="map-master-div">'
 																								+	'<div class="pos-rel">'
 																								+	'<a href="#" onclick="addToWisList('+context.data.id+')" class="add_to_wishlist wsh-lst-infowindow">'
-																								+		'<object type="image/svg+xml" data="'+$('meta[name=svg_hearts]').attr("content")+'"></object>'
+																								+		'<object type="image/svg+xml" data="'
+																											//+	$('meta[name=svg_hearts]').attr("content")
+																											+	context.data.hearts_image
+																										+'"></object>'
 																								+	'</a>'
 																								+		'<div class="box">'
 																								+			'<div class="img-box-list info-image-box">'
