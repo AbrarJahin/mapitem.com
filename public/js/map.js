@@ -589,6 +589,23 @@ function showAddDetail(id)		//Show Add Detail
 							else
 								$('.review').show();
 						}
+						else if(key.localeCompare('is_wishlisted')==0)
+						{
+							if(value==1)	//Added to wishlist
+							{
+								$('object.add_detail').attr(
+																'data',
+																$('meta[name=filleds_heart_svg]').attr("content")
+															);
+							}
+							else	//Not added to wishlist
+							{
+								$('object.add_detail').attr(
+																'data',
+																$('meta[name=svg_hearts]').attr("content")
+															);
+							}
+						}
 						else if(key.localeCompare('is_offer_sent')==0)
 						{
 							if(value==0)
