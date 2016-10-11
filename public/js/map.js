@@ -70,6 +70,7 @@ $(function()
 		});
 	});
 
+	//Change any category
 	$("#category_filter input[type=checkbox]").change(function()
 	{
 		// first : create an object where keys are colors and values is true (only for checked objects)
@@ -651,13 +652,21 @@ function showAddDetail(id)		//Show Add Detail
 							$('.variable-width').slick('unslick');
 							$('.variable-width').empty();
 
-							$.each(value,function(id,image)
+							if(value.length===1)	//To prevent slider from showing only 1 image
 							{
-								//$('.variable-width').prepend($('<div> new div </div>'));
-								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
-								
-								console.log(image.image_name);
-							});
+								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+value[0].image_name+'"></div>');
+								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+value[0].image_name+'"></div>');
+							}
+							else
+							{
+								$.each(value,function(id,image)
+								{
+									//$('.variable-width').prepend($('<div> new div </div>'));
+									$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
+								});
+							}
+
+							
 							//Re Initialize Slick Slider so that images can be OK
 							$('.variable-width').slick( getSliderSettings() );
 						}
