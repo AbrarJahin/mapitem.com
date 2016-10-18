@@ -652,6 +652,10 @@ function showAddDetail(id)		//Show Add Detail
 							$('.variable-width').slick('unslick');
 							$('.variable-width').empty();
 
+							$('.variable-width').slick( getSliderSettings() );
+							$('.variable-width').slick('unslick');
+							$('.variable-width').empty();
+
 							$.each(value,function(id,image)
 							{
 								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
