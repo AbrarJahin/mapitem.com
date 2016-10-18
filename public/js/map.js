@@ -652,21 +652,11 @@ function showAddDetail(id)		//Show Add Detail
 							$('.variable-width').slick('unslick');
 							$('.variable-width').empty();
 
-							if(value.length===1)	//To prevent slider from showing only 1 image
+							$.each(value,function(id,image)
 							{
-								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+value[0].image_name+'"></div>');
-								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+value[0].image_name+'"></div>');
-							}
-							else
-							{
-								$.each(value,function(id,image)
-								{
-									//$('.variable-width').prepend($('<div> new div </div>'));
-									$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
-								});
-							}
+								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
+							});
 
-							
 							//Re Initialize Slick Slider so that images can be OK
 							$('.variable-width').slick( getSliderSettings() );
 						}
@@ -820,12 +810,13 @@ function getSliderSettings()
 {
   return {
 			dots: true,
-			infinite: true,
-			speed: 500,
+			//infinite: true,
+			infinite: false,
+			//speed: 500,
 			slidesToShow: 1,
 			centerMode: true,
 			variableWidth: true,
-			autoplay: true,
+			//autoplay: true,
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: true
