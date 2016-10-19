@@ -1,5 +1,5 @@
 <div class="variable-width">
-	{{-- <div>
+	<div>
 		<img src="http://c3.staticflickr.com/8/7252/6883150650_b4e7c18007.jpg">
 	</div>
 	<div>
@@ -10,5 +10,5 @@
 	</div>
 	<div>
 		<img src="http://c2.staticflickr.com/9/8309/8044300313_5ee7865f34_m.jpg">
-	</div> --}}
+	</div>
 </div>
