@@ -652,14 +652,17 @@ function showAddDetail(id)		//Show Add Detail
 							$('.variable-width').slick('unslick');
 							$('.variable-width').empty();
 
-							$('.variable-width').slick( getSliderSettings() );
-							$('.variable-width').slick('unslick');
-							$('.variable-width').empty();
-
 							$.each(value,function(id,image)
 							{
 								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
 							});
+
+							setTimeout(function()
+							{
+								$('.variable-width').slick('unslick');
+								$('.variable-width').slick( getSliderSettings() );
+								//alert("Re-init");
+							}, 3000);
 
 							//Re Initialize Slick Slider so that images can be OK
 							$('.variable-width').slick( getSliderSettings() );
@@ -814,13 +817,13 @@ function getSliderSettings()
 {
   return {
 			dots: true,
-			//infinite: true,
 			infinite: false,
+			//infinite: true,
+			//autoplay: true,
 			//speed: 500,
 			slidesToShow: 1,
 			centerMode: true,
 			variableWidth: true,
-			//autoplay: true,
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: true
