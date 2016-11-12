@@ -7,7 +7,7 @@ var infoBubble = new InfoBubble({
 							maxWidth: 300,
 							maxHeight:227,
 							padding:0,
-							disableAutoPan: true,
+							disableAutoPan: true
 						});
 
 //var last_opened_infowindow;
@@ -385,7 +385,8 @@ function generateMarkers(bounds)
 					},
 					success: function(all_data)
 					{
-						console.log(all_data);
+						fixInfowindowScroll();
+						//console.log(all_data);
 						//Clear the map markers
 						map_div.gmap3({
 							clear:
@@ -510,9 +511,10 @@ function generateMarkers(bounds)
 																			infoBubble.close();
 																			infoBubble.setContent(infoWindowContent);
 
-																			$(".map-master-div").parent().parent().css("overflow", "hidden");
-
 																			infoBubble.open(map, marker);
+
+																			fixInfowindowScroll();
+
 																			last_opened_info_window_id=context.data.id;
 																		},
 																		mouseout: function()
@@ -781,6 +783,7 @@ function openInfoWindowByID(clicked_id)
 									})
 								, 'click'
 							);
+	fixInfowindowScroll();
 }
 
 function openLastInfoWindow()
@@ -815,12 +818,12 @@ function pullPaginatorElementToFirstElement()
 
 function getSliderSettings()
 {
-  return {
+	return {
 			dots: true,
-			infinite: false,
-			//infinite: true,
-			//autoplay: true,
-			//speed: 500,
+			//infinite: false,
+			infinite: true,
+			autoplay: true,
+			speed: 500,
 			slidesToShow: 1,
 			centerMode: true,
 			variableWidth: true,
@@ -830,6 +833,14 @@ function getSliderSettings()
 		}
 }
 
+function fixInfowindowScroll()
+{
+	setTimeout(function()
+	{
+		//alert("Hello");
+		$(".map-master-div").parent().parent().css("overflow", "hidden");
+	}, 100);
+}
 
 /////////////////////////////////Listing JS - Previous code by designer - Start
 
