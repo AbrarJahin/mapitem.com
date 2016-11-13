@@ -837,8 +837,8 @@ function fixInfowindowScroll()
 {
 	setTimeout(function()
 	{
-		//alert("Hello");
 		$(".map-master-div").parent().parent().css("overflow", "hidden");
+		$(".map-master-div").css("width", "100%");
 	}, 100);
 }
 
