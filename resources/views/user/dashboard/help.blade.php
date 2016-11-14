@@ -4,5 +4,5 @@
         View our help page and scroll through all our commonly asked questions and concerns. 
     </p>
     <div class="clearfix"></div>
-    <button class="btn green-medium pull-right" type="submit">Help</button>
+    <a href="{{ URL::route('user.profile') }}" class="btn green-medium pull-right">Help</a>
 </div>

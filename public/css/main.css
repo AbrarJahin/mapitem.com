@@ -356,6 +356,7 @@ nav .dropdown-menu {
 	font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
 	font-size: 14px;
 	padding:12px 28px;
+	text-decoration: none;
 }
 .green-medium:hover {
 	text-decoration: none;

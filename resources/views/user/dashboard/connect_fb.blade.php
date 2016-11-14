@@ -4,5 +4,5 @@
       Make your buyers feel more at ease with added confidence that you are friendly and safe to deal with.
     </p>
     <div class="clearfix"></div>
-    <button class="btn green-medium pull-right" type="submit">Facebook Connect</button>
+    <a href="{{ URL::route('user.profile') }}" class="btn green-medium pull-right">Facebook Connect</a>
 </div>
