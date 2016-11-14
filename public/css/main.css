@@ -3131,10 +3131,18 @@ body {
 	width: fit-content; 
 }
 
+.page-holder
+{
+	text-align:center;
+}
+
 #show_paginator
 {
-	margin: auto;
-	width: fit-content; 
+	margin: margin:0 auto;;
+	/*width: fit-content;
+	 float: right;
+	padding-right: 50%;
+	display: block; */
 }
 
 /* Hide Google Map Info Close Button */

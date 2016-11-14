@@ -35,4 +35,6 @@
 
 <meta name="product_detail_ajax_url"	content="{{ URL::route('selected_item_detail') }}">
 
-<div id="show_paginator"></div>
+<div class="page-holder">
+	<div id="show_paginator"></div>
+</div>
