@@ -837,7 +837,8 @@ function fixInfowindowScroll()
 {
 	setTimeout(function()
 	{
-		$(".map-master-div").parent().parent().css("overflow", "hidden");
+		$(".map-master-div").parent().parent().attr("style", "overflow: hidden; cursor: default; clear: both; position: relative; padding: 0px; background-color: rgb(255, 255, 255); border-color: rgb(204, 204, 204); border-style: solid; border-radius: 10px; border-width: 1px; width: 300px; height: 227px;");
+		//$(".map-master-div").parent().parent().css("overflow", "hidden");
 		$(".map-master-div").css("width", "100%");
 	}, 100);
 }
