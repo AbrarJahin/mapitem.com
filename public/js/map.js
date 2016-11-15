@@ -336,8 +336,11 @@ $(function()
 	var add_id = location.hash.substr(1);
 	if(add_id.length>0)
 	{
-		openInfoWindowByID( add_id );
-		showAddDetail( add_id );
+		setTimeout(function()
+		{
+			openInfoWindowByID( add_id );
+			showAddDetail( add_id );
+		}, 1500);
 	}
 });
 
