@@ -645,7 +645,7 @@ function showAddDetail(id)		//Show Add Detail
 						}
 						else if(key.localeCompare('user')==0)
 						{
-							console.log('User Data Start');
+							//console.log('User Data Start');
 							$.each(value,function(tag,user_data)
 							{
 								console.log(user_data);
@@ -662,12 +662,7 @@ function showAddDetail(id)		//Show Add Detail
 								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
 							});
 
-							setTimeout(function()
-							{
-								$('.variable-width').slick('unslick');
-								$('.variable-width').slick( getSliderSettings() );
-								//alert("Re-init");
-							}, 3000);
+							fixImageSlider();
 
 							//Re Initialize Slick Slider so that images can be OK
 							$('.variable-width').slick( getSliderSettings() );
@@ -858,6 +853,45 @@ function fixInfowindowScroll()
 		//$(".map-master-div").parent().parent().css("overflow", "hidden");
 		$(".map-master-div").css("width", "100%");
 	}, 400);
+}
+
+function fixImageSlider()
+{
+	setTimeout(function()
+	{
+		$('.variable-width').slick('unslick');
+		$('.variable-width').slick( getSliderSettings() );
+	}, 500);
+
+	setTimeout(function()
+	{
+		$('.variable-width').slick('unslick');
+		$('.variable-width').slick( getSliderSettings() );
+	}, 1000);
+
+	setTimeout(function()
+	{
+		$('.variable-width').slick('unslick');
+		$('.variable-width').slick( getSliderSettings() );
+	}, 1500);
+
+	setTimeout(function()
+	{
+		$('.variable-width').slick('unslick');
+		$('.variable-width').slick( getSliderSettings() );
+	}, 2000);
+
+	setTimeout(function()
+	{
+		$('.variable-width').slick('unslick');
+		$('.variable-width').slick( getSliderSettings() );
+	}, 3000);
+
+	setTimeout(function()
+	{
+		$('.variable-width').slick('unslick');
+		$('.variable-width').slick( getSliderSettings() );
+	}, 4000);
 }
 
 /////////////////////////////////Listing JS - Previous code by designer - Start
