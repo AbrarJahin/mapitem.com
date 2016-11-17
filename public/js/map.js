@@ -820,7 +820,8 @@ function getSliderSettings()
 			dots: true,
 			//infinite: false,
 			infinite: true,
-			autoplay: true,
+			autoplay: false,
+			//autoplay: true,
 			speed: 500,
 			slidesToShow: 1,
 			centerMode: true,
@@ -857,6 +858,7 @@ function fixInfowindowScroll()
 
 function fixImageSlider()
 {
+	$('.listing-right').scrollTop(0);	//Scroll al elements to top after image reloaded
 	setTimeout(function()
 	{
 		$('.variable-width').slick('unslick');
