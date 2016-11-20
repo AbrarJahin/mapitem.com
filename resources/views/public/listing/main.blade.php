@@ -54,6 +54,22 @@
 </div>
 
 {{-- Footer Scripts - Start --}}
+
+		<script>
+			@if(isset($search_location))
+				var searchLocationName	= "{{ $search_location }}";
+			@endif
+			@if( isset($search_data) )
+				var searchValue			= "{{ $search_data }}";
+			@endif
+			@if( isset($latitude) )
+				var latitude			= {{ $latitude }};
+			@endif
+			@if( isset($longitude) )
+				var longitude			= {{ $longitude }};
+			@endif
+		</script>
+
 	@include('public.js')
 
 	<script src="{{ URL::asset('js/jquery.loadie.js') }}"></script>

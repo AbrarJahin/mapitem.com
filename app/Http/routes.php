@@ -83,7 +83,7 @@ Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 			'as' => 'listing'
 		]);
 
-	Route::get('listing/{sub_category}/{latitude}/{longitude}/{search_for}', [
+	Route::get('listing/{search_location}/{latitude}/{longitude}/{search_for}', [
 			'uses' => 'PublicController@listingViewSearch',
 			'as' => 'listing-search'
 		]);

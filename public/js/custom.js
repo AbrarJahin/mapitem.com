@@ -1,7 +1,7 @@
 //Global variables
-var latitude=0, longitude=0;
+var latitude, longitude, searchLocationName;
 var is_tab_opened_before =0;
-var debug_variable;
+//var debug_variable;
 //Email Validate
 function validateEmail(email)
 {
@@ -26,23 +26,37 @@ function centerModal()
 function getLocation()
 {
 	var location = {};
-	if(latitude===0 && longitude===0)		//not called before in the page
+	if( (latitude===undefined && longitude===undefined) || searchLocationName!=undefined )		//not called before in the page
 	{
 		$.get("http://ipinfo.io", function (response)
 		{
-			//Input User Location in input
-			$('#user_location').val( response.city /*+', '+response.country*/ );
 			var temp		= response.loc.split(",");
-			latitude		= parseFloat(temp[0]);
-			longitude		= parseFloat(temp[1]);
+
+			if(searchLocationName!=undefined)	//It is search page
+			{
+				//Input User Location in Input
+				$('#user_location').val( searchLocationName );
+				$('#input_nav_search').val( searchValue );
+			}
+			else
+			{
+				searchLocationName	= undefined;	//Make it undefined because we don't need to execute this if anytime more
+				latitude		= parseFloat(temp[0]);
+				longitude		= parseFloat(temp[1]);
+				//Input User Location in input
+				$('#user_location').val( response.city /*+', '+response.country*/ );
+			}
+
 			$('#user_location_lat').val(latitude);
 			$('#user_location_lon').val(longitude);
+
 			//Set Map Center to Current User Location
 			var $mapDiv = $('#map');
 			if ($mapDiv.length)
 			{
 				$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));
 			}
+
 			//Home Page Element Loading according to current ocation
 			var element_container = $('#home_page_element_container');
 			if (element_container.length)
@@ -221,7 +235,8 @@ $(document).ready(function()
 			{
 				var redirect_url	=	$('meta[name=base_url]').attr("content")
 										+	'/listing/'
-										+	$('#input_nav_subcategory').val()
+										//+	$('#input_nav_subcategory').val()
+										+	$('#user_location').val()
 										+	'/'
 										+	lat_input
 										+	'/'

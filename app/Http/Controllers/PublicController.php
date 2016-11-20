@@ -146,14 +146,8 @@ class PublicController extends Controller
 		Updated At      -> 22/03/2016
 		Created by      -> S. M. Abrar Jahin
 	*/
-	public function listingViewSearch($sub_cat_id,$lat,$lon,$search_data)
+	public function listingViewSearch($search_location,$lat,$lon,$search_data)
 	{
-		/*return [
-					'cat' => $sub_cat_id,
-					'lat' => $lat,
-					'lon' => $lon,
-					'data' => $search_data,
-				];*/
 		return view('public.listing.main', [
 												'current_page'			=>	'Add Listing',
 												'sort_distance_options'	=>	[
@@ -165,15 +159,10 @@ class PublicController extends Controller
 																				'6',
 																				'7',
 																			],
-												'distance_range_options'=>	[
-																				'Any Distance',
-																				'2',
-																				'3',
-																				'4',
-																				'5',
-																				'6',
-																				'7',
-																			]
+												'search_location'		=>	$search_location,
+												'latitude'				=>	$lat,
+												'longitude'				=>	$lon,
+												'search_data'			=>	$search_data
 											]);
 	}
 
