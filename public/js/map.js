@@ -599,15 +599,15 @@ function showAddDetail(id)		//Show Add Detail
 						{
 							if(value==1)	//Added to wishlist
 							{
-								$('object.add_detail').attr(
-																'data',
+								$('img.add_detail').attr(
+																'src',
 																$('meta[name=filleds_heart_svg]').attr("content")
 															);
 							}
 							else	//Not added to wishlist
 							{
-								$('object.add_detail').attr(
-																'data',
+								$('img.add_detail').attr(
+																'src',
 																$('meta[name=svg_hearts]').attr("content")
 															);
 							}

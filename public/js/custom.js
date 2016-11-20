@@ -1,7 +1,7 @@
 //Global variables
 var latitude=0, longitude=0;
 var is_tab_opened_before =0;
-//var debug_variable;
+var debug_variable;
 //Email Validate
 function validateEmail(email)
 {
@@ -142,7 +142,8 @@ function addToWisList(id, element)
 					//alert( responce_data.message );
 					if (element)
 					{
-						element.attr('data',responce_data.hearts_image);
+						//element.attr('data',responce_data.hearts_image);
+						element.attr('src',responce_data.hearts_image);
 					}
 				}
 			});
@@ -1736,6 +1737,6 @@ $(document).ready(function()
 	$(document).on('click', '.add_to_wishlist', function (e)
 	{
 		e.preventDefault();
-		addToWisList( $(this).attr('add_id'), $(this).children('object') );
+		addToWisList( $(this).attr('add_id'), $(this).children('img') );
 	});
 });
