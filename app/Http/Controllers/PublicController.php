@@ -196,7 +196,7 @@ class PublicController extends Controller
 		$requestData = Request::all();
 		//Eloquent Query is not applicable here because of bad performance
 		/*
-		return $advertisements = Advertisement::with('User')
+			return $advertisements = Advertisement::with('User')
 												->with('Category')
 												->with('SubCategory')
 												->with('AdvertisementImages')
@@ -236,6 +236,12 @@ class PublicController extends Controller
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
 				//->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
 				->where('advertisements.price', '>', $requestData['price_range_min'])
+				->where(function($query) use ($requestData)
+					{
+						$query
+							->where('advertisements.title', 'like', '%'.$requestData['search_value'].'%')
+							->orWhere('advertisements.description', 'like', '%'.$requestData['search_value'].'%');
+					})
 				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
 				->groupBy('advertisement_images.advertisement_id');
 
