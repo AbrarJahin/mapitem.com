@@ -6,6 +6,10 @@
 	{{-- Bootstrap Core JavaScript
 	<script src="js/bootstrap.min.js"></script>
 	--}}
+
+	{{-- Typehead Plugin --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.0.1/typeahead.bundle.min.js" type="text/javascript" charset="utf-8"></script>
+
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	{{-- Dropzone - JS --}}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.js"></script>

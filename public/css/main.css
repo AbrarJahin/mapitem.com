@@ -2,53 +2,32 @@
  * Author : S. M. Abrar Jahin & Bilal Munawar;
  */
 html,
-body {
+body
+{
 	width: 100%;
 	height: 100%;
-}
-body {
 	font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
-hr {
+
+hr
+{
 	max-width: 50px;
 	border-color: #f05f40;
 	border-width: 3px;
 }
-hr.light {
+
+hr.light
+{
 	border-color: #fff;
 }
 
 /* Clusterred Map - Sart */
- .gmap3{
-  margin: 20px auto;
-  border: 1px dashed #C0C0C0;
-  width: 100%;
-  height: 750px;
-}
-.cluster{
-  color: #FFFFFF;
-  text-align:center;
-  font-family: 'Arial, Helvetica';
-  font-size:11px;
-  font-weight:bold;
-}
-.cluster-1{
-  background-image:url(../images/m1.png);
-  line-height:53px;
-  width: 53px;
-  height: 52px;
-}
-.cluster-2{
-  background-image:url(../images/m2.png);
-  line-height:53px;
-  width: 56px;
-  height: 55px;
-}
-.cluster-3{
-  background-image:url(../images/m3.png);
-  line-height:66px;
-  width: 66px;
-  height: 65px;
+.gmap3
+{
+	margin: 20px auto;
+	border: 1px dashed #C0C0C0;
+	width: 100%;
+	height: 750px;
 }
 
 /* Clusterred Map - End */

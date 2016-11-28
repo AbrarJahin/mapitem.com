@@ -60,6 +60,12 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 			'uses' => 'AuthController@userLogout',
 			'as' => 'logout'
 		]);
+
+	//Get Suggestion
+	Route::post('get_suggestion', [
+			'uses' => 'PublicController@getSuggestion',
+			'as' => 'get_suggestion'
+		]);
 });
 
 //Public Routes - Can't be accessed by Admin

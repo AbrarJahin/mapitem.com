@@ -22,13 +22,7 @@
 			</ul>
 		</div>
 		<input value="123" type="hidden" id="input_nav_subcategory" name="input_nav_subcategory">
-		<input type="text" placeholder="Search" id="input_nav_search" class="ct form-control normal-input pull-left">
-		<div class="ct-list ct-list2" style="display: none;">
-			<ul id="search_hint">
-				<li><a href="#">This is one</a></li>
-				<li><a href="#">This is two</a></li>
-			</ul> 
-		</div>
+		<input type="text" placeholder="Search" id="input_nav_search" class="ct form-control normal-input pull-left" autocomplete="off">
 	</div>
 
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-padding topsearch">
