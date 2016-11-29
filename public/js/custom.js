@@ -1843,13 +1843,20 @@ $(document).ready(function()
 				})
 				.bind('typeahead:select', function (event, suggestion)
 				{
-					if( ifDeviceIsMobile() )
+					try
 					{
-						generateMarkers( viewPortForMobile );
+						if( ifDeviceIsMobile() )
+						{
+							generateMarkers( viewPortForMobile );
+						}
+						else
+						{
+							generateMarkers(map_div.gmap3("get").getBounds());
+						}
 					}
-					else
+					catch(err)
 					{
-						generateMarkers(map_div.gmap3("get").getBounds());
+						console.log("It is not map page");
 					}
 				});
 	//Typehead - End

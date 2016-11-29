@@ -374,26 +374,12 @@ class PublicController extends Controller
 		Functionality   -> Give Suggestions for Search
 		Access          -> All
 		Created At      -> 28/11/2016
-		Updated At      -> 28/11/2016
+		Updated At      -> 29/11/2016
 		Created by      -> S. M. Abrar Jahin
 	*/
 	public function getSuggestion()
 	{
 		$requestData = Request::all();
-		/*$arr = array(
-					array(
-						"name" => $_POST['search_string'].substr( md5(uniqid(mt_rand(), true)) ,0,10),
-						"price" => rand()
-					),
-					array(
-						"name" => $_POST['search_string'].substr( md5(uniqid(mt_rand(), true)) ,0,10),
-						"price" => rand()
-					),
-					array(
-						"name" => $_POST['search_string'].substr( md5(uniqid(mt_rand(), true)) ,0,10),
-						"price" => rand()
-					)
-				);*/
 
 		return Advertisement::where('title', 'like', '%'.$requestData['search_string'].'%')
 						->select(
