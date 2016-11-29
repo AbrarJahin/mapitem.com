@@ -380,8 +380,7 @@ class PublicController extends Controller
 	public function getSuggestion()
 	{
 		$requestData = Request::all();
-
-		$arr = array(
+		/*$arr = array(
 					array(
 						"name" => $_POST['search_string'].substr( md5(uniqid(mt_rand(), true)) ,0,10),
 						"price" => rand()
@@ -394,8 +393,13 @@ class PublicController extends Controller
 						"name" => $_POST['search_string'].substr( md5(uniqid(mt_rand(), true)) ,0,10),
 						"price" => rand()
 					)
-				);
+				);*/
 
-		return $arr;
+		return Advertisement::where('title', 'like', '%'.$requestData['search_string'].'%')
+						->select(
+									'title as name',
+									'price'
+								)
+                		->get();
 	}
 }

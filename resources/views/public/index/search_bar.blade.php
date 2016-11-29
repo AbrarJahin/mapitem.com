@@ -24,6 +24,7 @@
 			</div>
 			<input value="123" type="hidden" id="input_nav_subcategory" name="input_nav_subcategory">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-padding pos-rel">
+				<meta name="input_nav_search_url" content="{{ URL::route('get_suggestion') }}">
 				<input type="text" class="ct form-control large-input col-lg-4 input-title" id="input_nav_search" name="input_nav_search" placeholder="Search" autocomplete="off">
 			</div>
 
