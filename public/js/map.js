@@ -187,6 +187,7 @@ $(function()
 			$('meta[name=is_paginator_clicked]').attr("content",false);
 		});
 
+	/*
 	//Search Input Change Event
 	$("#input_nav_search").on("input", function(e)
 	{
@@ -199,6 +200,7 @@ $(function()
 			generateMarkers(map_div.gmap3("get").getBounds());
 		}
 	});
+	*/
 
 	//Checkbox Checked Item Change Event
 	$(':checkbox').change(function()
