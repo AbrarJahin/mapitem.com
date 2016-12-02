@@ -1784,9 +1784,9 @@ $(document).ready(function()
 					}
 					catch(err)
 					{
-						lat_min		=	0,
+						lat_min		=	-180,
 						lat_max		=	180,
-						lon_min		=	0,
+						lon_min		=	-180,
 						lon_max		=	180;
 					}
 
