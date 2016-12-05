@@ -122,18 +122,6 @@ class PublicController extends Controller
 																				'ending_desc'	=>	'Ending - Soonest',
 																				'upload_desc'	=>	'Newest - Listed'
 																			]
-												/*
-												,
-												'distance_range_options'=>	[
-																				'Any Distance',
-																				'2',
-																				'3',
-																				'4',
-																				'5',
-																				'6',
-																				'7',
-																			]
-												*/
 											]);
 	}
 
@@ -166,7 +154,7 @@ class PublicController extends Controller
 	}
 
 	/*
-		URL             -> get: /listing
+		URL             -> post: /find_subcategory
 		Functionality   -> Show SubCategory Page
 		Access          -> All
 		Created At      -> 22/03/2016
@@ -183,7 +171,7 @@ class PublicController extends Controller
 	}
 
 	/*
-		URL             -> get: /listing
+		URL             -> post: /find_map_items
 		Functionality   -> Show Listing Page
 		Access          -> All
 		Created At      -> 14/06/2016

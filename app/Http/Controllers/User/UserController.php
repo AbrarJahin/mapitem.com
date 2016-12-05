@@ -14,6 +14,7 @@ use App\Offer;
 use Carbon\Carbon;
 use DB;
 use Hash;
+use URL;
 
 /*
 	Functionality	-> Handel All User Works
@@ -284,7 +285,113 @@ class UserController extends Controller
 	*/
 	public function myWishList()
 	{
-		return view('user.wishlist.main', [ 'current_page'	=> 'user.wishlist' ]);
+		//return view('user.wishlist.main', [ 'current_page'	=> 'user.wishlist' ]);
+		return view('public.listing.main', [
+												'current_page'			=>	'Add Listing',
+												'sort_distance_options'	=>	[
+																				'price_asc'		=>	'Price - Lowest',
+																				'price_desc'	=>	'Price - Highest',
+																				'rating_desc'	=>	'Rating - Highest',
+																				'ending_desc'	=>	'Ending - Soonest',
+																				'upload_desc'	=>	'Newest - Listed'
+																			],
+												'input_nav_search_url'	=>	URL::route('get_suggestion'),
+												'find_map_items_url'	=>	URL::route('user.find_wishlisted_map_items')
+											]);
+	}
+
+	/*
+		URL             -> get: /listing
+		Functionality   -> Show Listing Page
+		Access          -> All
+		Created At      -> 14/06/2016
+		Updated At      -> 14/06/2016
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function findWishlistedMapItems()
+	{
+		$requestData = Request::all();
+
+		$tempData = DB::table('advertisements')
+				->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
+				->join('users', 'advertisements.user_id', '=', 'users.id')
+				->leftJoin('user_wishlists', function ($join)
+								{
+									$user_id = 1;
+									if(Auth::check())
+									{
+										$user_id = Auth::user()->id;
+									}
+
+									$join->on('user_wishlists.advertisement_id', '=', 'advertisements.id')
+										->where('user_wishlists.user_id', '=', $user_id);
+								})
+				->select(
+							'advertisements.id as id',
+							'advertisements.location_lat as lat',
+							'advertisements.location_lon as lon',
+							'advertisements.price as price',
+							'advertisements.title as title',
+							'advertisements.description as description',
+							'users.profile_picture as user_image',				//Should be updated later
+							'advertisement_images.image_name as advertisement_image',
+							DB::raw(
+										"CASE  
+											WHEN ISNULL(user_wishlists.advertisement_id) THEN '".URL::asset('svg/normal.svg')."'
+											ELSE '".URL::asset('svg/filled.svg')."'
+										END as hearts_image"
+									)
+						)
+				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
+				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
+				//->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
+				->where('advertisements.price', '>', $requestData['price_range_min'])
+				->where(function($query) use ($requestData)
+					{
+						$query
+							->where('advertisements.title', 'like', '%'.$requestData['search_value'].'%')
+							->orWhere('advertisements.description', 'like', '%'.$requestData['search_value'].'%');
+					})
+				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
+				->groupBy('advertisement_images.advertisement_id');
+
+		if($requestData['price_range_max']!=1000)
+			$tempData = $tempData->where('advertisements.price', '<', $requestData['price_range_max']);
+
+		//Should check if there is a better way than using collection in this case
+		$totalElementFound = collect(
+										$tempData->pluck('advertisements.id')
+									)->count();
+
+		//Ordering
+		if( $requestData['sort_ordering'] == 'price_asc' )
+			$tempData = $tempData->orderBy('advertisements.price', 'asc');
+		else if( $requestData['sort_ordering'] == 'price_desc' )
+			$tempData = $tempData->orderBy('advertisements.price', 'desc');
+		/*else if( $requestData['sort_ordering'] == 'rating_desc' )
+			$tempData = $tempData->orderBy('name', 'desc');
+		else if( $requestData['sort_ordering'] == 'ending_desc' )
+			$tempData = $tempData->orderBy('name', 'desc');*/
+		else if( $requestData['sort_ordering'] == 'upload_desc' )
+			$tempData = $tempData->orderBy('advertisements.created_at', 'desc');
+
+		//return $tempData->get();
+
+		//Paginator
+		$data = $tempData->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
+							->take($requestData['content_per_page'])
+							->get();
+
+		//Formetting data for sending
+		$json_data	=	array(
+						"showing_start"	=>	($totalElementFound > 0 ? ($requestData['current_page_no']-1)*$requestData['content_per_page']+1 : 0),												// Records Show Start
+						"showing_end"	=>	min($totalElementFound,$requestData['current_page_no']*$requestData['content_per_page']),												// Records Show End
+						"total_element"	=>	$totalElementFound,												// Total number of records
+						"total_page"	=>	ceil( $totalElementFound / $requestData['content_per_page'] ),	// total number of pages
+						"current_page"	=>	$requestData['current_page_no']/1,								// current page number
+						"data"			=>	$data															// total data array
+					);
+		return $json_data;
 	}
 
 	/*

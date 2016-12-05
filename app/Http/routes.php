@@ -152,11 +152,17 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 			'as' => '.profile_update'
 		]);
 
-	//WishList Page
-	Route::get('wishlist', [
-			'uses' => 'UserController@myWishList',
-			'as' => '.wishlist'
-		]);
+	//WishList Page - Start
+		Route::get('wishlist', [
+				'uses' => 'UserController@myWishList',
+				'as' => '.wishlist'
+			]);
+		//Find only wishlisted items from map
+		Route::post('find_wishlisted_map_items', [
+				'uses' => 'UserController@findWishlistedMapItems',
+				'as' => '.find_wishlisted_map_items'
+			]);
+	//WishList Page - End
 
 	//Account Page
 	Route::get('account', [

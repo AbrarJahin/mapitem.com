@@ -22,7 +22,7 @@
 			</ul>
 		</div>
 		<input value="123" type="hidden" id="input_nav_subcategory" name="input_nav_subcategory">
-		<meta name="input_nav_search_url" content="{{ URL::route('get_suggestion') }}">
+		<meta name="input_nav_search_url" content="{{ isset($input_nav_search_url) ? $input_nav_search_url : URL::route('get_suggestion') }}">
 		<input type="text" placeholder="Search" id="input_nav_search" class="ct form-control normal-input pull-left" autocomplete="off">
 	</div>
 
