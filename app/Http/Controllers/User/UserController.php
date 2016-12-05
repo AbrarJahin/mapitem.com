@@ -344,8 +344,8 @@ class UserController extends Controller
 						)
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
-				//->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
 				->where('advertisements.price', '>', $requestData['price_range_min'])
+				->where('user_wishlists.user_id', '=', Auth::user()->id)
 				->where(function($query) use ($requestData)
 					{
 						$query
