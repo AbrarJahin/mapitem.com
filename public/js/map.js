@@ -458,10 +458,10 @@ function generateMarkers(bounds)
 										//alert(element.user_image);
 										element.user_image='../images/empty-profile.jpg';
 									}
-									listing_element	=	'<div class="col-lg-4 col-sm-6"><div class="pos-rel"><a href="#" add_id="'+element.id+'" class="add_to_wishlist wsh-lst"><object type="image/svg+xml" data="'
+									listing_element	=	'<div class="col-lg-4 col-sm-6"><div class="pos-rel"><a href="#" add_id="'+element.id+'" class="add_to_wishlist wsh-lst"><img src="'
 														//+ $('meta[name=svg_hearts]').attr("content")
 														+ element.hearts_image
-														+ '"></object></a><div class="box showonmap9" marker_id='
+														+ '"></img></a><div class="box showonmap9" marker_id='
 														+	element.id
 														+ '><div class="img-box-list"><img src="'
 														+	$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image
