@@ -505,11 +505,11 @@ function generateMarkers(bounds)
 																			var infoWindowContent = context.data.description;	//Will be generated from AJAX call
 																			infoWindowContent =	'<div class="map-master-div">'
 																								+	'<div class="pos-rel">'
-																								+	'<a href="#" onclick="addToWisList('+context.data.id+')" class="add_to_wishlist wsh-lst-infowindow">'
-																								+		'<object type="image/svg+xml" data="'
+																								+	'<a href="#" onclick="addToWisList('+context.data.id+',this)" class="add_to_wishlist wsh-lst-infowindow">'
+																								+		'<img src="'
 																											//+	$('meta[name=svg_hearts]').attr("content")
 																											+	context.data.hearts_image
-																										+'"></object>'
+																										+'"></img>'
 																								+	'</a>'
 																								+		'<div class="box">'
 																								+			'<div class="img-box-list info-image-box">'

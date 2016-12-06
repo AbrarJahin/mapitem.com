@@ -153,11 +153,30 @@ function addToWisList(id, element)
 				},
 				success:function(responce_data)
 				{
-					//alert( responce_data.message );
-					if (element)
+					try
 					{
-						//element.attr('data',responce_data.hearts_image);
 						element.attr('src',responce_data.hearts_image);
+					}
+					catch(err)
+					{
+						try
+						{
+							var chield = $(jQuery(element)).children('img');
+							chield.attr('src',responce_data.hearts_image);
+						}
+						catch(err2)
+						{
+							console.log(err2);
+						}
+					}
+
+					try
+					{
+						generateMarkers(map_div.gmap3("get").getBounds());
+					}
+					catch(err)
+					{
+						console.log(err);
 					}
 				}
 			});
