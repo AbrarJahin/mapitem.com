@@ -141,7 +141,6 @@ function AddNewData()
 
 function addToWisList(id, element)
 {
-	//console.log( $(this).children('object').attr('data') );
 	$.ajax({
 				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
 				method: "POST",
@@ -172,7 +171,10 @@ function addToWisList(id, element)
 
 					try
 					{
-						generateMarkers(map_div.gmap3("get").getBounds());
+						if( !ifDeviceIsMobile() )
+						{
+							generateMarkers(map_div.gmap3("get").getBounds());
+						}
 					}
 					catch(err)
 					{
