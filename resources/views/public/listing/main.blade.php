@@ -14,12 +14,7 @@
 
 {{-- Modal --}}
 @include('post_free_add_modal')
-
-{{-- If user is not logged in, then needed --}}
-	{{--send offer login Modal --}}
-	@include('public.listing.send_offer_login_modal')
-	{{-- Send offer sign up Modal --}}
-	@include('public.listing.send_offer_signup_modal')
+@include('public.not_logged_in_modal')
 
 {{-- Inner Body --}}
 <div class="container header-minus wraper no-padding">

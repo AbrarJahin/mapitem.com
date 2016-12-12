@@ -18,7 +18,6 @@
 														background-position: center;" --}}>
 					{{-- <object type="image/svg+xml" class="add_detail" data="{{ URL::asset('svg/normal.svg') }}"></object> --}}
 					<img type="image/svg+xml" class="add_detail" src="{{ URL::asset('svg/normal.svg') }}"></img>
-					{{--  --}}
 				</a>
 				<a data-placement="top" data-toggle="tooltip" class="fa fa-comment-o grey-tooltip" href="#" data-original-title="Reviews"></a>
 

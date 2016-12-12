@@ -18,6 +18,8 @@
 		--}}
 		{{-- Modal --}}
 		@include('post_free_add_modal')
+		@include('public.not_logged_in_modal')
+
 		<div class="container-fluid no-padding height-adj1">
 			@include('public.index.banner')
 			@include('public.index.search_bar')
