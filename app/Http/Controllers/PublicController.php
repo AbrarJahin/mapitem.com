@@ -369,12 +369,12 @@ class PublicController extends Controller
 	{
 		$requestData = Request::all();
 
-		return Advertisement::where('title', 'like', '%'.$requestData['search_string'].'%')
+		return DB::table('advertisements')
+						->where('title', 'like', '%'.$requestData['search_string'].'%')
 						->whereBetween('location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 						->whereBetween('location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
 						->select(
-									'title as name',
-									'price'
+									'title as name'
 								)
 						->orderBy('title', 'asc')
 						->distinct()
