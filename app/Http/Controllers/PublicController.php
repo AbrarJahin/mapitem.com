@@ -376,6 +376,8 @@ class PublicController extends Controller
 									'title as name',
 									'price'
 								)
+						->orderBy('title', 'asc')
+						->distinct()
                 		->get();
 	}
 }
