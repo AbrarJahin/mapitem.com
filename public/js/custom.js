@@ -152,6 +152,11 @@ function addToWisList(id, element)
 				},
 				success:function(responce_data)
 				{
+					if(responce_data.length==0)
+					{
+						$('#sgn-pup').modal('show');
+					}
+
 					try
 					{
 						element.attr('src',responce_data.hearts_image);
@@ -180,6 +185,10 @@ function addToWisList(id, element)
 					{
 						console.log(err);
 					}
+				},
+				error: function(jqXHR, exception)
+				{
+					$('#lgn-pup').modal('show');
 				}
 			});
 }
@@ -596,27 +605,29 @@ $(document).ready(function()
 			e.preventDefault(e);
 			$(this).find("button[type='submit']").prop('disabled',true);
 
-			var responce = $.ajax(
-									{
-										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-										method: "POST",
-										url: $(this).attr('action'),
-										dataType: "json",
-										async: false,
-										data: $("#post_free_add_form").serialize(),
-										/*{
-											uuid	:	$('meta[name=_token]').attr("content"),
-											user_id	:	3
-										},*/
-									}).responseText;
+			$.ajax(
+					{
+						headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+						method: "POST",
+						url: $(this).attr('action'),
+						dataType: "json",
+						async: false,
+						data: $("#post_free_add_form").serialize(),
+						success:function(responce_data)
+						{
+							console.log(responce_data);
+							$('meta[name=uploaded_add_id]').attr('content', responce_data);		//Setting from AJAX responce
 
-			console.log(responce);
-
-			$('meta[name=uploaded_add_id]').attr('content', responce);		//Setting from AJAX responce
-
-				//Process of upload should start after successfull advertisement upload - Will do later
-
-			$myDropZone[0].dropzone.processQueue();								//Uploading files
+							//Process of upload should start after successfull advertisement upload - Will do later
+							$myDropZone[0].dropzone.processQueue();								//Uploading files
+						},
+						error: function(jqXHR, exception)
+						{
+							$('#pfa').modal('hide');
+							$('#lgn-pup').modal('show');
+						}
+					});
+			$(this).find("button[type='submit']").prop('disabled',false);
 		});
 	}
 	//Free Add Posting  - End
@@ -967,12 +978,53 @@ $(document).ready(function()
 	window.prettyPrint && prettyPrint();
 
 	//Global AJAX Config - Start
-	$(document).ajaxStart(function(){
+	$(document).ajaxStart(function()
+	{
 		$("#wait").css("display", "block");
 	});
 
-	$(document).ajaxComplete(function(){
+	$(document).ajaxComplete(function()
+	{
 		$("#wait").css("display", "none");
+	});
+
+	$(document).ajaxError(function( event, jqXHR, settings, thrownError )
+	{
+		if (jqXHR.status === 0)
+		{
+			console.log('Not connect.\n Verify Network.');
+		}
+		else if (jqXHR.status == 404)
+		{
+			console.log('Requested page not found. [404]');
+		}
+		else if (jqXHR.status == 500)
+		{
+			console.log('Internal Server Error [500].');
+		}
+		else if (thrownError === 'parsererror')
+		{
+			console.log('Requested JSON parse failed.');
+		}
+		else if (thrownError === 'timeout')
+		{
+			console.log('Time out error.');
+		}
+		else if (thrownError === 'abort')
+		{
+			console.log('Ajax request aborted.');
+		}
+		else
+		{
+			console.log('event');
+			console.log(event);
+			console.log('jqXHR');
+			console.log(jqXHR);
+			console.log('settings');
+			console.log(settings);
+			console.log('thrownError');
+			console.log(thrownError);
+		}
 	});
 	//Global AJAX Config - END
 	
