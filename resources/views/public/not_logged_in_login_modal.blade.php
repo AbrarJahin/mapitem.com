@@ -8,22 +8,23 @@
 			</div>
 			<div class="modal-body">
 
-				<form class="" id="login-f" role="form">
-					<div class="form-group">
-						<input type="email" required placeholder="Email" id="inputEmail" class="form-control normal-input">
+				<form role="form" id="login-fpop" class="login" method="post" action="{{ URL::route('login') }}">
+					<div class="form-group" id="login-email-div-pop">
+						<input type="email" name="email" required placeholder="Email" id="login-email-pop" class="form-control normal-input">
 					</div>
-					<div class="form-group">
-						<input type="password" required placeholder="Password" class="form-control normal-input" name="login-password" id="login-password">
+					<div class="form-group" id="login-password-div-pop">
+						<input type="password" name="password" required placeholder="Password" class="form-control normal-input" name="login-password" id="login-password-pop">
 					</div>
 					<div class="pos-adj1">
 						<a style="color: #23a500 !important; float: left; font-size: 9pt!important; padding: 0 !important; width: 50%;" data-target="#forgot-password" data-toggle="modal" href="#" class="fp">Forgot Password ?</a>
 						<div class="checkbox no-margin pull-right">
 							<label class="pos-adj2">
-								<input type="checkbox"> Remember Me
+								<input name="remember_me" type="checkbox"/> Remember Me
 							</label>
 						</div>
 					</div>
-					<button class="btn btn-default green-small3 margin-top-twenty" type="submit">Login</button>
+					<div class="form-group text-danger" id="login_error_message_pop"></div>
+					<button type="submit" data-loading-text="Logging in.." id="login_submit_pop" class="btn btn-default green-small3 margin-top-twenty">Login</button>
 					<div class="pos-adj3">
 						<span>Don't have an account ?</span>
 						<a data-target="#sgn-pup" data-toggle="modal" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;" class="sup" href="#">Sign up</a>
@@ -43,8 +44,8 @@
 						</div>
 					</div>
 				</form>
-				<a class="facebook butt-adj1" href="#">Login with Facebook</a>
-				<a class="googleplus butt-adj1" href="#">Login with Google Plus</a>
+				<a class="facebook butt-adj1" href="{{ URL::route('facebook.login') }}">Login with Facebook</a>
+				<a class="googleplus butt-adj1" href="{{ URL::route('google.login') }}">Login with Google Plus</a>
 
 			</div>
 			<div class="clearfix margin-twenty"></div>

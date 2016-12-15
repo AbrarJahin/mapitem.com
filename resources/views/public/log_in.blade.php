@@ -2,9 +2,6 @@
 <ul class="dropdown-menu no-padding shadow loginpopup">
 	<li>
 		<form role="form" id="login-f" class="login" method="post" action="{{ URL::route('login') }}">
-			{{--
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			--}}
 			<div class="form-group" id="login-email-div">
 				<input type="email" id="login-email" class="form-control normal-input" name="email" placeholder="Email">
 			</div>
@@ -15,7 +12,7 @@
 				<a class="fp" href="#" data-toggle="modal" data-target="#forgot-password" data-dismiss="modal" style="color: #23a500 !important; float: left; font-size: 9pt!important; padding: 0 !important; width: 50%;">Forgot Password ?</a>
 				<div class="checkbox no-margin pull-right">
 					<label class="pos-adj2">
-						<input name="remember_me" type="checkbox"> Remember Me
+						<input name="remember_me" type="checkbox"/> Remember Me
 					</label>
 				</div>
 			</div>

@@ -2,9 +2,7 @@
 <ul class="dropdown-menu no-padding shadow loginpopup">
 	<li>
 		<form  id="sign-up-f" class="login" method="post" action="{{ URL::route('register_user') }}">
-			{{--
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			--}}
+
 			<div class="form-group" id="signup-first_name-div">
 				<input type="text" class="form-control normal-input" id="signup-first_name" name="first_name" placeholder="First Name">
 			</div>

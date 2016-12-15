@@ -375,7 +375,7 @@ $(document).ready(function()
 										url: $(this).attr('action'),
 										dataType: "json",
 										async: false,
-										data: $("#login-f").serialize(),
+										data: $("#login-f").serialize()
 									}).responseText;
 
 			$.each($.parseJSON(responce),function(key,value)
@@ -399,6 +399,72 @@ $(document).ready(function()
 			});
 		}
 		$("#login_submit").button('reset');		//Reset button state
+		return false;	//Form not submitted
+	});
+
+	/* Submit button pressed - Login Popup */
+	$("#login-fpop").submit(function()
+	{
+		var isValidated = true;
+		$("#login_submit_pop").button('loading');		//Change button state to loggin in
+		//Checking input for validation
+
+		//email field
+		if( !validateEmail( $('#login-email-pop').val() ) )
+		{
+			isValidated = false;
+			$('#login-email-div-pop').addClass('has-error');
+		}
+		else
+		{
+			$('#login-email-div-pop').removeClass('has-error');
+		}
+
+		//Password Field
+		if( $('#login-password-pop').val().length == 0 )
+		{
+			isValidated = false;
+			$('#login-password-div-pop').addClass('has-error');
+		}
+		else
+		{
+			$('#login-password-div-pop').removeClass('has-error');
+		}
+
+		//Making AJAX check
+		if(isValidated)
+		{
+			var responce = $.ajax(
+									{
+										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+										method: "POST",
+										url: $(this).attr('action'),
+										dataType: "json",
+										async: false,
+										data: $("#login-fpop").serialize()
+									}).responseText;
+
+			$.each($.parseJSON(responce),function(key,value)
+			{
+				if(key.localeCompare('status')==0)
+				{
+					if(value=='0')
+					{
+						console.log("Not Signed In");
+					}
+					else
+					{
+						console.log("Signed In Successfully");
+						location.reload();
+					}
+				}
+				if(key.localeCompare('message')==0)
+				{
+					$("#login_error_message_pop").html(value);
+				}
+			});
+		}
+		$("#login_submit_pop").button('reset');		//Reset button state
 		return false;	//Form not submitted
 	});
 
@@ -494,6 +560,97 @@ $(document).ready(function()
 			});
 		}
 		$("#sign_up_submit").button('reset');		//Reset button state
+		return false;	//Form not submitted
+	});
+
+	/* Submit button pressed - Sign-up Popup */
+	$("form#sign-up-fpop").submit(function(e)
+	{
+		e.preventDefault();
+		var isValidated = true;
+		$("#sign_up_submit_pop").button('loading');		//Change button state to Signing Up
+		//Checking input for validation
+
+		//First Name
+		if( $('#signup-first_name_pop').val().length < 2 )
+		{
+			isValidated = false;
+			$('#signup-first_name_pop-div').addClass('has-error');
+		}
+		else
+		{
+			$('#signup-first_name_pop-div').removeClass('has-error');
+		}
+
+		//Last Name
+		if( $('#signup-last_name_pop').val().length < 2 )
+		{
+			isValidated = false;
+			$('#signup-last_name_pop-div').addClass('has-error');
+		}
+		else
+		{
+			$('#signup-last_name_pop-div').removeClass('has-error');
+		}
+
+		//email field
+		if( !validateEmail( $('#signup-email-pop').val() ) )
+		{
+			isValidated = false;
+			$('#signup-email-pop-div').addClass('has-error');
+		}
+		else
+		{
+			$('#signup-email-pop-div').removeClass('has-error');
+		}
+
+		//Password Field
+		if( $('#signup-password-pop').val().length == 0 )
+		{
+			isValidated = false;
+			$('#signup-password-pop-div').addClass('has-error');
+		}
+		else
+		{
+			$('#signup-password-pop-div').removeClass('has-error');
+		}
+
+		//Making AJAX check
+		if(isValidated)
+		{
+			var responce = $.ajax(
+									{
+										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+										method: "POST",
+										url: $(this).attr('action'),
+										dataType: "json",
+										async: false,
+										data: $("#sign-up-fpop").serialize()
+									}).responseText;
+
+			$.each($.parseJSON(responce),function(key,value)
+			{
+				if(key.localeCompare('status')==0)
+				{
+					if(value=='0')
+					{
+						console.log("Sign Up Failed");
+					}
+					else
+					{
+						console.log("Signed Up Successfully");
+						location.reload();
+					}
+				}
+
+				if(key.localeCompare('messages')==0)
+				{
+					$("#sign_up_error_message_pop").html("Given e-mail already in use !");
+					console.log(value);
+				}
+			});
+		}
+		$("#sign_up_submit_pop").button('reset');		//Reset button state
 		return false;	//Form not submitted
 	});
 
