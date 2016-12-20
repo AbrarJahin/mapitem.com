@@ -133,7 +133,7 @@ class PublicController extends Controller
 		Updated At      -> 22/03/2016
 		Created by      -> S. M. Abrar Jahin
 	*/
-	public function listingViewSearch($search_location,$lat,$lon,$search_data)
+	public function listingViewSearch($search_location,$lat,$lon,$search_data="")
 	{
 		return view('public.listing.main', [
 												'current_page'			=>	'Add Listing',

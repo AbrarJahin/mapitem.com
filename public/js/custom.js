@@ -241,6 +241,7 @@ $(document).ready(function()
 	$("form#search_add_from").submit(function(e)
 	{
 		e.preventDefault();
+		/*
 		if( $('#input_nav_search').val().trim().length<1 )
 		{
 			$('#input_nav_search').parent().addClass("has-error");
@@ -249,6 +250,16 @@ $(document).ready(function()
 		else
 		{
 			$('#input_nav_search').parent().removeClass("has-error");
+		}
+		*/
+		if( $('#user_location').val().trim().length<1 )
+		{
+			$('#user_location').parent().addClass("has-error");
+			return 0;
+		}
+		else
+		{
+			$('#user_location').parent().removeClass("has-error");
 		}
 		var lat_input,lon_input;
 		try
@@ -270,9 +281,16 @@ $(document).ready(function()
 										+	'/'
 										+	lat_input
 										+	'/'
-										+	lon_input
-										+	'/'
-										+	$('#input_nav_search').val().trim();
+										+	lon_input;
+										//+	'/'
+										//+	$('#input_nav_search').val().trim();
+
+				var input_nav_search_value = $('#input_nav_search').val().trim();
+				if( input_nav_search_value.length>0 )
+				{
+					redirect_url += '/'+input_nav_search_value;
+				}
+
 				//window.location.replace(redirect_url);		//Remove History
 				window.location.href	=	redirect_url;		//Keep history
 			}

@@ -94,6 +94,11 @@ Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 			'as' => 'listing-search'
 		]);
 
+	Route::get('listing/{search_location}/{latitude}/{longitude}', [
+			'uses' => 'PublicController@listingViewSearch',
+			'as' => 'listing-search'
+		]);
+
 	//Sub-category Showing - AJAX
 	Route::post('find_subcategory', [
 			'uses' => 'PublicController@findSubcategory',
