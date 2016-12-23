@@ -788,7 +788,6 @@ footer#page_footer{
 .h-ctr {
 	top: 71px;
 	width: 210%
-  
 }
 .h-ctr2 {
 	top: 0px!important;
@@ -3377,9 +3376,8 @@ img.add_detail
 .tt-query,
 .tt-hint
 {
-	width: 396px;
 	padding: 8px 12px;
-	font-size: 24px;
+	font-size: 15px;
 	line-height: 30px;
 	border: 2px solid #ccc;
 	-webkit-border-radius: 8px;
@@ -3408,7 +3406,7 @@ img.add_detail
 }
 
 .tt-menu {
-	width: 422px;
+	width: 343px;
 	margin: 12px 0;
 	padding: 8px 0;
 	background-color: #fff;
@@ -3447,4 +3445,17 @@ img.add_detail
 .typeahead-spinner {
 	background:url('http://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
 }
+
+.twitter-typeahead{
+     width: 100%;
+}
+.tt-dropdown-menu{
+    width: 100%;
+}
+/*
+input.typeahead.tt-query{
+    width: 300px !important;
+}
+*/
+
 /*Typehead - End*/
