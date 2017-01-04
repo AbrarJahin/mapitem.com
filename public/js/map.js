@@ -357,6 +357,22 @@ $(function()
 			showAddDetail( add_id );
 		}, 1500);
 	}
+
+	//Sort element by nav subcategory items click
+	$(".nav-sub-category").click(function(e)
+	{
+		e.preventDefault();
+		//alert( $(this).attr('sub-category-id') );
+		$('#category_filter').find(':checkbox').each(function()
+		{
+			$(this).prop('checked',false);
+		});
+		//sub_category_id="17"
+		$('#category_filter').find("[sub_category_id='"+$(this).attr('sub-category-id')+"']").each(function()
+		{
+			$(this).trigger( "click" );
+		});
+	});
 });
 
 // Generate a list of Marker and call gmap3 clustering function From AJAX

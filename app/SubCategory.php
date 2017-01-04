@@ -22,4 +22,18 @@ class SubCategory extends Model
 	{
 		return $this->hasOne('App\Category', 'id', 'category_id');
 	}
+
+	public function Advertisement()
+	{
+		return $this->hasMany('App\Advertisement', 'sub_category_id', 'id');
+	}
+
+	public $appends =	[
+							'total_advertisements'
+						];
+
+		public function getTotalAdvertisementsAttribute()
+		{
+			return $this->Advertisement()->count();
+		}
 }

@@ -34,13 +34,13 @@
 						<li class="no-border">
 							<label class="pull-left">
 								<input type="checkbox" name="category[]" category_id={{ $category->id }} sub_category_id="not_adailable" checked value="{{ $category->id }}">
-								<strong> {{ $category->name }} (21)</strong>
+								<strong> {{ $category->name }} ({{ $category->total_advertisements }})</strong>
 							</label>
 							<ul>
 								@foreach($category->subCategory as $sub_cat)
 									<li>
 										<label class="pull-left">
-											<input name="sub_category[]" category_id={{ $category->id }} sub_category_id={{ $sub_cat->id }} type="checkbox" checked value="{{ $sub_cat->id }}"> {{ $sub_cat->name }} (7)
+											<input name="sub_category[]" category_id={{ $category->id }} sub_category_id={{ $sub_cat->id }} type="checkbox" checked value="{{ $sub_cat->id }}"> {{ $sub_cat->name }} ({{ $sub_cat->total_advertisements }})
 										</label>
 									</li>
 								@endforeach

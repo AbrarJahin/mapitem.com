@@ -19,4 +19,18 @@ class Category extends Model
 	{
 		return $this->hasMany('App\SubCategory', 'category_id', 'id');
 	}
+
+	public function Advertisement()
+	{
+		return $this->hasMany('App\Advertisement', 'category_id', 'id');
+	}
+
+	public $appends =	[
+							'total_advertisements'
+						];
+
+		public function getTotalAdvertisementsAttribute()
+		{
+			return $this->Advertisement()->count();
+		}
 }

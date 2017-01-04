@@ -37,7 +37,7 @@ Update Project (if no major change)-
 
 	ssh blockhunt@107.180.1.4
 	Maplevel1
-	cd public_html/abrar && git pull
+	cd public_html/abrar && git pull -f
 
 	exit
 

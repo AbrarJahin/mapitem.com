@@ -138,13 +138,11 @@ class PublicController extends Controller
 		return view('public.listing.main', [
 												'current_page'			=>	'Add Listing',
 												'sort_distance_options'	=>	[
-																				'Distance - Closest',
-																				'2',
-																				'3',
-																				'4',
-																				'5',
-																				'6',
-																				'7',
+																				'price_asc'		=>	'Price - Lowest',
+																				'price_desc'	=>	'Price - Highest',
+																				'rating_desc'	=>	'Rating - Highest',
+																				'ending_desc'	=>	'Ending - Soonest',
+																				'upload_desc'	=>	'Newest - Listed'
 																			],
 												'search_location'		=>	$search_location,
 												'latitude'				=>	$lat,
@@ -377,6 +375,7 @@ class PublicController extends Controller
 									'title as name'
 								)
 						->orderBy('title', 'asc')
+						->take(5)
 						->distinct()
                 		->get();
 	}
