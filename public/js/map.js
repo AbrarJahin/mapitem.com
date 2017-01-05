@@ -379,7 +379,8 @@ $(function()
 		}
 		else	//Category
 		{
-			$('#category_filter').find("[category_id='"+$(this).attr('category-id')+"']").trigger( "click" );
+			$('#category_filter').find("[category_id='"+$(this).attr('category-id')+"']").prop('checked', true);
+			$('#category_filter').find("[category_id='"+$(this).attr('category-id')+"']").trigger('click');
 		}
 	});
 });
