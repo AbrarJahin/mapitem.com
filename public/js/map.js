@@ -203,7 +203,7 @@ $(function()
 	*/
 
 	//Checkbox Checked Item Change Event
-	$(':checkbox').change(function()
+	$('#category_filter :checkbox').change(function()
 	{
 		if( $(this).attr('sub_category_id') === "not_adailable")
 		{	//If clicked on category
@@ -359,19 +359,28 @@ $(function()
 	}
 
 	//Sort element by nav subcategory items click
-	$(".nav-sub-category").click(function(e)
+	$(".nav-sub-category, .nav-category").click(function(e)
 	{
 		e.preventDefault();
-		//alert( $(this).attr('sub-category-id') );
+
+		//Clear all checkbox elements
 		$('#category_filter').find(':checkbox').each(function()
 		{
 			$(this).prop('checked',false);
 		});
-		//sub_category_id="17"
-		$('#category_filter').find("[sub_category_id='"+$(this).attr('sub-category-id')+"']").each(function()
+
+		clearMarkers();
+		$('#record_showing_start').html('0');
+		$('#record_showing_end').html('0');
+
+		if($(this).attr("class")=="nav-sub-category")	//Sub-category
 		{
-			$(this).trigger( "click" );
-		});
+			$('#category_filter').find("[sub_category_id='"+$(this).attr('sub-category-id')+"']").trigger( "click" );
+		}
+		else	//Category
+		{
+			$('#category_filter').find("[category_id='"+$(this).attr('category-id')+"']").trigger( "click" );
+		}
 	});
 });
 
@@ -422,18 +431,7 @@ function generateMarkers(bounds)
 					{
 						fixInfowindowScroll();
 						//console.log(all_data);
-						//Clear the map markers
-						map_div.gmap3({
-							clear:
-								{
-									class: "markers"
-								}
-							});
-						//Clear Info Bobble
-						infoBubble.close();
-
-						//Clear the listing elements
-						$("#box").empty();
+						clearMarkers();
 						//Generate List to insert data in map
 						var list = [];
 
@@ -926,6 +924,22 @@ function fixImageSlider()
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
 	}, 4000);
+}
+
+function clearMarkers()
+{
+	//Clear the map markers
+	map_div.gmap3({
+		clear:
+			{
+				class: "markers"
+			}
+		});
+	//Clear Info Bobble
+	infoBubble.close();
+
+	//Clear the listing elements
+	$("#box").empty();
 }
 
 /////////////////////////////////Listing JS - Previous code by designer - Start

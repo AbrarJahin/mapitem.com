@@ -3457,5 +3457,12 @@ input.typeahead.tt-query{
     width: 300px !important;
 }
 */
-
 /*Typehead - End*/
+.nav-category
+{
+	text-decoration: none;
+	display: inherit;
+	color: inherit;
+	white-space: normal !important;
+	text-align: center;
+}

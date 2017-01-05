@@ -10,7 +10,9 @@
 			<ul class="dropdown-menu h-ctr h-ctr3">
 				@foreach ($categories as $category)
 					<li class="no-border">
-						<h4 class="no-margin">{{ $category->name }}</h4>
+						<a href="#" class="nav-category" category-id="{{ $category->id }}">
+							<h4 class="no-margin">{{ $category->name }}</h4>
+						</a>
 						<ul>
 							@foreach($category->subCategory as $sub_cat)
 								<li>

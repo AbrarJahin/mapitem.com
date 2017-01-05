@@ -31,21 +31,25 @@
 
 				<ul class="dropdown-menu h-ctr h-ctr2 col-md-12 col-sm-12" id="category_filter">
 					@foreach ($categories as $category)
-						<li class="no-border">
-							<label class="pull-left">
-								<input type="checkbox" name="category[]" category_id={{ $category->id }} sub_category_id="not_adailable" checked value="{{ $category->id }}">
-								<strong> {{ $category->name }} ({{ $category->total_advertisements }})</strong>
-							</label>
-							<ul>
-								@foreach($category->subCategory as $sub_cat)
-									<li>
-										<label class="pull-left">
-											<input name="sub_category[]" category_id={{ $category->id }} sub_category_id={{ $sub_cat->id }} type="checkbox" checked value="{{ $sub_cat->id }}"> {{ $sub_cat->name }} ({{ $sub_cat->total_advertisements }})
-										</label>
-									</li>
-								@endforeach
-							</ul>
-						</li>
+						@if ($category->total_advertisements > 0)
+							<li class="no-border">
+								<label class="pull-left">
+									<input type="checkbox" name="category[]" category_id={{ $category->id }} sub_category_id="not_adailable" checked value="{{ $category->id }}">
+									<strong> {{ $category->name }} ({{ $category->total_advertisements }})</strong>
+								</label>
+								<ul>
+									@foreach($category->subCategory as $sub_cat)
+										@if ($sub_cat->total_advertisements > 0)
+											<li>
+												<label class="pull-left">
+													<input name="sub_category[]" category_id={{ $category->id }} sub_category_id={{ $sub_cat->id }} type="checkbox" checked value="{{ $sub_cat->id }}"> {{ $sub_cat->name }} ({{ $sub_cat->total_advertisements }})
+												</label>
+											</li>
+										@endif
+									@endforeach
+								</ul>
+							</li>
+						@endif
 					@endforeach
 				</ul>
 

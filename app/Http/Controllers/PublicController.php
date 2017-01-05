@@ -227,8 +227,13 @@ class PublicController extends Controller
 							->where('advertisements.title', 'like', '%'.$requestData['search_value'].'%')
 							->orWhere('advertisements.description', 'like', '%'.$requestData['search_value'].'%');
 					})
-				->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
+				//->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
 				->groupBy('advertisement_images.advertisement_id');
+
+		if( isset($requestData['sub_categories']) )
+			$tempData = $tempData->whereIn('advertisements.sub_category_id', $requestData['sub_categories']);
+		else
+			$tempData = $tempData->whereIn('advertisements.sub_category_id', []);
 
 		if($requestData['price_range_max']!=1000)
 			$tempData = $tempData->where('advertisements.price', '<', $requestData['price_range_max']);
