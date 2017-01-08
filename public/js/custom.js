@@ -693,6 +693,7 @@ $(document).ready(function()
 
 		$.each($.parseJSON(responce),function(key,data)
 		{
+			console.log(data);
 			var last_id;
 			$.each(data,function(id,value)
 			{
@@ -700,7 +701,7 @@ $(document).ready(function()
 				{
 					last_id=value;
 				}
-				else
+				else if(id.localeCompare('name')==0)
 				{
 					$('#sub_category_select').append($('<option>',
 					{
@@ -802,7 +803,7 @@ $(document).ready(function()
 							$('#lgn-pup').modal('show');
 						}
 					});
-			$(this).find("button[type='submit']").prop('disabled',false);
+			//$(this).find("button[type='submit']").prop('disabled',false);
 		});
 	}
 	//Free Add Posting  - End
