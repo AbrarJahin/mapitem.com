@@ -398,5 +398,10 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'DeleteAjaxController@userDeleteAjax',
 				'as' => '.user_delete'
 			]);
+
+		Route::post('advertisement_delete', [
+				'uses' => 'DeleteAjaxController@advertisementDeleteAjax',
+				'as' => '.advertisement_delete'
+			]);
 	//Delete Data AJAX - END
 });

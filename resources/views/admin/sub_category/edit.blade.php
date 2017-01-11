@@ -20,7 +20,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="category">SubCategory:</label>
+						<label for="sub-category">SubCategory:</label>
 						<input type="text" required class="form-control" placeholder="Enter Category Name" name="sub_category_name" id="selected_sub-category_name">
 						<input type="hidden" name="sub_category_id" id="selected_sub-category_id">
 					</div>

@@ -1654,9 +1654,9 @@ $(document).ready(function()
 								{	"data": "sub_category"	},
 								{	"data": "owner"			},
 								{	"data": "title"			},
-								{	"data": "price"			},/*
+								{	"data": "price"			},
 								{	"data": "description"	},
-								{	"data": "address"		},*/
+								{	"data": "address"		},
 								{	"data": null			}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
@@ -1665,16 +1665,11 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [5],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
 									}
-								],
-				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
-				initComplete:	function()	//Adding Custom button in Tools
-								{
-									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
-								}
+								]
 			});
 
 			$('#adds-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
@@ -1687,7 +1682,26 @@ $(document).ready(function()
 			$('#adds-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
 			{
 				var data = addsDataTable.row( $(this).parents('tr') ).data();
-				alert('Delete - '+data['id']);	//id = index of ID sent from server
+				$("#delete_item_id").val(data['id']);
+				$('#delete_confirmation_modal').modal('show');
+			});
+			//Delete Add - Confirmation
+			$('#confirm_delete').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#delete_data").attr('action'),
+					dataType: "json",
+					data: $("#delete_data").serialize(),
+					success:function(responce_data)
+					{
+						$('#delete_confirmation_modal').modal('hide');
+						addsDataTable.ajax.reload( null, false );
+						alert('Succesfully Deleted Add');
+					}
+				});
 			});
 		}
 		else if ($('#messages-datatable').length)	//Messages Datatable
@@ -2097,4 +2111,6 @@ $(document).ready(function()
 					}
 				});
 	//Typehead - End
+	
+	
 });

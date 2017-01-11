@@ -70,7 +70,10 @@ class AdminController extends Controller
 	*/
 	public function showAddView()
 	{
-		return view('admin.adds.main', [ 'current_page'	=> 'admin.adds' ]);
+		return view('admin.adds.main', [
+											'current_page'	=> 'admin.adds',
+											'categories'	=> Category::orderBy('name')->get()
+										]);
 	}
 
 	/*

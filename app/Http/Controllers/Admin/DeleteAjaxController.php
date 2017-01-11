@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Request;
 use DB;
+use Storage;
+use App\AdvertisementImage;
+use App\Advertisement;
+use Log;
 
 /*
 	Functionality	-> Handel All Admin Works
@@ -60,5 +64,49 @@ class DeleteAjaxController extends Controller
 		return DB::table('users')
 					->where('id', '=', $requestData['id'])
 					->delete();
+	}
+
+	/*
+		URL             -> post: /advertisement_delete
+		Functionality   -> Advertisement Delete AJAX
+		Access          -> Admin
+		Created At      -> 11/01/2017
+		Updated At      -> 11/01/2017
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function advertisementDeleteAjax()
+	{
+		$requestData = Request::all();
+		$basePath = public_path()."/uploads/";//."me.JPG";
+
+		/*
+			return DB::table('users')
+					->where('id', '=', $requestData['id'])
+					->delete();
+		*/
+
+		$images = AdvertisementImage::where('advertisement_id', $requestData['id'])->get();
+
+		foreach ($images as $image)
+		{
+			$imagePath = $basePath.$image->image_name;
+
+			if(file_exists($imagePath))
+			{
+				//Storage::Delete($imagePath);
+				unlink($imagePath);
+			}
+			else
+			{
+				Log::error("File Not Found - ".$imagePath);
+			}
+		}
+
+		//Advertisement::find($requestData['id'])->delete();
+		return DB::table('advertisements')
+					->where('id', '=', $requestData['id'])
+					->delete();
+
+		return $requestData;
 	}
 }
