@@ -1,4 +1,3 @@
-
 {{-- Navigation --}}
 <nav class="navbar navbar-inverse no-margin" role="navigation">
 	<div class="container-fluid">
@@ -28,7 +27,7 @@
 						@include('public.sign_up')
 					</li>
 					<li class="dropdown">
-						<a href="#" class="def" data-toggle="modal" data-target="#pfa">Post free ad </a>
+						<a href="#" class="def" data-toggle="modal" data-target="#lgn-pup">Post free ad </a>
 					</li>
 				@elseif (Auth::user()->user_type == "normal_user")
 					<li class="dropdown">
