@@ -201,22 +201,7 @@ class PublicController extends Controller
 									$join->on('user_wishlists.advertisement_id', '=', 'advertisements.id')
 										->where('user_wishlists.user_id', '=', $user_id);
 								})
-				->select(
-							'advertisements.id as id',
-							'advertisements.location_lat as lat',
-							'advertisements.location_lon as lon',
-							'advertisements.price as price',
-							'advertisements.title as title',
-							'advertisements.description as description',
-							'users.profile_picture as user_image',				//Should be updated later
-							'advertisement_images.image_name as advertisement_image',
-							DB::raw(
-										"CASE  
-											WHEN ISNULL(user_wishlists.advertisement_id) THEN '".URL::asset('svg/normal.svg')."'
-											ELSE '".URL::asset('svg/filled.svg')."'
-										END as hearts_image"
-									)
-						)
+				->where('advertisements.is_active', "active")
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
 				//->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
@@ -258,9 +243,32 @@ class PublicController extends Controller
 		//return $tempData->get();
 
 		//Paginator
-		$data = $tempData->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
+		$data = $tempData->select(
+								'advertisements.id as id',
+								'advertisements.location_lat as lat',
+								'advertisements.location_lon as lon',
+								'advertisements.price as price',
+								'advertisements.title as title',
+								'advertisements.description as description',
+								'users.profile_picture as user_image',				//Should be updated later
+								'advertisement_images.image_name as advertisement_image',
+								DB::raw(
+											"CASE  
+												WHEN ISNULL(user_wishlists.advertisement_id) THEN '".URL::asset('svg/normal.svg')."'
+												ELSE '".URL::asset('svg/filled.svg')."'
+											END as hearts_image"
+										)
+							)
+							->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
 							->take($requestData['content_per_page'])
 							->get();
+
+		$categories = $tempData->select(
+											'advertisements.category_id as category_id',
+											'advertisements.sub_category_id as sub_category_id'
+										)
+								->distinct()
+								->get();
 
 		//Formetting data for sending
 		$json_data	=	array(
@@ -269,8 +277,10 @@ class PublicController extends Controller
 						"total_element"	=>	$totalElementFound,												// Total number of records
 						"total_page"	=>	ceil( $totalElementFound / $requestData['content_per_page'] ),	// total number of pages
 						"current_page"	=>	$requestData['current_page_no']/1,								// current page number
+						"categories"	=>	$categories,															// Category and sub category array
 						"data"			=>	$data															// total data array
 					);
+
 		return $json_data;
 	}
 

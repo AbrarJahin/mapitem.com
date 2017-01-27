@@ -121,6 +121,7 @@ class UserController extends Controller
 					->with('AdvertisementImages')
 					->where('user_id',Auth::user()->id)
 					->paginate(5);
+
 		return view('user.my_adds.main', [
 											'current_page'		=>	'user.my_adds',
 											'my_adds'			=>	$my_adds,

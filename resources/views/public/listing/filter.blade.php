@@ -34,15 +34,15 @@
 						@if ($category->total_advertisements > 0)
 							<li class="no-border">
 								<label class="pull-left">
-									<input type="checkbox" name="category[]" category_id={{ $category->id }} sub_category_id="not_adailable" checked value="{{ $category->id }}">
-									<strong> {{ $category->name }} ({{ $category->total_advertisements }})</strong>
+									<input type="checkbox" name="category[]" category_id={{ $category->id }} sub_category_id="not_available" checked value="{{ $category->id }}">
+									<strong> {{ $category->name }} (<span id="category_{{ $category->id }}">{{ $category->total_advertisements }}</span>)</strong>
 								</label>
 								<ul>
 									@foreach($category->subCategory as $sub_cat)
 										@if ($sub_cat->total_advertisements > 0)
 											<li>
 												<label class="pull-left">
-													<input name="sub_category[]" category_id={{ $category->id }} sub_category_id={{ $sub_cat->id }} type="checkbox" checked value="{{ $sub_cat->id }}"> {{ $sub_cat->name }} ({{ $sub_cat->total_advertisements }})
+													<input name="sub_category[]" category_id={{ $category->id }} sub_category_id={{ $sub_cat->id }} type="checkbox" checked value="{{ $sub_cat->id }}"> {{ $sub_cat->name }} (<span id="sub_category_{{ $sub_cat->id }}">{{ $sub_cat->total_advertisements }}</span>)
 												</label>
 											</li>
 										@endif
