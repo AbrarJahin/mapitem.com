@@ -204,16 +204,13 @@ class PublicController extends Controller
 				->where('advertisements.is_active', "active")
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
-				//->whereBetween('advertisements.price', [ $requestData['price_range_min'], $requestData['price_range_max'] ])
 				->where('advertisements.price', '>', $requestData['price_range_min'])
 				->where(function($query) use ($requestData)
 					{
 						$query
 							->where('advertisements.title', 'like', '%'.$requestData['search_value'].'%')
 							->orWhere('advertisements.description', 'like', '%'.$requestData['search_value'].'%');
-					})
-				//->whereIn('advertisements.sub_category_id', $requestData['sub_categories'])
-				->groupBy('advertisement_images.advertisement_id');
+					});
 
 		if( isset($requestData['sub_categories']) )
 			$tempData = $tempData->whereIn('advertisements.sub_category_id', $requestData['sub_categories']);
@@ -259,10 +256,24 @@ class PublicController extends Controller
 											END as hearts_image"
 										)
 							)
+							->groupBy( 'advertisement_images.advertisement_id' )
 							->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
-							->take($requestData['content_per_page'])
+							->take( $requestData['content_per_page'] )
 							->get();
 
+		/*
+		$categories = $tempData->select(
+											'advertisements.category_id as category_id',
+											'advertisements.sub_category_id as sub_category_id',
+											DB::raw('count(advertisements.category_id) 		as category_total'),
+											DB::raw('count(advertisements.sub_category_id) 	as sub_category_total')
+										)
+								->groupBy(
+											'advertisements.category_id',
+											'advertisements.sub_category_id'
+										)
+								->get();
+		*/
 		$categories = $tempData->select(
 											'advertisements.category_id as category_id',
 											'advertisements.sub_category_id as sub_category_id'

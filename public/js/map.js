@@ -560,6 +560,26 @@ function generateMarkers(bounds)
 									/*=================================================*/
 								});
 							}
+							else if(key === 'categories')	//hide and show categories and sub categories
+							{
+								//Hide all categories and sub categories
+								$('input[name="sub_category[]"]').each(function()
+								{
+									$(this).parent().parent().hide();
+								});
+								//UI problem is there during category hide, so skipping the part
+								/*
+								$('input[name="category[]"]').each(function()
+								{
+									$(this).parent().parent().hide();
+								});
+								*/
+								$.each(data, function(index, element)
+								{
+									//$("#category_"+element.category_id).parent().parent().show();
+									$("#sub_category_"+element.sub_category_id).parent().parent().show();
+								});
+							}
 						});
 
 						map_div.gmap3({
