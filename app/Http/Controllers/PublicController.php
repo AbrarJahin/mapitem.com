@@ -180,13 +180,6 @@ class PublicController extends Controller
 	{
 		$requestData = Request::all();
 		//Eloquent Query is not applicable here because of bad performance
-		/*
-			return $advertisements = Advertisement::with('User')
-												->with('Category')
-												->with('SubCategory')
-												->with('AdvertisementImages')
-											->get();
-		*/
 		$tempData = DB::table('advertisements')
 				->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
 				->join('users', 'advertisements.user_id', '=', 'users.id')
@@ -237,8 +230,6 @@ class PublicController extends Controller
 		else if( $requestData['sort_ordering'] == 'upload_desc' )
 			$tempData = $tempData->orderBy('advertisements.created_at', 'desc');
 
-		//return $tempData->get();
-
 		//Paginator
 		$data = $tempData->select(
 								'advertisements.id as id',
@@ -260,26 +251,44 @@ class PublicController extends Controller
 							->skip( $requestData['content_per_page']*($requestData['current_page_no']-1) )
 							->take( $requestData['content_per_page'] )
 							->get();
+		///////////////////////////////////////////////////////////////////////////////
+		$temp_categories = DB::table('advertisements')
+								->where('advertisements.is_active', "active")
+								->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
+								->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
+								->where('advertisements.price', '>', $requestData['price_range_min'])
+								->where(function($query) use ($requestData)
+									{
+										$query
+											->where('advertisements.title', 'like', '%'.$requestData['search_value'].'%')
+											->orWhere('advertisements.description', 'like', '%'.$requestData['search_value'].'%');
+									});
+		if( isset($requestData['sub_categories']) )
+			$temp_categories = $temp_categories->whereIn('advertisements.sub_category_id', $requestData['sub_categories']);
+		else
+			$temp_categories = $temp_categories->whereIn('advertisements.sub_category_id', []);
 
-		/*
-		$categories = $tempData->select(
-											'advertisements.category_id as category_id',
-											'advertisements.sub_category_id as sub_category_id',
-											DB::raw('count(advertisements.category_id) 		as category_total'),
-											DB::raw('count(advertisements.sub_category_id) 	as sub_category_total')
-										)
-								->groupBy(
-											'advertisements.category_id',
-											'advertisements.sub_category_id'
-										)
-								->get();
-		*/
-		$categories = $tempData->select(
-											'advertisements.category_id as category_id',
-											'advertisements.sub_category_id as sub_category_id'
-										)
-								->distinct()
-								->get();
+		if($requestData['price_range_max']!=1000)
+			$temp_categories = $temp_categories->where('advertisements.price', '<', $requestData['price_range_max']);
+
+		$categories = $temp_categories
+						->Join('categories', 'advertisements.category_id', '=', 'categories.id')
+						->select(
+									'categories.id as category_id',
+									DB::raw("COUNT('advertisements.id') as count")
+								)
+						->groupBy('categories.id')
+						->get();
+
+		$sub_categories = $temp_categories
+							->Join('sub_categories', 'advertisements.sub_category_id', '=', 'sub_categories.id')
+							->select(
+										'sub_categories.id as sub_category_id',
+										DB::raw("COUNT('advertisements.id') as count")
+									)
+							->groupBy('sub_categories.id')
+							->get();
+		///////////////////////////////////////////////////////////////////////////////
 
 		//Formetting data for sending
 		$json_data	=	array(
@@ -288,7 +297,8 @@ class PublicController extends Controller
 						"total_element"	=>	$totalElementFound,												// Total number of records
 						"total_page"	=>	ceil( $totalElementFound / $requestData['content_per_page'] ),	// total number of pages
 						"current_page"	=>	$requestData['current_page_no']/1,								// current page number
-						"categories"	=>	$categories,															// Category and sub category array
+						"categories"	=>	$categories,													// Category and sub category array
+						"sub-categories"=>	$sub_categories,
 						"data"			=>	$data															// total data array
 					);
 
@@ -297,7 +307,7 @@ class PublicController extends Controller
 
 	/*
 		URL             -> get: /listing
-		Functionality   -> Show SubCategory Page
+		Functionality   -> Show Listing Page
 		Access          -> All
 		Created At      -> 22/03/2016
 		Updated At      -> 22/03/2016
@@ -306,12 +316,7 @@ class PublicController extends Controller
 	public function detailedMapItem()
 	{
 		$requestData = Request::all();
-		//Update View Count - Not Working
-		/*UserAdvertisementView::firstOrCreate([
-										'user_id'	=>	Auth::user()->id,
-										'add_id'	=>	$requestData['product_id']
-									])->increment('total_view');*/
-		//So do it with Query Bilder
+
 		$user_id = 1;	//Default User ID for non logged in users
 		if(Auth::check())
 			$user_id = Auth::user()->id;
