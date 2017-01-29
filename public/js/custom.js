@@ -780,30 +780,118 @@ $(document).ready(function()
 		{
 			e.preventDefault(e);
 			$(this).find("button[type='submit']").prop('disabled',true);
+			var no_of_errors = 0;
 
-			$.ajax(
-					{
-						headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-						method: "POST",
-						url: $(this).attr('action'),
-						dataType: "json",
-						async: false,
-						data: $("#post_free_add_form").serialize(),
-						success:function(responce_data)
+			////////////////////////////////////////////////////////////---Validation Start
+				//Add Product Location
+				if( $("#find_product_location").val().length == 0 )
+				{
+					$("#find_product_location").parent().addClass("has-error");
+					$('.nav-tabs a[href="#tab3"]').tab('show');
+					no_of_errors++;
+				}
+				else
+				{
+					$("#find_product_location").parent().removeClass("has-error");
+				}
+				//Uploaded Files
+				if( $myDropZone[0].dropzone.files.length == 0 )
+				{
+					$("#tab2").addClass("dropzone-error");
+					$('.nav-tabs a[href="#tab2"]').tab('show');
+					no_of_errors++;
+				}
+				else
+				{
+					$("#tab2").removeClass("dropzone-error");
+				}
+				//Category
+				if( $("#category_select").val() == 0 )
+				{
+					$("#category_select").parent().addClass("has-error");
+					$('.nav-tabs a[href="#tab1"]').tab('show');
+					no_of_errors++;
+				}
+				else
+				{
+					$("#category_select").parent().removeClass("has-error");
+				}
+				//Sub-Category
+				if( $("#sub_category_select").val() == 0 )
+				{
+					$("#sub_category_select").parent().addClass("has-error");
+					$('.nav-tabs a[href="#tab1"]').tab('show');
+					no_of_errors++;
+				}
+				else
+				{
+					$("#sub_category_select").parent().removeClass("has-error");
+				}
+				//Add Title
+				if( $("#adtitle").val().length == 0 )
+				{
+					$("#adtitle").parent().addClass("has-error");
+					$('.nav-tabs a[href="#tab1"]').tab('show');
+					no_of_errors++;
+				}
+				else
+				{
+					$("#adtitle").parent().removeClass("has-error");
+				}
+				//Add Price
+				//isNaN( parseFloat( $("#price").val() ) )
+				if( isNaN( parseFloat( $("#price").val() ) ) )
+				{
+					$("#price").parent().addClass("has-error");
+					$('.nav-tabs a[href="#tab1"]').tab('show');
+					no_of_errors++;
+				}
+				else
+				{
+					$("#price").parent().removeClass("has-error");
+				}
+				//Add Description
+				if( $("#description").val().length == 0 )
+				{
+					$("#description").parent().addClass("has-error");
+					$('.nav-tabs a[href="#tab1"]').tab('show');
+					no_of_errors++;
+				}
+				else
+				{
+					$("#description").parent().removeClass("has-error");
+				}
+			////////////////////////////////////////////////////////////---Validation End
+			if(no_of_errors==0)
+			{
+				$.ajax(
 						{
-							console.log(responce_data);
-							$('meta[name=uploaded_add_id]').attr('content', responce_data);		//Setting from AJAX responce
+							headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+							method: "POST",
+							url: $(this).attr('action'),
+							dataType: "json",
+							async: false,
+							data: $("#post_free_add_form").serialize(),
+							success:function(responce_data)
+							{
+								console.log(responce_data);
+								$('meta[name=uploaded_add_id]').attr('content', responce_data);		//Setting from AJAX responce
 
-							//Process of upload should start after successfull advertisement upload - Will do later
-							$myDropZone[0].dropzone.processQueue();								//Uploading files
-						},
-						error: function(jqXHR, exception)
-						{
-							$('#pfa').modal('hide');
-							$('#lgn-pup').modal('show');
-						}
-					});
-			//$(this).find("button[type='submit']").prop('disabled',false);
+								//Process of upload should start after successfull advertisement upload - Will do later
+								$myDropZone[0].dropzone.processQueue();								//Uploading files
+							},
+							error: function(jqXHR, exception)
+							{
+								$('#pfa').modal('hide');
+								$('#lgn-pup').modal('show');
+								$(this).find("button[type='submit']").prop('disabled',false);
+							}
+						});
+			}
+			else
+			{
+				$(this).find("button[type='submit']").prop('disabled',false);
+			}
 		});
 	}
 	//Free Add Posting  - End

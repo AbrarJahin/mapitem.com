@@ -3466,3 +3466,8 @@ input.typeahead.tt-query{
 	white-space: normal !important;
 	text-align: center;
 }
+.dropzone-error
+{
+	border-style: dashed;
+	border-color: red;
+}

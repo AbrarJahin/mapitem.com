@@ -17,20 +17,24 @@
 						</ul>
 
 						<form id="post_free_add_form" role="form" class="tab-content adj1" method="post" action="{{ URL::route('user.post_add') }}">
-							{{--
-								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							--}}
 							<div id="tab1" class="tab-pane">
-								<select name="category_id" class="form-control medium-select" id="category_select">
-									<option value='0'>Please Select a Category</option>
-									@foreach ($categories as $data)
-										<option value="{{ $data->id }}">{{ $data->name }}</option>
-									@endforeach
-								</select>
+								<div>
+									<select name="category_id" class="form-control medium-select" id="category_select">
+										<option value='0'>Please Select a Category</option>
+										@foreach ($categories as $data)
+											<option value="{{ $data->id }}">{{ $data->name }}</option>
+										@endforeach
+									</select>
+								</div>
+
 								<meta name="sub_category_ajax_url" content="{{ URL::route('find_subcategory') }}" />
-								<select name="sub_category_id" class="form-control medium-select" id="sub_category_select">
-									<option value='0'>Please Select Category First</option>
-								</select>
+
+								<div>
+									<select name="sub_category_id" class="form-control medium-select" id="sub_category_select">
+										<option value='0'>Please Select Category First</option>
+									</select>
+								</div>
+
 								<div class="row">
 									<div class="col-lg-8">
 										<input name="title" type="text" class="form-control normal-input margin-adj" id="adtitle" placeholder="Ad Title">
@@ -39,7 +43,11 @@
 										<input name="price" type="text" class="form-control normal-input margin-adj" id="price" placeholder="Price">  
 									</div>
 								</div>
-								<textarea name="description" class="form-control medium-textarea" rows="4" placeholder="Ad Description"></textarea>
+
+								<div>
+									<textarea id="description" name="description" class="form-control medium-textarea" rows="4" placeholder="Ad Description"></textarea>
+								</div>
+
 							</div>
 
 							<div id="tab2" class="tab-pane">
