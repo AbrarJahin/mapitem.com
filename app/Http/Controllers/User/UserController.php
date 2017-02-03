@@ -234,7 +234,7 @@ class UserController extends Controller
 			{
 				//Renaming the file
 				$extension = $requestData['profile_image']->getClientOriginalExtension(); // getting file extension
-				$fileName = Auth::user()->id."pp".rand(111111, 999999) . '.' . $extension; // renameing image
+				$fileName = Auth::user()->id."p". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
 			}
 
 			$destinationPath = 'uploads'; // upload path

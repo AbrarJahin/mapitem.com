@@ -733,9 +733,9 @@ $(document).ready(function()
 														},
 								enqueueForUpload	: true,
 								autoProcessQueue	: false, 								//Will process manually after all done
-								maxFilesize			: 5, 									// In MB
+								maxFilesize			: 10, 									// In MB
 								maxFiles			: 10,									//Max upload 10 files
-								dictFileTooBig		: 'Bigger than 5 MB image is not allowed',
+								dictFileTooBig		: 'Bigger than 10 MB image is not allowed',
 								addRemoveLinks		: true,									//Enabling remove Link
 								dictRemoveFile		: 'Remove This Image',
 								dictCancelUpload	: 'Cancel Upload this Image',
@@ -771,7 +771,11 @@ $(document).ready(function()
 			if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0)	//All Upload Done
 			{
 				$("#wait").css("display", "none");
-				window.location.replace($("meta[name='ridirect_url_after_successful_post']").attr("content"));
+
+				if(this.getAcceptedFiles().length>0)
+				{
+					window.location.replace($("meta[name='ridirect_url_after_successful_post']").attr("content"));
+				}
 			}
 		});
 
@@ -781,6 +785,7 @@ $(document).ready(function()
 			e.preventDefault(e);
 			$(this).find("button[type='submit']").prop('disabled',true);
 			var no_of_errors = 0;
+			$("#wait").css("display", "block");
 
 			////////////////////////////////////////////////////////////---Validation Start
 				//Add Product Location
@@ -795,7 +800,7 @@ $(document).ready(function()
 					$("#find_product_location").parent().removeClass("has-error");
 				}
 				//Uploaded Files
-				if( $myDropZone[0].dropzone.files.length == 0 )
+				if( $myDropZone[0].dropzone.getAcceptedFiles().length == 0 )
 				{
 					$("#tab2").addClass("dropzone-error");
 					$('.nav-tabs a[href="#tab2"]').tab('show');
@@ -891,6 +896,7 @@ $(document).ready(function()
 			else
 			{
 				$(this).find("button[type='submit']").prop('disabled',false);
+				$("#wait").css("display", "none");
 			}
 		});
 	}

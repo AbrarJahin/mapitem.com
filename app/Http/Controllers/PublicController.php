@@ -215,7 +215,7 @@ class PublicController extends Controller
 
 		//Should check if there is a better way than using collection in this case
 		$totalElementFound = collect(
-										$tempData->pluck('advertisements.id')
+										$tempData->groupBy('advertisements.id')->pluck('advertisements.id')
 									)->count();
 
 		//Ordering

@@ -89,7 +89,7 @@ class AddController extends Controller
 										$requestData,
 										[
 											'add_id'			=> 'required',
-											'uploaded_image'	=> 'image|max:5120'
+											'uploaded_image'	=> 'image|max:10240'
 										]
 									);
 		//Validator Failed
@@ -102,7 +102,7 @@ class AddController extends Controller
 
 		//Renaming the file
 		$extension = $requestData['uploaded_image']->getClientOriginalExtension(); // getting file extension
-		$fileName = Auth::user()->id."-".rand(11111, 99999) . '.' . $extension; // renameing image
+		$fileName = Auth::user()->id."a". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
 
 		$upload_success = $requestData['uploaded_image']->move($destinationPath, $fileName); // uploading file to given path
 
