@@ -10,7 +10,8 @@
         "laravel/socialite": "^2.0",
         "symfony/http-foundation": "2.8.*",
         "omnipay/paypal": "~2.0",
-        "omnipay/coinbase": "~2.0"
+        "omnipay/coinbase": "~2.0",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

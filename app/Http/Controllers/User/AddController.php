@@ -14,6 +14,7 @@ use App\Message;
 use App\UserNotification;
 use Auth;
 use DB;
+use Image;
 
 /*
 	Functionality	-> Handel All Auth Works
@@ -85,6 +86,9 @@ class AddController extends Controller
 	{
 		$requestData = Request::all();
 
+		$destinationPath	=	'uploads';	// upload path
+		$max_height			=	333;		//Max image height
+
 		$validator = Validator::make(
 										$requestData,
 										[
@@ -98,13 +102,32 @@ class AddController extends Controller
 			return $validator->errors()->all();
 		}
 
-		$destinationPath = 'uploads'; // upload path
-
 		//Renaming the file
 		$extension = $requestData['uploaded_image']->getClientOriginalExtension(); // getting file extension
 		$fileName = Auth::user()->id."a". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
-
 		$upload_success = $requestData['uploaded_image']->move($destinationPath, $fileName); // uploading file to given path
+		$uploadedFileLocation = realpath($destinationPath.'/'.$fileName);
+		//Resizing image
+		list($width, $height) = getimagesize($uploadedFileLocation);
+
+		if($height>$max_height)	//If need to resize the image
+		{
+			//Calculate new dimention
+			$width	=	($max_height*$width)/$height;
+			$height	=	$max_height;
+
+			try
+			{
+				Image::make($uploadedFileLocation)
+					->resize($width,$height)
+					->save($uploadedFileLocation);
+			}
+			catch (\Exception $e)
+			{
+				echo $e->getMessage();
+				echo "Image resizing failed";
+			}
+		}
 
 		if ($upload_success)
 		{

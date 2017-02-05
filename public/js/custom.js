@@ -789,7 +789,7 @@ $(document).ready(function()
 
 			////////////////////////////////////////////////////////////---Validation Start
 				//Add Product Location
-				if( $("#find_product_location").val().length == 0 )
+				if( $("#find_product_location").val().length == 0 || $("#product_location_lat").val().length == 0 || $("#product_location_lon").val().length == 0 )
 				{
 					$("#find_product_location").parent().addClass("has-error");
 					$('.nav-tabs a[href="#tab3"]').tab('show');
