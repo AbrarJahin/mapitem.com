@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use DB;
 use Hash;
 use URL;
+use Image;
 
 /*
 	Functionality	-> Handel All User Works
@@ -209,6 +210,9 @@ class UserController extends Controller
 	{
 		$requestData = Request::all();
 
+		$destinationPath	=	'uploads';	// upload path
+		$max_height			=	144;		//Max image height
+
 		$user = User::find(Auth::user()->id);
 
 		$user->address						= $requestData['address'];
@@ -237,9 +241,30 @@ class UserController extends Controller
 				$fileName = Auth::user()->id."p". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
 			}
 
-			$destinationPath = 'uploads'; // upload path
-
 			$upload_success = $requestData['profile_image']->move($destinationPath, $fileName); // uploading file to given path
+
+			$uploadedFileLocation = realpath($destinationPath.'/'.$fileName);
+			//Resizing image
+			list($width, $height) = getimagesize($uploadedFileLocation);
+
+			if($height>$max_height)	//If need to resize the image
+			{
+				//Calculate new dimention
+				$width	=	($max_height*$width)/$height;
+				$height	=	$max_height;
+
+				try
+				{
+					Image::make($uploadedFileLocation)
+						->resize($width,$height)
+						->save($uploadedFileLocation);
+				}
+				catch (\Exception $e)
+				{
+					echo $e->getMessage();
+					echo "Image resizing failed";
+				}
+			}
 
 			if ($upload_success)
 			{
