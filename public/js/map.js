@@ -632,7 +632,6 @@ function showAddDetail(id)		//Show Add Detail
 		},
 		success:function(responce_data)
 		{
-			//$.parseJSON(responce_data)
 			$.each(responce_data,function(index_key,value_all_json)
 			{
 				if(index_key.localeCompare('advertisement')==0)
@@ -805,6 +804,8 @@ function showAddDetail(id)		//Show Add Detail
 					}
 				}
 			});
+			//Draw Directions in map
+			calcRoute( $('#selected_add_direction').attr("location_lat") ,$('#selected_add_direction').attr("location_lon") );
 		}
 	});
 
@@ -824,6 +825,7 @@ function closeAddDetail()		//Show Add Detail
 	$('.ad-detail').hide("slow");
 	$('.ad-listing').show("slow");
 	$('.close-detail').removeClass("show");
+	clearPrevRoutes();
 }
 
 function openInfoWindowByID(clicked_id)
