@@ -2,7 +2,7 @@
 	<div class="col-lg-9">
 		<div class="col-lg-12 no-padding rd-top-row">
 			<h4 class="pull-left" id="selected_add_title">{{-- Iphone --}}</h4>
-			<a class="direction pull-right" id="selected_add_direction" href="#" location_lat='' location_lon=''>
+			<a class="direction pull-right" id="selected_add_direction" href="#" target="_blank" address='' location_lat='' location_lon=''>
 				<i class="fa fa-location-arrow"></i>Directions
 			</a>
 		</div>

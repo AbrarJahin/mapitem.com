@@ -317,29 +317,32 @@ class PublicController extends Controller
 	{
 		$requestData = Request::all();
 
-		$user_id = 1;	//Default User ID for non logged in users
-		if(Auth::check())
-			$user_id = Auth::user()->id;
-		$prev_element = DB::table('user_add_views')
-					->where('user_id', $user_id)
-					->where('add_id', $requestData['product_id']);
-		if($prev_element->count()>0)
-		{
-			$prev_element=$prev_element->pluck('total_view');
-			DB::table('user_add_views')
-					->where('user_id', $user_id)
-					->where('add_id', $requestData['product_id'])
-					->update([
-								'total_view' => $prev_element[0]+1
-							]);
-		}
-		else
-		{
-			DB::table('user_add_views')->insert([
-											'user_id'	=>	$user_id,
-											'add_id'	=>	$requestData['product_id']
-										]);
-		}
+		//Update View count - Start
+			$user_id = 1;	//Default User ID for non logged in users
+			if(Auth::check())
+				$user_id = Auth::user()->id;
+			$prev_element = DB::table('user_add_views')
+						->where('user_id', $user_id)
+						->where('add_id', $requestData['product_id']);
+			if($prev_element->count()>0)
+			{
+				$prev_element=$prev_element->pluck('total_view');
+				DB::table('user_add_views')
+						->where('user_id', $user_id)
+						->where('add_id', $requestData['product_id'])
+						->update([
+									'total_view' => $prev_element[0]+1
+								]);
+			}
+			else
+			{
+				DB::table('user_add_views')->insert([
+												'user_id'	=>	$user_id,
+												'add_id'	=>	$requestData['product_id']
+											]);
+			}
+		//Update View count - End
+
 		//Return the Product detail
 		$advertisement = Advertisement::with('AdvertisementImages')
 							->find($requestData['product_id']);

@@ -687,10 +687,10 @@ function showAddDetail(id)		//Show Add Detail
 						{
 							$("#selected_add_description").html(value);
 						}
-						/*else if(key.localeCompare('address')==0)
+						else if(key.localeCompare('address')==0)
 						{
-							console.log('address - '+value);
-						}*/
+							$('#selected_add_direction').attr("address",value);
+						}
 						else if(key.localeCompare('location_lat')==0)
 						{
 							$('#selected_add_direction').attr("location_lat",value);
@@ -806,6 +806,17 @@ function showAddDetail(id)		//Show Add Detail
 			});
 			//Draw Directions in map
 			calcRoute( $('#selected_add_direction').attr("location_lat") ,$('#selected_add_direction').attr("location_lon") );
+			var mapDirectionUrl = "https://www.google.com.bd/maps/dir//"
+									+ $('#selected_add_direction').attr("address")
+									+ "/@"
+									+ $('#selected_add_direction').attr("location_lat")
+									+ ","
+									+ $('#selected_add_direction').attr("location_lon");
+			$('#selected_add_direction').attr("href", mapDirectionUrl);
+			/*var encodedStr = rawStr.replace(/[\u00A0-\u9999<>\&]/gim, function(i)
+			{
+				return '&#' + i.charCodeAt(0) + ';';
+			});*/
 		}
 	});
 
