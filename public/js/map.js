@@ -805,8 +805,8 @@ function showAddDetail(id)		//Show Add Detail
 				}
 			});
 			//Draw Directions in map
-			calcRoute( $('#selected_add_direction').attr("location_lat") ,$('#selected_add_direction').attr("location_lon") );
-			var mapDirectionUrl = "https://www.google.com.bd/maps/dir//"
+			//calcRoute( $('#selected_add_direction').attr("location_lat") ,$('#selected_add_direction').attr("location_lon") );
+			var mapDirectionUrl = "https://www.google.com/maps/dir//"
 									+ $('#selected_add_direction').attr("address")
 									+ "/@"
 									+ $('#selected_add_direction').attr("location_lat")
