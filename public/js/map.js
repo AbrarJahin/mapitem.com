@@ -24,11 +24,8 @@ $(function()
 			viewPortForMobile=result.geometry.viewport;
 			generateMarkers( viewPortForMobile );
 		}
-		setTimeout(function()
-		{
-			map_div.gmap3('get').setCenter(result.geometry.location);		//Set Center
-			map_div.gmap3('get').fitBounds(result.geometry.viewport);		//Set Autometic Zoom
-		}, 6000);
+		map_div.gmap3('get').setCenter(result.geometry.location);		//Set Center
+		map_div.gmap3('get').fitBounds(result.geometry.viewport);		//Set Autometic Zoom
 	});
 
 	//On Mouseover Map InfoWindow Pop Up

@@ -54,7 +54,15 @@ function getLocation()
 			var $mapDiv = $('#map');
 			if ($mapDiv.length)
 			{
-				$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));
+				//Timeout is added to fix Map not loaded caching issue fixing
+				setTimeout(function()
+				{
+					$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(0,0));
+				}, 100);
+				setTimeout(function()
+				{
+					$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));
+				}, 500);
 			}
 
 			//Home Page Element Loading according to current ocation
