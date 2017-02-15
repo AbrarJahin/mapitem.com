@@ -28,11 +28,6 @@ $(function()
 		{
 			map_div.gmap3('get').setCenter(result.geometry.location);		//Set Center
 			map_div.gmap3('get').fitBounds(result.geometry.viewport);		//Set Autometic Zoom
-		}, 3000);
-		setTimeout(function()
-		{
-			map_div.gmap3('get').setCenter(result.geometry.location);		//Set Center
-			map_div.gmap3('get').fitBounds(result.geometry.viewport);		//Set Autometic Zoom
 		}, 6000);
 	});
 
