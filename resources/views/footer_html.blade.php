@@ -5,7 +5,7 @@
                 @else
                 container
                 @endif">
-            <a href="#">Blog</a>
+            <a href="http://mapitem.com/blog/">Blog</a>
             |
             <a href="#">Site Map</a>
             |
