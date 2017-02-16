@@ -35,8 +35,7 @@ $(document).ready(function()
 		var isValidated = true;	//After Validation Run
 		if(isValidated)
 		{
-			//var formData = new FormData(document.getElementById("fileinfo"));
-			//formData.append("label", "WEBUPLOAD");
+			$("#wait").css("display", "block");
 			var response = $.ajax(
 							{
 								headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -48,6 +47,7 @@ $(document).ready(function()
 								processData: false,
 								contentType: false
 							}).responseText;
+			$("#wait").css("display", "none");
 			if(response === 'Updated')
 			{
 				location.reload();
@@ -57,6 +57,39 @@ $(document).ready(function()
 				console.log(response);
 				alert("File size is too big to upload");
 			}
+			/*
+			$.ajax(
+			{
+				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				method: "POST",
+				url: $(this).attr('action'),
+				dataType: "json",
+				data: new FormData( this ),
+				async: false,
+				processData: false,
+				contentType: false,
+				success:function(responce_data)
+				{
+					if(responce_data === 'Updated')
+					{
+						location.reload();
+					}
+					else
+					{
+						console.log(response);
+						alert("File size is too big to upload");
+					}
+				},
+				error: function (request, status, error)
+				{
+					console.log(request);
+					console.log(status);
+					console.log(error);
+
+					alert("File size is too big to upload");
+				}
+			});
+			 */
 		}
 		return 0;
 	});

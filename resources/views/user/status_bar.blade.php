@@ -8,15 +8,15 @@
 			<ul>
 				<li>
 					You have <a href="{{ URL::route('user.my_adds') }}">
-					{{ $total_no_of_adds }}</a> Ads
+					{{ $adds_count }}</a> Ads
 				</li>
 				<li>
 					You have <a href="{{ URL::route('user.inbox') }}">
-					{{ $no_of_new_message }}</a> New Messages in Inbox
+					{{ $message_count }}</a> New Messages in Inbox
 				</li>
 				<li>
 					You have <a href="{{ URL::route('user.offers') }}">
-					{{ $no_of_new_offer }}</a> Offer
+					{{ $offer_count }}</a> Offer
 				</li>
 			</ul>
 		</div>

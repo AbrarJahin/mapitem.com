@@ -18,6 +18,7 @@ class CreateMessagesTable extends Migration
 			$table->increments('id');
 			$table->integer('thread_id')	->unsigned()	->index();
 			$table->integer('sender_id')	->unsigned()	->index();
+			$table->enum('is_read', ['readed', 'not_readed'])->default('not_readed');
 			$table->text('message');
 
 			//Foreign Keys

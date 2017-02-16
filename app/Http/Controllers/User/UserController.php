@@ -49,7 +49,7 @@ class UserController extends Controller
 	*/
 	public function dashboardView()
 	{
-		return view('user.dashboard.main', [ 'current_page'	=> 'user.dashboard' ]);
+		return view('user.dashboard.main', [	'current_page'	=> 'user.dashboard'	]);
 	}
 
 	/*
