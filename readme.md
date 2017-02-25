@@ -63,6 +63,8 @@ So, no readme file can be provided still now.
 
 ###Installation
 
+Install WAMP 2.5 (PHP>=5.5.9)
+
 Install composer, take composer update, git clone go to the directory.
 
 Then run
@@ -74,6 +76,10 @@ git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git
 cd mapitem.com
 
 composer install
+
+--or
+
+--composer install --ignore-platform-reqs
 
 cp  .env.example .env
 
@@ -97,9 +103,20 @@ php artisan migrate:refresh --seed
 
 ```
 
+-------------------------------------------------------------------------------
 
+In default configuration, if you are using local DB as user name - `root`, pass = "" and DB name = `mapitem`, then everything will be done for you autometically after making `composer install --ignore-platform-reqs`.
 
---------------------------------
+But you should have a Database named `mapitem` with user=`root` and no password is set in localhost.
+
+-------------------------------------------------------------------------------
+
+------------------------
+
+Other libraries used-
 
 Login Tool- https://github.com/laravel/socialite
+
 FB Login- https://www.youtube.com/watch?v=EYdeTbQyhL8
+
+Google Login- same as prev
