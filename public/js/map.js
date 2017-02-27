@@ -518,7 +518,7 @@ function generateMarkers(bounds)
 
 																			//###############	Now showing the infoWindow
 																			var infoWindowContent = context.data.description;	//Will be generated from AJAX call
-																			infoWindowContent =	'<div class="map-master-div">'
+																			infoWindowContent =	'<div class="map-master-div" onclick="showAddDetail('+context.data.id+')">'
 																								+	'<div class="pos-rel">'
 																								+	'<a href="#" onclick="addToWisList('+context.data.id+',this)" class="add_to_wishlist wsh-lst-infowindow">'
 																								+		'<img src="'
