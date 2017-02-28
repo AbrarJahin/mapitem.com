@@ -277,6 +277,24 @@ $(document).ready(function()
 	{
 		$('#user_location_lat').val( result.geometry.location.lat() );
 		$('#user_location_lon').val( result.geometry.location.lng() );
+
+		$('#map_lat_min').val( result.geometry.viewport.f.f );
+		$('#map_lat_max').val( result.geometry.viewport.f.b );
+		$('#map_lon_min').val( result.geometry.viewport.b.f );
+		$('#map_lon_max').val( result.geometry.viewport.b.b );
+		/*
+			var strictBounds = new google.maps.LatLngBounds(
+										new google.maps.LatLng(
+																	$('#map_lat_min').val(),
+																	$('#map_lon_max').val()
+																),// top left corner of map
+										new google.maps.LatLng(
+																	$('#map_lat_max').val(),
+																	$('#map_lon_min').val()
+																)// bottom right corner
+									);
+			map_div.gmap3('get').fitBounds(strictBounds);
+		*/
 	});
 
 	//Create Custom Search Form submit to show pretty URL
@@ -294,7 +312,7 @@ $(document).ready(function()
 			$('#input_nav_search').parent().removeClass("has-error");
 		}
 		*/
-		if( $('#user_location').val().trim().length<1 )
+		if( $('#user_location').val().trim().length<1 || $('#map_lat_min').val().trim().length<1 )
 		{
 			$('#user_location').parent().addClass("has-error");
 			return 0;
@@ -303,12 +321,18 @@ $(document).ready(function()
 		{
 			$('#user_location').parent().removeClass("has-error");
 		}
-		var lat_input,lon_input;
+		var lat_input,lon_input, lat_min, lon_min, lat_max, lon_max;
 		try
 		{
 			//var lat_lon_parsed_data = $('#user_location').val().split(',');
-			lat_input = parseFloat( $('#user_location_lat').val() );
-			lon_input = parseFloat( $('#user_location_lon').val() );
+			lat_input	=	parseFloat( $('#user_location_lat').val() );
+			lon_input	=	parseFloat( $('#user_location_lon').val() );
+
+			lat_min		=	parseFloat( $('#map_lat_min').val() );
+			lon_min		=	parseFloat( $('#map_lon_min').val() );
+			lat_max		=	parseFloat( $('#map_lat_max').val() );
+			lon_max		=	parseFloat( $('#map_lon_max').val() );
+
 			if(	isNaN(lat_input)	||	isNaN(lon_input)	)
 			{
 				$('#user_location').parent().addClass("has-error");
@@ -323,9 +347,15 @@ $(document).ready(function()
 										+	'/'
 										+	lat_input
 										+	'/'
-										+	lon_input;
-										//+	'/'
-										//+	$('#input_nav_search').val().trim();
+										+	lon_input
+										+	'/'
+										+	lat_min
+										+	'/'
+										+	lon_min
+										+	'/'
+										+	lat_max
+										+	'/'
+										+	lon_max;
 
 				var input_nav_search_value = $('#input_nav_search').val().trim();
 				if( input_nav_search_value.length>0 )

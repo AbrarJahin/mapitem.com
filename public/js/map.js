@@ -102,6 +102,22 @@ $(function()
 		}
 	});
 
+	if($('#map_lon_min').val().length>0)
+	{
+		//Reset the viewport of the map from data found from previous page
+		var strictBounds = new google.maps.LatLngBounds(
+									new google.maps.LatLng(
+																$('#map_lat_min').val(),
+																$('#map_lon_max').val()
+															),// top left corner of map
+									new google.maps.LatLng(
+																$('#map_lat_max').val(),
+																$('#map_lon_min').val()
+															)// bottom right corner
+								);
+		map_div.gmap3('get').fitBounds(strictBounds);
+	}
+
 	//Close All Infowindow by clicking inside map
 	google.maps.event.addListener(map_div.gmap3("get"), "click", function(event)
 	{

@@ -133,7 +133,7 @@ class PublicController extends Controller
 		Updated At      -> 22/03/2016
 		Created by      -> S. M. Abrar Jahin
 	*/
-	public function listingViewSearch($search_location,$lat,$lon,$search_data="")
+	public function listingViewSearch($search_location,$lat,$lon,$lat_min,$lon_min,$lat_max,$lon_max,$search_data="")
 	{
 		return view('public.listing.main', [
 												'current_page'			=>	'Add Listing',
@@ -147,6 +147,10 @@ class PublicController extends Controller
 												'search_location'		=>	$search_location,
 												'latitude'				=>	$lat,
 												'longitude'				=>	$lon,
+												'mapLatMin'				=>	$lat_min,
+												'mapLonMin'				=>	$lon_min,
+												'mapLatMax'				=>	$lat_max,
+												'mapLonMax'				=>	$lon_max,
 												'search_data'			=>	$search_data
 											]);
 	}

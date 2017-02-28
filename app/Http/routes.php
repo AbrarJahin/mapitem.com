@@ -89,12 +89,12 @@ Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 			'as' => 'listing'
 		]);
 
-	Route::get('listing/{search_location}/{latitude}/{longitude}/{search_for}', [
+	Route::get('listing/{search_location}/{latitude}/{longitude}/{lat_min}/{lon_min}/{lat_max}/{lon_max}/{search_for}', [
 			'uses' => 'PublicController@listingViewSearch',
 			'as' => 'listing-search'
 		]);
 
-	Route::get('listing/{search_location}/{latitude}/{longitude}', [
+	Route::get('listing/{search_location}/{latitude}/{longitude}/{lat_min}/{lon_min}/{lat_max}/{lon_max}', [
 			'uses' => 'PublicController@listingViewSearch',
 			'as' => 'listing-search'
 		]);

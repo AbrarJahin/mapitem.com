@@ -34,8 +34,21 @@
 
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-padding topsearch">
 		<input type="text" placeholder="Location" id="user_location" class="form-control normal-input">
-		<input type="hidden"id="user_location_lat" name="user_location_lat">
-		<input type="hidden"id="user_location_lon" name="user_location_lon">
+		<input type="hidden" id="user_location_lat" name="user_location_lat">
+		<input type="hidden" id="user_location_lon" name="user_location_lon">
+
+		@if( isset($mapLatMin) && isset($mapLatMax) && isset($mapLonMin) && isset($mapLonMax) )
+			<input type="hidden" id="map_lat_min" name="map_lat_min" value="{{ $mapLatMin }}">
+			<input type="hidden" id="map_lat_max" name="map_lat_max" value="{{ $mapLatMax }}">
+			<input type="hidden" id="map_lon_min" name="map_lon_min" value="{{ $mapLonMin }}">
+			<input type="hidden" id="map_lon_max" name="map_lon_max" value="{{ $mapLonMax }}">
+		@else
+		    <input type="hidden" id="map_lat_min" name="map_lat_min">
+			<input type="hidden" id="map_lat_max" name="map_lat_max">
+			<input type="hidden" id="map_lon_min" name="map_lon_min">
+			<input type="hidden" id="map_lon_max" name="map_lon_max">
+		@endif
+
 		<button class="btn dropdown-toggle" type="submit">
 			<span class="fa fa-fw">&#xf002;</span>
 		</button>

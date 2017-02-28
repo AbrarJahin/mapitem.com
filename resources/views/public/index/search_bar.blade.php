@@ -30,8 +30,13 @@
 
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-padding">
 				<input type="text" class="form-control large-input col-lg-4 input-title" id="user_location" name="user_location" placeholder="Location">
-				<input type="hidden"id="user_location_lat" name="user_location_lat">
-				<input type="hidden"id="user_location_lon" name="user_location_lon">
+				<input type="hidden" id="user_location_lat" name="user_location_lat">
+				<input type="hidden" id="user_location_lon" name="user_location_lon">
+
+				<input type="hidden" id="map_lat_min" name="map_lat_min">
+				<input type="hidden" id="map_lat_max" name="map_lat_max">
+				<input type="hidden" id="map_lon_min" name="map_lon_min">
+				<input type="hidden" id="map_lon_max" name="map_lon_max">
 			</div>
 
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 no-padding cat">
