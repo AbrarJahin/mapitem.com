@@ -33,10 +33,10 @@
 				<input type="hidden" id="user_location_lat" name="user_location_lat">
 				<input type="hidden" id="user_location_lon" name="user_location_lon">
 
-				<input type="hidden" id="map_lat_min" name="map_lat_min">
-				<input type="hidden" id="map_lat_max" name="map_lat_max">
-				<input type="hidden" id="map_lon_min" name="map_lon_min">
-				<input type="hidden" id="map_lon_max" name="map_lon_max">
+				<input type="hidden" id="map_lat_min" name="map_lat_min" value="-0.1268487">
+				<input type="hidden" id="map_lat_max" name="map_lat_max" value="0.1268487">
+				<input type="hidden" id="map_lon_min" name="map_lon_min" value="0.143270477">
+				<input type="hidden" id="map_lon_max" name="map_lon_max" value="-0.1432704766">
 			</div>
 
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 no-padding cat">

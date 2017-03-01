@@ -43,10 +43,10 @@
 			<input type="hidden" id="map_lon_min" name="map_lon_min" value="{{ $mapLonMin }}">
 			<input type="hidden" id="map_lon_max" name="map_lon_max" value="{{ $mapLonMax }}">
 		@else
-		    <input type="hidden" id="map_lat_min" name="map_lat_min">
-			<input type="hidden" id="map_lat_max" name="map_lat_max">
-			<input type="hidden" id="map_lon_min" name="map_lon_min">
-			<input type="hidden" id="map_lon_max" name="map_lon_max">
+		    <input type="hidden" id="map_lat_min" name="map_lat_min" value="-0.1268487">
+			<input type="hidden" id="map_lat_max" name="map_lat_max" value="0.1268487">
+			<input type="hidden" id="map_lon_min" name="map_lon_min" value="0.143270477">
+			<input type="hidden" id="map_lon_max" name="map_lon_max" value="-0.1432704766">
 		@endif
 
 		<button class="btn dropdown-toggle" type="submit">

@@ -44,7 +44,12 @@ function getLocation()
 				latitude		= parseFloat(temp[0]);
 				longitude		= parseFloat(temp[1]);
 				//Input User Location in input
-				$('#user_location').val( response.city /*+', '+response.country*/ );
+				$('#user_location').val( response.city /*+', '+response.country */);
+
+				$('#map_lat_min').val( parseFloat( $('#map_lat_min').val() )+latitude );
+				$('#map_lat_max').val( parseFloat( $('#map_lat_max').val() )+latitude );
+				$('#map_lon_min').val( parseFloat( $('#map_lon_min').val() )+longitude );
+				$('#map_lon_max').val( parseFloat( $('#map_lon_max').val() )+longitude );
 			}
 
 			$('#user_location_lat').val(latitude);
@@ -282,36 +287,13 @@ $(document).ready(function()
 		$('#map_lat_max').val( result.geometry.viewport.f.b );
 		$('#map_lon_min').val( result.geometry.viewport.b.f );
 		$('#map_lon_max').val( result.geometry.viewport.b.b );
-		/*
-			var strictBounds = new google.maps.LatLngBounds(
-										new google.maps.LatLng(
-																	$('#map_lat_min').val(),
-																	$('#map_lon_max').val()
-																),// top left corner of map
-										new google.maps.LatLng(
-																	$('#map_lat_max').val(),
-																	$('#map_lon_min').val()
-																)// bottom right corner
-									);
-			map_div.gmap3('get').fitBounds(strictBounds);
-		*/
 	});
 
 	//Create Custom Search Form submit to show pretty URL
 	$("form#search_add_from").submit(function(e)
 	{
 		e.preventDefault();
-		/*
-		if( $('#input_nav_search').val().trim().length<1 )
-		{
-			$('#input_nav_search').parent().addClass("has-error");
-			return 0;
-		}
-		else
-		{
-			$('#input_nav_search').parent().removeClass("has-error");
-		}
-		*/
+
 		if( $('#user_location').val().trim().length<1 || $('#map_lat_min').val().trim().length<1 )
 		{
 			$('#user_location').parent().addClass("has-error");
@@ -321,6 +303,7 @@ $(document).ready(function()
 		{
 			$('#user_location').parent().removeClass("has-error");
 		}
+
 		var lat_input,lon_input, lat_min, lon_min, lat_max, lon_max;
 		try
 		{
