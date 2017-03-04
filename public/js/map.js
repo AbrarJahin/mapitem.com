@@ -134,6 +134,15 @@ $(function()
 		}
 	});
 
+	google.maps.event.addListenerOnce(map_div.gmap3("get"), 'tilesloaded', function()
+	{
+		//this part runs when the mapobject shown for the first time
+		if(map_div.gmap3('get').getZoom()>12)
+		{
+			map_div.gmap3('get').setZoom(12);
+		}
+	});
+
 	//Call AJAX Call from Here - When Map comes to a stable position of when map first time loads
 	google.maps.event.addListener(map_div.gmap3("get"), "idle", function(event)
 	{
