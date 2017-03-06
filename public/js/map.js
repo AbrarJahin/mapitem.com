@@ -25,7 +25,7 @@ $(function()
 			generateMarkers( viewPortForMobile );
 		}
 		map_div.gmap3('get').setCenter(result.geometry.location);		//Set Center
-		map_div.gmap3('get').fitBounds(result.geometry.viewport);		//Set Autometic Zoom
+		//map_div.gmap3('get').fitBounds(result.geometry.viewport);		//Set Autometic Zoom
 	});
 
 	//On Mouseover Map InfoWindow Pop Up
