@@ -2196,10 +2196,16 @@ $(document).ready(function()
 					}
 					catch(err)
 					{
+						/*
 						lat_min		=	-180,
 						lat_max		=	180,
 						lon_min		=	-180,
 						lon_max		=	180;
+						*/
+						lat_min		=	$("#map_lat_min").val(),
+						lat_max		=	$("#map_lat_max").val(),
+						lon_min		=	$("#map_lon_min").val(),
+						lon_max		=	$("#map_lon_max").val();
 					}
 
 					$.ajax({
