@@ -2204,8 +2204,8 @@ $(document).ready(function()
 						*/
 						lat_min		=	$("#map_lat_min").val(),
 						lat_max		=	$("#map_lat_max").val(),
-						lon_min		=	$("#map_lon_min").val(),
-						lon_max		=	$("#map_lon_max").val();
+						lon_min		=	$("#map_lon_max").val(),
+						lon_max		=	$("#map_lon_min").val();
 					}
 
 					$.ajax({
