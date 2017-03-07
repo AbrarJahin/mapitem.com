@@ -645,6 +645,8 @@ function onChangeOnOff()		//Turning on or off clustering
 
 function showAddDetail(id)		//Show Add Detail
 {
+	if(is_wishlist_propagated)
+		return;
 	$.ajax(
 	{
 		headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -838,10 +840,6 @@ function showAddDetail(id)		//Show Add Detail
 									+ ","
 									+ $('#selected_add_direction').attr("location_lon");
 			$('#selected_add_direction').attr("href", mapDirectionUrl);
-			/*var encodedStr = rawStr.replace(/[\u00A0-\u9999<>\&]/gim, function(i)
-			{
-				return '&#' + i.charCodeAt(0) + ';';
-			});*/
 		}
 	});
 

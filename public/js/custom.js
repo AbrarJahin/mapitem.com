@@ -1,6 +1,7 @@
 //Global variables
 var latitude, longitude, searchLocationName;
 var is_tab_opened_before =0;
+var is_wishlist_propagated = false;
 //var debug_variable;
 //Email Validate
 function validateEmail(email)
@@ -154,6 +155,7 @@ function AddNewData()
 
 function addToWisList(id, element)
 {
+	is_wishlist_propagated = true;
 	$.ajax({
 				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
 				method: "POST",
@@ -204,6 +206,7 @@ function addToWisList(id, element)
 					$('#lgn-pup').modal('show');
 				}
 			});
+	setTimeout(function(){ is_wishlist_propagated = false; }, 1000);
 }
 
 function showMessageDetail()
