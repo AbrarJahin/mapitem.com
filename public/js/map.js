@@ -157,9 +157,9 @@ $(function()
 				 *			lat distance 1 = 69.132 miles
 				 *			lon distance 1 = 52.958 miles
 				 */
-				var lat_tuned_map_area = 10/69.132;
-				var lon_tuned_map_area = 10/52.958;
-				//console.log(lat_tuned_map_area + ' ' + lon_tuned_map_area);
+				//Mobile viewport is set to 50 miles
+				var lat_tuned_map_area = 50/2/69.132;
+				var lon_tuned_map_area = 50/2/52.958;
 				viewPortForMobile = new google.maps.LatLngBounds(
 																	new google.maps.LatLng(latitude-lat_tuned_map_area, longitude-lon_tuned_map_area),
 																	new google.maps.LatLng(latitude+lat_tuned_map_area, longitude+lon_tuned_map_area)

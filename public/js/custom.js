@@ -75,7 +75,17 @@ function getLocation()
 			var element_container = $('#home_page_element_container');
 			if (element_container.length)
 			{
-				var half_redious = 50/2/111.23;	//Comes from user requirement - 50 miles
+				/*
+				 *	From http://www.movable-type.co.uk/scripts/latlong.html
+				 *	and http://andrew.hedges.name/experiments/haversine/
+				 *	we get -
+				 *			lat distance 1 = 69.132 miles
+				 *			lon distance 1 = 52.958 miles
+				 */
+				//Comes from user requirement - 50 miles
+				var lat_tuned_map_area = 50/2/69.132;
+				var lon_tuned_map_area = 50/2/52.958;
+
 				$.ajax(
 				{
 					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -84,10 +94,10 @@ function getLocation()
 					dataType: "json",
 					data:
 					{
-						lat_min	:	latitude-half_redious,
-						lat_max	:	latitude+half_redious,
-						lon_min	:	longitude-half_redious,
-						lon_max	:	longitude+half_redious
+						lat_min	:	latitude-lat_tuned_map_area,
+						lat_max	:	latitude+lat_tuned_map_area,
+						lon_min	:	longitude-lon_tuned_map_area,
+						lon_max	:	longitude+lon_tuned_map_area
 					},
 					success:function(responce_data)
 					{
