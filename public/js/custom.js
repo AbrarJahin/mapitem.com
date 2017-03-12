@@ -1324,12 +1324,22 @@ $(document).ready(function()
 		complete: function()
 		{
 			$("#wait").css("display", "none");
+		},
+		success: function (e)
+		{
+			$("#wait").css("display", "none");	
+		},
+		error: function (e)
+		{
+			console.log(e);
+			$("#wait").css("display", "none");	
 		}
 	});
 	//Global AJAX Config - End
 
 	$(document).ajaxError(function( event, jqXHR, settings, thrownError )
 	{
+		$("#wait").css("display", "none");
 		if (jqXHR.status === 0)
 		{
 			console.log('Not connect.\n Verify Network.');
