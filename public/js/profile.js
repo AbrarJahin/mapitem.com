@@ -36,27 +36,38 @@ $(document).ready(function()
 		if(isValidated)
 		{
 			$("#wait").css("display", "block");
-			var response = $.ajax(
-							{
-								headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-								method: "POST",
-								url: $(this).attr('action'),
-								dataType: "json",
-								data: new FormData( this ),
-								async: false,
-								processData: false,
-								contentType: false
-							}).responseText;
-			$("#wait").css("display", "none");
-			if(response === 'Updated')
+			setTimeout(function()
 			{
-				location.reload();
-			}
-			else
-			{
-				console.log(response);
-				alert("File size is too big to upload");
-			}
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#edit_profile").attr('action'),
+					dataType: "text",
+					data: new FormData( $("#edit_profile")[0] ),
+					async: false,
+					processData: false,
+					contentType: false,
+					success:function(responce_data)
+					{
+						if(responce_data === 'Updated')
+						{
+							location.reload();
+						}
+						else
+						{
+							$("#wait").css("display", "none");
+							console.log(responce_data);
+							alert("File size is too big to upload");
+						}
+					},
+					error: function(xhr, textStatus, errorThrown)
+					{
+						$("#wait").css("display", "none");
+						alert('Network error!!');
+					}
+				});
+			}, 100);
 		}
 		return 0;
 	});

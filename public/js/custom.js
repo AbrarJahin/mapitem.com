@@ -1316,15 +1316,17 @@ $(document).ready(function()
 	window.prettyPrint && prettyPrint();
 
 	//Global AJAX Config - Start
-	$(document).ajaxStart(function()
-	{
-		$("#wait").css("display", "block");
+	jQuery.ajaxSetup({
+		beforeSend: function()
+		{
+			$("#wait").css("display", "block");
+		},
+		complete: function()
+		{
+			$("#wait").css("display", "none");
+		}
 	});
-
-	$(document).ajaxComplete(function()
-	{
-		$("#wait").css("display", "none");
-	});
+	//Global AJAX Config - End
 
 	$(document).ajaxError(function( event, jqXHR, settings, thrownError )
 	{

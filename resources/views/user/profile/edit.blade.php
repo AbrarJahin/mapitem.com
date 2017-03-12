@@ -7,7 +7,7 @@
 					@else
 						{{ url('images/empty-profile.jpg') }}
 					@endif" width="144" height="144">
-		<input type="file" name="profile_image" onchange="document.getElementById('profile_img_preview').src = window.URL.createObjectURL(this.files[0])">
+		<input type="file" accept="image/*" name="profile_image" onchange="document.getElementById('profile_img_preview').src = window.URL.createObjectURL(this.files[0])">
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left l-adj">Name</div>
