@@ -340,7 +340,7 @@ $(function()
 			},
 			complete: function ()
 			{// Handle the complete event
-				//alert("ajax completed");
+				$("#wait").css("display", "none");
 			}
 		});  // end Ajax
 	});
