@@ -765,7 +765,9 @@ function showAddDetail(id)		//Show Add Detail
 						$.each(review,function(key,value)
 						{
 							if(key.localeCompare('added_on')==0)
-								review_data.added_on = value;
+							{
+								review_data.added_on = convertToLocalTime(value);
+							}
 							else if(key.localeCompare('rating')==0)
 								review_data.rating = value;
 							else if(key.localeCompare('review')==0)

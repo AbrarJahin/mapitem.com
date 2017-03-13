@@ -10,6 +10,14 @@ function validateEmail(email)
 	return re.test(email);
 }
 
+function convertToLocalTime(serverTime)
+{
+	var offsetInMinuites = new Date().getTimezoneOffset();
+	var serverDate = Date.parse(serverTime, "yyyy-MM-dd HH:mm:ss");
+	var localTime = new Date(serverDate - (offsetInMinuites * 60 * 1000));
+	return localTime;
+}
+
 //Taking bootstrap modal to the center of the page
 function centerModal()
 {
