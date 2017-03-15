@@ -380,7 +380,7 @@ class PublicController extends Controller
 									DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS user_name"),
 									'user_reviews.review as review',
 									'user_reviews.rating as rating',
-									DB::raw("DATE_FORMAT(user_reviews.updated_at,'%m/%d/%Y %H:%i') AS added_on")
+									DB::raw("DATE_FORMAT(user_reviews.updated_at,'%m/%d/%Y %H:%i:%s') AS added_on")
 								)
 						//	MySQL Date Format	=>	%D %b %Y, %r
 						->where('add_id', $requestData['product_id'])

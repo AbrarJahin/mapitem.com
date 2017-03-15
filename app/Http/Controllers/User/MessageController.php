@@ -78,7 +78,7 @@ class MessageController extends Controller
 											END as user_image"
 										),
 							'messages.message',
-							DB::raw("DATE_FORMAT(messages.created_at,'%m/%d/%Y %H:%i') AS sent_time")
+							DB::raw("DATE_FORMAT(messages.created_at,'%m/%d/%Y %H:%i:%s') AS sent_time")
 							/*,DB::raw(
 										"CASE
 											WHEN DATE(messages.created_at) = DATE(NOW()) THEN DATE_FORMAT(messages.created_at, '%r')
