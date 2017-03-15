@@ -766,7 +766,7 @@ function showAddDetail(id)		//Show Add Detail
 						{
 							if(key.localeCompare('added_on')==0)
 							{
-								review_data.added_on = convertToLocalTime(value);
+								review_data.added_on = formatTime(convertToLocalTime(value));
 							}
 							else if(key.localeCompare('rating')==0)
 								review_data.rating = value;
