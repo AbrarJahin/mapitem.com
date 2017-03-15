@@ -18,20 +18,32 @@ function convertToLocalTime(serverTime)
 	return localTime;
 }
 
-function formatTime(date)
+function formatTime(inputDate)
 {
-	var dayNo = getDateWithSuffix(date.getDate());
-	var monthName = getMonthName(date.getMonth());
-	var year = date.getFullYear();
+	var dayNo = getDateWithSuffix(inputDate.getDate());
+	var monthName = getMonthName(inputDate.getMonth());
+	var year = inputDate.getFullYear();
 
-	var hours = date.getHours();
-	var minutes = date.getMinutes();
+	var hours = inputDate.getHours();
+	var minutes = inputDate.getMinutes();
 	var ampm = hours >= 12 ? 'PM' : 'AM';
 	hours = hours % 12;
 	hours = hours ? hours : 12; // the hour '0' should be '12'
 	minutes = minutes < 10 ? '0'+minutes : minutes;
 
-	var formattedTime = dayNo+" "+monthName+" "+year+", "+hours + ':' + minutes + ' ' + ampm;
+	var formattedTime = "";
+	var todaysDate = new Date();	// Get today's date
+
+	// call setHours to take the time out of the comparison
+	if(inputDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0))
+	{	// Date equals today's date - So show only time
+		formattedTime = hours + ':' + minutes + ' ' + ampm;
+	}
+	else
+	{	// Date equals Not today's date - So show total time with date
+		formattedTime = dayNo+" "+monthName+" "+year+", "+hours + ':' + minutes + ' ' + ampm;
+	}
+
 	return formattedTime;
 }
 
@@ -2116,7 +2128,7 @@ $(document).ready(function()
 										+'</span></div><blockquote><div class="message">'
 										+single_data.message
 										+'</div><footer><time class="message_sent_time">'
-										+single_data.sent_time
+										+formatTime(convertToLocalTime(single_data.sent_time))
 										+'</time></footer></blockquote></div></li>'
 									);
 					});

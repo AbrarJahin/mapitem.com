@@ -78,13 +78,13 @@ class MessageController extends Controller
 											END as user_image"
 										),
 							'messages.message',
-							DB::raw("DATE_FORMAT(messages.created_at,'%D %b %Y, %r') AS sent_time"),
-							DB::raw(
+							DB::raw("DATE_FORMAT(messages.created_at,'%m/%d/%Y %H:%i') AS sent_time")
+							/*,DB::raw(
 										"CASE
 											WHEN DATE(messages.created_at) = DATE(NOW()) THEN DATE_FORMAT(messages.created_at, '%r')
 											ELSE DATE_FORMAT(messages.created_at, '%b %D, %Y - %r')
 										END as sent_time"
-									)
+									)*/
 						)
 				->where('messages.thread_id', $requestData['thread_id'])
 				->get();

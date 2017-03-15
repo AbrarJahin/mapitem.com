@@ -358,18 +358,9 @@ $(function()
 			dataType: "json",
 			success: function (data)
 			{
-				//alert(data);
-			},
-			error: function (e)
-			{
-				console.log(e);
-			},
-			complete: function ()
-			{// Handle the complete event
-				//alert("ajax completed");
+				alert(data);
 			}
 		});  // end Ajax
-		alert('Your Message has Been Sent');
 	});
 
 	//open page on page load for sharing data
