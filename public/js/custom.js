@@ -26,10 +26,12 @@ function formatTime(inputDate)
 
 	var hours = inputDate.getHours();
 	var minutes = inputDate.getMinutes();
+	var seconds = inputDate.getSeconds();
 	var ampm = hours >= 12 ? 'PM' : 'AM';
 	hours = hours % 12;
 	hours = hours ? hours : 12; // the hour '0' should be '12'
 	minutes = minutes < 10 ? '0'+minutes : minutes;
+	seconds = seconds < 10 ? '0'+seconds : seconds;
 
 	var formattedTime = "";
 	var todaysDate = new Date();	// Get today's date
@@ -37,11 +39,11 @@ function formatTime(inputDate)
 	// call setHours to take the time out of the comparison
 	if(inputDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0))
 	{	// Date equals today's date - So show only time
-		formattedTime = hours + ':' + minutes + ' ' + ampm;
+		formattedTime = hours + ':' + minutes+ ':' + seconds + ' ' + ampm;
 	}
 	else
 	{	// Date equals Not today's date - So show total time with date
-		formattedTime = dayNo+" "+monthName+" "+year+", "+hours + ':' + minutes + ' ' + ampm;
+		formattedTime = dayNo + " " + monthName + " " + year + ", " + hours + ':' + minutes + ' ' + ampm;
 	}
 
 	return formattedTime;
