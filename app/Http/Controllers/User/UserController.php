@@ -245,25 +245,16 @@ class UserController extends Controller
 
 			$uploadedFileLocation = realpath($destinationPath.'/'.$fileName);
 			//Resizing image
-			list($width, $height) = getimagesize($uploadedFileLocation);
-
-			if($height>$max_height)	//If need to resize the image
+			try
 			{
-				//Calculate new dimention
-				$width	=	($max_height*$width)/$height;
-				$height	=	$max_height;
-
-				try
-				{
-					Image::make($uploadedFileLocation)
-						->resize($width,$height)
-						->save($uploadedFileLocation);
-				}
-				catch (\Exception $e)
-				{
-					echo $e->getMessage();
-					echo "Image resizing failed";
-				}
+				Image::make($uploadedFileLocation)
+					->resize(144,144)
+					->save($uploadedFileLocation);
+			}
+			catch (\Exception $e)
+			{
+				echo $e->getMessage();
+				echo "Image resizing failed";
 			}
 
 			if ($upload_success)
