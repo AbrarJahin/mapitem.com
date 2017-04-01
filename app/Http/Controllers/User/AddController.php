@@ -119,6 +119,7 @@ class AddController extends Controller
 			try
 			{
 				Image::make($uploadedFileLocation)
+					->orientate()
 					->resize($width,$height)
 					->save($uploadedFileLocation);
 			}

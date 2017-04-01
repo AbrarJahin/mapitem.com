@@ -248,6 +248,7 @@ class UserController extends Controller
 			try
 			{
 				Image::make($uploadedFileLocation)
+					->orientate()
 					->resize(144,144)
 					->save($uploadedFileLocation);
 			}
