@@ -1387,6 +1387,7 @@ $(document).ready(function()
 	window.prettyPrint && prettyPrint();
 
 	//Global AJAX Config - Start
+	/*
 	jQuery.ajaxSetup({
 		beforeSend: function()
 		{
@@ -1405,6 +1406,14 @@ $(document).ready(function()
 			console.log(e);
 			$("#wait").css("display", "none");	
 		}
+	});
+	*/
+	$(document).ajaxStart(function(){
+		$("#wait").css("display", "block");
+	});
+
+	$(document).ajaxComplete(function(){
+		$("#wait").css("display", "none");
 	});
 	//Global AJAX Config - End
 
