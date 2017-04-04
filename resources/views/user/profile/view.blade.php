@@ -25,13 +25,6 @@
 	<div class="p-left">Date of Birth</div>
 	<div class="p-right">
 		{{ $current_user->date_of_birth }}
-		{{--
-		<div class="pull-left width-adj04">20</div>
-		<span class="pull-left">/</span>
-		<div class="pull-left width-adj04">12</div>
-		<span class="pull-left">/</span>
-		<div class="pull-left width-adj04">1980</div>
-		--}}
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Social Security</div>
