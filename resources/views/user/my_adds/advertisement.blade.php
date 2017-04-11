@@ -51,8 +51,6 @@
 			{{-- Advertisement Body - Start --}}
 				<div class="db-adc">
 					<div class="col-lg-3 col-md-3 col-sm-5 no-padding">
-							{{-- <img class="pic-adj img-responsive" src="{{ URL::asset('uploads') }}/{{ $my_add->AdvertisementImages[0]->image_name }}"> --}}
-
 							<img class="pic-adj img-responsive"
 								src="@if (count($my_add->AdvertisementImages) > 0)
 							{{ URL::asset('uploads') }}/{{ $my_add->AdvertisementImages[0]->image_name }}
@@ -70,7 +68,7 @@
 						<div class="clearfix"></div>
 						<p>
 							{{ $my_add->description }}
-							<br/><a href="#{{ $my_add->id }}">View More</a>
+							<br/><a href="{{ route('listing') }}#{{ $my_add->id }}">View More</a>
 						</p>
 						{{-- Advertisement Giver Description - Start --}}
 						<ul>

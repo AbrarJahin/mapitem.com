@@ -1483,11 +1483,19 @@ $(document).ready(function()
 					$('#edit_add_address').val(single_data.address);
 					$('#edit_add_location_lat').val(single_data.location_lat);
 					$('#edit_add_location_lon').val(single_data.location_lon);
-					$('#add_title_image').attr(	"src",
-												$('meta[name=upload_folder_url]').attr("content")
-												+
-												single_data.advertisement_images[0].image_name
+
+					try
+					{
+						$('#add_title_image').attr(	"src",
+													$('meta[name=upload_folder_url]').attr("content")
+													+
+													single_data.advertisement_images[0].image_name
 												);
+					}
+					catch(err)
+					{
+						console.log("Image not exists - " + err);
+					}
 				});
 			}
 		});
