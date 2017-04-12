@@ -15,7 +15,6 @@ use App\UserNotification;
 use Auth;
 use DB;
 use Image;
-
 /*
 	Functionality	-> Handel All Auth Works
 	Access			-> No restriction applied in the class, applied from route if needed
@@ -25,6 +24,9 @@ use Image;
 
 class AddController extends Controller
 {
+	private $destinationPath	=	'uploads';	// upload path
+	private $max_height			=	333;		//Max image height
+
 	/*
 		URL				-> POST: /post_add
 		Functionality	-> Ad. add post
@@ -86,9 +88,6 @@ class AddController extends Controller
 	{
 		$requestData = Request::all();
 
-		$destinationPath	=	'uploads';	// upload path
-		$max_height			=	333;		//Max image height
-
 		$validator = Validator::make(
 										$requestData,
 										[
@@ -105,16 +104,16 @@ class AddController extends Controller
 		//Renaming the file
 		$extension = $requestData['uploaded_image']->getClientOriginalExtension(); // getting file extension
 		$fileName = Auth::user()->id."a". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
-		$upload_success = $requestData['uploaded_image']->move($destinationPath, $fileName); // uploading file to given path
-		$uploadedFileLocation = realpath($destinationPath.'/'.$fileName);
+		$upload_success = $requestData['uploaded_image']->move($this->destinationPath, $fileName); // uploading file to given path
+		$uploadedFileLocation = realpath($this->destinationPath.'/'.$fileName);
 		//Resizing image
 		list($width, $height) = getimagesize($uploadedFileLocation);
 
-		if($height>$max_height)	//If need to resize the image
+		if($height>$this->max_height)	//If need to resize the image
 		{
 			//Calculate new dimention
-			$width	=	($max_height*$width)/$height;
-			$height	=	$max_height;
+			$width	=	($this->max_height*$width)/$height;
+			$height	=	$this->max_height;
 
 			try
 			{
@@ -143,6 +142,27 @@ class AddController extends Controller
 		{
 			return Response::json('error', 400);
 		}
+	}
+
+	/*
+		URL				-> DELETE: /delete_image
+		Functionality	-> Delete ad. Image
+		Access			-> Anyone who is logged in user
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function deleteUploadedImage()
+	{
+		$requestData = Request::all();
+
+		//Delete From DB
+		AdvertisementImage::where('image_name', '=', $requestData['image_name'])->delete();
+
+		//Delete Image From File
+		unlink($this->destinationPath.'/'.$requestData['image_name']);
+		return [
+			'action'		=> "file_deleted",
+			'file_name'	=> $requestData['image_name']
+		];
 	}
 
 	/*

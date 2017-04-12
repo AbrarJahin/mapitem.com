@@ -5,11 +5,10 @@ $(document).ready(function()
 		$("meta[name='edited_add_id']").attr("content", $("#edit_add_id").val() );
 	});
 
-	//Dropzone
 	//Dropzone File Upload in post free add modal
 		var $editImageDropZone	=	$("div#add_image_edit_div").dropzone(
 							{
-								url					: $('meta[name=dropped_image_ajax_url]').attr("content"),
+								url					: $('meta[name=new_add_image_ajax_url]').attr("content"),
 								method				: 'POST',
 								acceptedFiles		: 'image/*',
 								dictDefaultMessage	: 'Drop images here or click here to upload image',	//Default message shown in the drop div
@@ -32,9 +31,7 @@ $(document).ready(function()
 								dictFallbackMessage	: 'Your Browser is Not Supported, Please Update Your Browser',
 								success: function (file, response)
 								{
-									var imgName = response;
 									file.previewElement.classList.add("dz-success");
-									console.log("Successfully uploaded :" + imgName);
 								}
 							});
 
@@ -42,4 +39,57 @@ $(document).ready(function()
 		{
 			formData.append('add_id', $('meta[name=edited_add_id]').attr("content"));
 		});
+
+		$editImageDropZone[0].dropzone.on('removedfile', function (file)
+		{
+			var doYouWantToDelete = confirm('Do you want to delete?');
+			if(!doYouWantToDelete)	//No=>> Not Deleted
+			{
+				return false;
+			}
+			else	//Yes=>> Deleted
+			{
+				try
+				{
+					//Delete Just Uploaded Images
+					$.ajax(
+					{
+						headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+						method: "DELETE",
+						url: $('meta[name=delete_add_image_ajax_url]').attr("content"),
+						dataType: "json",
+						data:
+						{
+							image_name: JSON.parse(file.xhr.response).image_name
+						},
+						success:function(responce_data)
+						{
+							alert('File removed from server !');
+						},
+						error: function(xhr, textStatus, errorThrown)
+						{
+							console.log(xhr);
+							console.log(textStatus);
+							console.log(errorThrown);
+							alert('Network error!!');
+							return false;
+						}
+					});
+
+					return true;
+				}
+				catch(err)
+				{
+					alert('Something bad happens..');
+					console.log(err);
+					return false;
+				}
+			}
+		});
+
+		function deletefile(value)
+		{
+			console.log(value);
+			alert("OK");
+		}
 });

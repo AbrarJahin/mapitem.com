@@ -181,11 +181,23 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 				'as'	=> '.post_add'
 			]);
 
-		//Add Image Upload AJAX
-		Route::post('add_images', [
-				'uses'	=> 'AddController@addImageUpload',
-				'as'	=> '.advertisement_images'
-			]);
+		//Add Image AJAX- Start
+			 //Upload Image
+			Route::post('add_images', [
+					'uses'	=> 'AddController@addImageUpload',
+					'as'	=> '.advertisement_images'
+				]);
+			//Delete Image
+			Route::delete('delete_image', [
+					'uses'	=> 'AddController@deleteUploadedImage',
+					'as'	=> '.delete_advertisement_images'
+				]);
+			//Show Server Images
+			Route::delete('all_images', [
+					'uses'	=> 'AddController@showAllAddImages',
+					'as'	=> '.existing_advertisement_images'
+				]);
+		//Add Image - End
 
 		//Add Update Status - AJAX
 		Route::post('update_add_status', [

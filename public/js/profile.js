@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-		//Profile Map - Need to be updated
+	//Profile Map - Need to be updated
 	$("#user_address").geocomplete(
 	{
 		map			: "#user_address_map",
