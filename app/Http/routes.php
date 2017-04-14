@@ -193,7 +193,7 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 					'as'	=> '.delete_advertisement_images'
 				]);
 			//Show Server Images
-			Route::delete('all_images', [
+			Route::post('all_images', [
 					'uses'	=> 'AddController@showAllAddImages',
 					'as'	=> '.existing_advertisement_images'
 				]);

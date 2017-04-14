@@ -1,11 +1,7 @@
 $(document).ready(function()
 {
-	$("#my_adds_image_edit_button").click(function(event)
-	{
-		$("meta[name='edited_add_id']").attr("content", $("#edit_add_id").val() );
-	});
-
-	//Dropzone File Upload in post free add modal
+	var ifReallyNeedToRemoveFile = true;
+	//Dropzone File Upload in post free add modal - Start
 		var $editImageDropZone	=	$("div#add_image_edit_div").dropzone(
 							{
 								url					: $('meta[name=new_add_image_ajax_url]').attr("content"),
@@ -42,6 +38,10 @@ $(document).ready(function()
 
 		$editImageDropZone[0].dropzone.on('removedfile', function (file)
 		{
+			if(!ifReallyNeedToRemoveFile)
+			{
+				return true;
+			}
 			var doYouWantToDelete = confirm('Do you want to delete?');
 			if(!doYouWantToDelete)	//No=>> Not Deleted
 			{
@@ -49,6 +49,8 @@ $(document).ready(function()
 			}
 			else	//Yes=>> Deleted
 			{
+				var fileToRemove=file.hasOwnProperty('xhr') ? JSON.parse(file.xhr.response).image_name : file.name;
+
 				try
 				{
 					//Delete Just Uploaded Images
@@ -60,7 +62,8 @@ $(document).ready(function()
 						dataType: "json",
 						data:
 						{
-							image_name: JSON.parse(file.xhr.response).image_name
+							image_name: 		fileToRemove,
+							advertisement_id:	$('meta[name=edited_add_id]').attr("content")
 						},
 						success:function(responce_data)
 						{
@@ -86,10 +89,53 @@ $(document).ready(function()
 				}
 			}
 		});
+	//Dropzone File Upload in post free add modal - End
 
-		function deletefile(value)
-		{
-			console.log(value);
-			alert("OK");
-		}
+	$("#my_adds_image_edit_button").click(function(event)
+	{
+		ifReallyNeedToRemoveFile = false;
+		$("meta[name='edited_add_id']").attr("content", $("#edit_add_id").val() );
+
+		//Re Initialize Dropzone
+		//$editImageDropZone[0].dropzone.disable();
+		//$editImageDropZone[0].dropzone.enable();
+		$editImageDropZone[0].dropzone.removeAllFiles(true);
+
+		$.ajax({
+			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+			method: "POST",
+			url: $('meta[name=existing_images_ajax_url]').attr("content"),
+			dataType: "json",
+			data:
+			{
+				add_id: $('meta[name=edited_add_id]').attr("content")
+			},
+			success:function(responce_data)
+			{
+				responce_data.forEach(function(item)
+				{
+					console.log(item.image_name);
+					//Show previously added files in dropzone
+
+					var mockFile = {
+									name: item.image_name,
+									size: 50000,
+									status: 'success'
+								};
+					$editImageDropZone[0].dropzone.emit( "addedfile", mockFile );
+					$editImageDropZone[0].dropzone.emit( "thumbnail", mockFile, $('meta[name=upload_folder_url]').attr("content")+item.image_name );
+					$editImageDropZone[0].dropzone.files.push( mockFile ); // file must be added manually
+				});
+			},
+			error: function(xhr, textStatus, errorThrown)
+			{
+				console.log(xhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+				alert('Network error!!');
+				return false;
+			}
+		});
+		ifReallyNeedToRemoveFile = true;
+	});
 });

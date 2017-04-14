@@ -153,9 +153,10 @@ class AddController extends Controller
 	public function deleteUploadedImage()
 	{
 		$requestData = Request::all();
-
 		//Delete From DB
-		AdvertisementImage::where('image_name', '=', $requestData['image_name'])->delete();
+		AdvertisementImage::where('advertisement_id', '=', $requestData['advertisement_id'])
+						->where('image_name', '=', $requestData['image_name'])
+						->delete();
 
 		//Delete Image From File
 		unlink($this->destinationPath.'/'.$requestData['image_name']);
@@ -163,6 +164,18 @@ class AddController extends Controller
 			'action'		=> "file_deleted",
 			'file_name'	=> $requestData['image_name']
 		];
+	}
+
+	/*
+		URL				-> POST: /all_images
+		Functionality	-> Get all ad. Image
+		Access			-> Anyone who is logged in user
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showAllAddImages()
+	{
+		$requestData = Request::all();
+		return AdvertisementImage::where('advertisement_id', '=', $requestData['add_id'])->get();
 	}
 
 	/*
