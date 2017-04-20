@@ -68,7 +68,7 @@
 						<div class="clearfix"></div>
 						<p>
 							{{ $my_add->description }}
-							<br/><a href="{{ route('listing') }}#{{ $my_add->id }}">View More On Map</a>
+							<br/><a href="{{ route('listing') }}#{{ $my_add->id }}">View on Map</a>
 						</p>
 						{{-- Advertisement Giver Description - Start --}}
 						<ul>
