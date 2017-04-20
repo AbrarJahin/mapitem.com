@@ -68,12 +68,12 @@
 						<div class="clearfix"></div>
 						<p>
 							{{ $my_add->description }}
-							<br/><a href="{{ route('listing') }}#{{ $my_add->id }}">View More</a>
+							<br/><a href="{{ route('listing') }}#{{ $my_add->id }}">View More On Map</a>
 						</p>
 						{{-- Advertisement Giver Description - Start --}}
 						<ul>
 							<li>
-								<span><img src="images/u-logo.jpg"></span>
+								<span><img src="{{ URL::asset('images/u-logo.jpg') }}"></span>
 								{{ $my_add->user->first_name }}
 								{{ $my_add->user->last_name }}
 							</li>

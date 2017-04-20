@@ -14,3 +14,7 @@ Paypal API
 ==========
 https://www.youtube.com/watch?v=q5Xb5r4MUB8&feature=youtu.be
 
+Deploy (Remove Public Folder)-
+==============================
+http://stackoverflow.com/questions/28364496/laravel-5-remove-public-from-url/28735930#28735930
+
