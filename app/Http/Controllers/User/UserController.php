@@ -26,6 +26,8 @@ use Image;
 
 class UserController extends Controller
 {
+	private $destinationPath	=	'uploads';	// upload path
+	private $max_height			=	144;		//Max image height
 	/*
 		URL				-> get: /account
 		Functionality	-> Show Dashboard Page
@@ -209,10 +211,6 @@ class UserController extends Controller
 	public function profileUpdate()
 	{
 		$requestData = Request::all();
-
-		$destinationPath	=	'uploads';	// upload path
-		$max_height			=	144;		//Max image height
-
 		$user = User::find(Auth::user()->id);
 
 		$user->address						= $requestData['address'];
@@ -231,24 +229,21 @@ class UserController extends Controller
 		if(	isset(	$requestData['profile_image']	)	)	//If file was uploaded
 		{
 			if( strlen($user->profile_picture)>4 )
-			{
-				$fileName = $user->profile_picture;
+			{	//If file exists then remove the file
+				unlink($this->destinationPath.'/'.$user->profile_picture);
 			}
-			else
-			{
-				//Renaming the file
-				$extension = $requestData['profile_image']->getClientOriginalExtension(); // getting file extension
-				$fileName = Auth::user()->id."p". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
-			}
+			//Creating the file Name
+			$extension = $requestData['profile_image']->getClientOriginalExtension(); // getting file extension
+			$fileName = Auth::user()->id."p". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
 
-			$upload_success = $requestData['profile_image']->move($destinationPath, $fileName); // uploading file to given path
+			$upload_success = $requestData['profile_image']->move($this->destinationPath, $fileName); // uploading file to given path
 
-			$uploadedFileLocation = realpath($destinationPath.'/'.$fileName);
+			$uploadedFileLocation = realpath($this->destinationPath.'/'.$fileName);
 			//Resizing image
 			try
 			{
 				Image::make($uploadedFileLocation)
-					->resize(144,144)
+					->resize($this->max_height,$this->max_height)
 					->orientate()
 					->save($uploadedFileLocation);
 			}
@@ -265,9 +260,9 @@ class UserController extends Controller
 		}
 
 		if($user->save())
-			return 'Updated';
+			return $user;
 		else
-			return 'Profile Update Failed';
+			return response()->json(['error'=> ["Profile Update Failed"] ], 400);
 	}
 
 	/*

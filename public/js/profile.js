@@ -42,19 +42,15 @@ $(document).ready(function()
 				method: "POST",
 				url: $("#edit_profile").attr('action'),
 				dataType: "json",
-				data: $("#edit_profile").serialize(),
+				data: new FormData($('#edit_profile')[0]),
+				contentType:false,
+				cache: false,
+				processData:false,
 				success:function(responce_data)
 				{
-					if(responce_data === 'Updated')
-					{
-						location.reload();
-					}
-					else
-					{
-						$("#wait").css("display", "none");
-						console.log(responce_data);
-						alert("File size is too big to upload");
-					}
+					$("#wait").css("display", "none");
+					console.log(responce_data);
+					location.reload();
 				},
 				error: function(xhr, textStatus, errorThrown)
 				{
