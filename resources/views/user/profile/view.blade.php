@@ -8,6 +8,7 @@
 					@else
 						{{ url('images/empty-profile.jpg') }}
 					@endif" width="144" height="144">
+		<progress value="0" max="100" id="uploadProgress" style="display:none;"></progress>
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Full Name</div>
