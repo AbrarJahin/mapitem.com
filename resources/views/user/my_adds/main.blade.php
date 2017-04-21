@@ -21,7 +21,7 @@
 
 	@include('user.my_adds.add_edit')
 
-	<div id="show_paginator">
+	<div id="show_paginator" class="db-body">
 		{{ $my_adds->links() }}
 	</div>
 

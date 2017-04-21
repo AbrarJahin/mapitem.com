@@ -1484,6 +1484,10 @@ $(document).ready(function()
 					$('#edit_add_location_lat').val(single_data.location_lat);
 					$('#edit_add_location_lon').val(single_data.location_lon);
 
+					//Showing the contents
+					$(".db-body").toggleClass('edit-on');
+					$("#show_paginator").toggle();
+
 					try
 					{
 						$('#add_title_image').attr(	"src",
@@ -1499,8 +1503,6 @@ $(document).ready(function()
 				});
 			}
 		});
-		//Showing the contents
-		$(".db-body").toggleClass('edit-on');
 	});
 
 	$("#edit_add_address").geocomplete({})
