@@ -36,38 +36,32 @@ $(document).ready(function()
 		if(isValidated)
 		{
 			$("#wait").css("display", "block");
-			setTimeout(function()
+			$.ajax(
 			{
-				$.ajax(
+				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				method: "POST",
+				url: $("#edit_profile").attr('action'),
+				dataType: "json",
+				data: $("#edit_profile").serialize(),
+				success:function(responce_data)
 				{
-					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-					method: "POST",
-					url: $("#edit_profile").attr('action'),
-					dataType: "text",
-					data: new FormData( $("#edit_profile")[0] ),
-					async: false,
-					processData: false,
-					contentType: false,
-					success:function(responce_data)
+					if(responce_data === 'Updated')
 					{
-						if(responce_data === 'Updated')
-						{
-							location.reload();
-						}
-						else
-						{
-							$("#wait").css("display", "none");
-							console.log(responce_data);
-							alert("File size is too big to upload");
-						}
-					},
-					error: function(xhr, textStatus, errorThrown)
+						location.reload();
+					}
+					else
 					{
 						$("#wait").css("display", "none");
-						alert('Network error!!');
+						console.log(responce_data);
+						alert("File size is too big to upload");
 					}
-				});
-			}, 100);
+				},
+				error: function(xhr, textStatus, errorThrown)
+				{
+					$("#wait").css("display", "none");
+					alert('Network error!!');
+				}
+			});
 		}
 		return 0;
 	});
