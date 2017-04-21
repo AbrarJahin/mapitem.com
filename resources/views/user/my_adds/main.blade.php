@@ -19,9 +19,10 @@
 		@include('user.my_adds.advertisement')
 	@endforeach
 
+	@include('user.my_adds.add_edit')
+
 	<div id="show_paginator">
 		{{ $my_adds->links() }}
 	</div>
 
-	@include('user.my_adds.add_edit')
 @endsection
