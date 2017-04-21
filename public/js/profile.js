@@ -27,7 +27,7 @@ $(document).ready(function()
 		$('#location_lat_profile').val( latLng.lat() );
 		$('#location_lon_profile').val( latLng.lng() );
 	});
-/*
+
 	//Profile Page Update Button Clicked
 	$("form#edit_profile").submit(function(e)
 	{
@@ -46,6 +46,30 @@ $(document).ready(function()
 				contentType:false,
 				cache: false,
 				processData:false,
+				xhr: function()
+				{
+					var xhr = new window.XMLHttpRequest();
+					xhr.upload.addEventListener("progress", function(evt)
+					{
+						if (evt.lengthComputable)
+						{
+							$('#uploadProgress').show();
+							var percentComplete = evt.loaded / evt.total;
+							percentComplete = parseInt(percentComplete * 100);
+
+							if (percentComplete === 100)
+							{
+								$('#uploadProgress').hide();
+							}
+							else
+							{
+								$('#uploadProgress').val(percentComplete);
+							}
+						}
+					}, false);
+
+					return xhr;
+				},
 				success:function(responce_data)
 				{
 					$("#wait").css("display", "none");
@@ -61,8 +85,9 @@ $(document).ready(function()
 		}
 		return 0;
 	});
-*/
 
+/*
+	//With jQueryForm plugin
 	$('form#edit_profile').ajaxForm({
 			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
 			method: "POST",
@@ -87,15 +112,9 @@ $(document).ready(function()
 			complete: function(xhr)
 			{
 				console.log("Complete");
-			},
-			error: function(xhr, textStatus, errorThrown)
-			{
-				$("#wait").css("display", "none");
-				$('#uploadProgress').hide();
-				alert('Network error!!');
 			}
 	});
-
+*/
 	//Profile Page - Profile Showing
 	$("#profile_location").gmap3({
 		map:{

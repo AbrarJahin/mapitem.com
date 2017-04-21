@@ -8,9 +8,10 @@
 					@else
 						{{ url('images/empty-profile.jpg') }}
 					@endif" width="144" height="144">
+	</div>
+	<div class="clearfix margin-twenty">
 		<progress value="0" max="100" id="uploadProgress" style="display:none;"></progress>
 	</div>
-	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Full Name</div>
 	<div class="p-right">{{ $current_user->first_name.' '.$current_user->last_name }}</div>
 	<div class="clearfix margin-twenty"></div>
