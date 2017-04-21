@@ -228,9 +228,18 @@ class UserController extends Controller
 
 		if(	isset(	$requestData['profile_image']	)	)	//If file was uploaded
 		{
+			//return $requestData['profile_image']->getMimeType();
 			if( strlen($user->profile_picture)>4 )
 			{	//If file exists then remove the file
-				unlink($this->destinationPath.'/'.$user->profile_picture);
+			 	try
+				{
+					unlink($this->destinationPath.'/'.$user->profile_picture);
+				}
+				catch (\Exception $e)
+				{
+					echo "First - ";
+					echo $e->getMessage();
+				}
 			}
 			//Creating the file Name
 			$extension = $requestData['profile_image']->getClientOriginalExtension(); // getting file extension
@@ -246,16 +255,21 @@ class UserController extends Controller
 					->resize($this->max_height,$this->max_height)
 					->orientate()
 					->save($uploadedFileLocation);
+				$user->profile_picture	=	$fileName;
 			}
 			catch (\Exception $e)
 			{
+				echo "Second - ";
 				echo $e->getMessage();
-				echo "Image resizing failed";
-			}
-
-			if ($upload_success)
-			{
-				$user->profile_picture	=	$fileName;
+				try
+				{
+					unlink($uploadedFileLocation);
+				}
+				catch (\Exception $e)
+				{
+					echo "Third - ";
+					echo $e->getMessage();
+				}
 			}
 		}
 

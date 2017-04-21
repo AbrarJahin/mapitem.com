@@ -35,7 +35,7 @@ $(document).ready(function()
 		var isValidated = true;	//After Validation Run
 		if(isValidated)
 		{
-			$("#wait").css("display", "block");
+			//$("#wait").css("display", "block");
 			$.ajax(
 			{
 				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -51,9 +51,11 @@ $(document).ready(function()
 					var xhr = new window.XMLHttpRequest();
 					xhr.upload.addEventListener("progress", function(evt)
 					{
+						$('#uploadProgress').show();
+						$("#wait").css("display", "none");
+
 						if (evt.lengthComputable)
 						{
-							$('#uploadProgress').show();
 							var percentComplete = evt.loaded / evt.total;
 							percentComplete = parseInt(percentComplete * 100);
 
@@ -79,7 +81,9 @@ $(document).ready(function()
 				error: function(xhr, textStatus, errorThrown)
 				{
 					$("#wait").css("display", "none");
-					alert('Network error!!');
+					console.log(xhr);
+					console.log(textStatus);
+					alert(errorThrown);
 				}
 			});
 		}
