@@ -46,10 +46,6 @@ Update Project (if no major change)-
 
 ___________________________________________________________________________________________
 
-Installed composer in shared hosting using drush -
-
-	https://www.godaddy.com/help/how-to-install-drush-on-cpanel-shared-hosting-12396
-
 FTP Details-
 ============================
 
@@ -72,6 +68,26 @@ c-panel detail-
 	https://a2plcpnl0047.prod.iad2.secureserver.net:2083/
 	user-blockhunt
 	pass-Maplevel1
+
+Installed composer in shared hosting using drush -
+==================================================
+
+	https://www.godaddy.com/help/how-to-install-drush-on-cpanel-shared-hosting-12396
+
+Changing Default Root Folder-
+=============================
+
+1. Way 1-
+
+https://www.servint.net/university/article/the-tech-bench-changing-a-document-root-in-cpanel/
+
+For our site, command -
+
+	nano /var/cpanel/userdata/blockhunt/mapitem.com
+
+2. Way 2-
+
+https://manage.accuwebhosting.com/knowledgebase/1269/How-do-I-change-document-root-folder-to-some-sub-folder-using-an-htaccess-file.html
 
 ======================================================
 

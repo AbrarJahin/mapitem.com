@@ -123,6 +123,7 @@ class UserController extends Controller
 					->with('User')
 					->with('AdvertisementImages')
 					->where('user_id',Auth::user()->id)
+					->orderBy('created_at', 'desc')
 					->paginate(5);
 
 		return view('user.my_adds.main', [
