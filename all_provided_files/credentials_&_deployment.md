@@ -1,5 +1,16 @@
-Server Easy deploy-
-===================
+# Easy development ready #
+
+1. Create a DB named `mapitem` and using user= `root` and pass = ``
+2. Then run this commands
+
+	git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git
+	composer install
+
+And everything is ready for you !!
+
+___________________________________________________________________________
+
+# Server Easy deploy #
 
 Login-
 ------
