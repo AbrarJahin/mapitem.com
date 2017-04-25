@@ -24,13 +24,15 @@
 	@include('post_free_add_modal')
 @show
 
-@section('topbar')
-	@include('user.topbar')
-@show
+@if (Auth::check() && Auth::user()->user_type=="normal_user")
+	@section('topbar')
+		@include('user.topbar')
+	@show
 
-@section('status_bar')
-	@include('user.status_bar')
-@show
+	@section('status_bar')
+		@include('user.status_bar')
+	@show
+@endif
 
 	<div class="container">
 		@yield('content')

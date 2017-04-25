@@ -421,8 +421,8 @@ class PublicController extends Controller
 	}
 
 	/*
-		URL             -> get: /get_suggestion
-		Functionality   -> Give Suggestions for Search
+		URL             -> get: /info/{url}
+		Functionality   -> Public pages
 		Access          -> All
 		Created At      -> 26/04/2017
 		Updated At      -> 26/04/2017
@@ -430,6 +430,12 @@ class PublicController extends Controller
 	*/
 	public function getPublicPage($url)
 	{
-		return PublicPage::where('url', $url)->firstOrFail();
+		$publicPage = PublicPage::where('url', $url)->firstOrFail();
+		return view('public.public_page.main',
+						[
+							'current_page'	=>	'Home',
+							'public_page'	=>	$publicPage
+						]
+					);
 	}
 }
