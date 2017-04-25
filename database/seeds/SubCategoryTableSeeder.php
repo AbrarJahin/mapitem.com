@@ -4,14 +4,14 @@ use Illuminate\Database\Seeder;
 
 class SubCategoryTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        $faker		= Faker\Factory::create();
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		$faker		= Faker\Factory::create();
 
 		for ($x = 0; $x < 20; $x++)
 		{
@@ -21,5 +21,5 @@ class SubCategoryTableSeeder extends Seeder
 												'name'			=> $faker->unique()->streetName
 											]);
 		}
-    }
+	}
 }

@@ -4,13 +4,13 @@ use Illuminate\Database\Seeder;
 
 class CategoriesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 		$faker = Faker\Factory::create();
 
 		for ($x = 0; $x < 4; $x++)
@@ -20,5 +20,5 @@ class CategoriesTableSeeder extends Seeder
 												'name'	=> $faker->unique()->company
 											]);
 		}
-    }
+	}
 }
