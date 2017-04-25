@@ -10,6 +10,7 @@ use Auth;
 use App\Category;
 use App\UserNotification;
 use App\Advertisement;
+use App\PublicPage;
 use View;
 use DB;
 
@@ -59,5 +60,9 @@ class Controller extends BaseController
 			$category = Category::with('SubCategory')->get();
 			View::share('categories', $category);
 		}
+
+		//Public page's URL
+		$publicPages = PublicPage::select('url', 'small_title')->get();
+		View::share('public_pages',	$publicPages);
 	}
 }

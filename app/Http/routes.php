@@ -66,6 +66,12 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 			'uses' => 'PublicController@getSuggestion',
 			'as' => 'get_suggestion'
 		]);
+
+	//Get Public Page
+	Route::get('info/{url}', [
+			'uses' => 'PublicController@getPublicPage',
+			'as' => 'public_page'
+		]);
 });
 
 //Public Routes - Can't be accessed by Admin

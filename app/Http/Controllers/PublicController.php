@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\SubCategory;
 use App\Advertisement;
+use App\PublicPage;
 use App\UserAdvertisementView;
 use Request;
 use Auth;
@@ -417,5 +418,18 @@ class PublicController extends Controller
 						->take(5)
 						->distinct()
                 		->get();
+	}
+
+	/*
+		URL             -> get: /get_suggestion
+		Functionality   -> Give Suggestions for Search
+		Access          -> All
+		Created At      -> 26/04/2017
+		Updated At      -> 26/04/2017
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function getPublicPage($url)
+	{
+		return PublicPage::where('url', $url)->firstOrFail();
 	}
 }

@@ -14,7 +14,7 @@ class PublicPagesTableSeeder extends Seeder
 		$faker		=	Faker\Factory::create();
 
 		$titles		=	[
-							"blog"				=>"Blog",
+							"http://mapitem.com/blog/"=>"Blog",
 							"site_map"			=>"Site Map",
 							"privacy"			=>"Privacy",
 							"about_us"			=>"About Us",
