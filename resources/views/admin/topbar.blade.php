@@ -47,6 +47,12 @@
 				</a>
 			</li>
 
+			<li>
+				<a href="{{ URL::route('admin.public_pages') }}" @if($current_page=="admin.public_pages") class="selected" @endif >
+					Public Pages
+				</a>
+			</li>
+
 		</ul>
 	</div>
 	{{-- /.navbar-collapse --}}

@@ -114,4 +114,17 @@ class AdminController extends Controller
 	{
 		return view('admin.users.main', [ 'current_page'	=> 'admin.transactions' ]);
 	}
+
+	/*
+		URL				-> get: /public_pages
+		Functionality	-> Show Public Pages
+		Access			-> Admin
+		Created At		-> 26/04/2017
+		Updated At		-> 26/04/2017
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showPublicPageView()
+	{
+		return view('admin.users.main', [ 'current_page'	=> 'admin.public_pages' ]);
+	}
 }

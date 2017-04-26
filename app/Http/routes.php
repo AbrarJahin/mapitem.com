@@ -328,6 +328,12 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 			'as' => '.transactions'
 		]);
 
+	//Pulic Pages Manage Page
+	Route::get('public_pages', [
+			'uses' => 'AdminController@showPublicPageView',
+			'as' => '.public_pages'
+		]);
+
 	//Datatables AJAX - Start
 		Route::post('category_datable', [
 				'uses' => 'DataTablesAjaxController@categoryDatableAjax',

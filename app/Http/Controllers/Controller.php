@@ -62,7 +62,10 @@ class Controller extends BaseController
 		}
 
 		//Public page's URL
-		$publicPages = PublicPage::select('url', 'small_title')->get();
+		$publicPages = PublicPage::select('url', 'small_title')
+							->orderBy('page_order', 'DESC')
+							->orderBy('id', 'ASC')
+							->get();
 		View::share('public_pages',	$publicPages);
 	}
 }
