@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AdvertisementImage extends Model
 {
 	protected $primaryKey	=	null;
-    public $incrementing	=	false;
+	public $incrementing	=	false;
 	public $timestamps		=	false; // disable all behaviour
 	protected $table		=	'advertisement_images';			//Table Name
 

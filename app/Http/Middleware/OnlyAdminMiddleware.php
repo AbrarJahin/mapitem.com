@@ -7,15 +7,15 @@ use Auth;
 
 class OnlyAdminMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle($request, Closure $next)
-    {
+	/**
+	 * Handle an incoming request.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Closure  $next
+	 * @return mixed
+	 */
+	public function handle($request, Closure $next)
+	{
 		//Checking if he is admin
 		if ( !Auth::check() )											//Not Logged In
 		{
@@ -29,5 +29,5 @@ class OnlyAdminMiddleware
 		}
 		//End checking
 		return $next($request);
-    }
+	}
 }

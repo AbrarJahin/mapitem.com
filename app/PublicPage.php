@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PublicPage extends Model
 {
-    protected	$table 		=	'public_pages';
+	protected	$table 		=	'public_pages';
 
 	protected $fillable		=	[
 									'page_order',

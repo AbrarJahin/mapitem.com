@@ -7,15 +7,15 @@ use Auth;
 
 class NotLoggedInMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle($request, Closure $next)
-    {
+	/**
+	 * Handle an incoming request.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Closure  $next
+	 * @return mixed
+	 */
+	public function handle($request, Closure $next)
+	{
 		//Checking if he is admin
 		if ( Auth::check() )	//Logged In
 		{
@@ -25,5 +25,5 @@ class NotLoggedInMiddleware
 		{
 			return $next($request);
 		}
-    }
+	}
 }

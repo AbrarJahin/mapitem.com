@@ -8,9 +8,9 @@
 	<div class="db-body">
 		<h1>{{ $public_page->big_title }}</h1>
 		<div class="db-b">
-		    <p>
-		        {!! $public_page->description !!}
-		    </p>
+			<p>
+				{!! $public_page->description !!}
+			</p>
 		</div>
 	</div>
 @endsection

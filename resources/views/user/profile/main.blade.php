@@ -18,9 +18,9 @@
 
 @section('content')
 	<div class="db-body">
-	    <div class="profile">
-	        @include('user.profile.view')
-	        @include('user.profile.edit')
-	    </div>
+		<div class="profile">
+			@include('user.profile.view')
+			@include('user.profile.edit')
+		</div>
 	</div>
 @endsection
