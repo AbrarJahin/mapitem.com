@@ -32,7 +32,7 @@
 	@show
 
 @elseif (!Auth::check())
-	@include('public.not_logged_in_login_modal')
+	@include('public.not_logged_in_modal')
 @endif
 
 	<div class="container">
