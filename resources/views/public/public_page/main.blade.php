@@ -6,9 +6,11 @@
 
 @section('content')
 	<div class="db-body">
-		<h3>{{ $public_page->big_title }}</h3>
+		<h1>{{ $public_page->big_title }}</h1>
 		<div class="db-b">
-			{{ $public_page->description }}
+		    <p>
+		        {!! $public_page->description !!}
+		    </p>
 		</div>
 	</div>
 @endsection

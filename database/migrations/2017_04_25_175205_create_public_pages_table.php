@@ -18,7 +18,7 @@ class CreatePublicPagesTable extends Migration
 			$table->unsignedTinyInteger('page_order')->default(0);
 			$table->string('url', 100)			->nullable(false)	->unique();
 			$table->string('small_title', 20)	->nullable(false)	->unique();
-			$table->string('big_title', 255)	->nullable(false)	->unique();
+			$table->string('big_title', 255)	->nullable(true)	->unique();
 			$table->longText('description')		->nullable(false);
 			$table->timestamps();
 		});
