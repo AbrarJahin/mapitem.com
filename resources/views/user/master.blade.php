@@ -19,19 +19,20 @@
 @section('nav_list_class', 'ip-nav')
 --}}
 
-@section('advertisement_add_modal')
-	{{-- @include('user.advertisement_add_modal') --}}
-	@include('post_free_add_modal')
-@show
-
 @if (Auth::check() && Auth::user()->user_type=="normal_user")
+	@section('advertisement_add_modal')
+		{{-- @include('user.advertisement_add_modal') --}}
+		@include('post_free_add_modal')
+	@show
 	@section('topbar')
 		@include('user.topbar')
 	@show
-
 	@section('status_bar')
 		@include('user.status_bar')
 	@show
+
+@elseif (!Auth::check())
+	@include('public.not_logged_in_login_modal')
 @endif
 
 	<div class="container">
