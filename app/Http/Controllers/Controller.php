@@ -63,6 +63,7 @@ class Controller extends BaseController
 
 		//Public page's URL
 		$publicPages = PublicPage::select('url', 'small_title')
+							->where('is_enabled', "enabled")
 							->orderBy('page_order', 'DESC')
 							->orderBy('id', 'ASC')
 							->get();

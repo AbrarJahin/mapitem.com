@@ -7,7 +7,7 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title" id="delete-text">Do you really want to delete this Public Page?</h4>
 			</div>
-			<form role="form" method="post" action="{{ URL::route('admin.category_delete') }}" id="delete_data">
+			<form role="form" method="post" action="{{ URL::route('admin.public_page_delete') }}" id="delete_data">
 				<input type="hidden" id="delete_item_id" name="id">
 				<div class="modal-footer">
 					<button type="button" id="confirm_delete_public-page" class="btn btn-danger">Yes</button>

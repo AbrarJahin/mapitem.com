@@ -376,6 +376,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'AddAjaxController@subCategoryAddAjax',
 				'as' => '.sub_category_add'
 			]);
+
+		Route::post('public_page_add', [
+				'uses' => 'AddAjaxController@PublicPageAddAjax',
+				'as' => '.public_page_add'
+			]);
 	//Add Data AJAX - END
 
 	//View Data AJAX - Start
@@ -431,6 +436,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 		Route::post('advertisement_delete', [
 				'uses' => 'DeleteAjaxController@advertisementDeleteAjax',
 				'as' => '.advertisement_delete'
+			]);
+
+		Route::post('public_page_delete', [
+				'uses' => 'DeleteAjaxController@PublicPageDeleteAjax',
+				'as' => '.public_page_delete'
 			]);
 	//Delete Data AJAX - END
 });

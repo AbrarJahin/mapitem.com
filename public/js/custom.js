@@ -2071,6 +2071,33 @@ $(document).ready(function()
 								}
 			});
 
+			//Add Public Page
+			$('#add_public-page_button').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#add_data").attr('action'),
+					dataType: "json",
+					data: $("#add_data").serialize(),
+					success:function(responce_data)
+					{
+						$('#add_data_modal').modal('hide');
+						publicPageDataTable.ajax.reload( null, false );
+						$("#add_data").trigger('reset');
+						alert('Public Page Added Succesfully');
+					},
+					error: function(xhr, textStatus, errorThrown)
+					{
+						alert('Invalid Input');
+						console.log(xhr);
+						console.log(textStatus);
+						console.log(errorThrown);
+					}
+				});
+			});
+
 			$('#public-pages-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = publicPageDataTable.row( $(this).parents('tr') ).data();
@@ -2102,6 +2129,13 @@ $(document).ready(function()
 					{
 						alert('Updated Succesfully');
 						categoryDataTable.ajax.reload( null, false );
+					},
+					error: function(xhr, textStatus, errorThrown)
+					{
+						alert('Update Failed');
+						console.log(xhr);
+						console.log(textStatus);
+						console.log(errorThrown);
 					}
 				});
 				$('#edit_data_modal').modal('hide');
@@ -2121,7 +2155,14 @@ $(document).ready(function()
 					{
 						$('#delete_confirmation_modal').modal('hide');
 						publicPageDataTable.ajax.reload( null, false );
-						alert('Succesfully Deleted Category');
+						alert('Succesfully Deleted Page');
+					},
+					error: function(xhr, textStatus, errorThrown)
+					{
+						alert('Delete Failed');
+						console.log(xhr);
+						console.log(textStatus);
+						console.log(errorThrown);
 					}
 				});
 			});

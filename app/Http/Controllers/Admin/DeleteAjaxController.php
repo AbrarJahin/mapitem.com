@@ -7,6 +7,7 @@ use DB;
 use Storage;
 use App\AdvertisementImage;
 use App\Advertisement;
+use App\PublicPage;
 use Log;
 
 /*
@@ -108,5 +109,23 @@ class DeleteAjaxController extends Controller
 					->delete();
 
 		return $requestData;
+	}
+
+	/*
+		URL             -> post: /public_page_delete
+		Functionality   -> Public Page Delete AJAX
+		Access          -> Admin
+		Created At      -> 29/04/2017
+		Updated At      -> 29/04/2017
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function PublicPageDeleteAjax()
+	{
+		$requestData = Request::all();
+		PublicPage::find($requestData['id'])->delete();
+		return [
+					'status'	=> "OK",
+					'message'	=> "Sucessfully Deleted"
+				];
 	}
 }

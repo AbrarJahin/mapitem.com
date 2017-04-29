@@ -53,7 +53,7 @@ class AddController extends Controller
 		//Validator Failed
 		if ($validator->fails())
 		{
-			return $validator->errors()->all();
+			return Response::json($validator->errors()->all(), 400);
 		}
 
 		//Add Notification for Message Sending
@@ -98,7 +98,7 @@ class AddController extends Controller
 		//Validator Failed
 		if ($validator->fails())
 		{
-			return $validator->errors()->all();
+			return Response::json($validator->errors()->all(), 400);
 		}
 
 		//Renaming the file
