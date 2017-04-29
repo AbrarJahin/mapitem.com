@@ -415,6 +415,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'EditAjaxController@userUpdateAjax',
 				'as' => '.user_update'
 			]);
+
+		Route::post('public_pages_update', [
+				'uses' => 'EditAjaxController@PublicPageUpdateAjax',
+				'as' => '.public_pages_update'
+			]);
 	//Edit Data AJAX - END
 
 	//Delete Data AJAX - Start

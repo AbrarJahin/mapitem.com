@@ -2128,7 +2128,8 @@ $(document).ready(function()
 					success:function(responce_data)
 					{
 						alert('Updated Succesfully');
-						categoryDataTable.ajax.reload( null, false );
+						publicPageDataTable.ajax.reload( null, false );
+						$('#edit_data_modal').modal('hide');
 					},
 					error: function(xhr, textStatus, errorThrown)
 					{
@@ -2136,6 +2137,8 @@ $(document).ready(function()
 						console.log(xhr);
 						console.log(textStatus);
 						console.log(errorThrown);
+						publicPageDataTable.ajax.reload( null, false );
+						$('#edit_data_modal').modal('hide');
 					}
 				});
 				$('#edit_data_modal').modal('hide');

@@ -8,15 +8,38 @@
 				<h4 class="modal-title">Edit Public Page</h4>
 			</div>
 			<div class="modal-body">
-				<form role="form" method="post" action="{{ URL::route('admin.category_update') }}">
+				<form role="form" method="post" action="{{ URL::route('admin.public_pages_update') }}" id="update_data">
+					<input type="hidden" name="id" id="public_page_id">
 					<div class="form-group">
-						<label for="category">User:</label>
-						<input type="text" required class="form-control" placeholder="Enter Category Name" name="category_name" id="selected_category_name">
-						<input type="hidden" name="id" id="public_page_id">
+						<label for="category">Url:</label>
+						<input type="text" required class="form-control" placeholder="local_url or http://example.com/sub_directory" name="url">
+					</div>
+					<div class="form-group">
+						<label for="category">Small Title:</label>
+						<input type="text" required class="form-control" placeholder="Title to show in page footer" name="small_title">
+					</div>
+					<div class="form-group">
+						<label for="category">Big Title:</label>
+						<input type="text" class="form-control" placeholder="Title showing on public page top (Optional)" name="big_title">
+					</div>
+					<div class="form-group">
+						<label for="category">Description:</label>
+						<textarea class="form-control" placeholder="Description of the content (Optional)" name="description"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="category">Page Order:</label>
+						<input type="number" min="0" max="255" class="form-control" placeholder="Order of the content (Optional) [min=0, max=255]" name="page_order">
+					</div>
+					<div class="form-group">
+						<label for="category">Is Enabled:</label>
+						<select class="form-control" name="is_enabled">
+							<option value="enabled" selected>Enabled</option>
+							<option value="disabled">Disabled</option>
+						</select>
 					</div>
 			</div>
 			<div class="modal-footer">
-					<button type="button" id="update_category_button" class="btn btn-info"{{-- data-dismiss="modal" --}}>Update User</button>
+					<button type="button" id="update_public-page_button" class="btn btn-info">Update Public Page</button>
 				</form>
 			</div>
 		</div>
