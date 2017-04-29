@@ -5,7 +5,7 @@
 		<thead>
 			<tr>
 				<th>Is Enabled</th>
-				<th>Oder</th>
+				<th>Show Order</th>
 				<th>Url</th>
 				<th>Small Title</th>
 				<th>Big Title</th>

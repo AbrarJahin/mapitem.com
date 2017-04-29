@@ -364,13 +364,11 @@ class DataTablesAjaxController extends Controller
 		$requestData = Request::all();
 		$columns = array(
 			// datatable column index  => database column name
-			0 => 'categories.name',
-			1 => 'sub_categories.name',
-			2 => 'users.first_name',
-			3 => 'advertisements.title',
-			4 => 'advertisements.price',
-			5 => 'advertisements.description',
-			6 => 'advertisements.address'
+			0 => 'public_pages.is_enabled',
+			1 => 'public_pages.page_order',
+			2 => 'public_pages.url',
+			3 => 'public_pages.small_title',
+			4 => 'public_pages.big_title'
 		);
 		$draw_request_code = $requestData['draw'];
 		$searchParameter = $requestData['search']['value'];
@@ -379,19 +377,14 @@ class DataTablesAjaxController extends Controller
 		$limit_start = $requestData['start'];
 		$limit_interval = $requestData['length'];
 		// Base Quary
-		$baseQuery = DB::table('advertisements')
-						->join('users', 'users.id', '=', 'advertisements.user_id')
-						->join('categories', 'categories.id', '=', 'advertisements.category_id')
-						->join('sub_categories', 'sub_categories.id', '=', 'advertisements.sub_category_id')
+		$baseQuery = DB::table('public_pages')
 						->select(
-							'advertisements.id as id',
-							'categories.name as category',
-							'sub_categories.name as sub_category',
-							DB::raw('CONCAT(users.first_name," ",users.last_name) as owner'),
-							'advertisements.title as title',
-							'advertisements.price as price',
-							DB::raw('CONCAT( LEFT(advertisements.description , 30) ," ..") as description'),
-							DB::raw('CONCAT( LEFT(advertisements.address , 30) ," ..") as address')
+							'public_pages.id as id',
+							'public_pages.is_enabled as is_enabled',
+							'public_pages.page_order as page_order',
+							'public_pages.url as url',
+							'public_pages.small_title as small_title',
+							'public_pages.big_title as big_title'
 						);
 		$totalData = $baseQuery->count();
 		//Applying Filters
@@ -403,19 +396,14 @@ class DataTablesAjaxController extends Controller
 									->where(function($query) use ($searchParameter)
 									{
 										$query
-											->where('users.first_name', 'like', '%'.$searchParameter.'%')
-											->orWhere('users.last_name', 'like', '%' . $searchParameter . '%')
-											->orWhere('categories.name', 'like', '%' . $searchParameter . '%')
-											->orWhere('sub_categories.name', 'like', '%' . $searchParameter . '%')
-											->orWhere('advertisements.title', 'like', '%' . $searchParameter . '%')
-											->orWhere('advertisements.price', 'like', '%' . $searchParameter . '%')
-											->orWhere('advertisements.description', 'like', '%' . $searchParameter . '%')
-											->orWhere('advertisements.address', 'like', '%' . $searchParameter . '%');
+											->where('public_pages.url', 'like', '%'.$searchParameter.'%')
+											->orWhere('public_pages.small_title', 'like', '%' . $searchParameter . '%')
+											->orWhere('public_pages.big_title', 'like', '%' . $searchParameter . '%');
 									});
 		}
 		$totalFiltered = $filtered_query->count();
 		//Ordering
-		$filtered_query = $filtered_query->orderBy($order_by_value, $orderingDirection);
+		$filtered_query = $filtered_query->orderBy($order_by_value, $orderingDirection)->orderBy('public_pages.id', 'ASC');
 		//Limiting for Pagination
 		$data = $filtered_query->skip($limit_start)->take($limit_interval)->get();
 		$json_data = array(

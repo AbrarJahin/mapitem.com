@@ -2046,11 +2046,11 @@ $(document).ready(function()
 					}
 				},
 				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
-								{	"data": "category"		},
-								{	"data": "sub_category"	},
-								{	"data": "owner"			},
-								{	"data": "title"			},
-								{	"data": "price"			},
+								{	"data": "is_enabled"	},
+								{	"data": "page_order"	},
+								{	"data": "url"			},
+								{	"data": "small_title"	},
+								{	"data": "big_title"		},
 								{	"data": null			}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
@@ -2084,7 +2084,7 @@ $(document).ready(function()
 			{
 				var data = publicPageDataTable.row( $(this).parents('tr') ).data();
 				$('#delete_item_id').val(data['id']);
-				$('#delete-text').html("Do you really want to delete- <b>"+data['id']+"</b>?");
+				$('#delete-text').html("Do you really want to delete- <b>"+data['small_title']+"</b>?");
 				$('#delete_confirmation_modal').modal('show');
 			});
 
