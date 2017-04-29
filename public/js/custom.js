@@ -2027,6 +2027,105 @@ $(document).ready(function()
 				alert('Delete - '+data['id']);	//id = index of ID sent from server
 			});
 		}
+		else if ($('#public-pages-datatable').length)	//Messages Datatable
+		{
+			var publicPageDataTable = $('#public-pages-datatable').DataTable(
+			{
+				"processing": true,
+				"serverSide": true,
+				"ajax":
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					url : $('meta[name=datatable_ajax_url]').attr("content"), // json AJAX URL - datasource
+					type: "post",  // method  , by default get
+					error: function()
+					{  // error handling
+						$(".messages-datatable-error").html("");
+						$("#messages-datatable").append('<tbody class="messages-datatable-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+						$("#messages-datatable_processing").css("display","none");
+					}
+				},
+				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
+								{	"data": "category"		},
+								{	"data": "sub_category"	},
+								{	"data": "owner"			},
+								{	"data": "title"			},
+								{	"data": "price"			},
+								{	"data": null			}
+							],
+				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
+				stateSave: true,
+				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
+									{
+										"orderable": false,		//Turn off ordering
+										"searchable": false,	//Turn off searching
+										"targets": [5],			//Going to last column - 3 is the last column index because o is starting index
+										"data": null,			//Not receiving any data
+										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
+									}
+								],
+				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
+				initComplete:	function()	//Adding Custom button in Tools
+								{
+									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Public Page</button>');
+								}
+			});
+
+			$('#public-pages-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
+			{
+				var data = publicPageDataTable.row( $(this).parents('tr') ).data();
+				//console.log(data);
+				$('#public_page_id').val(data['id']);
+				//Ajax Load All Data and show the modal
+				$('#edit_data_modal').modal('show');
+			});
+
+			$('#public-pages-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
+			{
+				var data = publicPageDataTable.row( $(this).parents('tr') ).data();
+				$('#delete_item_id').val(data['id']);
+				$('#delete-text').html("Do you really want to delete- <b>"+data['id']+"</b>?");
+				$('#delete_confirmation_modal').modal('show');
+			});
+
+			//Update/Edit Public Page
+			$('#update_public-page_button').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#update_data").attr('action'),
+					dataType: "json",
+					data: $("#update_data").serialize(),
+					success:function(responce_data)
+					{
+						alert('Updated Succesfully');
+						categoryDataTable.ajax.reload( null, false );
+					}
+				});
+				$('#edit_data_modal').modal('hide');
+			});
+
+			//Delete Category
+			$('#confirm_delete_public-page').on('click', function(event)
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#delete_data").attr('action'),
+					dataType: "json",
+					data: $("#delete_data").serialize(),
+					success:function(responce_data)
+					{
+						$('#delete_confirmation_modal').modal('hide');
+						publicPageDataTable.ajax.reload( null, false );
+						alert('Succesfully Deleted Category');
+					}
+				});
+			});
+		}
 	//Admin - Datatable End
 
 	//Accept Offer

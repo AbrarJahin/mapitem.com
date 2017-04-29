@@ -5,14 +5,14 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Edit User</h4>
+				<h4 class="modal-title">Edit Public Page</h4>
 			</div>
 			<div class="modal-body">
 				<form role="form" method="post" action="{{ URL::route('admin.category_update') }}">
 					<div class="form-group">
 						<label for="category">User:</label>
 						<input type="text" required class="form-control" placeholder="Enter Category Name" name="category_name" id="selected_category_name">
-						<input type="hidden" name="category_id" id="selected_category_id">
+						<input type="hidden" name="id" id="public_page_id">
 					</div>
 			</div>
 			<div class="modal-footer">

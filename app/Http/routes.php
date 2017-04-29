@@ -359,6 +359,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'DataTablesAjaxController@messagesDatableAjax',
 				'as' => '.messages_datable'
 			]);
+
+		Route::post('public_pages_datable', [
+				'uses' => 'DataTablesAjaxController@publicPagesDatableAjax',
+				'as' => '.public_pages_datable'
+			]);
 	//Datatables AJAX - End
 
 	//Add Data AJAX - Start

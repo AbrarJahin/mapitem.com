@@ -5,7 +5,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add New User</h4>
+				<h4 class="modal-title">Add New Public Page</h4>
 			</div>
 			<div class="modal-body">
 				<form role="form" method="post" action="{{ URL::route('admin.category_add') }}">
