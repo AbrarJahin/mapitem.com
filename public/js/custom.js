@@ -2029,6 +2029,7 @@ $(document).ready(function()
 		}
 		else if ($('#public-pages-datatable').length)	//Messages Datatable
 		{
+			$('.wysihtml5').wysihtml5();
 			var publicPageDataTable = $('#public-pages-datatable').DataTable(
 			{
 				"processing": true,
@@ -2114,7 +2115,8 @@ $(document).ready(function()
 						$("#update_data input[name=url]").val(responce_data.url);
 						$("#update_data input[name=small_title]").val(responce_data.small_title);
 						$("#update_data input[name=big_title]").val(responce_data.big_title);
-						$("#update_data textarea[name=description]").val(responce_data.description);
+						//$("#update_data textarea[name=description]").val(responce_data.description);
+						$("#update_data textarea[name=description]").data("wysihtml5").editor.setValue(responce_data.description);
 						$("#update_data input[name=page_order]").val(responce_data.page_order);
 						$("#update_data select[name=is_enabled]").val(responce_data.is_enabled);
 

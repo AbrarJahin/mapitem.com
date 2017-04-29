@@ -23,7 +23,7 @@
 					</div>
 					<div class="form-group">
 						<label for="category">Description:</label>
-						<textarea class="form-control" placeholder="Description of the content (Optional)" name="description"></textarea>
+						<textarea rows="18" class="form-control wysihtml5" placeholder="Description of the content (Optional)" name="description"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="category">Page Order:</label>

@@ -17,5 +17,6 @@
 	<script src="{{ URL::asset('js/jquery.bootstrap.wizard.js') }}"></script>
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	@yield('ExtraJsLibraries')
 	<script src="{{ URL::asset('js/custom.js') }}"></script>
 @show

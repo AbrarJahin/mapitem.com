@@ -97,7 +97,7 @@ class EditAjaxController extends Controller
 											'id'			=> 'required',
 											'is_enabled'	=> 'required|in:enabled,disabled',
 											'page_order'	=> 'required|numeric|min:0|max:255',
-											'big_title'		=> 'string|max:255|unique:public_pages,big_title,'.$publicPage->id,
+											'big_title'		=> 'string|max:255|unique:public_pages,big_title,'.$publicPage->id,				//ID is given to ignore existing item's current element in DB
 											'small_title'	=> 'required|string|max:20|unique:public_pages,small_title,'.$publicPage->id,
 											'url'			=> 'required|string|max:100|unique:public_pages,url,'.$publicPage->id
 										]

@@ -430,7 +430,7 @@ class PublicController extends Controller
 	*/
 	public function getPublicPage($url)
 	{
-		$publicPage = PublicPage::where('url', $url)->firstOrFail();
+		$publicPage = PublicPage::where('url', $url)->where('is_enabled', 'enabled')->firstOrFail();
 		return view('public.public_page.main',
 						[
 							'current_page'	=>	'Home',
