@@ -125,6 +125,6 @@ class AdminController extends Controller
 	*/
 	public function showPublicPageView()
 	{
-		return view('admin.users.main', [ 'current_page'	=> 'admin.public_pages' ]);
+		return view('admin.public_pages.main', [ 'current_page'	=> 'admin.public_pages' ]);
 	}
 }

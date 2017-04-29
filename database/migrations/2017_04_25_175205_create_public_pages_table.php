@@ -14,7 +14,9 @@ class CreatePublicPagesTable extends Migration
 	{
 		Schema::create('public_pages', function (Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id');
+			$table->enum('is_enabled', 			['enabled', 'disabled'])->default('enabled');
 			$table->unsignedTinyInteger('page_order')->default(0);
 			$table->string('url', 100)			->nullable(false)	->unique();
 			$table->string('small_title', 20)	->nullable(false)	->unique();

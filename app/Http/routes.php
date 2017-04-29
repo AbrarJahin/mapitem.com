@@ -66,12 +66,6 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 			'uses' => 'PublicController@getSuggestion',
 			'as' => 'get_suggestion'
 		]);
-
-	//Get Public Page
-	Route::get('info/{url}', [
-			'uses' => 'PublicController@getPublicPage',
-			'as' => 'public_page'
-		]);
 });
 
 //Public Routes - Can't be accessed by Admin
@@ -121,6 +115,12 @@ Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 	Route::post('selected_item_detail', [
 			'uses' => 'PublicController@detailedMapItem',
 			'as' => 'selected_item_detail'
+		]);
+
+	//Get Public Page
+	Route::get('info/{url}', [
+			'uses' => 'PublicController@getPublicPage',
+			'as' => 'public_page'
 		]);
 });
 

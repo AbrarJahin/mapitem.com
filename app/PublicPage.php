@@ -13,7 +13,8 @@ class PublicPage extends Model
 									'url',
 									'small_title',
 									'big_title',
-									'description'
+									'description',
+									'is_enabled'
 								];
 
 	protected $hidden = [
