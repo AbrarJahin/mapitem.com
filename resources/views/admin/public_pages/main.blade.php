@@ -6,7 +6,6 @@
 
 @section('header_styles')
 	<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/jhollingworth/bootstrap-wysihtml5/master/src/bootstrap-wysihtml5.css">
-	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/admin_popup_fix.css') }}">
 @endsection
 
 @section('ExtraJsLibraries')

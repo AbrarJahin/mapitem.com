@@ -1,6 +1,6 @@
 {{-- Edit Category Modal --}}
 <div class="modal fade" id="edit_data_modal" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-admin-public">
 		{{-- Modal content --}}
 		<div class="modal-content">
 			<div class="modal-header">

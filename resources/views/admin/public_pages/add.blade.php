@@ -1,6 +1,6 @@
 {{-- Add Category Modal --}}
 <div class="modal fade" id="add_data_modal" role="dialog"  data-backdrop="static">
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-admin-public">
 		{{-- Modal content --}}
 		<div class="modal-content">
 			<div class="modal-header">

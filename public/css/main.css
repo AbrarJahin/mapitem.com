@@ -3471,3 +3471,15 @@ input.typeahead.tt-query{
 	border-style: dashed;
 	border-color: red;
 }
+.modal-admin-public
+{
+	width: 80%;
+}
+.wysihtml5-toolbar ul
+{
+	list-style-type: none;
+}
+.wysihtml5-toolbar li
+{
+	float: left;
+}
