@@ -2029,7 +2029,21 @@ $(document).ready(function()
 		}
 		else if ($('#public-pages-datatable').length)	//Messages Datatable
 		{
-			$('.wysihtml5').wysihtml5();
+			$('.wysihtml5').wysihtml5({
+				"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+				"fa": true,			//Font Awsome
+				"emphasis": true, //Italics, bold, etc. Default true
+				"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+				"link": true, //Button to insert a link. Default true
+				"image": true, //Button to insert an image. Default true
+				"blockquote": true, //Blockquote  
+				"size": 'lg', //default: none, other options are xs, sm, lg
+				"toolbar":{
+					"html": true, //Button which allows you to edit the generated HTML. Default false
+					"color": false //Button to change color of font
+				}
+			});
+
 			var publicPageDataTable = $('#public-pages-datatable').DataTable(
 			{
 				"processing": true,
