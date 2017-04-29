@@ -6,6 +6,7 @@ use Request;
 use DB;
 use Validator;
 use App\PublicPage;
+use Response;
 
 /*
 	Functionality	-> Handel All Admin Works
@@ -88,16 +89,17 @@ class EditAjaxController extends Controller
 	public function PublicPageUpdateAjax()
 	{
 		$requestData = Request::all();
+		$publicPage = PublicPage::find($requestData['id']);
 
 		$validator = Validator::make(
-										$requestData,						//Validator need to be updated
+										$requestData,
 										[
 											'id'			=> 'required',
 											'is_enabled'	=> 'required|in:enabled,disabled',
 											'page_order'	=> 'required|numeric|min:0|max:255',
-											'big_title'		=> 'string|max:255|unique:public_pages,big_title',
-											'small_title'	=> 'required|string|max:20|unique:public_pages,small_title',
-											'url'			=> 'required|string|max:100|unique:public_pages,url'
+											'big_title'		=> 'string|max:255|unique:public_pages,big_title,'.$publicPage->id,
+											'small_title'	=> 'required|string|max:20|unique:public_pages,small_title,'.$publicPage->id,
+											'url'			=> 'required|string|max:100|unique:public_pages,url,'.$publicPage->id
 										]
 									);
 
@@ -107,7 +109,6 @@ class EditAjaxController extends Controller
 			return Response::json($validator->errors()->all(), 400);
 		}
 
-		$publicPage = User::find($requestData['id']);
 		$publicPage->big_title		=	$requestData['big_title'];
 		$publicPage->description	=	$requestData['description'];
 		$publicPage->is_enabled		=	$requestData['is_enabled'];

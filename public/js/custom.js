@@ -2101,10 +2101,26 @@ $(document).ready(function()
 			$('#public-pages-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = publicPageDataTable.row( $(this).parents('tr') ).data();
-				//console.log(data);
 				$('#public_page_id').val(data['id']);
-				//Ajax Load All Data and show the modal
-				$('#edit_data_modal').modal('show');
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_detail]').attr("content"),
+					dataType: "json",
+					data: 	{	'id'	:	$('#public_page_id').val()	},
+					success:function(responce_data)
+					{
+						$("#update_data input[name=url]").val(responce_data.url);
+						$("#update_data input[name=small_title]").val(responce_data.small_title);
+						$("#update_data input[name=big_title]").val(responce_data.big_title);
+						$("#update_data textarea[name=description]").val(responce_data.description);
+						$("#update_data input[name=page_order]").val(responce_data.page_order);
+						$("#update_data select[name=is_enabled]").val(responce_data.is_enabled);
+
+						$('#edit_data_modal').modal('show');
+					}
+				});
 			});
 
 			$('#public-pages-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click

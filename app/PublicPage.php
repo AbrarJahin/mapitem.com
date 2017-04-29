@@ -19,7 +19,6 @@ class PublicPage extends Model
 
 	protected $hidden = [
 							'id',
-							'page_order',
 							'created_at',
 							'updated_at'
 						];

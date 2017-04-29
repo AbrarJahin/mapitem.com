@@ -398,6 +398,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'ViewAjaxController@userViewAjax',
 				'as' => '.user_view'
 			]);
+
+		Route::post('public_page_view', [
+				'uses' => 'ViewAjaxController@PublicPageViewAjax',
+				'as' => '.public_page_view'
+			]);
 	//View Data AJAX - END
 
 	//Edit Data AJAX - Start

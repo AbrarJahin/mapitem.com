@@ -6,6 +6,7 @@
 
 @section('content')
 
+	<meta name="view_detail" content="{{ URL::route('admin.public_page_view') }}">
 	@include('admin.public_pages.datatable')
 	@include('admin.public_pages.add')
 	@include('admin.public_pages.edit')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Request;
 use APP\Category;
+use APP\PublicPage;
 use DB;
 
 /*
@@ -78,5 +79,19 @@ class ViewAjaxController extends Controller
 				)
 				->where('id', '=', $requestData['id'])
 				->get();
+	}
+
+	/*
+		URL				-> post: /public_page_view
+		Functionality	-> Public Page iew AJAX
+		Access			-> Admin
+		Created At		-> 29/04/2017
+		Updated At		-> 29/04/2017
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function PublicPageViewAjax()
+	{
+		$requestData = Request::all();
+		return PublicPage::find($requestData['id']);
 	}
 }
