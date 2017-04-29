@@ -2382,6 +2382,8 @@ $(document).ready(function()
 	});
 
 	//Typehead - Start
+	if ($('#input_nav_search').length)
+	{
 		var engine = new Bloodhound({
 			identify	:	function(options)
 							{
@@ -2479,7 +2481,6 @@ $(document).ready(function()
 						console.log("It is not map page");
 					}
 				});
+	}
 	//Typehead - End
-	
-	
 });
