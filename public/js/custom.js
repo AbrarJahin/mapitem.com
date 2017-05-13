@@ -1939,14 +1939,64 @@ $(document).ready(function()
 			$('#adds-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = addsDataTable.row( $(this).parents('tr') ).data();
-				//alert('Edit - '+data['id']);	//id = index of ID sent from server
-				$('#edit_data_modal').modal('show');
+
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_detail]').attr("content"),
+					dataType: "json",
+					data: 	{	'add_id'	:	data['id']	},
+					success:function(responce_data)
+					{
+						$("#selected_add_id").val(data['id']);
+						console.log(responce_data[0].id);
+
+						$('#add-title').val(responce_data[0].title);
+						$('#add-description').val(responce_data[0].description);
+						$('#add-price').val(responce_data[0].price);
+						$('#add-owner-name').val(responce_data[0].owner_name);
+						$('#add-category-name').val(responce_data[0].category_name);
+						$('#add-subcategory-name').val(responce_data[0].sub_category_name);
+						$('#add-address').val(responce_data[0].address);
+						$('#add-enable-state').val(responce_data[0].is_active);
+
+						$('#edit_data_modal').modal('show');
+					},
+					error: function(xhr, textStatus, errorThrown)
+					{
+						alert('Item not exists or network error');
+					}
+				});
+			});
+
+			$("#update_add_button").on( 'click', function ()	//Handeling Delete Button Click
+			{
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $("#edit_add_form").attr('action'),
+					dataType: "json",
+					data: $("#edit_add_form").serialize(),
+					success:function(responce_data)
+					{
+						alert("Add updated");
+						addsDataTable.ajax.reload( null, false );
+						$('#edit_data_modal').modal('hide');
+					},
+					error: function(xhr, textStatus, errorThrown)
+					{
+						alert('Update failed due to input error');
+					}
+				});
 			});
 
 			$('#adds-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
 			{
 				var data = addsDataTable.row( $(this).parents('tr') ).data();
 				$("#delete_item_id").val(data['id']);
+				$("#add_title_name").html(data['title']);
 				$('#delete_confirmation_modal').modal('show');
 			});
 			//Delete Add - Confirmation

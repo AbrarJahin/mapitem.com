@@ -58,7 +58,7 @@ class ViewAjaxController extends Controller
 		URL				-> post: /user_view
 		Functionality	-> Category Datable AJAX
 		Access			-> Admin
-		Created At		-> 08//08/2016
+		Created At		-> 08/08/2016
 		Updated At		-> 08/08/2016
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -78,6 +78,36 @@ class ViewAjaxController extends Controller
 					'users.is_enabled as is_enabled'
 				)
 				->where('id', '=', $requestData['id'])
+				->get();
+	}
+
+	/*
+		URL				-> post: /add_view
+		Functionality	-> View Datable's add detail with AJAX
+		Access			-> Admin
+		Created At		-> 13/05/2017
+		Updated At		-> 13/05/2017
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function AddViewAjax()
+	{
+		$requestData = Request::all();
+
+		return DB::table('advertisements')
+				->join('users', 'users.id', '=', 'advertisements.user_id')
+				->join('categories', 'categories.id', '=', 'advertisements.category_id')
+				->join('sub_categories', 'sub_categories.id', '=', 'advertisements.sub_category_id')
+				->select(
+					'advertisements.title as title',
+					'advertisements.description as description',
+					'advertisements.price as price',
+					DB::raw('CONCAT(users.first_name," ",users.last_name) as owner_name'),
+					'categories.name as category_name',
+					'sub_categories.name as sub_category_name',
+					'advertisements.address as address',
+					'advertisements.is_active as is_active'
+				)
+				->where('advertisements.id', '=', $requestData['add_id'])
 				->get();
 	}
 

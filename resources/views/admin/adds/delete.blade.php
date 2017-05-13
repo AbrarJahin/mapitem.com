@@ -5,7 +5,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Do you really want to delete this Add?</h4>
+				<h4 class="modal-title">Do you really want to delete Add named <strong id="add_title_name"></strong>?</h4>
 			</div>
 			<form role="form" method="post" action="{{ URL::route('admin.advertisement_delete') }}" id="delete_data">
 				<input type="hidden" id="delete_item_id" name="id">

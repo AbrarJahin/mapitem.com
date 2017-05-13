@@ -7,7 +7,6 @@
 @section('content')
 
 	@include('admin.adds.datatable')
-	@include('admin.adds.add')
 	@include('admin.adds.edit')
 	@include('admin.adds.edit_success')
 	@include('admin.adds.delete')

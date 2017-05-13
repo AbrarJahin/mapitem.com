@@ -79,6 +79,29 @@ class EditAjaxController extends Controller
 	}
 
 	/*
+		URL				-> post: /add_update
+		Functionality	-> Add Edit AJAX
+		Access			-> Admin
+		Created At		-> 13/05/2017
+		Updated At		-> 13/05/2017
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function AddUpdateAjax()
+	{
+		$requestData = Request::all();
+		return DB::table('advertisements')
+				->where('id', $requestData['id'])
+				->update(
+							[
+								'title'			=> $requestData['title'],
+								'description'	=> $requestData['description'],
+								'price'			=> $requestData['price'],
+								'is_active'		=> $requestData['is_active']
+							]
+						);
+	}
+
+	/*
 		URL				-> post: /public_pages_update
 		Functionality	-> Public Page Edit AJAX
 		Access			-> Admin

@@ -399,6 +399,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'as' => '.user_view'
 			]);
 
+		Route::post('add_view', [
+				'uses' => 'ViewAjaxController@AddViewAjax',
+				'as' => '.add_view'
+			]);
+
 		Route::post('public_page_view', [
 				'uses' => 'ViewAjaxController@PublicPageViewAjax',
 				'as' => '.public_page_view'
@@ -419,6 +424,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 		Route::post('user_update', [
 				'uses' => 'EditAjaxController@userUpdateAjax',
 				'as' => '.user_update'
+			]);
+
+		Route::post('add_update', [
+				'uses' => 'EditAjaxController@AddUpdateAjax',
+				'as' => '.add_update'
 			]);
 
 		Route::post('public_pages_update', [
