@@ -90,4 +90,5 @@
 {{-- Footer Scripts - End --}}
 
 </body>
+{!! $google_analytics_script or '' !!}
 </html>

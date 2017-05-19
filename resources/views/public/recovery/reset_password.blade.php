@@ -71,4 +71,5 @@
 			</div>
 		</div>
 	</body>
+	{!! $google_analytics_script  or '' !!}
 </html>

@@ -40,4 +40,5 @@
 		<script src="{{ URL::asset('js/page.js') }}"></script>
 	{{-- Footer Scripts - End --}}
 	</body>
+	{!! $google_analytics_script or '' !!}
 </html>

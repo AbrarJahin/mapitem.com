@@ -7,6 +7,7 @@ use App\SubCategory;
 use App\Advertisement;
 use App\PublicPage;
 use App\UserAdvertisementView;
+use App\GoogleAnalytics;
 use Request;
 use Auth;
 use DB;

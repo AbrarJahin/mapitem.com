@@ -14,4 +14,10 @@ class GoogleAnalytics extends Model
 									'detail',
 									'analytics_script'
 								];
+
+	protected $hidden = [
+							'id',
+							'created_at',
+							'updated_at'
+						];
 }

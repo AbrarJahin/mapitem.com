@@ -19,4 +19,5 @@
 @include('admin.js')
 
 </body>
+{!! $google_analytics_script or '' !!}
 </html>
