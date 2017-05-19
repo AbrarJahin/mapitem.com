@@ -53,6 +53,12 @@
 				</a>
 			</li>
 
+			<li>
+				<a href="{{ URL::route('admin.google_analytics') }}" @if($current_page=="admin.google_analytics") class="selected" @endif >
+					Google Analytics
+				</a>
+			</li>
+
 		</ul>
 	</div>
 	{{-- /.navbar-collapse --}}

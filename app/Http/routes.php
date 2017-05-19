@@ -334,6 +334,12 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 			'as' => '.public_pages'
 		]);
 
+	//Google Analytics manage Page
+	Route::get('google_analytics', [
+			'uses' => 'AdminController@showGoogleAnalyticsView',
+			'as' => '.google_analytics'
+		]);
+
 	//Datatables AJAX - Start
 		Route::post('category_datable', [
 				'uses' => 'DataTablesAjaxController@categoryDatableAjax',

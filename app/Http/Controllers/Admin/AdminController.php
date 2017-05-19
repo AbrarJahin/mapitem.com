@@ -127,4 +127,17 @@ class AdminController extends Controller
 	{
 		return view('admin.public_pages.main', [ 'current_page'	=> 'admin.public_pages' ]);
 	}
+
+	/*
+		URL				-> get: /google_analytics
+		Functionality	-> Show Google Analytics Page
+		Access			-> Admin
+		Created At		-> 19/05/2017
+		Updated At		-> 19/05/2017
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function showGoogleAnalyticsView()
+	{
+		return view('admin.public_pages.main', [ 'current_page'	=> 'admin.google_analytics' ]);
+	}
 }
