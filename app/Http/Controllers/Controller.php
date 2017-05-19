@@ -11,8 +11,10 @@ use App\Category;
 use App\UserNotification;
 use App\Advertisement;
 use App\PublicPage;
+use App\GoogleAnalytics;
 use View;
 use DB;
+use Request;
 
 class Controller extends BaseController
 {
@@ -68,5 +70,13 @@ class Controller extends BaseController
 							->orderBy('id', 'ASC')
 							->get();
 		View::share('public_pages',	$publicPages);
+
+		$google_analytics = GoogleAnalytics::where('is_enabled', 'enabled')
+								->where('route_name', Request::route()->getName());
+
+		if($google_analytics->count()>0)
+		{
+			View::share('google_analytics_script',	$google_analytics->first()->analytics_script);
+		}
 	}
 }
