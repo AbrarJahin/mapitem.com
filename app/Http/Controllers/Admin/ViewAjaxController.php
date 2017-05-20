@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Request;
 use APP\Category;
 use APP\PublicPage;
+use APP\GoogleAnalytics;
 use DB;
 
 /*
@@ -122,6 +123,20 @@ class ViewAjaxController extends Controller
 	public function PublicPageViewAjax()
 	{
 		$requestData = Request::all();
-		return PublicPage::find($requestData['id']);
+		return PublicPage::findOrFail($requestData['id']);
+	}
+
+	/*
+		URL				-> post: /google_analytics_view
+		Functionality	-> Google Analytics iew AJAX
+		Access			-> Admin
+		Created At		-> 20/05/2017
+		Updated At		-> 20/05/2017
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function GoogleAnalyticsViewAjax()
+	{
+		$requestData = Request::all();
+		return GoogleAnalytics::findOrFail($requestData['id']);
 	}
 }

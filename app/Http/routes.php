@@ -414,6 +414,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'ViewAjaxController@PublicPageViewAjax',
 				'as' => '.public_page_view'
 			]);
+
+		Route::post('google_analytics_view', [
+				'uses' => 'ViewAjaxController@GoogleAnalyticsViewAjax',
+				'as' => '.google_analytics_view'
+			]);
 	//View Data AJAX - END
 
 	//Edit Data AJAX - Start
@@ -440,6 +445,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 		Route::post('public_pages_update', [
 				'uses' => 'EditAjaxController@PublicPageUpdateAjax',
 				'as' => '.public_pages_update'
+			]);
+
+		Route::post('google_analytics_update', [
+				'uses' => 'EditAjaxController@GoogleAnalyticsUpdateAjax',
+				'as' => '.google_analytics_update'
 			]);
 	//Edit Data AJAX - END
 

@@ -2254,6 +2254,49 @@ $(document).ready(function()
 		}
 	//Admin - Datatable End
 
+	//Admin - GoogleAnalytics - Start
+		$(".analytics_update").click(function(event)
+		{
+			var selectedItemId = $(this).parent().attr('id');
+			$.ajax(
+			{
+				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				method: "POST",
+				url: $('meta[name=show_ajax_url]').attr("content"),
+				dataType: "json",
+				data: 	{	'id'	:	selectedItemId	},
+				success:function(responce_data)
+				{
+					$("input:text[name='route_name']").val(responce_data.route_name);
+					$("input:text[name='url']").val(responce_data.url);
+					$("input:text[name='detail']").val(responce_data.detail);
+					$("textarea[name='analytics_script']").val(responce_data.analytics_script);
+					$("select[name='is_enabled']").val(responce_data.is_enabled);
+
+					$("input:hidden[name='id']").val(selectedItemId);
+					$("#edit_data_modal").modal("show");
+				}
+			});
+		});
+		$("#update_analytics_button").click(function(event)
+		{
+			event.preventDefault();
+			$.ajax(
+			{
+				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				method: "POST",
+				url: $("#update_analytics_data").attr('action'),
+				dataType: "json",
+				data: $("#update_analytics_data").serialize(),
+				success:function(responce_data)
+				{
+					alert('Updated Succesfully');
+					location.reload();
+				}
+			});
+		});
+	//Admin - GoogleAnalytics - End
+
 	//Accept Offer
 	$(".accept-offer").on('click', function(event)
 	{

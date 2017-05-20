@@ -1,0 +1,17 @@
+@extends('admin.master')
+
+@section('page_title', 'Public Pages')
+@section('meta_page_description', 'Content on this page are All Public Pages')
+@section('meta_author', 'S. M. Abrar Jahin')
+
+@section('header_styles')
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-wysiwyg/0.3.0/bootstrap3-wysihtml5.min.css">
+@endsection
+
+@section('content')
+
+	<meta name="view_detail" content="{{ URL::route('admin.public_page_view') }}">
+	@include('admin.google_analytics.show')
+	@include('admin.google_analytics.edit')
+
+@endsection

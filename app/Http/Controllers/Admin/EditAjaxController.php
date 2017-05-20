@@ -6,6 +6,7 @@ use Request;
 use DB;
 use Validator;
 use App\PublicPage;
+use App\GoogleAnalytics;
 use Response;
 
 /*
@@ -112,7 +113,7 @@ class EditAjaxController extends Controller
 	public function PublicPageUpdateAjax()
 	{
 		$requestData = Request::all();
-		$publicPage = PublicPage::find($requestData['id']);
+		$publicPage = PublicPage::find($requestData['id']);	//It is called before validator because it is used in validator
 
 		$validator = Validator::make(
 										$requestData,
@@ -141,5 +142,47 @@ class EditAjaxController extends Controller
 		$publicPage->save();
 
 		return $publicPage;
+	}
+
+	/*
+		URL				-> post: /google_analytics_update
+		Functionality	-> Google Analytics Edit AJAX
+		Access			-> Admin
+		Created At		-> 20/05/2017
+		Updated At		-> 20/05/2017
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function GoogleAnalyticsUpdateAjax()
+	{
+		$requestData = Request::all();
+
+		$validator = Validator::make(
+										$requestData,
+										[
+											'analytics_script'	=> 'required|string',
+											'detail'			=> 'required|string|max:255',
+											'id'				=> 'required|numeric',
+											'is_enabled'		=> 'required|in:enabled,disabled',
+											'route_name'		=> 'required|string|max:100',
+											'url'				=> 'required|string|max:100'
+										]
+									);
+
+		//Validator Failed
+		if ($validator->fails())
+		{
+			return Response::json($validator->errors()->all(), 400);
+		}
+
+		$googleAnalytics = GoogleAnalytics::find($requestData['id']);
+
+		$googleAnalytics->is_enabled		=	$requestData['is_enabled'];
+		$googleAnalytics->route_name		=	$requestData['route_name'];
+		$googleAnalytics->url				=	$requestData['url'];
+		$googleAnalytics->detail			=	$requestData['detail'];
+		$googleAnalytics->analytics_script	=	$requestData['analytics_script'];
+		$googleAnalytics->save();
+
+		return $googleAnalytics;
 	}
 }

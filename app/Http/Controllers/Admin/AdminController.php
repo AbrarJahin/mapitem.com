@@ -139,7 +139,10 @@ class AdminController extends Controller
 	*/
 	public function showGoogleAnalyticsView()
 	{
-
-		return view('admin.public_pages.main', [ 'current_page'	=> 'admin.google_analytics' ]);
+		return view('admin.google_analytics.main',
+						[
+							'current_page'		=> 'admin.google_analytics',
+							'google_analytic'	=> GoogleAnalytics::orderBy('route_name', 'asc')->get()
+						]);
 	}
 }
