@@ -11,12 +11,12 @@ class GoogleAnalytics extends Model
 	protected $fillable		=	[
 									'is_enabled',
 									'route_name',
+									'url',
 									'detail',
 									'analytics_script'
 								];
 
 	protected $hidden = [
-							'id',
 							'created_at',
 							'updated_at'
 						];

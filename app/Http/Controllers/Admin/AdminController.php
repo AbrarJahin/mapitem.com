@@ -6,6 +6,7 @@ use Auth;
 use Request;
 use Validator;
 use App\Category;
+use App\GoogleAnalytics;
 use Illuminate\Support\Facades\Redirect;
 
 /*
@@ -138,6 +139,7 @@ class AdminController extends Controller
 	*/
 	public function showGoogleAnalyticsView()
 	{
+
 		return view('admin.public_pages.main', [ 'current_page'	=> 'admin.google_analytics' ]);
 	}
 }

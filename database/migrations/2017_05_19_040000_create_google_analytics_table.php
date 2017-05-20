@@ -15,8 +15,9 @@ class CreateGoogleAnalyticsTable extends Migration
 		Schema::create('google_analytics', function (Blueprint $table) {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->enum('is_enabled',          ['enabled', 'disabled'])->default('enabled');
-			$table->string('route_name', 100)		->nullable(false)	->unique();
+			$table->enum('is_enabled',				['enabled', 'disabled'])->default('enabled');
+			$table->string('route_name', 100)		->nullable(false)		->unique();
+			$table->string('url', 100)				->nullable(true)		->unique();
 			$table->string('detail', 255)			->nullable(true);
 			$table->longText('analytics_script')	->nullable(true);
 			$table->timestamps();
