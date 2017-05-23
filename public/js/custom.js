@@ -2292,6 +2292,11 @@ $(document).ready(function()
 				{
 					alert('Updated Succesfully');
 					location.reload();
+				},
+				error: function(xhr, textStatus, errorThrown)
+				{
+					var arr = $.parseJSON(xhr.responseText);
+					alert(arr[0]);
 				}
 			});
 		});

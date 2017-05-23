@@ -159,7 +159,7 @@ class EditAjaxController extends Controller
 		$validator = Validator::make(
 										$requestData,
 										[
-											'analytics_script'	=> 'required|string',
+											'analytics_script'	=> 'string',
 											'detail'			=> 'required|string|max:255',
 											'id'				=> 'required|numeric',
 											'is_enabled'		=> 'required|in:enabled,disabled',
