@@ -476,7 +476,7 @@ function generateMarkers(bounds)
 							}
 							else if(key === 'current_page')
 							{
-								console.log('Current Page = '+data);
+								//console.log('Current Page = '+data);
 							}
 							else if(key === 'data')
 							{
@@ -578,28 +578,21 @@ function generateMarkers(bounds)
 							}
 							else if(key === 'categories')	//hide and show categories and sub categories
 							{
-								//Hide all categories - UI problem is there during category hide, so skipping the part
-								/*$('input[name="category[]"]').each(function()
-								{
-									$(this).parent().parent().hide();
-								});*/
-
+								$(".category_count").html("0");
 								$.each(data, function(index, element)
 								{
-									$("#category_"+element.category_id).html(element.count).parent().parent().show();
+									//$("#category_"+element.category_id).html(element.count).parent().parent().show();
+									$("#category_"+element.category_id).html(element.count);
 								});
 							}
 							else if(key === 'sub-categories')	//hide and show categories and sub categories
 							{
-								//Hide all sub categories
-								$('input[name="sub_category[]"]').each(function()
-								{
-									$(this).parent().parent().hide();
-								});
+								$(".sub_category_count").html("0");
 								//Append SubCategories from DB data
 								$.each(data, function(index, element)
 								{
-									$("#sub_category_"+element.sub_category_id).html(element.count).parent().parent().show();
+									//$("#sub_category_"+element.sub_category_id).html(element.count).parent().parent().show();
+									$("#sub_category_"+element.sub_category_id).html(element.count);
 								});
 							}
 						});

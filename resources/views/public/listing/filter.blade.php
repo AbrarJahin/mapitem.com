@@ -37,10 +37,7 @@
 									<input type="checkbox" name="category[]" category_id={{ $category->id }} sub_category_id="not_available" checked value="{{ $category->id }}">
 									<strong>
 										{{ $category->name }}
-										{{--
-										(<span id="category_{{ $category->id }}">{{ $category->total_advertisements }}</span>)
-										--}}
-										(<span id="category_{{ $category->id }}">0</span>)
+										(<span class="category_count" id="category_{{ $category->id }}">0</span>)
 									</strong>
 								</label>
 								<ul>
@@ -50,10 +47,7 @@
 												<label class="pull-left">
 													<input name="sub_category[]" category_id={{ $category->id }} sub_category_id={{ $sub_cat->id }} type="checkbox" checked value="{{ $sub_cat->id }}">
 													{{ $sub_cat->name }}
-													{{--
-													(<span id="sub_category_{{ $sub_cat->id }}">{{ $sub_cat->total_advertisements }}</span>)
-													--}}
-													(<span id="sub_category_{{ $sub_cat->id }}">0</span>)
+													(<span class="sub_category_count" id="sub_category_{{ $sub_cat->id }}">0</span>)
 												</label>
 											</li>
 										@endif
