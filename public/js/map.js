@@ -228,21 +228,21 @@ $(function()
 	*/
 
 	//Checkbox Checked Item Change Event
-	$('#category_filter :checkbox').change(function()
+	$("#category_filter :checkbox").on('change',function ()
 	{
-		if( $(this).attr('sub_category_id') === "not_adailable")
+		if( $(this).attr('sub_category_id') === "not_available")
 		{	//If clicked on category
 			$("input:checkbox[category_id='" + $(this).attr('category_id') + "']").prop('checked', $(this).prop("checked"));
 		}
 		else
 		{	//If Clicked On sub-category
-			if ( $("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id!='not_adailable']:checked").length == $("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id!='not_adailable']").length )
+			if ( $("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id!='not_available']:checked").length == $("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id!='not_available']").length )
 			{	//If all sub category are checked, then turn category checked
-				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_adailable']").prop('checked', true);
+				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_available']").prop('checked', true);
 			}
 			else
 			{	//If all sub category are not checked, then turn category un-checked
-				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_adailable']").prop('checked', false);
+				$("input:checkbox[category_id='" + $(this).attr('category_id') + "'][sub_category_id='not_available']").prop('checked', false);
 			}
 		}
 		//AJAX call goes here - When a filter is changed
