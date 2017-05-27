@@ -11,12 +11,18 @@
 				@foreach ($categories as $category)
 					<li class="no-border">
 						<a href="#" class="nav-category" category-id="{{ $category->id }}">
-							<h4 class="no-margin">{{ $category->name }}</h4>
+							<h4 class="no-margin">
+								{{ $category->name }}
+								(<span categoryCount="{{ $category->id }}">{{ $category->total_advertisements }}</span>)
+							</h4>
 						</a>
 						<ul>
 							@foreach($category->subCategory as $sub_cat)
 								<li>
-									<a href="#" class="nav-sub-category" sub-category-id="{{ $sub_cat->id }}">{{ $sub_cat->name }} ({{ $sub_cat->total_advertisements }})</a>
+									<a href="#" class="nav-sub-category" sub-category-id="{{ $sub_cat->id }}">
+										{{ $sub_cat->name }}
+										(<span subCategoryCount="{{ $sub_cat->id }}">{{ $sub_cat->total_advertisements }}</span>)
+									</a>
 								</li>
 							@endforeach
 						</ul>
@@ -43,7 +49,7 @@
 			<input type="hidden" id="map_lon_min" name="map_lon_min" value="{{ $mapLonMin }}">
 			<input type="hidden" id="map_lon_max" name="map_lon_max" value="{{ $mapLonMax }}">
 		@else
-		    <input type="hidden" id="map_lat_min" name="map_lat_min" value="-0.1268487">
+			<input type="hidden" id="map_lat_min" name="map_lat_min" value="-0.1268487">
 			<input type="hidden" id="map_lat_max" name="map_lat_max" value="0.1268487">
 			<input type="hidden" id="map_lon_min" name="map_lon_min" value="0.143270477">
 			<input type="hidden" id="map_lon_max" name="map_lon_max" value="-0.1432704766">

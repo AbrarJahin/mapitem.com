@@ -578,21 +578,18 @@ function generateMarkers(bounds)
 							}
 							else if(key === 'categories')	//hide and show categories and sub categories
 							{
-								$(".category_count").html("0");
+								$('span[categoryCount]').html("0");
 								$.each(data, function(index, element)
 								{
-									//$("#category_"+element.category_id).html(element.count).parent().parent().show();
-									$("#category_"+element.category_id).html(element.count);
+									$('span[categoryCount="'+element.category_id+'"]').html(element.count);
 								});
 							}
 							else if(key === 'sub-categories')	//hide and show categories and sub categories
 							{
-								$(".sub_category_count").html("0");
-								//Append SubCategories from DB data
+								$('span[subCategoryCount]').html("0");
 								$.each(data, function(index, element)
 								{
-									//$("#sub_category_"+element.sub_category_id).html(element.count).parent().parent().show();
-									$("#sub_category_"+element.sub_category_id).html(element.count);
+									$('span[subCategoryCount="'+element.sub_category_id+'"]').html(element.count);
 								});
 							}
 						});
