@@ -270,11 +270,12 @@ class PublicController extends Controller
 											->where('advertisements.title', 'like', '%'.$requestData['search_value'].'%')
 											->orWhere('advertisements.description', 'like', '%'.$requestData['search_value'].'%');
 									});
+		/*
 		if( isset($requestData['sub_categories']) )
 			$temp_categories = $temp_categories->whereIn('advertisements.sub_category_id', $requestData['sub_categories']);
 		else
 			$temp_categories = $temp_categories->whereIn('advertisements.sub_category_id', []);
-
+		*/
 		if($requestData['price_range_max']!=1000)
 			$temp_categories = $temp_categories->where('advertisements.price', '<', $requestData['price_range_max']);
 
