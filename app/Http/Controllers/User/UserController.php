@@ -214,6 +214,31 @@ class UserController extends Controller
 		$requestData = Request::all();
 		$user = User::find(Auth::user()->id);
 
+		$validator = Validator::make(
+										$requestData,
+										[
+											'profile_image'				=> 'image|max:10240',
+											'address'					=> 'string|max:255',
+											'cell_no'					=> 'string|max:60|unique:users,cell_no,'.$user->id,
+											'date_of_birth'				=> 'date',
+											'email'						=> 'email|max:60|unique:users,email,'.$user->id,
+											'first_name'				=> 'string|max:50',
+											'last_name'					=> 'string|max:50',
+											'location_longitude'		=> 'numeric',
+											'location_latitude'			=> 'numeric',
+											'social_security_number_p1'	=> 'string|max:3',
+											'social_security_number_p2'	=> 'string|max:2',
+											'social_security_number_p3'	=> 'string|max:4',
+											'website'					=> 'string|max:70'
+										]
+									);
+
+		//Validator Failed
+		if ($validator->fails())
+		{
+			return Response::json($validator->errors()->all(), 400);
+		}
+
 		$user->address						= $requestData['address'];
 		$user->cell_no						= $requestData['cell_no'];
 		$user->date_of_birth				= Carbon::createFromFormat('m/d/Y', $requestData['date_of_birth']);

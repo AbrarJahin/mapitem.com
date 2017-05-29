@@ -46,8 +46,8 @@ class AddController extends Controller
 											'price'						=> 'required',
 											'description'				=> 'required',
 											'address'					=> 'required',
-											'product_geo_location_lat'				=> 'required',
-											'product_geo_location_lon'				=> 'required'
+											'product_geo_location_lat'	=> 'required',
+											'product_geo_location_lon'	=> 'required'
 										]
 									);
 		//Validator Failed
