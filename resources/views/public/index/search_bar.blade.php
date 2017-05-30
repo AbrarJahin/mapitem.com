@@ -10,11 +10,11 @@
 				<ul class="dropdown-menu h-ctr">
 					@foreach ($categories as $category)
 						<li class="no-border">
-							<h4 class="no-margin">{{ $category->name }}</h4>
+							<a href="{{ URL::route('listing') }}#category_id={{ $category->id }}"><h4 class="no-margin">{{ $category->name }}</h4></a>
 							<ul>
 								@foreach($category->subCategory as $sub_cat)
 									<li>
-										<a href="#{{ $sub_cat->id }}">{{ $sub_cat->name }}</a>
+										<a href="{{ URL::route('listing') }}#sub_category_id={{ $sub_cat->id }}">{{ $sub_cat->name }}</a>
 									</li>
 								@endforeach
 							</ul>

@@ -141,9 +141,27 @@ $(function()
 		{
 			map_div.gmap3('get').setZoom(12);
 		}
+
+		//Set the category and sub category parameters passed from home page click event
+		var hashString = location.hash.substr(1);
+		if(hashString.length>0 && isNaN(hashString))
+		{
+			if(!isNaN(location.hash.substr(13)))
+			{
+				$("input:checkbox").prop('checked', false);
+				//category_id
+				$("input:checkbox[category_id='" + location.hash.substr(13) + "']").prop('checked', true);
+			}
+			else if(!isNaN(location.hash.substr(17)))
+			{
+				$("input:checkbox").prop('checked', false);
+				//sub_category_id
+				$("input:checkbox[sub_category_id='"+location.hash.substr(17)+"']").prop('checked', true);
+			}
+		}
 	});
 
-	//Call AJAX Call from Here - When Map comes to a stable position of when map first time loads
+	//Call AJAX Call from Here - When Map comes to a stable position of when map loads (it actually calls every time map get idle)
 	google.maps.event.addListener(map_div.gmap3("get"), "idle", function(event)
 	{
 		if( ifDeviceIsMobile() )
@@ -365,7 +383,7 @@ $(function()
 
 	//open page on page load for sharing data
 	var add_id = location.hash.substr(1);
-	if(add_id.length>0)
+	if(add_id.length>0 && !isNaN(add_id))
 	{
 		setTimeout(function()
 		{
