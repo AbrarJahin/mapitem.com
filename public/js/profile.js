@@ -83,7 +83,13 @@ $(document).ready(function()
 					$("#wait").css("display", "none");
 					console.log(xhr);
 					console.log(textStatus);
-					alert(errorThrown);
+					if(xhr.status===400)
+					{
+						var arr = $.parseJSON(xhr.responseText);
+						alert(arr[0]);
+					}
+					else
+						alert(errorThrown);
 				}
 			});
 		}

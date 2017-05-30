@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Auth;
 use Request;
+use Response;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
