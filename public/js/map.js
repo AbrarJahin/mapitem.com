@@ -158,6 +158,16 @@ $(function()
 				//sub_category_id
 				$("input:checkbox[sub_category_id='"+location.hash.substr(17)+"']").prop('checked', true);
 			}
+
+			//AJAX call goes here - When a filter is changed
+			if( ifDeviceIsMobile() )
+			{
+				generateMarkers( viewPortForMobile );
+			}
+			else
+			{
+				generateMarkers(map_div.gmap3("get").getBounds());
+			}
 		}
 	});
 
