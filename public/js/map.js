@@ -2,6 +2,7 @@
 var map_div = $('#map');
 var last_opened_info_window_id = -1;				//For solving infowindow lost issue after AJAX call done
 var viewPortForMobile;
+var firstTimeNotAlreadyViewed = true;
 
 var infoBubble = new InfoBubble({
 							maxWidth: 300,
@@ -141,39 +142,34 @@ $(function()
 		{
 			map_div.gmap3('get').setZoom(12);
 		}
-
-		//Set the category and sub category parameters passed from home page click event
-		var hashString = location.hash.substr(1);
-		if(hashString.length>0 && isNaN(hashString))
-		{
-			if(!isNaN(location.hash.substr(13)))
-			{
-				$("input:checkbox").prop('checked', false);
-				//category_id
-				$("input:checkbox[category_id='" + location.hash.substr(13) + "']").prop('checked', true);
-			}
-			else if(!isNaN(location.hash.substr(17)))
-			{
-				$("input:checkbox").prop('checked', false);
-				//sub_category_id
-				$("input:checkbox[sub_category_id='"+location.hash.substr(17)+"']").prop('checked', true);
-			}
-
-			//AJAX call goes here - When a filter is changed
-			if( ifDeviceIsMobile() )
-			{
-				generateMarkers( viewPortForMobile );
-			}
-			else
-			{
-				generateMarkers(map_div.gmap3("get").getBounds());
-			}
-		}
 	});
 
 	//Call AJAX Call from Here - When Map comes to a stable position of when map loads (it actually calls every time map get idle)
 	google.maps.event.addListener(map_div.gmap3("get"), "idle", function(event)
 	{
+		if(firstTimeNotAlreadyViewed)
+		{
+			//This can be done with titleloaded event, but that is called after this event called, so have to do this in this way
+			firstTimeNotAlreadyViewed = false;
+			//Set the category and sub category parameters passed from home page click event
+			var hashString = location.hash.substr(1);
+			if(hashString.length>0 && isNaN(hashString))
+			{
+				if(!isNaN(location.hash.substr(13)))
+				{
+					$("input:checkbox").prop('checked', false);
+					//category_id
+					$("input:checkbox[category_id='" + location.hash.substr(13) + "']").prop('checked', true);
+				}
+				else if(!isNaN(location.hash.substr(17)))
+				{
+					$("input:checkbox").prop('checked', false);
+					//sub_category_id
+					$("input:checkbox[sub_category_id='"+location.hash.substr(17)+"']").prop('checked', true);
+				}
+			}
+		}
+
 		if( ifDeviceIsMobile() )
 		{
 			if(viewPortForMobile == undefined)		//It will be just called 1 time when map loads
