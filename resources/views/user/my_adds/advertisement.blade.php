@@ -38,7 +38,7 @@
 					<div class="width-adj14">
 						<i class="fa fa-eye"></i>
 						<span>Viewed by :</span>
-						<b>{{ $my_add->total_views }}</b>
+						<b>{{ ( ! empty($my_add->total_views) ? $my_add->total_views : '0') }}</b>
 					</div>
 					<div class="width-adj15">
 						<i class="fa fa-thumbs-up"></i>

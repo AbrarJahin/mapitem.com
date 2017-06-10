@@ -12,7 +12,8 @@ class Message extends Model
 	protected $fillable =	[
 								'thread_id',
 								'message',
-								'sender_id'
+								'sender_id',
+								'is_read'
 							];
 
 	protected $hidden = [

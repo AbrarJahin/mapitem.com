@@ -59,35 +59,48 @@ class MessageController extends Controller
 	public function threadDetail()
 	{
 		$requestData = Request::all();
+		//Get the data
+		$messagesToReturn =  DB::table('messages')
+								->join('users', 'users.id', '=', 'messages.sender_id')
+								->select(
+											//DB::raw("CONCAT('he_sends_me') AS sender_type"),	//he_sends_me / me_send_him
+											DB::raw(
+														"CASE
+															WHEN messages.sender_id = ".Auth::user()->id." THEN 'me_send_him'
+															ELSE 'he_sends_me'
+														END as sender_type"
+													),
+											DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS sender_name"),
+											DB::raw(
+															"CASE
+																WHEN LENGTH(users.profile_picture)>0 THEN users.profile_picture
+																ELSE '../images/empty-profile.jpg'
+															END as user_image"
+														),
+											'messages.message',
+											DB::raw(
+														"CASE
+															WHEN messages.sender_id <> ".Auth::user()->id." AND messages.is_read = 'not_readed' THEN 'not_readed'
+															ELSE 'readed'
+														END as is_read"
+													),
+											DB::raw("DATE_FORMAT(messages.created_at,'%m/%d/%Y %H:%i:%s') AS sent_time")
+											/*,DB::raw(
+														"CASE
+															WHEN DATE(messages.created_at) = DATE(NOW()) THEN DATE_FORMAT(messages.created_at, '%r')
+															ELSE DATE_FORMAT(messages.created_at, '%b %D, %Y - %r')
+														END as sent_time"
+													)*/
+										)
+								->where('messages.thread_id', $requestData['thread_id'])
+								->get();
+		//Update the data to make marked
+		DB::table('messages')
+			->where('messages.thread_id', $requestData['thread_id'])
+			->where('sender_id','<>', Auth::user()->id)
+			->update(array('is_read' => 'readed'));
 
-		return DB::table('messages')
-				->join('users', 'users.id', '=', 'messages.sender_id')
-				->select(
-							//DB::raw("CONCAT('he_sends_me') AS sender_type"),	//he_sends_me / me_send_him
-							DB::raw(
-										"CASE
-											WHEN messages.sender_id = ".Auth::user()->id." THEN 'me_send_him'
-											ELSE 'he_sends_me'
-										END as sender_type"
-									),
-							DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS sender_name"),
-							DB::raw(
-											"CASE
-												WHEN LENGTH(users.profile_picture)>0 THEN users.profile_picture
-												ELSE '../images/empty-profile.jpg'
-											END as user_image"
-										),
-							'messages.message',
-							DB::raw("DATE_FORMAT(messages.created_at,'%m/%d/%Y %H:%i:%s') AS sent_time")
-							/*,DB::raw(
-										"CASE
-											WHEN DATE(messages.created_at) = DATE(NOW()) THEN DATE_FORMAT(messages.created_at, '%r')
-											ELSE DATE_FORMAT(messages.created_at, '%b %D, %Y - %r')
-										END as sent_time"
-									)*/
-						)
-				->where('messages.thread_id', $requestData['thread_id'])
-				->get();
+		return $messagesToReturn;
 	}
 
 	public function inboxMessageSend()

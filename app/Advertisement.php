@@ -92,7 +92,6 @@ class Advertisement extends Model
 
 		public function getTotalViewsAttribute()
 		{	//Defination of -> 'total_views'
-			//return $this->UserAdvertisementView->sum('total_view');	//Attribute Collection
 			return $this->UserAdvertisementView()->sum('total_view');	//Method - Returns only value - What I need here
 		}
 

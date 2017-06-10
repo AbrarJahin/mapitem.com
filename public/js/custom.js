@@ -2413,7 +2413,7 @@ $(document).ready(function()
 						$('#inbox_detail')
 							.append(
 										'<li class="list-group-item '
-										+single_data.sender_type
+										+single_data.sender_type+" "+single_data.is_read
 										+'"><div><div class="pro_pic"><img src="'
 										+$('meta[name=upload_folder_url]').attr("content")
 										+single_data.user_image

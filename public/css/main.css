@@ -3295,6 +3295,10 @@ li.next.disabled
 {
 		text-align: right;
 }
+li.not_readed
+{
+	background-color: #BBB;
+}
 .pro_pic
 {
 	padding: 5px;
