@@ -64,7 +64,7 @@ $(function()
 			data: $("#offer_send_form").serialize(),
 			success:function(responce_data)
 			{
-				console.log(responce_data);
+				//console.log(responce_data);
 				alert('Offer Sent');
 				$('[data-toggle="dropdown"]').parent().removeClass('open');
 			}
@@ -131,7 +131,7 @@ $(function()
 		}
 		catch(error)
 		{
-			console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
+			//console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
 		}
 	});
 
@@ -192,7 +192,7 @@ $(function()
 			}
 			else
 			{
-				console.log('Mobile fake Map already initialized');
+				//console.log('Mobile fake Map already initialized');
 			}
 		}
 		else
@@ -355,7 +355,7 @@ $(function()
 			},
 			error: function (e)
 			{
-				console.log(e);
+				//console.log(e);
 				if ($("#lgn-pup").length === 0)
 					alert('You are not eligable to give this review');
 				else
@@ -433,10 +433,19 @@ function generateMarkers(bounds)
 	// generate AJAX - Start
 	var list = [];
 	var location={};
-	location.lat_min = bounds.getSouthWest().lat();
-	location.lat_max = bounds.getNorthEast().lat();
-	location.lon_min = bounds.getSouthWest().lng();
-	location.lon_max = bounds.getNorthEast().lng();
+	try
+	{
+		location.lat_min = bounds.getSouthWest().lat();
+		location.lat_max = bounds.getNorthEast().lat();
+		location.lon_min = bounds.getSouthWest().lng();
+		location.lon_max = bounds.getNorthEast().lng();
+	}
+	catch(err)
+	{
+		console.error("Element not called");
+		console.error(err);
+		return;
+	}
 
 	//find all selected sub-categories
 	var sub_categories = [];
@@ -910,7 +919,7 @@ function pullPaginatorElementToFirstElement()
 	}
 	else
 	{
-		console.log('Paginator Clicked');
+		//console.log('Paginator Clicked');
 	}
 }
 

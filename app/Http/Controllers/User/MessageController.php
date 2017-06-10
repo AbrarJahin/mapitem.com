@@ -98,6 +98,7 @@ class MessageController extends Controller
 		DB::table('messages')
 			->where('messages.thread_id', $requestData['thread_id'])
 			->where('sender_id','<>', Auth::user()->id)
+			->where('is_read','=', 'not_readed')
 			->update(array('is_read' => 'readed'));
 
 		return $messagesToReturn;
