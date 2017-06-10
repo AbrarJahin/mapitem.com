@@ -14,7 +14,7 @@
 	{{-- Dropzone - JS --}}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.js"></script>
 	{{-- Map Place API --}}
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDS7dAo_nzQ3txdhx4QGcRI3NNrbDSw9Jw&sensor=true&amp;libraries=places" type="text/javascript"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY') }}&sensor=true&amp;libraries=places" type="text/javascript"></script>
 	{{-- <script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places"></script> --}}
 	{{-- Geo Complete --}}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js"></script>

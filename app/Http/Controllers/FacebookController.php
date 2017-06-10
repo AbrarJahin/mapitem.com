@@ -42,7 +42,14 @@ class FacebookController extends Controller
 	 */
 	public function handleProviderCallback()
 	{
-		$user = Socialite::driver('facebook')->user();
+		try
+		{
+			$user = Socialite::driver('facebook')->user();
+		}
+		catch (\Exception $e)
+		{
+			return redirect()->route('index');
+		}
 
 		//Check if the user is logged in or not
 		if (!Auth::check())

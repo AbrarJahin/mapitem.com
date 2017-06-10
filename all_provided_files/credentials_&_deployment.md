@@ -6,7 +6,7 @@
 	git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git
 	composer install
 
-And everything is ready for you !!
+And everything is ready for you if you are in Linux!!
 
 ___________________________________________________________________________
 

@@ -43,7 +43,14 @@ class GoogleController extends Controller
 	 */
 	public function handleProviderCallback()
 	{
-		$user = Socialite::driver('google')->user();
+		try
+		{
+			$user = Socialite::driver('google')->user();
+		}
+		catch (\Exception $e)
+		{
+			return redirect()->route('index');
+		}
 
 		//Check if the user is logged in or not
 		if (!Auth::check())
