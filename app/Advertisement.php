@@ -87,7 +87,9 @@ class Advertisement extends Model
 							'avg_rating',
 							'is_reviewed',
 							'is_offer_sent',
-							'is_wishlisted'
+							'is_wishlisted',
+							'wishlisted_user_count',
+							'reviewed_user_count'
 						];
 
 		public function getTotalViewsAttribute()
@@ -122,6 +124,16 @@ class Advertisement extends Model
 				return $this->UserWishlist()->where('user_id', Auth::user()->id)->count();	//Adding Custom Query
 			else
 				return 0;	//Default Value = Show Not Wishlisted
+		}
+
+		public function getWishlistedUserCountAttribute()
+		{	//Defination of -> 'wishlisted_user_count'
+			return $this->UserWishlist()->count();	//Adding Custom Query
+		}
+
+		public function getReviewedUserCountAttribute()
+		{	//Defination of -> 'reviewed_user_count'
+			return $this->UserReview()->count();	//Adding Custom Query
 		}
 	//Adding Custom Fields with custom Query - END
 }

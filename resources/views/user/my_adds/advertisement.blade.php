@@ -28,12 +28,12 @@
 					<div class="width-adj12">
 						<i class="fa fa-heart-o"></i>
 						<span>Added to wishlist by :</span>
-						<b>5 Users</b>
+						<b>{{ $my_add->wishlisted_user_count }} Users</b>
 					</div>
 					<div class="width-adj13">
 						<i class="fa fa-comment-o"></i>
 						<span>Reviews :</span>
-						<b>8</b>
+						<b>{{ $my_add->reviewed_user_count }}</b>
 					</div>
 					<div class="width-adj14">
 						<i class="fa fa-eye"></i>
