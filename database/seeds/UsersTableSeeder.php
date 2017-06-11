@@ -29,13 +29,13 @@ class UsersTableSeeder extends Seeder
 										'address'					=> $faker->address,
 										'location_latitude'			=> $faker->latitude($min = -90, $max = 90),
 										'location_longitude'		=> $faker->longitude($min = -180, $max = 180),
-										'password'					=> bcrypt('1234'),
+										'password'					=> bcrypt('*123*Simple*Piash#'),
 										'user_type'					=> 'normal_user'
 									]);
 
 		$users = [
 					[
-						'email'		=> 'max@gmail.com',
+						'email'		=> 'maxezoory@gmail.com',
 						'user_type'	=> 'admin',
 					],
 					[
@@ -64,7 +64,7 @@ class UsersTableSeeder extends Seeder
 										'address'					=> $faker->address,
 										'location_latitude'			=> $faker->latitude($min = -90, $max = 90),
 										'location_longitude'		=> $faker->longitude($min = -180, $max = 180),
-										'password'					=> bcrypt('1234'),
+										'password'					=> bcrypt('*123*Simple#'),
 										'user_type'					=> $user['user_type']
 									]);
 		}
