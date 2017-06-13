@@ -28,10 +28,15 @@ class ViewAjaxController extends Controller
 	public function categoryViewAjax()
 	{
 		$requestData = Request::all();
-        //return Category::find( $requestData['category_id'] );
-        return Category::where('id', $requestData['category_id'])
-                    ->select('name')
-                    ->first();
+		/*
+		return Category::where('id', $requestData['category_id'])
+					->select('name')
+					->first();
+		*/
+		return DB::table('categories')
+					->where('id', $requestData['category_id'])
+					->select('name')
+					->get();
 	}
 
 	/*

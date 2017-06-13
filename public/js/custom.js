@@ -1603,7 +1603,7 @@ $(document).ready(function()
 					success:function(responce_data)
 					{
 						$('#selected_category_id').val(data['id']);
-						$('#selected_category_name').val(responce_data.name);
+						$('#selected_category_name').val(responce_data[0].name);
 						$('#edit_data_modal').modal('show');
 					}
 				});
