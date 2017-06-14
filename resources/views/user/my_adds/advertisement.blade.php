@@ -40,11 +40,13 @@
 						<span>Viewed by :</span>
 						<b>{{ ( ! empty($my_add->total_views) ? $my_add->total_views : '0') }}</b>
 					</div>
+					{{--
 					<div class="width-adj15">
 						<i class="fa fa-thumbs-up"></i>
 						<span>  Liked by :</span>
 						<b>150</b>
 					</div>
+					--}}
 				</section>
 			{{-- Advertisement Topbar - End --}}
 

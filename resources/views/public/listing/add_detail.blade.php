@@ -23,7 +23,9 @@
 
 				<a data-placement="top" data-toggle="tooltip" class="fa fa-eye grey-tooltip" href="#" id="selected_add_view_count" data-original-title="157"></a>
 
+				{{--
 				<a data-placement="top" data-toggle="tooltip" class="fa fa-thumbs-o-up grey-tooltip" href="#" data-original-title="Like"></a>
+				--}}
 			</div>
 		</div>
 
