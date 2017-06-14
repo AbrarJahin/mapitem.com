@@ -63,7 +63,6 @@ class MessageController extends Controller
 		$messagesToReturn =  DB::table('messages')
 								->join('users', 'users.id', '=', 'messages.sender_id')
 								->select(
-											//DB::raw("CONCAT('he_sends_me') AS sender_type"),	//he_sends_me / me_send_him
 											DB::raw(
 														"CASE
 															WHEN messages.sender_id = ".Auth::user()->id." THEN 'me_send_him'
@@ -85,14 +84,9 @@ class MessageController extends Controller
 														END as is_read"
 													),
 											DB::raw("DATE_FORMAT(messages.created_at,'%m/%d/%Y %H:%i:%s') AS sent_time")
-											/*,DB::raw(
-														"CASE
-															WHEN DATE(messages.created_at) = DATE(NOW()) THEN DATE_FORMAT(messages.created_at, '%r')
-															ELSE DATE_FORMAT(messages.created_at, '%b %D, %Y - %r')
-														END as sent_time"
-													)*/
 										)
 								->where('messages.thread_id', $requestData['thread_id'])
+								->orderBy('messages.created_at', 'desc')
 								->get();
 		//Update the data to make marked
 		DB::table('messages')

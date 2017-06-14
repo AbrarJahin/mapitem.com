@@ -297,6 +297,7 @@ class AddController extends Controller
 						'sender_id'	=>	Auth::user()->id,
 					],
 					[
+						'status'	=>	'pending',
 						'price'		=>	$requestData['price'],
 						'message'	=>	$requestData['message']
 					]

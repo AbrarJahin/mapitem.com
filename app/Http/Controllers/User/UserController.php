@@ -9,6 +9,7 @@ use Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
 use App\MessageThread;
+use App\Message;
 use App\Advertisement;
 use App\UserNotification;
 use App\Offer;
@@ -323,6 +324,20 @@ class UserController extends Controller
 		{
 			$offer->status=$requestData['status'];
 			$offer->save();
+
+			//Auth::user()->id
+			$advertisement = Advertisement::findOrFail(1);
+			//Adding message
+			$messageText = "I like to ".$requestData['status']." your offer of ".$offer->price." for ".$advertisement->title.".";
+			//Save the message in message thread
+			$messageThread = MessageThread::whereIn('sender_id', [Auth::user()->id, $offer->sender_id])
+											->whereIn('receiver_id', [Auth::user()->id, $offer->sender_id])
+											->first();
+			Message::create([
+								'sender_id'	=> Auth::user()->id,
+								'thread_id'	=> $messageThread->id,
+								'message'	=> $messageText
+							]);
 			return $offer;
 		}
 		else

@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
 		DB::table('users')->insert(
 									[
 										'id'						=>	1,
-										'first_name'				=> 'Non Logged In',
+										'first_name'				=> 'Not Logged In',
 										'last_name'					=> 'User',
 										'email'						=> 'not@logged.in',
 										'cell_no'					=> '000000',
