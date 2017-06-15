@@ -2397,6 +2397,7 @@ $(document).ready(function()
 		{
 			$("#message_title").text($(this).children().children().first().text());
 			$("#send_message_form input[name=thread_id]").val( $(this).attr("thread_id") );
+			$(this).removeClass("not_readed").addClass("readed");
 
 			$.ajax({
 				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },

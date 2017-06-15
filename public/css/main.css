@@ -3295,7 +3295,7 @@ li.next.disabled
 {
 		text-align: right;
 }
-li.not_readed
+.not_readed
 {
 	background-color: #BBB;
 }

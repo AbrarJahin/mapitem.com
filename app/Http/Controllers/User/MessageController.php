@@ -61,6 +61,7 @@ class MessageController extends Controller
 	public function threadDetail()
 	{
 		$requestData = Request::all();
+
 		//Get the data
 		$messagesToReturn =  DB::table('messages')
 								->join('users', 'users.id', '=', 'messages.sender_id')
@@ -90,6 +91,13 @@ class MessageController extends Controller
 								->where('messages.thread_id', $requestData['thread_id'])
 								->orderBy('messages.created_at', 'desc')
 								->get();
+
+		//Thread update so that it is marked as seen
+		MessageThread::where('id', $requestData['thread_id'])
+					->where('is_read', 'not_readed')
+					->where('last_sender_id', '<>', Auth::user()->id)
+					->update(['is_read' => 'readed']);
+
 		//Update the data to make marked
 		DB::table('messages')
 			->where('messages.thread_id', $requestData['thread_id'])

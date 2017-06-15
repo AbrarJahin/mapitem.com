@@ -2,7 +2,7 @@
 	<ul class="list-group inbox_titles">
 		@foreach ($message_threads as $message_thread)
 			<li class="list-group-item no-padding">
-				<div thread_id="{{ $message_thread->id }}" class="btn conversation">
+				<div thread_id="{{ $message_thread->id }}" class="btn conversation {{ $message_thread->is_readed }}">
 					<div class="media-body">
 						<h5 class="media-heading">{{ $message_thread->title }}</h5>
 						<strong class="time pull-left">{{ $message_thread->sender_name }}</strong>
