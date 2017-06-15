@@ -13,7 +13,9 @@ class MessageThread extends Model
 								'sender_id',
 								'receiver_id',
 								'advertisement_id',
-								'title'
+								'title',
+								'last_sender_id',
+								'is_read'
 							];
 
 	protected $hidden = [];

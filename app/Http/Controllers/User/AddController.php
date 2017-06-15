@@ -313,7 +313,9 @@ class AddController extends Controller
 																	'advertisement_id'	=>	$requestData['add_id']
 																],
 																[
-																	'title'				=>	"New Offer with Price - ".$requestData['price']
+																	'title'				=>	"New Offer with Price - ".$requestData['price'],
+																	'last_sender_id'	=>	Auth::user()->id,
+																	'is_read'			=>	'not_readed'
 																]
 															);
 			Message::create([

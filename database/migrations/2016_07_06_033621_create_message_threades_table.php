@@ -20,11 +20,14 @@ class CreateMessageThreadesTable extends Migration
 			$table->integer('receiver_id')		->unsigned()	->index();
 			$table->integer('advertisement_id')	->unsigned()	->index();
 			$table->string('title',100);
+			$table->enum('is_read', ['readed', 'not_readed'])->default('not_readed');
+			$table->integer('last_sender_id')	->unsigned()	->index();
 
 			//Foreign Keys
 			$table->foreign('sender_id')		->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
 			$table->foreign('receiver_id')		->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
 			$table->foreign('advertisement_id')	->references('id')	->on('advertisements')	->onDelete('cascade')	->onUpdate('cascade');
+			$table->foreign('last_sender_id')	->references('id')	->on('users')			->onDelete('cascade')	->onUpdate('cascade');
 
 			//Composite Primary Key
 			$table->unique([

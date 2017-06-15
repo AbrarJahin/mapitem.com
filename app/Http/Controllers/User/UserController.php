@@ -77,7 +77,7 @@ class UserController extends Controller
 											->join('users as receiver', 'receiver.id',	'=', 'message_threads.receiver_id')
 											->select(
 														DB::raw(
-															"CASE  
+															"CASE
 																WHEN sender.id = ".Auth::user()->id." THEN CONCAT(receiver.first_name, ' ', receiver.last_name)
 																ELSE CONCAT(sender.first_name, ' ', sender.last_name)
 															END as sender_name"
@@ -89,6 +89,12 @@ class UserController extends Controller
 																WHEN DATE(message_threads.created_at) = DATE(NOW()) THEN DATE_FORMAT(message_threads.created_at, '%r')
 																ELSE DATE_FORMAT(message_threads.created_at, '%b %D, %Y')
 															END as created_at"
+														),
+														DB::raw(
+															"CASE
+																WHEN message_threads.is_read = 'not_readed' AND message_threads.last_sender_id <> ".Auth::user()->id." THEN 'not_readed'
+																ELSE 'readed'
+															END as is_readed"
 														)
 													)
 											//DATE_FORMAT(message_threads.created_at, '%D %Y, %r')

@@ -45,7 +45,9 @@ class MessageController extends Controller
 																'advertisement_id'	=>	$requestData['add_id']
 															],
 															[
-																'title'				=>	substr($requestData['message'], 0, 100)
+																'title'				=>	substr($requestData['message'], 0, 100),
+																'last_sender_id'	=>	Auth::user()->id,
+																'is_read'			=>	'not_readed'
 															]
 														);
 		Message::create([
@@ -116,6 +118,8 @@ class MessageController extends Controller
 
 		//Update Message Thread
 		$messageThread->title = substr($requestData['message'],0,18)." ..";
+		$messageThread->last_sender_id = Auth::user()->id;
+		$messageThread->is_read = 'not_readed';
 		$messageThread->save();
 
 		//Add Notification for Message Sending
