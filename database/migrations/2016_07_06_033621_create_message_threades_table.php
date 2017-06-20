@@ -20,7 +20,7 @@ class CreateMessageThreadesTable extends Migration
 			$table->integer('receiver_id')		->unsigned()	->index();
 			$table->integer('advertisement_id')	->unsigned()	->index();
 			$table->string('title',100);
-			$table->enum('is_read', ['readed', 'not_readed'])->default('not_readed');
+			$table->enum('is_read', ['readed', 'not_readed'])	->default('not_readed');
 			$table->integer('last_sender_id')	->unsigned()	->index();
 
 			//Foreign Keys

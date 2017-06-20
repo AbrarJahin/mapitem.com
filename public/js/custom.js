@@ -12,9 +12,10 @@ function validateEmail(email)
 
 function convertToLocalTime(serverTime)
 {
+	var serverSetTimeZoneDiffWithUTCInMinuites = 11*60;//Should be 0 in default cases
 	var offsetInMinuites = new Date().getTimezoneOffset();
 	var serverDate = Date.parse(serverTime, "yyyy-MM-dd HH:mm:ss");
-	var localTime = new Date(serverDate - (offsetInMinuites * 60 * 1000));
+	var localTime = new Date(serverDate - ((offsetInMinuites + serverSetTimeZoneDiffWithUTCInMinuites) * 60 * 1000));
 	return localTime;
 }
 
@@ -100,7 +101,7 @@ function getLocation()
 	var location = {};
 	if( (latitude===undefined && longitude===undefined) || searchLocationName!=undefined )		//not called before in the page
 	{
-		$.get("http://ipinfo.io", function (response)
+		$.get("https://ipinfo.io", function (response)
 		{
 			var temp		= response.loc.split(",");
 
@@ -2427,6 +2428,7 @@ $(document).ready(function()
 										+'</time></footer></blockquote></div></li>'
 									);
 					});
+					$("#inbox_detail").scrollTop(0);
 				});
 		});
 
@@ -2442,7 +2444,7 @@ $(document).ready(function()
 				{
 					//Appending the message
 					$('#inbox_detail')
-							.append(
+							.prepend(
 										'<li class="list-group-item me_send_him"><div><div class="pro_pic"><img src="'
 										+$('meta[name=upload_folder_url]').attr("content")
 										+single_data.sender_image
@@ -2457,7 +2459,9 @@ $(document).ready(function()
 					//Clearing the sent item textarea
 					$("#send_message_form textarea[name=message]").val('');
 					//Scroll down the item
-					$('#inbox_detail').scrollTop($('#inbox_detail')[0].scrollHeight);
+					//$('#inbox_detail').scrollTop($('#inbox_detail')[0].scrollHeight);
+					//Scroll top to item
+					$("#inbox_detail").scrollTop(0);
 				});
 		});
 	//Inbox Page Design - Stop

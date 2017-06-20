@@ -11,7 +11,7 @@
 				<form role="form" method="post" action="{{ URL::route('admin.public_page_add') }}" id="add_data">
 					<div class="form-group">
 						<label for="category">Url:</label>
-						<input type="text" required class="form-control" placeholder="local_url or http://example.com/sub_directory" name="url">
+						<input type="text" required class="form-control" placeholder="local_url or https://example.com/sub_directory" name="url">
 					</div>
 					<div class="form-group">
 						<label for="category">Small Title:</label>

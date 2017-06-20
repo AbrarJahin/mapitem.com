@@ -52,8 +52,8 @@
 			</div>
 		</li> --}}
 	</ul>
-	
 
+	{{-- Send Button --}}
 	<div class="panel panel-primary">
 		<div class="panel-body">
 

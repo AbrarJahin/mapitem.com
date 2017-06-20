@@ -6,8 +6,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.0.1/typeahead.bundle.min.js" type="text/javascript" charset="utf-8"></script>
 
 	{{-- Map Place API --}}
-	<script src="http://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY') }}&sensor=true&amp;libraries=places" type="text/javascript"></script>
-	{{-- <script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places"></script> --}}
+	<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY') }}&sensor=true&amp;libraries=places" type="text/javascript"></script>
+	{{-- <script src="https://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places"></script> --}}
 
 	{{-- Custom JS --}}
 	<script src="{{ URL::asset('js/custom.js') }}"></script>

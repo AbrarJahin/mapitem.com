@@ -12,7 +12,7 @@
 					<input type="hidden" name="id">
 					<div class="form-group">
 						<label for="category">Route Name:</label>
-						<input type="text" required class="form-control" placeholder="local_url or http://example.com/sub_directory" name="route_name" readonly>
+						<input type="text" required class="form-control" placeholder="local_url or https://example.com/sub_directory" name="route_name" readonly>
 					</div>
 					<div class="form-group">
 						<label for="category">Url:</label>

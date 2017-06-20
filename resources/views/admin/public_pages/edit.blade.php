@@ -12,7 +12,7 @@
 					<input type="hidden" name="id" id="public_page_id">
 					<div class="form-group">
 						<label for="category">Url:</label>
-						<input type="text" required class="form-control" placeholder="local_url or http://example.com/sub_directory" name="url">
+						<input type="text" required class="form-control" placeholder="local_url or https://example.com/sub_directory" name="url">
 					</div>
 					<div class="form-group">
 						<label for="category">Small Title:</label>
