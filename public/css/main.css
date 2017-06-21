@@ -1530,7 +1530,7 @@ header.carousel .fill {
 	height: 10px!important;
 	border-radius: 0!important;
 	top: -1px;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#707070+89,616161+100 */
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#707070+89,616161+100 */
 background: #707070!important; /* Old browsers */
 background: -moz-linear-gradient(top,  #707070 89%, #616161 100%)!important; /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(89%,#707070), color-stop(100%,#616161))!important; /* Chrome,Safari4+ */
@@ -3125,12 +3125,12 @@ body {
 }
 
 /* Hide Google Map Info Close Button */
-/* img[src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"]
+/* img[src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"]
 {
 	display: none;
 } */
 /* Hide Google Map Zoom Button */
-/* img[src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"]
+/* img[src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"]
 {
 	display: none;
 } */
@@ -3138,7 +3138,7 @@ body {
 /* Google map Bottom Default options removing */
 
 /* Remove Google Icon */
-/* img[src="http://maps.gstatic.com/mapfiles/api-3/images/google4.png"]
+/* img[src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png"]
 {
 	display: none;
 } */
@@ -3447,7 +3447,7 @@ img.add_detail
 }
 
 .typeahead-spinner {
-	background:url('http://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
+	background:url('https://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
 }
 
 .twitter-typeahead{
