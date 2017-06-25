@@ -112,11 +112,12 @@ class MessageController extends Controller
 	{
 		$requestData = Request::all();
 
-		Message::create([
+		$message	=	Message::create([
 							'sender_id'	=>	Auth::user()->id,
 							'thread_id'	=>	$requestData['thread_id'],
 							'message'	=>	$requestData['message']
 						]);
+
 		$messageThread = MessageThread::find( $requestData['thread_id'] );
 		$notification_owner_id = 0;
 		if($messageThread->sender_id == Auth::user()->id)
@@ -128,6 +129,7 @@ class MessageController extends Controller
 		$messageThread->title = substr($requestData['message'],0,18)." ..";
 		$messageThread->last_sender_id = Auth::user()->id;
 		$messageThread->is_read = 'not_readed';
+		//$messageThread->updated_at = $message->created_at;
 		$messageThread->save();
 
 		//Add Notification for Message Sending

@@ -12,14 +12,14 @@ function validateEmail(email)
 
 function convertToLocalTime(serverTime)
 {
-	var serverSetTimeZoneDiffWithUTCInMinuites = 11*60;//Should be 0 in default cases
+	var serverSetTimeZoneDiffWithUTCInMinuites = -7*60;//Should be 0 in default cases, but in our case it is USA mountain time = -7
 	var offsetInMinuites = new Date().getTimezoneOffset();
 	var serverDate = Date.parse(serverTime, "yyyy-MM-dd HH:mm:ss");
-	var localTime = new Date(serverDate - ((offsetInMinuites + serverSetTimeZoneDiffWithUTCInMinuites) * 60 * 1000));
+	var localTime = new Date(serverDate - ((offsetInMinuites - serverSetTimeZoneDiffWithUTCInMinuites) * 60 * 1000));
 	return localTime;
 }
 
-function formatTime(inputDate)
+function formatTime(inputDate, smallFormat = false)
 {
 	var dayNo = getDateWithSuffix(inputDate.getDate());
 	var monthName = getMonthName(inputDate.getMonth());
@@ -43,8 +43,15 @@ function formatTime(inputDate)
 		formattedTime = hours + ':' + minutes+ ':' + seconds + ' ' + ampm;
 	}
 	else
-	{	// Date equals Not today's date - So show total time with date
-		formattedTime = dayNo + " " + monthName + " " + year + ", " + hours + ':' + minutes + ' ' + ampm;
+	{
+		if(smallFormat)
+		{
+			formattedTime = dayNo + " " + monthName + " " + year;
+		}
+		else // Date equals Not today's date - So show total time with date
+		{
+			formattedTime = dayNo + " " + monthName + " " + year + ", " + hours + ':' + minutes + ' ' + ampm;
+		}
 	}
 
 	return formattedTime;
@@ -359,6 +366,14 @@ $(document).ready(function()
 			endDate: getCurrentDate(),
 			weekStart:0,
 			autoclose:true
+		});
+	}
+
+	if($("#message_threades").length != 0)	//If message-thread exists
+	{
+		$(".message_thread_server_time").each(function()
+		{
+			$(this).html(formatTime(convertToLocalTime($(this).html()), true));
 		});
 	}
 

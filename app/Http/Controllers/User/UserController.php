@@ -84,12 +84,15 @@ class UserController extends Controller
 														),
 														'message_threads.id as id',
 														'message_threads.title as title',
+														/*
 														DB::raw(
 															"CASE
-																WHEN DATE(message_threads.created_at) = DATE(NOW()) THEN DATE_FORMAT(message_threads.created_at, '%r')
-																ELSE DATE_FORMAT(message_threads.created_at, '%b %D, %Y')
-															END as created_at"
+																WHEN DATE(message_threads.updated_at) = DATE(NOW()) THEN DATE_FORMAT(message_threads.updated_at, '%r')
+																ELSE DATE_FORMAT(message_threads.updated_at, '%b %D, %Y')
+															END as last_message_time"
 														),
+														*/
+														'message_threads.updated_at as last_message_time',
 														DB::raw(
 															"CASE
 																WHEN message_threads.is_read = 'not_readed' AND message_threads.last_sender_id <> ".Auth::user()->id." THEN 'not_readed'
