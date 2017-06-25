@@ -847,6 +847,12 @@ function showAddDetail(id)		//Show Add Detail
 					}
 				}
 			});
+
+			//Update share buttons
+			$("#fb_share").attr("href", $('meta[name=fb_share_url]').attr("content")+"#"+id);
+			$("#tw_share").attr("href", $('meta[name=tw_share_url]').attr("content")+"#"+id);
+			$("#gp_share").attr("href", $('meta[name=gp_share_url]').attr("content")+"#"+id);
+
 			//Draw Directions in map
 			//calcRoute( $('#selected_add_direction').attr("location_lat") ,$('#selected_add_direction').attr("location_lon") );
 			var mapDirectionUrl = "https://www.google.com/maps/dir//"

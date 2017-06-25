@@ -50,9 +50,12 @@
 
 			<div class="share">
 				<span>Share on </span>
-				<a class="sm fa fa-facebook " href="#"></a>
-				<a class="sm fa fa-twitter " href="#"></a>
-				<a class="sm fa  fa-google-plus" href="#"></a>
+				<a class="sm fa fa-facebook"	id="fb_share" 	href="#" target="_blank"></a>
+				<meta name="fb_share_url" content="https://www.facebook.com/sharer/sharer.php?u={{ URL::route('listing') }}">
+				<a class="sm fa fa-twitter"		id="tw_share"	href="#" target="_blank"></a>
+				<meta name="tw_share_url" content="https://twitter.com/share?text=Check%20out%20this%20product!%20-%20&url={{ URL::route('listing') }}">
+				<a class="sm fa fa-google-plus"	id="gp_share"	href="#" target="_blank"></a>
+				<meta name="gp_share_url" content="https://plus.google.com/share?url={{ URL::route('listing') }}">
 			</div>
 		</div>
 
