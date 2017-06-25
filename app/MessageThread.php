@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class MessageThread extends Model
 {
 	protected $table 		=	'message_threads';
-	public $timestamps		=	false;//["created_at"]; 		// enable only to created_at
+	//public $timestamps		=	false;//["created_at"]; 		// enable only to created_at
 
 	protected $fillable =	[
 								'sender_id',

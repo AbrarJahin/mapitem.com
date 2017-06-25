@@ -36,7 +36,8 @@ class CreateMessageThreadesTable extends Migration
 								'advertisement_id'
 							],'thread_constraint');
 
-			$table->timestamp('created_at')->useCurrent();
+			//$table->timestamp('created_at')->useCurrent();
+			$table->timestamps();
 		});
 	}
 
