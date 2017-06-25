@@ -382,6 +382,7 @@ $(function()
 			dataType: "json",
 			success: function (data)
 			{
+				$(".sb-bottom").removeClass("open");
 				alert(data);
 			}
 		});  // end Ajax

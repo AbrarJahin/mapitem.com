@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
 										'address'					=> $faker->address,
 										'location_latitude'			=> $faker->latitude($min = -90, $max = 90),
 										'location_longitude'		=> $faker->longitude($min = -180, $max = 180),
-										'password'					=> bcrypt('*123*Simple*Piash#'),
+										'password'					=> 'No need to log in with this user',
 										'user_type'					=> 'normal_user'
 									]);
 
@@ -69,7 +69,7 @@ class UsersTableSeeder extends Seeder
 									]);
 		}
 
-		//insert 10 random users
+		//insert 10 random users as demo user
 		for ($x = 0; $x < 10; $x++)
 		{
 			DB::table('users')->insert(

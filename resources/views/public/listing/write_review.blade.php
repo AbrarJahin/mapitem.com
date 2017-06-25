@@ -1,4 +1,9 @@
-<a class="review" href="#">Write Review</a>
+@if (!Auth::check())
+	<a data-target="#lgn-pup" data-toggle="modal" class="review" href="#">Write Review</a>
+@else
+	<a class="review" href="#">Write Review</a>
+@endif
+
 <div class="write-review hide">
 	<form id="write_review" class="offer" method="post" action="{{ URL::route('user.write_review') }}">
 		<div class="form-group">

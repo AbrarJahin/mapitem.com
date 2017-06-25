@@ -36,8 +36,12 @@
 			</span>
 		</div>
 		<div class="sb-bottom dropdown">
-			<a data-toggle="dropdown" type="submit" class="btn loginbtn green-large width-adj dropdown-toggl" href="#">Contact</a>
-			@include('public.listing.send_message')
+			@if (!Auth::check())
+				<a data-target="#lgn-pup" data-toggle="modal" type="submit" class="btn loginbtn green-large width-adj dropdown-toggl" href="#">Contact</a>
+			@else
+				<a data-toggle="dropdown" type="submit" class="btn loginbtn green-large width-adj dropdown-toggl" href="#">Contact</a>
+				@include('public.listing.send_message')
+			@endif
 		</div>
 	</div>
 </div>

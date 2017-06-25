@@ -1,9 +1,17 @@
 <div class="col-lg-12 no-padding">
 	<div class="dropdown">
-		<a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="#">
-			<i class="fa fa-gavel"></i>
-			Send Offer
-		</a>
+
+		@if (!Auth::check())
+			<a data-target="#lgn-pup" data-toggle="modal" class="direction dropdown-toggle loginbtn pull-left" href="#">
+				<i class="fa fa-gavel"></i>
+				Send Offer
+			</a>
+		@else
+			<a data-toggle="dropdown" class="direction dropdown-toggle loginbtn pull-left" href="#">
+				<i class="fa fa-gavel"></i>
+				Send Offer
+			</a>
+		@endif
 
 		{{-- If user is logged in --}}
 		@if (Auth::check())
