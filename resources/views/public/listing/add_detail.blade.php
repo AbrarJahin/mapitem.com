@@ -1,10 +1,7 @@
 <div class="results-det">
 	<div class="col-lg-9">
 		<div class="col-lg-12 no-padding rd-top-row">
-			<h4 class="pull-left" id="selected_add_title">{{-- Iphone --}}</h4>
-			{{-- <a class="direction pull-right" id="selected_add_direction" href="#" target="_blank" address='' location_lat='' location_lon=''>
-				<i class="fa fa-location-arrow"></i>Directions
-			</a> --}}
+			<h4 class="pull-left" id="selected_add_title"></h4>
 		</div>
 
 		<div class="clearfix"></div>
@@ -12,11 +9,7 @@
 		<div class="col-lg-12 no-padding rd-top-row2">
 			<h5 class="pull-left">Price: <span  id="selected_add_price">$1000</span></h5>
 			<div class="pull-right popups">
-				<a data-original-title="Add to Wishlist" href="#" class="add_to_wishlist wsh-lst-adpage grey-tooltip" data-toggle="tooltip" data-placement="top" add_id="1" {{-- style="background: url({{ URL::asset('svg/normal.svg') }});
-														background-size: 14px 14px;
-														background-repeat: no-repeat;
-														background-position: center;" --}}>
-					{{-- <object type="image/svg+xml" class="add_detail" data="{{ URL::asset('svg/normal.svg') }}"></object> --}}
+				<a data-original-title="Add to Wishlist" href="#" class="add_to_wishlist wsh-lst-adpage grey-tooltip" data-toggle="tooltip" data-placement="top" add_id="1">
 					<img type="image/svg+xml" class="add_detail" src="{{ URL::asset('svg/normal.svg') }}"></img>
 				</a>
 
@@ -24,11 +17,7 @@
 
 				<a data-placement="top" data-toggle="tooltip" class="fa fa-eye grey-tooltip" href="#" id="selected_add_view_count" data-original-title="157"></a>
 
-				{{--
-				<a data-placement="top" data-toggle="tooltip" class="fa fa-thumbs-o-up grey-tooltip" href="#" data-original-title="Like"></a>
-				--}}
-
-				<a data-placement="top" data-toggle="tooltip" class="fa fa-location-arrow grey-tooltip" href="#" data-original-title="Direction" target="_blank" id="selected_add_direction" address='' location_lat='' location_lon=''></a>
+				<a data-placement="top" data-toggle="tooltip" class="fa fa-location-arrow grey-tooltip" href="#" data-original-title="Directions" target="_blank" id="selected_add_direction" address='' location_lat='' location_lon=''></a>
 
 			</div>
 		</div>
@@ -39,15 +28,7 @@
 
 		<div class="clearfix"></div>
 		<div class="col-lg-12 no-padding description rd-top-row">
-			<div class="message" id="selected_add_description">
-				{{--  - Complet accesseries are available<br>
-				 - Out Standing Condition.<br>
-				 - 2 months warenty remaining <br><br>
-
-				Iphone 4s with complete accesseries for sale. Original Box is also with iPhone Iphone 4s with complete 
-				accesseries for sale. Original Box is also with iPhone. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-				sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat. --}}
-			</div>
+			<div class="message" id="selected_add_description"></div>
 			<div class="cleafix"></div>
 
 			@include('public.listing.write_review')
