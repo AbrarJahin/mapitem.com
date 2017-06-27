@@ -2,9 +2,9 @@
 	<div class="col-lg-9">
 		<div class="col-lg-12 no-padding rd-top-row">
 			<h4 class="pull-left" id="selected_add_title">{{-- Iphone --}}</h4>
-			<a class="direction pull-right" id="selected_add_direction" href="#" target="_blank" address='' location_lat='' location_lon=''>
+			{{-- <a class="direction pull-right" id="selected_add_direction" href="#" target="_blank" address='' location_lat='' location_lon=''>
 				<i class="fa fa-location-arrow"></i>Directions
-			</a>
+			</a> --}}
 		</div>
 
 		<div class="clearfix"></div>
@@ -19,6 +19,7 @@
 					{{-- <object type="image/svg+xml" class="add_detail" data="{{ URL::asset('svg/normal.svg') }}"></object> --}}
 					<img type="image/svg+xml" class="add_detail" src="{{ URL::asset('svg/normal.svg') }}"></img>
 				</a>
+
 				<a data-placement="top" data-toggle="tooltip" class="fa fa-comment-o grey-tooltip" href="#" data-original-title="Reviews"></a>
 
 				<a data-placement="top" data-toggle="tooltip" class="fa fa-eye grey-tooltip" href="#" id="selected_add_view_count" data-original-title="157"></a>
@@ -26,6 +27,9 @@
 				{{--
 				<a data-placement="top" data-toggle="tooltip" class="fa fa-thumbs-o-up grey-tooltip" href="#" data-original-title="Like"></a>
 				--}}
+
+				<a data-placement="top" data-toggle="tooltip" class="fa fa-location-arrow grey-tooltip" href="#" data-original-title="Direction" target="_blank" id="selected_add_direction" address='' location_lat='' location_lon=''></a>
+
 			</div>
 		</div>
 
