@@ -2443,7 +2443,8 @@ $(document).ready(function()
 										+'</time></footer></blockquote></div></li>'
 									);
 					});
-					$("#inbox_detail").scrollTop(0);
+					//Scroll down the item
+					$('#inbox_detail').scrollTop($('#inbox_detail')[0].scrollHeight);
 				});
 		});
 
@@ -2474,9 +2475,7 @@ $(document).ready(function()
 					//Clearing the sent item textarea
 					$("#send_message_form textarea[name=message]").val('');
 					//Scroll down the item
-					//$('#inbox_detail').scrollTop($('#inbox_detail')[0].scrollHeight);
-					//Scroll top to item
-					$("#inbox_detail").scrollTop(0);
+					$('#inbox_detail').scrollTop($('#inbox_detail')[0].scrollHeight);
 				});
 		});
 	//Inbox Page Design - Stop
