@@ -74,36 +74,28 @@ class UserController extends Controller
 		$userNotification->save();
 
 		$user_message_threades = MessageThread::join('users as sender', 'sender.id',	'=', 'message_threads.sender_id')
-											->join('users as receiver', 'receiver.id',	'=', 'message_threads.receiver_id')
-											->select(
-														DB::raw(
-															"CASE
-																WHEN sender.id = ".Auth::user()->id." THEN CONCAT(receiver.first_name, ' ', receiver.last_name)
-																ELSE CONCAT(sender.first_name, ' ', sender.last_name)
-															END as sender_name"
-														),
-														'message_threads.id as id',
-														'message_threads.title as title',
-														/*
-														DB::raw(
-															"CASE
-																WHEN DATE(message_threads.updated_at) = DATE(NOW()) THEN DATE_FORMAT(message_threads.updated_at, '%r')
-																ELSE DATE_FORMAT(message_threads.updated_at, '%b %D, %Y')
-															END as last_message_time"
-														),
-														*/
-														'message_threads.updated_at as last_message_time',
-														DB::raw(
-															"CASE
-																WHEN message_threads.is_read = 'not_readed' AND message_threads.last_sender_id <> ".Auth::user()->id." THEN 'not_readed'
-																ELSE 'readed'
-															END as is_readed"
-														)
-													)
-											//DATE_FORMAT(message_threads.created_at, '%D %Y, %r')
-											->where('sender_id',		Auth::user()->id)
-											->orWhere('receiver_id',	Auth::user()->id)
-											->get();
+									->join('users as receiver', 'receiver.id',	'=', 'message_threads.receiver_id')
+									->select(
+												DB::raw(
+													"CASE
+														WHEN sender.id = ".Auth::user()->id." THEN CONCAT(receiver.first_name, ' ', receiver.last_name)
+														ELSE CONCAT(sender.first_name, ' ', sender.last_name)
+													END as sender_name"
+												),
+												'message_threads.id as id',
+												'message_threads.title as title',
+												'message_threads.updated_at as last_message_time',
+												DB::raw(
+													"CASE
+														WHEN message_threads.is_read = 'not_readed' AND message_threads.last_sender_id <> ".Auth::user()->id." THEN 'not_readed'
+														ELSE 'readed'
+													END as is_readed"
+												)
+											)
+									->where('sender_id',		Auth::user()->id)
+									->orWhere('receiver_id',	Auth::user()->id)
+									->orderBy('message_threads.updated_at', 'desc')
+									->get();
 		return view('user.inbox.main',
 						[
 							'current_page'		=>	'user.inbox',

@@ -89,7 +89,7 @@ class MessageController extends Controller
 											DB::raw("DATE_FORMAT(messages.created_at,'%m/%d/%Y %H:%i:%s') AS sent_time")
 										)
 								->where('messages.thread_id', $requestData['thread_id'])
-								->orderBy('messages.created_at', 'desc')
+								->orderBy('messages.created_at', 'asc')
 								->get();
 
 		//Thread update so that it is marked as seen
