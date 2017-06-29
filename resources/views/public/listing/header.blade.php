@@ -15,4 +15,4 @@
 	<link href="{{ URL::asset('css/loadie.css') }}" rel="stylesheet" type="text/css">
 </head>
 
-<body id="page-top" style="overflow-y:hidden">
+<body id="page-top" style="overflow-y:hidden" class="cbp-spmenu-push">
