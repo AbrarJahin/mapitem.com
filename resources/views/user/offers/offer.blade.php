@@ -17,11 +17,15 @@
 		</div>
 	</div>
 	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12" offer_id={{ $offer->id }}>
-		@if($offer->status != 'accepted')
-			<a class="green-small no-textdecor btn-adj1 accept-offer" href="#/">Accept Offer</a>
+		@if($offer->status == 'accepted' || $offer->status == 'pending')
+			<a class="green-small no-textdecor btn-adj1 {{ $offer->status == 'pending' ? 'accept-offer' : '' }}" href="#/">
+				{{ $offer->status == 'pending' ? 'Accept Offer' : 'Offer Accepted' }}
+			</a>
 		@endif
-		@if($offer->status != 'rejected')
-			<a class="grey-small no-textdecor btn-adj1 reject-offer" href="#/">Reject</a>
+		@if($offer->status == 'rejected' || $offer->status == 'pending')
+			<a class="grey-small no-textdecor btn-adj1 {{ $offer->status == 'pending' ? 'reject-offer' : '' }}" href="#/">
+				{{ $offer->status == 'pending' ? 'Reject Offer' : 'Offer Rejected' }}
+			</a>
 		@endif
 	</div>
 </div>

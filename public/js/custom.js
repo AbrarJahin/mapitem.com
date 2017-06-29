@@ -2356,7 +2356,7 @@ $(document).ready(function()
 					},
 			success:function(responce_data)
 			{
-				alert('Rejected Accepted');
+				alert('Offer Rejected');
 				location.reload();
 			}
 		});
