@@ -113,10 +113,12 @@ class AuthController extends Controller
 						'messages'	=> $validator->messages()
 						//'prev_data'	=> Request::except(['password','_token'])
 					];
-			/*return Redirect::back()->withErrors($validator)
+			/*
+			return Redirect::back()->withErrors($validator)
 					->withInput(
 									Request::except('password')
-								);*/
+								);
+			*/
 		}
 
 		//Add the user - Start
@@ -127,6 +129,7 @@ class AuthController extends Controller
 		$user->is_enabled	= 'enabled';
 		$user->user_type	= 'normal_user';
 		$user->password		= bcrypt( $requestData['password'] );
+		$user->date_of_birth= Carbon::now()->toDateString();
 		$user->save();
 		//Add the user - End
 
@@ -142,7 +145,8 @@ class AuthController extends Controller
 					'status'	=> 1,
 					'message'	=> 'Successfully Signed Up',
 				];
-		/*return Redirect::back()
+		/*
+		return Redirect::back()
 			->withInput(
 							Request::except(['password','password_confirmation'])
 						)
@@ -150,7 +154,8 @@ class AuthController extends Controller
 							[
 								'User - '.$requestData['email'].' Successfully added'
 							]
-						);*/
+						);
+		*/
 	}
 
 	/*
