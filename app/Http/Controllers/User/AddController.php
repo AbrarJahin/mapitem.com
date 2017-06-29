@@ -303,8 +303,7 @@ class AddController extends Controller
 					]
 				);
 
-		if( strlen($requestData['message'])>1 )		//Add Message
-		{
+			$messageThreadTitile = "New Offer with Price - ".$requestData['price'];
 			// Add a new message for that
 			$messageThread = MessageThread::updateOrCreate(
 																[
@@ -313,7 +312,7 @@ class AddController extends Controller
 																	'advertisement_id'	=>	$requestData['add_id']
 																],
 																[
-																	'title'				=>	"New Offer with Price - ".$requestData['price'],
+																	'title'				=>	$messageThreadTitile,
 																	'last_sender_id'	=>	Auth::user()->id,
 																	'is_read'			=>	'not_readed'
 																]
@@ -321,10 +320,10 @@ class AddController extends Controller
 			Message::create([
 								'sender_id'	=> Auth::user()->id,
 								'thread_id'	=> $messageThread->id,
-								'message'	=> $requestData['message']
+								'message'	=> $messageThreadTitile."
+".$requestData['message']
 							]);
 			$userNotification->inbox = $userNotification->inbox+1;
-		}
 
 		$userNotification->offers = $userNotification->offers+1;
 		$userNotification->save();

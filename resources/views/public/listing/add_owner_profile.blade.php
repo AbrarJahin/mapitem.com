@@ -3,7 +3,7 @@
 		<div class="sb-top">
 			<img id="add_owner_image" height="86" width="86" class="pround" alt="Jesica" src="{{ URL::asset('images/empty-profile.jpg') }}">
 			<h6 id="add_owner_name"><!-- Jesica Alben --></h6>
-			<div class="star">
+			<div class="star" id="add_owner_rating">
 				{{--
 				<i class="fa fa-star green-text"></i>
 				<i class="fa fa-star green-text"></i>

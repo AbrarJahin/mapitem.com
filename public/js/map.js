@@ -64,7 +64,6 @@ $(function()
 			data: $("#offer_send_form").serialize(),
 			success:function(responce_data)
 			{
-				//console.log(responce_data);
 				alert('Offer Sent');
 				$('[data-toggle="dropdown"]').parent().removeClass('open');
 			}
@@ -644,19 +643,6 @@ function generateMarkers(bounds)
 	//AJAX Call to get points from server - END
 	openLastInfoWindow();
 }
-/*
-function onChangeOnOff()		//Turning on or off clustering
-{
-	if ($(this).is(":checked"))
-	{
-		map_div.gmap3({get:"clusterer"}).enable();
-	}
-	else
-	{
-		map_div.gmap3({get:"clusterer"}).disable();
-	}
-}
-*/
 
 function showAddDetail(id)		//Show Add Detail
 {
@@ -769,6 +755,22 @@ function showAddDetail(id)		//Show Add Detail
 						{
 							$('#selected_add_view_count').attr("data-original-title",value);
 						}
+						else if(key.localeCompare('avg_rating')==0)
+						{
+							//Showing The Dynamic user Rating
+							//value_all_json.user_rating
+							$('#add_rating').empty();
+							//Green Star
+							for (i = 0; i < Math.round(value); i++)
+							{
+								$('#add_rating').append('<i class="fa fa-star green-text"></i>');
+							}
+							//White Star
+							for (i = Math.round(value); i < 5; i++)
+							{
+								$('#add_rating').append('<i class="fa fa-star-o"></i>');
+							}
+						}
 					});
 				}
 				else if(index_key.localeCompare('reviews')==0)
@@ -835,16 +837,16 @@ function showAddDetail(id)		//Show Add Detail
 
 					//Showing The Dynamic user Rating
 					//value_all_json.user_rating
-					$('.star').empty();
+					$('#add_owner_rating').empty();
 					//Green Star
 					for (i = 0; i < value_all_json.user_rating; i++)
 					{
-						$('.star').append('<i class="fa fa-star green-text"></i>');
+						$('#add_owner_rating').append('<i class="fa fa-star green-text"></i>');
 					}
 					//White Star
 					for (i = value_all_json.user_rating; i < 5; i++)
 					{
-						$('.star').append('<i class="fa fa-star-o"></i>');
+						$('#add_owner_rating').append('<i class="fa fa-star-o"></i>');
 					}
 				}
 			});
@@ -855,7 +857,6 @@ function showAddDetail(id)		//Show Add Detail
 			$("#gp_share").attr("href", $('meta[name=gp_share_url]').attr("content")+"%23"+id);
 
 			//Draw Directions in map
-			//calcRoute( $('#selected_add_direction').attr("location_lat") ,$('#selected_add_direction').attr("location_lon") );
 			var mapDirectionUrl = "https://www.google.com/maps/dir//"
 									+ $('#selected_add_direction').attr("address")
 									+ "/@"

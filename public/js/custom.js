@@ -2460,7 +2460,7 @@ $(document).ready(function()
 				{
 					//Appending the message
 					$('#inbox_detail')
-							.prepend(
+							.append(
 										'<li class="list-group-item me_send_him"><div><div class="pro_pic"><img src="'
 										+$('meta[name=upload_folder_url]').attr("content")
 										+single_data.sender_image
