@@ -386,8 +386,8 @@ class PublicController extends Controller
 									'user_reviews.rating as rating',
 									DB::raw("DATE_FORMAT(user_reviews.updated_at,'%m/%d/%Y %H:%i:%s') AS added_on")
 								)
-						//	MySQL Date Format	=>	%D %b %Y, %r
-						->where('add_id', $requestData['product_id'])
+						//->where('add_id', $requestData['product_id'])
+						->where('add_owner_id', $advertisement->user_id)
 						->orderBy('user_reviews.updated_at', 'desc')
 						->get();
 

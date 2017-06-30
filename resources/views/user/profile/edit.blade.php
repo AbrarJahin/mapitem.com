@@ -24,7 +24,7 @@
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Email</div>
 	<div class="p-right">
-		<input type="email" value="{{ $current_user->email }}" placeholder="Email" name="email" class="form-control width-adj8 normal-input">
+		<input type="email" readonly value="{{ $current_user->email }}" placeholder="Email" name="email" class="form-control width-adj8 normal-input">
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Website</div>

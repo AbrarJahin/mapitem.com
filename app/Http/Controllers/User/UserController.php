@@ -319,18 +319,19 @@ class UserController extends Controller
 	public function updateOffer()
 	{
 		$requestData	=	Request::all();	//offer_id, status
-		$offer	=	Offer::find($requestData['offer_id']);
-		$advertisement = Advertisement::find($offer->add_id);
-		if($advertisement->user_id===Auth::user()->id)
+		$offer			=	Offer::find($requestData['offer_id']);
+		$advertisement	=	Advertisement::find($offer->add_id);
+
+		if($advertisement->user_id==Auth::user()->id)
 		{
+			//Offer status update
 			$offer->status=$requestData['status'];
 			$offer->save();
 
-			//Auth::user()->id
 			$advertisement = Advertisement::findOrFail(1);
 			//Adding message
 			$messageText = "I like to ".$requestData['status']." your offer of ".$offer->price." for ".$advertisement->title.".";
-			//Save the message in message thread
+			//Save the message in message thread because message thread is already created at the time of offer sending
 			$messageThread = MessageThread::whereIn('sender_id', [Auth::user()->id, $offer->sender_id])
 											->whereIn('receiver_id', [Auth::user()->id, $offer->sender_id])
 											->first();
