@@ -33,13 +33,11 @@
 							col-sm-6
 							@endif
 							col-xs-12">
-
-				@if (!Auth::check())
-					<button data-target="#lgn-pup" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
-				@else
-					<button data-target="#pfa" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
-				@endif
-
+					@if (!Auth::check())
+						<button data-target="#lgn-pup" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
+					@else
+						<button data-target="#pfa" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
+					@endif
 				</div>
 
 				<div class="col-lg-3 col-md-3
@@ -49,13 +47,9 @@
 							col-sm-6
 							@endif
 							col-xs-12">
-
-					<a class="round fa fa-fw" href="#"></a>
-
-					<a class="round fa fa-fw" href="#"></a>
-
-					<a class="round fa fa-fw" href="#"></a>
-
+					<a class="round fa fa-fw" href="https://twitter.com/Mapitem"		target="_blank"></a>
+					<a class="round fa fa-fw" href="https://www.facebook.com/Mapitem/"	target="_blank"></a>
+					{{-- <a class="round fa fa-fw" href="#" target="_blank"></a> --}}
 				</div>
 
 				<div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
