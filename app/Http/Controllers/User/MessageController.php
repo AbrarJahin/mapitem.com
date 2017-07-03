@@ -54,11 +54,12 @@ class MessageController extends Controller
 															]
 														);
 		Message::create([
-							'sender_id'			=> Auth::user()->id,
+							'sender_id'	=> Auth::user()->id,
 							'thread_id'	=> $messageThread->id,
 							'message'	=> $requestData['message']
 						]);
-		return Response::json("Your Message Has Been Sent !", 200);
+		//return Response::json("Your Message Has Been Sent !", 200);
+		return $messageThread;
 	}
 
 	public function threadDetail()

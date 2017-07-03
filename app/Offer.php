@@ -16,6 +16,14 @@ class Offer extends Model
 								'status'
 							];
 
+	protected $hidden = [
+							'id',
+							'add_id',
+							'sender_id',
+							'created_at',
+							'updated_at'
+						];
+
 	public function User()
 	{
 		return $this->hasOne('App\User','id','sender_id');

@@ -18,5 +18,13 @@ class MessageThread extends Model
 								'is_read'
 							];
 
-	protected $hidden = [];
+	protected $hidden = [
+							'id',
+							'sender_id',
+							'receiver_id',
+							'advertisement_id',
+							'last_sender_id',
+							'created_at',
+							'updated_at'
+						];
 }

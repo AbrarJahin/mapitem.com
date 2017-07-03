@@ -332,6 +332,6 @@ class AddController extends Controller
 		$userNotification->offers = $userNotification->offers+1;
 		$userNotification->save();
 
-		return "Offer sent successfully";
+		return $offer;
 	}
 }

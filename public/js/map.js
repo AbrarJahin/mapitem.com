@@ -64,7 +64,7 @@ $(function()
 			data: $("#offer_send_form").serialize(),
 			success:function(responce_data)
 			{
-				alert('Offer Sent');
+				alert('Your offer has been Sent !');
 				$('#offer_send_form')[0].reset();		//reset form data
 				$('[data-toggle="dropdown"]').parent().removeClass('open');
 			},
@@ -390,11 +390,12 @@ $(function()
 			type: "POST",
 			url: $(this).attr('action'),
 			data: $("#send_message_to_owner").serialize(),
-			contentType: "application/x-www-form-urlencoded",
+			//contentType: "application/x-www-form-urlencoded",
 			dataType: "json",
 			success: function (data)
 			{
-				alert(data);
+				//alert(data);
+				alert('Your message has been Sent !');
 				$('#send_message_to_owner')[0].reset();		//Reset form data
 				$(".sb-bottom").removeClass("open");
 			},
