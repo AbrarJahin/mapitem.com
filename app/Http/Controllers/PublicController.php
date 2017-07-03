@@ -28,17 +28,6 @@ class PublicController extends Controller
 		$advertisements	=	Advertisement::with('User')
 								->with('AdvertisementImages')
 								->orderBy('advertisements.created_at', 'desc')
-								/*->leftJoin('user_wishlists', function ($join)
-								{
-									$user_id = 1;
-									if(Auth::check())
-									{
-										$user_id = Auth::user()->id;
-									}
-
-									$join->on('user_wishlists.advertisement_id', '=', 'advertisements.id')
-										->where('user_wishlists.user_id', '=', $user_id);
-								})*/
 								->take(8)
 								->get();
 								//->paginate(8);

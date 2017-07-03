@@ -286,6 +286,10 @@ class AddController extends Controller
 	{
 		$requestData = Request::all();
 
+		$advertisement = Advertisement::findOrFail($requestData['add_id']);
+		if($advertisement->user_id == Auth::user()->id)
+			return response()->json(['error'=> ["Your can't send offer to yourself !"] ], 403);
+
 		//Add Notification for Offer
 		$userNotification = UserNotification::firstOrNew([
 															'user_id' => $requestData['add_owner_id']
@@ -328,6 +332,6 @@ class AddController extends Controller
 		$userNotification->offers = $userNotification->offers+1;
 		$userNotification->save();
 
-		return $offer->id;
+		return "Offer sent successfully";
 	}
 }

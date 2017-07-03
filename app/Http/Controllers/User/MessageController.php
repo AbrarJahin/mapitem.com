@@ -31,6 +31,9 @@ class MessageController extends Controller
 	{
 		$requestData = Request::all();
 
+		if($requestData['add_owner_id']==Auth::user()->id)
+			return Response::json("You can't send message to yourself !", 403);
+
 		//Add Notification for Message Sending
 		$userNotification = UserNotification::firstOrNew([
 															'user_id' => $requestData['add_owner_id']

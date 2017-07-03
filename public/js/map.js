@@ -65,7 +65,20 @@ $(function()
 			success:function(responce_data)
 			{
 				alert('Offer Sent');
+				$('#offer_send_form')[0].reset();		//reset form data
 				$('[data-toggle="dropdown"]').parent().removeClass('open');
+			},
+			error: function(xhr, textStatus, errorThrown)
+			{
+				if(xhr.responseJSON.error[0].length>10)
+				{
+					alert(xhr.responseJSON.error[0]);
+				}
+				else
+				{
+					alert("Network error");
+				}
+				$('#offer_send_form')[0].reset();		//Reset form data
 			}
 		});
 	});
@@ -365,7 +378,7 @@ $(function()
 			{// Handle the complete event
 				$("#wait").css("display", "none");
 			}
-		});  // end Ajax
+		});
 	});
 
 	$("form#send_message_to_owner").submit(function(e)
@@ -381,10 +394,23 @@ $(function()
 			dataType: "json",
 			success: function (data)
 			{
-				$(".sb-bottom").removeClass("open");
 				alert(data);
+				$('#send_message_to_owner')[0].reset();		//Reset form data
+				$(".sb-bottom").removeClass("open");
+			},
+			error: function(xhr, textStatus, errorThrown)
+			{
+				if(xhr.responseJSON.length>10)
+				{
+					alert(xhr.responseJSON);
+				}
+				else
+				{
+					alert("Network error");
+				}
+				$('#send_message_to_owner')[0].reset();		//Reset form data
 			}
-		});  // end Ajax
+		});
 	});
 
 	//open page on page load for sharing data
