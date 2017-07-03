@@ -331,15 +331,15 @@ class UserController extends Controller
 			$offerAction = "";
 			if ($requestData['status']=="accepted")
 			{
-				$offerAction=='accept';
+				$offerAction='accept';
 			}
 			else if ($requestData['status']=="rejected")
 			{
-				$offerAction=='reject';
+				$offerAction='reject';
 			}
 			else
 			{
-				$offerAction=='*INVALID*';
+				$offerAction='*INVALID*';
 			}
 
 			$advertisement = Advertisement::findOrFail(1);
