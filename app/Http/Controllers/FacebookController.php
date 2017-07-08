@@ -58,13 +58,28 @@ class FacebookController extends Controller
 			 *	If user is not logged in,
 			 *	 then try if the user exists so that he can be logged in
 			 */
-			//Log in the user if exists
+			//Log in the user if exists with that email
 			if ( User::where('email', '=', $user->email)->count()==1 )
 			{
 				Auth::loginUsingId(
 										User::where('email', '=', $user->email)
 											->first()->id
 									);
+			}
+			else	//Not already registered with that email, so check if he already logged in with FB email previously
+			{
+				if(FbLogin::where('email', '=', $user->email)->count()==1)
+				{
+					// Yes, so log in with that Account - 'fb_login->user_id' is the same value of 'user->id'
+					Auth::loginUsingId(
+											FbLogin::where('email', '=', $user->email)
+												->first()->user_id
+										);
+				}
+				else
+				{
+					// No, so he is a brand new user - this part is handled later - in next code's else part
+				}
 			}
 		}
 		/*
