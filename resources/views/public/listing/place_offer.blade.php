@@ -29,9 +29,7 @@
 						<div class="form-group">
 							<span class="text-adj1">
 								Email :
-								<span id="offer_add_owner_email">
-									jonathan@kaneer.com
-								</span>
+								<span id="offer_add_owner_email"></span>
 							</span>
 						</div>
 						<div class="form-group">

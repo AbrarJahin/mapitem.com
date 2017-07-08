@@ -348,6 +348,7 @@ class PublicController extends Controller
 							->join('user_reviews', 'users.id', '=', 'user_reviews.add_owner_id')
 							->select(
 									'users.id as user_id',
+									'users.is_fb_verified as fb_verification_status',
 									DB::raw("
 												CASE WHEN users.profile_picture IS NULL or users.profile_picture = ''
 													THEN

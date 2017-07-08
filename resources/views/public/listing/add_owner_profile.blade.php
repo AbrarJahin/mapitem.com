@@ -20,19 +20,20 @@
 			</span>
 			<span id="add_owner_website">
 				<i class="fa fa-globe"></i>
-					<a #="" href=""><!-- www.jalben.com --></a>
+					<a href="#"></a>
 			</span>
 			<span id="add_owner_email">
 				<i class="fa fa-envelope"></i>
-					<a #="" href=""><!-- example.mail.com --></a>
+				<a href="#"></a>
 			</span>
-			<span id="add_owner_fb_id">
-				<i class="fa fa-facebook"></i><i class="fa fa-check-circle p-adj"></i>
-					<a #="" href="">Facebook Verified</a>
+			<span id="add_owner_fb_status">
+				<i class="fa fa-facebook"></i>
+				<i class="fa fa-check-circle p-adj"></i>
+				<a href="#">Facebook Verified</a>
 			</span>
 			<span id="add_owner_credit_card_verification_status">
 				<i class="fa fa-credit-card"></i>
-					Accepts Credit Card
+				Accepts Credit Card
 			</span>
 		</div>
 		<div class="sb-bottom dropdown">
