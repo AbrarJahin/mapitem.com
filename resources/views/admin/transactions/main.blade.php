@@ -13,7 +13,7 @@
 --}}
 @section('content')
 	<div class="db-body">
-			<!-- tabs left -->
+			{{-- tabs left --}}
 			<div class="tabbable tabs-left">
 			<ul class="col-lg-3 col-md-3 col-sm-3 col-xs-12 nav nav-tabs">
 				<li class="active"><a href="#a" data-toggle="tab">Send Money</a></li>

@@ -2,7 +2,7 @@
 	<div class="contact-bar">
 		<div class="sb-top">
 			<img id="add_owner_image" height="86" width="86" class="pround" alt="Jesica" src="{{ URL::asset('images/empty-profile.jpg') }}">
-			<h6 id="add_owner_name"><!-- Jesica Alben --></h6>
+			<h6 id="add_owner_name">{{-- Abrar Jahin --}}</h6>
 			<div class="star" id="add_owner_rating">
 				{{--
 				<i class="fa fa-star green-text"></i>
@@ -15,24 +15,25 @@
 		</div>
 		<div class="sb-middle">
 			<span id="add_owner_phone">
-				<i class="fa fa-phone"></i>
-					<!-- 123-456-789 -->
+				{{-- <i class="fa fa-phone"></i>
+				123-456-789 --}}
 			</span>
 			<span id="add_owner_website">
-				<i class="fa fa-globe"></i>
-					<a #="" href=""><!-- www.jalben.com --></a>
+				{{-- <i class="fa fa-globe"></i>
+				<a href="#"></a> --}}
 			</span>
 			<span id="add_owner_email">
-				<i class="fa fa-envelope"></i>
-					<a #="" href=""><!-- example.mail.com --></a>
+				{{-- <i class="fa fa-envelope"></i>
+				<a href="#">abrarjahin@outlook.com</a> --}}
 			</span>
-			<span id="add_owner_fb_id">
-				<i class="fa fa-facebook"></i><i class="fa fa-check-circle p-adj"></i>
-					<a #="" href="">Facebook Verified</a>
+			<span id="add_owner_fb_status">
+				{{-- <i class="fa fa-facebook"></i>
+				<i class="fa fa-check-circle p-adj"></i>
+				<a href="#">Facebook Verified</a> --}}
 			</span>
 			<span id="add_owner_credit_card_verification_status">
 				<i class="fa fa-credit-card"></i>
-					Accepts Credit Card
+				Accepts Credit Card
 			</span>
 		</div>
 		<div class="sb-bottom dropdown">

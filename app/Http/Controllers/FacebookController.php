@@ -58,13 +58,28 @@ class FacebookController extends Controller
 			 *	If user is not logged in,
 			 *	 then try if the user exists so that he can be logged in
 			 */
-			//Log in the user if exists
+			//Log in the user if exists with that email
 			if ( User::where('email', '=', $user->email)->count()==1 )
 			{
 				Auth::loginUsingId(
 										User::where('email', '=', $user->email)
 											->first()->id
 									);
+			}
+			else	//Not already registered with that email, so check if he already logged in with FB email previously
+			{
+				if(FbLogin::where('email', '=', $user->email)->count()==1)
+				{
+					// Yes, so log in with that Account - 'fb_login->user_id' is the same value of 'user->id'
+					Auth::loginUsingId(
+											FbLogin::where('email', '=', $user->email)
+												->first()->user_id
+										);
+				}
+				else
+				{
+					// No, so he is a brand new user - this part is handled later - in next code's else part
+				}
 			}
 		}
 		/*
@@ -80,20 +95,19 @@ class FacebookController extends Controller
 			 *	  (if there is no image uploaded,
 			 *	   then will be updated with social profile image))
 			 */
-
+			$dbUser = User::find(Auth::user()->id);
 			//Check if there is profile image upoaded
 			if( strlen( Auth::user()->profile_picture )<5 )	//User image uploaded previously
 			{
 				//Update the user Image
-				$dbUser = User::find(Auth::user()->id);
 				$dbUser->profile_picture = $this->uploadFile($user->avatar);
-				$dbUser->save();
 			}
+			$dbUser->is_fb_verified = 'verified';	//Update user FB Verified Status - Will update if he already logged in or not, it will update always - based on requirements
+			$dbUser->save();
 		}
 		else
 		{	//No user exists with that email - so sign up and upload image
 			//Add the user - Start
-			
 			$name = $user->name;
 			$parts = explode(" ", $name);
 			$lastname = array_pop($parts);
@@ -106,6 +120,7 @@ class FacebookController extends Controller
 			$dbUser->email				=	$user->email;
 			$dbUser->user_type			=	'normal_user';
 			$dbUser->password			=	bcrypt( $user->token );
+			$user->is_fb_verified = 'verified';	//Update user FB Verified Status - Will update if he already logged in or not, it will update always - based on requirements
 			$dbUser->save();
 			//Add the user - End
 
@@ -115,8 +130,8 @@ class FacebookController extends Controller
 
 		FbLogin::updateOrCreate(
 			[
-				'user_id'	=> Auth::user()->id,
-				'email'		=> $user->email
+				'user_id'	=>	Auth::user()->id,
+				'email'		=>	Auth::user()->email
 			],
 			[
 				'token'					=> $user->token,
@@ -126,7 +141,6 @@ class FacebookController extends Controller
 				'avatar_original_url'	=> $user->avatar_original
 			]
 		);
-
 		return Redirect::route('index');
 	}
 

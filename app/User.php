@@ -29,6 +29,7 @@ class User extends Authenticatable
 								'location_latitude',
 								'location_longitude',
 								'password',
+								'is_fb_verified',
 								'user_type',
 								'is_enabled'
 							];

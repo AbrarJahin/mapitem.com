@@ -68,9 +68,9 @@
 	@include('public.js')
 
 	<script src="{{ URL::asset('js/jquery.loadie.js') }}"></script>
-	<!-- range js -->
+	{{-- range js --}}
 	<script src="{{ URL::asset('js/jquery.range.js') }}"></script>
-	<!-- Truncate paragraph -->
+	{{-- Truncate paragraph --}}
 	<script src="https://cdn.jsdelivr.net/jquery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
 	<script src="{{ URL::asset('js/jQuery.scrollSpeed.js') }}"></script>
 	<script type='text/javascript' src="{{ URL::asset('js/jquery.mousewheel.js') }}"></script>

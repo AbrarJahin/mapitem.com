@@ -15,16 +15,6 @@ Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function(
 			'as' => 'login'
 		]);
 
-	//Auth - FB login - URL
-	Route::get('auth/facebook', [
-			'uses' => 'FacebookController@redirectToProvider',
-			'as' => 'facebook.login'
-		]);
-	Route::get('auth/facebook/callback', [
-			'uses' => 'FacebookController@handleProviderCallback',
-			'as' => 'facebook.login_callback'
-		]);
-
 	//Auth - Google login - URL
 	Route::get('auth/google', [
 			'uses' => 'GoogleController@redirectToProvider',
@@ -65,6 +55,16 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 	Route::post('get_suggestion', [
 			'uses' => 'PublicController@getSuggestion',
 			'as' => 'get_suggestion'
+		]);
+
+	//Auth - FB login - It is here because it may be needed when user is already logged in because of make the user FB verified
+	Route::get('auth/facebook', [
+			'uses' => 'FacebookController@redirectToProvider',
+			'as' => 'facebook.login'
+		]);
+	Route::get('auth/facebook/callback', [
+			'uses' => 'FacebookController@handleProviderCallback',
+			'as' => 'facebook.login_callback'
 		]);
 });
 

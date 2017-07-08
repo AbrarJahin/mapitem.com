@@ -856,6 +856,10 @@ function showAddDetail(id)		//Show Add Detail
 					$("#add_owner_phone").html("<i class='fa fa-phone'></i> <a href='tel:"+value_all_json.cell_no+"''>"+value_all_json.cell_no+"</a>");
 					$("#add_owner_website").html("<i class='fa fa-globe'></i> <a href='"+value_all_json.website+"''>"+value_all_json.website+"</a>");
 					$("#add_owner_email").html("<i class='fa fa-envelope'></i> <a href='mailto:"+value_all_json.email+"''>"+value_all_json.email+"</a>");
+					if(value_all_json.fb_verification_status == "not_verified")
+						$("#add_owner_fb_status").html('<i class="fa fa-facebook"></i>'+'Facebook Not Verified');
+					else
+						$("#add_owner_fb_status").html('<i class="fa fa-facebook"></i>'+'<i class="fa fa-check-circle p-adj"></i>'+'<a href="#">Facebook Verified</a>');
 
 					$("#add_owner_id").val(value_all_json.user_id);								//For Sending Message
 					$("#offer_add_owner_id").val(value_all_json.user_id);								//For Sending Message During Offer Send

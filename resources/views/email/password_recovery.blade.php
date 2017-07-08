@@ -175,7 +175,7 @@
 				<tr>
 					<td align="center">
 						<table class="email-content" width="100%" cellpadding="0" cellspacing="0">
-							<!-- Logo -->
+							{{-- Logo --}}
 							<tbody>
 								<tr>
 									<td class="email-masthead">
@@ -184,27 +184,27 @@
 										</a>
 									</td>
 								</tr>
-								<!-- Email Body -->
+								{{-- Email Body --}}
 								<tr>
 									<td class="email-body" width="100%">
 										<table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
-											<!-- Body content -->
+											{{-- Body content --}}
 											<tbody>
 											<tr>
 												<td class="content-cell">
 													<h1>Hi {{ $userName }},</h1>
 													<p>You recently requested to reset your password for your <b>MapItem</b> account. Click the button below to reset it.</p>
-													<!-- Action -->
+													{{-- Action --}}
 													<table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
 														<tbody>
 															<tr>
 																<td align="center">
 																	<div>
-																		<!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ $actionUrl }}" style="height:45px;v-text-anchor:middle;width:200px;" arcsize="7%" stroke="f" fill="t">
+																		{{-- [if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ $actionUrl }}" style="height:45px;v-text-anchor:middle;width:200px;" arcsize="7%" stroke="f" fill="t">
 																			<v:fill type="tile" color="#dc4d2f" />
 																			<w:anchorlock/>
 																			<center style="color:#ffffff;font-family:sans-serif;font-size:15px;">Reset your password</center>
-																		</v:roundrect><![endif]-->
+																		</v:roundrect><![endif] --}}
 																		<a href="{{ $actionUrl }}" class="button reset-button">Reset your password</a>
 																	</div>
 																</td>
@@ -219,7 +219,7 @@
 														Thanks,<br/>
 														<b>MapItem Team</b>
 													</p>
-													<!-- Sub copy -->
+													{{-- Sub copy --}}
 													<table class="body-sub">
 														<tbody>
 															<tr>
