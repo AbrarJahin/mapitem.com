@@ -331,20 +331,20 @@ class UserController extends Controller
 			$offerAction = "";
 			if ($requestData['status']=="accepted")
 			{
-				$offerAction=='accept';
+				$offerAction='Accepted';
 			}
 			else if ($requestData['status']=="rejected")
 			{
-				$offerAction=='reject';
+				$offerAction='Rejected';
 			}
 			else
 			{
-				$offerAction=='*INVALID*';
+				$offerAction='*INVALID*';
 			}
 
 			$advertisement = Advertisement::findOrFail(1);
 			//Adding message
-			$messageText = "I like to ".$offerAction." your offer of ".$offer->price." for ".$advertisement->title.".";
+			$messageText = "Your offer of (".$offer->price.") for (".$advertisement->title.") has been ".$offerAction.".";
 			//Save the message in message thread because message thread is already created at the time of offer sending
 			$messageThread = MessageThread::whereIn('sender_id', [Auth::user()->id, $offer->sender_id])
 											->whereIn('receiver_id', [Auth::user()->id, $offer->sender_id])

@@ -29,13 +29,14 @@ class CreateUsersTable extends Migration
 			$table->string('address', 255);
 			$table->float('location_latitude',10,7);
 			$table->float('location_longitude',10,7);
+			$table->enum('is_fb_verified',			['verified', 'not_verified'])	->default('not_verified');
 			$table->string('password', 120);
 
-			$table->enum('get_offer_notification', 			['enabled', 'disabled'])->default('enabled');
-			$table->enum('receive_payment_notification', 	['enabled', 'disabled'])->default('enabled');
-			$table->enum('receive_message_notification', 	['enabled', 'disabled'])->default('enabled');
+			$table->enum('get_offer_notification',			['enabled', 'disabled'])->default('enabled');
+			$table->enum('receive_payment_notification',	['enabled', 'disabled'])->default('enabled');
+			$table->enum('receive_message_notification',	['enabled', 'disabled'])->default('enabled');
 			$table->enum('send_payment_notification', 		['enabled', 'disabled'])->default('enabled');
-			$table->enum('email_notification', 				['enabled', 'disabled'])->default('enabled');
+			$table->enum('email_notification',				['enabled', 'disabled'])->default('enabled');
 			//FB Login Info		- 'fb_login'		table
 			//Google Login Info	- 'gooogle_login'	table
 

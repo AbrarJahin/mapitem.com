@@ -127,6 +127,11 @@ class FacebookController extends Controller
 			]
 		);
 
+		//Update user FB Verified Status - Will update if he already logged in or not, it will update always - based on requirements
+		$user = Auth::user();
+		$user->is_fb_verified = 'verified';
+		$user->save();
+
 		return Redirect::route('index');
 	}
 
