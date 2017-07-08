@@ -80,20 +80,19 @@ class FacebookController extends Controller
 			 *	  (if there is no image uploaded,
 			 *	   then will be updated with social profile image))
 			 */
-
+			$dbUser = User::find(Auth::user()->id);
 			//Check if there is profile image upoaded
 			if( strlen( Auth::user()->profile_picture )<5 )	//User image uploaded previously
 			{
 				//Update the user Image
-				$dbUser = User::find(Auth::user()->id);
 				$dbUser->profile_picture = $this->uploadFile($user->avatar);
-				$dbUser->save();
 			}
+			$dbUser->is_fb_verified = 'verified';	//Update user FB Verified Status - Will update if he already logged in or not, it will update always - based on requirements
+			$dbUser->save();
 		}
 		else
 		{	//No user exists with that email - so sign up and upload image
 			//Add the user - Start
-			
 			$name = $user->name;
 			$parts = explode(" ", $name);
 			$lastname = array_pop($parts);
@@ -106,6 +105,7 @@ class FacebookController extends Controller
 			$dbUser->email				=	$user->email;
 			$dbUser->user_type			=	'normal_user';
 			$dbUser->password			=	bcrypt( $user->token );
+			$user->is_fb_verified = 'verified';	//Update user FB Verified Status - Will update if he already logged in or not, it will update always - based on requirements
 			$dbUser->save();
 			//Add the user - End
 
@@ -115,8 +115,8 @@ class FacebookController extends Controller
 
 		FbLogin::updateOrCreate(
 			[
-				'user_id'	=> Auth::user()->id,
-				'email'		=> $user->email
+				'user_id'	=>	Auth::user()->id,
+				'email'		=>	Auth::user()->email
 			],
 			[
 				'token'					=> $user->token,
@@ -126,12 +126,6 @@ class FacebookController extends Controller
 				'avatar_original_url'	=> $user->avatar_original
 			]
 		);
-
-		//Update user FB Verified Status - Will update if he already logged in or not, it will update always - based on requirements
-		$user = Auth::user();
-		$user->is_fb_verified = 'verified';
-		$user->save();
-
 		return Redirect::route('index');
 	}
 
