@@ -3,10 +3,10 @@
 	<button type="button" class="btn btn-default green-small3" data-toggle="modal" data-target="#newpicture" id="my_adds_image_edit_button" data-backdrop="static" data-keyboard="false">
 		Edit images
 	</button>
-	<!-- Modal -->
+	{{-- Modal --}}
 	<div class="modal fade" id="newpicture" role="dialog" draggable="true">
 		<div class="modal-dialog">
-			<!-- Modal content-->
+			{{-- Modal content --}}
 			<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>

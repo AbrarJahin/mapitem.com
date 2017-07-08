@@ -1,6 +1,6 @@
 <div class="clearfix"></div>
 <div class="hd2"><h2>Community Postings</h2></div>
-<!-- community posting start -->
+{{-- community posting start --}}
 
 <meta name="add_wishlist_url" content="{{ URL::route('user.add_wishlist') }}">
 
