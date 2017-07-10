@@ -62,7 +62,7 @@
 								<input type="hidden" id="product_location_lat" name="product_geo_location_lat">
 								<input type="hidden" id="product_location_lon" name="product_geo_location_lon">
 								<div class="map-address"></div>
-								<button type="submit" class="green-small2 no-textdecor">Post Free Add</button>
+								<button type="submit" class="green-small2 no-textdecor">Post Free Ad.</button>
 							</div>
 
 						</form>

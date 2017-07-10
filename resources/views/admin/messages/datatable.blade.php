@@ -6,7 +6,7 @@
 			<tr>
 				<th>Seller Name</th>
 				<th>Buyer Name</th>
-				<th>Add Title</th>
+				<th>Ad. Title</th>
 				<th>Message Title</th>
 				<th>Creation Time</th>
 				<th>Description</th>
