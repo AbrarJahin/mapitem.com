@@ -1,7 +1,7 @@
 <div id="how_it_works" class="hd2"><h2>How it Works</h2></div>
 <div class="margin-adj2">
 	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12  hiwd">
-		<b>Posting an ad on Mapitem is super-easy!</b>
+		<b>Posting an ad. on Mapitem is super-easy!</b>
 		<div class="clearfix"></div>
 		<ul>
 			<li>
@@ -10,7 +10,7 @@
 			</li>
 			<li>
 				<span>2 - </span>
-				<p>Posting an ad is a cost-free and easy way for users to get their items listed and sold. Takes just a couple minutes max.</p>
+				<p>Posting an ad. is a cost-free and easy way for users to get their items listed and sold. Takes just a couple minutes max.</p>
 			</li>
 			<li>
 				<span>3 - </span>

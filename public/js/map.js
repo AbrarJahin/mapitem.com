@@ -671,7 +671,7 @@ function generateMarkers(bounds)
 	openLastInfoWindow();
 }
 
-function showAddDetail(id)		//Show Add Detail
+function showAddDetail(id)		//Show Ad. Detail
 {
 	if(is_wishlist_propagated)
 		return;
@@ -849,7 +849,7 @@ function showAddDetail(id)		//Show Add Detail
 					$("#offer_add_owner_email").html(value_all_json.email);
 					$("#offer_add_owner_cell").html(value_all_json.cell_no);
 
-					//Add Detail
+					//Ad Detail
 					$("#add_owner_image").attr("src",value_all_json.profile_picture);
 					$("#add_owner_name").html(value_all_json.user_name);
 
@@ -909,7 +909,7 @@ function ifDeviceIsMobile()		//Check The Device Type
 	return !($('#map').is(":visible"));
 }
 
-function closeAddDetail()		//Show Add Detail
+function closeAddDetail()		//Show Ad. Detail
 {
 	$('.ad-detail').hide("slow");
 	$('.ad-listing').show("slow");

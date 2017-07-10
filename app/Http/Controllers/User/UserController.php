@@ -342,7 +342,6 @@ class UserController extends Controller
 				$offerAction='*INVALID*';
 			}
 
-			$advertisement = Advertisement::findOrFail(1);
 			//Adding message
 			$messageText = "Your offer of (".$offer->price.") for (".$advertisement->title.") has been ".$offerAction.".";
 			//Save the message in message thread because message thread is already created at the time of offer sending

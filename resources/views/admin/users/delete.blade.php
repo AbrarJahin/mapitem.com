@@ -1,4 +1,4 @@
-{{-- Add Category Modal --}}
+{{-- Delete Users Modal --}}
 <div class="modal fade" id="delete_confirmation_modal" role="dialog">
 	<div class="modal-dialog">
 		{{-- Modal content --}}

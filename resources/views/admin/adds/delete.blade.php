@@ -1,11 +1,11 @@
-{{-- Ad Category Modal --}}
+{{-- Delete Category Modal --}}
 <div class="modal fade" id="delete_confirmation_modal" role="dialog">
 	<div class="modal-dialog">
 		{{-- Modal content --}}
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Do you really want to delete Add named <strong id="add_title_name"></strong>?</h4>
+				<h4 class="modal-title">Do you really want to delete Ad. named <strong id="add_title_name"></strong>?</h4>
 			</div>
 			<form role="form" method="post" action="{{ URL::route('admin.advertisement_delete') }}" id="delete_data">
 				<input type="hidden" id="delete_item_id" name="id">
