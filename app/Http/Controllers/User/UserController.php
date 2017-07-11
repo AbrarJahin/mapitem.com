@@ -345,8 +345,9 @@ class UserController extends Controller
 			//Adding message
 			$messageText = "Your offer of (".$offer->price.") for (".$advertisement->title.") has been ".$offerAction.".";
 			//Save the message in message thread because message thread is already created at the time of offer sending
-			$messageThread = MessageThread::whereIn('sender_id', [Auth::user()->id, $offer->sender_id])
-											->whereIn('receiver_id', [Auth::user()->id, $offer->sender_id])
+			$messageThread = MessageThread::whereIn('sender_id',		[Auth::user()->id, $offer->sender_id])
+											->whereIn('receiver_id',	[Auth::user()->id, $offer->sender_id])
+											->where('advertisement_id',	$advertisement->id)
 											->first();
 			Message::create([
 								'sender_id'	=> Auth::user()->id,
