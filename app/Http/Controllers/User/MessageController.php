@@ -133,7 +133,6 @@ class MessageController extends Controller
 			$notification_owner_id = $messageThread->sender_id;
 
 		//Update Message Thread
-		$messageThread->title = substr($requestData['message'],0,18)." ..";
 		$messageThread->last_sender_id = Auth::user()->id;
 		$messageThread->is_read = 'not_readed';
 		//$messageThread->updated_at = $message->created_at;
