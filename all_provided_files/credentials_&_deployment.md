@@ -50,7 +50,7 @@ Update Project (if no major change)-
 
 	ssh blockhunt@107.180.1.4
 	Maplevel1
-	cd public_html/abrar && git pull -f
+	cd public_html/abrar && git reset --hard HEAD~100 && git pull -f
 
 	exit
 

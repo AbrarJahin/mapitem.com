@@ -134,7 +134,7 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 		]);
 
 	//My Adds Page
-	Route::get('my_adds', [
+	Route::get('my_ads', [
 			'uses' => 'UserController@myAddsView',
 			'as' => '.my_adds'
 		]);

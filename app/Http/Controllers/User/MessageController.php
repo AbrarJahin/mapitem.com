@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Request;
 use Response;
 use Auth;
+use App\Advertisement;
 use App\MessageThread;
 use App\Message;
 use App\UserNotification;
@@ -41,14 +42,16 @@ class MessageController extends Controller
 		$userNotification->inbox = $userNotification->inbox+1;
 		$userNotification->save();
 
+		$advertisement = Advertisement::findOrFail($requestData['add_id']);
+
 		$messageThread = MessageThread::updateOrCreate(
 															[
-																'sender_id'			=>	Auth::user()->id,
-																'receiver_id'		=>	$requestData['add_owner_id'],
-																'advertisement_id'	=>	$requestData['add_id']
+																'sender_id'			=>	min( Auth::user()->id, $advertisement->user_id ),
+																'receiver_id'		=>	max( Auth::user()->id, $advertisement->user_id ),
+																'advertisement_id'	=>	$advertisement->id
 															],
 															[
-																'title'				=>	substr($requestData['message'], 0, 100),
+																'title'				=>	$advertisement->title,
 																'last_sender_id'	=>	Auth::user()->id,
 																'is_read'			=>	'not_readed'
 															]

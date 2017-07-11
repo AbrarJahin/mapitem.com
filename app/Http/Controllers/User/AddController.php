@@ -307,24 +307,24 @@ class AddController extends Controller
 					]
 				);
 
-			$messageThreadTitile = "New Offer with Price - ".$requestData['price'];
 			// Add a new message for that
 			$messageThread = MessageThread::updateOrCreate(
 																[
-																	'sender_id'			=>	Auth::user()->id,
-																	'receiver_id'		=>	$requestData['add_owner_id'],
-																	'advertisement_id'	=>	$requestData['add_id']
+																	'sender_id'			=>	min( Auth::user()->id, $advertisement->user_id ),
+																	'receiver_id'		=>	max( Auth::user()->id, $advertisement->user_id ),
+																	'advertisement_id'	=>	$advertisement->id
 																],
 																[
-																	'title'				=>	$messageThreadTitile,
+																	'title'				=>	$advertisement->title,
 																	'last_sender_id'	=>	Auth::user()->id,
 																	'is_read'			=>	'not_readed'
 																]
 															);
+
 			Message::create([
 								'sender_id'	=> Auth::user()->id,
 								'thread_id'	=> $messageThread->id,
-								'message'	=> $messageThreadTitile."
+								'message'	=> "New Offer with Price - ".$requestData['price']."
 ".$requestData['message']
 							]);
 			$userNotification->inbox = $userNotification->inbox+1;
