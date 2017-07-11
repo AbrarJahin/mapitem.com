@@ -32,7 +32,7 @@
 				@endif
 
 				<li class="dropdown">
-					<a href="#" class="def" data-toggle="modal" data-target="@if (Auth::check())#pfa @else #lgn-pup @endif">Post free ad.</a>
+					<a href="#" class="def" data-toggle="modal" data-target="@if (Auth::check())#pfa @else #lgn-pup @endif">Post free ad</a>
 				</li>
 			</ul>
 		</div>

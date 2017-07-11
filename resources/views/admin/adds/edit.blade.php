@@ -13,7 +13,7 @@
 				<form role="form" method="post" action="{{ URL::route('admin.add_update') }}" id="edit_add_form">
 					<div class="form-group">
 						<label for="category">Title</label>
-						<input type="text" required class="form-control" placeholder="Title of the ad." name="title" id="add-title">
+						<input type="text" required class="form-control" placeholder="Title of the ad" name="title" id="add-title">
 					</div>
 					<div class="form-group">
 						<label for="sub-category">Description</label>
@@ -53,7 +53,7 @@
 			</div>
 			<div class="modal-footer">
 					<input type="hidden" name="id" id="selected_add_id">
-					<button type="button" id="update_add_button" class="btn btn-info"{{-- data-dismiss="modal" --}}>Update Ad.</button>
+					<button type="button" id="update_add_button" class="btn btn-info">Update Ad</button>
 				</form>
 			</div>
 		</div>

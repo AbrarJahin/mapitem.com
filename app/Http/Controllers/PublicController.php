@@ -106,7 +106,7 @@ class PublicController extends Controller
 	public function listingView()
 	{
 		return view('public.listing.main', [
-												'current_page'			=>	'Add Listing',
+												'current_page'			=>	'Ad Listing',
 												'sort_distance_options'	=>	[
 																				'price_asc'		=>	'Price - Lowest',
 																				'price_desc'	=>	'Price - Highest',
@@ -128,7 +128,7 @@ class PublicController extends Controller
 	public function listingViewSearch($search_location,$lat,$lon,$lat_min,$lon_min,$lat_max,$lon_max,$search_data="")
 	{
 		return view('public.listing.main', [
-												'current_page'			=>	'Add Listing',
+												'current_page'			=>	'Ad Listing',
 												'sort_distance_options'	=>	[
 																				'price_asc'		=>	'Price - Lowest',
 																				'price_desc'	=>	'Price - Highest',

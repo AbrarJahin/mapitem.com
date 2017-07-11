@@ -507,7 +507,7 @@ $(document).ready(function()
 										'resize'
 									);
 		});
-	//Free ad. posting - tab 3 - Map - End
+	//Free ad posting - tab 3 - Map - End
 
 	/* Submit button pressed - Login */
 	$("#login-f").submit(function()
@@ -868,7 +868,7 @@ $(document).ready(function()
 		});
 	});
 
-	//Free Ad. Posting - Start
+	//Free ad Posting - Start
 	if ( $('div#drag_drop_image_upload_div').length)
 	{
 		//Global Congig
@@ -934,7 +934,7 @@ $(document).ready(function()
 			}
 		});
 
-		//Submitting the free ad. posting form with AJAX
+		//Submitting the free ad posting form with AJAX
 		$("#post_free_add_form").on('submit', function(e)
 		{
 			e.preventDefault(e);
@@ -1055,7 +1055,7 @@ $(document).ready(function()
 			}
 		});
 	}
-	//Free Ad. Posting  - End
+	//Free Ad Posting  - End
 
 	/*review box open*/
 	$('.review').on('click',function()
@@ -1268,7 +1268,7 @@ $(document).ready(function()
 		$('.fl').slideToggle();
 	});
 
-	// Hide Ad. Detail
+	// Hide Ad Detail
 	$('.fp').click(function()
 	{
 		$('.for-pass').slideDown("slow");
@@ -2015,7 +2015,7 @@ $(document).ready(function()
 				$("#add_title_name").html(data['title']);
 				$('#delete_confirmation_modal').modal('show');
 			});
-			//Delete Ad. - Confirmation
+			//Delete ad - Confirmation
 			$('#confirm_delete').on('click', function(event)
 			{
 				$.ajax(
@@ -2029,7 +2029,7 @@ $(document).ready(function()
 					{
 						$('#delete_confirmation_modal').modal('hide');
 						addsDataTable.ajax.reload( null, false );
-						alert('Succesfully Deleted Ad.');
+						alert('Succesfully Deleted Ad');
 					}
 				});
 			});

@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
 	var ifReallyNeedToRemoveFile = true;
-	//Dropzone File Upload in post free ad. modal - Start
+	//Dropzone File Upload in post free ad modal - Start
 		var $editImageDropZone	=	$("div#add_image_edit_div").dropzone(
 							{
 								url					: $('meta[name=new_add_image_ajax_url]').attr("content"),
@@ -89,7 +89,7 @@ $(document).ready(function()
 				}
 			}
 		});
-	//Dropzone File Upload in post free ad. modal - End
+	//Dropzone File Upload in post free ad modal - End
 
 	$("#my_adds_image_edit_button").click(function(event)
 	{

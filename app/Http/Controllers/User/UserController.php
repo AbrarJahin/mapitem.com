@@ -369,9 +369,9 @@ class UserController extends Controller
 	*/
 	public function myWishList()
 	{
-		//return view('user.wishlist.main', [ 'current_page'	=> 'user.wishlist' ]);
 		return view('public.listing.main', [
-												'current_page'			=>	'Add Listing',
+												'current_page'			=>	'Ad Listing',
+												'secondary_page_title'	=>	'My Wishlist',
 												'sort_distance_options'	=>	[
 																				'price_asc'		=>	'Price - Lowest',
 																				'price_desc'	=>	'Price - Highest',

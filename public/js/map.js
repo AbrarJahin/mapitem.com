@@ -671,7 +671,7 @@ function generateMarkers(bounds)
 	openLastInfoWindow();
 }
 
-function showAddDetail(id)		//Show Ad. Detail
+function showAddDetail(id)		//Show ad Detail
 {
 	if(is_wishlist_propagated)
 		return;
@@ -909,7 +909,7 @@ function ifDeviceIsMobile()		//Check The Device Type
 	return !($('#map').is(":visible"));
 }
 
-function closeAddDetail()		//Show Ad. Detail
+function closeAddDetail()		//Show ad Detail
 {
 	$('.ad-detail').hide("slow");
 	$('.ad-listing').show("slow");

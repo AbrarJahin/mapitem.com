@@ -29,7 +29,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /post_add
-		Functionality	-> Ad. add post
+		Functionality	-> Ad add post
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -80,7 +80,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /add_images
-		Functionality	-> Upoad ad. images
+		Functionality	-> Upoad ad images
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -146,7 +146,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> DELETE: /delete_image
-		Functionality	-> Delete ad. Image
+		Functionality	-> Delete ad Image
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -168,7 +168,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /all_images
-		Functionality	-> Get all ad. Image
+		Functionality	-> Get all ad Image
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -180,7 +180,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /update_advertisement_status
-		Functionality	-> Update ad. status
+		Functionality	-> Update ad status
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -204,7 +204,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /detail_add
-		Functionality	-> Show ad. Detail
+		Functionality	-> Show ad Detail
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -218,7 +218,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /update_add
-		Functionality	-> Update ad. detil
+		Functionality	-> Update ad detil
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/

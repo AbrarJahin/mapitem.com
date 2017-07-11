@@ -1,4 +1,4 @@
-{{-- Ad. Category Modal --}}
+{{-- Ad Category Modal --}}
 <div class="modal fade" id="add_data_modal" role="dialog"  data-backdrop="static">
 	<div class="modal-dialog modal-admin-public">
 		{{-- Modal content --}}
