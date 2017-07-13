@@ -97,7 +97,7 @@ class AuthController extends Controller
 											'first_name'	=> 'required',
 											'last_name'		=> 'required',
 											'email'			=> 'required|email|unique:users',
-											'password'		=> 'required|min:3'
+											'password'		=> 'required|min:5'
 										],
 										[
 											'first_name.required'	=>'Please give your first name',
