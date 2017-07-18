@@ -704,10 +704,6 @@ $(document).ready(function()
 										dataType: "json",
 										async: false,
 										data: $("#sign-up-f").serialize(),
-										/*{
-											uuid	:	$('meta[name=_token]').attr("content"),
-											user_id	:	3
-										},*/
 									}).responseText;
 
 			$.each($.parseJSON(responce),function(key,value)
@@ -727,7 +723,7 @@ $(document).ready(function()
 
 				if(key.localeCompare('messages')==0)
 				{
-					$("#sign_up_error_message").html("Given e-mail already in use !");
+					$("#sign_up_error_message").html(value[Object.keys(value)[0]][0]);
 					console.log(value);
 				}
 			});
@@ -818,7 +814,7 @@ $(document).ready(function()
 
 				if(key.localeCompare('messages')==0)
 				{
-					$("#sign_up_error_message_pop").html("Given e-mail already in use !");
+					$("#sign_up_error_message_pop").html(value[Object.keys(value)[0]][0]);
 					console.log(value);
 				}
 			});

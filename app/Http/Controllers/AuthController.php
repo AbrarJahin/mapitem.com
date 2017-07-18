@@ -102,6 +102,7 @@ class AuthController extends Controller
 										[
 											'first_name.required'	=>'Please give your first name',
 											'last_name.required'	=>'Please give your first name',
+											'password.min'			=>'Password length should be at least 5 charecter',
 											'email.unique'			=>'Email already used, please try a different email'
 										]
 									);
