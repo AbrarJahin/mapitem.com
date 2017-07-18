@@ -1926,6 +1926,7 @@ $(document).ready(function()
 					}
 				},
 				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
+								{	"data": "id"		},
 								{	"data": "category"		},
 								{	"data": "sub_category"	},
 								{	"data": "owner"			},
@@ -1941,7 +1942,7 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [8],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
 									}
@@ -1968,6 +1969,7 @@ $(document).ready(function()
 						$('#add-description').val(responce_data[0].description);
 						$('#add-price').val(responce_data[0].price);
 						$('#add-owner-name').val(responce_data[0].owner_name);
+						$('#add-owner-email').val(responce_data[0].owner_email);
 						$('#add-category-name').val(responce_data[0].category_name);
 						$('#add-subcategory-name').val(responce_data[0].sub_category_name);
 						$('#add-address').val(responce_data[0].address);

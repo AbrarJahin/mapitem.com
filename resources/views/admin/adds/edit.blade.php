@@ -26,20 +26,24 @@
 
 					{{-- Disabled Items - Start --}}
 					<div class="form-group">
-						<label for="sub-category">Owner Name</label>
-						<input type="text" required class="form-control" placeholder="Enter Category Name" disabled id="add-owner-name">
+						<label for="owner-name">Owner Name</label>
+						<input type="text" required class="form-control" disabled id="add-owner-name">
+					</div>
+					<div class="form-group">
+						<label for="owner-email">Owner Email</label>
+						<input type="text" required class="form-control" disabled id="add-owner-email">
 					</div>
 					<div class="form-group">
 						<label for="sub-category">Category Name</label>
-						<input type="text" required class="form-control" placeholder="Enter Category Name" disabled id="add-category-name">
+						<input type="text" required class="form-control" disabled id="add-category-name">
 					</div>
 					<div class="form-group">
 						<label for="sub-category">Sub-Category Name</label>
-						<input type="text" required class="form-control" placeholder="Enter Category Name" disabled  id="add-subcategory-name">
+						<input type="text" required class="form-control" disabled  id="add-subcategory-name">
 					</div>
 					<div class="form-group">
 						<label for="sub-category">Address</label>
-						<input type="text" required class="form-control" placeholder="Enter Category Name" disabled id="add-address">
+						<input type="text" required class="form-control" disabled id="add-address">
 					</div>
 					{{-- Disabled Items - End --}}
 

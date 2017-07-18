@@ -104,10 +104,12 @@ class ViewAjaxController extends Controller
 				->join('categories', 'categories.id', '=', 'advertisements.category_id')
 				->join('sub_categories', 'sub_categories.id', '=', 'advertisements.sub_category_id')
 				->select(
+					'advertisements.id as id',
 					'advertisements.title as title',
 					'advertisements.description as description',
 					'advertisements.price as price',
 					DB::raw('CONCAT(users.first_name," ",users.last_name) as owner_name'),
+					'users.email as owner_email',
 					'categories.name as category_name',
 					'sub_categories.name as sub_category_name',
 					'advertisements.address as address',

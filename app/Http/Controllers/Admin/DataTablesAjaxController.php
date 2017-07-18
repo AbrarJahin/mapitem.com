@@ -212,13 +212,14 @@ class DataTablesAjaxController extends Controller
 		$requestData = Request::all();
 		$columns = array(
 			// datatable column index  => database column name
-			0 => 'categories.name',
-			1 => 'sub_categories.name',
-			2 => 'users.first_name',
-			3 => 'advertisements.title',
-			4 => 'advertisements.price',
-			5 => 'advertisements.description',
-			6 => 'advertisements.address'
+			0 => 'advertisements.id',
+			1 => 'categories.name',
+			2 => 'sub_categories.name',
+			3 => 'users.first_name',
+			4 => 'advertisements.title',
+			5 => 'advertisements.price',
+			6 => 'advertisements.description',
+			7 => 'advertisements.address'
 		);
 		$draw_request_code = $requestData['draw'];
 		$searchParameter = $requestData['search']['value'];
