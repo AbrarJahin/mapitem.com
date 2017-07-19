@@ -2069,14 +2069,9 @@ $(document).ready(function()
 										"searchable": false,	//Turn off searching
 										"targets": [8],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
-										"defaultContent": '<button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'
+										"defaultContent": '<button type="button" class="edit btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
 									}
-								],
-				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
-				initComplete:	function()	//Adding Custom button in Tools
-								{
-									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
-								}
+								]
 			});
 
 			$('#messages-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click

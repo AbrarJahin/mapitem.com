@@ -296,7 +296,7 @@ class DataTablesAjaxController extends Controller
 			4	=>	'receiver.first_name',
 			5	=>	'messages.message',
 			6	=>	'messages.created_at',
-			7	=>	'messages.updated_at'
+			7	=>	'messages.is_read'
 		);
 		$draw_request_code = $requestData['draw'];
 		$searchParameter = $requestData['search']['value'];
@@ -319,8 +319,16 @@ class DataTablesAjaxController extends Controller
 							DB::raw('CONCAT(sender.first_name," ",sender.last_name) as sender_name'),
 							DB::raw('CONCAT(receiver.first_name," ",receiver.last_name) as receiver_name'),
 							'messages.message',
-							'messages.created_at as sent_time',
-							'messages.updated_at as read_time'
+							DB::raw("DATE_FORMAT(messages.created_at,'%D %M, %Y %r') AS sent_time"),
+							DB::raw("
+										CASE WHEN messages.is_read = 'readed'
+											THEN
+												DATE_FORMAT(messages.updated_at,'%D %M, %Y %r')
+											ELSE
+												'Not yet read'
+											END
+										as read_time"
+									)
 						);
 		$totalData = $baseQuery->count();
 		//Applying Filters
@@ -341,7 +349,7 @@ class DataTablesAjaxController extends Controller
 		}
 		$totalFiltered = $filtered_query->count();
 		//Ordering
-		$filtered_query = $filtered_query->orderBy($order_by_value, $orderingDirection);
+		$filtered_query = $filtered_query->orderBy($order_by_value, $orderingDirection)->orderBy('messages.updated_at', 'ASC');
 		//Limiting for Pagination
 		$data = $filtered_query->skip($limit_start)->take($limit_interval)->get();
 		$json_data = array(
