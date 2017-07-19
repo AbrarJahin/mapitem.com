@@ -1,5 +1,7 @@
+<meta name="view_ajax_url" content="{{ URL::route('admin.message_view') }}">
+
 {{-- Edit Category Modal --}}
-<div class="modal fade" id="edit_data_modal" role="dialog">
+<div class="modal fade" id="view_data_modal" role="dialog">
 	<div class="modal-dialog">
 		{{-- Modal content --}}
 		<div class="modal-content">

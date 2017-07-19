@@ -2069,22 +2069,39 @@ $(document).ready(function()
 										"searchable": false,	//Turn off searching
 										"targets": [8],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
-										"defaultContent": '<button type="button" class="edit btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
+										"defaultContent": '<button type="button" class="view btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
 									}
 								]
 			});
 
-			$('#messages-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
+			$('#messages-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click
 			{
 				var data = messageDataTable.row( $(this).parents('tr') ).data();
-				//alert('Edit - '+data['id']);	//id = index of ID sent from server
-				$('#edit_data_modal').modal('show');
-			});
 
-			$('#messages-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
-			{
-				var data = messageDataTable.row( $(this).parents('tr') ).data();
-				alert('Delete - '+data['id']);	//id = index of ID sent from server
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_ajax_url]').attr("content"),
+					dataType: "json",
+					data: 	{	'message_id'	:	data['id']	},
+					success:function(responce_data)
+					{
+						$("#message_ad_name").val(responce_data[0].title);
+						$("#message_ad_owner").val(responce_data[0].owner_name);
+						$("#message_ad_posting_time").val(responce_data[0].ad_posting_time);
+						$("#message_ad_last_edited_time").val(responce_data[0].ad_last_edited_time);
+						$("#message_ad_sender_name").val(responce_data[0].sender_name);
+						$("#message_ad_sender_email").val(responce_data[0].sender_email);
+						$("#message_ad_receiver_name").val(responce_data[0].receiver_name);
+						$("#message_ad_receiver_email").val(responce_data[0].receiver_email);
+						$("#message_ad_message_text").val(responce_data[0].messages_text);
+						$("#message_ad_message_sent_time").val(responce_data[0].message_sent_time);
+						$("#message_ad_receive_time").val(responce_data[0].read_time);
+
+						$('#view_data_modal').modal('show');
+					}
+				});
 			});
 		}
 		else if ($('#public-pages-datatable').length)	//Messages Datatable

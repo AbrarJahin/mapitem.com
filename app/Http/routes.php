@@ -419,6 +419,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'uses' => 'ViewAjaxController@GoogleAnalyticsViewAjax',
 				'as' => '.google_analytics_view'
 			]);
+
+		Route::post('message_view', [
+				'uses' => 'ViewAjaxController@MessageViewAjax',
+				'as' => '.message_view'
+			]);
 	//View Data AJAX - END
 
 	//Edit Data AJAX - Start
