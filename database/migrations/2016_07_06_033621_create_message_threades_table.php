@@ -16,8 +16,8 @@ class CreateMessageThreadesTable extends Migration
 		{
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->integer('sender_id')		->unsigned()	->index();
-			$table->integer('receiver_id')		->unsigned()	->index();
+			$table->integer('sender_id')		->unsigned()	->index();	//Currently it is lowest particepent id
+			$table->integer('receiver_id')		->unsigned()	->index();	//Currently it is highest particepent id
 			$table->integer('advertisement_id')	->unsigned()	->index();
 			$table->string('title',100);
 			$table->enum('is_read', ['readed', 'not_readed'])	->default('not_readed');

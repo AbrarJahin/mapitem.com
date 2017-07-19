@@ -2051,13 +2051,14 @@ $(document).ready(function()
 					}
 				},
 				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
-								{	"data": "category"		},
-								{	"data": "sub_category"	},
-								{	"data": "owner"			},
-								{	"data": "title"			},
-								{	"data": "price"			},
-								{	"data": "description"	},
-								{	"data": "address"		},
+								{	"data": "ad_id"			},
+								{	"data": "ad_name"		},
+								{	"data": "owner_name"	},
+								{	"data": "sender_name"	},
+								{	"data": "receiver_name"	},
+								{	"data": "message"	},
+								{	"data": "sent_time"		},
+								{	"data": "read_time"		},
 								{	"data": null			}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
@@ -2066,9 +2067,9 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [8],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
-										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
+										"defaultContent": '<button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'
 									}
 								],
 				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible

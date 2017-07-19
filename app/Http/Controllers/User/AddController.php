@@ -322,9 +322,10 @@ class AddController extends Controller
 															);
 
 			Message::create([
-								'sender_id'	=> Auth::user()->id,
-								'thread_id'	=> $messageThread->id,
-								'message'	=> "New Offer with Price - ".$requestData['price']."
+								'sender_id'		=>	Auth::user()->id,
+								'receiver_id'	=>	$advertisement->user_id,
+								'thread_id'		=>	$messageThread->id,
+								'message'		=>	"New Offer with Price - ".$requestData['price']."
 ".$requestData['message']
 							]);
 			$userNotification->inbox = $userNotification->inbox+1;

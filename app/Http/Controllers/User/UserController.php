@@ -350,9 +350,10 @@ class UserController extends Controller
 											->where('advertisement_id',	$advertisement->id)
 											->first();
 			Message::create([
-								'sender_id'	=> Auth::user()->id,
-								'thread_id'	=> $messageThread->id,
-								'message'	=> $messageText
+								'sender_id'		=>	Auth::user()->id,
+								'receiver_id'	=>	$offer->sender_id,
+								'thread_id'		=>	$messageThread->id,
+								'message'		=>	$messageText
 							]);
 			return $offer;
 		}
