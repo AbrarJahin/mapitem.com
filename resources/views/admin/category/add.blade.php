@@ -1,4 +1,4 @@
-{{-- Add Category Modal --}}
+{{-- Ad Category Modal --}}
 <div class="modal fade" id="add_data_modal" role="dialog">
 	<div class="modal-dialog">
 		{{-- Modal content --}}

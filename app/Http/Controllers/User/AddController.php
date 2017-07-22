@@ -29,7 +29,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /post_add
-		Functionality	-> Ad. add post
+		Functionality	-> Ad add post
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -80,7 +80,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /add_images
-		Functionality	-> Upoad ad. images
+		Functionality	-> Upoad ad images
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -146,7 +146,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> DELETE: /delete_image
-		Functionality	-> Delete ad. Image
+		Functionality	-> Delete ad Image
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -168,7 +168,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /all_images
-		Functionality	-> Get all ad. Image
+		Functionality	-> Get all ad Image
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -180,7 +180,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /update_advertisement_status
-		Functionality	-> Update ad. status
+		Functionality	-> Update ad status
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -204,7 +204,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /detail_add
-		Functionality	-> Show ad. Detail
+		Functionality	-> Show ad Detail
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -218,7 +218,7 @@ class AddController extends Controller
 
 	/*
 		URL				-> POST: /update_add
-		Functionality	-> Update ad. detil
+		Functionality	-> Update ad detil
 		Access			-> Anyone who is logged in user
 		Created by		-> S. M. Abrar Jahin
 	*/
@@ -307,24 +307,25 @@ class AddController extends Controller
 					]
 				);
 
-			$messageThreadTitile = "New Offer with Price - ".$requestData['price'];
 			// Add a new message for that
 			$messageThread = MessageThread::updateOrCreate(
 																[
-																	'sender_id'			=>	Auth::user()->id,
-																	'receiver_id'		=>	$requestData['add_owner_id'],
-																	'advertisement_id'	=>	$requestData['add_id']
+																	'sender_id'			=>	min( Auth::user()->id, $advertisement->user_id ),
+																	'receiver_id'		=>	max( Auth::user()->id, $advertisement->user_id ),
+																	'advertisement_id'	=>	$advertisement->id
 																],
 																[
-																	'title'				=>	$messageThreadTitile,
+																	'title'				=>	$advertisement->title,
 																	'last_sender_id'	=>	Auth::user()->id,
 																	'is_read'			=>	'not_readed'
 																]
 															);
+
 			Message::create([
-								'sender_id'	=> Auth::user()->id,
-								'thread_id'	=> $messageThread->id,
-								'message'	=> $messageThreadTitile."
+								'sender_id'		=>	Auth::user()->id,
+								'receiver_id'	=>	$advertisement->user_id,
+								'thread_id'		=>	$messageThread->id,
+								'message'		=>	"New Offer with Price - ".$requestData['price']."
 ".$requestData['message']
 							]);
 			$userNotification->inbox = $userNotification->inbox+1;

@@ -507,7 +507,7 @@ $(document).ready(function()
 										'resize'
 									);
 		});
-	//Free add posting - tab 3 - Map - End
+	//Free ad posting - tab 3 - Map - End
 
 	/* Submit button pressed - Login */
 	$("#login-f").submit(function()
@@ -704,10 +704,6 @@ $(document).ready(function()
 										dataType: "json",
 										async: false,
 										data: $("#sign-up-f").serialize(),
-										/*{
-											uuid	:	$('meta[name=_token]').attr("content"),
-											user_id	:	3
-										},*/
 									}).responseText;
 
 			$.each($.parseJSON(responce),function(key,value)
@@ -727,7 +723,7 @@ $(document).ready(function()
 
 				if(key.localeCompare('messages')==0)
 				{
-					$("#sign_up_error_message").html("Given e-mail already in use !");
+					$("#sign_up_error_message").html(value[Object.keys(value)[0]][0]);
 					console.log(value);
 				}
 			});
@@ -818,7 +814,7 @@ $(document).ready(function()
 
 				if(key.localeCompare('messages')==0)
 				{
-					$("#sign_up_error_message_pop").html("Given e-mail already in use !");
+					$("#sign_up_error_message_pop").html(value[Object.keys(value)[0]][0]);
 					console.log(value);
 				}
 			});
@@ -827,7 +823,7 @@ $(document).ready(function()
 		return false;	//Form not submitted
 	});
 
-	//Add free post - category select AJAX call on sub-category
+	//Ad. free post - category select AJAX call on sub-category
 	$("#category_select").change(function()
 	{
 		$("#category_select		option[value='0']").remove();	//Removing the dummy elements
@@ -868,12 +864,12 @@ $(document).ready(function()
 		});
 	});
 
-	//Free Add Posting - Start
+	//Free ad Posting - Start
 	if ( $('div#drag_drop_image_upload_div').length)
 	{
 		//Global Congig
 		Dropzone.autoDiscover = false;		//Make dropzone accessable with forms elements for all dropzone
-		//Dropzone File Upload in post free add modal
+		//Dropzone File Upload in post free ad modal
 		var $myDropZone	=	$("div#drag_drop_image_upload_div").dropzone(
 							{
 								url					: $('meta[name=dropped_image_ajax_url]').attr("content"),
@@ -934,7 +930,7 @@ $(document).ready(function()
 			}
 		});
 
-		//Submitting the free add posting form with AJAX
+		//Submitting the free ad posting form with AJAX
 		$("#post_free_add_form").on('submit', function(e)
 		{
 			e.preventDefault(e);
@@ -943,7 +939,7 @@ $(document).ready(function()
 			$("#wait").css("display", "block");
 
 			////////////////////////////////////////////////////////////---Validation Start
-				//Add Product Location
+				//Ad. Product Location
 				if( $("#find_product_location").val().length == 0 || $("#product_location_lat").val().length == 0 || $("#product_location_lon").val().length == 0 )
 				{
 					$("#find_product_location").parent().addClass("has-error");
@@ -987,7 +983,7 @@ $(document).ready(function()
 				{
 					$("#sub_category_select").parent().removeClass("has-error");
 				}
-				//Add Title
+				//Ad. Title
 				if( $("#adtitle").val().length == 0 )
 				{
 					$("#adtitle").parent().addClass("has-error");
@@ -998,7 +994,7 @@ $(document).ready(function()
 				{
 					$("#adtitle").parent().removeClass("has-error");
 				}
-				//Add Price
+				//Ad. Price
 				//isNaN( parseFloat( $("#price").val() ) )
 				if( isNaN( parseFloat( $("#price").val() ) ) )
 				{
@@ -1010,7 +1006,7 @@ $(document).ready(function()
 				{
 					$("#price").parent().removeClass("has-error");
 				}
-				//Add Description
+				//Ad. Description
 				if( $("#description").val().length == 0 )
 				{
 					$("#description").parent().addClass("has-error");
@@ -1055,7 +1051,7 @@ $(document).ready(function()
 			}
 		});
 	}
-	//Free Add Posting  - End
+	//Free Ad Posting  - End
 
 	/*review box open*/
 	$('.review').on('click',function()
@@ -1262,13 +1258,13 @@ $(document).ready(function()
 														});
 	});
 
-	/*Minimize Search filter*/
+	// Minimize Search filter
 	$('.minimize').click(function()
 	{
 		$('.fl').slideToggle();
 	});
 
-	/*Hide Add Detail*/
+	// Hide Ad Detail
 	$('.fp').click(function()
 	{
 		$('.for-pass').slideDown("slow");
@@ -1930,6 +1926,7 @@ $(document).ready(function()
 					}
 				},
 				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
+								{	"data": "id"		},
 								{	"data": "category"		},
 								{	"data": "sub_category"	},
 								{	"data": "owner"			},
@@ -1945,7 +1942,7 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [8],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
 									}
@@ -1972,6 +1969,7 @@ $(document).ready(function()
 						$('#add-description').val(responce_data[0].description);
 						$('#add-price').val(responce_data[0].price);
 						$('#add-owner-name').val(responce_data[0].owner_name);
+						$('#add-owner-email').val(responce_data[0].owner_email);
 						$('#add-category-name').val(responce_data[0].category_name);
 						$('#add-subcategory-name').val(responce_data[0].sub_category_name);
 						$('#add-address').val(responce_data[0].address);
@@ -2015,7 +2013,7 @@ $(document).ready(function()
 				$("#add_title_name").html(data['title']);
 				$('#delete_confirmation_modal').modal('show');
 			});
-			//Delete Add - Confirmation
+			//Delete ad - Confirmation
 			$('#confirm_delete').on('click', function(event)
 			{
 				$.ajax(
@@ -2029,7 +2027,7 @@ $(document).ready(function()
 					{
 						$('#delete_confirmation_modal').modal('hide');
 						addsDataTable.ajax.reload( null, false );
-						alert('Succesfully Deleted Add');
+						alert('Succesfully Deleted Ad');
 					}
 				});
 			});
@@ -2053,13 +2051,14 @@ $(document).ready(function()
 					}
 				},
 				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
-								{	"data": "category"		},
-								{	"data": "sub_category"	},
-								{	"data": "owner"			},
-								{	"data": "title"			},
-								{	"data": "price"			},
-								{	"data": "description"	},
-								{	"data": "address"		},
+								{	"data": "ad_id"			},
+								{	"data": "ad_name"		},
+								{	"data": "owner_name"	},
+								{	"data": "sender_name"	},
+								{	"data": "receiver_name"	},
+								{	"data": "message"	},
+								{	"data": "sent_time"		},
+								{	"data": "read_time"		},
 								{	"data": null			}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
@@ -2068,29 +2067,41 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [8],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
-										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
+										"defaultContent": '<button type="button" class="view btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
 									}
-								],
-				dom: 'l<"toolbar">Bfrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
-				initComplete:	function()	//Adding Custom button in Tools
-								{
-									$("div.toolbar").html('<button onclick="AddNewData()" type="button" class="btn btn-info btn-sm" style="float:right;">Add New Data</button>');
-								}
+								]
 			});
 
-			$('#messages-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
+			$('#messages-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click
 			{
 				var data = messageDataTable.row( $(this).parents('tr') ).data();
-				//alert('Edit - '+data['id']);	//id = index of ID sent from server
-				$('#edit_data_modal').modal('show');
-			});
 
-			$('#messages-datatable tbody').on( 'click', 'button.delete', function ()	//Handeling Delete Button Click
-			{
-				var data = messageDataTable.row( $(this).parents('tr') ).data();
-				alert('Delete - '+data['id']);	//id = index of ID sent from server
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_ajax_url]').attr("content"),
+					dataType: "json",
+					data: 	{	'message_id'	:	data['id']	},
+					success:function(responce_data)
+					{
+						$("#message_ad_name").val(responce_data[0].title);
+						$("#message_ad_owner").val(responce_data[0].owner_name);
+						$("#message_ad_posting_time").val(responce_data[0].ad_posting_time);
+						$("#message_ad_last_edited_time").val(responce_data[0].ad_last_edited_time);
+						$("#message_ad_sender_name").val(responce_data[0].sender_name);
+						$("#message_ad_sender_email").val(responce_data[0].sender_email);
+						$("#message_ad_receiver_name").val(responce_data[0].receiver_name);
+						$("#message_ad_receiver_email").val(responce_data[0].receiver_email);
+						$("#message_ad_message_text").val(responce_data[0].messages_text);
+						$("#message_ad_message_sent_time").val(responce_data[0].message_sent_time);
+						$("#message_ad_receive_time").val(responce_data[0].read_time);
+
+						$('#view_data_modal').modal('show');
+					}
+				});
 			});
 		}
 		else if ($('#public-pages-datatable').length)	//Messages Datatable

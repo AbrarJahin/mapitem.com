@@ -342,17 +342,18 @@ class UserController extends Controller
 				$offerAction='*INVALID*';
 			}
 
-			$advertisement = Advertisement::findOrFail(1);
 			//Adding message
 			$messageText = "Your offer of (".$offer->price.") for (".$advertisement->title.") has been ".$offerAction.".";
 			//Save the message in message thread because message thread is already created at the time of offer sending
-			$messageThread = MessageThread::whereIn('sender_id', [Auth::user()->id, $offer->sender_id])
-											->whereIn('receiver_id', [Auth::user()->id, $offer->sender_id])
+			$messageThread = MessageThread::whereIn('sender_id',		[Auth::user()->id, $offer->sender_id])
+											->whereIn('receiver_id',	[Auth::user()->id, $offer->sender_id])
+											->where('advertisement_id',	$advertisement->id)
 											->first();
 			Message::create([
-								'sender_id'	=> Auth::user()->id,
-								'thread_id'	=> $messageThread->id,
-								'message'	=> $messageText
+								'sender_id'		=>	Auth::user()->id,
+								'receiver_id'	=>	$offer->sender_id,
+								'thread_id'		=>	$messageThread->id,
+								'message'		=>	$messageText
 							]);
 			return $offer;
 		}
@@ -370,9 +371,9 @@ class UserController extends Controller
 	*/
 	public function myWishList()
 	{
-		//return view('user.wishlist.main', [ 'current_page'	=> 'user.wishlist' ]);
 		return view('public.listing.main', [
-												'current_page'			=>	'Add Listing',
+												'current_page'			=>	'Ad Listing',
+												'secondary_page_title'	=>	'My Wishlist',
 												'sort_distance_options'	=>	[
 																				'price_asc'		=>	'Price - Lowest',
 																				'price_desc'	=>	'Price - Highest',

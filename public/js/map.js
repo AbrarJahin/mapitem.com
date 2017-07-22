@@ -638,18 +638,22 @@ function generateMarkers(bounds)
 							}
 							else if(key === 'categories')	//hide and show categories and sub categories
 							{
-								$('span[categoryCount]').html("0");
+								$('#category_filter span[categoryCount]').html("0");	//Put all category value = 0
+								$('#category_filter span[categoryCount]').parent().parent().addClass('hidden-menu-item');	//Hide all element
 								$.each(data, function(index, element)
 								{
-									$('span[categoryCount="'+element.category_id+'"]').html(element.count);
+									$('#category_filter span[categoryCount="'+element.category_id+'"]').html(element.count);
+									$('#category_filter span[categoryCount="'+element.category_id+'"]').parent().parent().removeClass('hidden-menu-item');
 								});
 							}
 							else if(key === 'sub-categories')	//hide and show categories and sub categories
 							{
-								$('span[subCategoryCount]').html("0");
+								$('#category_filter span[subCategoryCount]').html("0");	//Put all sub-category value = 0
+								$('#category_filter span[subCategoryCount]').parent().parent().addClass('hidden-menu-item');	//Hide all sub-category
 								$.each(data, function(index, element)
 								{
-									$('span[subCategoryCount="'+element.sub_category_id+'"]').html(element.count);
+									$('#category_filter span[subCategoryCount="'+element.sub_category_id+'"]').html(element.count);
+									$('#category_filter span[subCategoryCount="'+element.sub_category_id+'"]').parent().parent().removeClass('hidden-menu-item');
 								});
 							}
 						});
@@ -671,7 +675,7 @@ function generateMarkers(bounds)
 	openLastInfoWindow();
 }
 
-function showAddDetail(id)		//Show Add Detail
+function showAddDetail(id)		//Show ad Detail
 {
 	if(is_wishlist_propagated)
 		return;
@@ -849,7 +853,7 @@ function showAddDetail(id)		//Show Add Detail
 					$("#offer_add_owner_email").html(value_all_json.email);
 					$("#offer_add_owner_cell").html(value_all_json.cell_no);
 
-					//Add Detail
+					//Ad Detail
 					$("#add_owner_image").attr("src",value_all_json.profile_picture);
 					$("#add_owner_name").html(value_all_json.user_name);
 
@@ -909,7 +913,7 @@ function ifDeviceIsMobile()		//Check The Device Type
 	return !($('#map').is(":visible"));
 }
 
-function closeAddDetail()		//Show Add Detail
+function closeAddDetail()		//Show ad Detail
 {
 	$('.ad-detail').hide("slow");
 	$('.ad-listing').show("slow");

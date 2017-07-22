@@ -134,7 +134,7 @@ Route::group(['prefix' => '/','namespace' => 'User','middleware' => ['web','norm
 		]);
 
 	//My Adds Page
-	Route::get('my_adds', [
+	Route::get('my_ads', [
 			'uses' => 'UserController@myAddsView',
 			'as' => '.my_adds'
 		]);
@@ -418,6 +418,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 		Route::post('google_analytics_view', [
 				'uses' => 'ViewAjaxController@GoogleAnalyticsViewAjax',
 				'as' => '.google_analytics_view'
+			]);
+
+		Route::post('message_view', [
+				'uses' => 'ViewAjaxController@MessageViewAjax',
+				'as' => '.message_view'
 			]);
 	//View Data AJAX - END
 

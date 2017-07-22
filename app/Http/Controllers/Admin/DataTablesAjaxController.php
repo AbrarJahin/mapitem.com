@@ -212,13 +212,14 @@ class DataTablesAjaxController extends Controller
 		$requestData = Request::all();
 		$columns = array(
 			// datatable column index  => database column name
-			0 => 'categories.name',
-			1 => 'sub_categories.name',
-			2 => 'users.first_name',
-			3 => 'advertisements.title',
-			4 => 'advertisements.price',
-			5 => 'advertisements.description',
-			6 => 'advertisements.address'
+			0 => 'advertisements.id',
+			1 => 'categories.name',
+			2 => 'sub_categories.name',
+			3 => 'users.first_name',
+			4 => 'advertisements.title',
+			5 => 'advertisements.price',
+			6 => 'advertisements.description',
+			7 => 'advertisements.address'
 		);
 		$draw_request_code = $requestData['draw'];
 		$searchParameter = $requestData['search']['value'];
@@ -288,13 +289,14 @@ class DataTablesAjaxController extends Controller
 		$requestData = Request::all();
 		$columns = array(
 			// datatable column index  => database column name
-			0 => 'categories.name',
-			1 => 'sub_categories.name',
-			2 => 'users.first_name',
-			3 => 'advertisements.title',
-			4 => 'advertisements.price',
-			5 => 'advertisements.description',
-			6 => 'advertisements.address'
+			0	=>	'advertisements.id',
+			1	=>	'advertisements.title',
+			2	=>	'owner.first_name',
+			3	=>	'sender.first_name',
+			4	=>	'receiver.first_name',
+			5	=>	'messages.message',
+			6	=>	'messages.created_at',
+			7	=>	'messages.is_read'
 		);
 		$draw_request_code = $requestData['draw'];
 		$searchParameter = $requestData['search']['value'];
@@ -303,19 +305,30 @@ class DataTablesAjaxController extends Controller
 		$limit_start = $requestData['start'];
 		$limit_interval = $requestData['length'];
 		// Base Quary
-		$baseQuery = DB::table('advertisements')
-						->join('users', 'users.id', '=', 'advertisements.user_id')
-						->join('categories', 'categories.id', '=', 'advertisements.category_id')
-						->join('sub_categories', 'sub_categories.id', '=', 'advertisements.sub_category_id')
+		$baseQuery = DB::table('messages')
+						->join('message_threads',	'messages.thread_id',				'=', 'message_threads.id')
+						->join('advertisements',	'message_threads.advertisement_id',	'=', 'advertisements.id')
+						->join('users as owner',	'advertisements.user_id',			'=', 'owner.id')
+						->join('users as sender',	'messages.sender_id',				'=', 'sender.id')
+						->join('users as receiver',	'messages.receiver_id',				'=', 'receiver.id')
 						->select(
-							'advertisements.id as id',
-							'categories.name as category',
-							'sub_categories.name as sub_category',
-							DB::raw('CONCAT(users.first_name," ",users.last_name) as owner'),
-							'advertisements.title as title',
-							'advertisements.price as price',
-							DB::raw('CONCAT( LEFT(advertisements.description , 30) ," ..") as description'),
-							DB::raw('CONCAT( LEFT(advertisements.address , 30) ," ..") as address')
+							'messages.id as id',
+							'advertisements.id as ad_id',
+							'advertisements.title as ad_name',
+							DB::raw('CONCAT(owner.first_name," ",owner.last_name) as owner_name'),
+							DB::raw('CONCAT(sender.first_name," ",sender.last_name) as sender_name'),
+							DB::raw('CONCAT(receiver.first_name," ",receiver.last_name) as receiver_name'),
+							'messages.message',
+							DB::raw("DATE_FORMAT(messages.created_at,'%D %M, %Y %r') AS sent_time"),
+							DB::raw("
+										CASE WHEN messages.is_read = 'readed'
+											THEN
+												DATE_FORMAT(messages.updated_at,'%D %M, %Y %r')
+											ELSE
+												'Not yet read'
+											END
+										as read_time"
+									)
 						);
 		$totalData = $baseQuery->count();
 		//Applying Filters
@@ -327,26 +340,23 @@ class DataTablesAjaxController extends Controller
 									->where(function($query) use ($searchParameter)
 									{
 										$query
-											->where('users.first_name', 'like', '%'.$searchParameter.'%')
-											->orWhere('users.last_name', 'like', '%' . $searchParameter . '%')
-											->orWhere('categories.name', 'like', '%' . $searchParameter . '%')
-											->orWhere('sub_categories.name', 'like', '%' . $searchParameter . '%')
-											->orWhere('advertisements.title', 'like', '%' . $searchParameter . '%')
-											->orWhere('advertisements.price', 'like', '%' . $searchParameter . '%')
-											->orWhere('advertisements.description', 'like', '%' . $searchParameter . '%')
-											->orWhere('advertisements.address', 'like', '%' . $searchParameter . '%');
+											->where('advertisements.title', 'like', '%'.$searchParameter.'%')
+											->orWhere('owner.first_name', 'like', '%' . $searchParameter . '%')
+											->orWhere('sender.first_name', 'like', '%' . $searchParameter . '%')
+											->orWhere('receiver.first_name', 'like', '%' . $searchParameter . '%')
+											->orWhere('messages.message', 'like', '%' . $searchParameter . '%');
 									});
 		}
 		$totalFiltered = $filtered_query->count();
 		//Ordering
-		$filtered_query = $filtered_query->orderBy($order_by_value, $orderingDirection);
+		$filtered_query = $filtered_query->orderBy($order_by_value, $orderingDirection)->orderBy('messages.updated_at', 'ASC');
 		//Limiting for Pagination
 		$data = $filtered_query->skip($limit_start)->take($limit_interval)->get();
 		$json_data = array(
-			"draw" => intval($draw_request_code),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw.
-			"recordsTotal" => intval($totalData),  // total number of records
-			"recordsFiltered" => intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
-			"data" => $data   // total data array
+			"draw"				=> intval($draw_request_code),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw.
+			"recordsTotal"		=> intval($totalData),  // total number of records
+			"recordsFiltered"	=> intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
+			"data"				=> $data   // total data array
 		);
 		return $json_data;
 	}

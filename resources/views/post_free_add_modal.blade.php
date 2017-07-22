@@ -37,7 +37,7 @@
 
 								<div class="row">
 									<div class="col-lg-8">
-										<input name="title" type="text" class="form-control normal-input margin-adj" id="adtitle" placeholder="Ad Title">
+										<input name="title" type="text" class="form-control normal-input margin-adj" id="adtitle" placeholder="Ad. Title">
 									</div>
 									<div class="col-lg-4">
 										<input name="price" type="text" class="form-control normal-input margin-adj" id="price" placeholder="Price">  
@@ -45,7 +45,7 @@
 								</div>
 
 								<div>
-									<textarea id="description" name="description" class="form-control medium-textarea" rows="4" placeholder="Ad Description"></textarea>
+									<textarea id="description" name="description" class="form-control medium-textarea" rows="4" placeholder="Ad. Description"></textarea>
 								</div>
 
 							</div>
@@ -58,11 +58,11 @@
 
 							<div id="tab3" class="tab-pane">
 								{{-- Zoom in and drag and drop pointer on map for getting more accurate location --}}
-								<input name="address" autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad Address">
+								<input name="address" autocomplete="off" type="text" class="form-control normal-input margin-adj" id="find_product_location" placeholder="Ad. Address">
 								<input type="hidden" id="product_location_lat" name="product_geo_location_lat">
 								<input type="hidden" id="product_location_lon" name="product_geo_location_lon">
 								<div class="map-address"></div>
-								<button type="submit" class="green-small2 no-textdecor">Post Free Add</button>
+								<button type="submit" class="green-small2 no-textdecor">Post Free Ad</button>
 							</div>
 
 						</form>

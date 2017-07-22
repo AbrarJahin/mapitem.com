@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>MapItem - {{ $current_page }}</title>
+	<title>MapItem - {{ $secondary_page_title or $current_page }}</title>
 	@include('meta_data')
 	@include('css')
 

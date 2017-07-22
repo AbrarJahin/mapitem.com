@@ -3490,3 +3490,6 @@ input.typeahead.tt-query{
 .blue-medium {
 	background-color: #46a;
 }
+.hidden-menu-item {
+	display:none!important
+}

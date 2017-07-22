@@ -2,7 +2,7 @@
 
 	@if ( !Auth::check() || (Auth::check() && Auth::user()->user_type == "normal_user") )
 		<div class="first-strip">
-			<div class="@if ($current_page === 'Add Listing')
+			<div class="@if ($current_page === 'Ad Listing')
 					container-fluid
 					@else
 					container
@@ -20,14 +20,14 @@
 		<div class="second-strip">
 			<div class="container">
 
-				<div class="@if ($current_page === 'Add Listing')
+				<div class="@if ($current_page === 'Ad Listing')
 							hidden-lg hidden-md-1 hidden-sm hidden-xs
 							@else
 							col-lg-3 col-md-3 hidden-sm hidden-xs
 							@endif"></div>
 
 				<div class="col-lg-3 col-md-3
-							@if ($current_page === 'Add Listing')
+							@if ($current_page === 'Ad Listing')
 							col-sm-3
 							@else
 							col-sm-6
@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="col-lg-3 col-md-3
-							@if ($current_page === 'Add Listing')
+							@if ($current_page === 'Ad Listing')
 							col-sm-4
 							@else
 							col-sm-6
@@ -57,7 +57,7 @@
 		</div>
 	@endif
 	<div class="third-strip">
-		<div class="@if ($current_page === 'Add Listing')
+		<div class="@if ($current_page === 'Ad Listing')
 				container-fluid
 				@else
 				container

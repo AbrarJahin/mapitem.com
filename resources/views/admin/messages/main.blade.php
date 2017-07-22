@@ -7,7 +7,6 @@
 @section('content')
 
 	@include('admin.messages.datatable')
-	@include('admin.messages.add')
-	@include('admin.messages.edit')
+	@include('admin.messages.view')
 
 @endsection

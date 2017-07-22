@@ -97,11 +97,12 @@ class AuthController extends Controller
 											'first_name'	=> 'required',
 											'last_name'		=> 'required',
 											'email'			=> 'required|email|unique:users',
-											'password'		=> 'required|min:3'
+											'password'		=> 'required|min:5'
 										],
 										[
 											'first_name.required'	=>'Please give your first name',
 											'last_name.required'	=>'Please give your first name',
+											'password.min'			=>'Password length should be at least 5 characters',
 											'email.unique'			=>'Email already used, please try a different email'
 										]
 									);

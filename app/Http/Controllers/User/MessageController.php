@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Request;
 use Response;
 use Auth;
+use App\Advertisement;
 use App\MessageThread;
 use App\Message;
 use App\UserNotification;
@@ -41,24 +42,26 @@ class MessageController extends Controller
 		$userNotification->inbox = $userNotification->inbox+1;
 		$userNotification->save();
 
+		$advertisement = Advertisement::findOrFail($requestData['add_id']);
+
 		$messageThread = MessageThread::updateOrCreate(
 															[
-																'sender_id'			=>	Auth::user()->id,
-																'receiver_id'		=>	$requestData['add_owner_id'],
-																'advertisement_id'	=>	$requestData['add_id']
+																'sender_id'			=>	min( Auth::user()->id, $advertisement->user_id ),
+																'receiver_id'		=>	max( Auth::user()->id, $advertisement->user_id ),
+																'advertisement_id'	=>	$advertisement->id
 															],
 															[
-																'title'				=>	substr($requestData['message'], 0, 100),
+																'title'				=>	$advertisement->title,
 																'last_sender_id'	=>	Auth::user()->id,
 																'is_read'			=>	'not_readed'
 															]
 														);
 		Message::create([
-							'sender_id'	=> Auth::user()->id,
-							'thread_id'	=> $messageThread->id,
-							'message'	=> $requestData['message']
+							'sender_id'		=>	Auth::user()->id,
+							'receiver_id'	=>	$advertisement->user_id,
+							'thread_id'		=>	$messageThread->id,
+							'message'		=>	$requestData['message']
 						]);
-		//return Response::json("Your Message Has Been Sent !", 200);
 		return $messageThread;
 	}
 
@@ -116,24 +119,23 @@ class MessageController extends Controller
 	{
 		$requestData = Request::all();
 
-		$message	=	Message::create([
-							'sender_id'	=>	Auth::user()->id,
-							'thread_id'	=>	$requestData['thread_id'],
-							'message'	=>	$requestData['message']
-						]);
-
-		$messageThread = MessageThread::find( $requestData['thread_id'] );
+				$messageThread = MessageThread::find( $requestData['thread_id'] );
 		$notification_owner_id = 0;
 		if($messageThread->sender_id == Auth::user()->id)
 			$notification_owner_id = $messageThread->receiver_id;
 		else
 			$notification_owner_id = $messageThread->sender_id;
 
+		$message	=	Message::create([
+							'sender_id'		=>	Auth::user()->id,
+							'receiver_id'	=>	$notification_owner_id,
+							'thread_id'		=>	$requestData['thread_id'],
+							'message'		=>	$requestData['message']
+						]);
+
 		//Update Message Thread
-		$messageThread->title = substr($requestData['message'],0,18)." ..";
 		$messageThread->last_sender_id = Auth::user()->id;
 		$messageThread->is_read = 'not_readed';
-		//$messageThread->updated_at = $message->created_at;
 		$messageThread->save();
 
 		//Add Notification for Message Sending

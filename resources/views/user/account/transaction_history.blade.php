@@ -10,7 +10,7 @@
 							
 							<th>Type</th>
 							<th>Name</th>
-							<th>Ad Referance</th>
+							<th>Ad. Referance</th>
 							<th>Gross </th>
 						</tr>
 					</thead>

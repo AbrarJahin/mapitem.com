@@ -23,7 +23,7 @@
 
 	{{-- Listing View --}}
 	<div class="listing-right">
-		{{-- Ad Listing --}}
+		{{-- ad Listing --}}
 		<div class="ad-listing">
 			{{-- Filter --}}
 			@include('public.listing.filter')
@@ -32,13 +32,13 @@
 			@include('public.listing.results')
 		</div>
 		<div class="clearfix "></div>
-		{{-- Ad detail --}}
+		{{-- ad detail --}}
 		<div class="ad-detail">
-			{{-- Ad Slider--}}
+			{{-- ad Slider--}}
 			@include('public.listing.slider_images')
 			{{-- Result detail --}}
 			@include('public.listing.add_detail')
-			{{-- Ad Listing --}}
+			{{-- ad Listing --}}
 			<div class="clearfix "></div>
 		</div>
 		<div class="clearfix "></div>

@@ -25,7 +25,7 @@
 
 			<li>
 				<a href="{{ URL::route('admin.adds') }}" @if($current_page=="admin.adds") class="selected" @endif >
-					Adds
+					Ads
 				</a>
 			</li>
 

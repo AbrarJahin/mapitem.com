@@ -104,10 +104,12 @@ class ViewAjaxController extends Controller
 				->join('categories', 'categories.id', '=', 'advertisements.category_id')
 				->join('sub_categories', 'sub_categories.id', '=', 'advertisements.sub_category_id')
 				->select(
+					'advertisements.id as id',
 					'advertisements.title as title',
 					'advertisements.description as description',
 					'advertisements.price as price',
 					DB::raw('CONCAT(users.first_name," ",users.last_name) as owner_name'),
+					'users.email as owner_email',
 					'categories.name as category_name',
 					'sub_categories.name as sub_category_name',
 					'advertisements.address as address',
@@ -133,7 +135,7 @@ class ViewAjaxController extends Controller
 
 	/*
 		URL				-> post: /google_analytics_view
-		Functionality	-> Google Analytics iew AJAX
+		Functionality	-> Google Analytics view AJAX
 		Access			-> Admin
 		Created At		-> 20/05/2017
 		Updated At		-> 20/05/2017
@@ -143,5 +145,48 @@ class ViewAjaxController extends Controller
 	{
 		$requestData = Request::all();
 		return GoogleAnalytics::findOrFail($requestData['id']);
+	}
+
+	/*
+		URL				-> post: /message_view
+		Functionality	-> Message view AJAX
+		Access			-> Admin
+		Created At		-> 19/07/2017
+		Updated At		-> 19/07/2017
+		Created by		-> S. M. Abrar Jahin
+	*/
+	public function MessageViewAjax()
+	{
+		$requestData = Request::all();
+		return DB::table('messages')
+						->join('message_threads',	'messages.thread_id',				'=', 'message_threads.id')
+						->join('advertisements',	'message_threads.advertisement_id',	'=', 'advertisements.id')
+						->join('users as owner',	'advertisements.user_id',			'=', 'owner.id')
+						->join('users as sender',	'messages.sender_id',				'=', 'sender.id')
+						->join('users as receiver',	'messages.receiver_id',				'=', 'receiver.id')
+						->select(
+							'messages.id as id',
+							'advertisements.title as title',
+							DB::raw('CONCAT(owner.first_name," ",owner.last_name) as owner_name'),
+							DB::raw("DATE_FORMAT(advertisements.created_at,'%D %M, %Y %r') AS ad_posting_time"),
+							DB::raw("DATE_FORMAT(advertisements.updated_at,'%D %M, %Y %r') AS ad_last_edited_time"),
+							DB::raw('CONCAT(sender.first_name," ",sender.last_name) as sender_name'),
+							'sender.email as sender_email',
+							DB::raw('CONCAT(receiver.first_name," ",receiver.last_name) as receiver_name'),
+							'receiver.email as receiver_email',
+							'messages.message as messages_text',
+							DB::raw("DATE_FORMAT(messages.created_at,'%D %M, %Y %r') AS message_sent_time"),
+							DB::raw("
+										CASE WHEN messages.is_read = 'readed'
+											THEN
+												DATE_FORMAT(messages.updated_at,'%D %M, %Y %r')
+											ELSE
+												'Not yet read'
+											END
+										as read_time"
+									)
+						)
+						->where('messages.id', '=', $requestData['message_id'])
+						->get();
 	}
 }

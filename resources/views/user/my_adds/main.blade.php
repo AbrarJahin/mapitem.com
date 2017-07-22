@@ -1,7 +1,7 @@
 @extends('user.master')
 
-@section('page_title', 'My Adds')
-@section('meta_page_description', 'Mapitem - All My Adds')
+@section('page_title', 'My Ads')
+@section('meta_page_description', 'Mapitem - All My Ads')
 @section('meta_author', 'S. M. Abrar Jahin')
 
 @section('footer_scripts')
