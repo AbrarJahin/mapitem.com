@@ -638,21 +638,21 @@ function generateMarkers(bounds)
 							}
 							else if(key === 'categories')	//hide and show categories and sub categories
 							{
-								$('#category_filter span[categoryCount]').html("0");	//Put all category value = 0
+								$('span[categoryCount]').html("0");	//Put all category value = 0
 								$('#category_filter span[categoryCount]').parent().parent().addClass('hidden-menu-item');	//Hide all element
 								$.each(data, function(index, element)
 								{
-									$('#category_filter span[categoryCount="'+element.category_id+'"]').html(element.count);
+									$('span[categoryCount="'+element.category_id+'"]').html(element.count);
 									$('#category_filter span[categoryCount="'+element.category_id+'"]').parent().parent().removeClass('hidden-menu-item');
 								});
 							}
 							else if(key === 'sub-categories')	//hide and show categories and sub categories
 							{
-								$('#category_filter span[subCategoryCount]').html("0");	//Put all sub-category value = 0
+								$('span[subCategoryCount]').html("0");	//Put all sub-category value = 0
 								$('#category_filter span[subCategoryCount]').parent().parent().addClass('hidden-menu-item');	//Hide all sub-category
 								$.each(data, function(index, element)
 								{
-									$('#category_filter span[subCategoryCount="'+element.sub_category_id+'"]').html(element.count);
+									$('span[subCategoryCount="'+element.sub_category_id+'"]').html(element.count);
 									$('#category_filter span[subCategoryCount="'+element.sub_category_id+'"]').parent().parent().removeClass('hidden-menu-item');
 								});
 							}
