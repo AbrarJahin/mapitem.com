@@ -7,11 +7,17 @@
 				<th>Add ID</th>
 				<th>Ad Name</th>
 				<th>Ad Owner</th>
+				{{--
 				<th>Add Posting Time</th>
 				<th>Add Last Edit Time</th>
+				--}}
 				<th>Offer Sender</th>
-				<th>Offer Value</th>
+				<th>Offered Price</th>
 				<th>Offer Message</th>
+				{{--
+				<th>Offer Sent Time</th>
+				<th>Offer Review Time</th>
+				--}}
 				<th>Offer Status</th>
 				<th>Action</th>
 			</tr>

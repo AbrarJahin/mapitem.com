@@ -2126,8 +2126,8 @@ $(document).ready(function()
 								{	"data": "ad_id"				},
 								{	"data": "ad_name"			},
 								{	"data": "owner_name"		},
-								{	"data": "ad_posting_time"	},
-								{	"data": "ad_last_edit_time"	},
+								//{	"data": "ad_posting_time"	},
+								//{	"data": "ad_last_edit_time"	},
 								{	"data": "sender_name"		},
 								{	"data": "price"				},
 								{	"data": "message"			},
@@ -2140,7 +2140,7 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [9],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<button type="button" class="view btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
 									}
@@ -2150,31 +2150,19 @@ $(document).ready(function()
 			$('#offers-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click
 			{
 				var data = offerDataTable.row( $(this).parents('tr') ).data();
+				$("#ad_id").val(data['ad_id']);
+				$("#ad_name").val(data['ad_name']);
+				$("#ad_owner").val(data['owner_name']);
+				$("#ad_posting_time").val(data['ad_posting_time']);
+				$("#ad_last_edited_time").val(data['ad_last_edit_time']);
+				$("#offer_sender_name").val(data['sender_name']);
+				$("#offered_price").val(data['price']);
+				$("#offer_message").val(data['message']);
+				$("#offer_sent_time").val(data['offer_sent_time']);
+				$("#offer_review_time").val(data['offer_review_time']);
+				$("#offer_status").val(data['status']);
 
-				$.ajax(
-				{
-					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-					method: "POST",
-					url: $('meta[name=view_ajax_url]').attr("content"),
-					dataType: "json",
-					data: 	{	'message_id'	:	data['id']	},
-					success:function(responce_data)
-					{
-						$("#message_ad_name").val(responce_data[0].title);
-						$("#message_ad_owner").val(responce_data[0].owner_name);
-						$("#message_ad_posting_time").val(responce_data[0].ad_posting_time);
-						$("#message_ad_last_edited_time").val(responce_data[0].ad_last_edited_time);
-						$("#message_ad_sender_name").val(responce_data[0].sender_name);
-						$("#message_ad_sender_email").val(responce_data[0].sender_email);
-						$("#message_ad_receiver_name").val(responce_data[0].receiver_name);
-						$("#message_ad_receiver_email").val(responce_data[0].receiver_email);
-						$("#message_ad_message_text").val(responce_data[0].messages_text);
-						$("#message_ad_message_sent_time").val(responce_data[0].message_sent_time);
-						$("#message_ad_receive_time").val(responce_data[0].read_time);
-
-						$('#view_data_modal').modal('show');
-					}
-				});
+				$('#view_data_modal').modal('show');
 			});
 		}
 		else if ($('#public-pages-datatable').length)	//Messages Datatable

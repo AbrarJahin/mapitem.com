@@ -377,12 +377,10 @@ class DataTablesAjaxController extends Controller
 			0	=>	'advertisements.id',
 			1	=>	'advertisements.title',
 			2	=>	'owner.first_name',
-			3	=>	'advertisements.created_at',
-			4	=>	'advertisements.updated_at',
-			5	=>	'sender.first_name',
-			6	=>	'offers.price',
-			7	=>	'offers.message',
-			8	=>	'offers.status'
+			3	=>	'sender.first_name',
+			4	=>	'offers.price',
+			5	=>	'offers.message',
+			6	=>	'offers.status'
 		);
 		$draw_request_code = $requestData['draw'];
 		$searchParameter = $requestData['search']['value'];
@@ -405,6 +403,16 @@ class DataTablesAjaxController extends Controller
 							DB::raw('CONCAT(sender.first_name," ",sender.last_name) as sender_name'),
 							'offers.price as price',
 							'offers.message as message',
+							DB::raw("DATE_FORMAT(offers.created_at,'%D %M, %Y %r') AS offer_sent_time"),
+							DB::raw("
+										CASE WHEN offers.status <> 'pending'
+											THEN
+												DATE_FORMAT(offers.updated_at,'%D %M, %Y %r')
+											ELSE
+												'Not yet Reviewed'
+											END
+										as offer_review_time"
+									),
 							'offers.status as status'
 						);
 		$totalData = $baseQuery->count();
