@@ -12,7 +12,7 @@
 				<th>Message</th>
 				<th>Sent time</th>
 				<th>Read Time</th>
-				<th style="width: 70px;">Action</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 </table>

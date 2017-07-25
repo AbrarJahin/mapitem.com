@@ -2104,6 +2104,79 @@ $(document).ready(function()
 				});
 			});
 		}
+		else if ($('#offers-datatable').length)	//Messages Datatable
+		{
+			var offerDataTable = $('#offers-datatable').DataTable(
+			{
+				"processing": true,
+				"serverSide": true,
+				"ajax":
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					url : $('meta[name=datatable_ajax_url]').attr("content"), // json AJAX URL - datasource
+					type: "post",  // method  , by default get
+					error: function()
+					{  // error handling
+						$(".offers-datatable-error").html("");
+						$("#offers-datatable").append('<tbody class="offers-datatable-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+						$("#offers-datatable_processing").css("display","none");
+					}
+				},
+				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
+								{	"data": "ad_id"				},
+								{	"data": "ad_name"			},
+								{	"data": "owner_name"		},
+								{	"data": "ad_posting_time"	},
+								{	"data": "ad_last_edit_time"	},
+								{	"data": "sender_name"		},
+								{	"data": "price"				},
+								{	"data": "message"			},
+								{	"data": "status"			},
+								{	"data": null				}
+							],
+				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
+				stateSave: true,
+				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
+									{
+										"orderable": false,		//Turn off ordering
+										"searchable": false,	//Turn off searching
+										"targets": [9],			//Going to last column - 3 is the last column index because o is starting index
+										"data": null,			//Not receiving any data
+										"defaultContent": '<button type="button" class="view btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
+									}
+								]
+			});
+
+			$('#offers-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click
+			{
+				var data = offerDataTable.row( $(this).parents('tr') ).data();
+
+				$.ajax(
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					method: "POST",
+					url: $('meta[name=view_ajax_url]').attr("content"),
+					dataType: "json",
+					data: 	{	'message_id'	:	data['id']	},
+					success:function(responce_data)
+					{
+						$("#message_ad_name").val(responce_data[0].title);
+						$("#message_ad_owner").val(responce_data[0].owner_name);
+						$("#message_ad_posting_time").val(responce_data[0].ad_posting_time);
+						$("#message_ad_last_edited_time").val(responce_data[0].ad_last_edited_time);
+						$("#message_ad_sender_name").val(responce_data[0].sender_name);
+						$("#message_ad_sender_email").val(responce_data[0].sender_email);
+						$("#message_ad_receiver_name").val(responce_data[0].receiver_name);
+						$("#message_ad_receiver_email").val(responce_data[0].receiver_email);
+						$("#message_ad_message_text").val(responce_data[0].messages_text);
+						$("#message_ad_message_sent_time").val(responce_data[0].message_sent_time);
+						$("#message_ad_receive_time").val(responce_data[0].read_time);
+
+						$('#view_data_modal').modal('show');
+					}
+				});
+			});
+		}
 		else if ($('#public-pages-datatable').length)	//Messages Datatable
 		{
 			$('.wysihtml5').wysihtml5({
