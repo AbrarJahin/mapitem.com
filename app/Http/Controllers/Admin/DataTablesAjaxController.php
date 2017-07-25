@@ -287,6 +287,7 @@ class DataTablesAjaxController extends Controller
 	public function messagesDatableAjax()
 	{
 		$requestData = Request::all();
+
 		$columns = array(
 			// datatable column index  => database column name
 			0	=>	'advertisements.id',
@@ -299,11 +300,22 @@ class DataTablesAjaxController extends Controller
 			7	=>	'messages.is_read'
 		);
 		$draw_request_code = $requestData['draw'];
-		$searchParameter = $requestData['search']['value'];
+		//$searchParameter = $requestData['search']['value'];
 		$order_by_value = $columns[$requestData['order'][0]['column']];
 		$orderingDirection = $requestData['order'][0]['dir'];
 		$limit_start = $requestData['start'];
 		$limit_interval = $requestData['length'];
+
+		//Get Search Params
+		$ad_id		= $requestData['columns'][0]['search']['value'];
+		$ad_name	= $requestData['columns'][1]['search']['value'];
+		$ad_owner	= $requestData['columns'][2]['search']['value'];
+		$sender		= $requestData['columns'][3]['search']['value'];
+		$receiver	= $requestData['columns'][4]['search']['value'];
+		$message	= $requestData['columns'][5]['search']['value'];
+		$sent		= $requestData['columns'][6]['search']['value'];
+		$received	= $requestData['columns'][7]['search']['value'];
+
 		// Base Quary
 		$baseQuery = DB::table('messages')
 						->join('message_threads',	'messages.thread_id',				'=', 'message_threads.id')
@@ -334,19 +346,74 @@ class DataTablesAjaxController extends Controller
 		//Applying Filters
 		////Search Filtering
 		$filtered_query = $baseQuery;
-		if (!empty($searchParameter))
-		{
-			$filtered_query = $filtered_query
-									->where(function($query) use ($searchParameter)
-									{
-										$query
-											->where('advertisements.title', 'like', '%'.$searchParameter.'%')
-											->orWhere('owner.first_name', 'like', '%' . $searchParameter . '%')
-											->orWhere('sender.first_name', 'like', '%' . $searchParameter . '%')
-											->orWhere('receiver.first_name', 'like', '%' . $searchParameter . '%')
-											->orWhere('messages.message', 'like', '%' . $searchParameter . '%');
-									});
-		}
+
+		//Search Param Filter - Start
+			if (strlen($ad_id)>0)
+			{
+				$filtered_query = $filtered_query
+										->where(function($query) use ($ad_id)
+										{
+											$query->where('advertisements.id', 'like', '%'.$ad_id.'%');
+										});
+			}
+			if (strlen($ad_name)>0)
+			{
+				$filtered_query = $filtered_query
+										->where(function($query) use ($ad_name)
+										{
+											$query->where('advertisements.title', 'like', '%'.$ad_name.'%');
+										});
+			}
+			if (strlen($ad_owner)>0)
+			{
+				$filtered_query = $filtered_query
+										->where(function($query) use ($ad_owner)
+										{
+											$query->where(DB::raw('CONCAT(owner.first_name," ",owner.last_name)'), 'like', '%'.$ad_owner.'%');
+										});
+			}
+			if (strlen($sender)>0)
+			{
+				$filtered_query = $filtered_query
+										->where(function($query) use ($sender)
+										{
+											$query->where(DB::raw('CONCAT(sender.first_name," ",sender.last_name)'), 'like', '%'.$sender.'%');
+										});
+			}
+			if (strlen($receiver)>0)
+			{
+				$filtered_query = $filtered_query
+										->where(function($query) use ($receiver)
+										{
+											$query->where(DB::raw('CONCAT(receiver.first_name," ",receiver.last_name)'), 'like', '%'.$receiver.'%');
+										});
+			}
+			if (strlen($message)>0)
+			{
+				$filtered_query = $filtered_query
+										->where(function($query) use ($message)
+										{
+											$query->where('messages.message', 'like', '%'.$message.'%');
+										});
+			}
+			if (strlen($sent)>0)
+			{
+				$filtered_query = $filtered_query
+										->where(function($query) use ($sent)
+										{
+											$query->whereDate('messages.created_at', '=', DB::raw('DATE_FORMAT('.$sent.',"%y-%m-%d")'));
+										});
+			}
+			if (strlen($received)>0)
+			{
+				$filtered_query = $filtered_query
+										->where(function($query) use ($received)
+										{
+											$query->whereDate('messages.updated_at', '=', DB::raw('DATE_FORMAT('.$received.',"%y-%m-%d")'));
+										});
+			}
+		//Search Param Filter - End
+
 		$totalFiltered = $filtered_query->count();
 		//Ordering
 		$filtered_query = $filtered_query->orderBy($order_by_value, $orderingDirection)->orderBy('messages.updated_at', 'ASC');

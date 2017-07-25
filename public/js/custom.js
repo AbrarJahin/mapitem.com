@@ -2037,7 +2037,9 @@ $(document).ready(function()
 			var messageDataTable = $('#messages-datatable').DataTable(
 			{
 				"processing": true,
+				"orderCellsTop": true,
 				"serverSide": true,
+				"deferRender": true,		//For Speed up procesing time
 				"ajax":
 				{
 					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -2061,8 +2063,18 @@ $(document).ready(function()
 								{	"data": "read_time"		},
 								{	"data": null			}
 							],
-				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
-				stateSave: true,
+				stateSave: false,
+				"language":{					//Custom Message Setting
+						"lengthMenu": "Display _MENU_ records per page",	//Customizing menu Text
+						"zeroRecords": "Nothing found - sorry",				//Customizing zero record text - filtered
+						"info": "Showing page _PAGE_ of _PAGES_",			//Customizing showing record no
+						"infoEmpty": "No records available",				//Customizing zero record message - base
+						"infoFiltered": "(filtered from _MAX_ total records)"	//Customizing filtered message
+					},
+
+				"lengthMenu": [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],		//For customizing number of data sets per page
+				dom: 'lBrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
+
 				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
 									{
 										"orderable": false,		//Turn off ordering
@@ -2072,6 +2084,21 @@ $(document).ready(function()
 										"defaultContent": '<button type="button" class="view btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
 									}
 								]
+			});
+
+			//Custom Search Boxes-Start////////////////////////////////////////////////////
+				//All searching elements are created from HTML
+				// Apply the search - send the values to server
+				$('.messages-search-input').on( 'keyup change', function ()
+				{
+					var index =$(this).attr('id');	// getting column index
+					var value =$(this).val();		// getting search input value
+					messageDataTable.columns(index).search(value).draw();
+				});
+			//Custom Search Boxes-End//////////////////////////////////////////////////////
+
+			$('.datepicker').datepicker({
+				format: "dd/mm/yyyy"
 			});
 
 			$('#messages-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click
@@ -2126,15 +2153,12 @@ $(document).ready(function()
 								{	"data": "ad_id"				},
 								{	"data": "ad_name"			},
 								{	"data": "owner_name"		},
-								//{	"data": "ad_posting_time"	},
-								//{	"data": "ad_last_edit_time"	},
 								{	"data": "sender_name"		},
 								{	"data": "price"				},
 								{	"data": "message"			},
 								{	"data": "status"			},
 								{	"data": null				}
 							],
-				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
 				stateSave: true,
 				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
 									{
