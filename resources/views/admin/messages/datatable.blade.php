@@ -10,7 +10,7 @@
 			<th>Sender</th>
 			<th>Receiver</th>
 			<th>Message</th>
-			<th>Sent time</th>
+			<th>Sent Time</th>
 			<th>Read Time</th>
 			<th>Action</th>
 		</tr>
@@ -21,9 +21,11 @@
 			<th><input type="text" id="3" placeholder="Search Sender" class="messages-search-input form-control"></th>
 			<th><input type="text" id="4" placeholder="Search Receiver" class="messages-search-input form-control"></th>
 			<th><input type="text" id="5" placeholder="Search Message" class="messages-search-input form-control"></th>
-			<th><input type="text" id="6" placeholder="Sent Date (YYYY-mm-dd)" class="messages-search-input form-control datepicker"></th>
-			<th><input type="text" id="7" placeholder="Read Date (YYYY-mm-dd)" class="messages-search-input form-control datepicker"></th>
+			<th><input type="text" id="6" placeholder="Set Sent Date" class="messages-search-input form-control datepicker"></th>
+			<th><input type="text" id="7" placeholder="Set Read Date" class="messages-search-input form-control datepicker"></th>
 			<th><input type="hidden"></th>
 		</tr>
 	</thead>
 </table>
+
+<font color="red">* All showes time here are server time</font>

@@ -2098,7 +2098,12 @@ $(document).ready(function()
 			//Custom Search Boxes-End//////////////////////////////////////////////////////
 
 			$('.datepicker').datepicker({
-				format: "dd/mm/yyyy"
+				format: "mm/dd/yyyy",
+				clearBtn: true,
+				startDate: "01/01/1925",
+				endDate: getCurrentDate(),
+				weekStart: 0,
+				autoclose: true
 			});
 
 			$('#messages-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click

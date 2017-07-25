@@ -9,9 +9,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.min.css">
 @endsection
 
-@section('footer_scripts')
+@section('ExtraJsLibraries')
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
-	@parent
 @endsection
 
 @section('content')

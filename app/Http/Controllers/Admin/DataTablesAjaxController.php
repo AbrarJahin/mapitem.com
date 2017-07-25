@@ -401,7 +401,7 @@ class DataTablesAjaxController extends Controller
 				$filtered_query = $filtered_query
 										->where(function($query) use ($sent)
 										{
-											$query->whereDate('messages.created_at', '=', DB::raw('DATE_FORMAT('.$sent.',"%y-%m-%d")'));
+											$query->whereRaw("DATE(messages.created_at) = STR_TO_DATE('".$sent."', '%m/%d/%Y')");
 										});
 			}
 			if (strlen($received)>0)
@@ -409,7 +409,9 @@ class DataTablesAjaxController extends Controller
 				$filtered_query = $filtered_query
 										->where(function($query) use ($received)
 										{
-											$query->whereDate('messages.updated_at', '=', DB::raw('DATE_FORMAT('.$received.',"%y-%m-%d")'));
+											$query	->where('messages.is_read', 'readed')
+													->whereRaw("DATE(messages.updated_at) = STR_TO_DATE('".$received."', '%m/%d/%Y')");
+													//->whereRaw('DATE(messages.updated_at) = STR_TO_DATE("?", "%m/%d/%Y")', [$received]);
 										});
 			}
 		//Search Param Filter - End
