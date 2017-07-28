@@ -2102,8 +2102,11 @@ $(document).ready(function()
 				clearBtn: true,
 				startDate: "01/01/1925",
 				endDate: getCurrentDate(),
-				weekStart: 0,
-				autoclose: true
+				weekStart: 1,
+				autoclose: true,
+				enableOnReadonly: false,
+				daysOfWeekHighlighted: [0,6],
+				todayHighlight: true
 			});
 
 			$('#messages-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click
