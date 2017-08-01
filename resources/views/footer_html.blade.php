@@ -62,7 +62,7 @@
 				@else
 				container
 				@endif">
-			© Copyright Mapitems {{ date("Y") }}
+			© Copyright Mapitem {{ date("Y") }}
 		</div>
 	</div> 
 </footer>

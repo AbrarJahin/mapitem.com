@@ -100,7 +100,7 @@ class AdminController extends Controller
 	*/
 	public function showOfferView()
 	{
-		return view('admin.users.main', [ 'current_page'	=> 'admin.offers' ]);
+		return view('admin.offers.main', [ 'current_page'	=> 'admin.offers' ]);
 	}
 
 	/*

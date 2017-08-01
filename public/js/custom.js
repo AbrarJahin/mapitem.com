@@ -2037,7 +2037,9 @@ $(document).ready(function()
 			var messageDataTable = $('#messages-datatable').DataTable(
 			{
 				"processing": true,
+				"orderCellsTop": true,
 				"serverSide": true,
+				"deferRender": true,		//For Speed up procesing time
 				"ajax":
 				{
 					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -2061,8 +2063,18 @@ $(document).ready(function()
 								{	"data": "read_time"		},
 								{	"data": null			}
 							],
-				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
-				stateSave: true,
+				stateSave: false,
+				"language":{					//Custom Message Setting
+						"lengthMenu": "Display _MENU_ records per page",	//Customizing menu Text
+						"zeroRecords": "Nothing found - sorry",				//Customizing zero record text - filtered
+						"info": "Showing page _PAGE_ of _PAGES_",			//Customizing showing record no
+						"infoEmpty": "No records available",				//Customizing zero record message - base
+						"infoFiltered": "(filtered from _MAX_ total records)"	//Customizing filtered message
+					},
+
+				"lengthMenu": [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],		//For customizing number of data sets per page
+				dom: 'lBrtip',	//"Bfrtip" is for column visiblity - B F and R become visible
+
 				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
 									{
 										"orderable": false,		//Turn off ordering
@@ -2072,6 +2084,29 @@ $(document).ready(function()
 										"defaultContent": '<button type="button" class="view btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
 									}
 								]
+			});
+
+			//Custom Search Boxes-Start////////////////////////////////////////////////////
+				//All searching elements are created from HTML
+				// Apply the search - send the values to server
+				$('.messages-search-input').on( 'keyup change', function ()
+				{
+					var index =$(this).attr('id');	// getting column index
+					var value =$(this).val();		// getting search input value
+					messageDataTable.columns(index).search(value).draw();
+				});
+			//Custom Search Boxes-End//////////////////////////////////////////////////////
+
+			$('.datepicker').datepicker({
+				format: "mm/dd/yyyy",
+				clearBtn: true,
+				startDate: "01/01/1925",
+				endDate: getCurrentDate(),
+				weekStart: 1,
+				autoclose: true,
+				enableOnReadonly: false,
+				daysOfWeekHighlighted: [0,6],
+				todayHighlight: true
 			});
 
 			$('#messages-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click
@@ -2102,6 +2137,64 @@ $(document).ready(function()
 						$('#view_data_modal').modal('show');
 					}
 				});
+			});
+		}
+		else if ($('#offers-datatable').length)	//Messages Datatable
+		{
+			var offerDataTable = $('#offers-datatable').DataTable(
+			{
+				"processing": true,
+				"serverSide": true,
+				"ajax":
+				{
+					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+					url : $('meta[name=datatable_ajax_url]').attr("content"), // json AJAX URL - datasource
+					type: "post",  // method  , by default get
+					error: function()
+					{  // error handling
+						$(".offers-datatable-error").html("");
+						$("#offers-datatable").append('<tbody class="offers-datatable-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+						$("#offers-datatable_processing").css("display","none");
+					}
+				},
+				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
+								{	"data": "ad_id"				},
+								{	"data": "ad_name"			},
+								{	"data": "owner_name"		},
+								{	"data": "sender_name"		},
+								{	"data": "price"				},
+								{	"data": "message"			},
+								{	"data": "status"			},
+								{	"data": null				}
+							],
+				stateSave: true,
+				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
+									{
+										"orderable": false,		//Turn off ordering
+										"searchable": false,	//Turn off searching
+										"targets": [7],			//Going to last column - 3 is the last column index because o is starting index
+										"data": null,			//Not receiving any data
+										"defaultContent": '<button type="button" class="view btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>'
+									}
+								]
+			});
+
+			$('#offers-datatable tbody').on( 'click', 'button.view', function ()	//Handeling Edit Button Click
+			{
+				var data = offerDataTable.row( $(this).parents('tr') ).data();
+				$("#ad_id").val(data['ad_id']);
+				$("#ad_name").val(data['ad_name']);
+				$("#ad_owner").val(data['owner_name']);
+				$("#ad_posting_time").val(data['ad_posting_time']);
+				$("#ad_last_edited_time").val(data['ad_last_edit_time']);
+				$("#offer_sender_name").val(data['sender_name']);
+				$("#offered_price").val(data['price']);
+				$("#offer_message").val(data['message']);
+				$("#offer_sent_time").val(data['offer_sent_time']);
+				$("#offer_review_time").val(data['offer_review_time']);
+				$("#offer_status").val(data['status']);
+
+				$('#view_data_modal').modal('show');
 			});
 		}
 		else if ($('#public-pages-datatable').length)	//Messages Datatable

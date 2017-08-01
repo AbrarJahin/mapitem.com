@@ -366,6 +366,11 @@ Route::group(['prefix' => '/','namespace' => 'Admin','middleware' => ['web','adm
 				'as' => '.messages_datable'
 			]);
 
+		Route::post('offers_datable', [
+				'uses' => 'DataTablesAjaxController@offersDatableAjax',
+				'as' => '.offers_datable'
+			]);
+
 		Route::post('public_pages_datable', [
 				'uses' => 'DataTablesAjaxController@publicPagesDatableAjax',
 				'as' => '.public_pages_datable'
