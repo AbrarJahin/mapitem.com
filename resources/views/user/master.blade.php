@@ -42,6 +42,26 @@
 @include('footer_html')
 @include('user.js')
 
+{{-- Templrary payment support message popup - Started --}}
+<div class="modal fade" id="not_available" role="dialog">
+	<div class="modal-dialog">
+		{{-- Modal content--}}
+		<div class="modal-content" >
+			<div class="modal-header modal-header-warning">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="glyphicon glyphicon-warning-sign"></i> Please Be Patient</h4>
+			</div>
+			<div class="modal-body">
+				<p>This feature is not completed yet when it will be completed, we will let you know!</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+{{-- Templrary payment support message popup - END --}}
+
 </body>
 {!! $google_analytics_script or '' !!}
 </html>

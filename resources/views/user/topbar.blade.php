@@ -4,7 +4,7 @@
 	{{-- Collect the nav links, forms, and other content for toggling --}}
 	<div class="" id="bs-example-navbar-collapse-2">
 		<ul class="nav navbar-nav navbar-left">
-			<li class="">
+			<li>
 				<a href="{{ URL::route('user.dashboard') }}" @if($current_page=="user.dashboard") class="selected" @endif > Dashboard  </a>
 			</li>
 			<li>
@@ -27,7 +27,7 @@
 					@endif
 				</a>
 			</li>
-			<li class="">
+			<li>
 				<a href="{{ URL::route('user.inbox') }}" @if($current_page=="user.inbox") class="selected" @endif >
 					Inbox
 					@if($no_of_new_message > 0)
@@ -37,11 +37,14 @@
 					@endif
 				</a>
 			</li>
-			<li class="">
+			<li>
 				<a href="{{ URL::route('user.profile') }}" @if($current_page=="user.profile") class="selected" @endif > My Profile  </a>
 			</li>
-			<li class="">
-				<a href="{{ URL::route('user.account') }}" @if($current_page=="user.account") class="selected" @endif > Account </a>
+			<li>
+				{{--
+					<a href="{{ URL::route('user.account') }}" @if($current_page=="user.account") class="selected" @endif > Account </a>
+				--}}
+				<a @if($current_page=="user.account") class="selected" @endif data-toggle="modal" data-target="#not_available" href="#"> Account </a>
 			</li>
 		</ul>
 	</div>
