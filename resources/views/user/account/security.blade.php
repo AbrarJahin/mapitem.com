@@ -1,4 +1,4 @@
-<div class="tab-pane" id="c">
+<div class="tab-pane active" id="c">
 	<div class="s-box">
 		<h4>Security Settings</h4>
 		<p>Change Password</p>

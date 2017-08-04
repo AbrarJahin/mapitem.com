@@ -41,10 +41,7 @@
 				<a href="{{ URL::route('user.profile') }}" @if($current_page=="user.profile") class="selected" @endif > My Profile  </a>
 			</li>
 			<li>
-				{{--
-					<a href="{{ URL::route('user.account') }}" @if($current_page=="user.account") class="selected" @endif > Account </a>
-				--}}
-				<a @if($current_page=="user.account") class="selected" @endif data-toggle="modal" data-target="#not_available" href="#"> Account </a>
+				<a href="{{ URL::route('user.account') }}" @if($current_page=="user.account") class="selected" @endif > Account </a>
 			</li>
 		</ul>
 	</div>
