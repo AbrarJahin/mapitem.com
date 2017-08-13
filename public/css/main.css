@@ -2704,11 +2704,17 @@ body {
 	-moz-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);
 	box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);
 	position: fixed;
-	background:#37474f;
+	background:#424242;
 	}
-	.cbp-spmenu li a{
+	.cbp-spmenu ul li a.dropdown-toggle{
 		color:white
 	}
+	.navbar-nav li a{
+		color:white
+		}
+	.navbar-nav a{
+		color:white
+		}
 	.cbp-spmenu-vertical {
 	width: 250px;
 	height: 100%;
