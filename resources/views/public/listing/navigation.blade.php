@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		{{-- Brand and toggle get grouped for better mobile display --}}
 		<div class="navbar-header">
-        	<button id="showRightPush">Show/Hide Right Push Menu</button>
+        	
 			<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
@@ -17,6 +17,7 @@
 			@include('nav_filters')
 
 			<div class="clearfix visible-xs-block"></div>
+            <button id="showRightPush">Show/Hide Right Push Menu</button>
             <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
                 <ul class="nav navbar-nav navbar-right ip-nav">
                     @if (Auth::check())
