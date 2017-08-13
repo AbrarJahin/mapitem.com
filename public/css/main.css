@@ -2706,15 +2706,9 @@ body {
 	position: fixed;
 	background:#424242;
 	}
-	.cbp-spmenu ul li a.dropdown-toggle{
-		color:white
+	.ip-nav li a {
+    	color: #E0E0E0!important ;
 	}
-	.navbar-nav li a{
-		color:white
-		}
-	.navbar-nav a{
-		color:white
-		}
 	.cbp-spmenu-vertical {
 	width: 250px;
 	height: 100%;
@@ -2841,7 +2835,7 @@ body {
 		margin-right: 0;
 	}
 	.ip-nav li a {
-		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 		font-size: 12pt !important;
 		padding-left: 20px !important;
 	}
