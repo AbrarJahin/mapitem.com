@@ -2700,7 +2700,9 @@ body {
 
 @media(max-width:767px){
 	.cbp-spmenu {
-	background: #47a3da;
+	-webkit-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.75);
+	box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.75);
 	position: fixed;
 	}
 	.cbp-spmenu-vertical {
