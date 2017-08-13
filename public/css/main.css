@@ -2699,6 +2699,16 @@ body {
 }
 
 @media(max-width:767px){
+	.cbp-spmenu {
+	background: #47a3da;
+	position: fixed;
+	}
+	.cbp-spmenu-vertical {
+	width: 240px;
+	height: 100%;
+	top: 0;
+	z-index: 1000;
+	}
 	.width-adj11 {
 	float: left!important;
 	width: 100%!important;
