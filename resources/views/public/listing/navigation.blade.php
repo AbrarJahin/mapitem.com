@@ -1,8 +1,8 @@
-<nav class="navbar navbar-inverse navbar-fixed-top ip-adj2" role="navigation">
+<nav class="navbar navbar-inverse ip-adj2" role="navigation">
 	<div class="container-fluid">
 		{{-- Brand and toggle get grouped for better mobile display --}}
 		<div class="navbar-header">
-        	<button id="showRightPush">Show/Hide Right Push Menu</button>
+        	
 			<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
@@ -38,6 +38,7 @@
                     </li>
                 </ul>
              </div>
+             <button id="showRightPush">Show/Hide Right Push Menu</button>
 		</div>
 		{{-- /.navbar-collapse --}}
 	</div>
