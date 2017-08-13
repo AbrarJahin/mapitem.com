@@ -978,6 +978,10 @@ footer#page_footer{
 	position: relative;
 	left: 0;
 }
+.cbp-spmenu-push .header-minus {
+    margin-top: -20px;
+    padding-top: 0;
+}
 
 .cbp-spmenu-push-toright {
 	left: 240px;
