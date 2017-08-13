@@ -847,10 +847,8 @@ footer#page_footer{
 	top: 16px;
 }
 <!-- push menu start -->
-.cbp-spmenu {
-	background: #47a3da;
-	position: fixed;
-}
+
+
 .main > section {
 	max-width: 260px;
 	width: 90%;
@@ -860,6 +858,10 @@ footer#page_footer{
 .main > section h2 {
 	font-weight: 300;
 	color: #ccc;
+}
+.cbp-spmenu {
+	background: #47a3da;
+	position: fixed;
 }
 
 .main > section button {
