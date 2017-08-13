@@ -17,7 +17,7 @@
 			@include('nav_filters')
 
 			<div class="clearfix visible-xs-block"></div>
-            <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+            <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
                 <ul class="nav navbar-nav navbar-right ip-nav">
                     @if (Auth::check())
                         <li class="dropdown">
@@ -37,7 +37,7 @@
                         <a href="#" class="def" data-toggle="modal" data-target="@if (Auth::check())#pfa @else #lgn-pup @endif">Post free ad</a>
                     </li>
                 </ul>
-             </nav>
+             </div>
              
 		</div>
 		{{-- /.navbar-collapse --}}

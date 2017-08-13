@@ -846,8 +846,8 @@ footer#page_footer{
 	right: 22px;
 	top: 16px;
 }
-<!-- push menu start -->
 
+/*push menu start*/
 
 .main > section {
 	max-width: 260px;
@@ -1019,7 +1019,8 @@ footer#page_footer{
 	font-size: 0.8em;
 }
 
-<!-- push menu end -->
+/*push menu end*/
+
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
 	.dn {
 		height: 51px;
