@@ -6,6 +6,7 @@
 		@include('css')
 		{{-- MaxImage CDN Not Found in the latest vertion which is used --}}
 		<link rel="stylesheet" href="{{ URL::asset('css/jquery.maximage.css') }}" type="text/css" media="screen" title="CSS" charset="utf-8" />
+        <script src="{{ URL::asset('js/modernizr.custom.js') }}"></script>
 	</head>
 
 	<body>
@@ -38,6 +39,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
 		{{-- Pages JS --}}
 		<script src="{{ URL::asset('js/page.js') }}"></script>
+        {{-- Push Menu --}}
+        <script src="{{ URL::asset('js/classie.js') }}"></script>
 	{{-- Footer Scripts - End --}}
 	</body>
 	{!! $google_analytics_script or '' !!}

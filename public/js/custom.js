@@ -1,3 +1,21 @@
+var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+				body = document.body;
+
+			
+			showRightPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toleft' );
+				classie.toggle( menuRight, 'cbp-spmenu-open' );
+				disableOther( 'showRightPush' );
+			};
+			function disableOther( button ) {
+				
+				if( button !== 'showRightPush' ) {
+					classie.toggle( showRightPush, 'disabled' );
+				}
+			}
+
+
 //Global variables
 var latitude, longitude, searchLocationName;
 var is_tab_opened_before =0;

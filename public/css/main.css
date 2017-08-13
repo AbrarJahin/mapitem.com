@@ -994,7 +994,28 @@ footer#page_footer{
 	transition: all 0.3s ease;
 }
 
-/* Example media queries */
+.main > section {
+	max-width: 260px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.main > section h2 {
+	font-weight: 300;
+	color: #ccc;
+}
+
+.main > section button {
+	border: none;
+	background: #47a3da;
+	color: #fff;
+	padding: 1.5em;
+	display: block;
+	width: 100%;
+	cursor: pointer;
+	margin: 10px 0;
+	font-size: 0.8em;
+}
 
 <!-- push menu end -->
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
