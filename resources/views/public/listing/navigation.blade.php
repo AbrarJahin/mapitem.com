@@ -1,14 +1,14 @@
-<nav class="navbar navbar-inverse ip-adj2" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top ip-adj2 cbp-spmenu-push" role="navigation">
 	<div class="container-fluid">
 		{{-- Brand and toggle get grouped for better mobile display --}}
 		<div class="navbar-header">
         	
-			<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<button id="showRightPush" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			</button>-->
+			</button>
 			<a class="navbar-brand ipl" href="{{ URL::route('index') }}"><img src="{{ URL::asset('images/blockhunt-logo-minified.png') }}"></a>
 		</div>
 		{{-- Collect the nav links, forms, and other content for toggling --}}
@@ -17,7 +17,7 @@
 			@include('nav_filters')
 
 			<div class="clearfix visible-xs-block"></div>
-            <button id="showRightPush">Show/Hide Right Push Menu</button>
+            
             <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
                 <ul class="nav navbar-nav navbar-right ip-nav">
                     @if (Auth::check())
