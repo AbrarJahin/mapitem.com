@@ -2708,6 +2708,7 @@ body {
 	height: 100%;
 	top: 0;
 	z-index: 1000;
+	overflow:scroll
 	}
 	.width-adj11 {
 	float: left!important;
@@ -2824,13 +2825,13 @@ body {
 		width: 100%
 	}
 	.ip-nav{
-		margin-left: 16px;
+		margin-left: 0px;
 		margin-right: 0;
 	}
-	.ip-nav li a{
-		padding-left: 0px!important;
-		font-size: 12pt!important;
-		
+	.ip-nav li a {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		font-size: 12pt !important;
+		padding-left: 10px !important;
 	}
 	.ip-nav li ul li a{
 		color: #d5d5d5!important
