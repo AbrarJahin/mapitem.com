@@ -11,8 +11,9 @@
 			<a class="navbar-brand ipl" href="{{ URL::route('index') }}"><img src="{{ URL::asset('images/blockhunt-logo-minified.png') }}"></a>
 		</div>
 		{{-- Collect the nav links, forms, and other content for toggling --}}
+        <div class="nf">@include('nav_filters')</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			@include('nav_filters')
+			
 			<div class="clearfix visible-xs-block"></div>
             <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
                 <ul class="nav navbar-nav navbar-right ip-nav">
