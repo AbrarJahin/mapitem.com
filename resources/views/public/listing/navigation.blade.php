@@ -12,7 +12,7 @@
             <a href="#" class="nf-placeholder">Search By Category</a>
 		</div>
 		{{-- Collect the nav links, forms, and other content for toggling --}}
-        <div class="nf">@include('nav_filters')</div>
+        <div class="nf-hide">@include('nav_filters')</div>
         
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			
