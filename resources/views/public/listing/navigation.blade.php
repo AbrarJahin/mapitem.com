@@ -12,7 +12,7 @@
 		</div>
 		{{-- Collect the nav links, forms, and other content for toggling --}}
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<?php /*?>@include('nav_filters')<?php */?>
+			@include('nav_filters')
 			<div class="clearfix visible-xs-block"></div>
             <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
                 <ul class="nav navbar-nav navbar-right ip-nav">
