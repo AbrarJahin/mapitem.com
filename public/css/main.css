@@ -2702,6 +2702,7 @@ body {
 	.nf-placeholder{
 		}
 	.nf{
+		display:none
 		}
 	.cbp-spmenu {
 	-webkit-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);

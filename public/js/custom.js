@@ -1,3 +1,10 @@
+$(document).ready(function(){
+	$(".nf").slideUp();
+    $(".nf-placeholder").click(function(){
+        $(".nf").slideDown();
+    });
+});
+
 var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
 				body = document.body;
 
