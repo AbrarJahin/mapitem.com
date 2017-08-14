@@ -15,6 +15,7 @@
 					<a href="{{ strpos($page->url, '/') !== false ? $page->url : route('public_page', ['url' => $page->url]) }}">{{ $page->small_title }}</a>
 					@php ($i++) 
 				@endforeach
+				| <a href="{{ route('sitemap.index') }}" target="_blank">Sitemap</a>
 			</div>
 		</div>
 		<div class="second-strip">

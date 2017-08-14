@@ -122,6 +122,23 @@ Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 			'uses' => 'PublicController@getPublicPage',
 			'as' => 'public_page'
 		]);
+
+	//Sitemapes - Start
+		Route::get('sitemap.xml', [
+				'uses' => 'SitemapController@index',
+				'as' => 'sitemap.index'
+			]);
+
+		Route::get('sitemap/public', [
+				'uses' => 'SitemapController@publicPages',
+				'as' => 'sitemap.public'
+			]);
+
+		Route::get('sitemap/adds/{page_index?}', [
+				'uses' => 'SitemapController@listingPages',
+				'as' => 'sitemap.listing'
+			]);
+	//Sitemaps - End
 });
 
 // User Routes

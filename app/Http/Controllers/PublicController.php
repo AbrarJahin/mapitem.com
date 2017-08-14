@@ -15,6 +15,7 @@ use URL;
 
 class PublicController extends Controller
 {//A controller to show public pages
+
 	/*
 		URL				-> get: /
 		Functionality	-> Show Home Page
