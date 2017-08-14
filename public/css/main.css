@@ -2704,7 +2704,14 @@ body {
 	.nf-hide{
 		display:none;
 		position:fixed;
-		top:-200px
+		top:-200px;
+		width:100%
+		}
+	.nf-display{
+		display:block;
+		position:fixed;
+		top:0px;
+		width:100%
 		}
 	.cbp-spmenu {
 	-webkit-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);
