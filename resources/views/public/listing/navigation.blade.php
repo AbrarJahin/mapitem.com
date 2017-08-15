@@ -17,7 +17,7 @@
 
 			<div class="clearfix visible-xs-block"></div>
             
-                <ul class="nav navbar-nav navbar-right ip-nav">
+                <ul class="nav navbar-nav navbar-right ip-nav cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
                     @if (Auth::check())
                         <li class="dropdown">
                             @include('user_menu')
