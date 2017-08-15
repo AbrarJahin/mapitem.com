@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$(".nf").slideUp();
     $(".nf-placeholder").click(function(){
-        $(".nf-hide").toggleClass(".nf-show");
+        $(".nf-hide").toggleClass("nf-show");
     });
 });
 
