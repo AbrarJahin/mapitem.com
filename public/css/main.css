@@ -2704,11 +2704,13 @@ body {
 		width:auto
 		}
 .nf-placeholder{
-	display:none}		
+	display:none
+	}		
 
 @media(max-width:767px){
 	.nf-placeholder{
-		}
+		display:block
+	}
 	.nf-hide{
 		display:none;
 		position:fixed;
