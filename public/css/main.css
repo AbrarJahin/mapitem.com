@@ -2697,6 +2697,12 @@ body {
 	line-height: 19px;
 	margin: 0;
 }
+.nf-hide{
+		display:block;
+		position:relative;
+		top:auto;
+		width:auto
+		}
 
 @media(max-width:767px){
 	.nf-placeholder{
@@ -2711,7 +2717,10 @@ body {
 		display:block;
 		position:fixed;
 		top:0px;
-		width:100%
+		width:100%;
+		padding:50px 5%;
+		left:0;
+		background-color:grey
 		}
 	.cbp-spmenu {
 	-webkit-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);
