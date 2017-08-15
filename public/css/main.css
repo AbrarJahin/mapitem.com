@@ -2703,6 +2703,8 @@ body {
 		top:auto;
 		width:auto
 		}
+.nf-placeholder{
+	display:none}		
 
 @media(max-width:767px){
 	.nf-placeholder{
