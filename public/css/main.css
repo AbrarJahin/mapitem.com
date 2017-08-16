@@ -2718,15 +2718,33 @@ body {
     margin: 11px 29% 0 36%;
     padding-left: 12px;
     text-decoration: none;
-}
+	}
+	
+	.nf-close {
+	background-color: green;
+	
+	border-radius: 50%;
+	color: white;
+	height: 25px;
+	line-height: 23px;
+	text-align: center;
+	text-decoration: none;
+	float:right;
+	width: 25px;
+	}
 	.nf-hide{
 		display:none;
 		position:fixed;
 		top:-200px;
-		width:100%
+		width:100%;
+		-webkit-transition:all 1s ease;
+       -moz-transition:all 1s ease;
+        -ms-transition:all 1s ease;
+         -o-transition:all 1s ease;
+            transition:all 1s ease;
 		}
 	.nf-show {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 1);
 	-webkit-box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.5);
     box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.5);
@@ -2736,9 +2754,11 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-	-webkit-transition: all .35s;
-	-moz-transition: all .35s;
-	transition: all .35s;
+	-webkit-transition:all 1s ease;
+       -moz-transition:all 1s ease;
+        -ms-transition:all 1s ease;
+         -o-transition:all 1s ease;
+            transition:all 1s ease;
 	}
 	.nf-show .row{
 			margin-left:0;
