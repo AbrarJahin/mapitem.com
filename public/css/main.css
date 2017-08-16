@@ -2737,13 +2737,6 @@ body {
 		position:fixed;
 		top:-200px;
 		width:100%;
-		-webkit-transition:all 1s ease;
-       -moz-transition:all 1s ease;
-        -ms-transition:all 1s ease;
-         -o-transition:all 1s ease;
-            transition:all 1s ease;
-			-webkit-transition-property: top, bottom;
-        -webkit-transition-duration: 0.5s;
 		}
 	.nf-show {
     background-color: rgba(255, 255, 255, 1);
@@ -2756,13 +2749,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-	-webkit-transition:all 1s ease;
-       -moz-transition:all 1s ease;
-        -ms-transition:all 1s ease;
-         -o-transition:all 1s ease;
-            transition:all 1s ease;
-			-webkit-transition-property: top, bottom;
-        -webkit-transition-duration: 0.5s;
+
 	}
 	.nf-show .row{
 			margin-left:0;
