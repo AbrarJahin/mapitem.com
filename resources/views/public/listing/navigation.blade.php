@@ -14,7 +14,7 @@
 		{{-- Collect the nav links, forms, and other content for toggling --}}
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-			@include('nav_filters')
+			<div class="nf-hide">@include('nav_filters')</div>
 
 			<div class="clearfix visible-xs-block"></div>
             
