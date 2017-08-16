@@ -2698,14 +2698,17 @@ body {
 	margin: 0;
 }
 .nf-block{
-		display:block;
+		display:block!important;
 		position:relative;
 		top:auto;
 		width:auto
 		}
 .nf-placeholder{
 	display:none
-	}		
+	}
+.nf-close{
+	display:none
+	}			
 
 @media(max-width:767px){
 	.nf-placeholder {
