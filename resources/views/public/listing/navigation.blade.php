@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top ip-adj2" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top ip-adj2 cbp-spmenu-push" role="navigation">
 	<div class="container-fluid">
 		{{-- Brand and toggle get grouped for better mobile display --}}
 		<div class="navbar-header">
@@ -9,9 +9,9 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand ipl" href="{{ URL::route('index') }}"><img src="{{ URL::asset('images/blockhunt-logo-minified.png') }}"></a>
-            
+            <a href="#" class="nf-placeholder">Search By Category</a>
 		</div>
-        
+        <div class="nf-hide"><a class="fa fa-close nf-close"></a>@include('nav_filters')</div>
 		{{-- Collect the nav links, forms, and other content for toggling --}}
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
