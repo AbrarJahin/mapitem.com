@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $(".nf-placeholder").click(function(){
-        $(".nf-hide").toggleClass("nf-show");
+        $(".nf-block").slideDown('slow');
     });
 	$(".nf-close").click(function(){
-        $(".nf-hide").slideUp('slow');
+        $(".nf-block").slideUp('slow');
     });
 });
 

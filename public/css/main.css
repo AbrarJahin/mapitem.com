@@ -2732,13 +2732,7 @@ body {
 	float:right;
 	width: 25px;
 	}
-	.nf-hide{
-		display:none;
-		position:fixed;
-		top:-200px;
-		width:100%;
-		}
-	.nf-show {
+	.nf-block {
     background-color: rgba(255, 255, 255, 1);
 	-webkit-box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.5);
@@ -2751,7 +2745,7 @@ body {
     width: 100%;
 
 	}
-	.nf-show .row{
+	.nf-block .row{
 			margin-left:0;
 			}
 	.cbp-spmenu {
