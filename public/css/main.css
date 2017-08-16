@@ -2697,7 +2697,7 @@ body {
 	line-height: 19px;
 	margin: 0;
 }
-.nf-hide{
+.nf-block{
 		display:block;
 		position:relative;
 		top:auto;
