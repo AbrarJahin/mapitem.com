@@ -1,6 +1,7 @@
 $(document).ready(function(){
+	$(".nf-block").hide();
     $(".nf-placeholder").click(function(){
-		$(".nf-block").hide('');
+		
         $(".nf-block").slideDown('slow');
 
     });
