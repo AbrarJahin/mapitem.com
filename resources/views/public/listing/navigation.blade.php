@@ -17,7 +17,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			@include('nav_filters')
 			<div class="clearfix visible-xs-block"></div>
-            <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" >
+            
             
                 <ul class="nav navbar-nav navbar-right ip-nav">
                     @if (Auth::check())
