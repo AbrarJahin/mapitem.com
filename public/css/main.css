@@ -2717,15 +2717,21 @@ body {
 		top:-200px;
 		width:100%
 		}
-	.nf-show{
-		display:block;
-		position:fixed;
-		top:0px;
-		width:100%;
-		padding:50px 5%;
-		left:0;
-		background-color:grey
-		}
+	.nf-show {
+    background-color: rgba(255, 255, 255, 0.95);
+	-webkit-box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.5);
+    display: block;
+    left: 0;
+    padding: 20px 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+	.nf-show row{
+			margin-left:0
+			}
 	.cbp-spmenu {
 	-webkit-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);
 	-moz-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);
