@@ -2728,9 +2728,12 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-}
-	.nf-show row{
-			margin-left:0!important
+	-webkit-transition: all .35s;
+	-moz-transition: all .35s;
+	transition: all .35s;
+	}
+	.nf-show .row{
+			margin-left:0;
 			}
 	.cbp-spmenu {
 	-webkit-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);
