@@ -134,7 +134,7 @@ Route::group(['prefix' => '/','middleware' => ['web','non_admin']], function()
 				'as' => 'sitemap.public'
 			]);
 
-		Route::get('sitemap/adds/{page_index?}', [
+		Route::get('sitemap/advertisements/{page_index?}', [
 				'uses' => 'SitemapController@listingPages',
 				'as' => 'sitemap.listing'
 			]);

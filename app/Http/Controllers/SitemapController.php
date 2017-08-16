@@ -139,6 +139,8 @@ class SitemapController extends Controller
 										//DB::raw("CONCAT (DATE_FORMAT(updated_at,'%Y-%m-%d\T%H:%i:%s'), TIMEDIFF(NOW(), UTC_TIMESTAMP)) AS lastmod")
 										DB::raw("DATE_FORMAT(updated_at,'%Y-%m-%d\T%H:%i:%s') AS lastmod")
 									)
+									->skip($page_index*env("MAX_ADS_PER_PAGE_SITEMAP", 1000))
+									->take(env("MAX_ADS_PER_PAGE_SITEMAP", 1000))
 									->where('is_active', 'active')
 									->get();
 
