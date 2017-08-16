@@ -2742,6 +2742,8 @@ body {
         -ms-transition:all 1s ease;
          -o-transition:all 1s ease;
             transition:all 1s ease;
+			-webkit-transition-property: top, bottom;
+        -webkit-transition-duration: 0.5s;
 		}
 	.nf-show {
     background-color: rgba(255, 255, 255, 1);
@@ -2759,6 +2761,8 @@ body {
         -ms-transition:all 1s ease;
          -o-transition:all 1s ease;
             transition:all 1s ease;
+			-webkit-transition-property: top, bottom;
+        -webkit-transition-duration: 0.5s;
 	}
 	.nf-show .row{
 			margin-left:0;
