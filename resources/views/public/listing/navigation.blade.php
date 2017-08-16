@@ -9,6 +9,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand ipl" href="{{ URL::route('index') }}"><img src="{{ URL::asset('images/blockhunt-logo-minified.png') }}"></a>
+            <a href="#" class="nf-placeholder">Search By Category</a>
 		</div>
 		{{-- Collect the nav links, forms, and other content for toggling --}}
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -18,25 +19,25 @@
 			<div class="clearfix visible-xs-block"></div>
             
                 <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-                <ul class="nav navbar-nav navbar-right ip-nav">
-                    @if (Auth::check())
+                    <ul class="nav navbar-nav navbar-right ip-nav">
+                        @if (Auth::check())
+                            <li class="dropdown">
+                                @include('user_menu')
+                            </li>
+                        @else
+                            <li id="dt" class="dropdown">
+                                @include('public.log_in')
+                            </li>
+        
+                            <li id="su" class="dropdown">
+                                @include('public.sign_up')
+                            </li>
+                        @endif
+        
                         <li class="dropdown">
-                            @include('user_menu')
+                            <a href="#" class="def" data-toggle="modal" data-target="@if (Auth::check())#pfa @else #lgn-pup @endif">Post free ad</a>
                         </li>
-                    @else
-                        <li id="dt" class="dropdown">
-                            @include('public.log_in')
-                        </li>
-    
-                        <li id="su" class="dropdown">
-                            @include('public.sign_up')
-                        </li>
-                    @endif
-    
-                    <li class="dropdown">
-                        <a href="#" class="def" data-toggle="modal" data-target="@if (Auth::check())#pfa @else #lgn-pup @endif">Post free ad</a>
-                    </li>
-                </ul>
+                    </ul>
 				</div>
 		</div>
 		{{-- /.navbar-collapse --}}
