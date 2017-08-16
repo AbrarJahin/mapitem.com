@@ -15,7 +15,7 @@
         
         
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<div class="nf-hide">@include('nav_filters')</div>
+			@include('nav_filters')
 			<div class="clearfix visible-xs-block"></div>
             <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
             
