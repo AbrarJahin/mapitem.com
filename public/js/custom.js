@@ -3,7 +3,7 @@ $(document).ready(function(){
         $(".nf-hide").toggleClass("nf-show");
     });
 	$(".nf-close").click(function(){
-        $(".nf-show").toggleClass("nf-hide");
+        $(".nf-hide").toggleClass("nf-show");
     });
 });
 

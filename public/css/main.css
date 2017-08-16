@@ -2730,7 +2730,7 @@ body {
     width: 100%;
 }
 	.nf-show row{
-			margin-left:0
+			margin-left:0!important
 			}
 	.cbp-spmenu {
 	-webkit-box-shadow: inset 10px 0px 20px 0px rgba(0,0,0,0.40);
