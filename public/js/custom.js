@@ -1,11 +1,12 @@
 $(document).ready(function(){
     $(".nf-placeholder").click(function(){
+		$(".nf-block").hide('');
         $(".nf-block").slideDown('slow');
-		 $(".nf-block").fadeIn('slow');
+
     });
 	$(".nf-close").click(function(){
         $(".nf-block").slideUp('slow');
-		$(".nf-block").fadeOut('slow');
+
     });
 });
 
