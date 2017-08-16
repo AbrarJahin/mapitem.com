@@ -11,10 +11,11 @@
 			<a class="navbar-brand ipl" href="{{ URL::route('index') }}"><img src="{{ URL::asset('images/blockhunt-logo-minified.png') }}"></a>
             <a href="#" class="nf-placeholder">Search By Category</a>
 		</div>
+        <div class="nf-hide">@include('nav_filters')</div>
 		{{-- Collect the nav links, forms, and other content for toggling --}}
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-			<div class="nf-hide">@include('nav_filters')</div>
+			
 
 			<div class="clearfix visible-xs-block"></div>
             
