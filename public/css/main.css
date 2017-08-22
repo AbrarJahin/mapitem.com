@@ -882,34 +882,7 @@ footer#page_footer{
 	bottom: 0px;
 }
 
-/* Push classes applied to the body */
 
-.cbp-spmenu-push {
-	overflow-x: hidden;
-	position: relative;
-	left: 0;
-}
-.cbp-spmenu-push .header-minus {
-    margin-top: -20px;
-    padding-top: 0;
-}
-
-.cbp-spmenu-push-toright {
-	left: 250px;
-}
-
-.cbp-spmenu-push-toleft {
-	left: -250px;
-}
-.cbp-spmenu,
-.cbp-spmenu-push {
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	transition: all 0.3s ease;
-}
-
-
-/*push menu end*/
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
 	.dn {
@@ -2697,32 +2670,75 @@ body {
 	line-height: 19px;
 	margin: 0;
 }
-.nf-block{
-		display:block!important;
-		position:relative;
-		top:auto;
-		width:auto
-		}
 .nf-placeholder{
 	display:none
 	}
+.cbp-spmenu-push .nf-block{
+	display:block
+	}	
 .nf-close{
 	display:none
-	}			
+	}
+span.twitter-typeahead{
+     width: 100%;
+}		
+
+		
 
 @media(max-width:767px){
+	/* Push classes applied to the body */
+	.cbp-spmenu-push {
+		overflow-x: hidden;
+		position: relative;
+		left: 0;
+		}
+	
+	.cbp-spmenu-push .header-minus {
+		margin-top: -20px;
+		padding-top: 0;
+	}
+	
+	.cbp-spmenu-push-toright {
+		left: 250px;
+	}
+	
+	.cbp-spmenu-push-toleft {
+		left: -250px;
+	}
+	.cbp-spmenu,
+	.cbp-spmenu-push {
+		-webkit-transition: all 0.3s ease;
+		-moz-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+	}
+	/*push menu end*/
+	
+	.cbp-spmenu-push-toleft a.minimize, .cbp-spmenu-push-toleft div.nf-placeholder, .cbp-spmenu-push-toleft select, .cbp-spmenu-push-toleft div.theme-green, .cbp-spmenu-push-toleft button.l-cat-btn{
+		pointer-events: none;
+	}
+	.cbp-spmenu-push .nf-block{
+	display:none
+	}
+	.nf-close{
+	display:block
+	}
 	.nf-placeholder {
-    background-color: #f5f5f5;
-    border: 1px solid #757575;
+    background-color: white;
+
     border-radius: 7px;
     color: grey;
     display: block;
+    font-size: 11pt;
     line-height: 38px;
-    margin: 11px 29% 0 36%;
+    margin: 12px 90px 0 70px;
     padding-left: 12px;
     text-decoration: none;
 	}
-	
+	.d-arrow {
+    float: right;
+    font-size: 15pt;
+    margin: 8px 15px 0 0;
+	}
 	.nf-close {
 	background-color: green;
 	
@@ -2743,10 +2759,18 @@ body {
     display: block;
     left: 0;
     padding: 20px 5%;
-    position: fixed;
-    top: 0;
     width: 100%;
-
+	overflow:scroll;
+	position: relative;
+    top: -63px;
+	}
+	.ipl img{
+		width: 170px
+	}
+	
+	.ipl{
+	    overflow: hidden;
+    	width: 53px;
 	}
 	.nf-block .row{
 			margin-left:0;
@@ -3005,6 +3029,15 @@ body {
 	}
 }
 @media(max-width:480px){
+	.nf-placeholder {
+    font-size: 9pt;
+    margin: 12px 80px 0 60px;
+    padding-left: 9px;
+}
+	.d-arrow {
+    font-size: 11pt;
+    margin: 13px 11px 0 0;
+	}
 	.hdd-right{
 		float: left;
 		margin-top: 10px
@@ -3590,8 +3623,9 @@ img.add_detail
 	background:url('https://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
 }
 
-.twitter-typeahead{
+.top-search span.twitter-typeahead{
      width: 100%;
+	 float:left
 }
 .tt-dropdown-menu{
     width: 100%;

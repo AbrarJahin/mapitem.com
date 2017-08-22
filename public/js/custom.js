@@ -1,34 +1,3 @@
-$(document).ready(function(){
-	$(".nf-block").hide();
-    $(".nf-placeholder").click(function(){
-		
-        $(".nf-block").slideDown('slow');
-
-    });
-	$(".nf-close").click(function(){
-        $(".nf-block").slideUp('slow');
-
-    });
-});
-
-var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-				body = document.body;
-
-			
-			showRightPush.onclick = function() {
-				classie.toggle( this, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toleft' );
-				classie.toggle( menuRight, 'cbp-spmenu-open' );
-				disableOther( 'showRightPush' );
-			};
-			function disableOther( button ) {
-				
-				if( button !== 'showRightPush' ) {
-					classie.toggle( showRightPush, 'disabled' );
-				}
-			}
-
-
 //Global variables
 var latitude, longitude, searchLocationName;
 var is_tab_opened_before =0;
@@ -1188,7 +1157,7 @@ $(document).ready(function()
 		$("div.ct-list").fadeOut("");
 	});
 
-	/*inbox page*/ 
+	/*inbox page*/
 	$(".hd-detail").hide();
 	$(".glyphicon-circle-arrow-up").hide();
 	$(".hd, .inbox-short").click(function()
@@ -1257,11 +1226,11 @@ $(document).ready(function()
 		});
 	});
 
-	$('[data-toggle="tooltip"]').tooltip(); 
+	$('[data-toggle="tooltip"]').tooltip();
 
-	$(".ad-detail").hide();    
+	$(".ad-detail").hide();
 
-	/*Post free ad modal - location tab checkbox*/    
+	/*Post free ad modal - location tab checkbox*/
 	$(".loc-info-edit").hide();
 	$('#infocheckbox').click(function()
 	{
@@ -1442,12 +1411,12 @@ $(document).ready(function()
 		},
 		success: function (e)
 		{
-			$("#wait").css("display", "none");	
+			$("#wait").css("display", "none");
 		},
 		error: function (e)
 		{
 			console.log(e);
-			$("#wait").css("display", "none");	
+			$("#wait").css("display", "none");
 		}
 	});
 	*/
@@ -1500,7 +1469,7 @@ $(document).ready(function()
 		}
 	});
 	//Global AJAX Config - END
-	
+
 	//My Ads page - Edit Add
 	$('.edit1').on('click',function()
 	{
@@ -2237,7 +2206,7 @@ $(document).ready(function()
 				"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
 				"link": true, //Button to insert a link. Default true
 				"image": true, //Button to insert an image. Default true
-				"blockquote": true, //Blockquote  
+				"blockquote": true, //Blockquote
 				"size": 'lg', //default: none, other options are xs, sm, lg
 				"toolbar":{
 					"html": true, //Button which allows you to edit the generated HTML. Default false
@@ -2624,7 +2593,7 @@ $(document).ready(function()
 				$('#reset_email_input').parent().addClass("has-error");
 				return 0;
 			}
-			
+
 			var responce = $.ajax(
 									{
 										headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -2673,7 +2642,7 @@ $(document).ready(function()
 
 		});
 	//Notification Settings - End
-	
+
 	//Update Password - Start
 		$("form#change_password_form").submit(function(e)
 		{
@@ -2811,4 +2780,29 @@ $(document).ready(function()
 				});
 	}
 	//Typehead - End
+});
+//push menu for mobile
+var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+	body = document.body;
+	showRightPush.onclick = function() {
+		classie.toggle( this, 'active' );
+		classie.toggle( body, 'cbp-spmenu-push-toleft' );
+		classie.toggle( menuRight, 'cbp-spmenu-open' );
+		disableOther( 'showRightPush' );
+	};
+	function disableOther( button ) {
+	
+		if( button !== 'showRightPush' ) {
+			classie.toggle( showRightPush, 'disabled' );
+		}
+}
+
+//nav filters for mobile
+$(document).ready(function(){
+    $(".nf-placeholder").click(function(){
+        $(".nf-block").slideToggle('slow');
+    });
+	$(".nf-close").click(function(){
+        $(".nf-block").slideUp('slow');
+    });
 });
