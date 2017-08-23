@@ -10,7 +10,7 @@
 			</button>
 			<a class="navbar-brand ipl" href="{{ URL::route('index') }}"><img src="{{ URL::asset('images/blockhunt-logo-minified.png') }}"></a>
             {{-- nav filters button only for mobile --}}
-            <!--<div href="#" class="nf-placeholder">Category, Search, Location <i class="fa fa-angle-down d-arrow"></i></div>-->
+            <div href="#" class="nf-placeholder">Category, Search, Location <i class="fa fa-angle-down d-arrow"></i></div>
 		</div>
         <div class="nf-block"><a class="fa fa-close nf-close"></a>@include('nav_filters')</div>
 		{{-- Collect the nav links, forms, and other content for toggling --}}

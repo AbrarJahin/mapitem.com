@@ -2687,6 +2687,35 @@ span.twitter-typeahead{
 
 @media(max-width:767px){
 	/* Push classes applied to the body */
+	.navbar{
+		margin-bottom:0
+		}
+	.hp-nav {
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 0;
+	}
+	.hp-nav li a {
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+	.hp-nav li a {
+		font-size: 9.5pt;
+	}
+	.hp-nav li a {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		font-size: 12pt;
+		padding-left: 20px;
+	}
+	.hp-nav li a {
+		color: #e0e0e0!important;
+	}
+	.hp-nav li a {
+	color: black;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 100%;
+	}
 	.cbp-spmenu-push {
 		overflow-x: hidden;
 		position: relative;
@@ -2713,7 +2742,7 @@ span.twitter-typeahead{
 	}
 	/*push menu end*/
 	
-	.cbp-spmenu-push-toleft a.minimize, .cbp-spmenu-push-toleft div.nf-placeholder, .cbp-spmenu-push-toleft select, .cbp-spmenu-push-toleft div.theme-green, .cbp-spmenu-push-toleft button.l-cat-btn{
+	.cbp-spmenu-push-toleft a.minimize, .cbp-spmenu-push-toleft a.hiw, .cbp-spmenu-push-toleft div.nf-placeholder, .cbp-spmenu-push-toleft select, .cbp-spmenu-push-toleft div.theme-green, .cbp-spmenu-push-toleft button.l-cat-btn{
 		pointer-events: none;
 	}
 	.cbp-spmenu-push .nf-block{

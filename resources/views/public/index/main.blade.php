@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="{{ URL::asset('css/jquery.maximage.css') }}" type="text/css" media="screen" title="CSS" charset="utf-8" />
 	</head>
 
-	<body>
+	<body class="cbp-spmenu-push">
 		<div class="loader"></div>
 		{{-- Navigation --}}
 		@include('public.index.nav')
