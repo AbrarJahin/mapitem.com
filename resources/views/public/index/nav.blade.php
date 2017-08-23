@@ -13,31 +13,32 @@
 		{{-- Collect the nav links, forms, and other content for toggling --}}
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<div class="clearfix visible-xs-block"></div>
-
-			<ul class="nav navbar-nav navbar-right">
-				@if (!Auth::check())
-					<li id="dt" class="dropdown">
-						@include('public.log_in')
-					</li>
-					<li id="su" class="dropdown">
-						@include('public.sign_up')
-					</li>
-					<li class="dropdown">
-						<a href="#" class="def" data-toggle="modal" data-target="#lgn-pup">Post free ad</a>
-					</li>
-				@elseif (Auth::user()->user_type == "normal_user")
-					<li class="dropdown">
-						@include('user_menu')
-					</li>
-					<li class="dropdown">
-						<a href="#" class="def" data-toggle="modal" data-target="#pfa">Post free ad</a>
-					</li>
-				@elseif (Auth::user()->user_type == "admin")
-					<li class="dropdown">
-						@include('admin_menu')
-					</li>
-				@endif
-			</ul>
+			<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+                <ul class="nav navbar-nav navbar-right">
+                    @if (!Auth::check())
+                        <li id="dt" class="dropdown">
+                            @include('public.log_in')
+                        </li>
+                        <li id="su" class="dropdown">
+                            @include('public.sign_up')
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="def" data-toggle="modal" data-target="#lgn-pup">Post free ad</a>
+                        </li>
+                    @elseif (Auth::user()->user_type == "normal_user")
+                        <li class="dropdown">
+                            @include('user_menu')
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="def" data-toggle="modal" data-target="#pfa">Post free ad</a>
+                        </li>
+                    @elseif (Auth::user()->user_type == "admin")
+                        <li class="dropdown">
+                            @include('admin_menu')
+                        </li>
+                    @endif
+                </ul>
+            </div>
 
 		</div>
 		{{-- /.navbar-collapse --}}

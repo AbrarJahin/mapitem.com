@@ -11,4 +11,6 @@
 
 	{{-- Custom JS --}}
 	<script src="{{ URL::asset('js/custom.js') }}"></script>
+    {{-- Push Menu --}}
+	<script src="{{ URL::asset('js/classie.js') }}"></script>
 @show
