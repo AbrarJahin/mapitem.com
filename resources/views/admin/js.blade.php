@@ -19,4 +19,6 @@
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	@yield('ExtraJsLibraries')
 	<script src="{{ URL::asset('js/custom.js') }}"></script>
+    {{-- Push Menu --}}
+	<script src="{{ URL::asset('js/classie.js') }}"></script>
 @show

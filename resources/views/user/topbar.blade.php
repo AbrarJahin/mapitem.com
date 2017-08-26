@@ -1,5 +1,5 @@
 {{-- Topbar Nav --}}
-<nav class="navbar dn" role="navigation">
+<nav class="navbar dn cbp-spmenu-push" role="navigation">
 	<div class="container">
 	{{-- Collect the nav links, forms, and other content for toggling --}}
 	<div class="" id="bs-example-navbar-collapse-2">
