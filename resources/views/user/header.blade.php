@@ -7,4 +7,4 @@
 	@yield('header_styles')
 </head>
 
-<body>
+<body class="cbp-spmenu-push">
