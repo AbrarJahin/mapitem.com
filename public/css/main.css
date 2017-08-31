@@ -1701,12 +1701,21 @@ header.pdetail{
 	color: white    
 }
 .popups{
-	margin: 10px 0
+	margin: 0px 0
 }
 .popups a {
-	color: #616161;
-	padding: 0 15px;
-	text-decoration: none;
+    color: #616161;
+    text-decoration: none;
+    border: 1px solid #E0E0E0;
+    width: 30px;
+    height: 30px;
+    display: block;
+    float: left;
+    line-height: 11px;
+    padding-top: 8px;
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 5px;
 }
 .tooltip-arrow{ border-top-color: #e1e1e1!important}
 .grey-tooltip + .tooltip > .tooltip-inner {
@@ -2556,9 +2565,9 @@ body {
 	z-index: 8;
 }
 .wsh-lst-adpage {
-	float: left;
+	/*float: left;
 	color: black;
-	margin-top: 3px;
+	margin-top: 3px;*/
 }
 .wsh-lst-adpage .wsh-path-outline {
 	stroke: #616161;
@@ -2684,7 +2693,10 @@ span.twitter-typeahead{
 }	
 .dropdown-menu > li > a{
 	white-space: normal;
-}	
+}
+#input_nav_search{
+	width: 100%
+}
 
 		
 
