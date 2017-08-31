@@ -2681,7 +2681,10 @@ body {
 	}
 span.twitter-typeahead{
 	 width: 100%;
-}		
+}	
+.dropdown-menu > li > a{
+	white-space: normal;
+}	
 
 		
 
