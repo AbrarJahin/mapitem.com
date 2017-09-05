@@ -787,8 +787,8 @@ footer#page_footer{
 }
 .h-ctr {
 	top: 71px;
-	width: 310%;
-	height:150px;
+	width: 400%;
+	height:200px;
 	overflow-y:scroll;
 }
 .h-ctr2 {
@@ -3260,7 +3260,7 @@ span.twitter-typeahead{
 			width: 65%;
 		}
 		.h-ctr {
-		width: 300%
+		width: 500%
   
 	}
 	.width-adj11 {
