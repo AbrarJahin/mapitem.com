@@ -787,7 +787,9 @@ footer#page_footer{
 }
 .h-ctr {
 	top: 71px;
-	width: 210%
+	width: 310%;
+	height:150px;
+	overflow-y:scroll;
 }
 .h-ctr2 {
 	top: 0px!important;
