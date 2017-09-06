@@ -835,7 +835,9 @@ footer#page_footer{
 .h-ctr3 {
 	background-color: white !important;
 	top: 45px;
-	width:200%
+	width:200%;
+	overflow:auto;
+	height:auto
 
 }
 .ct-list2{
@@ -3265,7 +3267,7 @@ span.twitter-typeahead{
   
 	}
 	.h-ctr3 {
-		width: 200%
+		width: 320%
   
 	}
 	.width-adj11 {
