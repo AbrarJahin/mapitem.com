@@ -835,6 +835,7 @@ footer#page_footer{
 .h-ctr3 {
 	background-color: white !important;
 	top: 45px;
+	width:200%
 
 }
 .ct-list2{
@@ -3705,8 +3706,11 @@ input.typeahead.tt-query{
 	display: inherit;
 	color: inherit;
 	white-space: normal !important;
-	text-align: center;
+	text-align: left;
+	padding:3px 0
 }
+.dropdown-menu>li>a{
+	padding:3px 0}
 .dropzone-error
 {
 	border-style: dashed;
