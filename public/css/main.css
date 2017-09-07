@@ -808,7 +808,7 @@ footer#page_footer{
 }
 .h-ctr li{
 	display: inline-block;
-	margin: 5px 11px !important;
+	margin: 5px 8px !important;
 	width: 137px;
 	vertical-align: top;
 	word-break: break-all;
@@ -820,7 +820,7 @@ footer#page_footer{
 }
 .h-ctr li ul li{
 	width: 100%;
-	margin: 5px 0!important
+	margin: 3px 0!important
 }
 .l-cat-btn {
 	background-color: white;
@@ -2702,7 +2702,21 @@ span.twitter-typeahead{
 #input_nav_search{
 	width: 100%
 }
-
+.nav-sub-category {
+    font-size: 10pt;
+    text-decoration: none;
+    color: #616161;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+.dropdown-menu > li > a{
+	color:green
+	}
+.dropdown-menu > li > a > h4	
+	{
+		font-size: 14px;
+line-height: 22px;
+border-bottom: 1px solid green;
+min-height: 50px;}
 		
 
 @media(max-width:767px){
