@@ -502,15 +502,18 @@ nav .dropdown-menu {
 .cat ul.dropdown-menu li{
 	padding: 0px 0px;
 	margin: 10px 10px;
-	border-bottom: 1px solid #dfe0df;
 	text-transform: capitalize;
 
 }
 .cat ul.dropdown-menu li a{
-	padding: 0;
+	padding: 3px 0;
 	text-decoration: none;
 	font-size: 13px
 } 
+.cat ul.dropdown-menu li a:hover{
+	text-decoration:underline;
+	color: #3c8b26
+	}
 .box {
 	border: 0px solid #cfcfcf;
 	border-radius: 0px;
@@ -787,9 +790,11 @@ footer#page_footer{
 }
 .h-ctr {
 	top: 71px;
-	width: 400%;
-	height:200px;
-	overflow-y:scroll;
+	width: 350%;
+	padding:10px;
+	border-top: 3px solid #23a500;
+min-width: 270px;
+line-height: 22px;
 }
 .h-ctr2 {
 	top: 0px!important;
@@ -2708,14 +2713,20 @@ span.twitter-typeahead{
     color: #616161;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
+.h-ctr > li > ul > li > a{
+	font-size: 10pt;
+    text-decoration: none;
+    color: #616161;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+	}
 .dropdown-menu > li > a{
-	color:green
+	color:#3c8b26
 	}
 .dropdown-menu > li > a > h4	
 	{
 		font-size: 14px;
 line-height: 22px;
-border-bottom: 1px solid green;
+border-bottom: 1px solid #3c8b26;
 min-height: 50px;}
 		
 
