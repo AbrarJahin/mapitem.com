@@ -31,10 +31,12 @@
 				<i class="fa fa-check-circle p-adj"></i>
 				<a href="#">Facebook Verified</a> --}}
 			</span>
+			{{--
 			<span id="add_owner_credit_card_verification_status">
 				<i class="fa fa-credit-card"></i>
 				Accepts Credit Card
 			</span>
+			--}}
 		</div>
 		<div class="sb-bottom dropdown">
 			@if (!Auth::check())
