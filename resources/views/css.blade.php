@@ -8,6 +8,6 @@
 {{-- Custom Fonts --}}
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Varela+Round|Raleway:400,700,500|Great+Vibes' rel='stylesheet' type='text/css'>
 {{-- Custom CSS --}}
-<link rel="stylesheet" href="{{ URL::asset('css/main.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ URL::asset('css/main.min.css') }}" type="text/css">
 {{-- Push Menu --}}
 <script src="{{ URL::asset('js/modernizr.custom.js') }}"></script>
