@@ -1,6 +1,5 @@
 {{-- Edit Category Modal --}}
 <meta name="view_detail" content="{{ URL::route('admin.add_view') }}">
-
 <div class="modal fade" id="edit_data_modal" role="dialog">
 	<div class="modal-dialog">
 		{{-- Modal content --}}
@@ -23,7 +22,6 @@
 						<label for="sub-category">Price</label>
 						<input type="text" required class="form-control" placeholder="Enter Category Name" name="price" id="add-price">
 					</div>
-
 					{{-- Disabled Items - Start --}}
 					<div class="form-group">
 						<label for="owner-name">Owner Name</label>
@@ -61,6 +59,5 @@
 				</form>
 			</div>
 		</div>
-		
 	</div>
 </div>

@@ -10,7 +10,6 @@
 			<form role="form" method="post" id="update_user" action="{{ URL::route('admin.user_update') }}">
 				<div class="modal-body">
 					<div class="form-group">
-
 						<label for="name">User Name:</label>
 						<input type="text" required class="form-control" placeholder="User Name Not Entered" name="user_name" id="selected_user_name" disabled>
 
@@ -25,9 +24,6 @@
 
 						<label for="address">Address:</label>
 						<input type="text" required class="form-control" placeholder="Address Not Entered" name="address" id="selected_address" disabled>
-
-						{{-- <label for="address">GPS:</label>
-						<input type="text" required class="form-control" placeholder="GPS Not Entered" name="gps" id="selected_gps" disabled> --}}
 
 						<label for="website">Website:</label>
 						<input type="text" required class="form-control" placeholder="Website Not Entered" name="website" id="selected_website" disabled>
@@ -49,6 +45,5 @@
 				</div>
 			</form>
 		</div>
-		
 	</div>
 </div>
