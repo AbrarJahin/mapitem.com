@@ -13,5 +13,5 @@
 <div class="banner-text">
 	<h1>Social Marketplace</h1>
 	<h2>Friendly, Secure, & Fun</h2>
-	<a class="hiw" href="#how_it_works">Checkout How it works</a>
+	<a class="hiw" href="#how_it_works">Checkout How It Works</a>
 </div>

@@ -1740,6 +1740,12 @@ header.pdetail{
 	color: #868686;
 	padding-left: 10px
 }
+.seperator {
+    clear: both;
+    border-bottom: 1px solid #BDBDBD;
+
+    height: 20px;
+}
 .review{
 	display: block;
 	margin: 10px 0;
@@ -1773,7 +1779,7 @@ header.pdetail{
 	text-decoration: none;
 }
 .reviews {
-	border-top: 1px solid #cccccc;
+	
 	margin: 40px 0 10px;
 	padding: 40px 0 10px;
 }

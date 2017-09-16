@@ -41,7 +41,7 @@
 			<div class="message" id="selected_add_description"></div>
 			<div class="cleafix"></div>
 
-			@include('public.listing.write_review')
+			
 
 			<div class="share">
 				<span>Share on </span>
@@ -53,7 +53,8 @@
 				<meta name="gp_share_url" content="https://plus.google.com/share?url={{ URL::route('listing') }}">
 			</div>
 		</div>
-
+        <div class="seperator"></div>
+		@include('public.listing.write_review')
 		@include('public.listing.reviews')
 
 	</div>
