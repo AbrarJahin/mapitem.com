@@ -61,43 +61,32 @@ So, no readme file can be provided still now.
  22. Settings
 
 
-###Installation
+### Easy Installation On Windows
 
-Install WAMP 2.5 (PHP>=5.5.9)
+1. Install WAMP 2.5 (PHP>=5.5.9) or latest one
 
-Install composer, take composer update, git clone go to the directory.
+2. Install Git and composer. Take composer update.
 
-Then run
+3. This step is optional. Create a Database in localhost named `mapitem` with user root and no password.
+
+4. Then run
 
 ```bash
 
 git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git
 
 cd mapitem.com
-
-composer install
-
---or
-
---composer install --ignore-platform-reqs
-
 cp  .env.example .env
+composer install
+--or
+--composer install --ignore-platform-reqs
+## And You are done if u have followed optional step defined in step 3. If you did not follow, then continue.
 
-# Now change the .env file to set configurations and then run the bellow codes
+# Now change the .env file to set Database and configurations and then run the bellow codes
 
 composer dump-autoload
 
 php artisan key:generate
-
-# Now set up a DB according to .env file (for here 'mapitem')
-
-php artisan migrate:refresh --seed
-
-```
-
-or for every time use-
-
-```bash
 
 php artisan migrate:refresh --seed
 
@@ -119,4 +108,4 @@ Login Tool- https://github.com/laravel/socialite
 
 FB Login- https://www.youtube.com/watch?v=EYdeTbQyhL8
 
-Google Login- same as prev
+Google Login- https://www.youtube.com/watch?v=0y0N75gkLb4
