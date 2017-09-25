@@ -898,6 +898,7 @@ line-height: 22px;
 
 
 
+
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
 	.dn {
 		height: 51px;
@@ -1822,18 +1823,23 @@ header.pdetail{
 	margin: 10px 0;
 }
 .sb-middle i {
-	color: #23a500;
-	font-size: 18px;
-	margin-right: 12px;
-	position: relative;
-	top: 3px;
-	width: 15px;
+    color: #23a500;
+    font-size: 18px;
+    margin-right: 12px;
+    position: relative;
+    top: 0px;
+    width: 15px;
+    float: left;
+    display: block;
+    min-height: 30px;
 }
 .sb-middle span {
-	display: block;
-	font-size: 12px;
-	margin: 7px 0;
-	position: relative;
+    display: block;
+    font-size: 12px;
+    margin: 7px 0;
+    position: relative;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 .p-adj {
 	font-size: 12px !important;
@@ -2737,6 +2743,11 @@ span.twitter-typeahead{
 		font-size: 14px;
 line-height: 22px;
 border-bottom: 1px solid #3c8b26;
+}
+#add_owner_email a {
+    display: inline-block;
+    word-wrap: break-word;
+    width: 140px;
 }
 		
 
