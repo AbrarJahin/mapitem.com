@@ -13,4 +13,25 @@
 	<script src="{{ URL::asset('js/custom.js') }}"></script>
     {{-- Push Menu --}}
 	<script src="{{ URL::asset('js/classie.js') }}"></script>
+    {{-- push menu for mobile --}}
+	<script>
+        var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            body = document.body;
+    
+        
+        showRightPush.onclick = function() {
+            classie.toggle( this, 'active' );
+            classie.toggle( body, 'cbp-spmenu-push-toleft' );
+            classie.toggle( menuRight, 'cbp-spmenu-open' );
+            disableOther( 'showRightPush' );
+        };
+        function disableOther( button ) {
+            
+            if( button !== 'showRightPush' ) {
+                classie.toggle( showRightPush, 'disabled' );
+            }
+        }
+    
+        
+    </script>
 @show
