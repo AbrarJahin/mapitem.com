@@ -2,8 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>MapItem - @yield('page_title')</title>
-<meta name="description" content="@yield('page_content')">
+<meta name="description" content="@yield('meta_page_description')">
 <meta name="author" content="S. M. Abrar Jahin">
 <meta name="publisher" content="Mapitem Inc.">
 
@@ -43,6 +42,6 @@
 	<meta property="og:localization" content="en_US" />
 	<meta property="fb:app_id" content="{{ env('FB_APP_ID') }}" />
 	<meta property="og:url" content="{{ URL::to('/') }}" />
-	<meta property="og:title" content="MapItem - @yield('page_title')" />
-	<meta property="og:description" content="@yield('page_content')" />
+	<meta property="og:title" content="MapItem - {{ $current_page or '' }}" />
+	<meta property="og:description" content="MapItem - {{ $current_page or '' }}" />
 {{-- Social Share Image - End --}}
