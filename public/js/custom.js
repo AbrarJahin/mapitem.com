@@ -2791,4 +2791,8 @@ $(document).ready(function(){
 	$(".nf-close").click(function(){
         $(".nf-block").slideUp('slow');
     });
+	$(document).on('click', '.navbar-toggle', function(event) {
+       event.preventDefault();
+        $('body').toggleClass('open');
+      }); 
 });

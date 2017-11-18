@@ -8,7 +8,8 @@
 		<link rel="stylesheet" href="{{ URL::asset('css/jquery.maximage.css') }}" type="text/css" media="screen" title="CSS" charset="utf-8" />
 	</head>
 
-	<body class="cbp-spmenu-push">
+	<body>
+    	<div id="site-wrapper">
 		<div class="loader"></div>
 		{{-- Navigation --}}
 		@include('public.index.nav')
@@ -39,6 +40,13 @@
 		{{-- Pages JS --}}
 		<script src="{{ URL::asset('js/page.js') }}"></script>
 	{{-- Footer Scripts - End --}}
+    </div>
 	</body>
 	{!! $google_analytics_script or '' !!}
+    <script>
+    $(document).ready(function() {
+      $(document).on('click', '.navbar-toggle', function(event) {
+       
+    });
+  </script>
 </html>
