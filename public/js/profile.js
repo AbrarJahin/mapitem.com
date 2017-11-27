@@ -88,6 +88,10 @@ $(document).ready(function()
 						var arr = $.parseJSON(xhr.responseText);
 						alert(arr[0]);
 					}
+					else if(xhr.status===500)
+					{
+						alert("Profile image size should be under 2MB");
+					}
 					else
 						alert(errorThrown);
 				}

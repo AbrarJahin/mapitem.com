@@ -108,7 +108,9 @@ return [
 	|
 	*/
 
-	'log' => env('APP_LOG', 'daily'),
+	'log_level'		=>	env('APP_LOG_LEVEL', 'warning'),
+	'log'			=>	env('APP_LOG_FREQUENCY', 'daily'),
+	'log_max_files'	=>	env('APP_LOG_MAX_FILES', 365),
 
 	/*
 	|--------------------------------------------------------------------------

@@ -18,6 +18,7 @@ use DB;
 use Hash;
 use URL;
 use Image;
+use Log;
 
 /*
 	Functionality	-> Handel All User Works
@@ -220,7 +221,7 @@ class UserController extends Controller
 		$validator = Validator::make(
 										$requestData,
 										[
-											'profile_image'				=> 'image|max:10240',
+											'profile_image'				=> 'image|max:2047|mimes:jpeg,bmp,png',
 											'address'					=> 'string|max:255',
 											'cell_no'					=> 'string|max:60|unique:users,cell_no,'.$user->id,
 											'date_of_birth'				=> 'date',
@@ -240,6 +241,7 @@ class UserController extends Controller
 		if ($validator->fails())
 		{
 			return Response::json($validator->errors()->all(), 400);
+			//abort(400, 'Validation Error');
 		}
 
 		$user->address						= $requestData['address'];
@@ -257,7 +259,6 @@ class UserController extends Controller
 
 		if(	isset(	$requestData['profile_image']	)	)	//If file was uploaded
 		{
-			//return $requestData['profile_image']->getMimeType();
 			if( strlen($user->profile_picture)>4 )
 			{	//If file exists then remove the file
 			 	try
@@ -266,8 +267,8 @@ class UserController extends Controller
 				}
 				catch (\Exception $e)
 				{
-					echo "First - ";
-					echo $e->getMessage();
+					Log::warning("First - ");
+					Log::error($e->getMessage());
 				}
 			}
 			//Creating the file Name
@@ -288,16 +289,16 @@ class UserController extends Controller
 			}
 			catch (\Exception $e)
 			{
-				echo "Second - ";
-				echo $e->getMessage();
+				Log::warning("Second - ");
+				Log::error($e->getMessage());
 				try
 				{
 					unlink($uploadedFileLocation);
 				}
-				catch (\Exception $e)
+				catch (\Exception $ex)
 				{
-					echo "Third - ";
-					echo $e->getMessage();
+					Log::warning("Third - ");
+					Log::error($e->getMessage());
 				}
 			}
 		}
