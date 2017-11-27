@@ -259,47 +259,54 @@ class UserController extends Controller
 
 		if(	isset(	$requestData['profile_image']	)	)	//If file was uploaded
 		{
-			if( strlen($user->profile_picture)>4 )
-			{	//If file exists then remove the file
-			 	try
-				{
-					unlink($this->destinationPath.'/'.$user->profile_picture);
-				}
-				catch (\Exception $e)
-				{
-					Log::warning("First - ");
-					Log::error($e->getMessage());
-				}
-			}
 			//Creating the file Name
 			$extension = $requestData['profile_image']->getClientOriginalExtension(); // getting file extension
 			$fileName = Auth::user()->id."p". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
 
-			$upload_success = $requestData['profile_image']->move($this->destinationPath, $fileName); // uploading file to given path
+			if ($requestData['profile_image']->move($this->destinationPath, $fileName))
+			{
+				//New file uploaded, so need to remove previous file
+				if( strlen($user->profile_picture)>4 )
+				{	//If pro-pic exists then remove the file
+					try
+					{
+						unlink($this->destinationPath.'/'.$user->profile_picture);
+					}
+					catch (\Exception $e)
+					{
+						Log::warning("First - ");
+						Log::error($e->getMessage());
+					}
+				}
 
-			$uploadedFileLocation = realpath($this->destinationPath.'/'.$fileName);
-			//Resizing image
-			try
-			{
-				Image::make($uploadedFileLocation)
-					->resize($this->max_height,$this->max_height)
-					->orientate()
-					->save($uploadedFileLocation);
-				$user->profile_picture	=	$fileName;
-			}
-			catch (\Exception $e)
-			{
-				Log::warning("Second - ");
-				Log::error($e->getMessage());
+				$uploadedFileLocation = realpath($this->destinationPath.'/'.$fileName);
+				//Resizing image
 				try
 				{
-					unlink($uploadedFileLocation);
+					Image::make($uploadedFileLocation)
+						->resize($this->max_height,$this->max_height)
+						->orientate()
+						->save($uploadedFileLocation);
+					$user->profile_picture	=	$fileName;
 				}
-				catch (\Exception $ex)
+				catch (\Exception $e)
 				{
-					Log::warning("Third - ");
+					Log::warning("Second - ");
 					Log::error($e->getMessage());
+					try
+					{
+						unlink($uploadedFileLocation);
+					}
+					catch (\Exception $ex)
+					{
+						Log::warning("Third - ");
+						Log::error($ex->getMessage());
+					}
 				}
+			}
+			else
+			{
+				Log::error("Pro Pic Upload Failed");
 			}
 		}
 
