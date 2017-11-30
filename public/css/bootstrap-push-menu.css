@@ -20,7 +20,7 @@
   .navbar-collapse {
     position: fixed;
     top: 0;
-    right: 0;
+    right: 5px;
     width: 74vmin;
     height: 100% !important;
     max-height: 10000px;
@@ -30,7 +30,12 @@
     justify-content: center;
     z-index: -1; }
     body.open .navbar-collapse {
-      z-index: 1000; }
+      z-index: 1000;
+	  background-color:#212121;
+-webkit-box-shadow: inset 10px 10px 51px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 10px 10px 51px 0px rgba(0,0,0,0.75);
+box-shadow: inset 10px 10px 51px 0px rgba(0,0,0,0.75);
+	   }
 
   .navbar-collapse * {
     width: 100%;
@@ -63,7 +68,10 @@
       transition: transform .2s .2s ease, opacity .2s 0s ease; }
     body.open {
       transition: background .2s 0s ease;
-      background: #333; }
+ }
+ .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+    max-height: 800px !important;
+}
       body.open #site-wrapper {
         transition: transform .2s 0s ease, opacity .2s 1s ease;
         transform: scale(1) translate(-74vmin, 0);

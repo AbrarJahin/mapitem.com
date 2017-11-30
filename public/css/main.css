@@ -3048,8 +3048,8 @@ border-bottom: 1px solid #3c8b26;
 	}
 	.ip-nav li a {
 		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-		font-size: 12pt !important;
-		padding-left: 20px !important;
+		font-size: 12pt ;
+		padding-left: 20px;
 	}
 	.ip-nav li ul li a{
 		color: #d5d5d5!important
