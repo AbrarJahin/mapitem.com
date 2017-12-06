@@ -1,6 +1,9 @@
 @media (max-width: 768px) {
   .navbar-collapse {
-    transform: scale(1) translate(71vmin, 0); }
+    /*transform: scale(1) translate(71vmin, 0);*/
+	transform: scale(1) translate(10vmin, 0);
+	
+	 }
 
   .navbar-toggle {
     float: right;
