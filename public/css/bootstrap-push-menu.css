@@ -4,6 +4,8 @@
 
 	
 	 }
+	 .dropdown{
+		 background-color:red}
 
   .navbar-toggle {
     float: right;
@@ -23,7 +25,7 @@
   .navbar-collapse {
     position: fixed;
     top: 0;
-    left: 100px;
+    right: 5px;
     width: 74vmin;
     height: 100% !important;
     max-height: 10000px;
@@ -31,7 +33,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    z-index: 100000!important; }
+    z-index: -1; }
     body.open .navbar-collapse {
       z-index: 1000;
 	  background-color:#212121;
@@ -49,8 +51,8 @@ box-shadow: inset 10px 10px 51px 0px rgba(0,0,0,0.75);
       opacity: 1; }
 
   .navbar-collapse li > a {
-    /*font-size: 5vmin;
-    line-height: 7vmin;*/
+    font-size: 5vmin;
+    line-height: 7vmin;
     text-align: center;
     transition: all .2s ease; }
 
