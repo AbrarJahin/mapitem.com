@@ -2805,11 +2805,7 @@ border-bottom: 1px solid #3c8b26;
 	padding-right: 15px;
 	width: 100%;
 	}
-	.cbp-spmenu-push {
-		overflow-x: hidden;
-		position: relative;
-		left: 0;
-		}
+
 	
 	
 	.cbp-spmenu-push .header-minus {
