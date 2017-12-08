@@ -24,7 +24,7 @@
 }
 
   .navbar-collapse {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 5px;
     width: 74vmin;
