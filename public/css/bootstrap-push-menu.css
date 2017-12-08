@@ -23,7 +23,7 @@
   .navbar-collapse {
     position: fixed;
     top: 0;
-    right: 5px;
+    left: 100px;
     width: 74vmin;
     height: 100% !important;
     max-height: 10000px;
@@ -31,7 +31,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    z-index: -1; }
+    z-index: 100000!important; }
     body.open .navbar-collapse {
       z-index: 1000;
 	  background-color:#212121;
