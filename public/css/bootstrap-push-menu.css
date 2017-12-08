@@ -6,6 +6,10 @@
 	 }
 	 .dropdown{
 		 background-color:red}
+		 .navbar {
+    background-color: #dbdbdb !important;
+    width: 500px;
+}
 
   .navbar-toggle {
     float: right;
