@@ -1,15 +1,12 @@
 @media (max-width: 768px) {
   .navbar-collapse {
-    transform: scale(1) translate(71vmin, 0);
+    transform: scale(1) translate(115vmin, 0);
 
 	
 	 }
 	 .dropdown{
 		 background-color:red}
-		 .navbar {
-    background-color: #dbdbdb !important;
-    width: 500px;
-}
+
 
   .navbar-toggle {
     float: right;
