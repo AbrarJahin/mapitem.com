@@ -6,6 +6,9 @@
 	 }
 	 .checkbox label, .radio label{
 		 padding-left:0}
+		 .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"] {
+    margin-left: 20px;
+}
   .navbar-toggle {
     float: right;
     margin-left: 10px; }
