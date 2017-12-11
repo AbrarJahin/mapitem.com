@@ -4,11 +4,13 @@
 
 	
 	 }
-	 .checkbox label, .radio label{
-		 padding-left:0}
-		 .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"] {
-    margin-left: 20px;
+	 .pos-adj1 .checkbox label, .pos-adj1 .radio label {
+
+    padding-left: 30px;}
+	.pos-adj1  .checkbox input[type="checkbox"], .pos-adj1 .checkbox-inline input[type="checkbox"], .pos-adj1 .radio input[type="radio"], .pos-adj1 .radio-inline input[type="radio"] {
+    left: -132px;
 }
+
   .navbar-toggle {
     float: right;
     margin-left: 10px; }
