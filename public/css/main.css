@@ -204,6 +204,7 @@ nav .dropdown-menu {
 }
 .pos-adj1 {
 	margin: 20px 0 10px;
+	overflow:hidden
 }
 .pos-adj2 {
 	font-size: 9pt;

@@ -4,11 +4,10 @@
 
 	
 	 }
-	 .pos-adj1 .checkbox label, .pos-adj1 .radio label {
-
-    padding-left: 30px;}
 	.pos-adj1  .checkbox input[type="checkbox"], .pos-adj1 .checkbox-inline input[type="checkbox"], .pos-adj1 .radio input[type="radio"], .pos-adj1 .radio-inline input[type="radio"] {
-    left: -132px;
+    width: 20px;
+	margin-left:0;
+	left:0
 }
 
   .navbar-toggle {
