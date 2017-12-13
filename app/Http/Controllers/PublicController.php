@@ -395,7 +395,7 @@ class PublicController extends Controller
 		Functionality   -> Give Suggestions for Search
 		Access          -> All
 		Created At      -> 28/11/2016
-		Updated At      -> 29/11/2016
+		Updated At      -> 14/12/2017
 		Created by      -> S. M. Abrar Jahin
 	*/
 	public function getSuggestion()
@@ -406,6 +406,7 @@ class PublicController extends Controller
 						->where('title', 'like', '%'.$requestData['search_string'].'%')
 						->whereBetween('location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 						->whereBetween('location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
+						->where('is_active', 'active')
 						->select(
 									'title as name'
 								)
