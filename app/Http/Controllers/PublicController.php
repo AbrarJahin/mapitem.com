@@ -90,6 +90,7 @@ class PublicController extends Controller
 					->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 					->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
 					->groupBy('advertisement_images.advertisement_id')
+					->where('advertisements.is_active', 'active')
 					//->orderBy('advertisements.created_at', 'desc')
 					->inRandomOrder()
 					->take(8)
