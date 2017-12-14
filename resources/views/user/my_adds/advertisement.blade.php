@@ -57,7 +57,7 @@
 								src="@if (count($my_add->AdvertisementImages) > 0)
 							{{ URL::asset('uploads') }}/{{ $my_add->AdvertisementImages[0]->image_name }}
 							@else
-								{{ URL::asset('images/not_available.jpg') }}
+								{{ URL::asset('images/not_available_1.png') }}
 						@endif">
 					</div>
 

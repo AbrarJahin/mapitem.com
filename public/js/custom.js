@@ -1510,7 +1510,12 @@ $(document).ready(function()
 					}
 					catch(err)
 					{
-						console.log("Image not exists - " + err);
+						console.log(err);
+						$('#add_title_image').attr(	"src",
+													$('meta[name=upload_folder_url]').attr("content")
+													+
+													"../images/not_available_1.png"
+												);
 					}
 				});
 			}
