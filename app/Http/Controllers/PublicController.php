@@ -54,7 +54,7 @@ class PublicController extends Controller
 		$requestData = Request::all();
 
 		return	DB::table('advertisements')
-					->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
+					->leftJoin('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
 					->join('users', 'advertisements.user_id', '=', 'users.id')
 					->leftJoin('user_wishlists', function ($join)
 								{
