@@ -186,6 +186,8 @@ function getLocation()
 
 						$.each(responce_data,function(key_index,single_data)
 						{
+							if(single_data.advertisement_image == null)
+								single_data.advertisement_image = "../images/not_available_1.png";
 							var data_to_append	=	'<div class="col-lg-3 col-md-3 col-sm-6">'
 														+'<a href="#" add_id="'+single_data.id+'" class="add_to_wishlist wsh-lst2">'
 															+'<img type="image/svg+xml" src="'+single_data.hearts_image+'"></img>'
