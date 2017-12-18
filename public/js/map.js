@@ -914,6 +914,12 @@ function showAddDetail(id)		/*Show ad Detail*/
 									+ ","
 									+ $('#selected_add_direction').attr("location_lon");
 			$('#selected_add_direction').attr("href", mapDirectionUrl);
+
+			setTimeout(
+			function()
+			{
+				$("#wait").css("display", "none");
+			}, 10000);
 		}
 	});
 

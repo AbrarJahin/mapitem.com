@@ -12,6 +12,9 @@
 		<a href="{{ URL::route('user.dashboard') }}">Dashboard</a>
 	</li>
 	<li class="">
+		<a href="{{ URL::route('user.my_adds') }}">My Ads</a>
+	</li>
+	<li class="">
 		<a href="{{ URL::route('user.profile') }}">Profile</a>
 	</li>
 	<li class="">
