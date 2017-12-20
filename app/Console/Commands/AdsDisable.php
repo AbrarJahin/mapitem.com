@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Advertisement;
+use Carbon\Carbon;
 
 class AdsDisable extends Command
 {
@@ -37,7 +39,16 @@ class AdsDisable extends Command
 	 */
 	public function handle()
 	{
-		//DB::table('users')->where('active', 0)->delete();
-		$this->info('All inactive users are deleted successfully!');
+		try
+		{
+			Advertisement::where('is_active', 'active')
+						->where( 'updated_at', '<', Carbon::now()->subDays(env("AD_AUTO_DISABLE_DAY_INTERVAL", 100)))
+						->update(['is_active' => 'inactive']);
+			$this->info('Ads disabled!!');
+		}
+		catch (Exception $ex)
+		{
+			$this->info('Ads disable failed - '.$ex);
+		}
 	}
 }

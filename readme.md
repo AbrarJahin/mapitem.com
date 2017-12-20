@@ -115,3 +115,11 @@ Google Login- https://www.youtube.com/watch?v=0y0N75gkLb4
 CSS - https://cssminifier.com/
 
 JS - https://skalman.github.io/UglifyJS-online/
+
+# Config Ad Disable duration-
+
+1. Change value of `AD_AUTO_DISABLE_DAY_INTERVAL` in `.env` file.
+
+2. Reset config file to take effect by running this command-
+
+	php artisan config:clear
