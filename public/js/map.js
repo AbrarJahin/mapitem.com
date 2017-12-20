@@ -784,7 +784,7 @@ function showAddDetail(id)		/*Show ad Detail*/
 								{
 									$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
 									var firstImageOfTheAd = $('meta[name=upload_folder_url]').attr("content")+image.image_name;
-									$('meta[name=og:image]').attr('content', firstImageOfTheAd);
+									$("meta[property='og\\:image']").attr('content', firstImageOfTheAd);
 								});
 							}
 							else
@@ -914,12 +914,6 @@ function showAddDetail(id)		/*Show ad Detail*/
 									+ ","
 									+ $('#selected_add_direction').attr("location_lon");
 			$('#selected_add_direction').attr("href", mapDirectionUrl);
-
-			setTimeout(
-			function()
-			{
-				$("#wait").css("display", "none");
-			}, 10000);
 		}
 	});
 

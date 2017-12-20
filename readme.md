@@ -109,3 +109,9 @@ Login Tool- https://github.com/laravel/socialite
 FB Login- https://www.youtube.com/watch?v=EYdeTbQyhL8
 
 Google Login- https://www.youtube.com/watch?v=0y0N75gkLb4
+
+# Compress CSS and JS -
+
+CSS - https://cssminifier.com/
+
+JS - https://skalman.github.io/UglifyJS-online/
