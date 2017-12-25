@@ -107,9 +107,13 @@ Other Useful Links
 
 1. [Login Tool Used In This Project - Socialite - Github](https://github.com/laravel/socialite)
 
-2. [Tutorial for Facebook Login with Socialite](https://www.youtube.com/watch?v=EYdeTbQyhL8)
+2. Tutorial for Facebook Login with Socialite- [Tutorial 1](https://www.youtube.com/watch?v=EYdeTbQyhL8) / [Tutorial 2](https://www.youtube.com/watch?v=tx8XZ_t6SbQ)
 
-3. Google Login- [Tutorial for Google Login with Socialite](https://www.youtube.com/watch?v=0y0N75gkLb4)
+3. Tutorial for Google Login with Socialite- [Tutorial 1](https://www.youtube.com/watch?v=0y0N75gkLb4) / [Tutorial 2](https://www.youtube.com/watch?v=qz0TOkkhcSQ)
+
+4. [Paypal API Tutorial](https://www.youtube.com/watch?v=q5Xb5r4MUB8&feature=youtu.be)
+
+5. [Coinbases API](http://www.sitepoint.com/bitcoin-php-coinbases-api-basic-usage/)
 
 Compress CSS and JS -
 ---------------------

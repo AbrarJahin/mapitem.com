@@ -79,8 +79,6 @@ c-panel detail
 	user-blockhunt
 	pass-Maplevel1
 
-## [Install composer in shared hosting using drush](https://www.godaddy.com/help/how-to-install-drush-on-cpanel-shared-hosting-12396)
-
 Changing Default Root Folder
 ============================
 
@@ -130,12 +128,6 @@ Git Switch to a branch Branch
 Other Important Links
 ---------------------
 
-1. [Coinbases API](http://www.sitepoint.com/bitcoin-php-coinbases-api-basic-usage/)
+1. [Deploy with Removng Public Folder](http://stackoverflow.com/questions/28364496/laravel-5-remove-public-from-url/28735930#28735930)
 
-2. [Google Login Tutorial](https://www.youtube.com/watch?v=qz0TOkkhcSQ)
-
-3. [Facebook Login Tutorial](https://www.youtube.com/watch?v=tx8XZ_t6SbQ)
-
-4. [Paypal API Tutorial](https://www.youtube.com/watch?v=q5Xb5r4MUB8&feature=youtu.be)
-
-5. [Deploy with Removng Public Folder](http://stackoverflow.com/questions/28364496/laravel-5-remove-public-from-url/28735930#28735930)
+2. [Install `Composer` in shared hosting using drush](https://www.godaddy.com/help/how-to-install-drush-on-cpanel-shared-hosting-12396)
