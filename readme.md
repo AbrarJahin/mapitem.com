@@ -13,8 +13,8 @@ But no documentations are given.
 So, no readme file can be provided still now.
 
 
-## Pages-
-=========
+## Pages
+========
 
  1. Login Page
 
@@ -102,21 +102,24 @@ But you should have a Database named `mapitem` with user=`root` and no password 
 
 ------------------------
 
-Other libraries used-
+Other Useful Links
+------------------
 
-Login Tool- https://github.com/laravel/socialite
+1. [Login Tool Used In This Project - Socialite - Github](https://github.com/laravel/socialite)
 
-FB Login- https://www.youtube.com/watch?v=EYdeTbQyhL8
+2. [Tutorial for Facebook Login with Socialite](https://www.youtube.com/watch?v=EYdeTbQyhL8)
 
-Google Login- https://www.youtube.com/watch?v=0y0N75gkLb4
+3. Google Login- [Tutorial for Google Login with Socialite](https://www.youtube.com/watch?v=0y0N75gkLb4)
 
-# Compress CSS and JS -
+Compress CSS and JS -
+---------------------
 
-CSS - https://cssminifier.com/
+1. [CSS Minifire Online](https://cssminifier.com/)
 
-JS - https://skalman.github.io/UglifyJS-online/
+2. [UglifyJS Online](https://skalman.github.io/UglifyJS-online/)
 
-# Config Ad Disable duration-
+Config Ad Disable duration
+--------------------------
 
 1. Change value of `AD_AUTO_DISABLE_DAY_INTERVAL` in `.env` file.
 

@@ -783,8 +783,8 @@ function showAddDetail(id)		/*Show ad Detail*/
 								$.each(value,function(id,image)
 								{
 									$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
-									var firstImageOfTheAd = $('meta[name=upload_folder_url]').attr("content")+image.image_name;
-									$("meta[property='og\\:image']").attr('content', firstImageOfTheAd);
+									/*var firstImageOfTheAd = $('meta[name=upload_folder_url]').attr("content")+image.image_name;
+									$("meta[property='og\\:image']").attr('content', firstImageOfTheAd);*/
 								});
 							}
 							else

@@ -37,7 +37,7 @@
 	{{-- Schema.org markup for Google+ --}}
 	<meta itemprop="name" content="MapItem - {{ $current_page or '' }}">
 	<meta itemprop="description" content="MapItem - {{ $current_page or '' }}">
-	<meta itemprop="image" content="{{ URL::asset('images/blockhunt-logo.png') }}">
+	<meta itemprop="image" content="{{ URL::asset('images/blockhunt-webLogin-logo.png') }}">
 
 	{{-- Twitter Card data --}}
 	<meta name="twitter:card" content="product">
@@ -45,7 +45,7 @@
 	<meta name="twitter:title" content="MapItem - {{ $current_page or '' }}">
 	<meta name="twitter:description" content="MapItem - {{ $current_page or '' }}">
 	<meta name="twitter:creator" content="S. M. Abrar Jahin">
-	<meta name="twitter:image" content="{{ URL::asset('images/blockhunt-logo.png') }}">
+	<meta name="twitter:image" content="{{ URL::asset('images/blockhunt-webLogin-logo.png') }}">
 	<meta name="twitter:data1" content="Product">
 	<meta name="twitter:label1" content="For Sell">
 	<meta name="twitter:data2" content="">
@@ -55,10 +55,10 @@
 	<meta property="fb:app_id" content="{{ env('FB_APP_ID') }}" />
 
 	{{-- Open Graph Card data --}}
-	<meta property="og:image" content="{{ URL::asset('images/blockhunt-logo.png') }}">
+	<meta property="og:image" content="{{ URL::asset('images/blockhunt-webLogin-logo.png') }}">
 	<meta property="og:image:type" content="image/png">
 	<meta property="og:image:width" content="600">
-	<meta property="og:image:height" content="315">
+	<meta property="og:image:height" content="600">
 	<meta property="og:type" content="product" />
 	<meta property="og:localization" content="en_US" />
 	<meta property="og:url" content="{{ URL::to('/') }}" />
