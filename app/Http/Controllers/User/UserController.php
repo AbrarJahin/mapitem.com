@@ -221,7 +221,7 @@ class UserController extends Controller
 		$validator = Validator::make(
 										$requestData,
 										[
-											'profile_image'				=> 'image|max:2047|mimes:jpeg,bmp,png',
+											'profile_image'				=> 'image|max:15000|mimes:jpeg,bmp,png',
 											'address'					=> 'string|max:255',
 											'cell_no'					=> 'string|max:60|unique:users,cell_no,'.$user->id,
 											'date_of_birth'				=> 'date',
