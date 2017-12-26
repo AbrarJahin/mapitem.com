@@ -90,7 +90,7 @@ $(document).ready(function()
 					}
 					else if(xhr.status===500)
 					{
-						alert("Profile image size should be under 2MB");
+						alert("Profile image size should be under 15 MB");
 					}
 					else
 						alert(errorThrown);
