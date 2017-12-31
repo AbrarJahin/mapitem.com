@@ -83,7 +83,7 @@
 	{{-- Info Bubble for replacing infowindow --}}
 	<script src="https://googlemaps.github.io/js-store-locator/examples/infobubble-compiled.js"></script>
 	{{-- Listing page Map Functionalities --}}
-	<script type="text/javascript" src="{{ URL::asset('js/map.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/map.min.js') }}"></script>
 	{{-- Pagination --}}
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootpag/1.0.7/jquery.bootpag.min.js"></script>
 

@@ -18,6 +18,7 @@ use DB;
 use Hash;
 use URL;
 use Image;
+use Log;
 
 /*
 	Functionality	-> Handel All User Works
@@ -220,7 +221,7 @@ class UserController extends Controller
 		$validator = Validator::make(
 										$requestData,
 										[
-											'profile_image'				=> 'image|max:10240',
+											'profile_image'				=> 'image|max:15000|mimes:jpeg,bmp,png',
 											'address'					=> 'string|max:255',
 											'cell_no'					=> 'string|max:60|unique:users,cell_no,'.$user->id,
 											'date_of_birth'				=> 'date',
@@ -240,6 +241,7 @@ class UserController extends Controller
 		if ($validator->fails())
 		{
 			return Response::json($validator->errors()->all(), 400);
+			//abort(400, 'Validation Error');
 		}
 
 		$user->address						= $requestData['address'];
@@ -257,48 +259,54 @@ class UserController extends Controller
 
 		if(	isset(	$requestData['profile_image']	)	)	//If file was uploaded
 		{
-			//return $requestData['profile_image']->getMimeType();
-			if( strlen($user->profile_picture)>4 )
-			{	//If file exists then remove the file
-			 	try
-				{
-					unlink($this->destinationPath.'/'.$user->profile_picture);
-				}
-				catch (\Exception $e)
-				{
-					echo "First - ";
-					echo $e->getMessage();
-				}
-			}
 			//Creating the file Name
 			$extension = $requestData['profile_image']->getClientOriginalExtension(); // getting file extension
 			$fileName = Auth::user()->id."p". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
 
-			$upload_success = $requestData['profile_image']->move($this->destinationPath, $fileName); // uploading file to given path
+			if ($requestData['profile_image']->move($this->destinationPath, $fileName))
+			{
+				//New file uploaded, so need to remove previous file
+				if( strlen($user->profile_picture)>4 )
+				{	//If pro-pic exists then remove the file
+					try
+					{
+						unlink($this->destinationPath.'/'.$user->profile_picture);
+					}
+					catch (\Exception $e)
+					{
+						Log::warning("First - ");
+						Log::error($e->getMessage());
+					}
+				}
 
-			$uploadedFileLocation = realpath($this->destinationPath.'/'.$fileName);
-			//Resizing image
-			try
-			{
-				Image::make($uploadedFileLocation)
-					->resize($this->max_height,$this->max_height)
-					->orientate()
-					->save($uploadedFileLocation);
-				$user->profile_picture	=	$fileName;
-			}
-			catch (\Exception $e)
-			{
-				echo "Second - ";
-				echo $e->getMessage();
+				$uploadedFileLocation = realpath($this->destinationPath.'/'.$fileName);
+				//Resizing image
 				try
 				{
-					unlink($uploadedFileLocation);
+					Image::make($uploadedFileLocation)
+						->resize($this->max_height,$this->max_height)
+						->orientate()
+						->save($uploadedFileLocation);
+					$user->profile_picture	=	$fileName;
 				}
 				catch (\Exception $e)
 				{
-					echo "Third - ";
-					echo $e->getMessage();
+					Log::warning("Second - ");
+					Log::error($e->getMessage());
+					try
+					{
+						unlink($uploadedFileLocation);
+					}
+					catch (\Exception $ex)
+					{
+						Log::warning("Third - ");
+						Log::error($ex->getMessage());
+					}
 				}
+			}
+			else
+			{
+				Log::error("Pro Pic Upload Failed");
 			}
 		}
 

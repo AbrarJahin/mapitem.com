@@ -54,7 +54,7 @@ class PublicController extends Controller
 		$requestData = Request::all();
 
 		return	DB::table('advertisements')
-					->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
+					->leftJoin('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
 					->join('users', 'advertisements.user_id', '=', 'users.id')
 					->leftJoin('user_wishlists', function ($join)
 								{
@@ -90,6 +90,7 @@ class PublicController extends Controller
 					->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 					->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
 					->groupBy('advertisement_images.advertisement_id')
+					->where('advertisements.is_active', 'active')
 					//->orderBy('advertisements.created_at', 'desc')
 					->inRandomOrder()
 					->take(8)
@@ -178,7 +179,7 @@ class PublicController extends Controller
 		$requestData = Request::all();
 		//Eloquent Query is not applicable here because of bad performance
 		$tempData = DB::table('advertisements')
-				->join('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
+				->leftJoin('advertisement_images', 'advertisements.id', '=', 'advertisement_images.advertisement_id')
 				->join('users', 'advertisements.user_id', '=', 'users.id')
 				->leftJoin('user_wishlists', function ($join)
 								{
@@ -394,7 +395,7 @@ class PublicController extends Controller
 		Functionality   -> Give Suggestions for Search
 		Access          -> All
 		Created At      -> 28/11/2016
-		Updated At      -> 29/11/2016
+		Updated At      -> 14/12/2017
 		Created by      -> S. M. Abrar Jahin
 	*/
 	public function getSuggestion()
@@ -405,6 +406,7 @@ class PublicController extends Controller
 						->where('title', 'like', '%'.$requestData['search_string'].'%')
 						->whereBetween('location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 						->whereBetween('location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
+						->where('is_active', 'active')
 						->select(
 									'title as name'
 								)

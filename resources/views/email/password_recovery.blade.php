@@ -4,9 +4,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 		<title>Choose a new password for MapItem</title>
-
 		<style type="text/css" rel="stylesheet" media="all">
 			/* Base ------------------------------ */
 			*:not(br):not(tr):not(html) {
@@ -39,7 +37,6 @@
 				margin: 0;
 				padding: 0;
 			}
-
 			/* Masthead ----------------------- */
 			.email-masthead {
 				padding: 25px 0;
@@ -56,7 +53,6 @@
 				text-decoration: none;
 				text-shadow: 0 1px 0 white;
 			}
-
 			/* Body ------------------------------ */
 			.email-body {
 				width: 100%;
@@ -200,18 +196,12 @@
 															<tr>
 																<td align="center">
 																	<div>
-																		{{-- [if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ $actionUrl }}" style="height:45px;v-text-anchor:middle;width:200px;" arcsize="7%" stroke="f" fill="t">
-																			<v:fill type="tile" color="#dc4d2f" />
-																			<w:anchorlock/>
-																			<center style="color:#ffffff;font-family:sans-serif;font-size:15px;">Reset your password</center>
-																		</v:roundrect><![endif] --}}
 																		<a href="{{ $actionUrl }}" class="button reset-button">Reset your password</a>
 																	</div>
 																</td>
 															</tr>
 														</tbody>
 													</table>
-
 													<p>
 														If you did not request a password reset, please ignore this email.
 													</p>

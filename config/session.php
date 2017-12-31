@@ -29,9 +29,9 @@ return [
 	|
 	*/
 
-	'lifetime' => 120,
+	'lifetime'	=>	env('AUTOMATIC_INACTIVE_LOGOUT_MINUITE', 120),
 
-	'expire_on_close' => false,
+	'expire_on_close'	=>	false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ return [
 	|
 	*/
 
-	'encrypt' => false,
+	'encrypt'	=>	env('SESSION_ENCRYPTION_ENABLE', false),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -109,7 +109,7 @@ return [
 	|
 	*/
 
-	'cookie' => 'laravel_session',
+	'cookie' => 'mapitem_session',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -135,7 +135,7 @@ return [
 	|
 	*/
 
-	'domain' => null,
+	'domain' => env('APP_SESSION_DOMAIN', null),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -148,6 +148,6 @@ return [
 	|
 	*/
 
-	'secure' => false,
+	'secure' => env('SESSION_SECURITY_STATUS', false),
 
 ];

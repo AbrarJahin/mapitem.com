@@ -13,8 +13,8 @@ But no documentations are given.
 So, no readme file can be provided still now.
 
 
-## Pages-
-=========
+## Pages
+========
 
  1. Login Page
 
@@ -61,43 +61,32 @@ So, no readme file can be provided still now.
  22. Settings
 
 
-###Installation
+### Easy Installation On Windows
 
-Install WAMP 2.5 (PHP>=5.5.9)
+1. Install WAMP 2.5 (PHP>=5.5.9) or latest one
 
-Install composer, take composer update, git clone go to the directory.
+2. Install Git and composer. Take composer update.
 
-Then run
+3. This step is optional. Create a Database in localhost named `mapitem` with user root and no password.
+
+4. Then run
 
 ```bash
 
 git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git
 
 cd mapitem.com
-
-composer install
-
---or
-
---composer install --ignore-platform-reqs
-
 cp  .env.example .env
+composer install
+--or
+--composer install --ignore-platform-reqs
+## And You are done if u have followed optional step defined in step 3. If you did not follow, then continue.
 
-# Now change the .env file to set configurations and then run the bellow codes
+# Now change the .env file to set Database and configurations and then run the bellow codes
 
 composer dump-autoload
 
 php artisan key:generate
-
-# Now set up a DB according to .env file (for here 'mapitem')
-
-php artisan migrate:refresh --seed
-
-```
-
-or for every time use-
-
-```bash
 
 php artisan migrate:refresh --seed
 
@@ -113,10 +102,31 @@ But you should have a Database named `mapitem` with user=`root` and no password 
 
 ------------------------
 
-Other libraries used-
+Other Useful Links
+------------------
 
-Login Tool- https://github.com/laravel/socialite
+1. [Login Tool Used In This Project - Socialite - Github](https://github.com/laravel/socialite)
 
-FB Login- https://www.youtube.com/watch?v=EYdeTbQyhL8
+2. Tutorial for Facebook Login with Socialite- [Tutorial 1](https://www.youtube.com/watch?v=EYdeTbQyhL8) / [Tutorial 2](https://www.youtube.com/watch?v=tx8XZ_t6SbQ)
 
-Google Login- same as prev
+3. Tutorial for Google Login with Socialite- [Tutorial 1](https://www.youtube.com/watch?v=0y0N75gkLb4) / [Tutorial 2](https://www.youtube.com/watch?v=qz0TOkkhcSQ)
+
+4. [Paypal API Tutorial](https://www.youtube.com/watch?v=q5Xb5r4MUB8&feature=youtu.be)
+
+5. [Coinbases API](http://www.sitepoint.com/bitcoin-php-coinbases-api-basic-usage/)
+
+Compress CSS and JS -
+---------------------
+
+1. [CSS Minifire Online](https://cssminifier.com/)
+
+2. [UglifyJS Online](https://skalman.github.io/UglifyJS-online/)
+
+Config Ad Disable duration
+--------------------------
+
+1. Change value of `AD_AUTO_DISABLE_DAY_INTERVAL` in `.env` file.
+
+2. Reset config file to take effect by running this command-
+
+	php artisan config:clear

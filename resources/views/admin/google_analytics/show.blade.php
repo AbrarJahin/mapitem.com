@@ -1,5 +1,4 @@
 <meta name="show_ajax_url" content="{{ URL::route('admin.google_analytics_view') }}">
-
 {{-- Google Analyts table --}}
 <table class="table table-striped table-hover dataTable no-footer" cellpadding="0" cellspacing="0" border="0" width="100%" role="grid" aria-describedby="public-pages-datatable_info" style="width: 100%;">
 	<thead>
