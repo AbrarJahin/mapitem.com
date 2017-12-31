@@ -57,8 +57,8 @@
 	{{-- Open Graph Card data --}}
 	<meta property="og:image" content="{{ URL::asset('images/blockhunt-webLogin-logo.png') }}">
 	<meta property="og:image:type" content="image/png">
-	<meta property="og:image:width" content="600">
-	<meta property="og:image:height" content="600">
+	<meta property="og:image:width" content="1024">
+	<meta property="og:image:height" content="1024">
 	<meta property="og:type" content="product" />
 	<meta property="og:localization" content="en_US" />
 	<meta property="og:url" content="{{ URL::to('/') }}" />
