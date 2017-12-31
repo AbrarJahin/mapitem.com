@@ -120,7 +120,7 @@ Compress CSS and JS -
 
 1. [CSS Minifire Online](https://cssminifier.com/)
 
-2. [UglifyJS Online](https://skalman.github.io/UglifyJS-online/)
+2. [JS Minifire Online](http://javascriptcompressor.com/)
 
 Config Ad Disable duration
 --------------------------

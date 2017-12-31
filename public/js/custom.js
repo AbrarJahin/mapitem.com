@@ -1436,6 +1436,7 @@ $(document).ready(function()
 		$("#wait").css("display", "none");
 		if (jqXHR.status === 0)
 		{
+			alert('Network Error !!');
 			console.log('Not connect.\n Verify Network.');
 		}
 		else if (jqXHR.status == 404)
