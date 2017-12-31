@@ -204,6 +204,7 @@ nav .dropdown-menu {
 }
 .pos-adj1 {
 	margin: 20px 0 10px;
+	overflow:hidden
 }
 .pos-adj2 {
 	font-size: 9pt;
@@ -568,6 +569,9 @@ nav .dropdown-menu {
 	height: 16px;
 	margin: 5px 0;
 	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .box-content h6 {
 	background-color: rgba(35, 165, 0, 0.9);
@@ -2657,7 +2661,7 @@ body {
 .list-view .box-content h5{
 	width:auto;
 	max-width:200px;
-	color: #81bb71;
+	color: #166201;
 	font-size: 21px;
 	height: auto;
 	text-decoration: none;
@@ -2744,15 +2748,35 @@ span.twitter-typeahead{
 line-height: 22px;
 border-bottom: 1px solid #3c8b26;
 }
-#add_owner_email a {
+#add_owner_email a, #add_owner_website a, #add_owner_fb_status a, #add_owner_phone a{
     display: inline-block;
     word-wrap: break-word;
-    width: 140px;
+    width: 78%;
 }
-		
+.slick-slide{
+	height: 333px!important;
+	}		
 
 @media(max-width:767px){
 	/* Push classes applied to the body */
+	.header-minus {
+	padding-top: 0px;
+	}
+	.modal-backdrop {
+	display: none !important;
+	}
+	.modal::before {
+    width: 200%;
+    height: 300%;
+    background-color: rgba(0,0,0,.5);
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+	}
+	.modal {
+    right: -155% !important;
+	}
 	.navbar{
 		margin-bottom:0
 		}
@@ -2782,11 +2806,8 @@ border-bottom: 1px solid #3c8b26;
 	padding-right: 15px;
 	width: 100%;
 	}
-	.cbp-spmenu-push {
-		overflow-x: hidden;
-		position: relative;
-		left: 0;
-		}
+
+	
 	
 	.cbp-spmenu-push .header-minus {
 		margin-top: -20px;
@@ -3024,8 +3045,8 @@ border-bottom: 1px solid #3c8b26;
 	}
 	.ip-nav li a {
 		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-		font-size: 12pt !important;
-		padding-left: 20px !important;
+		font-size: 12pt ;
+		padding-left: 20px;
 	}
 	.ip-nav li ul li a{
 		color: #d5d5d5!important
@@ -3141,11 +3162,26 @@ border-bottom: 1px solid #3c8b26;
 }
 
 @media(max-width:480px){
+	.modal {
+	right: -155% !important;
+	}
+	.modal::before {
+	width: 200%;
+	height: 300%;
+	background-color: rgba(0,0,0,.5);
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	}
 	.nf-placeholder {
 	font-size: 9pt;
 	margin: 12px 80px 0 60px;
 	padding-left: 9px;
-}
+	}
+	.modal-backdrop {
+	display: none !important;
+	}
 	.d-arrow {
 	font-size: 11pt;
 	margin: 13px 11px 0 0;
@@ -3273,7 +3309,7 @@ border-bottom: 1px solid #3c8b26;
 	.ip-nav li a{
 		font-size: 9.5pt
 	}
-	.ip-nav .round2 {
+	.ip-nav .round2, .hp-nav .round2 {
 		width: 18px;
 		height: 18px;
 
@@ -3289,7 +3325,7 @@ border-bottom: 1px solid #3c8b26;
 	}
 }
 @media(max-width:990px){
-	.ip-nav .round2{
+	.ip-nav .round2, .hp-nav .round2{
 		margin: 0;
 		
 	}

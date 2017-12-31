@@ -10,4 +10,5 @@
 {{-- Custom CSS --}}
 <link rel="stylesheet" href="{{ URL::asset('css/main.min.css') }}" type="text/css">
 {{-- Push Menu --}}
+<link rel="stylesheet" href="{{ URL::asset('css/bootstrap-push-menu.css') }}" type="text/css">
 <script src="{{ URL::asset('js/modernizr.custom.js') }}"></script>

@@ -1,5 +1,5 @@
 {{-- Everything in this page are different from any other page, so everything is redone for this page --}}
-
+<div id="site-wrapper">
 @include('public.listing.header')
 
 {{-- Modal Close Button --}}
@@ -88,7 +88,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootpag/1.0.7/jquery.bootpag.min.js"></script>
 
 {{-- Footer Scripts - End --}}
-
+</div>
 </body>
 {!! $google_analytics_script or '' !!}
 </html>

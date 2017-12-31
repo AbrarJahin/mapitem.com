@@ -20,7 +20,7 @@
 
 			<div class="clearfix visible-xs-block"></div>
 
-			<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+
             <ul class="nav navbar-nav navbar-right ip-nav">
 				@if (!Auth::check())
 					<li id="dt" class="dropdown">
@@ -45,7 +45,7 @@
 					</li>
 				@endif
 			</ul>
-            </div>
+
 		</div>
 		{{-- /.navbar-collapse --}}
 	</div>

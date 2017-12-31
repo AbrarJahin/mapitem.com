@@ -2788,21 +2788,7 @@ $(document).ready(function()
 	}
 	//Typehead - End
 });
-//push menu for mobile
-var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-	body = document.body;
-	showRightPush.onclick = function() {
-		classie.toggle( this, 'active' );
-		classie.toggle( body, 'cbp-spmenu-push-toleft' );
-		classie.toggle( menuRight, 'cbp-spmenu-open' );
-		disableOther( 'showRightPush' );
-	};
-	function disableOther( button ) {
-	
-		if( button !== 'showRightPush' ) {
-			classie.toggle( showRightPush, 'disabled' );
-		}
-}
+
 
 //nav filters for mobile
 $(document).ready(function(){
@@ -2812,4 +2798,8 @@ $(document).ready(function(){
 	$(".nf-close").click(function(){
         $(".nf-block").slideUp('slow');
     });
+	$(document).on('click', '.navbar-toggle', function(event) {
+       event.preventDefault();
+        $('body').toggleClass('open');
+      }); 
 });
