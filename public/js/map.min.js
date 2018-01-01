@@ -371,7 +371,7 @@ $(function()
 			{
 				/*console.log(e);*/
 				if ($("#lgn-pup").length === 0)
-					alert('You are not eligable to give this review');
+					alert('You are not eligible to give this review');
 				else
 					$('#lgn-pup').modal('show');
 					
