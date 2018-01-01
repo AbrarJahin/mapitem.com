@@ -14,6 +14,21 @@ $(document).ready(function()
 			return false;
 		}
 	}
+
+	$("#edit_profile input[name=website]").keyup(function()
+	{
+		if(!RegExForUrlMatch($("#edit_profile input[name=website]").val()))	//Check the URL
+		{
+			$("#edit_profile input[name=website]").parent().addClass("has-error");
+			$("#website-error").html("Please try a format like this - <b>http://example.com</b> or <b>https://www.example.com</b>");
+		}
+		else
+		{
+			$("#website-error").html("");
+			$("#edit_profile input[name=website]").parent().removeClass("has-error");
+		}
+	});
+
 	//Profile Map - Need to be updated
 	$("#user_address").geocomplete(
 	{
@@ -47,11 +62,12 @@ $(document).ready(function()
 	{
 		e.preventDefault();
 		var isValidated = true;
-		if(!RegExForUrlMatch($("input[name=website]").val()))	//Check the URL
+		if(!RegExForUrlMatch($("#edit_profile input[name=website]").val()))	//Check the URL
 		{
 			isValidated = false;
 			//Show error in the URL Box
 			$("#edit_profile input[name=website]").parent().addClass("has-error");
+			$("#website-error").html("Please try a format like this - <b>http://example.com</b> or <b>https://www.example.com</b>");
 		}
 
 		if(isValidated)

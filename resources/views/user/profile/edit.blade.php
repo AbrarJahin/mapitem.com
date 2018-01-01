@@ -30,6 +30,7 @@
 	<div class="p-left">Website</div>
 	<div class="p-right">
 		<input type="text" {{-- pattern="http?://.+" --}} value="{{ $current_user->website }}" placeholder="Website" name="website" class="width-adj8 form-control normal-input">
+		<span id="website-error"></span>
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Date of Birth</div>
