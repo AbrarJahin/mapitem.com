@@ -24,13 +24,13 @@
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Email</div>
 	<div class="p-right">
-		<input type="email" readonly value="{{ $current_user->email }}" placeholder="Email" name="email" class="form-control width-adj8 normal-input">
+		<input type="email" readonly value="{{ $current_user->email }}" placeholder="Email" name="email" class="form-control normal-input">
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Website</div>
 	<div class="p-right">
-		<input type="text" {{-- pattern="http?://.+" --}} value="{{ $current_user->website }}" placeholder="Website" name="website" class="width-adj8 form-control normal-input">
-		<span id="website-error"></span>
+		<input type="text" {{-- pattern="http?://.+" --}} value="{{ $current_user->website }}" placeholder="Website" name="website" class="form-control normal-input">
+		<span class="text-danger" id="website-error"></span>
 	</div>
 	<div class="clearfix margin-twenty"></div>
 	<div class="p-left">Date of Birth</div>
