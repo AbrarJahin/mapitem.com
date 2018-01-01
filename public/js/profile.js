@@ -1,5 +1,19 @@
 $(document).ready(function()
 {
+	function RegExForUrlMatch(urlString)
+	{
+		var expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/g;
+		var regex = new RegExp(expression);
+
+		if (urlString.match(regex))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	//Profile Map - Need to be updated
 	$("#user_address").geocomplete(
 	{
@@ -32,7 +46,14 @@ $(document).ready(function()
 	$("form#edit_profile").submit(function(e)
 	{
 		e.preventDefault();
-		var isValidated = true;	//After Validation Run
+		var isValidated = true;
+		if(!RegExForUrlMatch($("input[name=website]").val()))	//Check the URL
+		{
+			isValidated = false;
+			//Show error in the URL Box
+			$("#edit_profile input[name=website]").parent().addClass("has-error");
+		}
+
 		if(isValidated)
 		{
 			//$("#wait").css("display", "block");
@@ -96,8 +117,15 @@ $(document).ready(function()
 						alert(errorThrown);
 				}
 			});
+			$(this).parent().prev().removeClass("edit-on");
+			$(this).parent().addClass("edit-on");
+			return 0;
 		}
-		return 0;
+		else
+		{
+			alert('Please fix the showed error first !');
+			return 1;
+		}
 	});
 
 	//Profile Page - Profile Showing
@@ -137,6 +165,7 @@ $(document).ready(function()
 		user_location_edit_map.setCenter( new google.maps.LatLng( $('#location_lat_profile').val()+1, $('#location_lon_profile').val()-1 ) );	//Setting Edit Map Center to previous Location
 	});
 
+	/*
 	//About this function- I am not sure if it belongs in this page or another page
 	//If other page shows error, then it should be placed in custom.js
 	$(".pedit").click(function()
@@ -144,5 +173,5 @@ $(document).ready(function()
 		$(this).parent().prev().removeClass("edit-on");
 		$(this).parent().addClass("edit-on");
 	});
-
+	*/
 });
