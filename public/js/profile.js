@@ -11,12 +11,19 @@ $(document).ready(function()
 		}
 		else
 		{
-			return false;
+			if(urlString.length>0)
+				return false;
+			else
+				return true;	//If length is 0 means no string, then we will not compare
 		}
 	}
 
 	$("#edit_profile input[name=website]").keyup(function()
 	{
+		if($(this).val().length==1)
+		{
+			$(this).val("http://"+$(this).val());
+		}
 		if(!RegExForUrlMatch($("#edit_profile input[name=website]").val()))	//Check the URL
 		{
 			$("#edit_profile input[name=website]").parent().addClass("has-error");
@@ -24,8 +31,8 @@ $(document).ready(function()
 		}
 		else
 		{
-			$("#website-error").html("");
 			$("#edit_profile input[name=website]").parent().removeClass("has-error");
+			$("#website-error").html("");
 		}
 	});
 
@@ -112,6 +119,8 @@ $(document).ready(function()
 				success:function(responce_data)
 				{
 					$("#wait").css("display", "none");
+					$(this).parent().prev().removeClass("edit-on");
+					$(this).parent().addClass("edit-on");
 					console.log(responce_data);
 					location.reload();
 				},
@@ -133,8 +142,6 @@ $(document).ready(function()
 						alert(errorThrown);
 				}
 			});
-			$(this).parent().prev().removeClass("edit-on");
-			$(this).parent().addClass("edit-on");
 			return 0;
 		}
 		else
