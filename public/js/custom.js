@@ -19,8 +19,9 @@ function convertToLocalTime(serverTime)
 	return localTime;
 }
 
-function formatTime(inputDate, smallFormat = false)
+function formatTime(inputDate, smallFormat)
 {
+	var smallFormat = smallFormat || false;	//For function default value in IE
 	var dayNo = getDateWithSuffix(inputDate.getDate());
 	var monthName = getMonthName(inputDate.getMonth());
 	var year = inputDate.getFullYear();

@@ -9,7 +9,7 @@
 	</head>
 
 	<body>
-    	<div id="site-wrapper">
+		<div id="site-wrapper">
 		<div class="loader"></div>
 		{{-- Navigation --}}
 		@include('public.index.nav')
@@ -40,13 +40,7 @@
 		{{-- Pages JS --}}
 		<script src="{{ URL::asset('js/page.js') }}"></script>
 	{{-- Footer Scripts - End --}}
-    </div>
+	</div>
 	</body>
 	{!! $google_analytics_script or '' !!}
-    <script>
-    $(document).ready(function() {
-      $(document).on('click', '.navbar-toggle', function(event) {
-       
-    });
-  </script>
 </html>
