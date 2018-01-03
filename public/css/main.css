@@ -566,7 +566,7 @@ nav .dropdown-menu {
 	float: left;
 	font-size: 12pt;
 	font-weight: 600;
-	height: 16px;
+	height: 23px;
 	margin: 5px 0;
 	width: 100%;
 	overflow: hidden;
@@ -2655,6 +2655,7 @@ body {
 	height: 40px;
 	line-height: 40px;
 	width: 10%;
+	margin-right:5px
 }
 .list-view{
 	padding:0 10px}
@@ -3736,7 +3737,7 @@ img.add_detail
 
 .tt-menu {
 	width: 343px;
-	margin: 12px 0;
+	margin: -10px 0 0 0;
 	padding: 8px 0;
 	background-color: #fff;
 	border: 1px solid #ccc;
@@ -3747,6 +3748,11 @@ img.add_detail
 	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
 		 -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
 					box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.dot1{
+	overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
 }
 
 .tt-suggestion {
