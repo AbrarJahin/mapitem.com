@@ -88,6 +88,10 @@ $(document).ready(function()
 						var arr = $.parseJSON(xhr.responseText);
 						alert(arr[0]);
 					}
+					else if(xhr.status===500)
+					{
+						alert("Profile image size should be under 15 MB");
+					}
 					else
 						alert(errorThrown);
 				}
@@ -96,35 +100,6 @@ $(document).ready(function()
 		return 0;
 	});
 
-/*
-	//With jQueryForm plugin
-	$('form#edit_profile').ajaxForm({
-			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-			method: "POST",
-			url: $("#edit_profile").attr('action'),
-			dataType: "json",
-			beforeSend: function()
-			{
-				console.log("Start");
-				$('#uploadProgress').show();
-			},
-			uploadProgress: function(event, position, total, percentComplete)
-			{
-				console.log(percentComplete);
-				$('#uploadProgress').val(percentComplete);
-			},
-			success: function(responce_data)
-			{
-				console.log(responce_data);
-				$('#uploadProgress').hide();
-				location.reload();
-			},
-			complete: function(xhr)
-			{
-				console.log("Complete");
-			}
-	});
-*/
 	//Profile Page - Profile Showing
 	$("#profile_location").gmap3({
 		map:{

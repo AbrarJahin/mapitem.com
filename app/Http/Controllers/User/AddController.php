@@ -103,7 +103,7 @@ class AddController extends Controller
 
 		//Renaming the file
 		$extension = $requestData['uploaded_image']->getClientOriginalExtension(); // getting file extension
-		$fileName = Auth::user()->id."a". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
+		$fileName = Auth::user()->id."-". substr(sha1(rand()), 0, 10).substr( md5(rand()), 0, 10) . '.' . $extension; // renameing image
 		$upload_success = $requestData['uploaded_image']->move($this->destinationPath, $fileName); // uploading file to given path
 		$uploadedFileLocation = realpath($this->destinationPath.'/'.$fileName);
 		//Resizing image

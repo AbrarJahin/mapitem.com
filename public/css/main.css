@@ -3650,8 +3650,8 @@ li.next.disabled
 /* Info Bobble Custom CSS - Start */
 .map-master-div
 {
-	overflow-y: hidden; // hide vertical
-	overflow-x: hidden; // hide horizontal
+	overflow-y: hidden; /* hide vertical */
+	overflow-x: hidden; /* hide horizontal */
 	height: 300px;
 	margin: 0px;
 	border: 0px;

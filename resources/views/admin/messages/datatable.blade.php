@@ -1,5 +1,4 @@
 <meta name="datatable_ajax_url" content="{{ URL::route('admin.messages_datable') }}">
-
 {{-- Category Datatable --}}
 <table id="messages-datatable" class="table table-striped table-hover" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
 	<thead>
@@ -27,5 +26,4 @@
 		</tr>
 	</thead>
 </table>
-
 <font color="red">* All showes time here are server time</font>

@@ -1,5 +1,4 @@
 <meta name="view_ajax_url" content="{{ URL::route('admin.message_view') }}">
-
 {{-- Edit Category Modal --}}
 <div class="modal fade" id="view_data_modal" role="dialog">
 	<div class="modal-dialog">
@@ -55,8 +54,6 @@
 					<input type="text" class="form-control" id="message_ad_receive_time" disabled>
 				</div>
 			</div>
-
 		</div>
-		
 	</div>
 </div>
