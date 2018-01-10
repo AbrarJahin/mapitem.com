@@ -417,13 +417,15 @@ $(function()
 	});
 
 	/*open page on page load for sharing data*/
-	var add_id = location.hash.substr(1);
-	if(add_id.length>0 && !isNaN(add_id))
+	var hashString = location.hash.substr(1);
+	if(hashString.length>0 && !isNaN(hashString))
 	{
 		setTimeout(function()
 		{
-			openInfoWindowByID( add_id );
-			showAddDetail( add_id );
+			//Should decide if it is a ID or category or sub category, then need to act like that
+
+			openInfoWindowByID( hashString );
+			showAddDetail( hashString );
 		}, 1500);
 	}
 

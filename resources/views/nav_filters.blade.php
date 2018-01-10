@@ -10,7 +10,7 @@
 			<ul class="dropdown-menu h-ctr h-ctr3">
 				@foreach ($categories as $category)
 					<li class="no-border">
-						<a href="#" class="nav-category" category-id="{{ $category->id }}">
+						<a href="@if($current_page=="listing") # @else {{ URL::route('listing') }}#category_id={{ $category->id }} @endif" class="nav-category" category-id="{{ $category->id }}">
 							<h4 class="no-margin">
 								{{ $category->name }}
 								(<span categoryCount="{{ $category->id }}">{{ $category->total_advertisements }}</span>)
@@ -19,7 +19,7 @@
 						<ul>
 							@foreach($category->subCategory as $sub_cat)
 								<li>
-									<a href="#" class="nav-sub-category" sub-category-id="{{ $sub_cat->id }}">
+									<a href="@if($current_page=="listing") # @else {{ URL::route('listing') }}#sub_category_id={{ $sub_cat->id }} @endif" class="nav-sub-category" sub-category-id="{{ $sub_cat->id }}">
 										{{ $sub_cat->name }}
 										(<span subCategoryCount="{{ $sub_cat->id }}">{{ $sub_cat->total_advertisements }}</span>)
 									</a>
