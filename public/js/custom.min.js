@@ -1502,7 +1502,7 @@ $(document).ready(function()
 
 					//Showing the contents
 					$(".db-body").toggleClass('edit-on');
-					$("#show_paginator").toggle();
+					$("#show_paginator").hide();	//Hide Paginator
 
 					try
 					{
@@ -1545,6 +1545,7 @@ $(document).ready(function()
 			data: $("#edit_add_detail").serialize(),
 			success:function(responce_data)
 			{
+				$("#show_paginator").show();	//Hide Paginator
 				alert('Updated Succesfully');
 				location.reload();
 			}
