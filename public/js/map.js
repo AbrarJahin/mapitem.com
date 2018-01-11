@@ -418,14 +418,27 @@ $(function()
 
 	/*open page on page load for sharing data*/
 	var hashString = location.hash.substr(1);
-	if(hashString.length>0 && !isNaN(hashString))
+	if(hashString.length>0)
 	{
 		setTimeout(function()
 		{
 			//Should decide if it is a ID or category or sub category, then need to act like that
-
-			openInfoWindowByID( hashString );
-			showAddDetail( hashString );
+			if(hashString.indexOf("sub_category_id") >= 0)	//Sub Category is selected
+			{
+				var subCategoryId = hashString.match(/\d+/)[0];
+				$('[sub-category-id="' + subCategoryId + '"]').trigger('click');
+			}
+			else if(hashString.indexOf("category_id") >= 0)	//Category is selected
+			{
+				var categoryId = hashString.match(/\d+/)[0];
+				$('[category-id="' + categoryId + '"]').trigger('click');
+			}
+			else	//Advertisement is selected
+			{
+				var adId = hashString.match(/\d+/)[0];
+				openInfoWindowByID( adId );
+				showAddDetail( adId );
+			}
 		}, 1500);
 	}
 
