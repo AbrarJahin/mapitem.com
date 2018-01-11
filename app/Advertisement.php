@@ -73,7 +73,7 @@ class Advertisement extends Model
 
 	public function Offer()
 	{
-		return $this->hasMany('App\Offer', 'add_id', 'id');
+		return $this->hasMany('App\Offer', 'add_id', 'id')->orderBy('created_at');
 	}
 
 	public function UserWishlist()

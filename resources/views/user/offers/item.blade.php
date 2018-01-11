@@ -1,6 +1,10 @@
 <section class="offerbox">
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
-		<img src="{{ URL::asset('uploads') }}/{{ $advertisement->AdvertisementImages[0]->image_name }}" class="img-responsive">
+		<img src="@if (count($advertisement->AdvertisementImages) > 0)
+					{{ URL::asset('uploads') }}/{{ $advertisement->AdvertisementImages[0]->image_name }}
+				@else
+					{{url('/images/not_uploaded.png')}}
+				@endif" class="img-responsive">
 	</div>
 
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
