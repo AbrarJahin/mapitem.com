@@ -13,7 +13,9 @@
 						<a href="@if($current_page=="listing") # @else {{ URL::route('listing') }}#category_id={{ $category->id }} @endif" class="nav-category" category-id="{{ $category->id }}">
 							<h4 class="no-margin">
 								{{ $category->name }}
-								(<span categoryCount="{{ $category->id }}">{{ $category->total_advertisements }}</span>)
+								@if($current_page=="Ad Listing")
+									(<span categoryCount="{{ $category->id }}">{{ $category->total_advertisements }}</span>)
+								@endif
 							</h4>
 						</a>
 						<ul>
@@ -21,7 +23,9 @@
 								<li>
 									<a href="@if($current_page=="listing") # @else {{ URL::route('listing') }}#sub_category_id={{ $sub_cat->id }} @endif" class="nav-sub-category" sub-category-id="{{ $sub_cat->id }}">
 										{{ $sub_cat->name }}
-										(<span subCategoryCount="{{ $sub_cat->id }}">{{ $sub_cat->total_advertisements }}</span>)
+										@if($current_page=="Ad Listing")
+											(<span subCategoryCount="{{ $sub_cat->id }}">{{ $sub_cat->total_advertisements }}</span>)
+										@endif
 									</a>
 								</li>
 							@endforeach

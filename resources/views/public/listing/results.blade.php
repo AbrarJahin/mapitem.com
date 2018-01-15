@@ -15,15 +15,9 @@
 	<div class="clearfix"></div>
 	{{-- community posting start --}}
 	<div id="box" class="box-posting">
-{{--
-		@for ($i = 0; $i < 12; $i++)
-		 	@include('public.listing.single_item')
-		@endfor
---}}
 	</div>
 </div>
 
-{{-- Paginator Settings --}}
 {{-- Paginator Settings --}}
 <meta name="total_no_of_pages"	content="1">	{{-- Total no of pages in paginator --}}
 <meta name="current_page_no"	content="1">	{{-- Current active page - default value = 1 --}}

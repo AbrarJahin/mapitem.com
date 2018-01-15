@@ -2,7 +2,6 @@
 	<div class="pos-rel">
 		<a href="#" class="wsh-lst">
 			{{-- If any problem in showing SVG in deployment - fix the CSS inside svg element --}}
-			{{-- <object type="image/svg+xml" data="{{ URL::asset('svg/normal.svg') }}"></object> --}}
 			<img type="image/svg+xml" class="add_detail" src="{{ URL::asset('svg/normal.svg') }}"></img>
 		</a>
 		<div class="box showonmap9" marker_id={{ $i }}>

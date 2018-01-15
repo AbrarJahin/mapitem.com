@@ -7,16 +7,6 @@
 		<div class="clearfix"></div>
 
 		<div class="col-lg-12 no-padding rd-top-row2">
-			{{--
-			<div class="star" id="add_rating">
-				<i class="fa fa-star green-text"></i>
-				<i class="fa fa-star green-text"></i>
-				<i class="fa fa-star green-text"></i>
-				<i class="fa fa-star-o"></i>
-				<i class="fa fa-star-o"></i>
-				
-			</div>
-			--}}
 			<h5 class="pull-left">Price: <span  id="selected_add_price">$1000</span></h5>
 			<div class="pull-right popups">
 				<a data-original-title="Add to Wishlist" href="#" class="add_to_wishlist wsh-lst-adpage grey-tooltip" data-toggle="tooltip" data-placement="top" add_id="1">

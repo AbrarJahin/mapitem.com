@@ -6,11 +6,6 @@
 <a href="#" class="close-detail hide"><i class="fa fa-close"></i></a>
 {{-- Navigation --}}
 @include('public.listing.navigation')
-{{--
-@include('nav')
-@section('nav_classes', 'navbar-fixed-top ip-adj2')
-@section('nav_filter', "@include('nav_filters')")
---}}
 
 {{-- Modal --}}
 @include('post_free_add_modal')
