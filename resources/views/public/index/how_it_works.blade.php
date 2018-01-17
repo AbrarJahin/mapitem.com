@@ -29,5 +29,5 @@
 	</div>
 </div>
 <div class="col-lg-12">
-	<button type="submit" class="btn green-medium pull-right">Get Started</button>
+	<button data-target="{{ !Auth::check() ? '#lgn-pup' : '#pfa' }}" data-toggle="modal" type="submit" class="btn green-medium pull-right">Get Started</button>
 </div>

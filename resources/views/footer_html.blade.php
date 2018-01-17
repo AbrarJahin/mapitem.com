@@ -34,11 +34,7 @@
 							col-sm-6
 							@endif
 							col-xs-12">
-					@if (!Auth::check())
-						<button data-target="#lgn-pup" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
-					@else
-						<button data-target="#pfa" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
-					@endif
+					<button data-target="{{ !Auth::check() ? '#lgn-pup' : '#pfa' }}" data-toggle="modal" class="btn adj  green-large adj12" type="submit">Post Free Ad</button>
 				</div>
 
 				<div class="col-lg-3 col-md-3
