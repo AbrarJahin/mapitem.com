@@ -334,53 +334,71 @@ $(function()
 	$("form#write_review").submit(function(e)
 	{
 		e.preventDefault();
-		/*Standerd AJAX call goes here*/
-		$.ajax({
-			headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
-			type: "POST",
-			url: $(this).attr('action'),
-			data: $("#write_review").serialize(),
-			contentType: "application/x-www-form-urlencoded",
-			dataType: "json",
-			success: function (data)
-			{
-				var rating_html = '';
-
-				for (var i = 0; i < data.rating; i++)	/*Green*/
+		var ifValid = true;
+		if( $("#write_review textarea[name=review]").val().length<10 )
+		{
+			ifValid = false;
+			console.log("Comment Length = "+$("#write_review textarea[name=review]").val());
+		}
+		else if($("#write_review [name=rating]").val()<1 || $("#write_review [name=rating]").val()>5)
+		{
+			ifValid = false;
+			console.log("Rating Value = "+$("#write_review [name=rating]").val());
+		}
+		if(ifValid)
+		{
+			/*Standerd AJAX call goes here*/
+			$.ajax({
+				headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
+				type: "POST",
+				url: $(this).attr('action'),
+				data: $("#write_review").serialize(),
+				contentType: "application/x-www-form-urlencoded",
+				dataType: "json",
+				success: function (data)
 				{
-					rating_html = rating_html+'<i class="fa fa-star fa-xs green-text"></i>';
-				}
-				for (var i = data.rating; i < 5; i++)	/*Blank*/
-				{
-					rating_html = rating_html+'<i class="fa fa-star-o fa-xs"></i>';
-				}
+					var rating_html = '';
 
-				var html_element	=	'<div class="col-lg-4 rone">'
-										+	data.user_name+'<br>'
-										+		rating_html
-										+	'<br/><span>'+data.time+'</span>'
-										+'</div>'
-										+'<div class="col-lg-8 rtwo">'
-										+	'<span>'+data.review+'</span>'
-										+'</div>'
-										+'<div class="clearfix margin-twenty"></div>';
-				$('.reviews').prepend(html_element);
-				$('.review').fadeOut();
-			},
-			error: function (e)
-			{
-				/*console.log(e);*/
-				if ($("#lgn-pup").length === 0)
-					alert('You are not eligible to give this review');
-				else
-					$('#lgn-pup').modal('show');
-					
-			},
-			complete: function ()
-			{/* Handle the complete event*/
-				$("#wait").css("display", "none");
-			}
-		});
+					for (var i = 0; i < data.rating; i++)	/*Green*/
+					{
+						rating_html = rating_html+'<i class="fa fa-star fa-xs green-text"></i>';
+					}
+					for (var i = data.rating; i < 5; i++)	/*Blank*/
+					{
+						rating_html = rating_html+'<i class="fa fa-star-o fa-xs"></i>';
+					}
+
+					var html_element	=	'<div class="col-lg-4 rone">'
+											+	data.user_name+'<br>'
+											+		rating_html
+											+	'<br/><span>'+data.time+'</span>'
+											+'</div>'
+											+'<div class="col-lg-8 rtwo">'
+											+	'<span>'+data.review+'</span>'
+											+'</div>'
+											+'<div class="clearfix margin-twenty"></div>';
+					$('.reviews').prepend(html_element);
+					$('.review').fadeOut();
+				},
+				error: function (e)
+				{
+					/*console.log(e);*/
+					if ($("#lgn-pup").length === 0)
+						alert('You are not eligible to give this review');
+					else
+						$('#lgn-pup').modal('show');
+						
+				},
+				complete: function ()
+				{/* Handle the complete event*/
+					$("#wait").css("display", "none");
+				}
+			});
+		}
+		else
+		{
+			alert("Please give a rating and write a comment having leangth at least 10 charecters !");
+		}
 	});
 
 	$("form#send_message_to_owner").submit(function(e)

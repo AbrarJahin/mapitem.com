@@ -10,7 +10,9 @@
 			<textarea name="review" class="form-control tarea" placeholder="Write your Reviews" rows="3"></textarea>
 
 			<div class="col-lg-12 margin-top-twenty margin-bottom-twenty">
-				<span class="pull-left margin-right-twenty">Please rate your experience</span>
+				<span class="pull-left margin-right-twenty">
+					Please rate your experience
+				</span>
 				<input type="number" class="rating" name="rating" data-min="1" data-max="5" value="0">
 				<input type="hidden" name="add_id">
 				<input type="hidden" name="add_owner_id">
