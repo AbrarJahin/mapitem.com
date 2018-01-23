@@ -39,8 +39,6 @@ $(function()
 	$(document).on("click", ".showonmap9", function(e)
 	{
 		var product_id = $(this).attr('marker_id');
-		/*$(window).attr('url').replace(document.location.hash,'#food');*/
-		window.location.hash = '#'+product_id;
 		openInfoWindowByID( product_id );
 		showAddDetail( product_id );
 	});
@@ -440,18 +438,18 @@ $(function()
 	{
 		setTimeout(function()
 		{
-			//Should decide if it is a ID or category or sub category, then need to act like that
-			if(hashString.indexOf("sub_category_id") >= 0)	//Sub Category is selected
+			/*Should decide if it is a ID or category or sub category, then need to act like that*/
+			if(hashString.indexOf("sub_category_id") >= 0)	/*Sub Category is selected*/
 			{
 				var subCategoryId = hashString.match(/\d+/)[0];
 				$('[sub-category-id="' + subCategoryId + '"]').trigger('click');
 			}
-			else if(hashString.indexOf("category_id") >= 0)	//Category is selected
+			else if(hashString.indexOf("category_id") >= 0)	/*Category is selected*/
 			{
 				var categoryId = hashString.match(/\d+/)[0];
 				$('[category-id="' + categoryId + '"]').trigger('click');
 			}
-			else	//Advertisement is selected
+			else	/*Advertisement is selected*/
 			{
 				var adId = hashString.match(/\d+/)[0];
 				openInfoWindowByID( adId );
@@ -627,11 +625,6 @@ function generateMarkers(bounds)
 												events			:	{
 																		click: function(marker, event, context)
 																		{
-																			/*
-																			showAddDetail( context.id );	#Show ditail of listing
-																			marker.setAnimation(null);		#Animate Pointer
-																			marker.setAnimation(google.maps.Animation.BOUNCE);
-																			*/
 																			/*###############	Now showing the infoWindow*/
 																			var infoWindowContent = context.data.description;	/*Will be generated from AJAX call*/
 																			infoWindowContent =	'<div class="map-master-div" onclick="showAddDetail('+context.data.id+')">'
@@ -715,8 +708,9 @@ function generateMarkers(bounds)
 	openLastInfoWindow();
 }
 
-function showAddDetail(id)		/*Show ad Detail*/
+function showAddDetail(id)		/* Show ad Detail */
 {
+	window.location.hash = '#'+id;	/* Add hash in URL */
 	if(is_wishlist_propagated)
 		return;
 	$.ajax(
