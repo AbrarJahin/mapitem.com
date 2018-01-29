@@ -1126,7 +1126,6 @@ $(function()
 	{
 		$.fn.rating = function ()
 		{
-
 			var element;
 
 			/* A private function to highlight a star corresponding to a given value*/

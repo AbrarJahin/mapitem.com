@@ -9,7 +9,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY') }}&sensor=true&amp;libraries=places" type="text/javascript"></script>
 
 	{{-- Custom JS --}}
-	<script src="{{ URL::asset('js/custom.min.js') }}"></script>
+	<script src="{{ URL::asset('js/custom.js') }}"></script>
     {{-- Push Menu --}}
 	
 @show
