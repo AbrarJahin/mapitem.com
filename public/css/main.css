@@ -605,6 +605,7 @@ nav .dropdown-menu {
 	width:100%;
 	word-wrap:break-word;
 	overflow:hidden;
+	padding-top:17px
 	
 }
 .margin-left-ten{
@@ -2564,12 +2565,16 @@ body {
  }
 .wsh-lst {
 	display: block;
-	height: 32px;
+	height: 25px;
 	position: absolute;
 	right: 7px;
 	top: 40%;
-	width: 32px;
+	width: 25px;
 	z-index: 50;
+}
+.list-view .wsh-lst {
+	right: 0px;
+
 }
 
 .wsh-lst-infowindow
@@ -2661,13 +2666,13 @@ body {
 .list-view{
 	padding:0 10px}
 .list-view .box-content h5{
-	width:auto;
-	max-width:200px;
+	width:99%;
+	padding-right:25px;
 	color: #166201;
 	font-size: 21px;
-	height: auto;
+	height: 28px;
 	text-decoration: none;
-	margin-top:0
+	margin-top:0;
 	}
 .list-view .box-content h6 {
 	background-color: white;
@@ -2679,6 +2684,8 @@ body {
 	padding: 0 7px;
 	position: relative;
 	top: 0;
+	width:100%;
+	clear:both
 }
 .box-content h6 span{
 	display:none
@@ -2710,6 +2717,7 @@ body {
 	height: auto;
 	line-height: 19px;
 	margin: 0;
+	padding-top:0
 }
 .nf-placeholder{
 	display:none
@@ -2757,10 +2765,39 @@ border-bottom: 1px solid #3c8b26;
 }
 .slick-slide{
 	height: 333px!important;
-	}		
+	}
+.popups .add_to_wishlist img{
+	width:16px
+	}
+#wait
+{
+	display:none;
+	width:100%;
+	height:100%;
+	position: fixed;
+	top:0px;
+	left:0px;
+	z-index:100;
+	background: rgba(128, 255, 128, .5);
+}
+
+#wait_image
+{
+	position:absolute;
+	width:100px;
+	height:100px;
+	top:calc(50% - 30px);
+	left:calc(50% - 30px);
+}
+.box-content .text-center{
+	text-align:left!important}
+.pagination {
+        margin: 20px;
+    }	
 
 @media(max-width:767px){
 	/* Push classes applied to the body */
+	.c-position{right:-149vh!important; z-index:200}
 	.header-minus {
 	padding-top: 0px;
 	}
@@ -2776,9 +2813,7 @@ border-bottom: 1px solid #3c8b26;
     left: 0;
     top: 0;
 	}
-	.modal {
-    right: -155% !important;
-	}
+	
 	.navbar{
 		margin-bottom:0
 		}
@@ -3164,9 +3199,9 @@ border-bottom: 1px solid #3c8b26;
 }
 
 @media(max-width:480px){
-	.modal {
-	right: -155% !important;
-	}
+	.c-position{right:-152%!important;}
+	.modal{
+		z-index:200}
 	.modal::before {
 	width: 200%;
 	height: 300%;
@@ -3307,6 +3342,9 @@ border-bottom: 1px solid #3c8b26;
 		padding: 8px 28px;
 	}
 }
+@media(max-width:400px){
+	.c-position{right:-149%!important;
+	}
 @media(max-width:880px){
 	.ip-nav li a{
 		font-size: 9.5pt
