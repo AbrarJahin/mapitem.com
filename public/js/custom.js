@@ -2835,7 +2835,7 @@ $(document).ready(function(){
 });
 
 function abc(event){
-	event.preventDefault();
+	
 	$("#lgn-pup").removeClass('c-position');
 	$("#sgn-pup").removeClass('c-position');
 	$(".sup").removeClass('m-sgn');
