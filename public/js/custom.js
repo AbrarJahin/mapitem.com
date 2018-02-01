@@ -2824,6 +2824,7 @@ $(document).ready(function(){
 	$(document).on('click', '.pfad', function(event) {
        event.preventDefault();
         $("#lgn-pup").addClass('c-position');
+		 $("#pfa").addClass('c-position');
 		$(".sup").addClass('m-sgn');
       });
 	  
@@ -2838,6 +2839,7 @@ function abc(event){
 	
 	$("#lgn-pup").removeClass('c-position');
 	$("#sgn-pup").removeClass('c-position');
+	$("#pfa").removeClass('c-position');
 	$(".sup").removeClass('m-sgn');
 	$(".si").removeClass('pfad');
 }
