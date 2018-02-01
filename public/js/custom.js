@@ -2824,8 +2824,9 @@ $(document).ready(function(){
 	$(document).on('click', '.pfad', function(event) {
        event.preventDefault();
         $("#lgn-pup").addClass('c-position');
-		 $("#pfa").addClass('c-position');
+		$("#pfa").addClass('c-position');
 		$(".sup").addClass('m-sgn');
+		$(".green-small2").addClass('temp-c');
       });
 	  
 	$(document).on('click', '.m-sgn', function(event) {
@@ -2833,13 +2834,21 @@ $(document).ready(function(){
         $("#sgn-pup").addClass('c-position');
 		$(".si").addClass('pfad');
       });
+  
+	  
+	$('.temp-c').click(function() {
+		if ($('#pfa').hasClass('in')){
+		$('#pfa').addClass('c-position'); 
+	} else {
+	$('#pfa').removeClass('c-position');
+	}
+	});
 });
 
 function abc(event){
 	
 	$("#lgn-pup").removeClass('c-position');
 	$("#sgn-pup").removeClass('c-position');
-	$("#pfa").removeClass('c-position');
 	$(".sup").removeClass('m-sgn');
 	$(".si").removeClass('pfad');
 }
