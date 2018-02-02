@@ -489,7 +489,8 @@ nav .dropdown-menu {
 		position: absolute;
 	}
 .adj1{
-	margin: 20px 0
+	margin: 15px 0 10px 0;
+
 }
 .upload-btn{
 	border: 1px solid #23a500;
@@ -1356,7 +1357,9 @@ header.carousel .fill {
 	position: absolute;
 	width: 100%;
 	font-family: 'Varela Round', sans-serif;
-	bottom: 0px
+	bottom: 0px;
+	padding-top: 6px;
+	padding-bottom: 15px;
 }
 .height-adj1{
 	height: 540px;
@@ -1372,7 +1375,7 @@ header.carousel .fill {
 	border-bottom-right-radius: 0;
 	border-top-right-radius: 0;
 	height: 60px;
-	margin: 10px 1px 10px 0;
+	margin: 0px 0px 0px 0;
 	width: 100%;
 	background-color: #fb6b6b;
 	color: white;
@@ -1383,15 +1386,15 @@ header.carousel .fill {
 
 }
 .large-input {
-	border: 1px solid #c5c5c5;
+	border-left: 1px solid #c5c5c5;
 	border-radius: 0;
 	box-shadow: none;
 	font-size: 15px;
 	height: 60px;
-	margin: 10px 0 !important;
+
 }
 .input-title{
-	margin-left: 1px
+	margin-left: 0px
 }
 .srch-btn {
 	background-color: #ee7310;
@@ -1400,7 +1403,7 @@ header.carousel .fill {
 	color: white;
 	font-size: 19px;
 	height: 60px;
-	margin: 10px 0 10px 0px;
+	margin: 0px 0 0px 0px;
 	width: 100%;
 }
 /*Listing page*/
@@ -2807,6 +2810,89 @@ border-bottom: 1px solid #3c8b26;
 
     left: 20px;
     position: relative;
+}
+/*Typehead - Start*/
+.typeahead,
+.tt-query,
+.tt-hint
+{
+	padding: 8px 12px;
+	font-size: 15px;
+	line-height: 30px;
+	border: 2px solid #ccc;
+	-webkit-border-radius: 0px;
+		 -moz-border-radius: 0px;
+					border-radius: 0px;
+	outline: none;
+}
+
+.typeahead
+{
+	background-color: #fff;
+}
+
+.typeahead:focus {
+	border: 2px solid #0097cf;
+}
+
+.tt-query {
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		 -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+					box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+	color: #999
+}
+
+.tt-menu {
+	width: 343px;
+	margin: 0px 0 0 7px;
+	padding: 8px 0;
+	background-color: #fff;
+	
+	-webkit-border-radius: 8px;
+		 -moz-border-radius: 8px;
+					border-radius: 0px;
+	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		 -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+					box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.tt-suggestion {
+	padding: 6px 20px;
+	font-size: 13px;
+	line-height: 16px;
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:grey
+}
+
+
+.tt-suggestion:hover {
+	cursor: pointer;
+	color: black;
+	background-color: #E1F5FE;
+}
+
+.tt-suggestion.tt-cursor {
+	color: black;
+	background-color: #FAFAFA;
+
+}
+
+.tt-suggestion p {
+	margin: 0;
+}
+
+.typeahead-spinner {
+	background:url('https://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
+}
+
+.top-search span.twitter-typeahead{
+	 width: 100%;
+	 float:left
+}
+.tt-dropdown-menu{
+	width: 100%;
 }	
 @media(max-width:980px){
 
@@ -2819,6 +2905,15 @@ border-bottom: 1px solid #3c8b26;
 	}
 }
 @media(max-width:767px){
+	.cat-btn {
+		border-bottom-left-radius: 0;
+		border-top-left-radius: 0;
+	}
+	.srch-btn {
+
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+	}
 	.loginbtn img {
     width: 50px!important;
     display: block;
@@ -3779,93 +3874,13 @@ img.add_detail
 	width:			14px;
 }
 
-/*Typehead - Start*/
-.typeahead,
-.tt-query,
-.tt-hint
-{
-	padding: 8px 12px;
-	font-size: 15px;
-	line-height: 30px;
-	border: 2px solid #ccc;
-	-webkit-border-radius: 8px;
-		 -moz-border-radius: 8px;
-					border-radius: 8px;
-	outline: none;
-}
 
-.typeahead
-{
-	background-color: #fff;
-}
-
-.typeahead:focus {
-	border: 2px solid #0097cf;
-}
-
-.tt-query {
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-		 -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-					box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-}
-
-.tt-hint {
-	color: #999
-}
-
-.tt-menu {
-	width: 343px;
-	margin: -10px 0 0 0;
-	padding: 8px 0;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	-webkit-border-radius: 8px;
-		 -moz-border-radius: 8px;
-					border-radius: 8px;
-	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-		 -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-					box-shadow: 0 5px 10px rgba(0,0,0,.2);
-}
 .dot1{
 	overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
 }
 
-.tt-suggestion {
-	padding: 3px 20px;
-	font-size: 18px;
-	line-height: 24px;
-}
-
-.tt-suggestion:hover {
-	cursor: pointer;
-	color: #fff;
-	background-color: #0097cf;
-}
-
-.tt-suggestion.tt-cursor {
-	color: #fff;
-	background-color: #0097cf;
-
-}
-
-.tt-suggestion p {
-	margin: 0;
-}
-
-.typeahead-spinner {
-	background:url('https://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
-}
-
-.top-search span.twitter-typeahead{
-	 width: 100%;
-	 float:left
-}
-.tt-dropdown-menu{
-	width: 100%;
-}
 /*
 input.typeahead.tt-query{
 	width: 300px !important;
