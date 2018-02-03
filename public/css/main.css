@@ -2893,7 +2893,9 @@ border-bottom: 1px solid #3c8b26;
 }
 .tt-dropdown-menu{
 	width: 100%;
-}	
+}
+.ct{
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif!important; font-size:12pt!important}	
 @media(max-width:980px){
 
 	.ip-nav li a {
