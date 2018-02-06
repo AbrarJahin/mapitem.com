@@ -1724,18 +1724,18 @@ header.pdetail{
 	margin: 0px 0
 }
 .popups a {
-    color: #616161;
-    text-decoration: none;
-    border: 1px solid #E0E0E0;
-    width: 30px;
-    height: 30px;
-    display: block;
-    float: left;
-    line-height: 11px;
-    padding-top: 8px;
-    border-radius: 5px;
-    text-align: center;
-    margin-right: 5px;
+	color: #616161;
+	text-decoration: none;
+	border: 1px solid #E0E0E0;
+	width: 30px;
+	height: 30px;
+	display: block;
+	float: left;
+	line-height: 11px;
+	padding-top: 8px;
+	border-radius: 5px;
+	text-align: center;
+	margin-right: 5px;
 }
 .tooltip-arrow{ border-top-color: #e1e1e1!important}
 .grey-tooltip + .tooltip > .tooltip-inner {
@@ -1751,10 +1751,10 @@ header.pdetail{
 	padding-left: 10px
 }
 .seperator {
-    clear: both;
-    border-bottom: 1px solid #BDBDBD;
+	clear: both;
+	border-bottom: 1px solid #BDBDBD;
 
-    height: 20px;
+	height: 20px;
 }
 .review{
 	display: block;
@@ -1828,23 +1828,23 @@ header.pdetail{
 	margin: 10px 0;
 }
 .sb-middle i {
-    color: #23a500;
-    font-size: 18px;
-    margin-right: 12px;
-    position: relative;
-    top: 0px;
-    width: 15px;
-    float: left;
-    display: block;
-    min-height: 30px;
+	color: #23a500;
+	font-size: 18px;
+	margin-right: 12px;
+	position: relative;
+	top: 0px;
+	width: 15px;
+	float: left;
+	display: block;
+	min-height: 30px;
 }
 .sb-middle span {
-    display: block;
-    font-size: 12px;
-    margin: 7px 0;
-    position: relative;
-    word-wrap: break-word;
-    overflow: hidden;
+	display: block;
+	font-size: 12px;
+	margin: 7px 0;
+	position: relative;
+	word-wrap: break-word;
+	overflow: hidden;
 }
 .p-adj {
 	font-size: 12px !important;
@@ -2099,19 +2099,19 @@ header.pdetail{
 }
 
 .slider {
-  max-width: 300px;
-  height: 200px;
-  margin: 20px auto;
-  position: relative;
+	max-width: 300px;
+	height: 200px;
+	margin: 20px auto;
+	position: relative;
 }
 .slide1,.slide2,.slide3,.slide4,.slide5 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 .slide1 {
-  background: url(../images/car.jpg)no-repeat center;
-	  background-size: cover;
+	background: url(../images/car.jpg)no-repeat center;
+		background-size: cover;
 	animation:fade 18s infinite;
 -webkit-animation:fade 18s infinite;
 
@@ -2730,16 +2730,16 @@ span.twitter-typeahead{
 	width: 100%
 }
 .nav-sub-category {
-    font-size: 10pt;
-    text-decoration: none;
-    color: #616161;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+	font-size: 10pt;
+	text-decoration: none;
+	color: #616161;
+	font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 .h-ctr > li > ul > li > a{
 	font-size: 10pt;
-    text-decoration: none;
-    color: #616161;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+	text-decoration: none;
+	color: #616161;
+	font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 	}
 .dropdown-menu > li > a{
 	color:#3c8b26
@@ -2751,9 +2751,9 @@ line-height: 22px;
 border-bottom: 1px solid #3c8b26;
 }
 #add_owner_email a, #add_owner_website a, #add_owner_fb_status a, #add_owner_phone a{
-    display: inline-block;
-    word-wrap: break-word;
-    width: 78%;
+	display: inline-block;
+	word-wrap: break-word;
+	width: 78%;
 }
 .slick-slide{
 	height: 333px!important;
@@ -2768,16 +2768,16 @@ border-bottom: 1px solid #3c8b26;
 	display: none !important;
 	}
 	.modal::before {
-    width: 200%;
-    height: 300%;
-    background-color: rgba(0,0,0,.5);
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
+	width: 200%;
+	height: 300%;
+	background-color: rgba(0,0,0,.5);
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
 	}
 	.modal {
-    right: -155% !important;
+	right: -155% !important;
 	}
 	.navbar{
 		margin-bottom:0
@@ -3840,4 +3840,14 @@ input.typeahead.tt-query{
 	-moz-border-radius-topright: 5px;
 	 border-top-left-radius: 5px;
 	 border-top-right-radius: 5px;
+}
+.slick-slide img
+{
+	/*
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	*/
 }

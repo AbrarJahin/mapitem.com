@@ -809,14 +809,12 @@ function showAddDetail(id)		/* Show ad Detail */
 							{
 								$.each(value,function(id,image)
 								{
-									$('.variable-width').prepend(	'<div><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
-									/*var firstImageOfTheAd = $('meta[name=upload_folder_url]').attr("content")+image.image_name;
-									$("meta[property='og\\:image']").attr('content', firstImageOfTheAd);*/
+									$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
 								});
 							}
 							else
 							{
-								$('.variable-width').prepend(	'<div><img src="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+'"></div>');
+								$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+'"></div>');
 							}
 
 							fixImageSlider();
@@ -1019,9 +1017,9 @@ function getSliderSettings()
 			autoplay: true,
 			*/
 			speed: 500,
-			slidesToShow: 1,
 			centerMode: true,
 			variableWidth: true,
+			lazyLoad: 'ondemand',
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: true
