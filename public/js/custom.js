@@ -2795,6 +2795,9 @@ $(document).ready(function()
 
 //nav filters for mobile
 $(document).ready(function(){
+	
+	
+	
     $(".nf-placeholder").click(function(){
         $(".nf-block").slideToggle('slow');
     });
@@ -2843,12 +2846,11 @@ $(document).ready(function(){
 	$('#pfa').removeClass('c-position');
 	}
 	});
+	
+	//$(".ad-detail").height($(document).height()-300);
+	
+	//var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	//$(".ad-detail").css('min-height', h);
+
 });
 
-function abc(event){
-	
-	$("#lgn-pup").removeClass('c-position');
-	$("#sgn-pup").removeClass('c-position');
-	$(".sup").removeClass('m-sgn');
-	$(".si").removeClass('pfad');
-}

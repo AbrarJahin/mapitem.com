@@ -731,8 +731,19 @@ nav .dropdown-menu {
 
 footer#page_footer{
 	background-color: #2a2525;
-	margin-top: 60px
+	margin-top: 60px;
 }
+.ad-listing{
+	min-height:80vh;
+	}
+.ad-detail {
+
+   min-height:88vh;
+}
+results-det{
+	float:left;
+	width:100%
+	}
 .round2 {
 	background-color: white;
 	border-radius: 50%;
