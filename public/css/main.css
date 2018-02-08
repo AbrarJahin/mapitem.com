@@ -2907,6 +2907,14 @@ border-bottom: 1px solid #3c8b26;
 }
 .ct{
 	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif!important; font-size:12pt!important}	
+#show_paginator{
+	text-align:center}
+li.prev.disabled{
+	display: none;
+}
+li.next.disabled{
+	display: none;
+}
 @media(max-width:980px){
 
 	.ip-nav li a {
@@ -3664,16 +3672,7 @@ border-bottom: 1px solid #3c8b26;
 	background:none !important;
 }
 
-/* Paginator First and last Button hide when disabled */
-li.prev.disabled
-{
-	display: none;
-}
 
-li.next.disabled
-{
-	display: none;
-}
 
 #user_address_map
 {
