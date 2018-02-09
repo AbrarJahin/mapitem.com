@@ -1053,12 +1053,13 @@ function fixInfowindowScroll()
 function fixImageSlider()
 {
 	$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
+
 	setTimeout(function()
 	{
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
 	}, 500);
-
+	/*
 	setTimeout(function()
 	{
 		$('.variable-width').slick('unslick');
@@ -1088,6 +1089,7 @@ function fixImageSlider()
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
 	}, 4000);
+	*/
 }
 
 function clearMarkers()
