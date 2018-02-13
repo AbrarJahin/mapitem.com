@@ -2,6 +2,7 @@
 var latitude, longitude, searchLocationName;
 var is_tab_opened_before =0;
 var is_wishlist_propagated = false;
+
 //var debug_variable;
 //Email Validate
 function validateEmail(email)
@@ -151,7 +152,7 @@ function getLocation()
 				}, 500);
 			}
 
-			//Home Page Element Loading according to current ocation
+			//Home Page Element Loading according to current location
 			var element_container = $('#home_page_element_container');
 			if (element_container.length)
 			{
@@ -185,11 +186,15 @@ function getLocation()
 						var upload_folder	=	$('meta[name="upload_folder_url"]').attr('content');
 						element_container.empty();
 
+						
+						
 						$.each(responce_data,function(key_index,single_data)
 						{
 							if(single_data.advertisement_image == null)
 								single_data.advertisement_image = "../images/not_available_1.png";
-							var data_to_append	=	'<div class="col-lg-3 col-md-3 col-sm-6">'
+							
+							
+							var data_to_append	=	'<div class="col-lg-4 col-sm-6">'
 														+'<a href="#" add_id="'+single_data.id+'" class="add_to_wishlist wsh-lst2">'
 															+'<img type="image/svg+xml" src="'+single_data.hearts_image+'"></img>'
 														+'</a>'
@@ -1370,7 +1375,9 @@ $(document).ready(function()
 
 	/*List View and Box View toggle*/
 	$('.list').click(function()
-	{
+	{	
+		currentView='L';
+		console.log(currentView);
 		$(this).addClass("disabled selected-view");
 		$(this).prev().removeClass("disabled selected-view");
 		$('.box-posting').children().removeClass("col-lg-4 col-sm-6");
@@ -1379,6 +1386,8 @@ $(document).ready(function()
 
 	$('.grid').click(function()
 	{
+		currentView='G';
+		console.log(currentView);
 		$(this).addClass("disabled selected-view");
 		$(this).next().removeClass("disabled selected-view");
 		$('.box-posting').children().addClass("col-lg-4 col-sm-6");

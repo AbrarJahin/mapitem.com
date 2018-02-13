@@ -1261,7 +1261,7 @@ header.carousel .fill {
 
 }
 .navbar-brand {
-	margin: 15px 0px 0 0px !important;
+	margin: 15px 15px 0 40px !important;
 	padding: 0;
 }
 .navbar{
@@ -1514,8 +1514,8 @@ header.carousel .fill {
 }
 .ip-nav li a{
 	color: black!important;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
 	width: 100%
 }
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
@@ -1533,7 +1533,7 @@ header.carousel .fill {
 	height: 42px;
 }
 .navbar-right .dropdown-menu {
-	left: 0;
+	left: -20px;
 	right: auto;
 }
 .margin-ten{
@@ -2689,8 +2689,7 @@ body {
 .list-view{
 	padding:0 10px}
 .list-view .box-content h5{
-	width:99%;
-	padding-right:25px;
+	width:30%;
 	color: #166201;
 	font-size: 21px;
 	height: 28px;
@@ -2704,11 +2703,10 @@ body {
 	float: left;
 	font-size: 16px;
 	margin-top: 3px;
-	padding: 0 7px;
+	padding: 0 0px;
 	position: relative;
 	top: 0;
-	width:100%;
-	clear:both
+	width:10%;
 }
 .box-content h6 span{
 	display:none
@@ -2732,7 +2730,8 @@ body {
 	display:none
 		}
 .list-view .box-content .width-adj3{
-	width:55%;
+	width:50%;
+	margin-top: 3px;
 }   
 .list-view .box-content p {
 	color: #535353;
@@ -2740,7 +2739,10 @@ body {
 	height: auto;
 	line-height: 19px;
 	margin: 0;
-	padding-top:0
+	padding-top:0;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis
 }
 .nf-placeholder{
 	display:none
@@ -2914,6 +2916,28 @@ li.prev.disabled{
 }
 li.next.disabled{
 	display: none;
+}
+@media(max-width:1200px){
+
+	.ip-nav{
+		
+	}
+	.ip-nav li a{
+		font-size:11pt
+	}
+	
+	.ipl{
+		margin-left: 0!important;
+		margin-right: 0!important;
+	}
+
+	.contact {
+	left: -0%;
+	}
+	.navbar-right .dropdown-menu {
+	left: auto;
+	right: 0;
+	}
 }
 @media(max-width:980px){
 
@@ -3596,28 +3620,7 @@ li.next.disabled{
 		font-size: 12px !important;
 	}
 }
-@media(max-width:1200px){
 
-	.ip-nav{
-		
-	}
-	.ip-nav li a{
-		padding-left: 2px;
-		padding-right: 2px;
-	}
-	.ipl{
-		margin-left: 0!important;
-		margin-right: 0!important;
-	}
-
-	.contact {
-	left: -0%;
-	}
-	.navbar-right .dropdown-menu {
-	left: auto;
-	right: 0;
-	}
-}
 
 .pull-right
 {
