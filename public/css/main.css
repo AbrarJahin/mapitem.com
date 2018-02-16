@@ -822,12 +822,12 @@ line-height: 22px;
 	top: 0px!important;
 	position: relative!important;
 	margin-bottom: 20px;
-	width: 200%!important;
+	width: 250%!important;
 
 }
 
 .h-ctr2 li label{
-	line-height: 10px!important
+	line-height: 17px!important
 }
 .h-ctr2 li ul li label{
 	line-height: 10px!important
@@ -842,7 +842,7 @@ line-height: 22px;
 .h-ctr2 li{
 
 	margin: 5px 0px !important;
-	width: 48%;
+	width: 45%;
 
 
 }
@@ -2962,10 +2962,16 @@ li.next.disabled{
 	.navbar-nav > li > a{
 		font-size: 9pt; 
 	}
+	.h-ctr2 {
+    
+    
+    width: 100% !important;
+	}
 	
 }
 @media(max-width:767px){
-
+	.h-ctr{
+		min-width:auto}
 	.cat-btn {
 		border-bottom-left-radius: 0;
 		border-top-left-radius: 0;
