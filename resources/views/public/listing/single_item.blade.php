@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-sm-6">
+<div class="col-sm-12">
 	<div class="pos-rel">
 		<a href="#" class="wsh-lst">
 			{{-- If any problem in showing SVG in deployment - fix the CSS inside svg element --}}

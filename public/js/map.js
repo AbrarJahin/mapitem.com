@@ -3,6 +3,8 @@ var map_div = $('#map');
 var last_opened_info_window_id = -1;				/*For solving infowindow lost issue after AJAX call done*/
 var viewPortForMobile;
 var firstTimeNotAlreadyViewed = true;
+var currentView='G';
+
 
 var infoBubble = new InfoBubble({
 							maxWidth: 300,
@@ -585,7 +587,14 @@ function generateMarkers(bounds)
 										/*alert(element.user_image);*/
 										element.user_image='../images/empty-profile.jpg';
 									}
-									listing_element	=	'<div class="col-lg-4 col-sm-6"><div class="pos-rel"><a href="#" add_id="'+element.id+'" class="add_to_wishlist wsh-lst"><img src="'
+									//changes by bilal bhai ka dpost muaaz
+									if(currentView=='G')
+									{
+										  childrenClass='col-lg-4 col-sm-6';
+									}else{
+										 childrenClass='';
+									}
+									listing_element	=	'<div class="'+childrenClass+'"><div class="pos-rel"><a href="#" add_id="'+element.id+'" 											                                                          class="add_to_wishlist wsh-lst"><img src="'
 														/*+ $('meta[name=svg_hearts]').attr("content")*/
 														+ element.hearts_image
 														+ '"></img></a><div class="box showonmap9" marker_id='
@@ -594,7 +603,7 @@ function generateMarkers(bounds)
 														+	$('meta[name=upload_folder_url]').attr("content")+element.advertisement_image
 														+ '"></div><div class="box-content"><h5 class="text-center">'
 														+	element.title
-														+ '</h5><h6> $'+element.price+'</h6><div class="clearfix margin-bottom-ten"></div><img height="46" width="46" class="pull-left width-adj2" src="'
+														+ '</h5><h6> $'+element.price+'</h6><div class="clearfix margin-bottom-ten"></div><img height="46"                                                           width="46" class="pull-left width-adj2" src="'
 														+	$('meta[name=upload_folder_url]').attr("content")+element.user_image
 														+ '"><div class="pull-left margin-left-ten width-adj3"><p class="pull-left dot1">'
 														+	element.description
