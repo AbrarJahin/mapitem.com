@@ -1018,20 +1018,16 @@ function pullPaginatorElementToFirstElement()
 function getSliderSettings()
 {
 	return {
-			dots: true,
+			//dots: true,
 			infinite: true,
-			autoplay: false,
-			/*
-			infinite: false,
 			autoplay: true,
-			*/
 			speed: 500,
 			centerMode: true,
 			variableWidth: true,
 			lazyLoad: 'ondemand',
-			slidesToShow: 1,
+			slidesToShow: 3,
 			slidesToScroll: 1,
-			arrows: true
+			//arrows: true,
 		}
 }
 
@@ -1209,9 +1205,10 @@ $(function()
 			/* View current value while mouse is out*/
 			.on('mouseleave', '[data-value]', function ()
 			{
+				//alert('asd')
 				var self = $(this);
 				var val = self.siblings('input').val();
-				if (val) {
+				if (val>0) {
 					_paintValue(self.closest('.rating-input'), val);
 				}
 				else

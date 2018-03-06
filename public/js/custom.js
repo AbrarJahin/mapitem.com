@@ -2805,8 +2805,6 @@ $(document).ready(function()
 //nav filters for mobile
 $(document).ready(function(){
 	
-	
-	
     $(".nf-placeholder").click(function(){
         $(".nf-block").slideToggle('slow');
     });
@@ -2820,21 +2818,9 @@ $(document).ready(function(){
        event.preventDefault();
         $('body').toggleClass('open');
       }); 
-	 $(document).on('click', 'a', function(event) {
-		abc(event);
-        //event.preventDefault();
-        //$("#lgn-pup").removeClass('c-position');
-		//$("#sgn-pup").removeClass('c-position');
-      });
-	  $(document).on('click', 'button', function(event) {
-		abc(event);
-        //event.preventDefault();
-        //$("#lgn-pup").removeClass('c-position');
-		//$("#sgn-pup").removeClass('c-position');
-      });
-	  
 	$(document).on('click', '.pfad', function(event) {
        event.preventDefault();
+	   alert("Hello! I am an alert box!!");
         $("#lgn-pup").addClass('c-position');
 		$("#pfa").addClass('c-position');
 		$(".sup").addClass('m-sgn');

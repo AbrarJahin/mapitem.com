@@ -2930,6 +2930,10 @@ li.prev.disabled{
 li.next.disabled{
 	display: none;
 }
+.slick-track{
+
+
+	}
 
 @media(max-width:1200px){
 
