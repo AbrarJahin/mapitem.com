@@ -1027,7 +1027,7 @@ function getSliderSettings()
 			lazyLoad: 'ondemand',
 			slidesToShow: 3,
 			slidesToScroll: 1,
-			//arrows: true,
+			arrows: true,
 		}
 }
 
