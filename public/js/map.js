@@ -1020,7 +1020,7 @@ function getSliderSettings()
 	return {
 			//dots: true,
 			infinite: true,
-			autoplay: true,
+			//autoplay: true,
 			speed: 500,
 			centerMode: true,
 			variableWidth: true,
