@@ -1021,13 +1021,13 @@ function getSliderSettings()
 			dots: true,
 			autoplay: false,
 			speed: 500,
-			centerMode: true,
-			initialSlide:1,
+			
+			variableWidth: true,
+			
+			//lazyLoad: 'ondemand',
 			slidesToShow: 1,
 			slidesToScroll: 1,
-			lazyLoad: 'ondemand',
-			variableWidth:true,
-			arrows: true,
+			//arrows: true,
 		}
 }
 
