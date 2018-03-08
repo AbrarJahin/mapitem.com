@@ -1023,7 +1023,7 @@ function getSliderSettings()
 			speed: 500,
 			centerMode: true,
 			variableWidth: true,
-			lazyLoad: 'ondemand',
+			//lazyLoad: 'ondemand',
 			slidesToShow: 3,
 			slidesToScroll: 1,
 			//arrows: true,
