@@ -1022,7 +1022,8 @@ function getSliderSettings()
 			autoplay: false,
 			speed: 500,
 			centerMode: true,
-			slidesToShow: 2,
+			initialSlide:1,
+			slidesToShow: 3,
 			slidesToScroll: 1,
 			lazyLoad: 'ondemand',
 			variableWidth:true
