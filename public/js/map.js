@@ -1024,8 +1024,8 @@ function getSliderSettings()
 			
 			variableWidth: true,
 			
-			//lazyLoad: 'ondemand',
-			slidesToShow: 1,
+			lazyLoad: 'progressive',
+			slidesToShow: 3,
 			slidesToScroll: 1,
 			//arrows: true,
 		}
