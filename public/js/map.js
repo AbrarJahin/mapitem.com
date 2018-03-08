@@ -1019,15 +1019,18 @@ function getSliderSettings()
 {
 	return {
 			//dots: true,
-			infinite: true,
+			
 			//autoplay: true,
-			speed: 500,
-			centerMode: true,
-			variableWidth: true,
-			lazyLoad: 'ondemand',
+			//speed: 500,
+			//centerMode: true,
+//			variableWidth: true,
+//			lazyLoad: 'ondemand',
+//			slidesToShow: 3,
+//			slidesToScroll: 1,
+//			arrows: true,
+			infinite: true,
 			slidesToShow: 3,
-			slidesToScroll: 1,
-			arrows: true,
+			slidesToScroll: 3
 		}
 }
 
