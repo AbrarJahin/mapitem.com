@@ -2842,6 +2842,10 @@ $(document).ready(function(){
 	}
 	});
 	
+	$('.box').click(function() {
+		location.reload();
+	});
+	
 	//$(".ad-detail").height($(document).height()-300);
 	
 	//var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);

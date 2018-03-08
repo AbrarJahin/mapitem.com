@@ -1027,9 +1027,11 @@ function getSliderSettings()
 			lazyLoad: 'progressive',
 			slidesToShow: 3,
 			slidesToScroll: 1,
+			centerMode:true
 			//arrows: true,
 		}
 }
+
 
 function fixInfowindowScroll()
 {
