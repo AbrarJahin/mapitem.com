@@ -1023,11 +1023,11 @@ function getSliderSettings()
 			speed: 500,
 			centerMode: true,
 			initialSlide:1,
-			slidesToShow: 3,
+			slidesToShow: 1,
 			slidesToScroll: 1,
 			lazyLoad: 'ondemand',
-			variableWidth:true
-			//arrows: true,
+			variableWidth:true,
+			arrows: true,
 		}
 }
 
