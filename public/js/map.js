@@ -1018,15 +1018,13 @@ function pullPaginatorElementToFirstElement()
 function getSliderSettings()
 {
 	return {
-			dots: true,
-			autoplay: false,
-			speed: 500,
 			
-			variableWidth: false,
-			
-			lazyLoad: 'ondemand',
-			slidesToShow: 3,
-			slidesToScroll: 1,
+		dots: true,
+		infinite: true,
+		speed: 300,
+		slidesToShow: 3,
+		centerMode: true,
+		variableWidth: true
 			
 			//arrows: true,
 		}
