@@ -1022,7 +1022,7 @@ function getSliderSettings()
 			autoplay: false,
 			speed: 500,
 			
-			variableWidth: true,
+			variableWidth: false,
 			
 			lazyLoad: 'ondemand',
 			slidesToShow: 3,
