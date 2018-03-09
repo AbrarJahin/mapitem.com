@@ -2842,9 +2842,7 @@ $(document).ready(function(){
 	}
 	});
 	
-	$('.box').click(function() {
-		location.reload();
-	});
+
 	
 	//$(".ad-detail").height($(document).height()-300);
 	

@@ -1024,10 +1024,10 @@ function getSliderSettings()
 			
 			variableWidth: true,
 			
-			lazyLoad: 'progressive',
+			lazyLoad: 'ondemand',
 			slidesToShow: 3,
 			slidesToScroll: 1,
-			centerMode:true
+			
 			//arrows: true,
 		}
 }
