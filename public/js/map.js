@@ -1057,10 +1057,10 @@ function fixInfowindowScroll()
 
 function fixImageSlider()
 {
-	$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
-
+	
 	setTimeout(function()
 	{
+		$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
 	}, 500);
