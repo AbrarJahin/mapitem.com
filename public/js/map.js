@@ -1026,27 +1026,6 @@ function getSliderSettings()
 		centerMode: true,
 		focusOnSelect: true,
 		variableWidth: true,
-		  responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: "unslick"
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 2
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			  }
-			}
-		]
-
 		//arrows: true,
 		}
 }
@@ -1084,6 +1063,7 @@ function fixImageSlider()
 	{
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
+		$('.variable-width').resize();
 	}, 500);
 	/*
 	setTimeout(function()
