@@ -84,6 +84,7 @@
 
 {{-- Footer Scripts - End --}}
 </div>
+<script>jQuery(window).bind("load", function(){jQuery('#top-a > div > .module').removeAttr('style');jQuery(window).resize();jQuery('#top-a > div > .module').attr('style','min-height:1px;');});</script>
 </body>
 {!! $google_analytics_script or '' !!}
 </html>
