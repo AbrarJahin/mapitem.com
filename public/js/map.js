@@ -1025,7 +1025,28 @@ function getSliderSettings()
 		slidesToShow: 3,
 		centerMode: true,
 		focusOnSelect: true,
-		variableWidth: true
+		variableWidth: true,
+		  responsive: [
+			{
+			  breakpoint: 1024,
+			  settings: "unslick"
+			},
+			{
+			  breakpoint: 600,
+			  settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			  }
+			},
+			{
+			  breakpoint: 480,
+			  settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			  }
+			}
+		]
+
 		//arrows: true,
 		}
 }
@@ -1057,10 +1078,10 @@ function fixInfowindowScroll()
 
 function fixImageSlider()
 {
-	
+	$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
+
 	setTimeout(function()
 	{
-		$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
 	}, 500);
