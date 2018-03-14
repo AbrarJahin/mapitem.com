@@ -2931,11 +2931,12 @@ li.prev.disabled{
 li.next.disabled{
 	display: none;
 }
-.slick-track{
-	position:relative!important;
-	left:0!important
-
+/*.slick-slide{
+	width:800px;
 	}
+.slick-slide img{
+	margin:0 auto
+	}	*/
 
 @media(max-width:1200px){
 

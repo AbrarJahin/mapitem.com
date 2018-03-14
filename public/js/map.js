@@ -818,18 +818,18 @@ function showAddDetail(id)		/* Show ad Detail */
 							{
 								$.each(value,function(id,image)
 								{
-									$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
+									$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	                                     '"></div>');
 								});
 							}
 							else
 							{
-								$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+'"></div>');
+								$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+                                      '"></div>');
 							}
 
 							fixImageSlider();
 
 							/*Re Initialize Slick Slider so that images can be OK*/
-							$('.variable-width').slick( getSliderSettings() );
+							//$('.variable-width').slick( getSliderSettings() );
 						}
 						else if(key.localeCompare('total_views')==0)
 						{
@@ -1018,15 +1018,16 @@ function pullPaginatorElementToFirstElement()
 function getSliderSettings()
 {
 	return {
-
-		
-  infinite: true,
-  //centerPadding: '60px',
-  slidesToShow: 3,
-  speed: 300,
-  variableWidth: true,
-		}
+		infinite: true,
+		//centerPadding: '60px',
+		slidesToShow: 3,
+		speed: 300,
+		variableWidth: true,
+		centerMode   : true,
+		dots   : true,
+	}
 }
+
 $('.variable-width').on('beforeChange', function(event, slick, currentSlide, nextSlide){
   //console.log('beforeChange', currentSlide, nextSlide);
   // $(".slick-current").removeClass("high-light");
@@ -1042,12 +1043,12 @@ $('.variable-width').on('afterChange', function(event, slick, currentSlide){
   //$(".slick-current").addClass("high-light");
   //$(".slick-current").removeClass("normal");
 });
-setTimeout(()=>{
+//setTimeout(()=>{
   //console.log($(".slick-current"));
   // $(".slick-current").removeClass("normal");
   // $(".slick-current").addClass("high-light");
   //$('.variable-width').slick('setPosition');
-}, 100);
+//}, 100);
 
 
 function fixInfowindowScroll()
@@ -1082,7 +1083,7 @@ function fixImageSlider()
 	{
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
-		//$('.slick-track').attr('style','opacity: 1; width: 15000px; transform: translate3d(0px, 0px, 0px);');
+		$('.slick-track').attr('style','opacity: 1; width: 15000px; transform: translate3d(0px, 0px, 0px);');
 	}, 500);
 	/*
 	setTimeout(function()
