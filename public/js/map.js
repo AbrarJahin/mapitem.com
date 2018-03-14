@@ -1063,7 +1063,7 @@ function fixImageSlider()
 	{
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
-		$('.slick-track').attr('style','opacity: 1; width: 15000px; transform: translate3d(0px, 0px, 0px);');
+		//$('.slick-track').attr('style','opacity: 1; width: 15000px; transform: translate3d(0px, 0px, 0px);');
 	}, 500);
 	/*
 	setTimeout(function()
