@@ -1054,6 +1054,9 @@ function fixInfowindowScroll()
 		$(".map-master-div").css("width", "100%");
 	}, 400);
 }
+$(document).on("click", ".box-posting", function(){
+    location.reload(true);
+});
 
 function fixImageSlider()
 {
@@ -1063,6 +1066,8 @@ function fixImageSlider()
 	{
 		$('.variable-width').slick('unslick');
 		$('.variable-width').slick( getSliderSettings() );
+		$(window).trigger('resize');
+		
 		//$('.slick-track').attr('style','opacity: 1; width: 15000px; transform: translate3d(0px, 0px, 0px);');
 	}, 500);
 	/*
