@@ -830,7 +830,7 @@ function showAddDetail(id)		/* Show ad Detail */
 
 							/*Re Initialize Slick Slider so that images can be OK*/
 							//$('.variable-width').slick( getSliderSettings() );
-							if(value.length>1){
+							if(value.length>1 &&  value.length!=0){
 								$('.variable-width').slick( getSliderSettings() );
 							}else{
 								$('.variable-width').slick( getSingleImageSliderSettings() );
@@ -1079,7 +1079,7 @@ function fixImageSlider(count)
 	setTimeout(function()
 	{
 		$('.variable-width').slick('unslick');
-		if(count>1){
+		if(count>1 && count!=0){
 			$('.variable-width').slick( getSliderSettings() );
 		}else{
 			$('.variable-width').slick( getSingleImageSliderSettings() );
