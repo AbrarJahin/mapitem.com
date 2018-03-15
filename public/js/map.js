@@ -826,10 +826,15 @@ function showAddDetail(id)		/* Show ad Detail */
 								$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+                                      '"></div>');
 							}
 
-							fixImageSlider();
+							fixImageSlider(value.length);
 
 							/*Re Initialize Slick Slider so that images can be OK*/
 							//$('.variable-width').slick( getSliderSettings() );
+							if(value.length>1){
+								$('.variable-width').slick( getSliderSettings() );
+							}else{
+								$('.variable-width').slick( getSingleImageSliderSettings() );
+							}	
 						}
 						else if(key.localeCompare('total_views')==0)
 						{
@@ -1015,6 +1020,20 @@ function pullPaginatorElementToFirstElement()
 	}
 }
 
+function getSingleImageSliderSettings(){
+
+	return {
+		infinite: true,
+		//centerPadding: '60px',
+		slidesToShow: 4,
+		speed: 300,
+		variableWidth: true,
+		centerMode   : true,
+		dots   : true,
+	}
+}
+
+
 function getSliderSettings()
 {
 	return {
@@ -1023,7 +1042,7 @@ function getSliderSettings()
 		slidesToShow: 4,
 		speed: 300,
 		variableWidth: true,
-		centerMode   : true,
+		//centerMode   : true,
 		dots   : true,
 	}
 }
@@ -1075,15 +1094,20 @@ function fixInfowindowScroll()
 	}, 400);
 }
 
-function fixImageSlider()
+function fixImageSlider(count)
 {
 	$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
 
 	setTimeout(function()
 	{
 		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-		$('.slick-track').attr('style','opacity: 1; width: 15000px; transform: translate3d(0px, 0px, 0px);');
+		if(count>1){
+			$('.variable-width').slick( getSliderSettings() );
+		}else{
+			$('.variable-width').slick( getSingleImageSliderSettings() );
+		}	
+		
+		
 	}, 500);
 	/*
 	setTimeout(function()
