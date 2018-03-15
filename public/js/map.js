@@ -1024,7 +1024,7 @@ function getSingleImageSliderSettings(){
 	return {
 		infinite: true,
 		//centerPadding: '60px',
-		slidesToShow: 3,
+		//slidesToShow: 3,
 		speed: 300,
 		variableWidth: true,
 		centerMode   : true,
@@ -1039,7 +1039,7 @@ function getSliderSettings()
 	return {
 		infinite: true,
 		//centerPadding: '60px',
-		slidesToShow: 3,
+		//slidesToShow: 3,
 		speed: 300,
 		variableWidth: true,
 		//centerMode   : true,
