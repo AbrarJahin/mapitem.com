@@ -818,12 +818,12 @@ function showAddDetail(id)		/* Show ad Detail */
 							{
 								$.each(value,function(id,image)
 								{
-									$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	                                     '"></div>');
+									$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	                                     '"></div>');
 								});
 							}
 							else
 							{
-								$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+                                      '"></div>');
+								$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+                                      '"></div>');
 							}
 
 							fixImageSlider(value.length);
@@ -1025,11 +1025,12 @@ function getSingleImageSliderSettings(){
 	return {
 		infinite: true,
 		//centerPadding: '60px',
-		slidesToShow: 4,
+		slidesToShow: 3,
 		speed: 300,
 		variableWidth: true,
 		centerMode   : true,
 		dots   : true,
+		arrows: true,
 	}
 }
 
@@ -1039,37 +1040,14 @@ function getSliderSettings()
 	return {
 		infinite: true,
 		//centerPadding: '60px',
-		slidesToShow: 4,
+		slidesToShow: 3,
 		speed: 300,
 		variableWidth: true,
 		//centerMode   : true,
 		dots   : true,
+		arrows: true,
 	}
 }
-
-$('.variable-width').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-  //console.log('beforeChange', currentSlide, nextSlide);
-  // $(".slick-current").removeClass("high-light");
-  // $(".slick-current").addClass("normal");
-  //console.log($( ".slick-slide[data-slick-index='"+nextSlide+"']" ));
-  var nextSlick = $( ".slick-slide[data-slick-index='"+nextSlide+"']" );
-  // nextSlick.addClass("high-light");
-  // nextSlick.removeClass("normal");
-});
-
-$('.variable-width').on('afterChange', function(event, slick, currentSlide){
-  //console.log('afterChange', currentSlide);
-  //$(".slick-current").addClass("high-light");
-  //$(".slick-current").removeClass("normal");
-});
-//setTimeout(()=>{
-  //console.log($(".slick-current"));
-  // $(".slick-current").removeClass("normal");
-  // $(".slick-current").addClass("high-light");
-  //$('.variable-width').slick('setPosition');
-//}, 100);
-
-
 function fixInfowindowScroll()
 {
 	setTimeout(function()
