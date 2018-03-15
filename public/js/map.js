@@ -1020,7 +1020,7 @@ function getSliderSettings()
 	return {
 		infinite: true,
 		//centerPadding: '60px',
-		slidesToShow: 3,
+		slidesToShow: 4,
 		speed: 300,
 		variableWidth: true,
 		centerMode   : true,
