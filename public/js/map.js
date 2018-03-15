@@ -826,7 +826,7 @@ function showAddDetail(id)		/* Show ad Detail */
 								$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+                                      '"></div>');
 							}
 
-							fixImageSlider(value.length);
+							//fixImageSlider(value.length);
 
 							/*Re Initialize Slick Slider so that images can be OK*/
 							//$('.variable-width').slick( getSliderSettings() );
