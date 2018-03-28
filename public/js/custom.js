@@ -2851,7 +2851,7 @@ var appendNumber = 4;
 var prependNumber = 1;
 var swiper = new Swiper('.swiper-container', {
   slidesPerView: 1,
-  centeredSlides: false,
+  centeredSlides: true,
   spaceBetween: 0,
   loop: true,
   pagination: {
