@@ -2852,7 +2852,7 @@ var prependNumber = 1;
 var swiper = new Swiper('.swiper-container', {
   slidesPerView: 1,
   centeredSlides: true,
-  spaceBetween: 0,
+  spaceBetween: 10,
   loop: true,
   pagination: {
 	el: '.swiper-pagination',
