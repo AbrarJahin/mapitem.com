@@ -2850,9 +2850,10 @@ $(document).ready(function(){
 var appendNumber = 4;
 var prependNumber = 1;
 var swiper = new Swiper('.swiper-container', {
-  slidesPerView: 2,
+  slidesPerView: 1,
   centeredSlides: false,
   spaceBetween: 0,
+  loop: true,
   pagination: {
 	el: '.swiper-pagination',
 	clickable: true,
