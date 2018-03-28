@@ -2971,8 +2971,8 @@ li.next.disabled{
   font-size: 13px;
 }
 .swiper-slide img{
-  width: 100%;
- 
+  width: auto;
+  height: auto;
 }
 /*swiper slider styles end*/
 @media(max-width:1200px){
