@@ -2972,8 +2972,7 @@ li.next.disabled{
   font-size: 13px;
 }
 .swiper-slide img{
-		width: 100%;
-		max-width:100%;
+		max-width:100%; height:100%;
 		display:block;
 	
 	
@@ -3440,7 +3439,9 @@ li.next.disabled{
 @media(max-width:480px){
 	.swiper-slide img{
 		width: 100%;
-		display:block
+		display:block;
+		height:100%;
+		
 	
 	
 	}
