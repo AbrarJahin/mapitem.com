@@ -2954,6 +2954,7 @@ li.next.disabled{
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  width:100%!important
 /*  margin: 0 auto!important;*/
 }
 .append-buttons {
@@ -2971,7 +2972,7 @@ li.next.disabled{
   font-size: 13px;
 }
 .swiper-slide img{
-  width: 100%;
+  /*width: 100%;*/
 
 
 }
@@ -3435,6 +3436,11 @@ li.next.disabled{
 }
 
 @media(max-width:480px){
+	.swiper-slide img{
+	width: 100%;
+	
+	
+	}
 	.c-position {
 		right:-152%!important;
 	}
