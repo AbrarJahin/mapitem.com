@@ -81,9 +81,11 @@
 	<script type="text/javascript" src="{{ URL::asset('js/map.js') }}"></script>
 	{{-- Pagination --}}
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootpag/1.0.7/jquery.bootpag.min.js"></script>
+    
 
 {{-- Footer Scripts - End --}}
 </div>
+
 </body>
 {!! $google_analytics_script or '' !!}
 </html>

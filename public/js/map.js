@@ -818,18 +818,22 @@ function showAddDetail(id)		/* Show ad Detail */
 							{
 								$.each(value,function(id,image)
 								{
-									$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+'"></div>');
+									$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	                                     '"></div>');
 								});
 							}
 							else
 							{
-								$('.variable-width').prepend(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+'"></div>');
+								$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+                                      '"></div>');
 							}
 
-							fixImageSlider();
-
+							fixImageSlider(value.length);
 							/*Re Initialize Slick Slider so that images can be OK*/
-							$('.variable-width').slick( getSliderSettings() );
+							//$('.variable-width').slick( getSliderSettings() );
+							if(value.length>1 &&  value.length!=0){
+								$('.variable-width').slick( getSliderSettings() );
+							}else{
+								$('.variable-width').slick( getSingleImageSliderSettings() );
+							}	
 						}
 						else if(key.localeCompare('total_views')==0)
 						{
@@ -1015,26 +1019,34 @@ function pullPaginatorElementToFirstElement()
 	}
 }
 
+function getSingleImageSliderSettings(){
+
+	return {
+		infinite: true,
+		//centerPadding: '60px',
+		slidesToShow: 1,
+		speed: 300,
+		variableWidth: true,
+		centerMode   : true,
+		dots   : true,
+		arrows: true,
+	}
+}
+
+
 function getSliderSettings()
 {
 	return {
-			dots: true,
-			infinite: true,
-			autoplay: false,
-			/*
-			infinite: false,
-			autoplay: true,
-			*/
-			speed: 500,
-			centerMode: true,
-			variableWidth: true,
-			lazyLoad: 'ondemand',
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			arrows: true
-		}
+		infinite: true,
+		//centerPadding: '60px',
+		slidesToShow: 1,
+		speed: 300,
+		variableWidth: true,
+		//centerMode   : true,
+		dots   : true,
+		arrows: true,
+	}
 }
-
 function fixInfowindowScroll()
 {
 	setTimeout(function()
@@ -1059,15 +1071,21 @@ function fixInfowindowScroll()
 	}, 400);
 }
 
-function fixImageSlider()
+function fixImageSlider(count)
 {
 	$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
 
 	setTimeout(function()
 	{
 		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 500);
+		if(count>1 && count!=0){
+			$('.variable-width').slick( getSliderSettings() );
+		}else{
+			$('.variable-width').slick( getSingleImageSliderSettings() );
+		}	
+		
+		
+	}, 1000);
 	/*
 	setTimeout(function()
 	{
@@ -1209,9 +1227,10 @@ $(function()
 			/* View current value while mouse is out*/
 			.on('mouseleave', '[data-value]', function ()
 			{
+				//alert('asd')
 				var self = $(this);
 				var val = self.siblings('input').val();
-				if (val) {
+				if (val>0) {
 					_paintValue(self.closest('.rating-input'), val);
 				}
 				else

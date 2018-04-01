@@ -2805,8 +2805,6 @@ $(document).ready(function()
 //nav filters for mobile
 $(document).ready(function(){
 	
-	
-	
     $(".nf-placeholder").click(function(){
         $(".nf-block").slideToggle('slow');
     });
@@ -2820,21 +2818,9 @@ $(document).ready(function(){
        event.preventDefault();
         $('body').toggleClass('open');
       }); 
-	 $(document).on('click', 'a', function(event) {
-		abc(event);
-        //event.preventDefault();
-        //$("#lgn-pup").removeClass('c-position');
-		//$("#sgn-pup").removeClass('c-position');
-      });
-	  $(document).on('click', 'button', function(event) {
-		abc(event);
-        //event.preventDefault();
-        //$("#lgn-pup").removeClass('c-position');
-		//$("#sgn-pup").removeClass('c-position');
-      });
-	  
 	$(document).on('click', '.pfad', function(event) {
        event.preventDefault();
+	   alert("Hello! I am an alert box!!");
         $("#lgn-pup").addClass('c-position');
 		$("#pfa").addClass('c-position');
 		$(".sup").addClass('m-sgn');
@@ -2857,9 +2843,46 @@ $(document).ready(function(){
 	});
 	
 	//$(".ad-detail").height($(document).height()-300);
-	
 	//var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	//$(".ad-detail").css('min-height', h);
-
 });
-
+// Initialize Swiper start
+var appendNumber = 4;
+var prependNumber = 1;
+var swiper = new Swiper('.swiper-container', {
+  slidesPerView: 1,
+  centeredSlides: true,
+  spaceBetween: 10,
+  loop: true,
+  pagination: {
+	el: '.swiper-pagination',
+	clickable: true,
+  },
+  navigation: {
+	nextEl: '.swiper-button-next',
+	prevEl: '.swiper-button-prev',
+  },
+});
+document.querySelector('.prepend-2-slides').addEventListener('click', function (e) {
+  e.preventDefault();
+  swiper.prependSlide([
+	'<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>',
+	'<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>'
+	]);
+});
+document.querySelector('.prepend-slide').addEventListener('click', function (e) {
+  e.preventDefault();
+  swiper.prependSlide('<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>');
+});
+document.querySelector('.append-slide').addEventListener('click', function (e) {
+  e.preventDefault();
+  swiper.appendSlide('<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>');
+});
+document.querySelector('.append-2-slides').addEventListener('click', function (e) {
+  e.preventDefault();
+  swiper.appendSlide([
+	'<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>',
+	'<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>'
+	]);
+});
+// Initialize Swiper end
