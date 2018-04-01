@@ -17,20 +17,49 @@ var swiper;
 /* on document ready function*/
 $(function()
 {
-	swiper = new Swiper('.swiper-wrapper', {
-										slidesPerView: 1,
-										centeredSlides: true,
-										spaceBetween: 10,
-										loop: true,
-										pagination: {
-											el: '.swiper-pagination',
-											clickable: true
-										},
-										navigation: {
-											nextEl: '.swiper-button-next',
-											prevEl: '.swiper-button-prev'
-										}
-									});
+	// Initialize Swiper start
+	swiper = new Swiper('.swiper-container', {
+								slidesPerView: 1,
+								centeredSlides: true,
+								spaceBetween: 10,
+								loop: true,
+								pagination: {
+									el: '.swiper-pagination',
+									clickable: true
+								},
+								navigation: {
+									nextEl: '.swiper-button-next',
+									prevEl: '.swiper-button-prev'
+								}
+							});
+	/*
+	var appendNumber = 4;
+	var prependNumber = 1;
+	document.querySelector('.prepend-2-slides').addEventListener('click', function (e) {
+		e.preventDefault();
+		swiper.prependSlide([
+		'<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>',
+		'<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>'
+		]);
+	});
+	document.querySelector('.prepend-slide').addEventListener('click', function (e) {
+		e.preventDefault();
+		swiper.prependSlide('<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>');
+	});
+	document.querySelector('.append-slide').addEventListener('click', function (e) {
+		e.preventDefault();
+		swiper.appendSlide('<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>');
+	});
+	document.querySelector('.append-2-slides').addEventListener('click', function (e) {
+		e.preventDefault();
+		swiper.appendSlide([
+		'<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>',
+		'<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>'
+		]);
+	});
+	*/
+	// Initialize Swiper end
+
 	/*Link GeoComplete to Map*/
 	$("#user_location").geocomplete().bind("geocode:result", function(event, result)
 	{
@@ -798,7 +827,7 @@ function showAddDetail(id)		/* Show ad Detail */
 						else if(key.localeCompare('advertisement_images')==0)
 						{
 							/*Remove Previous Slider*/
-							swiper.removeAllSlides();
+							//swiper.removeAllSlides();
 
 							if(value != null && value.length>0)
 							{
