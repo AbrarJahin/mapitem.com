@@ -17,7 +17,7 @@ var swiper;
 /* on document ready function*/
 $(function()
 {
-	swiper = new Swiper('#ad-slider', {
+	swiper = new Swiper('.swiper-wrapper', {
 										slidesPerView: 1,
 										centeredSlides: true,
 										spaceBetween: 10,
