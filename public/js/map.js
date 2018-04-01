@@ -827,7 +827,7 @@ function showAddDetail(id)		/* Show ad Detail */
 						else if(key.localeCompare('advertisement_images')==0)
 						{
 							/*Remove Previous Slider*/
-							//swiper.removeAllSlides();
+							swiper.removeAllSlides();
 
 							if(value != null && value.length>0)
 							{
