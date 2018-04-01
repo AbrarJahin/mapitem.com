@@ -5,7 +5,6 @@ var viewPortForMobile;
 var firstTimeNotAlreadyViewed = true;
 var currentView='G';
 
-
 var infoBubble = new InfoBubble({
 							maxWidth: 300,
 							maxHeight:227,
@@ -13,6 +12,20 @@ var infoBubble = new InfoBubble({
 							disableAutoPan: true
 						});
 
+var swiper = new Swiper('#ad-slider', {
+										slidesPerView: 1,
+										centeredSlides: true,
+										spaceBetween: 10,
+										loop: true,
+										pagination: {
+											el: '.swiper-pagination',
+											clickable: true
+										},
+										navigation: {
+											nextEl: '.swiper-button-next',
+											prevEl: '.swiper-button-prev'
+										}
+									});
 /*var last_opened_infowindow;*/
 
 /* on document ready function*/
@@ -92,12 +105,6 @@ $(function()
 		{
 			checkedData[$(chk).attr("name")] = true;
 		});
-
-		/* set a filter function using the closure data "checkedData"
-		map_div.gmap3({get:"clusterer"}).filter(function(data)
-		{
-			return data.category in checkedData;
-		});*/
 	});
 
 	/* create gmap3 and call the marker generation function  */
@@ -143,7 +150,7 @@ $(function()
 		}
 		catch(error)
 		{
-			/*console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');*/
+			console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
 		}
 	});
 
@@ -249,21 +256,6 @@ $(function()
 
 			$('meta[name=is_paginator_clicked]').attr("content",false);
 		});
-
-	/*
-	Search Input Change Event
-	$("#input_nav_search").on("input", function(e)
-	{
-		if( ifDeviceIsMobile() )
-		{
-			generateMarkers( viewPortForMobile );
-		}
-		else
-		{
-			generateMarkers(map_div.gmap3("get").getBounds());
-		}
-	});
-	*/
 
 	/*Checkbox Checked Item Change Event*/
 	$("#category_filter :checkbox").on('change',function ()
@@ -491,7 +483,6 @@ $(function()
 function generateMarkers(bounds)
 {
 	pullPaginatorElementToFirstElement();
-	/*console.log(bounds);*/
 	/* generate AJAX - Start*/
 	var list = [];
 	var location={};
@@ -567,10 +558,6 @@ function generateMarkers(bounds)
 									$('#show_paginator').bootpag({total: 1});
 								else
 									$('#show_paginator').bootpag({total: data});
-							}
-							else if(key === 'current_page')
-							{
-								/*console.log('Current Page = '+data);*/
 							}
 							else if(key === 'data')
 							{
@@ -810,30 +797,24 @@ function showAddDetail(id)		/* Show ad Detail */
 						}
 						else if(key.localeCompare('advertisement_images')==0)
 						{
+							swiper.removeAllSlides();
+
 							/*Remove Previous Slider*/
-							$('.variable-width').slick('unslick');
-							$('.variable-width').empty();
+							swiper.removeAllSlides();
 
 							if(value != null && value.length>0)
 							{
 								$.each(value,function(id,image)
 								{
-									$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	                                     '"></div>');
+									swiper.prependSlide('<div class="swiper-slide"><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	'"/></div>');
+									//$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	'"></div>');
 								});
 							}
 							else
 							{
-								$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+                                      '"></div>');
+								swiper.prependSlide('<div class="swiper-slide"><img src="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '" /></div>');
+								//$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '"></div>');
 							}
-
-							fixImageSlider(value.length);
-							/*Re Initialize Slick Slider so that images can be OK*/
-							//$('.variable-width').slick( getSliderSettings() );
-							if(value.length>1 &&  value.length!=0){
-								$('.variable-width').slick( getSliderSettings() );
-							}else{
-								$('.variable-width').slick( getSingleImageSliderSettings() );
-							}	
 						}
 						else if(key.localeCompare('total_views')==0)
 						{
@@ -958,7 +939,6 @@ function showAddDetail(id)		/* Show ad Detail */
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");
-	$('.variable-width').slick( getSliderSettings() );
 }
 
 function ifDeviceIsMobile()		/*Check The Device Type*/
@@ -1019,21 +999,6 @@ function pullPaginatorElementToFirstElement()
 	}
 }
 
-function getSingleImageSliderSettings(){
-
-	return {
-		infinite: true,
-		//centerPadding: '60px',
-		slidesToShow: 1,
-		speed: 300,
-		variableWidth: true,
-		centerMode   : true,
-		dots   : true,
-		arrows: true,
-	}
-}
-
-
 function getSliderSettings()
 {
 	return {
@@ -1069,54 +1034,6 @@ function fixInfowindowScroll()
 		/*$(".map-master-div").parent().parent().css("overflow", "hidden");*/
 		$(".map-master-div").css("width", "100%");
 	}, 400);
-}
-
-function fixImageSlider(count)
-{
-	$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		if(count>1 && count!=0){
-			$('.variable-width').slick( getSliderSettings() );
-		}else{
-			$('.variable-width').slick( getSingleImageSliderSettings() );
-		}	
-		
-		
-	}, 1000);
-	/*
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 1000);
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 1500);
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 2000);
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 3000);
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 4000);
-	*/
 }
 
 function clearMarkers()
