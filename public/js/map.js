@@ -11,8 +11,13 @@ var infoBubble = new InfoBubble({
 							padding:0,
 							disableAutoPan: true
 						});
+var swiper;
+/*var last_opened_infowindow;*/
 
-var swiper = new Swiper('#ad-slider', {
+/* on document ready function*/
+$(function()
+{
+	swiper = new Swiper('#ad-slider', {
 										slidesPerView: 1,
 										centeredSlides: true,
 										spaceBetween: 10,
@@ -26,11 +31,6 @@ var swiper = new Swiper('#ad-slider', {
 											prevEl: '.swiper-button-prev'
 										}
 									});
-/*var last_opened_infowindow;*/
-
-/* on document ready function*/
-$(function()
-{
 	/*Link GeoComplete to Map*/
 	$("#user_location").geocomplete().bind("geocode:result", function(event, result)
 	{
@@ -797,8 +797,6 @@ function showAddDetail(id)		/* Show ad Detail */
 						}
 						else if(key.localeCompare('advertisement_images')==0)
 						{
-							swiper.removeAllSlides();
-
 							/*Remove Previous Slider*/
 							swiper.removeAllSlides();
 
@@ -806,13 +804,13 @@ function showAddDetail(id)		/* Show ad Detail */
 							{
 								$.each(value,function(id,image)
 								{
-									swiper.prependSlide('<div class="swiper-slide"><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	'"/></div>');
+									swiper.appendSlide('<div class="swiper-slide"><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	'"/></div>');
 									//$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	'"></div>');
 								});
 							}
 							else
 							{
-								swiper.prependSlide('<div class="swiper-slide"><img src="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '" /></div>');
+								swiper.appendSlide('<div class="swiper-slide"><img src="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '" /></div>');
 								//$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '"></div>');
 							}
 						}
@@ -822,8 +820,6 @@ function showAddDetail(id)		/* Show ad Detail */
 						}
 						else if(key.localeCompare('avg_rating')==0)
 						{
-							/*Showing The Dynamic user Rating
-							  value_all_json.user_rating*/
 							$('#add_rating').empty();
 							/*Green Star*/
 							for (i = 0; i < Math.round(value); i++)
@@ -939,6 +935,7 @@ function showAddDetail(id)		/* Show ad Detail */
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");
+	$(".listing-right").animate({ scrollTop: 0 }, "slow");
 }
 
 function ifDeviceIsMobile()		/*Check The Device Type*/
