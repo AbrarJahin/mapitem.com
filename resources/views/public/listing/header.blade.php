@@ -11,8 +11,9 @@
 	{{-- Slick CSS --}}
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"/>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"/>
-
 	<link href="{{ URL::asset('css/loadie.css') }}" rel="stylesheet" type="text/css">
+	{{-- swiper slider styles --}}
+	<link rel="stylesheet" href="{{ URL::asset('css/swiper.min.css') }}" type="text/css">
 </head>
 
 <body id="page-top">

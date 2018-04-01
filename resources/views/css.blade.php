@@ -12,7 +12,3 @@
 {{-- Push Menu --}}
 <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-push-menu.css') }}" type="text/css">
 <script src="{{ URL::asset('js/modernizr.custom.js') }}"></script>
-{{-- swiper slider styles --}}
-<link rel="stylesheet" href="{{ URL::asset('css/swiper.min.css') }}" type="text/css">
-{{-- swiper slider JS --}}
-<script src="{{ URL::asset('js/swiper.min.js') }}"></script>
