@@ -105,8 +105,7 @@ function centerModal()
 }
 
 //Get user's geo location
-function getLocation()
-{
+function getLocation() {
 	var location = {};
 	if( (latitude===undefined && longitude===undefined) || searchLocationName!=undefined )		//not called before in the page
 	{
@@ -186,14 +185,11 @@ function getLocation()
 						var upload_folder	=	$('meta[name="upload_folder_url"]').attr('content');
 						element_container.empty();
 
-						
-						
 						$.each(responce_data,function(key_index,single_data)
 						{
 							if(single_data.advertisement_image == null)
 								single_data.advertisement_image = "../images/not_available_1.png";
-							
-							
+
 							var data_to_append	=	'<div class="col-lg-4 col-sm-6">'
 														+'<a href="#" add_id="'+single_data.id+'" class="add_to_wishlist wsh-lst2">'
 															+'<img type="image/svg+xml" src="'+single_data.hearts_image+'"></img>'
@@ -359,7 +355,6 @@ $(window).resize(function()
 {
 	if(!(window.matchMedia( "(max-width: 768px)" ).matches))
 	{
-		//alert("Show Message Detail called on resize");
 		showMessageDetail();
 	}
 });
@@ -415,7 +410,6 @@ $(document).ready(function()
 		var lat_input,lon_input, lat_min, lon_min, lat_max, lon_max;
 		try
 		{
-			//var lat_lon_parsed_data = $('#user_location').val().split(',');
 			lat_input	=	parseFloat( $('#user_location_lat').val() );
 			lon_input	=	parseFloat( $('#user_location_lon').val() );
 
@@ -453,8 +447,6 @@ $(document).ready(function()
 				{
 					redirect_url += '/'+input_nav_search_value;
 				}
-
-				//window.location.replace(redirect_url);		//Remove History
 				window.location.href	=	redirect_url;		//Keep history
 			}
 		}
@@ -480,8 +472,7 @@ $(document).ready(function()
 			{
 				mapTypeId	: 'roadmap',		//roadmap, satellite,hybrid, terrain,
 				scrollwheel	: true,
-				zoom		: 8,
-				//center		: new google.maps.LatLng( latitude, longitude ),
+				zoom		: 8
 			},
 			markerOptions:
 			{
@@ -1410,28 +1401,6 @@ $(document).ready(function()
 
 	window.prettyPrint && prettyPrint();
 
-	//Global AJAX Config - Start
-	/*
-	jQuery.ajaxSetup({
-		beforeSend: function()
-		{
-			$("#wait").css("display", "block");
-		},
-		complete: function()
-		{
-			$("#wait").css("display", "none");
-		},
-		success: function (e)
-		{
-			$("#wait").css("display", "none");
-		},
-		error: function (e)
-		{
-			console.log(e);
-			$("#wait").css("display", "none");
-		}
-	});
-	*/
 	$(document).ajaxStart(function(){
 		$("#wait").css("display", "block");
 	});
@@ -1584,9 +1553,8 @@ $(document).ready(function()
 								{	"data": "category_name"			},
 								{	"data": null			}
 							],
-				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
 				stateSave: true,
-				"columnDefs":	[								//For Action Buttons (Edit and Delete button) adding in the Action Column
+				"columnDefs":	[										//For Action Buttons (Edit and Delete button) adding in the Action Column
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
@@ -1623,7 +1591,6 @@ $(document).ready(function()
 			$('#category-datatable tbody').on( 'click', 'button.edit', function ()	//Handeling Edit Button Click
 			{
 				var data = categoryDataTable.row( $(this).parents('tr') ).data();
-				//alert('Edit - '+data['id']);	//id = index of ID sent from server
 				$.ajax(
 				{
 					headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
@@ -1828,14 +1795,10 @@ $(document).ready(function()
 					}
 				},
 				"columns":	[				//Name should be same as PHP file JSON NAmes and ordering should be as in the HTML file
-								{	"data": "full_name"					},
-								{	"data": "cell_no"					},
-								{	"data": "email"						},/*
-								{	"data": "website"					},
-								{	"data": "date_of_birth"				},
-								{	"data": "social_security_number"	},
-								{	"data": "address"					},*/
-								{	"data": null						}
+								{	"data": "full_name"	},
+								{	"data": "cell_no"		},
+								{	"data": "email"			},
+								{	"data": null				}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
 				stateSave: true,
@@ -2485,28 +2448,6 @@ $(document).ready(function()
 		});
 	});
 
-	//Inbox Page- Start - Start
-		/*$('.info-btn').on('click', function ()
-		{
-			//$("#extra_info").fadeToggle(1000);
-			//$("#messages").toggleClass('col-sm-12 col-sm-9');
-
-			if( $("#messages").hasClass("col-sm-12") )	//Extra Contents hidden
-			{
-				$("#messages").toggleClass('col-sm-12 col-sm-9',1000).promise().done(function()
-				{
-					$("#extra_info").fadeToggle(1000);
-				});
-			}
-			else
-			{
-				$("#extra_info").fadeToggle(1000).promise().done(function()
-				{
-					$("#messages").toggleClass('col-sm-12 col-sm-9',1000);
-				});
-			}
-		});*/
-
 		showMessageDetail();
 
 		$('.inbox_titles li').click(function(event)
@@ -2641,8 +2582,6 @@ $(document).ready(function()
 				settingsStatus = 'disabled';
 			}
 
-			//alert(settingsName + ' - ' + settingsStatus );
-
 			$.ajax({
 						headers: { 'X-CSRF-TOKEN': $('meta[name=_token]').attr("content") },
 						method: "POST",
@@ -2763,126 +2702,119 @@ $(document).ready(function()
 		});
 
 		$('#input_nav_search').typeahead({
-					hint:		true,
-					highlight:	true,
-					minLength: 0
-				},
+				hint:		true,
+				highlight:	true,
+				minLength: 0
+			},
+			{
+				source: engine,
+				displayKey:	'name'
+			})
+			.on('typeahead:asyncrequest', function()
+			{
+				$(this).addClass('typeahead-spinner');
+			})
+			.on('typeahead:asynccancel typeahead:asyncreceive', function()
+			{
+				$(this).removeClass('typeahead-spinner');
+			})
+			.bind('typeahead:select', function (event, suggestion)
+			{
+				try
 				{
-					source: engine,
-					displayKey:	'name'
-				})
-				.on('typeahead:asyncrequest', function()
-				{
-					$(this).addClass('typeahead-spinner');
-				})
-				.on('typeahead:asynccancel typeahead:asyncreceive', function()
-				{
-					$(this).removeClass('typeahead-spinner');
-				})
-				.bind('typeahead:select', function (event, suggestion)
-				{
-					try
+					if( ifDeviceIsMobile() )
 					{
-						if( ifDeviceIsMobile() )
-						{
-							generateMarkers( viewPortForMobile );
-						}
-						else
-						{
-							generateMarkers(map_div.gmap3("get").getBounds());
-						}
+						generateMarkers( viewPortForMobile );
 					}
-					catch(err)
+					else
 					{
-						console.log("It is not map page");
+						generateMarkers(map_div.gmap3("get").getBounds());
 					}
-				});
+				}
+				catch(err)
+				{
+					console.log("It is not map page");
+				}
+			});
 	}
 	//Typehead - End
 });
 
-
 //nav filters for mobile
 $(document).ready(function(){
-	
-    $(".nf-placeholder").click(function(){
-        $(".nf-block").slideToggle('slow');
-    });
+	$(".nf-placeholder").click(function(){
+			$(".nf-block").slideToggle('slow');
+	});
 	$(".nf-close").click(function(){
-        $(".nf-block").slideUp('slow');
-    });
+				$(".nf-block").slideUp('slow');
+		});
 	$("#showRightPush").click(function(){
-        $(".def").addClass('pfad');
-    });
+		$(".def").addClass('pfad');
+	});
 	$(document).on('click', '.navbar-toggle', function(event) {
-       event.preventDefault();
-        $('body').toggleClass('open');
-      }); 
+		event.preventDefault();
+		$('body').toggleClass('open');
+	});
 	$(document).on('click', '.pfad', function(event) {
-       event.preventDefault();
-	   alert("Hello! I am an alert box!!");
-        $("#lgn-pup").addClass('c-position');
+		event.preventDefault();
+		alert("Hello! I am an alert box!!");
+		$("#lgn-pup").addClass('c-position');
 		$("#pfa").addClass('c-position');
 		$(".sup").addClass('m-sgn');
 		$(".green-small2").addClass('temp-c');
-      });
-	  
+			});
 	$(document).on('click', '.m-sgn', function(event) {
-       event.preventDefault();
-        $("#sgn-pup").addClass('c-position');
+			 event.preventDefault();
+				$("#sgn-pup").addClass('c-position');
 		$(".si").addClass('pfad');
-      });
-  
-	  
+			});
 	$('.temp-c').click(function() {
 		if ($('#pfa').hasClass('in')){
 		$('#pfa').addClass('c-position'); 
-	} else {
-	$('#pfa').removeClass('c-position');
-	}
+		} else {
+		$('#pfa').removeClass('c-position');
+		}
 	});
-	
-	//$(".ad-detail").height($(document).height()-300);
-	//var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	//$(".ad-detail").css('min-height', h);
 });
+/*
 // Initialize Swiper start
+var swiper = new Swiper('.swiper-container', {
+							slidesPerView: 1,
+							centeredSlides: true,
+							spaceBetween: 10,
+							loop: true,
+							pagination: {
+								el: '.swiper-pagination',
+								clickable: true
+							},
+							navigation: {
+								nextEl: '.swiper-button-next',
+								prevEl: '.swiper-button-prev'
+							}
+						});
 var appendNumber = 4;
 var prependNumber = 1;
-var swiper = new Swiper('.swiper-container', {
-  slidesPerView: 1,
-  centeredSlides: true,
-  spaceBetween: 10,
-  loop: true,
-  pagination: {
-	el: '.swiper-pagination',
-	clickable: true,
-  },
-  navigation: {
-	nextEl: '.swiper-button-next',
-	prevEl: '.swiper-button-prev',
-  },
-});
 document.querySelector('.prepend-2-slides').addEventListener('click', function (e) {
-  e.preventDefault();
-  swiper.prependSlide([
+	e.preventDefault();
+	swiper.prependSlide([
 	'<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>',
 	'<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>'
 	]);
 });
 document.querySelector('.prepend-slide').addEventListener('click', function (e) {
-  e.preventDefault();
-  swiper.prependSlide('<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>');
+	e.preventDefault();
+	swiper.prependSlide('<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>');
 });
 document.querySelector('.append-slide').addEventListener('click', function (e) {
-  e.preventDefault();
-  swiper.appendSlide('<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>');
+	e.preventDefault();
+	swiper.appendSlide('<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>');
 });
 document.querySelector('.append-2-slides').addEventListener('click', function (e) {
-  e.preventDefault();
-  swiper.appendSlide([
+	e.preventDefault();
+	swiper.appendSlide([
 	'<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>',
 	'<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>'
 	]);
 });
 // Initialize Swiper end
+*/

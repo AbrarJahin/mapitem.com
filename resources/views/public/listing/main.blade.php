@@ -59,9 +59,7 @@
 		var longitude			= {{ $longitude }};
 	@endif
 </script>
-
 	@include('public.js')
-
 	<script src="{{ URL::asset('js/jquery.loadie.js') }}"></script>
 	{{-- range js --}}
 	<script src="{{ URL::asset('js/jquery.range.js') }}"></script>
@@ -69,10 +67,8 @@
 	<script src="https://cdn.jsdelivr.net/jquery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
 	<script src="{{ URL::asset('js/jQuery.scrollSpeed.js') }}"></script>
 	<script type='text/javascript' src="{{ URL::asset('js/jquery.mousewheel.js') }}"></script>
-	<script src="https://cdn.jsdelivr.net/jquery.touchswipe/1.6.15/jquery.touchSwipe.js"></script>
-	{{-- Slick Js --}}
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-
+	{{-- Swiper Slider 4.2.0 JS --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.0/js/swiper.min.js"></script>
 	{{-- Clustered Map - Google map v3.20 --}}
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gmap3/6.1.0/gmap3.min.js"></script>
 	{{-- Info Bubble for replacing infowindow --}}
@@ -81,8 +77,6 @@
 	<script type="text/javascript" src="{{ URL::asset('js/map.js') }}"></script>
 	{{-- Pagination --}}
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootpag/1.0.7/jquery.bootpag.min.js"></script>
-    
-
 {{-- Footer Scripts - End --}}
 </div>
 

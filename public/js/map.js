@@ -5,19 +5,61 @@ var viewPortForMobile;
 var firstTimeNotAlreadyViewed = true;
 var currentView='G';
 
-
 var infoBubble = new InfoBubble({
 							maxWidth: 300,
 							maxHeight:227,
 							padding:0,
 							disableAutoPan: true
 						});
-
+var swiper;
 /*var last_opened_infowindow;*/
 
 /* on document ready function*/
 $(function()
 {
+	// Initialize Swiper start
+	swiper = new Swiper('.swiper-container', {
+								slidesPerView: 1,
+								centeredSlides: true,
+								spaceBetween: 10,
+								loop: true,
+								pagination: {
+									el: '.swiper-pagination',
+									clickable: true
+								},
+								navigation: {
+									nextEl: '.swiper-button-next',
+									prevEl: '.swiper-button-prev'
+								}
+							});
+	/*
+	var appendNumber = 4;
+	var prependNumber = 1;
+	document.querySelector('.prepend-2-slides').addEventListener('click', function (e) {
+		e.preventDefault();
+		swiper.prependSlide([
+		'<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>',
+		'<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>'
+		]);
+	});
+	document.querySelector('.prepend-slide').addEventListener('click', function (e) {
+		e.preventDefault();
+		swiper.prependSlide('<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>');
+	});
+	document.querySelector('.append-slide').addEventListener('click', function (e) {
+		e.preventDefault();
+		swiper.appendSlide('<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>');
+	});
+	document.querySelector('.append-2-slides').addEventListener('click', function (e) {
+		e.preventDefault();
+		swiper.appendSlide([
+		'<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>',
+		'<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>'
+		]);
+	});
+	*/
+	// Initialize Swiper end
+
 	/*Link GeoComplete to Map*/
 	$("#user_location").geocomplete().bind("geocode:result", function(event, result)
 	{
@@ -92,12 +134,6 @@ $(function()
 		{
 			checkedData[$(chk).attr("name")] = true;
 		});
-
-		/* set a filter function using the closure data "checkedData"
-		map_div.gmap3({get:"clusterer"}).filter(function(data)
-		{
-			return data.category in checkedData;
-		});*/
 	});
 
 	/* create gmap3 and call the marker generation function  */
@@ -143,7 +179,7 @@ $(function()
 		}
 		catch(error)
 		{
-			/*console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');*/
+			console.log('Map Info Window is not opened yet for single time, so it is not initialized yet');
 		}
 	});
 
@@ -249,21 +285,6 @@ $(function()
 
 			$('meta[name=is_paginator_clicked]').attr("content",false);
 		});
-
-	/*
-	Search Input Change Event
-	$("#input_nav_search").on("input", function(e)
-	{
-		if( ifDeviceIsMobile() )
-		{
-			generateMarkers( viewPortForMobile );
-		}
-		else
-		{
-			generateMarkers(map_div.gmap3("get").getBounds());
-		}
-	});
-	*/
 
 	/*Checkbox Checked Item Change Event*/
 	$("#category_filter :checkbox").on('change',function ()
@@ -491,7 +512,6 @@ $(function()
 function generateMarkers(bounds)
 {
 	pullPaginatorElementToFirstElement();
-	/*console.log(bounds);*/
 	/* generate AJAX - Start*/
 	var list = [];
 	var location={};
@@ -567,10 +587,6 @@ function generateMarkers(bounds)
 									$('#show_paginator').bootpag({total: 1});
 								else
 									$('#show_paginator').bootpag({total: data});
-							}
-							else if(key === 'current_page')
-							{
-								/*console.log('Current Page = '+data);*/
 							}
 							else if(key === 'data')
 							{
@@ -811,29 +827,21 @@ function showAddDetail(id)		/* Show ad Detail */
 						else if(key.localeCompare('advertisement_images')==0)
 						{
 							/*Remove Previous Slider*/
-							$('.variable-width').slick('unslick');
-							$('.variable-width').empty();
+							swiper.removeAllSlides();
 
 							if(value != null && value.length>0)
 							{
 								$.each(value,function(id,image)
 								{
-									$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	                                     '"></div>');
+									swiper.appendSlide('<div class="swiper-slide"><img src="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	'"/></div>');
+									//$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=upload_folder_url]').attr("content")+image.image_name+	'"></div>');
 								});
 							}
 							else
 							{
-								$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+                                      '"></div>');
+								swiper.appendSlide('<div class="swiper-slide"><img src="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '" /></div>');
+								//$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '"></div>');
 							}
-
-							fixImageSlider(value.length);
-							/*Re Initialize Slick Slider so that images can be OK*/
-							//$('.variable-width').slick( getSliderSettings() );
-							if(value.length>1 &&  value.length!=0){
-								$('.variable-width').slick( getSliderSettings() );
-							}else{
-								$('.variable-width').slick( getSingleImageSliderSettings() );
-							}	
 						}
 						else if(key.localeCompare('total_views')==0)
 						{
@@ -841,8 +849,6 @@ function showAddDetail(id)		/* Show ad Detail */
 						}
 						else if(key.localeCompare('avg_rating')==0)
 						{
-							/*Showing The Dynamic user Rating
-							  value_all_json.user_rating*/
 							$('#add_rating').empty();
 							/*Green Star*/
 							for (i = 0; i < Math.round(value); i++)
@@ -958,7 +964,7 @@ function showAddDetail(id)		/* Show ad Detail */
 	$('.ad-detail').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");
-	$('.variable-width').slick( getSliderSettings() );
+	$(".listing-right").animate({ scrollTop: 0 }, "slow");
 }
 
 function ifDeviceIsMobile()		/*Check The Device Type*/
@@ -1019,21 +1025,6 @@ function pullPaginatorElementToFirstElement()
 	}
 }
 
-function getSingleImageSliderSettings(){
-
-	return {
-		infinite: true,
-		//centerPadding: '60px',
-		slidesToShow: 1,
-		speed: 300,
-		variableWidth: true,
-		centerMode   : true,
-		dots   : true,
-		arrows: true,
-	}
-}
-
-
 function getSliderSettings()
 {
 	return {
@@ -1069,54 +1060,6 @@ function fixInfowindowScroll()
 		/*$(".map-master-div").parent().parent().css("overflow", "hidden");*/
 		$(".map-master-div").css("width", "100%");
 	}, 400);
-}
-
-function fixImageSlider(count)
-{
-	$('.listing-right').scrollTop(0);	/*Scroll al elements to top after image reloaded*/
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		if(count>1 && count!=0){
-			$('.variable-width').slick( getSliderSettings() );
-		}else{
-			$('.variable-width').slick( getSingleImageSliderSettings() );
-		}	
-		
-		
-	}, 1000);
-	/*
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 1000);
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 1500);
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 2000);
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 3000);
-
-	setTimeout(function()
-	{
-		$('.variable-width').slick('unslick');
-		$('.variable-width').slick( getSliderSettings() );
-	}, 4000);
-	*/
 }
 
 function clearMarkers()
