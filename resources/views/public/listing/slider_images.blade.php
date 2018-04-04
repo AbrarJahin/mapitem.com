@@ -1,6 +1,6 @@
 <div class="swiper-container">
 		<div class="swiper-wrapper">
-			
+			<div class="swiper-slide"><img src="https://bilal.mapitem.com/public/uploads/16-1ae79834c71878780678.jpg" /></div>
 			
 		</div>
 		<!-- Add Pagination -->
