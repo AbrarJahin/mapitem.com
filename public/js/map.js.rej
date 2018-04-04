@@ -1,0 +1,10 @@
+diff a/public/js/map.js b/public/js/map.js	(rejected hunks)
+@@ -827,7 +827,7 @@
+ 						else if(key.localeCompare('advertisement_images')==0)
+ 						{
+ 							/*Remove Previous Slider*/
+-							//swiper.removeAllSlides();
++							swiper.removeAllSlides();
+ 
+ 							if(value != null && value.length>0)
+ 							{
