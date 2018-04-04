@@ -23,6 +23,7 @@ $(function()
 								centeredSlides: true,
 								spaceBetween: 10,
 								loop: true,
+								observer: true,
 								pagination: {
 									el: '.swiper-pagination',
 									clickable: true
