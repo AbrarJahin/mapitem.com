@@ -1,6 +1,6 @@
 <div class="swiper-container">
 		<div class="swiper-wrapper">
-			
+			<div class="swiper-slide"></div>
 			
 		</div>
 		<!-- Add Pagination -->
