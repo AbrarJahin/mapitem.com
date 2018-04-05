@@ -28,20 +28,10 @@
 		</div>
 		<div class="clearfix "></div>
 		{{-- ad detail --}}
-        <div class="swiper-container">
-		<div class="swiper-wrapper">
-			
-
-		</div>
-		<!-- Add Pagination -->
-		<div class="swiper-pagination"></div>
-		<!-- Add Arrows -->
-		<div class="swiper-button-next"></div>
-		<div class="swiper-button-prev"></div>
-</div>
-		<div class="ad-detail">
-			{{-- ad Slider--}}
+        {{-- ad Slider--}}
 			@include('public.listing.slider_images')
+		<div class="ad-detail">
+			
 			{{-- Result detail --}}
 			@include('public.listing.add_detail')
 			{{-- ad Listing --}}
