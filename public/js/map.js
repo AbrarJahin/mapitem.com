@@ -963,7 +963,7 @@ function showAddDetail(id)		/* Show ad Detail */
 	});
 
 	$('.ad-detail').show("slow");
-	$('.listing-slider').show("slow");
+	$('.swiper-container').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");
 	$(".listing-right").animate({ scrollTop: 0 }, "slow");
@@ -977,7 +977,7 @@ function ifDeviceIsMobile()		/*Check The Device Type*/
 function closeAddDetail()		/*Show ad Detail*/
 {
 	$('.ad-detail').hide("slow");
-	$('.listing-slider').hide("slow");
+	$('.swiper-container').hide("slow");
 	$('.ad-listing').show("slow");
 	$('.close-detail').removeClass("show");
 	clearPrevRoutes();
