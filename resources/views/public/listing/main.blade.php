@@ -28,9 +28,10 @@
 		</div>
 		<div class="clearfix "></div>
 		{{-- ad detail --}}
-		<div class="ad-detail">
-			{{-- ad Slider--}}
+        {{-- ad Slider--}}
 			@include('public.listing.slider_images')
+		<div class="ad-detail">
+			
 			{{-- Result detail --}}
 			@include('public.listing.add_detail')
 			{{-- ad Listing --}}

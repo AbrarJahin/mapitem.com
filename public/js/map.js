@@ -4,6 +4,7 @@ var last_opened_info_window_id = -1;				/*For solving infowindow lost issue afte
 var viewPortForMobile;
 var firstTimeNotAlreadyViewed = true;
 var currentView='G';
+var swiper;
 
 var infoBubble = new InfoBubble({
 							maxWidth: 300,
@@ -11,18 +12,20 @@ var infoBubble = new InfoBubble({
 							padding:0,
 							disableAutoPan: true
 						});
-var swiper;
 /*var last_opened_infowindow;*/
 
 /* on document ready function*/
 $(function()
 {
 	// Initialize Swiper start
+	//isLoopRnabled	=	$('.swiper-slide').length > 1 ? true : false;
 	swiper = new Swiper('.swiper-container', {
-								slidesPerView: 1,
+								
 								centeredSlides: true,
 								spaceBetween: 10,
-								loop: true,
+								//loop: isLoopRnabled,
+								observer: true,
+								initialSlide: 2,
 								pagination: {
 									el: '.swiper-pagination',
 									clickable: true
@@ -828,7 +831,23 @@ function showAddDetail(id)		/* Show ad Detail */
 						{
 							/*Remove Previous Slider*/
 							swiper.removeAllSlides();
-
+							swiper.destroy(true,true);
+						   isLoopEnabled	=	value.length > 1 ? true : false;
+							swiper = new Swiper('.swiper-container', {
+								centeredSlides: true,
+								spaceBetween: 10,
+								loop: isLoopEnabled,
+								observer: true,
+								initialSlide: 2,
+								pagination: {
+									el: '.swiper-pagination',
+									clickable: true
+								},
+								navigation: {
+									nextEl: '.swiper-button-next',
+									prevEl: '.swiper-button-prev'
+								}
+							});
 							if(value != null && value.length>0)
 							{
 								$.each(value,function(id,image)
@@ -842,6 +861,8 @@ function showAddDetail(id)		/* Show ad Detail */
 								swiper.appendSlide('<div class="swiper-slide"><img src="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '" /></div>');
 								//$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '"></div>');
 							}
+							
+							console.log(isLoopEnabled)
 						}
 						else if(key.localeCompare('total_views')==0)
 						{
@@ -962,6 +983,7 @@ function showAddDetail(id)		/* Show ad Detail */
 	});
 
 	$('.ad-detail').show("slow");
+	$('.swiper-container').show("slow");
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");
 	$(".listing-right").animate({ scrollTop: 0 }, "slow");
@@ -975,6 +997,7 @@ function ifDeviceIsMobile()		/*Check The Device Type*/
 function closeAddDetail()		/*Show ad Detail*/
 {
 	$('.ad-detail').hide("slow");
+	$('.swiper-container').hide("slow");
 	$('.ad-listing').show("slow");
 	$('.close-detail').removeClass("show");
 	clearPrevRoutes();
