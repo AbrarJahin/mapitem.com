@@ -2742,6 +2742,7 @@ $(document).ready(function()
 
 //nav filters for mobile
 $(document).ready(function(){
+	$('.swiper-container').hide("slow");
 	$(".nf-placeholder").click(function(){
 			$(".nf-block").slideToggle('slow');
 	});
