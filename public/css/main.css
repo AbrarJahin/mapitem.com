@@ -3615,11 +3615,11 @@ li.next.disabled{
 		width: 170px
 	}
 	.ip-nav li a {
-		padding-left: 5px;
-		padding-right: 5px;
+		padding-left: 6px;
+		padding-right: 6px;
 	}
 	.navbar-nav > li > a{
-		font-size: 11pt; 
+		font-size: 10pt; 
 	}
 }
 @media(max-width:990px) {
