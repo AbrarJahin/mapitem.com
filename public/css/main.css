@@ -3626,9 +3626,9 @@ li.next.disabled{
 	.ip-nav .round2, .hp-nav .round2 {
 		margin: 0;
 	}
-	 .topcat button {
+	/* .topcat button {
 		width: 38%
-	}
+	}*/
 	.topcat input {
 		width: 60%
 	}
