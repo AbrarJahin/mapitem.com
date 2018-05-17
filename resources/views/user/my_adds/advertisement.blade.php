@@ -90,7 +90,8 @@
 										{{ $my_add->user->cell_no }}
 									</a>
 								@else
-									Please <a href="{{ URL::route('user.profile') }}" target="_blank">Update Your Profile</a> to add a Phone
+<!--									Please <a href="{{ URL::route('user.profile') }}" target="_blank">Update Your Profile</a> to add a Phone-->
+										 <a href="{{ URL::route('user.profile') }}" target="_blank">Update Your Profile</a> <small>(Please add phone number)</small>
 								@endif
 							</li>
 							<li>
@@ -98,7 +99,7 @@
 								@if(strlen($my_add->user->website)>0)
 									<a href="{{ $my_add->user->website }}" target="_blank">{{ $my_add->user->website }}</a>
 								@else
-									Please <a href="{{ URL::route('user.profile') }}" target="_blank">Update Your Profile</a> to add a Website
+									 <a href="{{ URL::route('user.profile') }}" target="_blank">Update Your Profile</a> <small>(Please add website)</small> 
 								@endif
 							</li>
 							<li>

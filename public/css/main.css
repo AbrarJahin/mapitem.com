@@ -1954,8 +1954,10 @@ header.pdetail{
 .dleft ul li a{
 	display: block;
 float: left;
-width: 80%;
+margin-right: 10px;
 word-break: break-all;}
+.dleft ul li small{
+	color: gray}
 .text-adj1{
 	font-size: 12px;
 	color: #767676;

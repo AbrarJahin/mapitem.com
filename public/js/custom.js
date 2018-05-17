@@ -2398,7 +2398,7 @@ $(document).ready(function()
 				error: function(xhr, textStatus, errorThrown)
 				{
 					var arr = $.parseJSON(xhr.responseText);
-					alert(arr[0]);
+					alert(arr[0] + ' testing ');
 				}
 			});
 		});
