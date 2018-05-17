@@ -42,5 +42,5 @@
 	{{-- Footer Scripts - End --}}
 	</div>
 	</body>
-	{--!! $google_analytics_script or '' !!--}
+	{!! $google_analytics_script or '' !!}
 </html>
