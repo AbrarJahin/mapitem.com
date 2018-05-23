@@ -190,7 +190,7 @@ function getLocation() {
 							if(single_data.advertisement_image == null)
 								single_data.advertisement_image = "../images/not_available_1.png";
 
-							var data_to_append	=	'<div class="col-lg-4 col-sm-6">'
+							var data_to_append	=	'<div class="col-lg-4 col-md-4 col-sm-6">'
 														+'<a href="#" add_id="'+single_data.id+'" class="add_to_wishlist wsh-lst2">'
 															+'<img type="image/svg+xml" src="'+single_data.hearts_image+'"></img>'
 														+'</a>'
@@ -2398,7 +2398,7 @@ $(document).ready(function()
 				error: function(xhr, textStatus, errorThrown)
 				{
 					var arr = $.parseJSON(xhr.responseText);
-					alert(arr[0] + ' testing ');
+					alert(arr[0]);
 				}
 			});
 		});
