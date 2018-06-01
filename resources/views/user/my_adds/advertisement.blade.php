@@ -80,7 +80,7 @@
 								{{ $my_add->user->last_name }}
 							</li>
 							<li>
-								<span class="fa fa-location-arrow icon-adj"> &nbsp;</span>
+								<span class="fa fa-location-arrow icon-adj"></span>
 								{{ $my_add->address }}
 							</li>
 							<li>
