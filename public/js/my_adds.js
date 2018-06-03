@@ -138,4 +138,11 @@ $(document).ready(function()
 		});
 		ifReallyNeedToRemoveFile = true;
 	});
+
+	$(".show-more-my_ad").click(function()
+	{
+		alert("OK");
+		//toggle 'my_add_detail' class in nearest `p` and show animation and change text of `this` element to show less - show more
+		//only show `show-more-my_ad` button if nearest 'my_add_detail' is partially hidden
+	});
 });

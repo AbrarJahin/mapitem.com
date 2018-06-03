@@ -4003,3 +4003,8 @@ white-space: nowrap;
 	 border-top-left-radius: 5px;
 	 border-top-right-radius: 5px;
 }
+
+.my_add_detail {
+	height: 2em;
+	overflow: hidden;
+}
