@@ -68,13 +68,12 @@
 								<b>${{ $my_add->price }}</b>
 						</div>
 						<div class="clearfix"></div>
-						<p class="my_add_detail">
+						<p class="my_add_detail animate">
 							{{ $my_add->description }}
 						</p>
-						@if(strlen($my_add->description)>300)
+						<span class="my_add_detail-more-button">
 							<a href="#my_ad" class="show-more-my_ad">Show More</a>
-							<br/>
-						@endif
+						</span>
 						<a href="{{ route('listing') }}#{{ $my_add->id }}">View on Map</a>
 						{{-- Advertisement Giver Description - Start --}}
 						<ul>
