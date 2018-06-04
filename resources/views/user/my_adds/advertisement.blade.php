@@ -68,10 +68,13 @@
 								<b>${{ $my_add->price }}</b>
 						</div>
 						<div class="clearfix"></div>
-						<p>
+						<p class="my_add_detail animate">
 							{{ $my_add->description }}
-							<br/><a href="{{ route('listing') }}#{{ $my_add->id }}">View on Map</a>
 						</p>
+						<span class="my_add_detail-more-button">
+							<a href="#my_ad" class="show-more-my_ad">Show More</a>
+						</span>
+						<a href="{{ route('listing') }}#{{ $my_add->id }}">View on Map</a>
 						{{-- Advertisement Giver Description - Start --}}
 						<ul>
 							<li>

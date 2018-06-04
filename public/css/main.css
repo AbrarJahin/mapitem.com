@@ -4003,3 +4003,15 @@ white-space: nowrap;
 	 border-top-left-radius: 5px;
 	 border-top-right-radius: 5px;
 }
+
+p.my_add_detail {
+	height: 6em;
+	overflow: hidden;
+}
+
+.animate {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}

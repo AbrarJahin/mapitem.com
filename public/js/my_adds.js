@@ -138,4 +138,31 @@ $(document).ready(function()
 		});
 		ifReallyNeedToRemoveFile = true;
 	});
+
+	$(".my_add_detail-more-button").each(function() {
+		var element = $(this).parent().find('p').first();
+		if (element.outerHeight() < element.prop('scrollHeight')) {
+			// your element have overflow - so show the button
+			element.parent().find('span.my_add_detail-more-button').show();
+		} else {
+			// your element doesn't have overflow - so hide the button
+			element.parent().find('span.my_add_detail-more-button').hide();
+		}
+	});
+
+	$(".show-more-my_ad").click(function()
+	{
+		//$(this).parent().parent().find('p').first().toggleClass('my_add_detail');
+		//Animation should be added here
+		if ($(this).text() == "Show More")
+		{
+			$(this).text("Show Less");
+			$(this).parent().parent().find('p').first().removeClass("my_add_detail", 800);
+		}
+		else
+		{ 
+			$(this).text("Show More");
+			$(this).parent().parent().find('p').first().addClass('my_add_detail', 800);
+		}
+	});
 });
