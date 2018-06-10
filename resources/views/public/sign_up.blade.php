@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="pos-adj4">
-				By signing up you accept Mapitem's <a href="#" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;">Policy</a> and <a href="#" style="color:#23a500 !important; font-size: 10pt !important; padding: 0 !important;">Term of use</a>
+				By signing up you accept Mapitem's <a target="_blank" href="{{ URL::route('public_page', 'privacy') }}" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;">Policy</a> and <a target="_blank" href="{{ URL::route('public_page', 'terms_conditions') }}" style="color:#23a500 !important; font-size: 10pt !important; padding: 0 !important;">Term of use</a>
 			</div>
 
 			{{-- Error Showing Div --}}
