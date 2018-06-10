@@ -60,9 +60,9 @@
 			<ul class="dropdown-menu">
 				<li>
 					<div class="pos-adj03">
-						<span>Please </span><a href="#" class="def" data-toggle="modal" data-target="#lgn-pup" href="#" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;">LOGIN</a>
+						<span>Please </span><a href="#" class="def" data-toggle="modal" data-target="#lgn-pup" href="#" class="link_text">LOGIN</a>
 						or
-						<a data-toggle="modal" data-target="#sgn-pup" class="" href="#" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;">SIGN UP</a> to continue
+						<a data-toggle="modal" data-target="#sgn-pup" class="" href="#" class="link_text">SIGN UP</a> to continue
 					</div>
 				</li>
 			</ul>
