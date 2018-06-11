@@ -16,7 +16,7 @@
 						<input type="password" name="password" required placeholder="Password" class="form-control normal-input" name="login-password" id="login-password-pop">
 					</div>
 					<div class="pos-adj1">
-						<a style="color: #23a500 !important; float: left; font-size: 9pt!important; padding: 0 !important; width: 50%;" data-target="#forgot-password" data-toggle="modal" href="#" class="fp">Forgot Password ?</a>
+						<a data-target="#forgot-password" data-toggle="modal" href="#" class="forgot_password">Forgot Password ?</a>
 						<div class="checkbox no-margin pull-right">
 							<label class="pos-adj2">
 								<input name="remember_me" type="checkbox"/> Remember Me
@@ -27,7 +27,7 @@
 					<button type="submit" data-loading-text="Logging in.." id="login_submit_pop" class="btn btn-default green-small3 margin-top-twenty">Login</button>
 					<div class="pos-adj3">
 						<span>Don't have an account ?</span>
-						<a data-target="#sgn-pup" data-toggle="modal" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;" class="sup" href="#">Sign up</a>
+						<a data-target="#sgn-pup" data-toggle="modal" class="link_text" href="#">Sign up</a>
 					</div>
 					<div class="clearfix"></div>
 					<div style="display:none" class="for-pass">
