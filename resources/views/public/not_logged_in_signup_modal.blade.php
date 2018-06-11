@@ -21,18 +21,14 @@
 						<input type="password" name="password" required placeholder="Password" id="signup-password-pop" class="form-control normal-input">
 					</div>
 					<div class="pos-adj4">
-						By signing up you accept Mapitem's
-						<a target="_blank" class="link_text" href="{{ URL::route('public_page', ['privacy']) }}">Policy</a>
-						and
-						<a target="_blank" class="link_text" href="{{ URL::route('public_page', ['terms_conditions']) }}">Term of use</a>
+						By signing up you accept Mapitem's <a target="_blank" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;" href="{{ URL::route('public_page', 'privacy') }}">Policy</a> and <a target="_blank" style="color:#23a500 !important; font-size: 10pt !important; padding: 0 !important;" href="{{ URL::route('public_page', 'terms_conditions') }}">Term of use</a>
 					</div>
 					{{-- Error Showing Div --}}
 					<div class="form-group text-danger" id="sign_up_error_message_pop"></div>
 
 					<button type="submit" id="sign_up_submit_pop" data-loading-text="Signing Up.." class="btn btn-default green-small3">Sign up</button>
 					<div class="pos-adj3">
-						<span>Already a member ?</span>
-						<a data-target="#lgn-pup" data-toggle="modal" class="link_text" href="#">Sign in</a>
+						<span>Already a member ? </span> <a data-target="#lgn-pup" data-toggle="modal" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;" href="#" class="si">Sign in</a>
 					</div>
 				</form>
 			</div>

@@ -9,7 +9,7 @@
 				<input type="password" id="login-password" name="password" class="form-control normal-input" placeholder="Password">
 			</div>
 			<div class="pos-adj1">
-				<a class="forgot_password" href="#" data-toggle="modal" data-target="#forgot-password" data-dismiss="modal">Forgot Password ?</a>
+				<a class="fp" href="#" data-toggle="modal" data-target="#forgot-password" data-dismiss="modal" style="color: #23a500 !important; float: left; font-size: 9pt!important; padding: 0 !important; width: 50%;">Forgot Password ?</a>
 				<div class="checkbox no-margin pull-right">
 					<label class="pos-adj2">
 						<input name="remember_me" type="checkbox"/> Remember Me
@@ -20,7 +20,7 @@
 			<button type="submit" data-loading-text="Logging in.." id="login_submit" class="btn btn-default green-small3 margin-top-twenty">Login</button>
 			<div class="pos-adj3">
 				<span>Don't have an account ?</span>
-				<a href="#" class="link_text">Sign up</a>
+				<a href="#" class="sup" style="color: #23a500 !important; font-size: 10pt !important; padding: 0 !important;">Sign up</a>
 			</div>
 		</form>
 
