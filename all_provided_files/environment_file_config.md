@@ -58,3 +58,22 @@ No of days needed for a ad being disabled automatically-
 
 	AD_AUTO_DISABLE_DAY=10
 
+To update any value in `.env` file, you need to do this following steps-
+
+1. Login to server with SSH/Putty/Git
+
+2. Then go to the `.env` file directory-
+
+	cd public_html/abrar/
+
+3. Then open `.env` file with nano-
+
+	nano .env
+
+4. Change any value you need.
+
+5. Then save and exit using command-
+
+	`Ctrl` + `X` -> `Y` -> `Enter`
+
+6. Then you are done :).
