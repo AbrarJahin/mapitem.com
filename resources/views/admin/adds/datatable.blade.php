@@ -11,6 +11,7 @@
 				<th>Price</th>
 				<th>Description</th>
 				<th>Address</th>
+				<th>Creation Time</th>
 				<th style="width: 70px;">Action</th>
 			</tr>
 		</thead>

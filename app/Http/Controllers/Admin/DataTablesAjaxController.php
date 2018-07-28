@@ -140,10 +140,7 @@ class DataTablesAjaxController extends Controller
 			0 => 'users.first_name',
 			1 => 'users.cell_no',
 			2 => 'users.email',
-			3 => 'users.website',
-			4 => 'users.date_of_birth',
-			5 => 'users.social_security_number_p1',
-			6 => 'users.address'
+			3 => 'users.created_at'
 		);
 		$draw_request_code = $requestData['draw'];
 		$searchParameter = $requestData['search']['value'];
@@ -157,11 +154,8 @@ class DataTablesAjaxController extends Controller
 							'users.id as id',
 							DB::raw('CONCAT(first_name," ",last_name) as full_name'),
 							'users.cell_no as cell_no',
-							'users.email as email'/*,
-							'users.website as website',
-							'users.date_of_birth as date_of_birth',
-							DB::raw('CONCAT(social_security_number_p1,"-",social_security_number_p2,"-",social_security_number_p3) as social_security_number'),
-							'users.address as address'*/
+							'users.email as email',
+							DB::raw("DATE_FORMAT(users.created_at,'%d %b, %Y') as created_at")
 						);
 		$totalData = $baseQuery->count();
 		//Applying Filters
@@ -178,10 +172,6 @@ class DataTablesAjaxController extends Controller
 											->orWhere('users.cell_no', 'like', '%' . $searchParameter . '%')
 											->orWhere('users.email', 'like', '%' . $searchParameter . '%')
 											->orWhere('users.website', 'like', '%' . $searchParameter . '%')
-											->orWhere('users.date_of_birth', 'like', '%' . $searchParameter . '%')
-											->orWhere('users.social_security_number_p1', 'like', '%' . $searchParameter . '%')
-											->orWhere('users.social_security_number_p2', 'like', '%' . $searchParameter . '%')
-											->orWhere('users.social_security_number_p3', 'like', '%' . $searchParameter . '%')
 											->orWhere('users.address', 'like', '%' . $searchParameter . '%');
 									});
 		}
@@ -201,7 +191,7 @@ class DataTablesAjaxController extends Controller
 
 	/*
 		URL             -> post: /adds_datable
-		Functionality   -> Adds Datable AJAX
+		Functionality   -> Ads Datable AJAX
 		Access          -> Admin
 		Created At      -> 03/07/2016
 		Updated At      -> 03/08/2016
@@ -219,7 +209,8 @@ class DataTablesAjaxController extends Controller
 			4 => 'advertisements.title',
 			5 => 'advertisements.price',
 			6 => 'advertisements.description',
-			7 => 'advertisements.address'
+			7 => 'advertisements.address',
+			8 => 'advertisements.created_at'
 		);
 		$draw_request_code = $requestData['draw'];
 		$searchParameter = $requestData['search']['value'];
@@ -240,7 +231,8 @@ class DataTablesAjaxController extends Controller
 							'advertisements.title as title',
 							'advertisements.price as price',
 							DB::raw('CONCAT( LEFT(advertisements.description , 30) ," ..") as description'),
-							DB::raw('CONCAT( LEFT(advertisements.address , 30) ," ..") as address')
+							DB::raw('CONCAT( LEFT(advertisements.address , 30) ," ..") as address'),
+							DB::raw("DATE_FORMAT(advertisements.created_at,'%d %b, %Y') as created_at")
 						);
 		$totalData = $baseQuery->count();
 		//Applying Filters

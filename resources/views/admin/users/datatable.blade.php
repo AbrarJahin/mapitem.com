@@ -7,6 +7,7 @@
 				<th>Full Name</th>
 				<th>Cell No.</th>
 				<th>Email</th>
+				<th>Registration Time</th>
 				<th style="width: 70px;">Action</th>
 			</tr>
 		</thead>
