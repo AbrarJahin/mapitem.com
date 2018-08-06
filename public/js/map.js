@@ -421,7 +421,7 @@ $(function()
 		}
 		else
 		{
-			alert("Please give a rating and write a comment having leangth at least 10 charecters !");
+			alert("Please give a rating and write a comment having length at least 10 characters !");
 		}
 	});
 

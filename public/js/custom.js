@@ -1776,7 +1776,7 @@ $(document).ready(function()
 				});
 			});
 		}
-		else if ($('#user-datatable').length)	//User Datatable
+		else if ($('#user-datatable').length)			//User Datatable
 		{
 			var userDataTable = $('#user-datatable').DataTable(
 			{
@@ -1788,7 +1788,7 @@ $(document).ready(function()
 					url : $('meta[name=datatable_ajax_url]').attr("content"), // json AJAX URL - datasource
 					type: "post",  // method  , by default get
 					error: function()
-					{  // error handling
+					{	// error handling
 						$(".user-datatable-error").html("");
 						$("#user-datatable").append('<tbody class="user-datatable-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
 						$("#user-datatable_processing").css("display","none");
@@ -1798,7 +1798,8 @@ $(document).ready(function()
 								{	"data": "full_name"	},
 								{	"data": "cell_no"		},
 								{	"data": "email"			},
-								{	"data": null				}
+								{	"data": "created_at"	},
+								{	"data": null			}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
 				stateSave: true,
@@ -1806,10 +1807,9 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [3],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [4],			//Going to last column - 4 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
-										//"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="show btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></div>'
 									}
 								]
 			});
@@ -1916,6 +1916,7 @@ $(document).ready(function()
 								{	"data": "price"			},
 								{	"data": "description"	},
 								{	"data": "address"		},
+								{	"data": "created_at"	},
 								{	"data": null			}
 							],
 				//"pagingType": "full_numbers",	//Adding Last and First in Pagination
@@ -1924,7 +1925,7 @@ $(document).ready(function()
 									{
 										"orderable": false,		//Turn off ordering
 										"searchable": false,	//Turn off searching
-										"targets": [8],			//Going to last column - 3 is the last column index because o is starting index
+										"targets": [9],			//Going to last column - 3 is the last column index because o is starting index
 										"data": null,			//Not receiving any data
 										"defaultContent": '<div style="min-width:70px" class="btn-group" role="group"><button type="button" class="edit btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button><button type="button" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>'
 									}
