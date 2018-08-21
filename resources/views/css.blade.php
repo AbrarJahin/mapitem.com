@@ -12,3 +12,9 @@
 {{-- Push Menu --}}
 <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-push-menu.css') }}" type="text/css">
 <script src="{{ URL::asset('js/modernizr.custom.js') }}"></script>
+
+<link rel="stylesheet" href="{{ URL::asset('css/bootstrap-push-menu.css') }}" type="text/css">
+<script src="{{ URL::asset('js/pace.min.js') }}"></script>
+<link href="{{ URL::asset('css/pace-theme-mapitem.css') }}" rel="stylesheet" />
+
+
