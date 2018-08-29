@@ -2991,6 +2991,9 @@ li.next.disabled{
     height: 100%;
 
 }
+.mt-20{
+	margin-top: 20px
+}
 
 /*swiper slider styles end*/
 @media(max-width:1200px){
