@@ -278,7 +278,7 @@ function addToWisList(id, element)
 						}
 						catch(err2)
 						{
-							console.log(err2);
+							//console.log(err2);
 						}
 					}
 
@@ -291,7 +291,7 @@ function addToWisList(id, element)
 					}
 					catch(err)
 					{
-						console.log(err);
+						//console.log(err);
 					}
 				},
 				error: function(jqXHR, exception)
@@ -452,7 +452,7 @@ $(document).ready(function()
 		}
 		catch(err)
 		{
-			console.log('could not perse invalid data');
+			//console.log('could not perse invalid data');
 			$('#user_location').parent().addClass("has-error");
 				return 0;
 		}
@@ -556,11 +556,11 @@ $(document).ready(function()
 				{
 					if(value=='0')
 					{
-						console.log("Not Signed In");
+						//console.log("Not Signed In");
 					}
 					else
 					{
-						console.log("Signed In Successfully");
+						//console.log("Signed In Successfully");
 						location.reload();
 					}
 				}
@@ -622,11 +622,11 @@ $(document).ready(function()
 				{
 					if(value=='0')
 					{
-						console.log("Not Signed In");
+						//console.log("Not Signed In");
 					}
 					else
 					{
-						console.log("Signed In Successfully");
+						//console.log("Signed In Successfully");
 						location.reload();
 					}
 				}
@@ -711,11 +711,11 @@ $(document).ready(function()
 				{
 					if(value=='0')
 					{
-						console.log("Sign Up Failed");
+						//console.log("Sign Up Failed");
 					}
 					else
 					{
-						console.log("Signed Up Successfully");
+						//console.log("Signed Up Successfully");
 						location.reload();
 					}
 				}
@@ -723,7 +723,8 @@ $(document).ready(function()
 				if(key.localeCompare('messages')==0)
 				{
 					$("#sign_up_error_message").html(value[Object.keys(value)[0]][0]);
-					console.log(value);
+					//
+					//console.log(value);
 				}
 			});
 		}
@@ -802,11 +803,11 @@ $(document).ready(function()
 				{
 					if(value=='0')
 					{
-						console.log("Sign Up Failed");
+						//console.log("Sign Up Failed");
 					}
 					else
 					{
-						console.log("Signed Up Successfully");
+						//console.log("Signed Up Successfully");
 						location.reload();
 					}
 				}
@@ -814,7 +815,7 @@ $(document).ready(function()
 				if(key.localeCompare('messages')==0)
 				{
 					$("#sign_up_error_message_pop").html(value[Object.keys(value)[0]][0]);
-					console.log(value);
+					//console.log(value);
 				}
 			});
 		}
@@ -843,7 +844,7 @@ $(document).ready(function()
 
 		$.each($.parseJSON(responce),function(key,data)
 		{
-			console.log(data);
+			//console.log(data);
 			var last_id;
 			$.each(data,function(id,value)
 			{
@@ -896,7 +897,7 @@ $(document).ready(function()
 								{
 									var imgName = response;
 									file.previewElement.classList.add("dz-success");
-									console.log("Successfully uploaded :" + imgName);
+									//console.log("Successfully uploaded :" + imgName);
 								}
 							});
 
@@ -914,6 +915,17 @@ $(document).ready(function()
 		$myDropZone[0].dropzone.on('queuecomplete', function()				//Reset the status
 		{
 			this.options.autoProcessQueue = false;
+		});
+
+		$myDropZone[0].dropzone.on('totaluploadprogress', function(uploadProgress , bytesSent, totalBytesSent) {
+			var progress = Math.round(uploadProgress);
+
+			//console.log(progress + " - " + bytesSent + " - " + totalBytesSent);
+			if(progress > 1)
+			{
+				$("#wait").css("display", "block");
+			}
+
 		});
 
 		$myDropZone[0].dropzone.on("complete", function (file)
@@ -1029,7 +1041,7 @@ $(document).ready(function()
 							data: $("#post_free_add_form").serialize(),
 							success:function(responce_data)
 							{
-								console.log(responce_data);
+								//console.log(responce_data);
 								$('meta[name=uploaded_add_id]').attr('content', responce_data);		//Setting from AJAX responce
 
 								//Process of upload should start after successfull advertisement upload - Will do later
@@ -1194,7 +1206,7 @@ $(document).ready(function()
 			},
 			success:function(responce_data)
 			{
-				console.log(responce_data);
+				//console.log(responce_data);
 			}
 		});
 		$(this).closest('.inative-list').fadeOut("slow");
@@ -1219,7 +1231,7 @@ $(document).ready(function()
 			success:function(responce_data)
 			{
 				//$(this).closest('.inative-list').fadeIn("slow");
-				console.log(responce_data);
+				//console.log(responce_data);
 				window.location.reload();
 			}
 		});
@@ -1368,7 +1380,7 @@ $(document).ready(function()
 	$('.list').click(function()
 	{	
 		currentView='L';
-		console.log(currentView);
+		//console.log(currentView);
 		$(this).addClass("disabled selected-view");
 		$(this).prev().removeClass("disabled selected-view");
 		$('.box-posting').children().removeClass("col-lg-4 col-sm-6");
@@ -1378,7 +1390,7 @@ $(document).ready(function()
 	$('.grid').click(function()
 	{
 		currentView='G';
-		console.log(currentView);
+		//console.log(currentView);
 		$(this).addClass("disabled selected-view");
 		$(this).next().removeClass("disabled selected-view");
 		$('.box-posting').children().addClass("col-lg-4 col-sm-6");
@@ -1492,7 +1504,7 @@ $(document).ready(function()
 					}
 					catch(err)
 					{
-						console.log(err);
+						//console.log(err);
 						$('#add_title_image').attr(	"src",
 													$('meta[name=upload_folder_url]').attr("content")
 													+
@@ -1722,7 +1734,7 @@ $(document).ready(function()
 					data: 	{	'sub_category_id'	:	data['id']	},
 					success:function(responce_data)
 					{
-						console.log(responce_data[0].id);
+						//console.log(responce_data[0].id);
 						$('#selected_sub-category_id').val(data['id']);
 
 						$('#selected_sub-category_name').val(responce_data[0].name);
@@ -1827,7 +1839,7 @@ $(document).ready(function()
 					data: 	{	'id'	:	data['id']	},
 					success:function(responce_data)
 					{
-						console.log(responce_data[0]);
+						//console.log(responce_data[0]);
 						$('#selected_id').val(data['id']);
 
 						$('#selected_user_name').val(responce_data[0].full_name);
@@ -1946,7 +1958,7 @@ $(document).ready(function()
 					success:function(responce_data)
 					{
 						$("#selected_add_id").val(data['id']);
-						console.log(responce_data[0].id);
+						//console.log(responce_data[0].id);
 
 						$('#add-title').val(responce_data[0].title);
 						$('#add-description').val(responce_data[0].description);
@@ -2259,9 +2271,9 @@ $(document).ready(function()
 					error: function(xhr, textStatus, errorThrown)
 					{
 						alert('Invalid Input');
-						console.log(xhr);
-						console.log(textStatus);
-						console.log(errorThrown);
+						//console.log(xhr);
+						//console.log(textStatus);
+						//console.log(errorThrown);
 					}
 				});
 			});
@@ -2319,9 +2331,9 @@ $(document).ready(function()
 					error: function(xhr, textStatus, errorThrown)
 					{
 						alert('Update Failed');
-						console.log(xhr);
-						console.log(textStatus);
-						console.log(errorThrown);
+						//console.log(xhr);
+						//console.log(textStatus);
+						//console.log(errorThrown);
 						publicPageDataTable.ajax.reload( null, false );
 						$('#edit_data_modal').modal('hide');
 					}
@@ -2348,9 +2360,9 @@ $(document).ready(function()
 					error: function(xhr, textStatus, errorThrown)
 					{
 						alert('Delete Failed');
-						console.log(xhr);
-						console.log(textStatus);
-						console.log(errorThrown);
+						//console.log(xhr);
+						//console.log(textStatus);
+						//console.log(errorThrown);
 					}
 				});
 			});
@@ -2734,7 +2746,7 @@ $(document).ready(function()
 				}
 				catch(err)
 				{
-					console.log("It is not map page");
+					//console.log("It is not map page");
 				}
 			});
 	}
