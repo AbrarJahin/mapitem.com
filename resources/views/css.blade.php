@@ -17,5 +17,5 @@
 
 {{-- Automatic Loader --}}
 {{-- <script src="{{ URL::asset('js/pace.min.js') }}"></script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/0.5.3/pace.min.js"></script>
 <link href="{{ URL::asset('css/pace-theme-mapitem.css') }}" rel="stylesheet" />
