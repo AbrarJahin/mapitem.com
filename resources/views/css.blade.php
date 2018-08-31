@@ -14,7 +14,8 @@
 <script src="{{ URL::asset('js/modernizr.custom.js') }}"></script>
 
 <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-push-menu.css') }}" type="text/css">
-<script src="{{ URL::asset('js/pace.min.js') }}"></script>
+
+{{-- Automatic Loader --}}
+{{-- <script src="{{ URL::asset('js/pace.min.js') }}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
 <link href="{{ URL::asset('css/pace-theme-mapitem.css') }}" rel="stylesheet" />
-
-
