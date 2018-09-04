@@ -82,6 +82,6 @@
 	</div>
 @endif
 
-<!-- <div id="wait">
+<div id="wait">
 	<img id="wait_image" src="{{ URL::asset('images/content_loader.gif') }}"/>
-</div> -->
+</div>
