@@ -2844,6 +2844,14 @@ $(document).ready(function(){
 		}
 	});
 
+	$(function() {
+  		if ($('div').hasClass('pbar')) {
+	        $("#site-wrapper").addClass('pe-none')
+	    }
+	});
+
+
+
 });
 /*
 // Initialize Swiper start

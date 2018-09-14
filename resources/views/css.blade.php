@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-push-menu.css') }}" type="text/css">
 
-{{-- Automatic Loader --}}
+<!-- {{-- Automatic Loader --}}
 {{-- <script src="{{ URL::asset('js/pace.min.js') }}"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/0.5.3/pace.min.js"></script>
-<link href="{{ URL::asset('css/pace-theme-mapitem.css') }}" rel="stylesheet" />
+<link href="{{ URL::asset('css/pace-theme-mapitem.css') }}" rel="stylesheet" /> -->
