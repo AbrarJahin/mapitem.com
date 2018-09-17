@@ -2753,6 +2753,8 @@ $(document).ready(function()
 	//Typehead - End
 });
 
+
+
 //nav filters for mobile
 $(document).ready(function(){
 	$(function() {
@@ -2844,15 +2846,20 @@ $(document).ready(function(){
 		}
 	});
 
-	$(function() {
-  		if ($('div').hasClass('pbar')) {
-	        $("#site-wrapper").addClass('pe-none')
-	    }
-	});
+	
+	$(".pbar").hide();
+	// progressbar();
 
 
 
 });
+function progressbar() {
+	$(".pbar").show();
+	$(".progress-bar").css("width", "50%");
+		if ($('div').hasClass('pbar')) {
+	    $("#site-wrapper").addClass('pe-none')
+    }
+};
 /*
 // Initialize Swiper start
 var swiper = new Swiper('.swiper-container', {
