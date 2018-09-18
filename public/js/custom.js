@@ -923,16 +923,18 @@ $(document).ready(function()
 			//console.log(progress + " - " + bytesSent + " - " + totalBytesSent);
 			if(progress > 1)
 			{
-				$("#wait").css("display", "block");
+				//$("#wait").css("display", "block");
+				$(".pbar").show();
 			}
-
+			$(".progress-bar").css("width", progress+"%");
 		});
 
 		$myDropZone[0].dropzone.on("complete", function (file)
 		{
 			if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0)	//All Upload Done
 			{
-				$("#wait").css("display", "none");
+				//$("#wait").css("display", "none");
+				$(".pbar").hide();
 
 				if(this.getAcceptedFiles().length>0)
 				{
