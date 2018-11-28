@@ -1,5 +1,10 @@
 <?php
 
+//Google Site Verification
+Route::get('googleeb730c8217f5ad2c.html', function () {
+	return 'google-site-verification: googleeb730c8217f5ad2c.html';
+});
+
 //Public Routes - not logged in
 Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function()
 {
@@ -55,6 +60,12 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 	Route::post('get_suggestion', [
 			'uses' => 'PublicController@getSuggestion',
 			'as' => 'get_suggestion'
+		]);
+
+	//Advertisement Riderect
+	Route::get('advertisementById/{id}', [
+			'uses' => 'PublicController@advertisementById',
+			'as' => 'advertisement_by_id'
 		]);
 
 	//Auth - FB login - It is here because it may be needed when user is already logged in because of make the user FB verified

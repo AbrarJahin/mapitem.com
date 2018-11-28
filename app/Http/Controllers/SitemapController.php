@@ -133,6 +133,14 @@ class SitemapController extends Controller
 	public function listingPages($page_index = 0)
 	{
 		$adUrls	=	[];
+		array_push($adUrls,[
+									'page_name' 	=>	"All Mapitem Advertisements",
+									'loc'			=>	route('listing'),
+									"lastmod"		=>	"2018-11-28T07:37:13-07:00",
+									"changefreq"	=>	"always",
+									"priority"		=>	1.0
+								]);
+
 		$advertisements = Advertisement::select(
 										'id as loc',
 										'title as page_name',
@@ -148,7 +156,7 @@ class SitemapController extends Controller
 		{
 			array_push($adUrls,[
 									'page_name' 	=>	$advertisement->page_name,
-									'loc'			=>	route('listing')."#".$advertisement->loc,
+									'loc'			=>	route('advertisement_by_id', ['id' => $advertisement->loc]),
 									"lastmod"		=>	$advertisement->lastmod,
 									"changefreq"	=>	"always",
 									"priority"		=>	1.0

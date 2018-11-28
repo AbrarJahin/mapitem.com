@@ -1,2 +1,10 @@
+# User-agent: *
+# Disallow:
+
+# Allow All User Agent for all pages
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://mapitem.com/sitemap.xml
+Sitemap: https://mapitem.com/sitemap/public
+Sitemap: https://mapitem.com/sitemap/advertisements
