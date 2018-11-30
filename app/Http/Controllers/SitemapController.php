@@ -21,7 +21,7 @@ class SitemapController extends Controller
 	*/
 	public function index()
 	{
-		$lastModTime = date('c',time() - 3600);
+		$lastModTime = gmdate('Y-m-d\TH:i:s+00:00', time() - 3600);
 		$noOfPagesForAds = Advertisement::where('is_active', 'active')->count()/env("MAX_ADS_PER_PAGE_SITEMAP");
 
 		$setUrls	=	[
@@ -74,7 +74,7 @@ class SitemapController extends Controller
 	*/
 	public function publicPages()
 	{
-		$lastModTime = date('c',time() - 3600);
+		$lastModTime = gmdate('Y-m-d\TH:i:s+00:00', time() - 3600);
 
 		$publicUrls	=	[
 							[
@@ -136,7 +136,7 @@ class SitemapController extends Controller
 		array_push($adUrls,[
 									'page_name' 	=>	"All Mapitem Advertisements",
 									'loc'			=>	route('listing'),
-									"lastmod"		=>	"2018-11-28T07:37:13-07:00",
+									"lastmod"		=>	"2018-11-30",
 									"changefreq"	=>	"always",
 									"priority"		=>	1.0
 								]);
@@ -157,7 +157,7 @@ class SitemapController extends Controller
 			array_push($adUrls,[
 									'page_name' 	=>	$advertisement->page_name,
 									'loc'			=>	route('advertisement_by_id', ['id' => $advertisement->loc]),
-									"lastmod"		=>	$advertisement->lastmod,
+									"lastmod"		=>	gmdate('Y-m-d\TH:i:s+00:00', strtotime($advertisement->lastmod)),
 									"changefreq"	=>	"always",
 									"priority"		=>	1.0
 								]);
