@@ -156,7 +156,7 @@ class SitemapController extends Controller
 		{
 			array_push($adUrls,[
 									'page_name' 	=>	$advertisement->page_name,
-									'loc'			=>	route('advertisement_by_id', ['id' => $advertisement->loc]),
+									'loc'			=>	route('advertisement_by_id', ['id' => $advertisement->loc,'title' => $advertisement->page_name]),
 									"lastmod"		=>	gmdate('Y-m-d\TH:i:s+00:00', strtotime($advertisement->lastmod)),
 									"changefreq"	=>	"always",
 									"priority"		=>	1.0

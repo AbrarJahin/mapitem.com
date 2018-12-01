@@ -3,13 +3,10 @@
 	<head>
 		<title>MapItem - {{ $current_page }}</title>
 		@include('meta_data')
+		@section('meta_page_description', 'MapItem - A Social Marketplace')
 		@include('css')
 		{{-- MaxImage CDN Not Found in the latest vertion which is used --}}
 		<link rel="stylesheet" href="{{ URL::asset('css/jquery.maximage.css') }}" type="text/css" media="screen" title="CSS" charset="utf-8" />
-		<style type="text/css">
-			
-			
-		</style>
 	</head>
 
 	<body>

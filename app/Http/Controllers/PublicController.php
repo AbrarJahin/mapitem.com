@@ -444,7 +444,7 @@ class PublicController extends Controller
 		Updated At      -> 28/11/2018
 		Created by      -> S. M. Abrar Jahin
 	*/
-	public function advertisementById($id)
+	public function advertisementById($id, $title)
 	{
 		return Redirect::to(route('listing') . "#".$id);
 	}

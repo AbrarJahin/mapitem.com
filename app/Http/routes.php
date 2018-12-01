@@ -63,7 +63,7 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 		]);
 
 	//Advertisement Riderect
-	Route::get('advertisementById/{id}', [
+	Route::get('advertisement/{id}/{title}', [
 			'uses' => 'PublicController@advertisementById',
 			'as' => 'advertisement_by_id'
 		]);
