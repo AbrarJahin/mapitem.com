@@ -7,7 +7,7 @@
 			<loc>			{{$setUrl['loc']}}			</loc>
 			<lastmod>		{{$setUrl['lastmod']}}		</lastmod>
 			{{-- <changefreq>	{{$setUrl['changefreq']}}	</changefreq> --}}
-			<priority>		{{$setUrl['priority']}}		</priority>
+			{{-- <priority>		{{$setUrl['priority']}}		</priority> --}}
 		</url>
 	@endforeach
 </urlset>
