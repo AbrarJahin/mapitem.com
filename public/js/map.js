@@ -800,6 +800,10 @@ function showAddDetail(id)		/* Show ad Detail */
 						{
 							$("#selected_add_title").html(value);
 						}
+						else if(key.localeCompare('created_at')==0)
+						{
+							$("#selected_add_time").html(value);
+						}
 						else if(key.localeCompare('price')==0)
 						{
 							$("#selected_add_price").html(value);
