@@ -802,7 +802,9 @@ function showAddDetail(id)		/* Show ad Detail */
 						}
 						else if(key.localeCompare('created_at')==0)
 						{
-							$("#selected_add_time").html(value);
+							var time = formatTime(convertToLocalTime(value), true);
+
+							$("#selected_add_time").html("Posted on " + time);
 						}
 						else if(key.localeCompare('price')==0)
 						{
