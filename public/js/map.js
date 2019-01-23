@@ -804,6 +804,10 @@ function showAddDetail(id)		/* Show ad Detail */
 						{
 							var time = formatTime(convertToLocalTime(value), true);
 
+							$("#selected_add_time").css({
+								fontSize: 18
+							});
+
 							$("#selected_add_time").html("Posted on " + time);
 						}
 						else if(key.localeCompare('price')==0)
