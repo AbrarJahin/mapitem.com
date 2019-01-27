@@ -15,7 +15,8 @@ function convertToLocalTime(serverTime)
 {
 	var serverSetTimeZoneDiffWithUTCInMinuites = -7*60;//Should be 0 in default cases, but in our case it is USA mountain time = -7
 	var offsetInMinuites = new Date().getTimezoneOffset();
-	var serverDate = Date.parse(serverTime, "yyyy-MM-dd HH:mm:ss");
+	//var serverDate = Date.parse(serverTime, "yyyy MM dd HH:mm:ss");
+	var serverDate = new Date(serverTime.replace("-", " "));
 	var localTime = new Date(serverDate - ((offsetInMinuites + serverSetTimeZoneDiffWithUTCInMinuites) * 60 * 1000));
 	return localTime;
 }
