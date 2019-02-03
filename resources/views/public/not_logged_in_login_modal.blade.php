@@ -44,8 +44,11 @@
 						</div>
 					</div>
 				</form>
-				<a class="facebook butt-adj1" href="{{ URL::route('facebook.login') }}">Login with Facebook</a>
-				<a class="googleplus butt-adj1" href="{{ URL::route('google.login') }}">Login with Google Plus</a>
+
+				<a class="facebook butt-adj1" href="{{ URL::route('facebook.login') }}">Sign in with Facebook</a>
+
+				<div class="googleplus g-signin2" data-onsuccess="onSignIn" data-theme="light" data-longtitle="true" data-width="248" data-height="33">Sign in with Google</div>
+				<meta name="google_login_url" content="{{ URL::route('google.login') }}">
 
 			</div>
 			<div class="clearfix margin-twenty"></div>

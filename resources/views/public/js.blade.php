@@ -10,4 +10,10 @@
 	{{-- Custom JS --}}
 	<script src="{{ URL::asset('js/custom.js') }}"></script>
     {{-- Push Menu --}}
+
+    @if (!Auth::check())
+		<script src="https://apis.google.com/js/platform.js"></script>
+		<script src="{{ URL::asset('js/google_login.js') }}"></script>
+	@endif
+
 @show

@@ -17,11 +17,12 @@ class GoogleLogin extends Model
 	protected $fillable		=	[
 									'user_id',
 									'token',
-									'id',
 									'name',
 									'email',
 									'avatar_url'
 								];
+
+	protected $hidden = [ 'id' ];
 
 	public function user()
 	{

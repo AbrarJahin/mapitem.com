@@ -385,7 +385,6 @@ nav .dropdown-menu {
 	background-color: #d74633;
 	color: white !important;
 	font-weight: 400 !important;
-	padding: 7px 0 !important;
 	text-align: center;
 	text-decoration: none;
 	font-size: 13px
@@ -4035,4 +4034,20 @@ p.my_add_detail {
 	-moz-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
 	transition: all 0.5s ease;
+}
+
+/*!
+* Google Login Button Customize - Make centerize
+*/
+.abcRioButton.abcRioButtonLightBlue {
+	margin: 0 auto;
+}
+.g-signin2{
+	width: 100%;
+}
+.g-signin2 > div{
+	margin: 0 auto;
+}
+.abcRioButtonIcon {
+	max-width: 33px;
 }
