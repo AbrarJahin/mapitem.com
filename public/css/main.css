@@ -382,6 +382,7 @@ nav .dropdown-menu {
 	white-space: nowrap;
 	max-height: 33px;
 	line-height: 20px;
+	vertical-align: middle;
 	text-align: center;
 }
 .googleplus {
@@ -4066,6 +4067,7 @@ p.my_add_detail {
 i.fa.fa-facebook.fa-fw.pull-left {
 	font-size:20px;
 	max-width: 33px;
+	color: white;
 }
 
 @media only screen and (min-width: 768px) {
