@@ -4,7 +4,6 @@
 		<title>MapItem - {{ $current_page }}</title>
 		@section('meta_page_description', 'MapItem - A Social Marketplace')
 		@include('meta_data')
-
 		@include('css')
 		{{-- MaxImage CDN Not Found in the latest vertion which is used --}}
 		<link rel="stylesheet" href="{{ URL::asset('css/jquery.maximage.css') }}" type="text/css" media="screen" title="CSS" charset="utf-8" />
@@ -15,14 +14,11 @@
 		<div id="site-wrapper">
 			<div class="pbar">
 				<div class="progress">
-					<div class="progress-bar" role="progressbar" aria-valuenow="70"
-					aria-valuemin="0" aria-valuemax="100">
-					
-					</div>
+					<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div>
 		<div class="loader"></div>
-			
+
 		{{-- Navigation --}}
 		@include('public.index.nav')
 		{{--

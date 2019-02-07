@@ -46,9 +46,12 @@
 			</div>
 		</div>
 
-		<a href="{{ URL::route('facebook.login') }}" class="facebook">Sign in with Facebook</a>
+		<a href="{{ URL::route('facebook.login') }}" class="facebook">
+			<i class="fa fa-facebook fa-fw pull-left"></i>
+			Sign in with Facebook
+		</a>
 
-		<div class="googleplus g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-longtitle="true" data-width="248" data-height="33">Sign in with Google</div>
+		<div class="googleplus g-signin2" data-onsuccess="onSignIn" data-theme="light" data-longtitle="true" data-width="248" data-height="33">Sign in with Google</div>
 		<meta name="google_login_url" content="{{ URL::route('google.login') }}">
 
 	</li>

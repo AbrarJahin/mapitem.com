@@ -41,10 +41,3 @@ function signOut() {
 		console.log('User signed out.');
 	});
 }
-
-$(document).ready(function()
-{
-	setTimeout(function (){
-		$(".abcRioButton").width("100%");
-	}, 6000);
-});

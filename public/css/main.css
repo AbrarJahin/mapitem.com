@@ -378,7 +378,7 @@ nav .dropdown-menu {
 	font-weight: 400 !important;
 	padding: 7px 0 !important;
 	text-align: center;
-	text-decoration: none;
+	text-decoration: none !important;
 	font-size: 13px
 }
 .googleplus {
@@ -4050,4 +4050,12 @@ p.my_add_detail {
 }
 .abcRioButtonIcon {
 	max-width: 33px;
+}
+.abcRioButton {
+	width: 100% !important;
+}
+/*Fix FB login button*/
+.fa-facebook {
+	font-size:20px;
+	padding-left: 10px;
 }
