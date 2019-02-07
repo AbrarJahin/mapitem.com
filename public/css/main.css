@@ -377,11 +377,12 @@ nav .dropdown-menu {
 	color: white !important;
 	font-weight: 400 !important;
 	padding: 7px 0 !important;
-	text-align: center;
 	text-decoration: none !important;
 	font-size: 15px !important;
 	white-space: nowrap;
 	max-height: 33px;
+	line-height: 20px;
+	text-align: center;
 }
 .googleplus {
 	background-color: #d74633;
@@ -4062,14 +4063,14 @@ p.my_add_detail {
 	font-size: 17px !important;
 }
 /*Fix FB login button*/
-.fa-facebook {
+i.fa.fa-facebook.fa-fw.pull-left {
 	font-size:20px;
 	max-width: 33px;
 }
 
 @media only screen and (min-width: 768px) {
-  /* For desktop: */
-  .fa-facebook {
-  	padding-left: 3px;
-  }
+	/* For desktop: */
+	i.fa.fa-facebook.fa-fw.pull-left {
+		padding-left: 3px;
+	}
 }
