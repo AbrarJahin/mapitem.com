@@ -379,15 +379,19 @@ nav .dropdown-menu {
 	padding: 7px 0 !important;
 	text-align: center;
 	text-decoration: none !important;
-	font-size: 13px
+	font-size: 15px !important;
+	white-space: nowrap;
+	max-height: 33px;
 }
 .googleplus {
 	background-color: #d74633;
+	text-decoration: none;
+	/*
 	color: white !important;
 	font-weight: 400 !important;
 	text-align: center;
-	text-decoration: none;
 	font-size: 13px
+	*/
 }
 #maximage{
 	height: inherit!important;
@@ -4054,8 +4058,18 @@ p.my_add_detail {
 .abcRioButton {
 	width: 100% !important;
 }
+.abcRioButtonContents {
+	font-size: 17px !important;
+}
 /*Fix FB login button*/
 .fa-facebook {
 	font-size:20px;
-	padding-left: 10px;
+	max-width: 33px;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .fa-facebook {
+  	padding-left: 3px;
+  }
 }
