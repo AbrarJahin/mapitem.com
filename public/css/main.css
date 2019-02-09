@@ -367,34 +367,6 @@ nav .dropdown-menu {
 .no-margin{
 	margin: 0!important
 }
-.login{
-	padding: 10px 10px 20px 10px;
-	border-bottom: 1px solid black;
-}
-.facebook {
-	background-color: #3c5a99;
-	border-top: 1px solid #23a400;
-	color: white !important;
-	font-weight: 400 !important;
-	padding: 7px 0 !important;
-	text-decoration: none !important;
-	font-size: 15px !important;
-	white-space: nowrap;
-	max-height: 33px;
-	line-height: 20px;
-	vertical-align: middle;
-	text-align: center;
-}
-.googleplus {
-	background-color: #d74633;
-	text-decoration: none;
-	/*
-	color: white !important;
-	font-weight: 400 !important;
-	text-align: center;
-	font-size: 13px
-	*/
-}
 #maximage{
 	height: inherit!important;
 	width: 100%!important
@@ -1538,6 +1510,34 @@ header.carousel .fill {
 	color: #fff;
 	padding: 0;
 	text-decoration: none;
+}
+.login{
+	padding: 10px 10px 20px 10px;
+	border-bottom: 1px solid black;
+}
+.facebook {
+	background-color: #3c5a99;
+	border-top: 1px solid #23a400;
+	color: white !important;
+	font-weight: 400 !important;
+	padding: 7px 0 !important;
+	text-decoration: none !important;
+	font-size: 15px !important;
+	white-space: nowrap;
+	max-height: 33px;
+	line-height: 20px;
+	vertical-align: middle;
+	text-align: center;
+}
+.googleplus {
+	text-decoration: none;
+	/*
+	background-color: #d74633;
+	color: white !important;
+	font-weight: 400 !important;
+	text-align: center;
+	font-size: 13px
+	*/
 }
 .filter form.fl select {
 	background-color: white;
