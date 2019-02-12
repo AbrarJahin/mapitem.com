@@ -1375,6 +1375,7 @@ header.carousel .fill {
 	width: 100%;
 	background-color: #fb6b6b;
 	color: white;
+	display: none
 
 	font-size: 19px;
 }
