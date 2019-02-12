@@ -14,4 +14,5 @@
 	@yield('ExtraJsLibraries')
 	<script src="{{ URL::asset('js/custom.js') }}"></script>
 	<script src="{{ URL::asset('js/classie.js') }}"></script>
+
 @show

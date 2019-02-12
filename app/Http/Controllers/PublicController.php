@@ -12,6 +12,7 @@ use Request;
 use Auth;
 use DB;
 use URL;
+use Redirect;
 
 class PublicController extends Controller
 {//A controller to show public pages
@@ -433,5 +434,18 @@ class PublicController extends Controller
 							'public_page'	=>	$publicPage
 						]
 					);
+	}
+
+	/*
+		URL             -> get: /advertisementById/{id}
+		Functionality   -> Public pages
+		Access          -> All
+		Created At      -> 28/11/2018
+		Updated At      -> 28/11/2018
+		Created by      -> S. M. Abrar Jahin
+	*/
+	public function advertisementById($id, $title)
+	{
+		return Redirect::to(route('listing') . "#".$id);
 	}
 }

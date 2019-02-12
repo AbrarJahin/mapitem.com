@@ -65,3 +65,9 @@
 	<meta property="og:title" content="MapItem - {{ $current_page or '' }}" />
 	<meta property="og:description" content="MapItem - {{ $current_page or '' }}" />
 {{-- Social Share Image - End --}}
+
+{{-- Google Web Login - Start --}}
+@if (!Auth::check())
+	<meta name="google-signin-client_id" content="{{ env('GOOGLE_WEB_CLIENT_ID') }}">
+@endif
+{{-- Google Web Login - End --}}

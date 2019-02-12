@@ -8,7 +8,6 @@ use App\GoogleLogin;
 use Socialite;
 use Illuminate\Support\Facades\Redirect;
 
-
 /*
 	Functionality   -> Handel All Auth Works
 	Access          -> No restriction applied in the class, applied from route if needed
@@ -18,95 +17,82 @@ use Illuminate\Support\Facades\Redirect;
 
 class GoogleController extends Controller
 {
+
 	/*
-		URL             -> get: /fb_login
-		Functionality   -> User Login FB - Link
-		Access          -> Anyone who is not logged in
-		Created At      -> 30/08/2016
-		Updated At      -> 30/08/2016
-		Created by      -> S. M. Abrar Jahin
-	*/
-	/**
-	 * Redirect the user to the Facebook authentication page.
-	 *
-	 * @return Response
-	 */
+	//	URL             -> get: /auth/google
+	//	Functionality   -> User Login FB - Link
+	//	Access          -> Anyone who is not logged in
+	//	Created At      -> 30/08/2016
+	//	Updated At      -> 30/08/2016
+	//	Created by      -> S. M. Abrar Jahin
+
+	//	Redirect the user to the Facebook authentication page.
+	//	@return Response
 	public function redirectToProvider()
 	{
 		return Socialite::driver('google')->redirect();
 	}
 
-	/**
-	 * Obtain the user information from Facebook.
-	 *
-	 * @return Response
-	 */
-	public function handleProviderCallback()
+	//	Obtain the user information from Google.
+	//	@return Response
+	*/
+
+
+	public function loginWithAjax()
 	{
-		try
-		{
-			$user = Socialite::driver('google')->user();
-		}
-		catch (\Exception $e)
-		{
-			return redirect()->route('index');
-		}
+		$requestData = Request::all();
 
 		//Check if the user is logged in or not
 		if (!Auth::check())
 		{
-			/*
-			 *	If user is not logged in,
-			 *	 then try if the user exists so that he can be logged in
-			 */
+			//	If user is not logged in,
+			//	then try if the user exists so that he can be logged in
 			//Log in the user if exists
-			if ( User::where('email', '=', $user->email)->count()==1 )
+			if ( User::where('email', '=', $requestData['email'])->count()==1 )
 			{
 				Auth::loginUsingId(
-										User::where('email', '=', $user->email)
+										User::where('email', '=', $requestData['email'])
 											->first()->id
 									);
 			}
 		}
-		/*
-		 *	User Not Logged In
-		 */
+
+		//	User Not Logged In
 
 		//Check if user is signed with social mail previously
 		if(Auth::check())
-		{	/*
-			 *	The user is logged in...
-			 *	So, Facebook account should be
-			 *	 linked with current logged in account
-			 *	  (if there is no image uploaded,
-			 *	   then will be updated with social profile image))
-			 */
+		{
+			//	The user is logged in...
+			//	So, Facebook account should be
+			//	 linked with current logged in account
+			//	  (if there is no image uploaded,
+			//	   then will be updated with social profile image))
 
 			//Check if there is profile image upoaded
 			if( strlen( Auth::user()->profile_picture )<5 )	//User image uploaded previously
 			{
 				//Update the user Image
 				$dbUser = User::find(Auth::user()->id);
-				$dbUser->profile_picture = $this->uploadFile($user->avatar);
+				$dbUser->profile_picture = $this->uploadFile($requestData['profile_image']);
 				$dbUser->save();
 			}
 		}
 		else
 		{	//No user exists with that email - so sign up and upload image
 			//Add the user - Start
-			
-			$name = $user->name;
+
+			$name = $requestData['name'];
 			$parts = explode(" ", $name);
 			$lastname = array_pop($parts);
 			$firstname = implode(" ", $parts);
 
 			$dbUser = new User;
-			$dbUser->profile_picture	=	$this->uploadFile($user->avatar);
+			$dbUser->profile_picture	=	$this->uploadFile($requestData['profile_image']);
 			$dbUser->first_name			=	$firstname;
 			$dbUser->last_name			=	$lastname;
-			$dbUser->email				=	$user->email;
+			$dbUser->email				=	$requestData['email'];
 			$dbUser->user_type			=	'normal_user';
-			$dbUser->password			=	bcrypt( $user->token );
+			$dbUser->password			=	bcrypt( $requestData['id'] );
 			$dbUser->save();
 			//Add the user - End
 
@@ -117,17 +103,16 @@ class GoogleController extends Controller
 		GoogleLogin::updateOrCreate(
 			[
 				'user_id'	=> Auth::user()->id,
-				'email'		=> $user->email
+				'email'		=> $requestData['email']
 			],
 			[
-				'token'					=> $user->token,
-				'id'					=> $user->id,
-				'name'					=> $user->name,
-				'avatar_url'			=> $user->avatar
+				'token'			=> $requestData['id'],
+				'name'			=> $requestData['name'],
+				'avatar_url'	=> $requestData['profile_image']
 			]
 		);
 
-		return Redirect::route('index');
+		return Auth::user();
 	}
 
 	private function uploadFile($fileUrl)

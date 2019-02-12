@@ -1,5 +1,6 @@
 {{-- Everything in this page are different from any other page, so everything is redone for this page --}}
-<div id="site-wrapper">
+@section('meta_page_description', 'MapItem - All Social Marketplace Advertisements')
+<div id="site-wrapper">	{{-- Closed in another place by designer @Bilal --}}
 @include('public.listing.header')
 
 {{-- Modal Close Button --}}

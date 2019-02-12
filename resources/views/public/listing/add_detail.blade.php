@@ -1,13 +1,14 @@
 <div class="results-det">
 	<div class="col-lg-9">
 		<div class="col-lg-12 no-padding rd-top-row">
-			<h4 class="pull-left" id="selected_add_title"></h4>
+			<h4 class="pull-left"  id="selected_add_title"></h4>
+			<h3 class="pull-right" id="selected_add_time"></h3>
 		</div>
 
 		<div class="clearfix"></div>
 
 		<div class="col-lg-12 no-padding rd-top-row2">
-			<h5 class="pull-left">Price: <span  id="selected_add_price">$1000</span></h5>
+			<h5 class="pull-left">Price: <span  id="selected_add_price"></span></h5>
 			<div class="pull-right popups">
 				<a data-original-title="Add to Wishlist" href="#" class="add_to_wishlist wsh-lst-adpage grey-tooltip" data-toggle="tooltip" data-placement="top" add_id="1">
 					<img type="image/svg+xml" class="add_detail" src="{{ URL::asset('svg/normal.svg') }}"></img>

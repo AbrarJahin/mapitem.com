@@ -1,5 +1,10 @@
 <?php
 
+//Google Site Verification
+Route::get('googleeb730c8217f5ad2c.html', function () {
+	return 'google-site-verification: googleeb730c8217f5ad2c.html';
+});
+
 //Public Routes - not logged in
 Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function()
 {
@@ -9,20 +14,16 @@ Route::group(['prefix' => '/','middleware' => ['web','not_loggedin']], function(
 			'as' => 'register_user'
 		]);
 
-	//Auth - login
+	//Auth - email login
 	Route::post('login', [
 			'uses' => 'AuthController@userLoginProcess',
 			'as' => 'login'
 		]);
 
-	//Auth - Google login - URL
-	Route::get('auth/google', [
-			'uses' => 'GoogleController@redirectToProvider',
+	//Auth - Google Web Login
+	Route::post('auth/google', [
+			'uses' => 'GoogleController@loginWithAjax',
 			'as' => 'google.login'
-		]);
-	Route::get('auth/google/callback', [
-			'uses' => 'GoogleController@handleProviderCallback',
-			'as' => 'google.login_callback'
 		]);
 
 	//Auth - Password Recovery
@@ -55,6 +56,12 @@ Route::group(['prefix' => '/','middleware' => ['web']], function()
 	Route::post('get_suggestion', [
 			'uses' => 'PublicController@getSuggestion',
 			'as' => 'get_suggestion'
+		]);
+
+	//Advertisement Riderect
+	Route::get('advertisement/{id}/{title}', [
+			'uses' => 'PublicController@advertisementById',
+			'as' => 'advertisement_by_id'
 		]);
 
 	//Auth - FB login - It is here because it may be needed when user is already logged in because of make the user FB verified
