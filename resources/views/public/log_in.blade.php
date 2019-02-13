@@ -47,7 +47,7 @@
 		</div>
 
 		<a href="{{ URL::route('facebook.login') }}" class="facebook-new">
-			<i class="fa fa-facebook fa-fw pull-left"></i>
+			<i class="fa fa-facebook"></i>
 			Sign in with Facebook
 		</a>
 

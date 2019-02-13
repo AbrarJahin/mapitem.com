@@ -3019,6 +3019,33 @@ li.next.disabled{
 			}
 
 /*swiper slider styles end*/
+/* Bilal Changes 13-2-201 start*/
+.facebook-new {
+
+    text-align: center;
+    background-color: #3b5998;
+    margin-top: 5px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    line-height: 33px;
+
+}
+.facebook-new i {
+    display: block;
+    float: left;
+    border-right: 1px solid rgba(255,255,255,.3);
+    line-height: 33px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.facebook-new:hover{
+	
+}
+.facebook-new:hover i{
+	
+}
+/* Bilal Changes 13-2-201 end*/
 @media(max-width:1200px){
 
 	.ip-nav{
