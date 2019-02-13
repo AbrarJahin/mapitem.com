@@ -3019,6 +3019,36 @@ li.next.disabled{
 			}
 
 /*swiper slider styles end*/
+/* Bilal Changes 13-2-201 start*/
+.facebook-new {
+    text-align: center;
+    background-color: #3b5998;
+    margin-top: 5px;
+    border-radius: 4px;
+    color: white!important;
+    text-decoration: none;
+    line-height: 33px!important;
+	transition: all 0.5s;
+}
+.facebook-new i {
+    display: block;
+    float: left;
+    border-right: 1px solid rgba(255,255,255,.3);
+    line-height: 33px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.facebook-new:hover {
+
+    background-color: #3b5998 !important;
+    box-shadow: 0 0px 3px rgba(0,0,0,.7);
+    color: rgba(255,255,255,.8) !important;
+
+}
+.facebook-new:hover i{
+	
+}
+/* Bilal Changes 13-2-201 end*/
 
 @media(max-width:1200px){
 
@@ -4077,30 +4107,3 @@ i.fa.fa-facebook.fa-fw.pull-left {
 		padding-left: 3px;
 	}
 }
-/* Bilal Changes 13-2-201 start*/
-.facebook-new {
-
-    text-align: center;
-    background-color: #3b5998;
-    margin-top: 5px;
-    border-radius: 4px;
-    color: white;
-    text-decoration: none;
-    line-height: 33px;
-
-}
-.facebook-new i {
-    display: block;
-    float: left;
-    border-right: 1px solid rgba(255,255,255,.3);
-    line-height: 33px;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-.facebook-new:hover{
-	
-}
-.facebook-new:hover i{
-	
-}
-/* Bilal Changes 13-2-201 end*/
