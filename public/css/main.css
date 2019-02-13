@@ -3055,14 +3055,8 @@ li.next.disabled{
 	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
 
 }
-.facebook-new:hover i{
-	
-}
-.googleplus-new{
-	
-}
-.googleplus-new:hover{
-	
+.ip-nav a.facebook-new {
+	color: white !important;
 }
 /* Bilal Changes 13-2-201 end*/
 
