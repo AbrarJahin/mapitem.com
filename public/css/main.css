@@ -3032,8 +3032,8 @@ li.next.disabled{
     font-size: 17px !important;
     font-family: Roboto,arial,sans-serif;
 	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
-	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
 
 }
 .facebook-new i {
