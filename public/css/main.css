@@ -3021,13 +3021,20 @@ li.next.disabled{
 /*swiper slider styles end*/
 /* Bilal Changes 13-2-201 start*/
 .facebook-new {
+
     text-align: center;
     background-color: #3b5998;
     margin-top: 5px;
-    color: white!important;
+    color: white !important;
     text-decoration: none;
-    line-height: 33px!important;
-	margin-bottom: 10px
+    line-height: 33px !important;
+    margin-bottom: 10px;
+    font-size: 17px !important;
+    font-family: Roboto,arial,sans-serif;
+    font-weight: bold !important;
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25) !important;
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
 }
 .facebook-new i {
@@ -3037,6 +3044,7 @@ li.next.disabled{
     line-height: 33px;
     padding-right: 15px;
     padding-left: 15px;
+	
 }
 .facebook-new:hover {
 
@@ -3057,6 +3065,19 @@ li.next.disabled{
 }
 .ip-nav a.facebook-new {
 	color: white !important;
+}
+.abcRioButto{
+	height: 42px!important
+}
+.abcRioButtonSvgImageWithFallback{
+	width: 67px;
+    height: 31px;
+    border-right: 1px solid #9E9E9E;
+    padding: 8px 7px;
+    margin: 5px;
+}
+.line-height: 39px;{
+	line-height: 39px;
 }
 /* Bilal Changes 13-2-201 end*/
 
