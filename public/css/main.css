@@ -3031,7 +3031,7 @@ li.next.disabled{
     margin-bottom: 10px;
     font-size: 17px !important;
     font-family: Roboto,arial,sans-serif;
-	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25) !important;
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
 	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
@@ -3048,8 +3048,11 @@ li.next.disabled{
 .facebook-new:hover {
 
     background-color: #3b5998 !important;
-    box-shadow: 0 0px 8px rgba(59,89,152,.7);
+    
     color: rgba(255,255,255,.8) !important;
+	-webkit-box-shadow:0 0 3px 3px rgba(66,133,244,.3);
+	-moz-box-shadow: 0 0 3px 3px rgba(66,133,244,.3);
+	box-shadow: 0 0 3px 3px rgba(66,133,244,.3);
 
 }
 .facebook-new:focus {
