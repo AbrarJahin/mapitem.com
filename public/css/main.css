@@ -3069,17 +3069,20 @@ li.next.disabled{
 	color: white !important;
 }
 .abcRioButto{
-	height: 42px!important
+	height: 38px!important
 }
 .abcRioButtonSvgImageWithFallback{
-	width: 67px;
-    height: 31px;
+	width: 35px;
+    height: 28px;
     border-right: 1px solid #9E9E9E;
-    padding: 8px 7px;
+    padding: 6px 7px;
     margin: 5px;
 }
-.line-height: 39px;{
-	line-height: 39px;
+.abcRioButtonIcon{
+	padding: 0!important;
+}
+.abcRioButtonContents{
+	line-height: 41px!important;
 }
 /* Bilal Changes 13-2-201 end*/
 
