@@ -3068,22 +3068,7 @@ li.next.disabled{
 .ip-nav a.facebook-new {
 	color: white !important;
 }
-.abcRioButto{
-	height: 38px!important
-}
-.abcRioButtonSvgImageWithFallback{
-	width: 35px;
-    height: 28px;
-    border-right: 1px solid #9E9E9E;
-    padding: 6px 7px;
-    margin: 5px;
-}
-.abcRioButtonIcon{
-	padding: 0!important;
-}
-.abcRioButtonContents{
-	line-height: 41px!important;
-}
+
 /* Bilal Changes 13-2-201 end*/
 
 @media(max-width:1200px){
@@ -4117,7 +4102,21 @@ p.my_add_detail {
 * Google Login Button Customize - Make centerize
 */
 .abcRioButton.abcRioButtonLightBlue {
-	margin: 0 auto;
+    margin: 0 auto;
+	height: 38px!important;
+}
+.abcRioButtonSvgImageWithFallback {
+    width: 37px !important;
+    height: 30px !important;
+    border-right: 1px solid #9E9E9E;
+    padding: 7px 7px;
+    margin: 4px;
+}
+.abcRioButtonIcon{
+	padding: 0!important;
+}
+.abcRioButtonContents{
+	line-height: 41px!important;
 }
 .g-signin2{
 	width: 100%;
