@@ -3068,6 +3068,17 @@ li.next.disabled{
 .ip-nav a.facebook-new {
 	color: white !important;
 }
+.abcRioButton.abcRioButtonLightBlue {
+    margin: 0 auto;
+	height: 38px!important;
+}
+.abcRioButtonSvgImageWithFallback {
+    width: 37px !important;
+    height: 30px !important;
+    border-right: 1px solid #9E9E9E;
+    padding: 7px 7px;
+    margin: 4px;
+}
 
 /* Bilal Changes 13-2-201 end*/
 
@@ -3110,6 +3121,9 @@ li.next.disabled{
 	
 }
 @media(max-width:767px){
+	.abcRioButtonSvgImageWithFallback {
+		width: 67px !important;
+	}
 	.facebook-new i {
     width: 45px;
     padding-left: 0px;
@@ -4101,17 +4115,7 @@ p.my_add_detail {
 /*!
 * Google Login Button Customize - Make centerize
 */
-.abcRioButton.abcRioButtonLightBlue {
-    margin: 0 auto;
-	height: 38px!important;
-}
-.abcRioButtonSvgImageWithFallback {
-    width: 37px !important;
-    height: 30px !important;
-    border-right: 1px solid #9E9E9E;
-    padding: 7px 7px;
-    margin: 4px;
-}
+
 .abcRioButtonIcon{
 	padding: 0!important;
 }
