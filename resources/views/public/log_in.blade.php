@@ -1,4 +1,4 @@
-<span></pan><a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"> Login</a></span>
+<a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"> Login</a>
 <ul class="dropdown-menu no-padding shadow loginpopup">
 	<li>
 		<form role="form" id="login-f" class="login" method="post" action="{{ URL::route('login') }}">
@@ -46,10 +46,10 @@
 			</div>
 		</div>
 
-		<a href="{{ URL::route('facebook.login') }}" class="facebook-new">
+		<span><a href="{{ URL::route('facebook.login') }}" class="facebook-new">
 			<i class="fa fa-facebook"></i>
 			Sign in with Facebook
-		</a>
+		</a></span>
 
 		<div class="googleplus g-signin2" data-onsuccess="onSignIn" data-theme="light" data-longtitle="true" data-width="248" data-height="33">Sign in with Google</div>
 		<meta name="google_login_url" content="{{ URL::route('google.login') }}">
