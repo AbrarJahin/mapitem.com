@@ -3125,7 +3125,7 @@ li.next.disabled{
 }
 @media(max-width:767px){
 	.facebook-new {
-		line-height: 32px !important;
+		line-height: 31px !important;
 	}
 	.abcRioButtonSvgImageWithFallback {
 		width: 67px !important;
