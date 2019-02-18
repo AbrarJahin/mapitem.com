@@ -1,4 +1,4 @@
-<a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"> Login</a>
+<span></pan><a href="#" class="dropdown-toggle loginbtn" data-toggle="dropdown"> Login</a></span>
 <ul class="dropdown-menu no-padding shadow loginpopup">
 	<li>
 		<form role="form" id="login-f" class="login" method="post" action="{{ URL::route('login') }}">
