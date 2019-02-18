@@ -3024,16 +3024,17 @@ li.next.disabled{
 
     text-align: center;
     background-color: #3b5998;
-    margin-top: 5px;
+    margin-top: 10px;
     color: white !important;
     text-decoration: none;
-    line-height: 33px !important;
+    line-height: 32px !important;
     margin-bottom: 10px;
     font-size: 17px !important;
     font-family: Roboto,arial,sans-serif;
 	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
 	-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+	height: 39px
 
 }
 .facebook-new i {
@@ -3070,14 +3071,14 @@ li.next.disabled{
 }
 .abcRioButton.abcRioButtonLightBlue {
     margin: 0 auto;
-	height: 38px!important;
+	height: 39px!important;
 }
 .abcRioButtonSvgImageWithFallback {
     width: 37px !important;
-    height: 30px !important;
+    height: 34px !important;
     border-right: 1px solid #9E9E9E;
-    padding: 7px 7px;
-    margin: 4px;
+    padding: 9px 9px;
+    margin: 2px 4px;
 }
 
 /* Bilal Changes 13-2-201 end*/
