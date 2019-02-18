@@ -3130,6 +3130,14 @@ li.next.disabled{
 	.abcRioButtonSvgImageWithFallback {
 		width: 48px !important;
 	}
+	#lgn-pup .abcRioButtonSvgImageWithFallback {
+		width: 43px !important;
+		margin: 2px 10px
+	}
+	#lgn-pup .facebook-new i {
+	padding-left: 22px;
+	padding-right: 30px;
+	}
 	.facebook-new i {
     width: 9.5%;
     padding-left: 0px;
