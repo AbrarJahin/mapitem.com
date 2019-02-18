@@ -3044,8 +3044,8 @@ li.next.disabled{
     float: left;
     border-right: 1px solid rgba(255,255,255,.3);
     line-height: 33px;
-    padding-right: 15px;
-    padding-left: 15px;
+	padding-right: 13px;
+	padding-left: 17px;
 	
 }
 .facebook-new:hover {
@@ -3124,6 +3124,9 @@ li.next.disabled{
 	
 }
 @media(max-width:767px){
+	.facebook-new {
+		line-height: 32px !important;
+	}
 	.abcRioButtonSvgImageWithFallback {
 		width: 67px !important;
 	}
