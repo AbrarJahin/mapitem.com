@@ -45,8 +45,8 @@
 					</div>
 				</form>
 
-				<a class="facebook butt-adj1" href="{{ URL::route('facebook.login') }}">
-					<i class="fa fa-facebook fa-fw pull-left"></i>
+				<a class="facebook-new" href="{{ URL::route('facebook.login') }}">
+					<i class="fa fa-facebook"></i>
 					Sign in with Facebook
 				</a>
 

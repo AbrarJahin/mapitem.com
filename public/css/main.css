@@ -3019,6 +3019,72 @@ li.next.disabled{
 			}
 
 /*swiper slider styles end*/
+/* Bilal Changes 13-2-201 start*/
+.facebook-new {
+
+    text-align: center;
+    background-color: #3b5998;
+    margin-top: 10px;
+    color: white !important;
+    text-decoration: none;
+    line-height: 32px !important;
+    margin-bottom: 10px;
+    font-size: 17px !important;
+    font-family: Roboto,arial,sans-serif;
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+	-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+	height: 39px;
+	display: block;
+	padding: 3px 0
+
+}
+.facebook-new i {
+    display: block;
+    float: left;
+    border-right: 1px solid rgba(255,255,255,.3);
+    line-height: 33px;
+	padding-right: 13px;
+	padding-left: 17px;
+	
+}
+.facebook-new:hover {
+
+    background-color: #3b5998 !important;
+    
+    color: rgba(255,255,255,.8) !important;
+	-webkit-box-shadow:0 0 3px 3px rgba(66,133,244,.3);
+	-moz-box-shadow: 0 0 3px 3px rgba(66,133,244,.3);
+	box-shadow: 0 0 3px 3px rgba(66,133,244,.3);
+
+}
+.facebook-new:focus {
+
+    background-color: #3b5998 !important;
+    box-shadow: 0 0px 3px rgba(0,0,0,.7);
+    color: rgba(255,255,255,.8) !important;
+	-webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+}
+.ip-nav a.facebook-new {
+	color: white !important;
+}
+.abcRioButton.abcRioButtonLightBlue {
+    margin: 0 auto;
+	height: 39px!important;
+}
+.abcRioButtonSvgImageWithFallback {
+    width: 37px !important;
+    height: 34px !important;
+    border-right: 1px solid #9E9E9E;
+    padding: 9px 9px;
+    margin: 2px 4px;
+}
+
+/* Bilal Changes 13-2-201 end*/
+
 @media(max-width:1200px){
 
 	.ip-nav{
@@ -3058,6 +3124,24 @@ li.next.disabled{
 	
 }
 @media(max-width:767px){
+	.facebook-new {
+		line-height: 31px !important;
+	}
+	.abcRioButtonSvgImageWithFallback {
+		width: 56px !important;
+	}
+	#lgn-pup .abcRioButtonSvgImageWithFallback {
+		width: 43px !important;
+		margin: 2px 10px
+	}
+	#lgn-pup .facebook-new i {
+	padding-left: 22px;
+	padding-right: 30px;
+	}
+	.facebook-new i {
+    width: 43px;
+    padding-left: 0px;
+	}
 	.h-ctr{
 		min-width:auto}
 	.cat-btn {
@@ -4045,8 +4129,12 @@ p.my_add_detail {
 /*!
 * Google Login Button Customize - Make centerize
 */
-.abcRioButton.abcRioButtonLightBlue {
-	margin: 0 auto;
+
+.abcRioButtonIcon{
+	padding: 0!important;
+}
+.abcRioButtonContents{
+	line-height: 41px!important;
 }
 .g-signin2{
 	width: 100%;
