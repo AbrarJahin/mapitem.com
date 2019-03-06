@@ -3070,6 +3070,8 @@ li.next.disabled{
 }
 .ip-nav a.facebook-new {
 	color: white !important;
+	padding-left: 0;
+	padding-right: 0
 }
 .abcRioButton.abcRioButtonLightBlue {
     margin: 0 auto;
@@ -3124,6 +3126,10 @@ li.next.disabled{
 	
 }
 @media(max-width:767px){
+	.ip-nav a.facebook-new {
+		padding-left: 15px;
+		padding-right: 15px
+	}
 	.facebook-new {
 		line-height: 31px !important;
 	}
