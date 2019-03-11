@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('ad:disable')
+		$schedule->command('ad:disable --force')
 				->dailyAt('04:00');
 	}
 }
