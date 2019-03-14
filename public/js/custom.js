@@ -139,13 +139,20 @@ function getLocation() {
 
 			//Set Map Center to Current User Location
 			var $mapDiv = $('#map');
-			if ($mapDiv.length)
+			var hashNotExistance = true;
+			if(window.location.hash) {
+				hashNotExistance = window.location.hash.substr(1).length<1;
+			}
+
+			/*Timeout is added to fix Map not loaded caching issue fixing*/
+			setTimeout(function()
 			{
-				//Timeout is added to fix Map not loaded caching issue fixing
-				setTimeout(function()
-				{
-					$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(0,0));
-				}, 100);
+				$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(0,0));
+			}, 100);
+
+			if ($mapDiv.length && hashNotExistance)
+			{
+				/*Set map center to user's current location*/
 				setTimeout(function()
 				{
 					$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));

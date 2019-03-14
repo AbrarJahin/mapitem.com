@@ -479,7 +479,7 @@ $(function()
 			{
 				var adId = hashString.match(/\d+/)[0];
 				openInfoWindowByID( adId );
-				showAddDetail( adId );
+				showAddDetail( adId, true );
 			}
 		}, 1500);
 	}
@@ -736,9 +736,11 @@ function generateMarkers(bounds)
 	openLastInfoWindow();
 }
 
-function showAddDetail(id)		/* Show ad Detail */
+function showAddDetail(id, isNeedToMakeMapCenterized)		/* Show ad Detail */
 {
+	isNeedToMakeMapCenterized = isNeedToMakeMapCenterized || false;
 	window.location.hash = '#'+id;	/* Add hash in URL */
+
 	if(is_wishlist_propagated)
 		return;
 	$.ajax(
@@ -842,7 +844,7 @@ function showAddDetail(id)		/* Show ad Detail */
 							/*Remove Previous Slider*/
 							swiper.removeAllSlides();
 							swiper.destroy(true,true);
-						   isLoopEnabled	=	value.length > 1 ? true : false;
+							isLoopEnabled	=	value.length > 1 ? true : false;
 							swiper = new Swiper('.swiper-container', {
 								centeredSlides: true,
 								spaceBetween: 10,
@@ -872,7 +874,7 @@ function showAddDetail(id)		/* Show ad Detail */
 								//$('.variable-width').append(	'<div><img data-lazy="'+$('meta[name=base_url]').attr("content")+"/images/not_available_2.png"+ '"></div>');
 							}
 							
-							console.log(isLoopEnabled)
+							/*console.log(isLoopEnabled);*/
 						}
 						else if(key.localeCompare('total_views')==0)
 						{
@@ -975,6 +977,17 @@ function showAddDetail(id)		/* Show ad Detail */
 					}
 				}
 			});
+
+			/*Make the map centerized with ad if the ad is opened directly from URL*/
+			if(isNeedToMakeMapCenterized)
+			{
+				map_div.gmap3('get').setCenter(
+					new google.maps.LatLng(
+							$('#selected_add_direction').attr("location_lat"),
+							$('#selected_add_direction').attr("location_lon")
+						)
+				);
+			}
 
 			/*Update share buttons*/
 			$("#fb_share").attr("href", $('meta[name=fb_share_url]').attr("content")+"%23"+id);
