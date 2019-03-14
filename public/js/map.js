@@ -73,7 +73,7 @@ $(function()
 			generateMarkers( viewPortForMobile );
 		}
 		map_div.gmap3('get').setCenter(result.geometry.location);		/*Set Center*/
-		/*map_div.gmap3('get').fitBounds(result.geometry.viewport);*/		/*Set Autometic Zoom*/
+		map_div.gmap3('get').fitBounds(result.geometry.viewport);	/*Set Autometic Zoom*/
 	});
 
 	/*On Mouseover Map InfoWindow Pop Up*/
@@ -160,14 +160,14 @@ $(function()
 		var strictBounds = new google.maps.LatLngBounds(
 									new google.maps.LatLng(
 																$('#map_lat_min').val(),
-																$('#map_lon_max').val()
+																$('#map_lon_min').val()
 															),/* top left corner of map*/
 									new google.maps.LatLng(
 																$('#map_lat_max').val(),
-																$('#map_lon_min').val()
+																$('#map_lon_max').val()
 															)/* bottom right corner*/
 								);
-		map_div.gmap3('get').fitBounds(strictBounds);
+		map_div.gmap3('get').fitBounds( fixMapBounds(strictBounds) );
 	}
 
 	/*Close All Infowindow by clicking inside map*/
@@ -1010,6 +1010,23 @@ function showAddDetail(id, isNeedToMakeMapCenterized)		/* Show ad Detail */
 	$('.ad-listing').hide("slow");
 	$('.close-detail').addClass("show");
 	$(".listing-right").animate({ scrollTop: 0 }, "slow");
+}
+
+function fixMapBounds(strictBounds)		/*Check The Device Type*/
+{
+	if(strictBounds.ga.j>strictBounds.ga.l)
+	{
+		var temp = strictBounds.ga.j;
+		strictBounds.ga.j = strictBounds.ga.l;
+		strictBounds.ga.l = temp;
+	}
+	if(strictBounds.ma.j>strictBounds.ma.l)
+	{
+		var temp = strictBounds.ma.j;
+		strictBounds.ma.j = strictBounds.ma.l;
+		strictBounds.ma.l = temp;
+	}
+	return strictBounds;
 }
 
 function ifDeviceIsMobile()		/*Check The Device Type*/

@@ -137,28 +137,6 @@ function getLocation() {
 			$('#user_location_lat').val(latitude);
 			$('#user_location_lon').val(longitude);
 
-			//Set Map Center to Current User Location
-			var $mapDiv = $('#map');
-			var hashNotExistance = true;
-			if(window.location.hash) {
-				hashNotExistance = window.location.hash.substr(1).length<1;
-			}
-
-			/*Timeout is added to fix Map not loaded caching issue fixing*/
-			setTimeout(function()
-			{
-				$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(0,0));
-			}, 100);
-
-			if ($mapDiv.length && hashNotExistance)
-			{
-				/*Set map center to user's current location*/
-				setTimeout(function()
-				{
-					$mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));
-				}, 500);
-			}
-
 			//Home Page Element Loading according to current location
 			var element_container = $('#home_page_element_container');
 			if (element_container.length)
@@ -223,6 +201,28 @@ function getLocation() {
 						});
 					}
 				});
+			}
+
+			var mapDiv = $('#map');
+			if(typeof(mapDiv.gmap3) === typeof(Function))
+			{
+				/*Timeout is added to fix Map not loaded caching issue fixing*/
+				setTimeout(function(){
+					mapDiv.gmap3('get').setCenter(new google.maps.LatLng(0,0));
+				}, 100);
+
+				var hashNotExistance = true;
+				if(window.location.hash) {
+					hashNotExistance = window.location.hash.substr(1).length<1;
+				}
+				/*Set Map Center to Current User Location*/
+				if (mapDiv.length && hashNotExistance)
+				{
+					/*Set map center to user's current location*/
+					setTimeout(function(){
+						mapDiv.gmap3('get').setCenter(new google.maps.LatLng(latitude,longitude));
+					}, 500);
+				}
 			}
 		}, "jsonp");
 	}
