@@ -387,10 +387,10 @@ $(document).ready(function()
 		$('#user_location_lat').val( result.geometry.location.lat() );
 		$('#user_location_lon').val( result.geometry.location.lng() );
 
-		$('#map_lat_min').val( result.geometry.viewport.f.f );
-		$('#map_lat_max').val( result.geometry.viewport.f.b );
-		$('#map_lon_min').val( result.geometry.viewport.b.f );
-		$('#map_lon_max').val( result.geometry.viewport.b.b );
+		$('#map_lat_min').val( result.geometry.viewport.ma.j );
+		$('#map_lat_max').val( result.geometry.viewport.ma.l );
+		$('#map_lon_min').val( result.geometry.viewport.ga.j );
+		$('#map_lon_max').val( result.geometry.viewport.ga.l );
 	});
 
 	//Create Custom Search Form submit to show pretty URL
