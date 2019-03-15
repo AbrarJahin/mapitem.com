@@ -494,9 +494,13 @@ $(document).ready(function()
 			})
 		.bind("geocode:dragged", function(event, latLng)
 			{	//Dragging
-				$('#find_product_location').val( $("#find_product_location").geocomplete( "find", latLng.lat() + "," + latLng.lng() ) );
+			 	/*$('#find_product_location').val( $("#find_product_location").geocomplete( "find", latLng.lat() + "," + latLng.lng() ) );*/
 				$('#product_location_lat').val( latLng.lat() );
 				$('#product_location_lon').val( latLng.lng() );
+
+				$.get("https://api.opencagedata.com/geocode/v1/json?q="+latLng.lng()+"+-"+latLng.lat()+"&key=55f3c34bb9a3424d96a72154deca11ea&no_annotations=1&language=en", function (response){
+					$('#find_product_location').val(response.results[0].formatted);
+				}, "jsonp");
 			});
 
 		//Reload Map after it is shown
