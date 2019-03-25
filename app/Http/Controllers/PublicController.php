@@ -196,7 +196,7 @@ class PublicController extends Controller
 				->where('advertisements.is_active', "active")
 				->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 				->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
-				->where('advertisements.price', '>', $requestData['price_range_min'])
+				->where('advertisements.price', '>=', $requestData['price_range_min'])
 				->where(function($query) use ($requestData)
 					{
 						$query
@@ -210,7 +210,7 @@ class PublicController extends Controller
 			$tempData = $tempData->whereIn('advertisements.sub_category_id', []);
 
 		if($requestData['price_range_max']!=1000)
-			$tempData = $tempData->where('advertisements.price', '<', $requestData['price_range_max']);
+			$tempData = $tempData->where('advertisements.price', '<=', $requestData['price_range_max']);
 
 		//Should check if there is a better way than using collection in this case
 		$totalElementFound = collect(
@@ -255,7 +255,7 @@ class PublicController extends Controller
 								->where('advertisements.is_active', "active")
 								->whereBetween('advertisements.location_lat', [ $requestData['lat_min'], $requestData['lat_max'] ])
 								->whereBetween('advertisements.location_lon', [ $requestData['lon_min'], $requestData['lon_max'] ])
-								->where('advertisements.price', '>', $requestData['price_range_min'])
+								->where('advertisements.price', '>=', $requestData['price_range_min'])
 								->where(function($query) use ($requestData)
 									{
 										$query
@@ -269,7 +269,7 @@ class PublicController extends Controller
 			$temp_categories = $temp_categories->whereIn('advertisements.sub_category_id', []);
 		*/
 		if($requestData['price_range_max']!=1000)
-			$temp_categories = $temp_categories->where('advertisements.price', '<', $requestData['price_range_max']);
+			$temp_categories = $temp_categories->where('advertisements.price', '<=', $requestData['price_range_max']);
 
 		$categories = $temp_categories
 						->Join('categories', 'advertisements.category_id', '=', 'categories.id')
