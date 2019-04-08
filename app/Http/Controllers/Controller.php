@@ -12,6 +12,7 @@ use App\UserNotification;
 use App\Advertisement;
 use App\PublicPage;
 use App\GoogleAnalytics;
+use Carbon\Carbon;
 use View;
 use DB;
 use Request;
@@ -22,6 +23,12 @@ class Controller extends BaseController
 
 	public function __construct()
 	{
+		/////////////////Should be removed, it is created because CRON Job is not working////////////////////////////
+		DB::table('advertisements')->where('is_active', 'active')
+						->where( 'updated_at', '<', Carbon::now()->subDays(env("AD_AUTO_DISABLE_DAY_INTERVAL", 100)))
+						->update(['is_active' => 'inactive']);
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		if(Auth::check())	//If user is logged in normal user - then share this data
 		{
 			if (Auth::user()->user_type == "normal_user")
