@@ -1014,19 +1014,43 @@ function showAddDetail(id, isNeedToMakeMapCenterized)		/* Show ad Detail */
 
 function fixMapBounds(strictBounds)		/*Check The Device Type*/
 {
-	if(strictBounds.ga.j>strictBounds.ga.l)
-	{
-		var temp = strictBounds.ga.j;
-		strictBounds.ga.j = strictBounds.ga.l;
-		strictBounds.ga.l = temp;
+	try {
+		if(strictBounds.ga.j>strictBounds.ga.l)
+		{
+			var temp = strictBounds.ga.j;
+			strictBounds.ga.j = strictBounds.ga.l;
+			strictBounds.ga.l = temp;
+		}
+		if(strictBounds.ma.j>strictBounds.ma.l)
+		{
+			var temp = strictBounds.ma.j;
+			strictBounds.ma.j = strictBounds.ma.l;
+			strictBounds.ma.l = temp;
+		}
 	}
-	if(strictBounds.ma.j>strictBounds.ma.l)
-	{
-		var temp = strictBounds.ma.j;
-		strictBounds.ma.j = strictBounds.ma.l;
-		strictBounds.ma.l = temp;
+	catch(err1) {
+		console.log(err1);
+		try {
+			if(strictBounds.ia.j>strictBounds.ia.l)
+			{
+				var temp = strictBounds.ia.j;
+				strictBounds.ia.j = strictBounds.ia.l;
+				strictBounds.ia.l = temp;
+			}
+			if(strictBounds.na.j>strictBounds.na.l)
+			{
+				var temp = strictBounds.na.j;
+				strictBounds.na.j = strictBounds.na.l;
+				strictBounds.na.l = temp;
+			}
+		}
+		catch(err2) {
+			console.log(err2);
+		}
 	}
-	return strictBounds;
+	finally {
+  		return strictBounds;
+	}
 }
 
 function ifDeviceIsMobile()		/*Check The Device Type*/
