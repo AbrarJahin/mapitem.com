@@ -77,3 +77,12 @@ To update any value in `.env` file, you need to do this following steps-
 	`Ctrl` + `X` -> `Y` -> `Enter`
 
 6. Then you are done :).
+
+## Command for reloading all data in `.env` file
+
+	php artisan config:cache
+	php artisan config:clear
+	php artisan cache:clear
+	php artisan view:clear 
+
+Run this commands after update any data in `.env` file.
