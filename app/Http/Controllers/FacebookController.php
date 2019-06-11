@@ -48,6 +48,7 @@ class FacebookController extends Controller
 		}
 		catch (\Exception $e)
 		{
+			return $e;
 			return redirect()->route('index');
 		}
 
@@ -141,6 +142,7 @@ class FacebookController extends Controller
 				'avatar_original_url'	=> $user->avatar_original
 			]
 		);
+		return Socialite::driver('facebook')->user();
 		return Redirect::route('index');
 	}
 
