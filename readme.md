@@ -85,7 +85,7 @@ So, no readme file can be provided still now.
 git clone https://abrarjahin@bitbucket.org/abrarjahin/mapitem.com.git
 
 cd mapitem.com
-cp  .env.example .env
+cp  .env.example .env  # and Make needed changes in .env file
 composer install
 --or
 --composer install --ignore-platform-reqs
