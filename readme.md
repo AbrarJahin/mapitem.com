@@ -1,8 +1,17 @@
 # mapitem.com
 
 Build On - Laravel PHP Framework (v5.2.15)
+-----------------------
 
-==========================================
+# Requirements-
+
+- PHP version between 5.5.9 - 7.1.*
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Tokenizer PHP Extension
+
+------------------------
 
 This site will be more likely of bikroy.com
 

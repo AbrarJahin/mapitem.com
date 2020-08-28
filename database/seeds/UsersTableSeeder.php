@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,27 +12,48 @@ class UsersTableSeeder extends Seeder
 	 */
 	public function run()
 	{
+		$consoleOut = new ConsoleOutput();
 		$faker = Faker\Factory::create();
-
 		//Not Logged In User Creation For View Count
 		DB::table('users')->insert(
-									[
-										'id'						=>	1,
-										'first_name'				=> 'Not Logged In',
-										'last_name'					=> 'User',
-										'email'						=> 'not@logged.in',
-										'cell_no'					=> '000000',
-										'website'					=> 'not.logged/in',
-										'date_of_birth'				=> $faker->date($format = 'Y-m-d', $max = 'now'),
-										'social_security_number_p1'	=> $faker->unique()->uuid,
-										'social_security_number_p2'	=> $faker->unique()->uuid,
-										'social_security_number_p3'	=> $faker->unique()->uuid,
-										'address'					=> $faker->address,
-										'location_latitude'			=> $faker->latitude($min = -90, $max = 90),
-										'location_longitude'		=> $faker->longitude($min = -180, $max = 180),
-										'password'					=> 'No need to log in with this user',
-										'user_type'					=> 'normal_user'
-									]);
+			[
+				'id'						=>	1,
+				'first_name'				=> 'Not Logged In',
+				'last_name'					=> 'User',
+				'email'						=> 'not@logged.in',
+				'cell_no'					=> '000000',
+				'website'					=> 'not.logged/in',
+				'date_of_birth'				=> $faker->date($format = 'Y-m-d', $max = 'now'),
+				'social_security_number_p1'	=> $faker->unique()->uuid,
+				'social_security_number_p2'	=> $faker->unique()->uuid,
+				'social_security_number_p3'	=> $faker->unique()->uuid,
+				'address'					=> $faker->address,
+				'location_latitude'			=> $faker->latitude($min = -90, $max = 90),
+				'location_longitude'		=> $faker->longitude($min = -180, $max = 180),
+				'password'					=> 'No need to log in with this user',
+				'user_type'					=> 'normal_user'
+			]
+		);
+		DB::table('users')->insert(
+			[
+				'id'						=>	2,
+				'first_name'				=> 'Abrar',
+				'last_name'					=> 'Jahin',
+				'email'						=> 'abrarjahin@gmail.com',
+				'cell_no'					=> '+8801822804636',
+				'website'					=> 'abrarjahin.me',
+				'date_of_birth'				=> $faker->date($format = 'Y-m-d', $max = 'now'),
+				'social_security_number_p1'	=> $faker->unique()->uuid,
+				'social_security_number_p2'	=> $faker->unique()->uuid,
+				'social_security_number_p3'	=> $faker->unique()->uuid,
+				'address'					=> $faker->address,
+				'location_latitude'			=> $faker->latitude($min = -90, $max = 90),
+				'location_longitude'		=> $faker->longitude($min = -180, $max = 180),
+				'password'					=> bcrypt('123'),
+				'user_type'					=> 'admin'
+			]
+		);
+		return;
 
 		$users = [
 					[
@@ -48,10 +70,13 @@ class UsersTableSeeder extends Seeder
 					]
 				];
 		//Insert the admins
+		$id = 1;
 		foreach ($users as $user)
 		{
+			$consoleOut->writeln($faker->unique()->phoneNumber);
 			DB::table('users')->insert(
 									[
+										'id'						=>	++$id,
 										'first_name'				=> $faker->firstName($gender = null|'male'|'female'),
 										'last_name'					=> $faker->lastName,
 										'email'						=> $user['email'],
@@ -86,7 +111,7 @@ class UsersTableSeeder extends Seeder
 										'address'					=> $faker->address,
 										'location_latitude'			=> $faker->latitude($min = -90, $max = 90),
 										'location_longitude'		=> $faker->longitude($min = -180, $max = 180),
-										'password'					=> bcrypt('1234'),
+										'password'					=> bcrypt('*123#'),
 										'user_type'					=> 'normal_user'
 									]);
 		}
